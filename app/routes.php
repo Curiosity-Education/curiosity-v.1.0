@@ -13,5 +13,5 @@
 
 Route::get('/', function()
 {
-	return View::make('templates.child-menu');
+	return View::make('child.init');
 });
