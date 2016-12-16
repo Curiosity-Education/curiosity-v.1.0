@@ -1,26 +1,84 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="packages/libs/materialize/css/materialize.min.css">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/packages/css/skins/{{--{{User::getSkin()->skin}}.css--}}">
+@extends('templates.child-master')
+    @section('css')
     <link rel="stylesheet" type="text/css" href="packages/assets/css/child/init.css">
-    @yield('mi_css')
-    <title>Curiosity | @yield('title')</title>
-  </head>
-  <body class="hold-transition {{-- {{User::getSkin()->skin}} --}} sidebar-mini sidebar-collapse">
-    <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <img src="packages/assets/media/images/child/nav1.png" class="img-responsive card img-nav">
+    <link rel="stylesheet" type="text/css" href="packages/assets/css/animations.css">
+    @stop
+
+    @section('title')Curiosity | @stop
+    @section('content')
+      <div class="container-fluid" id="container-main-child">
+          <!-- sección de slide principal-->
+          <div class="row row-slide-main">
+            <div class="col m12">
+              <img src="packages/assets/media/images/child/nav1.png" class="img-responsive card img-nav">
+            </div>
           </div>
-        </div>
-    </div>
-    </div>
-  </body>
-  <script type="text/javascript" src="packages/libs/materialize/js/materializa.js"></script>
-</html>
+          <!--// find de sección del slide principal -->
+          <!-- sección de zona de paneles-->
+          <div class="row">
+            <div class="col m6">
+                <div class="card blue-grey darken-1 z-depth-2" id="card-news-games">
+                  <div class="card-content white-text text-center card-mask">
+                    <span class="card-title">Juegos nuevos</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because </p>
+                    <hr>
+                    <a class="btn btn-view-more">Ver</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col m6">
+               <div class="card blue-grey darken-1 z-depth-2" id="card-games-populars">
+                  <div class="card-content white-text text-center card-mask">
+                    <span class="card-title">Juegos populares</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because</p>
+                    <hr>
+                    <a class="btn btn-view-more">Ver</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col m6 standard-bordered">
+                <div class="card blue-grey darken-1 depth-2" id="card-more-calification">
+                  <div class="card-content white-text text-center card-mask">
+                    <span class="card-title">Juegos mejor calificados</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because </p>
+                    <hr>
+                    <a class="btn btn-view-more">Ver</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col m6 standard-bordered">
+               <div class="card blue-grey darken-1 depth-2" id="card-games-recoments">
+                  <div class="card-content white-text text-center card-mask">
+                    <span class="card-title">Juegos recomendados</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because</p>
+                    <hr>
+                    <a class="btn btn-view-more">Ver</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m12 standard-bordered">
+                <div class="card blue-grey darken-1 depth-2" id="card-news-videos">
+                  <div class="card-content white-text text-center card-mask">
+                    <span class="card-title">Nuevos videos</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because </p>
+                    <hr>
+                    <a class="btn btn-view-more">Ver</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <!-- Fin de la zona de paneles-->
+      </div>
+    @stop
+@section('js')
+  <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js"></script>
+@stop

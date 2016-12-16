@@ -1,6 +1,52 @@
 .img-nav{
 	border-radius: .4rem;
 }
+
 .img-responsive{
 	width: 100%;
+}
+#card-news-games{
+	background: url(/packages/assets/media/images/child/game_news.jpg);
+	background-size: cover;
+	
+}
+#card-games-populars{
+	background: url(/packages/assets/media/images/child/popularsgames.jpg);
+	background-size: cover;
+}
+#card-news-videos{
+	background: url(/packages/assets/media/images/child/videosnews.jpg);
+	background-size: cover;
+}
+#card-more-calification{
+	background: url(/packages/assets/media/images/child/gamepopulars.jpg);
+	background-size: cover;
+}
+#card-games-recoments{
+	background: url(/packages/assets/media/images/child/gamesrecoments.jpg);
+	background-size: cover;
+}
+.card-mask{
+	background-color: rgba(0,0,0,.6);
+}
+.card-mask:hover{
+	background-color: rgba(0,0,0,.3);
+}
+.standard-bordered{
+	border-radius: 16rem!important;
+}
+#container-main-child{
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+#container-main-child>.row>.col:first-child{
+ 	padding-left: 0!important;
+}
+#container-main-child>.row>.col:last-child{
+ 	padding-right: 0!important;
+}
+.btn-view-more{
+	background-color: transparent!important;
+	border:.1rem #fff solid!important;
 }
