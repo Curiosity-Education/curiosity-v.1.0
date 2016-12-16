@@ -23,13 +23,13 @@
                   <span class="mdi mdi-dots-horizontal" style="margin-top: 1.5rem;"></span>
                </a>
                <ul class="right hide-on-med-and-down">
-                  <li><a href="javascript:void(0)" class="logOut">
+                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
                      Salir &nbsp;
                      <span class="mdi mdi-export icon-custom"></span>
                   </a></li>
                </ul>
                <ul class="side-nav" id="mobile-demo">
-                  <li><a href="javascript:void(0)" class="logOut">
+                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
                      Salir &nbsp;
                      <span class="mdi mdi-export icon-custom"></span>
                   </a></li>
@@ -49,7 +49,7 @@
                            <div id="avatarContainer" class="center-align"><div></div></div>
                            <ul class="collapsible" data-collapsible="accordion" id="collapsibleMenu">
                               <li>
-                                 <div class="collapsible-header active center-align right" id="collapsible-headerMenu">
+                                 <div class="collapsible-header active center-align right waves-effect waves-light" id="collapsible-headerMenu">
                                     <span class="mdi mdi-menu"></span>
                                  </div>
                                  <div class="collapsible-body" id="collapsible-bodyMenu">
