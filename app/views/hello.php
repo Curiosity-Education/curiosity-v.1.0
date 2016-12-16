@@ -39,4 +39,8 @@
 		<h1>You have arrived.</h1>
 	</div>
 </body>
+<script src="/packages/assets/js/config/request/request.js"></script>
+<script src="/packages/assets/js/config/db/database.js"></script>
+<script src="/packages/assets/js/config/db/CORM.js"></script>
+<script src="/packages/assets/js/models/teacher.js"></script>
 </html>

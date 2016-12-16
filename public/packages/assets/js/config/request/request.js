@@ -9,12 +9,22 @@ class Request{
         var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                this.responseText;
-                callback(this);
+                var response = JSON.parse(this.responseText);
+                var status = this.status;
+                callback(status,response,this);
             }
           };
-          xhttp.open(method, data, true);
-          xhttp.send(data);
+          xhttp.open(method, path, true);
+
+          if(data != null){
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(JSON.stringify(data));
+          }
+          else{
+            xhttp.send();
+          }
+
+
     }
 
 }
