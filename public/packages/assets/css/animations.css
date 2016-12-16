@@ -1,0 +1,25 @@
+.hide{
+	animation: 1 hide-efect infinite;
+}
+
+
+@keyframes hide-efect{
+	0%{
+		width: 100%;
+		display: block;
+	}
+	20%{
+		width: 80%;
+	}
+	40%{
+		width: 60%;
+	}
+	60%{
+		width: 40%;
+	}80%{
+		width: 20%;
+	}100%{
+		width: 0%;
+		display: none;
+	}
+}
