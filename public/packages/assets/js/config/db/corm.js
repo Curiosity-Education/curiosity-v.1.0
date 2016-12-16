@@ -23,12 +23,12 @@ class CORM{
         this.database.update(this.prefix,options);
     }
 
-    delete(data,method,success){
+    static delete(data,method,success,prefix){
         var options={};
         options.data = data;
         options.method = method;
         options.success = success;
-        this.database.delete(this.prefix,options);
+        Database.delete(prefix,options);
     }
 
     static find(data,method,success,prefix){

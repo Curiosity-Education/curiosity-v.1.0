@@ -15,14 +15,13 @@ class Teacher extends CORM {
         this.teacher.id = id;
         super.update(this.teacher,method,success);
     }
-    delete(id,method,success){
-        this.teacher.id = id;
-        super.delete(this.teacher,method,success);
+    static delete(id,method,success){
+        super.delete({id:id},method,success,'/teachers');
     }
     static all(method,success){
         super.all(method,success,'/teachers');
     }
     static find(id,method,success){
-        super.all({id:id},method,success,'/teachers');
+        super.find({id:id},method,success,'/teachers');
     }
 }

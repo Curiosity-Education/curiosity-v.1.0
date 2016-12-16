@@ -43,7 +43,7 @@ class Database{
         var path = prefix + '/save';
         Request.send(options.method,path,options.success,options.data);
     }
-    delete(prefix,options){
+    static delete(prefix,options){
         if(typeof options != "object"){
             options = {
                 method:"GET",

@@ -49,6 +49,12 @@ Route::group(array('prefix' => 'teachers'), function()
     Route::post('save',function(){
         return Input::all();
     });
+    Route::post('update',function(){
+        return Input::all();
+    });
+    Route::post('delete',function(){
+        return Input::all();
+    });
 
     Route::post('find',function(){
 
