@@ -23,13 +23,13 @@
                   <span class="mdi mdi-dots-horizontal" style="margin-top: 1.5rem;"></span>
                </a>
                <ul class="right hide-on-med-and-down">
-                  <li><a href="javascript:void(0)" class="logOut">
+                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
                      Salir &nbsp;
                      <span class="mdi mdi-export icon-custom"></span>
                   </a></li>
                </ul>
                <ul class="side-nav" id="mobile-demo">
-                  <li><a href="javascript:void(0)" class="logOut">
+                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
                      Salir &nbsp;
                      <span class="mdi mdi-export icon-custom"></span>
                   </a></li>
@@ -45,11 +45,11 @@
                   <div class="row">
                      <div class="col m12">
                         <div class="menu">
-                           <h5 class="center-align" id="name-menu">@yield('menu-title')</h5>
-                           <div id="avatarContainer" class="center-align"><div></div></div>
+                           @yield('menu-title')
+                           @yield('menu-photo')
                            <ul class="collapsible" data-collapsible="accordion" id="collapsibleMenu">
                               <li>
-                                 <div class="collapsible-header active center-align right" id="collapsible-headerMenu">
+                                 <div class="collapsible-header active center-align right waves-effect waves-light" id="collapsible-headerMenu">
                                     <span class="mdi mdi-menu"></span>
                                  </div>
                                  <div class="collapsible-body" id="collapsible-bodyMenu">
@@ -59,6 +59,11 @@
                            </ul>
                         </div>
                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col m12">
+                       @yield('under-menu')
+                    </div>
                   </div>
                </div>
                <div class="col s12 l9 text-justify">

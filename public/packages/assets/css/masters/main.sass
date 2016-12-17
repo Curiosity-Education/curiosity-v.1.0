@@ -1,4 +1,4 @@
-@import "_standarVariables.sass"
+@import "../_standardVariables.sass"
 
 body
    background-color: $bg-color
@@ -92,6 +92,15 @@ body
       background-repeat: repeat
       transform: scale(.85)
 
+#avatarContainerParent
+   background: $color-blue
+   margin: -1rem
+   padding: 2rem
+   border-top-left-radius: $border-rad
+   border-top-right-radius: $border-rad
+   img
+      border: solid 1rem #fff
+
 #collapsible-bodyMenu
    padding-top: 3rem
    border-bottom: none
@@ -103,6 +112,7 @@ body
    padding-right: 1rem
    padding-bottom: .5rem
    padding-top: .5rem
+   display: block !important
 
 .linkMenu:hover
    transition: .2s
@@ -110,15 +120,7 @@ body
    cursor: pointer
 
 .linkMenu-active
-   padding-left: 1.6rem
-   div
-      width: 2rem
-      height: 2rem
-      position: absolute
-      background-color: $bg-color
-      margin-left: -3rem
-      margin-top: -.3rem
-      transform: rotate(45deg)
+   background-color: $bg-color
 
 .icon-custom
    display: inline !important

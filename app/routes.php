@@ -16,6 +16,10 @@ Route::get('/', function()
 	return View::make('child.init');
 });
 
+Route::get('/padre-inicio', function(){
+	return View::make('parent.home');
+});
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
@@ -32,6 +36,3 @@ Route::group(array('prefix' => 'teachers'), function()
 
 
 });
-
-
-
