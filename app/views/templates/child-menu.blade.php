@@ -1,7 +1,7 @@
 @extends('templates.user-master')
 
 @section('menu-title')
-Hola Curiosity
+<h1 class="center-align" id="name-menu">Hola Curiosity</h1>
 @stop
 
 @section('menu-photo')
