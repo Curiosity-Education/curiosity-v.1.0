@@ -13,5 +13,25 @@
 
 Route::get('/', function()
 {
-	return View::make('templates.child-master');
+	return View::make('child.init');
 });
+
+//Ahora las rutas se manejaran con prefijos
+Route::group(array('prefix' => 'teachers'), function()
+{
+
+    Route::get('get', function()
+    {
+        $data = [
+            'status' => '200',
+            'message'   => 'The ajax has been found success',
+            'type'  => 'JSON'
+        ];
+        return Response::json($data);
+    });
+
+
+});
+
+
+
