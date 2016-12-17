@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Conf. Cuenta</title>
+	<title>Configuración de Cuenta</title>
 </head>
 <body>
 	

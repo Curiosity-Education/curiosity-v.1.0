@@ -48,7 +48,7 @@
                      <div class="col m9" style="padding-top:.6rem;">
                         <div id="brands">
                            <a href="" class="brand">Inicio</a>
-                           <a href="" class="brand">Inicio</a>
+                           <a href="" class="brand">Inicio2</a>
                            <a href="" class="brand">Inicio</a>
                         </div>
                      </div>
