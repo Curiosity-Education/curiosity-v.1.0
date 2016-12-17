@@ -1,1 +1,204 @@
-body{background-color:#e8e8e8;background-image:none;background-position:center;background-repeat:no-repeat;background-size:cover}#navbar{background-color:#2262ae;margin-bottom:3rem;box-shadow:0.1rem 0.1rem 0.1rem rgba(0,0,0,0.2) !important}.menu{background-color:#fff;padding:1rem;border-radius:0.5rem;box-shadow:0.1rem 0.1rem 0.1rem rgba(0,0,0,0.2)}#name-menu{background-color:#2262ae;color:#fff;padding:1rem;font-size:1rem;border-top-left-radius:0.5rem;border-top-right-radius:0.5rem;margin:-1rem;margin-bottom:1rem}#btn-search{background-color:#bdbdbd;color:#fff;border:none;cursor:pointer;border-top-right-radius:0.5rem;border-bottom-right-radius:0.5rem}#btn-search:hover{transition:0.4s;color:#fff;text-decoration:none;background-color:#8c8c8c}.brand-logo{font-size:1.2rem !important;text-decoration:none !important;outline:none !important;margin-left:2.5rem}.brand-logo img{width:2rem}.logOut{color:#fff !important;text-decoration:none !important;outline:none !important;margin-right:2.5rem}#collapsibleMenu{box-shadow:none;border:none;margin:0}#collapsible-headerMenu{min-height:auto;line-height:normal;padding:0;border-bottom:none;background-color:#2262ae;color:#fff;width:2rem;height:2rem;border-radius:100%;box-shadow:0.1rem 0.1rem 0.1rem rgba(0,0,0,0.2);padding-top:0.45rem}#collapsible-headerMenu span{font-size:1.2rem}#avatarContainer{background-image:url(/packages/assets/media/images/avatar/backgrounds/menDefSkBlue098754.jpg);background-position:center;background-repeat:no-repeat;background-size:cover;margin:-1rem;padding:1rem;padding-left:3rem}#avatarContainer div{width:195px;height:258px;background-image:url(/packages/assets/media/images/avatar/sprites/sprite.png);background-position:195px 258px;background-repeat:repeat;transform:scale(0.85)}#collapsible-bodyMenu{padding-top:3rem;border-bottom:none}.linkMenu{margin-left:-1rem;padding-left:1rem;margin-right:-1rem;padding-right:1rem;padding-bottom:0.5rem;padding-top:0.5rem;display:block !important}.linkMenu:hover{transition:0.2s;background:#f3f3f3;cursor:pointer}.linkMenu-active{padding-left:1.6rem}.linkMenu-active div{width:2rem;height:2rem;position:absolute;background-color:#e8e8e8;margin-left:-3rem;margin-top:-0.3rem;transform:rotate(45deg)}.icon-custom{display:inline !important;font-size:1rem !important;height:auto !important;line-height:normal !important}.icon-menu{font-size:1.3rem}#icon-home{color:#e6218f}#icon-study{color:#ed6922}#icon-profile{color:#3cb54a}#icon-videos{color:#ec2726}#icon-files{color:#2262ae}#icon-store{color:#8a489b}
+/* line 3, main.sass */
+body {
+  background-color: #e8e8e8;
+  background-image: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* line 10, main.sass */
+#navbar {
+  background-color: #2262ae;
+  margin-bottom: 3rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2) !important;
+}
+
+/* line 15, main.sass */
+.menu {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+/* line 21, main.sass */
+#name-menu {
+  background-color: #2262ae;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  margin: -1rem;
+  margin-bottom: 1rem;
+}
+
+/* line 31, main.sass */
+#btn-search {
+  background-color: #bdbdbd;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* line 39, main.sass */
+#btn-search:hover {
+  transition: 0.4s;
+  color: white;
+  text-decoration: none;
+  background-color: #8c8c8c;
+}
+
+/* line 45, main.sass */
+.brand-logo {
+  font-size: 1.2rem !important;
+  text-decoration: none !important;
+  outline: none !important;
+  margin-left: 2.5rem;
+}
+/* line 50, main.sass */
+.brand-logo img {
+  width: 2rem;
+}
+
+/* line 53, main.sass */
+.logOut {
+  color: white !important;
+  text-decoration: none !important;
+  outline: none !important;
+  margin-right: 2.5rem;
+}
+
+/* line 59, main.sass */
+#collapsibleMenu {
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+/* line 64, main.sass */
+#collapsible-headerMenu {
+  min-height: auto;
+  line-height: normal;
+  padding: 0;
+  border-bottom: none;
+  background-color: #2262ae;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+  padding-top: 0.45rem;
+}
+/* line 76, main.sass */
+#collapsible-headerMenu span {
+  font-size: 1.2rem;
+}
+
+/* line 79, main.sass */
+#avatarContainer {
+  background-image: url(/packages/assets/media/images/avatar/backgrounds/menDefSkBlue098754.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: -1rem;
+  padding: 1rem;
+  padding-left: 3rem;
+}
+/* line 87, main.sass */
+#avatarContainer div {
+  width: 195px;
+  height: 258px;
+  background-image: url(/packages/assets/media/images/avatar/sprites/sprite.png);
+  background-position: 195px 258px;
+  background-repeat: repeat;
+  transform: scale(0.85);
+}
+
+/* line 95, main.sass */
+#avatarContainerParent {
+  background: #2262ae;
+  margin: -1rem;
+  padding: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+/* line 101, main.sass */
+#avatarContainerParent img {
+  border: solid 1rem white;
+}
+
+/* line 104, main.sass */
+#collapsible-bodyMenu {
+  padding-top: 3rem;
+  border-bottom: none;
+}
+
+/* line 108, main.sass */
+.linkMenu {
+  margin-left: -1rem;
+  padding-left: 1rem;
+  margin-right: -1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  display: block !important;
+}
+
+/* line 117, main.sass */
+.linkMenu:hover {
+  transition: 0.2s;
+  background: #f3f3f3;
+  cursor: pointer;
+}
+
+/* line 122, main.sass */
+.linkMenu-active {
+  background-color: #e8e8e8;
+}
+
+/* line 125, main.sass */
+.icon-custom {
+  display: inline !important;
+  font-size: 1rem !important;
+  height: auto !important;
+  line-height: normal !important;
+}
+
+/* line 131, main.sass */
+.icon-menu {
+  font-size: 1.3rem;
+}
+
+/* line 134, main.sass */
+#icon-home {
+  color: #e6218f;
+}
+
+/* line 137, main.sass */
+#icon-study {
+  color: #ed6922;
+}
+
+/* line 140, main.sass */
+#icon-profile {
+  color: #3cb54a;
+}
+
+/* line 143, main.sass */
+#icon-videos {
+  color: #ec2726;
+}
+
+/* line 146, main.sass */
+#icon-files {
+  color: #2262ae;
+}
+
+/* line 149, main.sass */
+#icon-store {
+  color: #8a489b;
+}

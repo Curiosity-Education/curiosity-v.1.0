@@ -45,8 +45,8 @@
                   <div class="row">
                      <div class="col m12">
                         <div class="menu">
-                           <h5 class="center-align" id="name-menu">@yield('menu-title')</h5>
-                           <div id="avatarContainer" class="center-align"><div></div></div>
+                           @yield('menu-title')
+                           @yield('menu-photo')
                            <ul class="collapsible" data-collapsible="accordion" id="collapsibleMenu">
                               <li>
                                  <div class="collapsible-header active center-align right waves-effect waves-light" id="collapsible-headerMenu">
@@ -59,6 +59,11 @@
                            </ul>
                         </div>
                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col m12">
+                       @yield('under-menu')
+                    </div>
                   </div>
                </div>
                <div class="col s12 l9 text-justify">

@@ -4,6 +4,12 @@
 Hola Curiosity
 @stop
 
+@section('menu-photo')
+<h5 class="center-align" id="name-menu">
+   <div id="avatarContainer" class="center-align"><div></div></div>
+</h5>
+@stop
+
 @section('menu-links')
 <div data-url="" class="linkMenu waves-effect waves-grey">
    <span class="mdi mdi-home icon-menu" id="icon-home"></span>&nbsp;
@@ -14,7 +20,6 @@ Hola Curiosity
    Menú de estudio
 </div>
 <div data-url="" class="linkMenu linkMenu-active waves-effect waves-grey">
-   <div></div>
    <span class="mdi mdi-account-circle icon-menu" id="icon-profile"></span>&nbsp;
    Perfil
 </div>
