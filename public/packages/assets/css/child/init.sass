@@ -9,6 +9,7 @@
 
 #card-news-games
 	+background-cover("/packages/assets/media/images/child/game_news.jpg")
+	background-color: $color-gray !important
 	
 #card-games-populars
 	+background-cover("/packages/assets/media/images/child/popularsgames.jpg")
@@ -31,6 +32,10 @@
 .standard-bordered
 	border-radius: $border-rad
 
+#card-container-games
+	display: none 
+	background-color: $color-white !important
+
 #container-main-child
 	padding-left: 0 !important
 	padding-right: 0 !important
@@ -50,8 +55,12 @@
 .btn-view-more
 	background-color: transparent!important
 	border: .1rem #fff solid!important
-.card
-	+animation(1s,hide-efect,infinite)
+.hide-efect
+	+animation(1s,hide-efect,ease,1,forwards)
+
+.show-efect
+	+animation(1.1s,show-efect,ease,1,forwards)
+
 
 .btn-view-more
 	&:hover
@@ -60,8 +69,17 @@
 +keyframes(hide-efect)
 	0%
 		+opacity(1)
-	50%
-		+opacity(.5)
+	45%
+		width: 0%
+		+opacity(.3)
 	100%
 		+opacity(0)
 		display: none
+
++keyframes(show-efect)
+	0%
+		display: none
+		width: 0%
+	100%
+		width: 100%
+		display: block !important
