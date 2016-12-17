@@ -9,12 +9,18 @@
 	-o-transform: $transform
 	transform: $transform
 
-=animation($duration,$name,$nth)
+=animation-basic($duration,$name,$nth)
 	-webkit-animation: $duration $name $nth
 	-moz-animation: $duration $name $nth
 	-ms-animation: $duration $name $nth
 	-o-animation: $duration $name $nth
 	animation: $duration $name $nth
+=animation($duration,$name,$type,$nth,$remember)
+	-webkit-animation: $duration $name $type $nth $remember
+	-moz-animation: $duration $name $type $nth $remember
+	-ms-animation: $duration $name $type $nth $remember
+	-o-animation: $duration $name $type $nth $remember
+	animation: $duration $name $type $nth $remember
 
 =keyframes($name)
 	@-webkit-keyframes #{$name}
