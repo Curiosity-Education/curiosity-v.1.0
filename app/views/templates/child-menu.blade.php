@@ -5,9 +5,7 @@
 @stop
 
 @section('menu-photo')
-<h5 class="center-align" id="name-menu">
-   <div id="avatarContainer" class="center-align"><div></div></div>
-</h5>
+<div id="avatarContainer" class="center-align"><div></div></div>
 @stop
 
 @section('menu-links')
