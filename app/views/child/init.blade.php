@@ -58,15 +58,11 @@
             </div>
           </div>
           <!-- Carta donde se mostrará el contenido de los juegos(juegos recomendaods..etc) -->
-          <div class="row">
+          <div class="row" id="card-container-games">
             <div class="col s12 m12">
-              <div class="card blue-grey darken-1" id="card-container-games">
+              <div class="card darken-1">
                 <div class="card-content white-text">
 
-                </div>
-                <div class="card-action">
-
-                </div>
               </div>
             </div>
           </div>
