@@ -23,6 +23,10 @@
 #card-games-recoments
 	+background-cover("/packages/assets/media/images/child/gamesrecoments.jpg")
 
+.card 
+	.card-content
+		border: $border-rad !important
+
 .card-mask
 	background-color: rgba(0,0,0,.6)
 
@@ -34,11 +38,13 @@
 
 #card-container-games
 	display: none 
-	background-color: $color-white !important
+	>.card
+		background: $color-white !important
 
 #container-main-child
 	padding-left: 0 !important
 	padding-right: 0 !important
+	margin-top: -.4rem !important
 
 #container-main-child>
 	.row>

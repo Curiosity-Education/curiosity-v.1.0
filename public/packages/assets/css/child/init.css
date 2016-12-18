@@ -25,6 +25,9 @@
   background-image: url("/packages/assets/media/images/child/gamesrecoments.jpg");
   background-size: cover; }
 
+.card .card-content {
+  border: 0.5rem !important; }
+
 .card-mask {
   background-color: rgba(0, 0, 0, 0.6); }
 
@@ -35,12 +38,14 @@
   border-radius: 0.5rem; }
 
 #card-container-games {
-  display: none;
-  background-color: #fff !important; }
+  display: none; }
+  #card-container-games > .card {
+    background: #fff !important; }
 
 #container-main-child {
   padding-left: 0 !important;
-  padding-right: 0 !important; }
+  padding-right: 0 !important;
+  margin-top: -0.4rem !important; }
 
 #container-main-child > .row > .col:first-child {
   padding-left: 0 !important; }
