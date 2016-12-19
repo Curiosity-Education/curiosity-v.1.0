@@ -1,6 +1,6 @@
 @extends('templates.child-menu')
     @section('css')
-    <link rel="stylesheet" type="text/css" href="packages/assets/css/child/menu-studio.css">
+    <link rel="stylesheet" type="text/css" href="packages/assets/css/child/main.css">
     @stop
     @section('title')Curiosity | @stop
     @section('content')
