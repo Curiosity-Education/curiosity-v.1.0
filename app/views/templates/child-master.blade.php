@@ -68,7 +68,8 @@
                   <br>
                   <div class="row">
                      <div class="col m12">
-                        @yield('content')                           
+						 	@yield('content')
+
                      </div>
                   </div>
                </div>
