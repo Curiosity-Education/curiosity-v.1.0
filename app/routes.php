@@ -11,6 +11,11 @@
 |
 */
 
+
+Route::get('/biblioteca-pdfs', function(){
+	return View::make('child.library_pdfs');
+});
+
 Route::get('/', function()
 {
 	return View::make('child.init');
