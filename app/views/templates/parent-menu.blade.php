@@ -1,7 +1,11 @@
 @extends('templates.user-master')
 
+@section('css')
+    <link rel="stylesheet" href="packages/assets/css/parent/main.css">
+@stop
+
 @section('menu-photo')
-<div id="avatarContainerParent" class="center-align">
+<div id="profileContainerParent" class="center-align">
    <img src="/packages/assets/media/images/parents/profile/mom-def.png" class="responsive-img circle">
 </div>
 @stop

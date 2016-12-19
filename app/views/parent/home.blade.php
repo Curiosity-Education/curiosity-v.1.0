@@ -1,9 +1,5 @@
 @extends('templates.parent-menu')
 
-@section('css')
-<link rel="stylesheet" href="/packages/assets/css/parent/home.css">
-@stop
-
 @section('content')
 <div class="carousel">
    <a href="javascript:void(0)" class="carousel-item">
