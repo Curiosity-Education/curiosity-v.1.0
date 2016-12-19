@@ -25,6 +25,10 @@ Route::get('/padre-inicio', function(){
 	return View::make('parent.home');
 });
 
+Route::get('/menu-estudio', function(){
+	return View::make('child.studyMenu');
+});
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
