@@ -13,7 +13,7 @@
    <span class="mdi mdi-home icon-menu" id="icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="" class="linkMenu waves-effect waves-grey">
+<div data-url="/menu-studio" class="linkMenu waves-effect waves-grey">
    <span class="mdi mdi-cards icon-menu" id="icon-study"></span>&nbsp;
    Menú de estudio
 </div>
