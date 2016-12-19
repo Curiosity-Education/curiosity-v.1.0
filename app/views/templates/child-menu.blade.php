@@ -1,5 +1,9 @@
 @extends('templates.user-master')
 
+@section('css')
+    {{ HTML::style('packages/assets/css/child/main.css') }}
+@stop
+
 @section('menu-title')
 <h1 class="center-align" id="name-menu">Hola Curiosity</h1>
 @stop
