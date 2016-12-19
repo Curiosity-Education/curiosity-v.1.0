@@ -2,7 +2,7 @@
 /**
  *
  */
-class administrative extends Eloquent
+class Administrative extends Eloquent
 {
     protected $table='administrativos';
   /*
