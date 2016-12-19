@@ -3,9 +3,12 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-      <link rel="stylesheet" href="/packages/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/packages/libs/materialize/css/materialize.min.css">
+      <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/packages/libs/mdb/css/material.min.css">
+      <link rel="stylesheet" type="text/css" href="/packages/libs/mdb/css/material-fullpalette.min.css">
       <link rel="stylesheet" href="/packages/libs/MaterialDesign-Webfont/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="/packages/libs/mdb/css/ripples.min.css">
+      <link rel="stylesheet" href="/packages/libs/mdb/css/roboto.min.css">
       <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
       @yield('css')
       <title></title>
@@ -81,7 +84,7 @@
 
       <script src="/packages/libs/jquery-3-1/jquery.min.js"></script>
       <script src="/packages/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-      <script src="/packages/libs/materialize/js/materialize.min.js"></script>
+      <script src="/packages/libs/mdb/js/material.min.js"></script>
       <script type="text/javascript">
          $(document).ready(function() {
             $(".button-collapse").sideNav();
