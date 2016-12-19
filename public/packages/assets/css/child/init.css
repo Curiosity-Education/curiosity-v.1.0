@@ -38,10 +38,10 @@
   border-radius: 0.5rem !important; }
 
 .card-mask {
-  background-color: rgba(0, 0, 0, 0.6); }
+  background-color: rgba(0, 0, 0, 0.3); }
 
 .card-mask:hover {
-  background-color: rgba(0, 0, 0, 0.3); }
+  background-color: rgba(0, 0, 0, 0.1); }
 
 .standard-bordered {
   border-radius: 0.5rem; }

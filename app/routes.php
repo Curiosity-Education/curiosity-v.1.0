@@ -11,6 +11,11 @@
 |
 */
 
+
+Route::get('/biblioteca-pdfs', function(){
+	return View::make('child.library_pdfs');
+});
+
 Route::get('/', function()
 {
 	return View::make('child.init');
@@ -22,6 +27,10 @@ Route::get('/menu-studio',function(){
 
 Route::get('/padre-inicio', function(){
 	return View::make('parent.home');
+});
+
+Route::get('/menu-estudio', function(){
+	return View::make('child.studyMenu');
 });
 
 //Ahora las rutas se manejaran con prefijos
