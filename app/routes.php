@@ -21,6 +21,10 @@ Route::get('/', function()
 	return View::make('child.init');
 });
 
+Route::get('/menu-studio',function(){
+	return View::make('child.menu-studio');
+});
+
 Route::get('/padre-inicio', function(){
 	return View::make('parent.home');
 });
