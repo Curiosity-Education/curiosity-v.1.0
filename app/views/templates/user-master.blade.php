@@ -1,65 +1,57 @@
-<!DOCTYPE html5>
+   <!DOCTYPE html5>
 <html>
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/packages/libs/mdb/css/material.min.css">
-      <link rel="stylesheet" type="text/css" href="/packages/libs/mdb/css/material-fullpalette.min.css">
+      <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
       <link rel="stylesheet" href="/packages/libs/MaterialDesign-Webfont/css/materialdesignicons.min.css">
-      <link rel="stylesheet" href="/packages/libs/mdb/css/ripples.min.css">
-      <link rel="stylesheet" href="/packages/libs/mdb/css/roboto.min.css">
       <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
       @yield('css')
-      <title></title>
+      <title>@yield('title')</title>
    </head>
    <body>
 
       <header>
-         <nav id="navbar">
-            <div class="nav-wrapper">
-               <a href="javascript:void(0)" class="brand-logo">
+         <nav class="navbar navbar-default" id="navbar">
+           <div class="container-fluid">
+             <!-- Brand and toggle get grouped for better mobile display -->
+             <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">
                   <img src="/packages/assets/media/images/system/icon.png">
                   Curiosity Educación
                </a>
-               <a href="javascript:void(0)" data-activates="mobile-demo" class="button-collapse">
-                  <span class="mdi mdi-dots-horizontal" style="margin-top: 1.5rem;"></span>
-               </a>
-               <ul class="right hide-on-med-and-down">
-                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
-                     Salir &nbsp;
-                     <span class="mdi mdi-export icon-custom"></span>
-                  </a></li>
+             </div>
+
+             <!-- Collect the nav links, forms, and other content for toggling -->
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right">
+                 <li><a href="#" class="logOut">
+                     salir&nbsp;
+                     <span class="mdi mdi-export icon-custom" id="iconLogout"></span>
+                 </a></li>
                </ul>
-               <ul class="side-nav" id="mobile-demo">
-                  <li><a href="javascript:void(0)" class="logOut waves-effect waves-light">
-                     Salir &nbsp;
-                     <span class="mdi mdi-export icon-custom"></span>
-                  </a></li>
-               </ul>
-            </div>
+             </div><!-- /.navbar-collapse -->
+           </div><!-- /.container-fluid -->
          </nav>
       </header>
 
       <section>
          <div class="container-fluid">
             <div class="row">
-               <div class="col-lg-3 hide-on-med-and-down">
+               <div class="col-md-3">
                   <div class="row">
                      <div class="col-md-12">
-                        <div class="menu">
+                        <div class="menu z-depth-5 hoverable">
                            @yield('menu-title')
                            @yield('menu-photo')
-                           <ul class="collapsible" data-collapsible="accordion" id="collapsibleMenu">
-                              <li>
-                                 <div class="collapsible-header active center-align right waves-effect waves-light" id="collapsible-headerMenu">
-                                    <span class="mdi mdi-menu"></span>
-                                 </div>
-                                 <div class="collapsible-body" id="collapsible-bodyMenu">
-                                    @yield('menu-links')
-                                 </div>
-                              </li>
-                           </ul>
+                           @yield('menu-links')
                         </div>
                      </div>
                   </div>
@@ -69,21 +61,22 @@
                     </div>
                   </div>
                </div>
-               <div class="col-lg-9 col-sm-sm-12 text-justify">
+               <div class="col-md-9 text-justify">
                   @yield('content')
                </div>
             </div>
          </div>
       </section>
 
-      <script src="/packages/libs/jquery-3-1/jquery.min.js"></script>
-      <script src="/packages/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-      <script src="/packages/libs/mdb/js/material.min.js"></script>
+      <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+      <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
+      <script src="/packages/libs/mdb/js/mdb.min.js"></script>
       <script type="text/javascript">
         /* $(document).ready(function() {
             $(".button-collapse").sideNav();
          });*/
       </script>
+
       @yield('js')
    </body>
 </html>
