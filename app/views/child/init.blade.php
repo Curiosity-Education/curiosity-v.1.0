@@ -71,7 +71,7 @@
           </div>
           <!-- Carta donde se mostrará el contenido de los juegos(juegos recomendaods..etc) -->
           <div class="row" id="card-container-games">
-            <div class="col s12 m12">
+            <div class="col-md-12 col-sm-12">
               <div class="card-game">
                 <div class="card-header-game text-center">
                   <span class="card-title"> <i class="fa fa-youtube"></i> Juegos Nuevos</span>
@@ -80,7 +80,7 @@
                 <div class="card-content-game">
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card1"></div>
                           <div class="card-footer-game text-center">
@@ -88,7 +88,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card2"></div>
                           <div class="card-footer-game text-center">
@@ -96,7 +96,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card3"></div>
                           <div class="card-footer-game text-center">
@@ -106,7 +106,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card2"></div>
                           <div class="card-footer-game text-center">
@@ -114,7 +114,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card3"></div>
                           <div class="card-footer-game text-center">
@@ -122,7 +122,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col m4 s4">
+                      <div class="col-md-4 col-sm-4">
                         <div class="card-game">
                           <div class="card-content-game card1"></div>
                           <div class="card-footer-game text-center">

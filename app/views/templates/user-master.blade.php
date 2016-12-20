@@ -69,14 +69,8 @@
                     </div>
                   </div>
                </div>
-               <div class="col-lg-12 col-sm-12 text-justify">
-                  <div class="row">
-                     <div class="col-sm-12">
-                        <div>
-                           @yield('content')
-                        </div>
-                     </div>
-                  </div>
+               <div class="col-lg-9 col-sm-sm-12 text-justify">
+                  @yield('content')
                </div>
             </div>
          </div>
@@ -86,9 +80,9 @@
       <script src="/packages/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/material.min.js"></script>
       <script type="text/javascript">
-         $(document).ready(function() {
+        /* $(document).ready(function() {
             $(".button-collapse").sideNav();
-         });
+         });*/
       </script>
       @yield('js')
    </body>
