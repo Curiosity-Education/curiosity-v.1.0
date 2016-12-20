@@ -1,5 +1,9 @@
 @extends('templates.parent-menu')
 
+@section('css-plus')
+<link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
+@stop
+
 @section('content')
 <div class="carousel">
    <a href="javascript:void(0)" class="carousel-item">
@@ -34,16 +38,13 @@
    </a>
 </div>
 
-<div id="contentInfo">
-   <center><div id="contentInfo-arrow"></div></center>
+<div id="prntHome-contentInfo">
+   <center><div id="prntHome-contentInfo-arrow"></div></center>
    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, odio. Quis assumenda ipsa, non et autem tempore cum! Dolore harum tempore commodi rerum neque eligendi, ea illo nihil? Atque voluptatem, a id reprehenderit perferendis officiis repellat laudantium consequatur culpa cumque labore voluptas nihil molestiae perspiciatis, ut, doloribus provident dolores eaque nulla asperiores quos pariatur ex animi! Vero repellat tempora a pariatur sunt, sit inventore ex ut officia quam eum qui aspernatur tenetur, alias distinctio porro. Ratione excepturi, numquam dolores dolorum distinctio consequuntur sit consectetur nesciunt incidunt neque repellat expedita facilis fugit est error. Quia, officiis enim dolorem esse doloremque!
 </div>
 @stop
 
 @section('js')
-<script type="text/javascript">
-   $(function(){
-      $(".carousel").carousel();
-   });
-</script>
+<script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+<script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
 @stop

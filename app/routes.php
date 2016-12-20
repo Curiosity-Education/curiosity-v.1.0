@@ -33,6 +33,10 @@ Route::get('/menu-estudio', function(){
 	return View::make('child.studyMenu');
 });
 
+Route::get('/tienda', function(){
+    return View::make('child.curiosity-store');
+});
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
