@@ -1,40 +1,37 @@
 @extends('templates.user-master')
 
 @section('css')
-    {{ HTML::style('packages/assets/css/child/main.css') }}
+{{ HTML::style('packages/assets/css/child/main.css') }}
+@yield('css-plus')
 @stop
 
 @section('menu-title')
-<h1 class="center-align" id="name-menu">Hola Curiosity</h1>
+<h1 class="text-center" id="childMenu-name-menu">Hola soy Tot</h1>
 @stop
 
 @section('menu-photo')
-<div id="avatarContainer" class="center-align"><div></div></div>
+<div id="childMenu-avatarContainer" class="text-center"><div></div></div>
 @stop
 
 @section('menu-links')
-<div data-url="" class="linkMenu waves-effect waves-grey">
-   <span class="mdi mdi-home icon-menu" id="icon-home"></span>&nbsp;
+<div data-url="" class="linkMenu linkMenu-active">
+   <span class="mdi mdi-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="/menu-studio" class="linkMenu waves-effect waves-grey">
-   <span class="mdi mdi-cards icon-menu" id="icon-study"></span>&nbsp;
+<div data-url="/menu-studio" class="linkMenu">
+   <span class="mdi mdi-cards childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Menú de estudio
 </div>
-<div data-url="" class="linkMenu linkMenu-active waves-effect waves-grey">
-   <span class="mdi mdi-account-circle icon-menu" id="icon-profile"></span>&nbsp;
+<div data-url="" class="linkMenu">
+   <span class="mdi mdi-account-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
    Perfil
 </div>
-<div data-url="" class="linkMenu waves-effect waves-grey">
-   <span class="mdi mdi-youtube-play icon-menu" id="icon-videos"></span>&nbsp;
+<div data-url="" class="linkMenu">
+   <span class="mdi mdi-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
-<div data-url="" class="linkMenu waves-effect waves-grey">
-   <span class="mdi mdi-file-pdf icon-menu" id="icon-files"></span>&nbsp;
-   Biblioteca de archivos
-</div>
-<div data-url="" class="linkMenu waves-effect waves-grey">
-   <span class="mdi mdi-basket icon-menu" id="icon-store"></span>&nbsp;
+<div data-url="" class="linkMenu">
+   <span class="mdi mdi-basket childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
 @stop
