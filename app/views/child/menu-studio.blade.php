@@ -6,18 +6,18 @@
     @section('content')
       <div class="container-fluid" id="container-menu-studio-child">
         <div class="row" id="row-inteligents">
-          <div class="col col-inteligent m3 s3">
+          <div class="col-md-3 col-sm-3 col-inteligent">
             <a class="btn btn-purple btn-inteligent btn-math"><span class="mdi mdi-export icon-custom"></span> Matemáticas
               <div class="arrow"></div>
             </a>
 
           </div>
-          <div class="col col-inteligent m3 s3">
+          <div class="col-md-3 col-sm-3 col-inteligent">
             <a class="btn btn-green btn-inteligent btn-robotic"><span class="mdi mdi-export icon-custom"></span> Robotica
               <div class="arrow"></div>
             </a>
           </div>
-          <div class="col m6 s6">
+          <div class="col-md-6 col-sm-6">
             <div class="pagination pagination-breadcrumbs">
               <li>Matemáticas></li>
               <li>Grado 1</li>
@@ -27,7 +27,7 @@
         </div>
             
         <div class="row row-bloque">
-          <div class="col m10 s10">
+          <div class="col-md-10 col-sm-10">
             <div class="card-bloque">
               <div class="card-content-bloque">
                 <h6 class="card-title-bloque">Matemáticas | Bloques </h6>
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="row row-level">
-          <div class="col m10 s10">
+          <div class="col-md-10 col-sm-10">
             <div class="card-level">
               <div class="card-content-bloque">
                 <h6 class="card-title-level text-white">Matemáticas | Grados </h6>
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s4 m4">
+          <div class="col-md-4 col-sm-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -74,7 +74,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4 m4">
+          <div class="col-md-4 col-sm-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4 m4">
+          <div class="col-md-4 col-sm-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -106,7 +106,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s4 m4">
+          <div class="col-sm-4 col-md-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -121,7 +121,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4 m4">
+          <div class="col-md-4 col-sm-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -136,7 +136,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4 m4">
+          <div class="col-md-4 col-sm-4">
             <div class="card horizontal">
               <div class="card-image">
                 <img src="/packages/assets/media/images/child/game_news.jpg">
@@ -154,7 +154,7 @@
         </div>
 
         <div class="row">
-          <div class="col m12 s12 text-center">
+          <div class="col-md-12 col-sm-12 text-center">
             <ul class="pagination">
               <!--<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>-->
               <li class="active"><a href="#!">1</a></li>
