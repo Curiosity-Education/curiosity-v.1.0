@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/biblioteca-pdfs', function(){
+Route::get('/library-pdfs', function(){
 	return View::make('child.library_pdfs');
 });
 
