@@ -37,6 +37,10 @@ Route::get('/tienda', function(){
     return View::make('child.curiosity-store');
 });
 
+Route::get('/juego', function(){
+    return View::make('child.view-game');
+});
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
