@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
       <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
-      <link rel="stylesheet" href="/packages/libs/MaterialDesign-Webfont/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
       @yield('css')
       <title>@yield('title')</title>
@@ -34,7 +34,7 @@
                <ul class="nav navbar-nav navbar-right">
                  <li><a href="#" class="logOut">
                      salir&nbsp;
-                     <span class="mdi mdi-export icon-custom" id="iconLogout"></span>
+                     <span class="fa fa-right-arrow icon-custom" id="iconLogout"></span>
                  </a></li>
                </ul>
              </div><!-- /.navbar-collapse -->
