@@ -44,9 +44,9 @@
       <section>
          <div class="container-fluid">
             <div class="row">
-               <div class="col l3 hide-on-med-and-down">
+               <div class="col-lg-3 hide-on-med-and-down">
                   <div class="row">
-                     <div class="col m12">
+                     <div class="col-md-12">
                         <div class="menu">
                            @yield('menu-title')
                            @yield('menu-photo')
@@ -64,14 +64,14 @@
                      </div>
                   </div>
                   <div class="row">
-                    <div class="col m12">
+                    <div class="col-md-12">
                        @yield('under-menu')
                     </div>
                   </div>
                </div>
-               <div class="col s12 l9 text-justify">
+               <div class="col-lg-12 col-sm-12 text-justify">
                   <div class="row">
-                     <div class="col s12">
+                     <div class="col-sm-12">
                         <div>
                            @yield('content')
                         </div>
