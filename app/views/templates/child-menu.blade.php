@@ -15,23 +15,23 @@
 
 @section('menu-links')
 <div data-url="" class="linkMenu linkMenu-active">
-   <span class="mdi mdi-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
+   <span class="fa fa-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
 <div data-url="/menu-studio" class="linkMenu">
-   <span class="mdi mdi-cards childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
+   <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Menú de estudio
 </div>
 <div data-url="" class="linkMenu">
-   <span class="mdi mdi-account-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
+   <span class="fa fa-user-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
    Perfil
 </div>
 <div data-url="" class="linkMenu">
-   <span class="mdi mdi-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
+   <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
 <div data-url="" class="linkMenu">
-   <span class="mdi mdi-basket childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
+   <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
 @stop

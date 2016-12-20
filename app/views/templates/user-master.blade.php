@@ -13,33 +13,27 @@
    <body>
 
       <header>
-         <nav class="navbar navbar-default" id="navbar">
-           <div class="container-fluid">
-             <!-- Brand and toggle get grouped for better mobile display -->
-             <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                 <span class="sr-only">Toggle navigation</span>
-                 <span class="icon-bar"></span>
-                 <span class="icon-bar"></span>
-                 <span class="icon-bar"></span>
-               </button>
-               <a class="navbar-brand" href="#">
-                  <img src="/packages/assets/media/images/system/icon.png">
-                  Curiosity Educación
-               </a>
-             </div>
-
-             <!-- Collect the nav links, forms, and other content for toggling -->
-             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-               <ul class="nav navbar-nav navbar-right">
-                 <li><a href="#" class="logOut">
-                     salir&nbsp;
-                     <span class="fa fa-right-arrow icon-custom" id="iconLogout"></span>
-                 </a></li>
-               </ul>
-             </div><!-- /.navbar-collapse -->
-           </div><!-- /.container-fluid -->
-         </nav>
+        <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">    
+          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+            <i class="fa fa-bars"></i>
+          </button>
+          <div class="container-fluid">
+            <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+              <a class="navbar-brand">
+                <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
+                Curiosity Educación
+              </a>
+              <!-- <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Salir&nbsp;
+                    <span class="fa fa-caret-right"></span>
+                  </a>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+        </nav>
       </header>
 
       <section>
@@ -48,7 +42,7 @@
                <div class="col-md-3">
                   <div class="row">
                      <div class="col-md-12">
-                        <div class="menu z-depth-5 hoverable">
+                        <div class="menu z-depth-1">
                            @yield('menu-title')
                            @yield('menu-photo')
                            @yield('menu-links')
@@ -71,6 +65,7 @@
       <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
+      <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script type="text/javascript">
         /* $(document).ready(function() {
             $(".button-collapse").sideNav();

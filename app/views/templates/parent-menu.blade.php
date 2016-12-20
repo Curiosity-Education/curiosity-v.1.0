@@ -7,7 +7,7 @@
 
 @section('menu-photo')
 <div id="parentMenu-profileContainer" class="text-center">
-   <img src="/packages/assets/media/images/parents/profile/mom-def.png" class="img-responsive img-circle img-thumbnail">
+   <img src="/packages/assets/media/images/parents/profile/mom-def.png" id="parentMenu-imgProfile">
 </div>
 @stop
 
