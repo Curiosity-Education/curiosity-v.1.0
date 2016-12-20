@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="/packages/libs/mdb/css/roboto.min.css">
       <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
       @yield('css')
-      <title></title>
+      <title>@yield('title')</title>
    </head>
    <body>
 
@@ -44,22 +44,13 @@
       <section>
          <div class="container-fluid">
             <div class="row">
-               <div class="col-lg-3 hide-on-med-and-down">
+               <div class="col-md-3">
                   <div class="row">
                      <div class="col-md-12">
-                        <div class="menu">
+                        <div class="menu z-depth-1">
                            @yield('menu-title')
                            @yield('menu-photo')
-                           <ul class="collapsible" data-collapsible="accordion" id="collapsibleMenu">
-                              <li>
-                                 <div class="collapsible-header active center-align right waves-effect waves-light" id="collapsible-headerMenu">
-                                    <span class="mdi mdi-menu"></span>
-                                 </div>
-                                 <div class="collapsible-body" id="collapsible-bodyMenu">
-                                    @yield('menu-links')
-                                 </div>
-                              </li>
-                           </ul>
+                           @yield('menu-links')
                         </div>
                      </div>
                   </div>
@@ -69,7 +60,7 @@
                     </div>
                   </div>
                </div>
-               <div class="col-lg-9 col-sm-sm-12 text-justify">
+               <div class="col-md-9 text-justify">
                   @yield('content')
                </div>
             </div>
@@ -79,11 +70,6 @@
       <script src="/packages/libs/jquery-3-1/jquery.min.js"></script>
       <script src="/packages/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/material.min.js"></script>
-      <script type="text/javascript">
-        /* $(document).ready(function() {
-            $(".button-collapse").sideNav();
-         });*/
-      </script>
       @yield('js')
    </body>
 </html>
