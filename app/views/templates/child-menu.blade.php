@@ -10,7 +10,7 @@
 @stop
 
 @section('menu-photo')
-<div id="childMenu-avatarContainer" class="text-center"><div></div></div>
+<div id="childMenu-avatarContainer"><div></div></div>
 @stop
 
 @section('menu-links')
@@ -34,4 +34,8 @@
    <span class="mdi mdi-basket childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
+@stop
+
+@section('js')
+@yield('js-plus')
 @stop

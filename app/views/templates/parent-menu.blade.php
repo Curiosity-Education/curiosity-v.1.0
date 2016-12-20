@@ -32,3 +32,7 @@
    Registrar Hijo
 </div>
 @stop
+
+@section('js')
+@yield('js-plus')
+@stop
