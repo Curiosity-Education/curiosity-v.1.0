@@ -1,14 +1,16 @@
 /* main-parent */
-// Este archivo main-parent es solo para importar los estilos sass de cada vista
-// Aplicar este comando para trabajar: sass --watch main.sass:main.css --style compressed
+// This archive main-child is only for import the styles sass of each view
+// Apply this command for work: sass --watch main.sass:main.css --style compressed
 
-// Import de los estilos de la vista home.blade.php (start with nomenclature: prntHome-)
+// Import of the style of the view home.blade.php
+// Prefix hm-
 @import "sass/_home.sass"
 
-// Import the master styles for the parent views (start with nomenclature: parentMenu-)
+// Import the master styles for the parent views
+// Prefix mtp-
 @import "sass/_master_parent.sass"
 
 
-// SEGUIR ESTA ESTRUCTURA PARA NUEVAS VISTAS Y SUS ESTILOS
-// Import de la vista.blade.php
-// @import "sass/_archivo.sass"
+// FOLLOW THIS STRUCTURE FOR NEW VIEWS AND ITS STYLES
+// Import of the view.blade.php
+// @import "sass/_archive.sass"
