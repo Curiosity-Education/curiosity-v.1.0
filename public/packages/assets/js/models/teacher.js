@@ -1,3 +1,4 @@
+// Example of model "Teacher"
 class Teacher extends CORM {
     constructor(name,age,school){
         super();
