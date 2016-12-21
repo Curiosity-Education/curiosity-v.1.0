@@ -125,9 +125,6 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/actividad/setdata','actividadController@setDataActivity');
         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
         Route::group(array('before' => 'only_session'), function(){
-        Route::get('/figuras',function(){
-          return View::make('juegos.figuras');
-        });
         Route::post('/buscarTema', 'temaController@temasFound');
         // padres
         Route::group(array('before' => 'gestion_data_padre'), function(){
