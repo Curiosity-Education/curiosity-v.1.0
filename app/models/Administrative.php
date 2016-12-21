@@ -9,14 +9,14 @@ class Administrative extends Eloquent
   *
   ## an adminitrative belongs to person
   */
-    public function person(){
+    public function Person(){
         return $this->belongsTo('persona');
     }
   /*
   *
   ## an administrative belongs to address
   */
-    public function address(){
+    public function Address(){
         return $this->belongsTo('direccion');
     }
 
@@ -24,11 +24,11 @@ class Administrative extends Eloquent
   *
   ## an administartive register many news
   */
-	public function news_dad(){
+	public function NewsDad(){
         return $this->hasMany('novedadesPapa');
     }
 
-	public function news_son(){
+	public function NewsSon(){
         return $this->hasMany('novedades_hijo');
     }
 
