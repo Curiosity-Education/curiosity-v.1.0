@@ -79,3 +79,14 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+require app_path().'/ext/validator.php';
+require app_path().'/ext/dreamDate.php';
+App::missing(function($exception)
+{
+    return Response::view('view-error404', array(), 404);
+});
+
+//---Estea linea solo es en produccion por la estructura del servidor
+// App::bind('path.public', function() {
+//     return '/home/curiosityweb12/public_html';
+// });
