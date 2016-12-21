@@ -62,7 +62,7 @@ Route::group(array('prefix' => 'teachers'), function()
 *   The routes will be updated for put
 *   it with the classes's functions current
 *   and to add the prefix
-*/
+
 
 
 // ---./ Webhooks para saber quien ha pagado y quien no
@@ -98,7 +98,7 @@ Route::get('/registro-exitoso',function(){
 
 /*
 *   Register for users
-*/
+
 Route::group(array('prefix' => 'register'),function(){
     Route::post('remote-email','padreController@remoteEmail');
     Route::get('confirm/{token}','padreController@confirmar');
@@ -118,10 +118,10 @@ Route::post('/remote-username','userController@remoteUsername');
 // Route::post('/sendMensaje','padreController@sendMensaje');
 Route::group(array('before' => 'auth'), function(){
         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-        /* Rutas para obtencion de datos de direccion por AJAX */
+        /* Rutas para obtencion de datos de direccion por AJAX
         Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
         Route::post('/getByCiudades', 'direccionController@getCiudades');
-        /*Rutas para subir y ver juego*/
+        /*Rutas para subir y ver juego
         Route::post('/actividad/setdata','actividadController@setDataActivity');
         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
         Route::group(array('before' => 'only_session'), function(){
@@ -205,7 +205,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::match(array('GET','POST'), '/edit-hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
 			Route::match(array('GET','POST'), '/delete-hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
 
-		});*/
+		});
 
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
@@ -285,7 +285,7 @@ Route::group(array('before' => 'auth'), function(){
         });
         Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
-                /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES */
+                /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES
                 Route::get('/', 'vendedorController@verPagina');
                 Route::post('save', 'vendedorController@guardar');
                 Route::post('update', 'vendedorController@actualizar');
@@ -352,7 +352,7 @@ Route::group(array('before' => 'auth'), function(){
 
         /*
         *  Monitoreo de Navegadores
-        */
+
         Route::group(array('prefix' => 'browser'),function(){
             Route::match(array('GET','POST'),'get/{limit?}','sesionInfoController@getBrowsers')
                 ->where('limit','[0-9]+');
@@ -368,5 +368,5 @@ Route::group(array('before' => 'auth'), function(){
     });
 
 
-});
+});*/
 
