@@ -33,7 +33,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * User has a person
      *
      */
-    public function person(){
+    public function Person(){
         return $this->hasOne('persona','user_id');
     }
     /*
@@ -41,7 +41,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * Skin belongs to a User
      *
      */
-    public function skin(){
+    public function Skin(){
         return $this->belongsTo('skin');
     }
     /**
@@ -49,7 +49,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *##User has profile
      *
      */
-    public function profile(){
+    public function Profile(){
         return $this->hasOne('perfil','users_id');
     }
 
