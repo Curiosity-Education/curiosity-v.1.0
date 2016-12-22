@@ -1,4 +1,4 @@
-   <!DOCTYPE html5>
+<!DOCTYPE html5>
 <html>
    <head>
       <meta charset="utf-8">
@@ -13,7 +13,7 @@
    <body>
 
       <header>
-        <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">    
+        <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
           <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
             <i class="fa fa-bars"></i>
           </button>

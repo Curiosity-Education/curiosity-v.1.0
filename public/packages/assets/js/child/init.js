@@ -11,12 +11,12 @@ $(function(){
 	| do correspondiente a la carta que el usuario le dió click
 	*/
 
-	$(".panels .card-game.show-list").click(function(evt){
+	$(".btn-show-game").click(function(evt){
 		$(".row-slide-main").hide("slow")
 		$(".panels").hide("slow");
 		$("#card-container-games").show("slow");
 		$("#card-container-games .card-game>.card-header-game>.dismiss-card").addClass("active");
-		$("#card-container-games .card-game").first().find(".card-title").text($(this).find(".card-title").text());
+		$("#card-container-games .card-game").first().find(".card-title").text($(this).parent().children("h3").text());
 		$('html,body').animate({scrollTop:0},1000);
 	});
 
