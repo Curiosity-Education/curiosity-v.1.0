@@ -17,17 +17,10 @@
               <div class="arrow"></div>
             </a>
           </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="pagination pagination-breadcrumbs">
-              <li>Matemáticas></li>
-              <li>Grado 1</li>
-              <li>Bloque 3</li>
-            </div>
-          </div>
         </div>
             
         <div class="row row-bloque">
-          <div class="col-md-10 col-sm-10">
+          <div class="col-md-11 col-sm-11">
             <div class="card-bloque">
               <div class="card-content-bloque">
                 <h6 class="card-title-bloque">Matemáticas | Bloques </h6>
@@ -43,7 +36,7 @@
           </div>
         </div>
         <div class="row row-level">
-          <div class="col-md-10 col-sm-10">
+          <div class="col-md-11 col-sm-11">
             <div class="card-level">
               <div class="card-content-bloque">
                 <h6 class="card-title-level text-white">Matemáticas | Grados </h6>
@@ -60,49 +53,82 @@
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+            <!--Card-->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Card title</h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Button</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
           <div class="col-md-4 col-sm-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+             <!--Card-->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Card title</h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Button</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
           <div class="col-md-4 col-sm-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+            <!--Card-->
+            <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Card title</h4>
+                    <!--Text-->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Button</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
         </div>
         <div class="row">
@@ -150,20 +176,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12 col-sm-12 text-center">
-            <ul class="pagination">
-              <!--<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>-->
-              <li class="active"><a href="#!">1</a></li>
-              <li class="waves-effect"><a href="#!">2</a></li>
-              <li class="waves-effect"><a href="#!">3</a></li>
-              <li class="waves-effect"><a href="#!">4</a></li>
-              <li class="waves-effect"><a href="#!">5</a></li>
-              <!--<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>-->
-            </ul>
           </div>
         </div>  
       </div>

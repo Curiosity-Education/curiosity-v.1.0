@@ -17,55 +17,83 @@
           <div class="panels">
             <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-6">
-                  <div class="card-game show-list" id="card-news-games">
-                    <div class="card-content-game card-mask">                     
+                <!--Card-->
+                <div class="hm-black-strong hoverable card z-depth-1" style="background-image: url('packages/assets/media/images/child/game_news.jpg')">
+                    <!--Content-->
+                    <div class="mask white-text text-xs-center">
+                        <div class="card-block">
+                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
+                            <h3>Nuevos</h3>
+                            <p></p>
+                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect"><i class="fa fa-gamepad left"></i> Ver juegos</a>
+                        </div>
                     </div>
-                    <div class="card-footer-game text-center">
-                       <span class="card-title">Juegos nuevos</span>
-                    </div>
-                  </div>
+                </div>
+                <!--/.Card-->
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                 <div class="card-game show-list" id="card-games-populars">
-                    <div class="card-content-game card-mask">                      
-                      <!--<a class="btn btn-view-more">Ver</a>-->
+                 <!--Card-->
+                <div class="hm-black-strong hoverable card z-depth-1" style="background-image: url('packages/assets/media/images/child/gamepopulars.jpg')">
+                    <!--Content-->
+                    <div class="mask white-text text-xs-center">
+                        <div class="card-block">
+                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
+                            <h3>Mejor calificados</h3>
+                            <p></p>
+                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect"><i class="fa fa-gamepad left"></i> Ver juegos</a>
+                        </div>
                     </div>
-                    <div class="card-footer-game text-center">
-                      <span class="card-title">Juegos populares</span>
-                    </div>
-                  </div>
+                </div>
+                <!--/.Card-->
               </div>
             </div>
              <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-6 standard-bordered">
-                  <div class="card-game show-list" id="card-more-calification">
-                    <div class="card-content-game card-mask">
-                    
+                 <!--Card-->
+                <div class="hm-black-strong hoverable card z-depth-2" style="background-image: url('packages/assets/media/images/child/gamesrecoments.jpg')">
+                    <!--Content-->
+                    <div class="mask white-text text-xs-center">
+                        <div class="card-block">
+                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
+                            <h3> Populares</h3>
+                            <p></p>
+                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect"><i class="fa fa-gamepad left"></i> Ver juegos</a>
+                        </div>
                     </div>
-                    <div class="card-footer-game text-center">
-                      <span class="card-title">Juegos mejor calificados</span>
-                    </div>
-                  </div>
+                </div>
+                <!--/.Card-->
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 standard-bordered">
-                 <div class="card-game show-list" id="card-games-recoments">
-                    <div class="card-content-game card-mask">
+                 <!--Card-->
+                <div class="hm-black-strong hoverable card z-depth-2" style="background-image: url('packages/assets/media/images/child/popularsgames.jpg')">
+                    <!--Content-->
+                    <div class="mask white-text text-xs-center">
+                        <div class="card-block">
+                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
+                            <h3>Recomendados</h3>
+                            <p></p>
+                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect"><i class="fa fa-gamepad left"></i> Ver juegos</a>
+                        </div>
                     </div>
-                    <div class="card-footer-game text-center">
-                      <span class="card-title"><i class="tiny material-icons insert_chart"></i> Juegos recomendados</span>
-                    </div>
-                  </div>
+                </div>
+                <!--/.Card-->
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12 standard-bordered">
-                  <div class="card-game show-list" id="card-news-videos">
-                    <div class="card-content-game card-mask">
+                <!--Card-->
+                <div class="hm-black-strong hoverable card z-depth-2" style="background-image: url('packages/assets/media/images/child/videosnews.jpg')">
+                    <!--Content-->
+                    <div class="mask white-text text-xs-center">
+                        <div class="card-block">
+                            <h5 class="info-text"><i class="fa fa-image"></i> Videos</h5>
+                            <h3>Los más nuevos</h3>
+                            <p></p>
+                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect"><i class="fa fa-gamepad left"></i> Ver juegos</a>
+                        </div>
                     </div>
-                    <div class="card-footer-game text-center">
-                      <span class="card-title"> <i class="fa fa-youtube"></i> Nuevos videos</span>
-                    </div>
-                  </div>
+                </div>
+                <!--/.Card-->
               </div>
             </div>
           </div>
@@ -75,7 +103,7 @@
               <div class="card-game">
                 <div class="card-header-game text-center">
                   <span class="card-title"> <i class="fa fa-youtube"></i> Juegos Nuevos</span>
-                  <a class="dismiss-card pull-right" title="regresar" data-dismiss-target="#card-container-games">x</a>
+                  <a class="dismiss-card pull-right" title="regresar" data-dismiss-target="#card-container-games"><i class="fa white-text fa-times-circle fa-2x"></i> </a>
                 </div>
                 <div class="card-content-game">
                   <div class="container-fluid">
