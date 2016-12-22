@@ -39,3 +39,27 @@
    border-top-right-radius: $border-rad
    border-bottom-right-radius: $border-rad
    margin-bottom: 1.5rem
+
+.owl-dots
+   display: none !important
+
+.owl-nav
+   @extend .owl-dots
+
+.cst-item
+   +background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+   height: 100%
+   cursor: pointer
+   border-radius: $border-rad
+   h5
+      color: white
+      font-size: .7rem
+      background-color: rgba(0,0,0,0.6)
+      padding: .7rem
+      border-top-left-radius: $border-rad
+      border-top-right-radius: $border-rad
+      text-align: center
+
+.cst-btnGet
+   margin-top: 4rem
+   background-color: $color-skin !important
