@@ -36,6 +36,29 @@
 </div>
 @stop
 
+@section('menu-links-aside')
+<div data-url="" class="linkMenu linkMenu-active linkMenuAside">
+   <span class="fa fa-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
+   Inicio
+</div>
+<div data-url="/menu-studio" class="linkMenu linkMenuAside">
+   <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
+   Menú de estudio
+</div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-user-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
+   Perfil
+</div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
+   Biblioteca de videos
+</div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
+   Tienda curiosity
+</div>
+@stop
+
 @section('js')
 @yield('js-plus')
 @stop

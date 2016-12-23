@@ -13,86 +13,36 @@
    <body>
 
       <header>
-        <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
-
-         <!-- Sidebar navigation -->
-         <ul id="slide-out" class="side-nav default-side-nav light-side-nav">
-
-            <!-- Logo -->
-            <div class="logo-wrapper waves-light">
-               <a href="#"><img src="http://mdbootstrap.com/wp-content/uploads/2015/12/mdb-white2.png" class="img-fluid flex-center"></a>
-            </div>
-            <!--/. Logo -->
-
-            <!--Search Form-->
-            <form class="search-form" role="search">
-               <div class="form-group waves-effect">
-                  <input type="text" class="form-control" placeholder="Search">
-               </div>
-            </form>
-            <!--/.Search Form-->
-
-            <!-- Side navigation links -->
-            <ul class="collapsible collapsible-accordion">
-               <li><a class="collapsible-header waves-effect">Click me</a>
-                  <div class="collapsible-body">
-                     <ul>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                     </ul>
-                  </div>
-               </li>
-               <li><a class="collapsible-header waves-effect">Click me</a>
-                  <div class="collapsible-body">
-                     <ul>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                     </ul>
-                  </div>
-               </li>
-               <li><a class="collapsible-header waves-effect">Click me</a>
-                  <div class="collapsible-body">
-                     <ul>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                        <li><a href="#" class="waves-effect">Link</a>
-                        </li>
-                     </ul>
-                  </div>
-               </li>
-            </ul>
-            <!--/. Side navigation links -->
-         </ul>
-         <!--/. Sidebar navigation -->
-
-          <div class="container-fluid">
-            <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-              <a class="navbar-brand">
-                <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
-                Curiosity Educación
-              </a>
-              <ul class="nav navbar-nav float-xs-right">
-                <li class="nav-item">
-                   <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-                  <a class="nav-link">
-                    Salir&nbsp;
-                    <span class="fa fa-caret-right"></span>
+         <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
+            <ul id="slide-out" class="side-nav default-side-nav light-side-nav">
+               <div class="logo-wrapper waves-light">
+                  <a href="#">
+                     <img src="/packages/assets/media/images/system/logoDef.png" class="img-fluid flex-center">
                   </a>
-                </li>
-              </ul>
+               </div>
+               @yield('menu-links-aside')
+            </ul>
+            <div class="container-fluid">
+               <div class="" id="collapseEx2">
+                  <a class="navbar-brand">
+                     <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
+                     Curiosity Educación
+                  </a>
+                  <ul class="nav navbar-nav float-xs-right">
+                     <li class="nav-item">
+                        <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up" id="slideBtn"><i class="fa fa-bars"></i></a>
+                        <a class="nav-link hidden-md-down">Salir&nbsp;<span class="fa fa-caret-right"></span></a>
+                     </li>
+                  </ul>
+               </div>
             </div>
-          </div>
-        </nav>
+         </nav>
       </header>
 
       <section>
          <div class="container-fluid">
             <div class="row">
-               <div class="col-md-3">
+               <div class="col-md-3 hidden-md-down">
                   <div class="row">
                      <div class="col-md-12">
                         <div class="menu z-depth-1">
@@ -108,7 +58,7 @@
                     </div>
                   </div>
                </div>
-               <div class="col-md-9 text-justify">
+               <div class="col-lg-9 text-justify">
                   @yield('content')
                </div>
             </div>
@@ -121,7 +71,10 @@
       <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
-           $(".button-collapse").sideNav();
+           $(".button-collapse").sideNav({
+              edge: 'left',
+              closeOnClick: true
+            });
          });
       </script>
 
