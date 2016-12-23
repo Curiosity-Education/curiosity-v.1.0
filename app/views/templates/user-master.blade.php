@@ -13,33 +13,36 @@
    <body>
 
       <header>
-        <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
-          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
-            <i class="fa fa-bars"></i>
-          </button>
-          <div class="container-fluid">
-            <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-              <a class="navbar-brand">
-                <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
-                Curiosity Educación
-              </a>
-              <!-- <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                  <a class="nav-link">
-                    Salir&nbsp;
-                    <span class="fa fa-caret-right"></span>
+         <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
+            <ul id="slide-out" class="side-nav default-side-nav light-side-nav">
+               <div class="logo-wrapper waves-light">
+                  <a href="#">
+                     <img src="/packages/assets/media/images/system/logoDef.png" class="img-fluid flex-center">
                   </a>
-                </li>
-              </ul> -->
+               </div>
+               @yield('menu-links-aside')
+            </ul>
+            <div class="container-fluid">
+               <div class="" id="collapseEx2">
+                  <a class="navbar-brand">
+                     <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
+                     Curiosity Educación
+                  </a>
+                  <ul class="nav navbar-nav float-xs-right">
+                     <li class="nav-item">
+                        <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up" id="slideBtn"><i class="fa fa-bars"></i></a>
+                        <a class="nav-link hidden-md-down">Salir&nbsp;<span class="fa fa-caret-right"></span></a>
+                     </li>
+                  </ul>
+               </div>
             </div>
-          </div>
-        </nav>
+         </nav>
       </header>
 
       <section>
          <div class="container-fluid">
             <div class="row">
-               <div class="col-md-3">
+               <div class="col-md-3 hidden-md-down">
                   <div class="row">
                      <div class="col-md-12">
                         <div class="menu z-depth-1">
@@ -55,7 +58,7 @@
                     </div>
                   </div>
                </div>
-               <div class="col-md-9 text-justify">
+               <div class="col-lg-9 text-justify">
                   @yield('content')
                </div>
             </div>
@@ -63,13 +66,16 @@
       </section>
 
       <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+      <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-      <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script type="text/javascript">
-        /* $(document).ready(function() {
-            $(".button-collapse").sideNav();
-         });*/
+        $(document).ready(function() {
+           $(".button-collapse").sideNav({
+              edge: 'left',
+              closeOnClick: true
+            });
+         });
       </script>
 
       @yield('js')

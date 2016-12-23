@@ -1,6 +1,8 @@
 @extends('templates.child-menu')
 
 @section('css-plus')
+   <link rel="stylesheet" href="/packages/libs/OwlCarousel2-2.2.0/dist/assets/owl.carousel.min.css">
+   <link rel="stylesheet" href="/packages/libs/OwlCarousel2-2.2.0/dist/assets/owl.theme.default.min.css">
 @stop
 
 @section('content')
@@ -11,7 +13,7 @@
    </div>
 
    <div class="row">
-      <div class="col-sm-7" id="cst-boxOfAvatar">
+      <div class="col-sm-6" id="cst-boxOfAvatar">
          <div class="cst-titleSection z-depth-1">
             <span class="fa fa-user"></span>&nbsp;
             Accesorios para tu avatar
@@ -24,6 +26,16 @@
                </div>
             </div>
             <div class="col-sm-8 z-depth-1 cst-panelSlide">
+               <div class="owl-carousel owl-theme">
+                  @for ($i = 0; $i < 5; $i++)
+                     <div class="item cst-item view overlay">
+                        <div class="mask">
+                           <h5>$ 500 cc &nbsp; | &nbsp; 100 exp</h5>
+                           <center><a class="btn btn-primary btn-rounded waves-effect btn-sm cst-btnGet">Obtener</a></center>
+                        </div>
+                     </div>
+                  @endfor
+               </div>
             </div>
          </div>
 
@@ -34,23 +46,43 @@
                </div>
             </div>
             <div class="col-sm-8 z-depth-1 cst-panelSlide">
+               <div class="owl-carousel owl-theme">
+                  @for ($i = 0; $i < 5; $i++)
+                     <div class="item cst-item view overlay">
+                        <div class="mask">
+                           <h5>$ 500 cc &nbsp; | &nbsp; 100 exp</h5>
+                           <center><a class="btn btn-primary btn-rounded waves-effect btn-sm cst-btnGet">Obtener</a></center>
+                        </div>
+                     </div>
+                  @endfor
+               </div>
             </div>
          </div>
 
       </div>
-      <div class="col-sm-5" id="cst-boxOfProfile">
+      <div class="col-sm-6" id="cst-boxOfProfile">
          <div class="cst-titleSection z-depth-1">
             <span class="fa fa-user"></span>&nbsp;
             Mejora tu perfil
          </div>
 
          <div class="cst-boxSlideItems z-depth-1">
-            <div class="view hm-black-strong z-depth-1 col-sm-5 cst-titleCarousel">
+            <div class="view hm-black-strong z-depth-1 col-sm-4 cst-titleCarousel">
                <div class="mask flex-center">
                   <p class="white-text">Color</p>
                </div>
             </div>
-            <div class="col-sm-7 z-depth-1 cst-panelSlide">
+            <div class="col-sm-8 z-depth-1 cst-panelSlide">
+               <div class="owl-carousel owl-theme">
+                  @for ($i = 0; $i < 5; $i++)
+                     <div class="item cst-item view overlay">
+                        <div class="mask">
+                           <h5>$ 500 cc &nbsp; | &nbsp; 100 exp</h5>
+                           <center><a class="btn btn-primary btn-rounded waves-effect btn-sm cst-btnGet">Obtener</a></center>
+                        </div>
+                     </div>
+                  @endfor
+               </div>
             </div>
          </div>
 
@@ -59,4 +91,33 @@
 @stop
 
 @section('js-plus')
+   <script src="/packages/libs/OwlCarousel2-2.2.0/dist/owl.carousel.min.js" charset="utf-8"></script>
+   <script type="text/javascript">
+      $(function(){
+         $('.owl-carousel').owlCarousel({
+             loop:true,
+             autoplay:true,
+             margin:10,
+             nav:false,
+             dots:false,
+             responsive:{
+                 0:{
+                     items:1
+                 },
+                 300:{
+                    items:1
+                 },
+                 1050:{
+                     items:1
+                 },
+                 1200:{
+                     items:2
+                 }
+             }
+         });
+         $("body").on('click', '.cst-btnGet', function(){
+            alert();
+         });
+      });
+   </script>
 @stop
