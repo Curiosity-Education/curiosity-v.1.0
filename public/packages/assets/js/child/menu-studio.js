@@ -14,15 +14,13 @@ $(function(){
 	$(".btn-inteligent").click(function(){
 		if($(this).hasClass("active")){
 			$(".row-level").toggle("slow");
-			$(this).children(".arrow").toggle();
+			$(this).removeClass("active");
 		}else{
 			$(".row-level").show("slow");
-			$(".arrow").hide();
-			$(this).children(".arrow").show();
+			$(".btn-inteligent").removeClass("active");
+			$(this).addClass("active");
 		}
 		$(".row-bloque").hide("slow");
-		$(".btn-inteligent").removeClass("active");
-		$(this).addClass("active");
 		$(".card-title-level").text($(this).text()+" | Grados");
 
 	});
@@ -39,7 +37,6 @@ $(function(){
 	});
 	$("a.dismiss").click(function(){
 		$($(this).data("dismiss-target")).hide("slow");
-		$(".arrow").hide();
 		$(".btn-inteligent").removeClass("active");
 	});
 	

@@ -7,14 +7,14 @@
       <div class="container-fluid" id="container-menu-studio-child">
         <div class="row" id="row-inteligents">
           <div class="col-md-3 col-sm-3 col-inteligent">
-            <a class="btn btn-purple btn-inteligent btn-math"><span class="mdi mdi-export icon-custom"></span> Matemáticas
-              <div class="arrow"></div>
+            <a class="btn btn-purple btn-inteligent btn-math"> Matemáticas
+              <div class="ms-arrow"></div>
             </a>
 
           </div>
           <div class="col-md-3 col-sm-3 col-inteligent">
-            <a class="btn btn-green btn-inteligent btn-robotic"><span class="mdi mdi-export icon-custom"></span> Robotica
-              <div class="arrow"></div>
+            <a class="btn btn-purple btn-inteligent btn-robotic"> Robotica
+              <div class="ms-arrow"></div>
             </a>
           </div>
         </div>
@@ -54,24 +54,22 @@
         <div class="row">
           <div class="col-md-4 col-sm-4">
             <!--Card-->
-            <div class="card">
-
+            <div class="card card-game hm-black-light">
                 <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/wallpapers/BALANZA.png" class="img-fluid" alt="">
                     <a href="#">
                         <div class="mask"></div>
                     </a>
                 </div>
                 <!--/.Card image-->
-
                 <!--Card content-->
-                <div class="card-block">
+                <div class="card-block text-center">
                     <!--Title-->
-                    <h4 class="card-title">Card title</h4>
+                    <h5 class="card-title">Lectura de digitos</h5>
                     <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <p class="card-text"><i class="fa fa-gamepad"></i> digit math</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
                 <!--/.Card content-->
 
@@ -80,11 +78,11 @@
           </div>
           <div class="col-md-4 col-sm-4">
              <!--Card-->
-            <div class="card">
+            <div class="card card-game hm-black-light">
 
                 <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/wallpapers/ballon.png" class="img-fluid" alt="">
                     <a href="#">
                         <div class="mask"></div>
                     </a>
@@ -92,12 +90,12 @@
                 <!--/.Card image-->
 
                 <!--Card content-->
-                <div class="card-block">
+                <div class="card-block text-center">
                     <!--Title-->
-                    <h4 class="card-title">Card title</h4>
+                    <h5 class="card-title">Restas rapidas</h5>
                     <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <p class="card-text"><i class="fa fa-gamepad"></i> Cool math</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
                 <!--/.Card content-->
 
@@ -106,11 +104,11 @@
           </div>
           <div class="col-md-4 col-sm-4">
             <!--Card-->
-            <div class="card">
+            <div class="card card-game hm-black-light">
 
                 <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt="">
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/wallpapers/CANDY.png" class="img-fluid" alt="">
                     <a href="#">
                         <div class="mask"></div>
                     </a>
@@ -118,12 +116,12 @@
                 <!--/.Card image-->
 
                 <!--Card content-->
-                <div class="card-block">
+                <div class="card-block text-center">
                     <!--Title-->
-                    <h4 class="card-title">Card title</h4>
+                    <h5 class="card-title">Restas Mentales</h5>
                     <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <p class="card-text"><i class="fa fa-gamepad"></i> Cool math.</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
                 <!--/.Card content-->
 
@@ -133,49 +131,81 @@
         </div>
         <div class="row">
           <div class="col-sm-4 col-md-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+             <!--Card-->
+            <div class="card card-game hm-black-light">
+                <!--Card image-->
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/wallpapers/ballon.png" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block text-center">
+                    <!--Title-->
+                    <h5 class="card-title">Sucesión númerica</h5>
+                    <!--Text-->
+                    <p class="card-text"><i class="fa fa-gamepad"></i> frog Jumb.</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
           <div class="col-md-4 col-sm-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+             <!--Card-->
+            <div class="card card-game hm-black-light">
+
+                <!--Card image-->
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/Wallpapers/CANDY.png" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block text-center">
+                    <!--Title-->
+                    <h5 class="card-title">Grafica de barras</h5>
+                    <!--Text-->
+                    <p class="card-text"><i class="fa fa-gamepad"></i> chocomath</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
           <div class="col-md-4 col-sm-4">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="/packages/assets/media/images/child/game_news.jpg">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>Suceciones Númericas</p>
+             <!--Card-->
+            <div class="card card-game hm-black-light">
+
+                <!--Card image-->
+                <div class="view mask">
+                    <img src="packages/assets/media/images/games/wallpapers/BALANZA.png" class="img-fluid" alt="">
+                    <a href="#">
+                        <div class="mask"></div>
+                    </a>
                 </div>
-                <div class="card-action text-center">
-                  <a href="#">Jugar</a>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-block text-center">
+                    <!--Title-->
+                    <h5 class="card-title">Sucesión númerica</h5>
+                    <!--Text-->
+                    <p class="card-text"><i class="fa fa-gamepad"></i> Chocolemath</p>
+                    <a href="#" class="btn btn-primary">Jugar</a>
                 </div>
-              </div>
+                <!--/.Card content-->
+
             </div>
+            <!--/.Card-->
           </div>
         </div>  
       </div>
