@@ -14,23 +14,76 @@
 
       <header>
         <nav class="navbar navbar-fixed-top z-depth-1" id="navbar">
-          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
-            <i class="fa fa-bars"></i>
-          </button>
+
+         <!-- Sidebar navigation -->
+         <ul id="slide-out" class="side-nav default-side-nav light-side-nav">
+
+            <!-- Logo -->
+            <div class="logo-wrapper waves-light">
+               <a href="#"><img src="http://mdbootstrap.com/wp-content/uploads/2015/12/mdb-white2.png" class="img-fluid flex-center"></a>
+            </div>
+            <!--/. Logo -->
+
+            <!--Search Form-->
+            <form class="search-form" role="search">
+               <div class="form-group waves-effect">
+                  <input type="text" class="form-control" placeholder="Search">
+               </div>
+            </form>
+            <!--/.Search Form-->
+
+            <!-- Side navigation links -->
+            <ul class="collapsible collapsible-accordion">
+               <li><a class="collapsible-header waves-effect">Click me</a>
+                  <div class="collapsible-body">
+                     <ul>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li><a class="collapsible-header waves-effect">Click me</a>
+                  <div class="collapsible-body">
+                     <ul>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li><a class="collapsible-header waves-effect">Click me</a>
+                  <div class="collapsible-body">
+                     <ul>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                        <li><a href="#" class="waves-effect">Link</a>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+            <!--/. Side navigation links -->
+         </ul>
+         <!--/. Sidebar navigation -->
+
           <div class="container-fluid">
             <div class="collapse navbar-toggleable-xs" id="collapseEx2">
               <a class="navbar-brand">
                 <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
                 Curiosity Educación
               </a>
-              <!-- <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav float-xs-right">
                 <li class="nav-item">
+                   <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
                   <a class="nav-link">
                     Salir&nbsp;
                     <span class="fa fa-caret-right"></span>
                   </a>
                 </li>
-              </ul> -->
+              </ul>
             </div>
           </div>
         </nav>
@@ -67,9 +120,9 @@
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
       <script type="text/javascript">
-        /* $(document).ready(function() {
-            $(".button-collapse").sideNav();
-         });*/
+        $(document).ready(function() {
+           $(".button-collapse").sideNav();
+         });
       </script>
 
       @yield('js')
