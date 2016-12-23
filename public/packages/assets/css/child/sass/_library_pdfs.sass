@@ -1,5 +1,6 @@
 // Import of the archive global of variables
 @import "../../_standardVariables.sass"
+@import "mixins.sass"
 
 $btnColor-active: #2BBBAD
 
@@ -11,10 +12,13 @@ $btnColor-active: #2BBBAD
 	&:hover
 		background-color: $btnColor-active !important
 
+
 .lp-container-degrees
 	background-color: #fff
 	border-radius: $border-rad
 	padding: .3rem .8rem .3rem .8rem
+	@media (max-width: $tablet-size-landscape)
+		width: 100%
 
 .lp-text-degrees
 	border-right: .1rem solid #000
@@ -24,6 +28,8 @@ $btnColor-active: #2BBBAD
 	
 .lp-btn-degrees
 	margin-right: -.3rem !important
+	@media (min-width: $tablet-size-portrait) and (max-width: $tablet-size-landscape)
+		margin-right: .3rem !important
 	
 #lp-row-degrees
 	margin-top: -1rem
