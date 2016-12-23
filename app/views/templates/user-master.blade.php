@@ -116,9 +116,9 @@
       </section>
 
       <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+      <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-      <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
            $(".button-collapse").sideNav();

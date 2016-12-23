@@ -6,7 +6,7 @@ description: Events usage demo
 sort: 7
 published: true
 
-tags: 
+tags:
 - demo
 - core
 ---
@@ -51,20 +51,20 @@ Notice that `initialize.owl.carousel` and `initialized.owl.carousel` events must
 
 `changed.owl.carousel` event is attached to the main Owl Carousel animation method so that every carousel move triggers this callback.
 
-{{/markdown }} 
+{{/markdown }}
 
 <script>
 jQuery(document).ready(function($) {
 
 	var owl = $('.owl-carousel');
-	
+
 	owl.on('initialize.owl.carousel initialized.owl.carousel ' +
 		'initialize.owl.carousel initialize.owl.carousel ' +
-		'resize.owl.carousel resized.owl.carousel ' + 
-		'refresh.owl.carousel refreshed.owl.carousel ' + 
-		'update.owl.carousel updated.owl.carousel ' + 
-		'drag.owl.carousel dragged.owl.carousel ' + 
-		'translate.owl.carousel translated.owl.carousel ' + 
+		'resize.owl.carousel resized.owl.carousel ' +
+		'refresh.owl.carousel refreshed.owl.carousel ' +
+		'update.owl.carousel updated.owl.carousel ' +
+		'drag.owl.carousel dragged.owl.carousel ' +
+		'translate.owl.carousel translated.owl.carousel ' +
 		'to.owl.carousel changed.owl.carousel', function(e){
 		$('.' + e.type)
 			.removeClass('secondary')
@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
 			},
 			600:{
 				items:3
-			},			
+			},
 			960:{
 				items:5,
 			},
