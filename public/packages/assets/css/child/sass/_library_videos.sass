@@ -1,0 +1,103 @@
+// Import of the archive global of variables
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
+$btnColor-active: #2BBBAD
+
+#lp-banner
+	height: $height-banner
+	border-radius: $border-rad
+	+background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+
+.lp-btn-degrees
+	border-radius: $border-rad
+
+.lp-btnTopic
+	border-radius: $border-rad
+
+.lp-topic-active
+	background-color: $btnColor-active !important
+	&:hover
+		background-color: $btnColor-active !important
+
+.lp-btn-active
+	background-color: $btnColor-active !important
+	&:hover
+		background-color: $btnColor-active !important
+
+.lp-container-degrees
+	background-color: #fff
+	border-radius: $border-rad
+	padding: .3rem .8rem .3rem .8rem
+	@media (max-width: $tablet-size-landscape)
+		width: 100%
+	@media (max-width: $smartphone-size-portrait)
+		text-align: center
+		padding: .3rem .8rem .3rem .2rem
+
+.lp-text-degrees
+	border-right: .1rem solid #000
+	margin-top: 1.8%
+	padding-top: .3rem
+	margin-right: .5rem
+	@media (max-width: $smartphone-size-portrait)
+		margin-right: 0rem
+		border-right: .1rem solid #fff
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		margin-right: 0rem
+		border-right: .1rem solid #fff
+
+.lp-btn-degrees
+	margin-right: -.3rem !important
+	@media (min-width: $tablet-size-portrait) and (max-width: $tablet-size-landscape)
+		margin-right: .3rem !important
+
+#lp-row-degrees
+	margin-top: 1rem
+
+.lp-container-pdf
+	background-color: #fff
+	padding: .1rem .8rem .8rem .8rem
+	border-radius: $border-rad
+
+.lp-card-pdf
+	border-radius: $border-rad !important
+	height: auto
+	margin-top: 1rem
+	background-color: rgba($color-black,.6)
+
+.lp-bg
+	background: url(/packages/assets/media/images/child/videosnews.jpg) repeat center center
+	background-size: cover
+	border-radius: $border-rad
+
+.lp-bg-card
+	@extend .lp-bg
+
+.lp-name-pdf
+	word-wrap: break-word !important
+
+.lp-text-card
+	color: $color-white
+
+.lp-hr
+	border: .1rem solid #fff
+
+.lp-row-slide
+	padding: .3rem .8rem .3rem .8rem
+	background-color: $color-white
+	border-radius: $border-rad
+	margin-bottom: 2.5rem
+	.carousel-multi-item
+		margin-bottom: 3.5rem !important
+		.controls-top
+			margin-bottom: 0
+
+#lp-row-slidePdfs
+	margin-top: -1.5rem !important
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait)
+		display: none
+
+#lp-row-contPdf
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait)
+		display: block !important
