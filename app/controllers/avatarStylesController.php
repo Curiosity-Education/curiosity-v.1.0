@@ -47,12 +47,12 @@ class avatarStylesController extends BaseController{
           "required" => "El campo :attribute es requerido",
           "integer" => "El valor de adquisición debe ser numérico sin decimal"
         ];
-        $validate = Validator::make($datos, $rules, $messages);
+        $validate = Validator::make($data, $rules, $messages);
         if($validate->fails()){
           return $validate->messages();
         }
         else{
-          $avatarStyle = AvatarStyle::where('id', '=', $datos['id'])->first();
+          $avatarStyle = AvatarStyle::where('id', '=', $data['id'])->first();
           if($file == null){
             $fileName = $avatarStyle->preview;
           }
@@ -78,11 +78,11 @@ class avatarStylesController extends BaseController{
 	}
     function find(){
         $id = Input::get('data');
-        $estilos = avatarestilo::where('active', '=', '1')
+        $styles = avatarestilo::where('active', '=', '1')
                                ->where('avatars_id', '=', $id)
                                ->get();
         $row = array();
-        foreach ($estilos as $key => $value) {
+        foreach ($styles as $key => $value) {
           array_push($row, json_encode($value));
         }
         return $row;
