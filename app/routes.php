@@ -12,8 +12,16 @@
 */
 
 
+Route::get('/profile-child', function(){
+	return View::make('child.profile');
+});
+
 Route::get('/library-pdfs', function(){
-	return View::make('child.library_pdfs');
+	return View::make('parent.library_pdfs');
+});
+
+Route::get('/library-videos', function(){
+	return View::make('child.library_videos');
 });
 
 Route::get('/', function()
