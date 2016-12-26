@@ -3,8 +3,10 @@
 @section('css-plus')
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
-
-@section('content')
+@section('title-baner')
+<i class="fa fa-child"> Administración de hijos</i>
+@stop
+@section('content-parent')
 <div class="container-fluid">
 <div class="row">
    <div class="col-md-7 col-lg-7 upch-col-children">

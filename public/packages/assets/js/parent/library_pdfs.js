@@ -11,7 +11,7 @@ $(function(){
 	$('.lp-close').click(function(){
 		$('#lp-row-showPDF').addClass("lp-content-disabled");
 		$('#lp-container-all').removeClass("lp-content-disabled");
-		$('#lp-container-all').addClass("bounceIn");
+		$('#lp-container-all').addClass("fadeInUp");
 	}); // close PDF
 
 	$("body,html").keyup(function(evt){

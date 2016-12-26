@@ -16,7 +16,7 @@
 			</div>
 
 			<!-- Cards configuration -->
-			div
+
 
 		</div>
 	</div>
