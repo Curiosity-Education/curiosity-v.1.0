@@ -6,8 +6,9 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid animated" id="lp-container-all">
 
+	<!-- Banner -->
 	<div class="row">
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 		  <div class="mask flex-center">
@@ -89,7 +90,7 @@
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
     	<div class="col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1">
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -105,7 +106,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -121,7 +122,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -137,7 +138,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -153,7 +154,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -169,7 +170,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -185,7 +186,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -201,7 +202,7 @@
 					</div>
 				</div>
     		</a>
-    		<a href="#">
+    		<a class="lp-PDFselect" href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
 						<div class="card-overlay lp-card-pdf">
@@ -245,66 +246,74 @@
 				<div class="carousel-item active text-xs-center">
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
-							<div class="card-overlay lp-card-pdf">
-							<!--Content-->
-								<div class="white-text text-xs-center">
-									<div class="card-block">
-										<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
-										<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
+						<a class="lp-PDFselect" href="#">
+							<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+								<div class="card-overlay lp-card-pdf">
+								<!--Content-->
+									<div class="white-text text-xs-center">
+										<div class="card-block">
+											<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
+											<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
 
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
-							<div class="card-overlay lp-card-pdf">
-							<!--Content-->
-								<div class="white-text text-xs-center">
-									<div class="card-block">
-										<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
-										<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
+						<a class="lp-PDFselect" href="#">
+							<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+								<div class="card-overlay lp-card-pdf">
+								<!--Content-->
+									<div class="white-text text-xs-center">
+										<div class="card-block">
+											<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
+											<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
 
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 				<!--/.First slide-->
 
 				<div class="carousel-item text-xs-center">
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
-							<div class="card-overlay lp-card-pdf">
-							<!--Content-->
-								<div class="white-text text-xs-center">
-									<div class="card-block">
-										<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
-										<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
+						<a class="lp-PDFselect" href="#">
+							<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+								<div class="card-overlay lp-card-pdf">
+								<!--Content-->
+									<div class="white-text text-xs-center">
+										<div class="card-block">
+											<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
+											<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
 
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
-							<div class="card-overlay lp-card-pdf">
-							<!--Content-->
-								<div class="white-text text-xs-center">
-									<div class="card-block">
-										<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
-										<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
+						<a class="lp-PDFselect" href="#">
+							<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+								<div class="card-overlay lp-card-pdf">
+								<!--Content-->
+									<div class="white-text text-xs-center">
+										<div class="card-block">
+											<h5 class="h5-responsive lp-text-card"><i class="fa fa-file-pdf-o"></i> GUIA PDF</h5><hr class="lp-hr">
+											<h4 class="h5-responsive lp-name-pdf" id="lp-namePDF">Sucesión Númerica</h4>
 
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -312,7 +321,26 @@
 		</div>
 		<!--/.Carousel Wrapper-->
     </div>
-</div>
+
+</div> <!-- / container-fluid all -->
+
+<div class="container-fluid" id="lp-container-showPDf">
+
+	<div class="row z-depth-1 lp-content-disabled animated fadeInRight" id="lp-row-showPDF">
+		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner-showPDF">
+		  <div class="mask flex-center">
+			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
+		  </div>
+			 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down lp-close" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+		</div>
+
+		<div class="col-md-12 col-sm-12 col-xs-12 lp-content-pdf">
+			<embed src="packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="lp-pdf">
+			<h1 class="h1-responsive text-xs-center" id="lp-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
+		</div>
+	</div>
+
+</div> <!-- / container-fluid show PDF -->
 
 @stop
 
@@ -345,5 +373,5 @@
 
 	</script>
 
-	{{ HTML::script('/packages/assets/js/child/library_pdfs.js') }}
+	{{ HTML::script('/packages/assets/js/parent/library_pdfs.js') }}
 @stop

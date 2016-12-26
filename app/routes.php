@@ -12,6 +12,10 @@
 */
 
 
+Route::get('/profile-child', function(){
+	return View::make('child.profile');
+});
+
 Route::get('/library-pdfs', function(){
 	return View::make('parent.library_pdfs');
 });

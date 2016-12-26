@@ -101,3 +101,35 @@ $btnColor-active: #2BBBAD
 #lp-row-contPdf
 	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait)
 		display: block !important
+
+#lp-row-showPDF
+	background-color: $color-white
+	border-radius: $border-rad
+	height: 98%
+
+#lp-banner-showPDF
+	height: $height-banner
+	border-top-left-radius: $border-rad
+	border-top-right-radius: $border-rad
+	+background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+
+.lp-content-pdf
+	padding: .8rem .8rem 1.2rem .8rem
+	height: 88%
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		height: 0%
+
+#lp-pdf
+	@media (max-width: $smartphone-size-portrait)
+		height: 95%
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		display: none
+
+#lp-text-info
+	display: none
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		display: block
+		margin-top: 2rem
+
+.lp-content-disabled
+	display: none
