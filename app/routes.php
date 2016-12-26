@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/my-account', function(){
+	return View::make('child.configuration_account');
+});
 
 Route::get('/profile-child', function(){
 	return View::make('child.profile');
