@@ -21,7 +21,7 @@
 	padding: .2rem .3rem !important
 .btn-inteligent
 	&:hover
-		+transform(scale(1.05))
+		+transform(scale(1.01))
 
 .row-level,.row-bloque
 	position: relative
@@ -51,45 +51,6 @@ a.dismiss
 		text-decoration: none
 .text-black
 	color: #000 !important
-
-.pagination-level
-	position: absolute
-	padding: .5rem .9rem
-	background-color: $color-white
-	border-radius: $border-rad
-	box-shadow: $shadow
-	left: -1rem
-	top: 2.3rem
-	z-index: 9999
-	
-.btn-show-pagination
-	.pagination
-		display: none
-
-.btn-show-pagination
-	&:hover>
-		.pagination
-			display: block
-			transtion: 1s
-.breadcrumb
-	border-radius: $border-rad
-	background-color: transparent
-	color: #000
-
-.pagination
-	>.item-pagination
-		display: inlinte-block
-		padding: .8rem
-		margin-left: .2rem
-		cursor: pointer
-		background-color: $color-blue
-		color: $color-white
-		box-shadow: $shadow
-		border-radius: $border-rad
-		font-weight: 400
-		text-align: center
-		line-height: .6rem
-		letter-spacing: .5px
 
 .pagination.pagination-item-blue
 	>.item-pagination
@@ -187,19 +148,27 @@ a.dismiss
 	margin-right: 1rem
 .card-title-level
 	border-right: .06rem solid #fff
-.btn-inteligent
+
+.col-inteligent
 	position: relative
+.btn-inteligent.waves-effect
+	position: static !important
 
 .btn-inteligent
-	div.arrow
+	div.ms-arrow
 		position: absolute
 		background: inherit
-		width: 2rem
-		height: 2rem
+		width: 2.1rem
+		height: 2.1rem
 		display: none
-		bottom: -.7rem
+		top: .9rem
 		z-index: -9999999
 		+transform(rotate(135deg))
+
+.btn-inteligent.active
+	>.ms-arrow
+		display: block
+
 .card-bloque
 	a.btn-bloque.active
 		background-color: $color-red !important
@@ -208,3 +177,25 @@ a.dismiss
 		background-color: $color-red !important
 
 
+.text-center
+	text-align: center 
+
+.card-game 
+	.card-block>*
+		margin-bottom: .2rem
+
+.card-game 
+	.card-block>p
+		padding: .01rem
+
+.card-game 
+	.card-block>
+		h5
+			padding: .01rem
+
+.card-game
+	.card-block
+		padding: .5rem
+
+.card-game
+	border-radiud: $border-rad
