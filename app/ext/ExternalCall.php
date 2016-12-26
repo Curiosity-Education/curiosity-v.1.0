@@ -18,7 +18,7 @@ class ExternalCall{
         }
     }
 
-    public static function execute($callback = NULL{
+    public static function execute($callback = NULL){
         if(is_callable($callback))
             return call_user_func_array($callback, array_slice($this->matches, 1));
         else{
