@@ -56,10 +56,11 @@
 	<div class="row">
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o"></i>&nbsp; @yield('title-baner')</h4>
+			 <h4 class="h4-responsive white-text">@yield('title-baner')</h4>
 		  </div>
 		</div>
 	</div><br>
+	@yield('content-parent')
 @stop
 @section('js')
 @yield('js-plus')
