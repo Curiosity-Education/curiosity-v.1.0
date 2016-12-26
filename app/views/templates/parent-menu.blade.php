@@ -13,22 +13,37 @@
 
 @section('menu-links')
 <div data-url="" class="linkMenu linkMenu-active">
-   <span class="mdi mdi-home icon-menu" id="parentMenu-icon-home"></span>&nbsp;
+   <span class="fa fa-home icon-menu" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
 <div data-url="" class="linkMenu">
-   <span class="mdi mdi-youtube-play icon-menu" id="parentMenu-icon-videos"></span>&nbsp;
+   <span class="fa fa-youtube-play icon-menu" id="parentMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
 <div data-url="" class="linkMenu">
-   <span class="mdi mdi-file-pdf icon-menu" id="parentMenu-icon-files"></span>&nbsp;
+   <span class="fa fa-youtube-play icon-menu" id="parentMenu-icon-files"></span>&nbsp;
+   Biblioteca de archivos
+</div>
+@stop
+
+@section('menu-links-aside')
+<div data-url="" class="linkMenu linkMenuAside linkMenu-active">
+   <span class="fa fa-home icon-menu" id="parentMenu-icon-home"></span>&nbsp;
+   Inicio
+</div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-youtube-play icon-menu" id="parentMenu-icon-videos"></span>&nbsp;
+   Biblioteca de videos
+</div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-file-pdf-o icon-menu" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
 @stop
 
 @section('under-menu')
-<div id="parentMenu-addChild">
-   <span class="mdi mdi-plus-circle-outline icon-menu"></span>&nbsp;
+<div id="parentMenu-addChild" class="z-depth-1">
+   <span class="fa fa-plus-circle icon-menu"></span>&nbsp;
    Registrar Hijo
 </div>
 @stop
