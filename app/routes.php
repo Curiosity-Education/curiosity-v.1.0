@@ -16,6 +16,11 @@ Route::get('/library-pdfs', function(){
 	return View::make('child.library_pdfs');
 });
 
+Route::get('/parent-profile', function(){
+    return View::make('parent.profile');
+});
+
+
 Route::get('/', function()
 {
 	return View::make('child.init');
@@ -23,6 +28,10 @@ Route::get('/', function()
 
 Route::get('/menu-studio',function(){
 	return View::make('child.menu-studio');
+});
+
+Route::get("/child-registration",function(){
+    return View::make("parent.child_registration");
 });
 
 Route::get('/padre-inicio', function(){
@@ -41,17 +50,21 @@ Route::get('/juego', function(){
     return View::make('child.view-game');
 });
 
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
 
     Route::get('/', function()
     {
-        $data = [
-            'status' => '200',
-            'message'   => 'The ajax has been found success',
-            'type'  => 'JSON'
-        ];
+        if(Request::ajax())
+        {
+             $data = [
+                'status'    => '200',
+                'message'   => 'The ajax has been found success',
+                'type'      => 'JSON'
+            ];
+        }
         return Response::json($data);
     });
 
