@@ -7,17 +7,18 @@
 @section('content')
 	<div class="container-fluid">
 
-		<!-- Banner -->
 		<div class="row">
+			<!-- Banner -->
 			<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 			  <div class="mask flex-center">
 				 <h4 class="h4-responsive white-text"><i class="fa fa-cogs"></i>&nbsp; Configuración de mi cuenta</h4>
 			  </div>
 			</div>
-		</div><br>
 
+			<!-- Cards configuration -->
+			div
 
-
+		</div>
 	</div>
 @stop
 

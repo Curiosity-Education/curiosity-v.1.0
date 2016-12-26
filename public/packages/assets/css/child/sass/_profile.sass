@@ -10,9 +10,11 @@
 #pf-content-cards
 	background-color: #fff
 	border-radius: $border-rad
+	border-right: solid .2rem #bdbdbd
 	height: 80%
 	@media (min-width: $smartphone-size-portrait - 10px) and (max-width: $tablet-size-portrait - 10px)
 		height: auto
+		border-right-style: none
 
 .pf-card
 	border-radius: $border-rad !important
@@ -40,12 +42,14 @@
 
 #pf-content-graph
 	height: 80%
+	background-color: $color-white
+	border-radius: $border-rad
+	padding: 1rem .8rem 1rem .8rem
 	@media (min-width: $smartphone-size-portrait - 10px) and (max-width: $tablet-size-portrait - 10px)
-		padding: 2rem .8rem .3rem .8rem
+		padding: 1rem .8rem .3rem .8rem
 		background-color: $color-white
 		border-radius: $border-rad
 		box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)
 		margin-bottom: 2rem
 		height: auto
-
 
