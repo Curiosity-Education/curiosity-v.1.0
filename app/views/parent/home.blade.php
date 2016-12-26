@@ -5,32 +5,32 @@
 @stop
 
 @section('content')
-<div class="carousel">
-   <a href="javascript:void(0)" class="carousel-item">
+<div class="carousel hm-carousel">
+   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
          <h6>Odaliz Ramirez</h6>
       </div>
    </a>
-   <a href="javascript:void(0)" class="carousel-item">
+   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
          <h6>Odaliz Ramirez</h6>
       </div>
    </a>
-   <a href="javascript:void(0)" class="carousel-item">
+   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
          <h6>Odaliz Ramirez</h6>
       </div>
    </a>
-   <a href="javascript:void(0)" class="carousel-item">
+   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
          <h6>Odaliz Ramirez</h6>
       </div>
    </a>
-   <a href="javascript:void(0)" class="carousel-item">
+   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
          <h6>Odaliz Ramirez</h6>
