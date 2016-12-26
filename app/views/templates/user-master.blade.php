@@ -45,7 +45,7 @@
                <div class="col-md-3 hidden-md-down">
                   <div class="row">
                      <div class="col-md-12">
-                        <div class="menu z-depth-1">
+                        <div class="menu fixedElement z-depth-1">
                            @yield('menu-title')
                            @yield('menu-photo')
                            @yield('menu-links')
@@ -69,15 +69,8 @@
       <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function() {
-           $(".button-collapse").sideNav({
-              edge: 'left',
-              closeOnClick: true
-            });
-         });
-      </script>
-
+      <script src="/packages/assets/js/Curiosity.js"></script>
+      <script src="/packages/assets/js/app-master.js"></script>
       @yield('js')
    </body>
 </html>
