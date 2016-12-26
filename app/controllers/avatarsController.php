@@ -2,7 +2,7 @@
 class avatarsController extends BaseController{
 	
 	function get(){
-		$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+		$idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
         $info = DB::table('hijos_avatars')
         ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
         ->join('avatars', 'avatars_estilos.avatars_id', '=', 'avatars.id')
@@ -110,10 +110,10 @@ class avatarsController extends BaseController{
           $avatar->sexo = $data['genre'];
           $avatar->historia = $data['history'];
           $avatar->save();
-          $estilo->nombre = $data['avatarName'];
-          $estilo->descripcion = $data['history'];
-          $estilo->preview = $fileName;
-          $estilo->save();
+          $avatarStyle->nombre = $data['avatarName'];
+          $avatarStyle->descripcion = $data['history'];
+          $avatarStyle->preview = $fileName;
+          $avatarStyle->save();
           $tupla = array(
             'id' => $avatar->id,
             'name' => $avatar->nombre,
@@ -134,7 +134,7 @@ class avatarsController extends BaseController{
 	}
     function all() {
         $avatars = array(
-          'avatars' => avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
+          'avatars' => Avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
           ->where('avatars.active', '=', '1')
           ->where('avatars_estilos.active', '=', '1')
           ->where('avatars_estilos.is_default', '=', '1')
