@@ -8,8 +8,8 @@
 
 <div class="container-fluid animated">
 
-	<!-- Banner -->
 	<div class="row">
+		<!-- Banner -->
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="pf-banner">
 		  <div class="mask flex-center">
 			 <h4 class="h4-responsive white-text"><i class="fa fa-user"></i>&nbsp; Mi Perfil "USERNAME"</h4>
@@ -91,10 +91,10 @@
 	   	<!-- Graph of games of the day -->
 	   	<div class="col-md-8 col-sm-8 col-xs-12"><br>
 			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12" id="pf-content-graph">
+				<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="pf-content-graph">
 					<h2 class="h2-responsive text-xs-center">Juegos del Día <small>(meta diaria)</small></h2><hr class="pf-hr">
 					<div class="text-xs-center pf-divGraph">
-						<canvas id="pf-makeGraph" width="100%" height="65%"></canvas>
+						<canvas id="pf-makeGraph" width="100%" height="60%"></canvas>
 					</div>
 				</div>
 			</div>
