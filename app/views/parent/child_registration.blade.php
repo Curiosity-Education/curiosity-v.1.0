@@ -119,7 +119,7 @@
 </div>
 @stop
 
-@section('js')
+@section('js-plus')
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
 <script src="/packages/assets/js/parent/child-registration.js" charset="utf-8"></script>
 @stop

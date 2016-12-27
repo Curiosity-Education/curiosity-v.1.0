@@ -64,7 +64,6 @@
             </div>
          </div>
       </section>
-
       <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
       <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
