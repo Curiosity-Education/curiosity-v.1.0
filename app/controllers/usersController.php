@@ -5,7 +5,67 @@ class usersController extends BaseController(){
 		
 	}
 	function save(){
-		
+		$dateNow = date("Y-m-d");
+        $date_min =strtotime("-18 year",strtotime($dateNow));
+        $date_min=date("Y-m-d",$date_min);
+        $rules=[
+            "username_admin"          =>"required|unique:users,username|max:50",
+            "password_admin"          =>"required|min:8|max:100",
+            "cpassword_admin"         =>"required|same:password_admin",
+            "nombre_admin"            =>"required|letter|max:50",
+            "apellido_paterno_admin"  =>"required|letter|max:30",
+            "apellido_materno_admin"  =>"required|letter|max:30",
+            "sexo_admin"              =>"required|string|size:1",
+            "fecha_nacimiento_admin"  =>"required|date_format:Y-m-d|before:$date_min",
+            "role_admin"              =>"required"
+
+        ];
+        $messages = [
+                     "required"    =>  "Este campo :attribute es requerido",
+                     "alpha"       =>  "Solo puedes ingresar letras",
+                     "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
+                     "date"        =>  "Formato de fecha invalido",
+                     "numeric"     =>  "Solo se permiten digitos",
+                     "email"       =>  "Ingresa un formato de correo valido",
+                     "unique"      =>  "Este usuario ya existe",
+                     "integer"     =>  "Solo se permiten numeros enteros",
+                     "exists"      =>  "El campo :attribute no existe en el sistema",
+                     "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+                     "integer"     =>  "Solo puedes ingresar numeros enteros",
+                     "same"        =>  "Las contraseñas no coinciden",
+                     "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+         ];
+        $validaciones = Validator::make(Input::all(),$rules,$messages);
+        if($validaciones->fails()){
+            return $validaciones->messages();
+        }else{
+            try {
+                $user = new User();
+                $user->username=Input::get('username_admin');
+                $user->password=Hash::make(Input::get('password_admin'));
+                $user->active=1;
+                $user->token= sha1($user->username);
+                $user->skin_id=skin::all()->first()->id;
+                $user->save();
+                $user->attachRole(Input::get('role_admin'));
+                $persona = new persona();
+                $persona->nombre = Input::get('nombre_admin');
+                $persona->apellido_paterno = Input::get('apellido_paterno_admin');
+                $persona->apellido_materno = Input::get('apellido_materno_admin');
+                $persona->sexo = Input::get('sexo_admin');
+                $persona->fecha_nacimiento = Input::get('fecha_nacimiento_admin');
+                $persona->user_id = $user->id;
+                $persona->save();
+                $perfil = new perfil();
+                $perfil->foto_perfil="perfil-default.jpg";
+                $perfil->users_id=$user->id;
+                $perfil->save();
+                return Response::json(array("estado"=>200,"message"=>"El usuario ha sido registrado exitosamente"));
+
+            }catch (Exception $e) {
+                return Response::json(array("estado"=>500,"message"=>$e));
+            }
+        }
 	}
 	function update(){
 		
@@ -115,130 +175,7 @@ class usersController extends BaseController(){
             return "true";
         }else return "false";
     }
-    public function saveAdmin(){
-        $dateNow = date("Y-m-d");
-        $date_min =strtotime("-18 year",strtotime($dateNow));
-        $date_min=date("Y-m-d",$date_min);
-        $rules=[
-            "username_admin"          =>"required|unique:users,username|max:50",
-            "password_admin"          =>"required|min:8|max:100",
-            "cpassword_admin"         =>"required|same:password_admin",
-            "nombre_admin"            =>"required|letter|max:50",
-            "apellido_paterno_admin"  =>"required|letter|max:30",
-            "apellido_materno_admin"  =>"required|letter|max:30",
-            "sexo_admin"              =>"required|string|size:1",
-            "fecha_nacimiento_admin"  =>"required|date_format:Y-m-d|before:$date_min",
-            "role_admin"              =>"required"
-
-        ];
-        $messages = [
-                     "required"    =>  "Este campo :attribute es requerido",
-                     "alpha"       =>  "Solo puedes ingresar letras",
-                     "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
-                     "date"        =>  "Formato de fecha invalido",
-                     "numeric"     =>  "Solo se permiten digitos",
-                     "email"       =>  "Ingresa un formato de correo valido",
-                     "unique"      =>  "Este usuario ya existe",
-                     "integer"     =>  "Solo se permiten numeros enteros",
-                     "exists"      =>  "El campo :attribute no existe en el sistema",
-                     "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-                     "integer"     =>  "Solo puedes ingresar numeros enteros",
-                     "same"        =>  "Las contraseñas no coinciden",
-                     "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-         ];
-        $validaciones = Validator::make(Input::all(),$rules,$messages);
-        if($validaciones->fails()){
-            return $validaciones->messages();
-        }else{
-            try {
-                $user = new User();
-                $user->username=Input::get('username_admin');
-                $user->password=Hash::make(Input::get('password_admin'));
-                $user->active=1;
-                $user->token= sha1($user->username);
-                $user->skin_id=skin::all()->first()->id;
-                $user->save();
-                $user->attachRole(Input::get('role_admin'));
-                $persona = new persona();
-                $persona->nombre = Input::get('nombre_admin');
-                $persona->apellido_paterno = Input::get('apellido_paterno_admin');
-                $persona->apellido_materno = Input::get('apellido_materno_admin');
-                $persona->sexo = Input::get('sexo_admin');
-                $persona->fecha_nacimiento = Input::get('fecha_nacimiento_admin');
-                $persona->user_id = $user->id;
-                $persona->save();
-                $perfil = new perfil();
-                $perfil->foto_perfil="perfil-default.jpg";
-                $perfil->users_id=$user->id;
-                $perfil->save();
-                return Response::json(array("estado"=>200,"message"=>"El usuario ha sido registrado exitosamente"));
-
-            }catch (Exception $e) {
-                return Response::json(array("estado"=>500,"message"=>$e));
-            }
-        }
-
-    }
-    public function webhook_check_pay(){
-        // Analizar la información del evento en forma de json
-        $body = @file_get_contents('php://input');
-        $event_json = json_decode($body);
-        http_response_code(200); // Return 200 OK
-
-        if ($event_json->type == 'subscription.paid'){
-            if($event_json->object->status != "paid"){
-                $membresia = membresia::where("token_card","=",$event_json->object->customer_id);
-                $membresia->active = 0;
-                $membresia->save();
-
-            }
-        }
-    }
-    public function pay_card_suscription($user_id=0){
-        if(Request::method() == "GET")
-            return View::make('vista_payment_card');
-        else{
-            $padreRole = Auth::user()->roles[0]->name;
-            /*
-            *
-            *   Conekta Settings
-            *
-            */
-            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
-            Conekta::setLocale('es');
-            try{
-                if($padreRole == "demo_padre"){
-                    $customer = Conekta_Customer::create(array(
-                        "name" => Auth::user()->persona()->first()->nombre,
-                        "email" => Auth::user()->persona()->first()->padre()->first()->email,
-                        "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
-                        "cards"=> array(Input::get('conektaTokenId'))
-                    ));
 
 
-                    $subscription = $customer->createSubscription(array(
-                      "plan_id"=> "curiosity-basico"
-                    ));
-                    if ($subscription->status == 'active') {
-                        // Started success the suscription
-                        Session::put('sub_id',$subscription->id);
-                        return Response::json(array('status'=>'200','statusMessage'=>'success',"message" => "Se ha realizado el cobro con exito"));
-
-                    }
-                    elseif ($subscription->status == 'past_due') {
-                      // Fail suscription
-                      return Response::json(array(0=>'error'));
-                    }
-                }
-                else{
-                    return Response::json(array('status'=>'CU-101','statusMessage'=>'father demo',"message" => "La cuenta demo no puede adquirir una versión premium"));
-                }
-            }catch (Conekta_Error $e){
-                return Response::json(array('statusMessage'=>'Conekta ERROR',"message" => $e->getMessage()));
-            }
-
-
-        }
-    }
 }
 ?>
