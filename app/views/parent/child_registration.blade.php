@@ -77,7 +77,7 @@
                   <!--Content-->
                   <h4>Panel de registro</h4>
                   <hr>
-                  <form class="upch-frm">         
+                  <form class="upch-frm">
                     <!--Body-->
                        <!--Body-->
                         <div class="md-form">
@@ -103,15 +103,10 @@
                            <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
                         </div>
                         <hr>
-                        <div class="footer-description">
-                          <div class="carousel-btn-actions">
-                            <button type="reset" data-card="card-1" class="btn btn-warning btn-border-curiosity rotate-btn">Cancelar</button>
-                            <button type="button" class="btn btn-indigo btn-border-curiosity">Siguiente</button>
-                          </div>|
-                          <div class="carousel-text-description col-md-6">
-                            <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem </p>
-                          </div>
-                        </div> 
+                        <div class="text-xs-center">
+                           <button type="reset" data-card="card-1" class="btn btn-warning btn-border-curiosity rotate-btn">Cancelar</button>
+                           <button type="button" class="btn btn-indigo btn-border-curiosity">Siguiente</button>
+                        </div>
                      </form>
                   <!--Triggering button-->
               </div>

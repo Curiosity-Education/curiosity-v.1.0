@@ -1,6 +1,6 @@
 $(function(){
 
-	/* Transitions of the Views ----------------------------------- */
+	/* Transitions of the View ------------------------------------ */
 
 	$('.lp-PDFselect').click(function(){
 		$('#lp-row-showPDF').removeClass("lp-content-disabled");
