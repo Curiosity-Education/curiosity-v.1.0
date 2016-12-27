@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
 @section('title-baner')
-<i class="fa fa-child"> Administración de hijos</i>
+ <i class="fa fa-child"></i> Administración de hijos 
 @stop
 @section('content-parent')
 <div class="container-fluid">
@@ -53,10 +53,8 @@
       <!--Rotating card-->
       <div class="card-wrapper">
           <div id="card-1" class="card-rotating effect__click">
-
               <!--Front Side-->
               <div class="face front">
-
                   <!-- Image-->
                   <div class="card-up">
                       <img src="packages/assets/media/images/parents/children/ninos.jpg" class="img-fluid">
@@ -76,14 +74,12 @@
 
               <!--Back Side-->
               <div class="face back">
-
                   <!--Content-->
                   <h4>Panel de registro</h4>
                   <hr>
                   <form class="upch-frm">
                     <!--Body-->
                        <!--Body-->
-
                         <div class="md-form">
                            <i class="fa fa-user prefix"></i>
                            <input type="text" id="upch-username" name="upch-username" class="form-control">
@@ -106,18 +102,15 @@
                            </h5>
                            <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
                         </div>
-
                         <hr>
                         <div class="text-xs-center">
                            <button type="reset" data-card="card-1" class="btn btn-warning btn-border-curiosity rotate-btn">Cancelar</button>
                            <button type="button" class="btn btn-indigo btn-border-curiosity">Siguiente</button>
                         </div>
                      </form>
-
                   <!--Triggering button-->
               </div>
               <!--/.Back Side-->
-
           </div>
       </div>
       <!--/.Rotating card-->
@@ -126,7 +119,7 @@
 </div>
 @stop
 
-@section('js')
+@section('js-plus')
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
+<script src="/packages/assets/js/parent/child-registration.js" charset="utf-8"></script>
 @stop

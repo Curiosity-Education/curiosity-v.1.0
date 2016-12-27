@@ -1,7 +1,7 @@
 @extends('templates.user-master')
 
 @section('css')
-<link rel="stylesheet" href="packages/assets/css/parent/main.css">
+<link rel="stylesheet" href="/packages/assets/css/parent/main.css">
 @yield('css-plus')
 @stop
 
@@ -53,22 +53,17 @@
 @stop
 @section('content')
 	<!-- Banner -->
-	<div class="row">
-		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
-		  <div class="mask flex-center">
-<<<<<<< HEAD
-			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o"></i>&nbsp; @yield('title-baner')</h4>
-		  </div>
-		</div>
-	</div><br>
-=======
-			 <h4 class="h4-responsive white-text">@yield('title-baner')</h4>
-		  </div>
-		</div>
-	</div><br>
+	<div class="row z-depth-1 animated fadeInRight" id="row-banner">
+      <div class="view hm-black-strong z-depth-1 col-xs-12 banner-parent">
+        <div class="mask flex-center waves-effect waves-light">
+          <h4 class="h4-responsive white-text">&nbsp; @yield('title-baner') &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up bn-close" data-toggle="tooltip" data-placement="bottom" title="" data-target="#row-banner" data-original-title="Ocultar titulo"></i></h4>
+        </div>
+        <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down bn-close waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ocultar titulo" data-target="#row-banner"><i class="fa fa-times"></i></a>
+      </div>
+   </div>
 	@yield('content-parent')
->>>>>>> origin/master
 @stop
 @section('js')
+<script type="text/javascript" src="/packages/assets/js/parent/parent.js"></script>
 @yield('js-plus')
 @stop

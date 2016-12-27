@@ -1,50 +1,81 @@
 @extends('templates.parent-menu')
 
-@section('css-plus')
-<link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
+@section('title')
+Curiosity | Perfil
+@stop
+@section('title-baner')
+ <i class="fa fa-user"></i> Mi perfil
+@stop
+@section('content-parent')
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-5 col-lg-5">
+            <!--Card-->
+            <div class="card testimonial-card animated fadeInLeft" data-wow-delay="1s">
+
+                <!--Bacground color-->
+                <div class="card-up bg-blue">
+                </div>
+
+                <!--Avatar-->
+                <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="rounded-circle img-responsive">
+                </div>
+
+                <div class="card-block">
+                    <!--Name-->
+                    <h4 class="card-title">Username´s parent</h4>
+                    <hr>
+                    <!--Quotation-->
+                    <a class="btn btn-green btn-border-curiosity waves-effect waves-light" data-card="card-1"><i class="fa fa-refresh"></i> Editar mis datos</a>  
+                </div>
+            </div>
+            <!--/.Card-->
+         </div>
+         <div class="col-md-7 col-lg-7">
+            <!--Form about novedades-->
+            <div class="card animated fadeInRight" data-wow-delay="1s">
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="form-header p-novedades bg-blue darken-4">
+                        <h3><i class="fa fa-matk-question"></i> Quzas te interese!</h3>
+                    </div>
+
+                   
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer text-center">
+                   <h5>Novedades</h5>
+                </div>
+
+            </div>
+            <!--/Form about novedades-->
+            <!--Form for refresh perfil-->
+            <div class="card animated fadeInRight" data-wow-delay="1s">
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="form-header p-novedades bg-blue darken-4">
+                        <h3><i class="fa fa-matk-question"></i> Mis datos!</h3>
+                    </div>
+
+                   
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer text-center">
+                   <h5>Ediatar datos</h5>
+                </div>
+
+            </div>
+            <!--/Form for refresh perfil-->
+         </div>
+      </div>
+   </div>
 @stop
 
-@section('content')
-<div class="carousel">
-   <a href="javascript:void(0)" class="carousel-item">
-      <div class="itemCarousel">
-         <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-         <h6>Odaliz Ramirez</h6>
-      </div>
-   </a>
-   <a href="javascript:void(0)" class="carousel-item">
-      <div class="itemCarousel">
-         <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-         <h6>Odaliz Ramirez</h6>
-      </div>
-   </a>
-   <a href="javascript:void(0)" class="carousel-item">
-      <div class="itemCarousel">
-         <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-         <h6>Odaliz Ramirez</h6>
-      </div>
-   </a>
-   <a href="javascript:void(0)" class="carousel-item">
-      <div class="itemCarousel">
-         <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-         <h6>Odaliz Ramirez</h6>
-      </div>
-   </a>
-   <a href="javascript:void(0)" class="carousel-item">
-      <div class="itemCarousel">
-         <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-         <h6>Odaliz Ramirez</h6>
-      </div>
-   </a>
-</div>
-
-<div id="prntHome-contentInfo">
-   <center><div id="prntHome-contentInfo-arrow"></div></center>
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, odio. Quis assumenda ipsa, non et autem tempore cum! Dolore harum tempore commodi rerum neque eligendi, ea illo nihil? Atque voluptatem, a id reprehenderit perferendis officiis repellat laudantium consequatur culpa cumque labore voluptas nihil molestiae perspiciatis, ut, doloribus provident dolores eaque nulla asperiores quos pariatur ex animi! Vero repellat tempora a pariatur sunt, sit inventore ex ut officia quam eum qui aspernatur tenetur, alias distinctio porro. Ratione excepturi, numquam dolores dolorum distinctio consequuntur sit consectetur nesciunt incidunt neque repellat expedita facilis fugit est error. Quia, officiis enim dolorem esse doloremque!
-</div>
-@stop
-
-@section('js')
-<script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
+@section('js-plus')
 @stop

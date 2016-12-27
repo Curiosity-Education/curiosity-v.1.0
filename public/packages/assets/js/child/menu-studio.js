@@ -2,13 +2,11 @@ $(function(){
 
 	/*
 	|--------------------------------------------------------------------------
-	| Gestión de niveles y bloques
+	| area of buttons referents to degrees and inteligent of curiosity
 	|--------------------------------------------------------------------------
 	|
-	| En esta sección de codigo se lleva acabo la gestión de visibilidad
-	| de niviles y bloques,
-	| 
-	| 
+	| this section is for management the inteligents and degrees, that
+	| those are hadled in curiosity
 	*/
 	
 	$(".btn-inteligent").click(function(){
@@ -45,6 +43,12 @@ $(function(){
 			$("a.dismiss").trigger("click");
 		}
 	});
+	/*
+	|--------------------------------------------------------------------------
+	| //.. end to management of inteligent and degrees ..//
+	|--------------------------------------------------------------------------
+	*/
+
 	/*
 	|--------------------------------------------------------------------------
 	| Objeto del modulo correspondiente
