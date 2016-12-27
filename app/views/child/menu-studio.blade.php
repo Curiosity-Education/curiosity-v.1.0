@@ -5,15 +5,25 @@
     @section('title')Curiosity | @stop
     @section('content')
       <div class="container-fluid" id="container-menu-studio-child">
+       <!-- Banner -->
+        <div class="row">
+            <div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
+              <div class="mask flex-center">
+                 <h4 class="h4-responsive white-text"><i class="fa fa-gamepad"></i>&nbsp; Biblioteca de Juegos</h4>
+              </div>
+            </div>
+        </div><br>
+        <!--//.. Banner -->
+        <!-- Row inteligents and Degrees -->
         <div class="row" id="row-inteligents">
           <div class="col-md-3 col-sm-3 col-inteligent">
-            <a class="btn btn-purple btn-inteligent btn-math"> Matemáticas
+            <a class="btn btn-purple btn-inteligent btn-math"><i class="fa fa-book"></i>&nbsp; Matemáticas
               <div class="ms-arrow"></div>
             </a>
 
           </div>
           <div class="col-md-3 col-sm-3 col-inteligent">
-            <a class="btn btn-purple btn-inteligent btn-robotic"> Robotica
+            <a class="btn btn-purple btn-inteligent btn-robotic"><i class="fa fa-book"></i>&nbsp; Robotica
               <div class="ms-arrow"></div>
             </a>
           </div>
@@ -51,6 +61,8 @@
             </div>
           </div>
         </div>
+        <!--//.. Row inteligents and Degrees -->
+        <!-- row cards games -->
         <div class="row">
           <div class="col-md-4 col-sm-4">
             <!--Card-->
@@ -208,6 +220,7 @@
             <!--/.Card-->
           </div>
         </div>  
+        <!--//.. row cards games -->
       </div>
     @stop
 @section('js')
