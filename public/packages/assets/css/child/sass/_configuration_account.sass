@@ -13,19 +13,60 @@
 		margin: 6px
 		white-space: normal!important
 		word-wrap: break-word
-		margin-right: 27%
+		margin-right: 28%
 		@media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape)
 			margin-right: 22%
+		@media (min-width: $smartphone-size-portrait - 10px) and (max-width: $smartphone-size-landscape + 10px)
+			margin-right: 0%
+	@media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape)
+		height: 80% !important
+
+.ca-btnConf
+	@media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape)
+		margin-top: 3rem !important
 
 #ca-cardData
 	margin-top: 1rem
 	padding: 0rem 2rem 0rem 1rem
 	border-right: solid .2rem #bdbdbd
+	@media (min-width: $smartphone-size-portrait - 10px) and (max-width: $smartphone-size-landscape + 10px)
+		border-right-style: none !important
+		padding: 0rem 1rem 0rem 1rem
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		display: none
 
 #ca-cardGoal
 	margin-top: 1rem
 	padding: 0rem 1.1rem 0rem 2rem
+	@media (min-width: $smartphone-size-portrait - 10px) and (max-width: $smartphone-size-landscape + 10px)
+		padding: 0rem 1.1rem 0rem 1rem
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		display: none
 
 .ca-formData
 	.md-form
 		margin-bottom: 0rem
+
+#ca-img-goal
+	border-radius: 50% !important
+	height: 6rem !important
+	width: 6rem	!important
+
+.ca-btn
+	&:hover
+		background-color: transparent !important
+
+.ca-goals-img
+	border-radius: 50% !important
+	height: 4rem !important
+	width: 4rem	!important
+	margin-bottom: .5rem
+
+#ca-text-info
+	padding: 6rem .8rem .8rem .8rem !important
+	background-color: $color-white
+	border-radius: $border-rad !important
+	display: none
+	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
+		display: block
+		position: static
