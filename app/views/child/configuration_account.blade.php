@@ -11,8 +11,13 @@
 			<!-- Banner -->
 			<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 			  <div class="mask flex-center">
-				 <h4 class="h4-responsive white-text"><i class="fa fa-cogs"></i>&nbsp; Configuración de mi cuenta</h4>
+				 <h4 class="h4-responsive white-text text-xs-center"><i class="fa fa-cogs"></i>&nbsp; Configuración de mi cuenta</h4>
 			  </div>
+			</div>
+
+			<!-- Message for smartphone landscape -->
+			<div class="col-md-12 z-depth-1" id="ca-text-info">
+				<h1 class="text-xs-center h1-responsive">Para mejor interacción gira tu dispositivo en forma vertical</h1>
 			</div>
 
 			<!-- Card configuration of data -->
@@ -35,9 +40,9 @@
 								<!--Card content-->
 								<div class="card-block">
 									<!--Title-->
-									<h4 class="card-title"><i class="fa fa-user"></i>&nbsp; USERNAME</h4>
+									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp; USERNAME</h4>
 									<hr>
-									<a class="activator btn btn-default btn-rounded">Editar mis datos</a>
+									<a class="activator btn btn-default btn-rounded ca-btnConf">Editar mis datos</a>
 								</div>
 								<!--/.Card content-->
 
@@ -69,9 +74,9 @@
 											</div>
 										<hr>
 
-										<!--Social Icons-->
+										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center">
-											<li><a class="btn btn-warning btn-rounded">Cancelar</a></li>
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn">Cancelar</a></li>
 											<li><a class="btn btn-secondary btn-rounded">Siguiente</a></li>
 										</ul>
 
@@ -108,9 +113,9 @@
 								<!--Card content-->
 								<div class="card-block">
 									<!--Title-->
-									<h4 class="card-title"><i class="fa fa-flag-checkered"></i>&nbsp; Meta diaria</h4>
+									<h4 class="card-title text-xs-left"><i class="fa fa-flag-checkered"></i>&nbsp; Meta diaria</h4>
 									<hr>
-									<a class="activator btn btn-info btn-rounded">cambiar mi meta</a>
+									<a class="activator btn btn-info btn-rounded ca-btnConf">cambiar mi meta</a>
 								</div>
 								<!--/.Card content-->
 
@@ -119,29 +124,56 @@
 									<!--Content-->
 									<div class="content text-xs-center">
 
-										<h4 class="card-title">Social shares <i class="fa fa-close"></i></h4>
+										<h4 class="card-title text-xs-center">Meta Diaria Actual <i class="fa fa-close"></i></h4>
 										<hr>
 
 										<!--Social Icons-->
 										<ul class="inline-ul">
-											<li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-											<li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+											<li>
+												<div class="container-fluid">
+													<div class="row">
+														<!-- image of Daily goal -->
+														<div class="">
+															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid" alt="" id="ca-img-goal"></center>
+														</div>
+														<!-- name of Daily goal -->
+														<div class="text-xs-center">
+															<h4 class="h4-responsive"><span class="tag red">Emocionado</span></h4>
+														</div>
+													</div>
+												</div>
+											</li>
 										</ul>
-
-										<h5>Join our community</h5>
 										<hr>
-
-										<!--Social Icons-->
-										<ul class="inline-ul">
-											<li><a class="btn btn-fb"><i class="fa fa-facebook"> </i></a></li>
-											<li><a class="btn btn-tw"><i class="fa fa-twitter"> </i></a></li>
-											<li><a class="btn btn-li"><i class="fa fa-linkedin"> </i></a></li>
-											<li><a class="btn btn-ins"><i class="fa fa-instagram"> </i></a></li>
+										<div class="container-fluid">
+											<div class="col-md-12">
+												<div class="row">
+													<a href="#">
+														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
+															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">Normal</span><br><br>3 juegos</h6>
+														</div>
+													</a>
+													<a href="#">
+														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
+															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">Conquistador</span><br><br>5 juegos</h6>
+														</div>
+													</a>
+													<a href="#">
+														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
+															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">Emocionado</span><br><br>8 juegos</h6>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<hr>
+										<!--buttons of options-->
+										<ul class="inline-ul text-xs-center">
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn">Cancelar</a></li>
+											<li><a class="btn btn-success btn-rounded">Guardar</a></li>
 										</ul>
 
 									</div>
