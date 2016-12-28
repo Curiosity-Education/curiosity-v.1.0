@@ -3,7 +3,6 @@
 class Activity extends Eloquent
 {
     protected $table='actividades';
-    protected $fillable=['nombre','objetivo','estatus','active', 'tema_id', 'bg_color', 'imagen', 'pdf'];
   /*
   *
   * An activity has a video
