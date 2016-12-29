@@ -136,7 +136,7 @@ class loginController extends BaseController{
          return View::make('vista_login');
       }
     }
-    public function exit(){
+    public function goOut(){
         Auth::logout();
         return Redirect::to('/');
     }
@@ -292,8 +292,6 @@ class loginController extends BaseController{
     }
     return $folio;
   }
-  }
-
 
   function get(){
 
