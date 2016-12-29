@@ -122,57 +122,77 @@ Route::get('/registro-exitoso',function(){
 
 /*
 *   Register for users
-
+*/
 Route::group(array('prefix' => 'register'),function(){
-    Route::post('remote-email','padreController@remoteEmail');
+	Route::group(array('before' => ''), function(){
+		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
+		Route::post('remote-email','padreController@remoteEmail');
     Route::get('confirm/{token}','padreController@confirmar');
-    Route::match(array('GET','POST'),'suscription','suscripcionController@suscripcion');
-    Route::match((array('GET','POST')),'parent','padreController@addPadre');
+	});
+    Route::group(array('before' => ''), function(){
+			Route::match(array('GET', 'POST'), '/', 'suscripcionController@viewPage');
+			Route::match(array('GET','POST'),'suscription','suscripcionController@suscripcion');
+	    Route::match((array('GET','POST')),'parent','padreController@addPadre');
+		});
 });
 
 // Facebook user
 Route::group(array('before' => 'unauth'), function(){
-    Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
-    Route::match(array('GET','POST'),'/olvide-mi-contrasena/{token?}', 'loginController@recuperarCont');
-    Route::match(array('GET','POST'),'/login-fb', 'loginController@loginFB');
+	Route::group(array('before' => ''), function(){
+		Route::match(array('GET', 'POST'), '/', 'loginController@viewPage');
+		Route::match('/login', 'loginController@verPagina');
+    Route::match('/olvide-mi-contrasena/{token?}', 'loginController@recuperarCont');
+    Route::match('/login-fb', 'loginController@loginFB');
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
+	});
 });
-// Route::get('/getCiudades','ciudadController@getCiudades');
-Route::post('/remote-username','userController@remoteUsername');
-// Route::post('/sendMensaje','padreController@sendMensaje');
-Route::group(array('before' => 'auth'), function(){
-        Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-        /* Rutas para obtencion de datos de direccion por AJAX
-        Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-        Route::post('/getByCiudades', 'direccionController@getCiudades');
-        /*Rutas para subir y ver juego
-        Route::post('/actividad/setdata','actividadController@setDataActivity');
-        Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
-        Route::group(array('before' => 'only_session'), function(){
-        Route::post('/buscarTema', 'temaController@temasFound');
+// // Route::get('/getCiudades','ciudadController@getCiudades');
+// Route::post('/remote-username','userController@remoteUsername');
+// // Route::post('/sendMensaje','padreController@sendMensaje');
+// Route::group(array('before' => 'auth'), function(){
+//         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
+//         /* Rutas para obtencion de datos de direccion por AJAX*/
+//         Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+//         Route::post('/getByCiudades', 'direccionController@getCiudades');
+//         /*Rutas para subir y ver juego*/
+//         Route::post('/actividad/setdata','actividadController@setDataActivity');
+//         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
+//         Route::group(array('before' => 'only_session'), function(){
+//         Route::post('/buscarTema', 'temaController@temasFound');
         // padres
         Route::group(array('before' => 'gestion_data_padre'), function(){
-          Route::get('/puntajes', 'padreController@getPuntajes');
-          Route::get('/alertas', 'padreController@getAlertasNow');
-          Route::get('/misHijos', 'hijoController@info');
-          Route::get('/gethijos','padreController@gethijos');
-          Route::post('/desgloce/hijo/{idHijo}','hijoController@desgloceJuegos');
-          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');
-          Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');
-          Route::post('/regHijo','hijoController@addHijo');
-          Route::post('/cotarhijos','padreController@getCountHijos');
-          Route::post('/getsegs','padreController@seguimientoHijo');
-          Route::post('/tour-first','padreController@tourFirst');
+					Route::group(array('before' => ''), function(){
+						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
+						Route::get('puntajes', 'padreController@getPuntajes');
+	          Route::get('alertas', 'padreController@getAlertasNow');
+						Route::get('gethijos','padreController@gethijos');
+						Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');
+						Route::post('/cotarhijos','padreController@getCountHijos');
+	          Route::post('/getsegs','padreController@seguimientoHijo');
+	          Route::post('/tour-first','padreController@tourFirst');
+					});
+					Route::group(array('before' => ''), function(){
+						Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
+						Route::get('/misHijos', 'hijoController@info');
+	          Route::post('/desgloce/hijo/{idHijo}','hijoController@desgloceJuegos');
+	          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');
+	          Route::post('/regHijo','hijoController@addHijo');
+					});
+
+
         });
-        // salir (cerrar sesion)
-        Route::get('/logout', 'loginController@salir');
-        // Acceder a juego
-        Route::post('/hasgame','actividadController@hasGame');
-        Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
-        Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
-        // Route::get('/recordatorio','hijoController@recordatorio');
-        Route::get('block', 'bloqueController@verPagina');
-        Route::get('profile', 'userController@verPagina');
+
+
+        // // salir (cerrar sesion)
+        // Route::get('/logout', 'loginController@salir');
+        // // Acceder a juego
+        // Route::post('/hasgame','actividadController@hasGame');
+        // Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
+        // Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
+        // // Route::get('/recordatorio','hijoController@recordatorio');
+        // Route::get('block', 'bloqueController@verPagina');
+        // Route::get('profile', 'userController@verPagina');
+
         Route::group(array('prefix' => 'profile'),function(){
             Route::post('update','perfilController@update');
             Route::group(array('prefix' => 'user'),function(){
@@ -181,50 +201,77 @@ Route::group(array('before' => 'auth'), function(){
             Route::post('checkPassword','perfilController@checkPassword');
         });
 
-        Route::post('remote-username-update','userController@remoteUsernameUpdate');
-        Route::post('remote-password-update','userController@remotePasswordUpdate');
-      	Route::post('remote-username-hijo','userController@remoteUsernameHijo');
-        Route::post('remote-username-admin','userController@remoteUsernameAdmin');
-        Route::post('foto','perfilController@cutImage');
-        Route::post('regAdmin','userController@saveAdmin');
+        // Route::post('remote-username-update','userController@remoteUsernameUpdate');
+        // Route::post('remote-password-update','userController@remotePasswordUpdate');
+      	// Route::post('remote-username-hijo','userController@remoteUsernameHijo');
+        // Route::post('remote-username-admin','userController@remoteUsernameAdmin');
+        // Route::post('foto','perfilController@cutImage');
+        // Route::post('regAdmin','userController@saveAdmin');
         // Realizar Actividades
         Route::group(array('before' => 'realizar_actividades'),function(){
-            Route::group(array('before' => 'utilizar_tienda'), function(){
-                Route::get('/tienda', 'tiendaController@viewPage');
+            Route::group(array('before' => 'use-store'), function(){
+							Route::match(array('GET', 'POST'),'/', 'tiendaController@viewPage');
+                Route::get('tienda', 'tiendaController@viewPage');
+								Route::post('change-skin', 'tiendaController@cambiarSkin');
+		            Route::post('buy-skin', 'tiendaController@comprarSkin');
+		            Route::post('change-skin', 'tiendaController@cambiarAvatar');
             });
-            Route::post('change-skin', 'tiendaController@cambiarSkin');
-            Route::post('buy-skin', 'tiendaController@comprarSkin');
-            Route::post('change-skin', 'tiendaController@cambiarAvatar');
-            Route::get('home', 'contenidoController@getInicio');
-            Route::post('assign/avatar', 'hijoController@asignAvatar');
-            Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
-            Route::get('level', 'nivelController@verPaginaInWeb');
-            Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
-            Route::get('block-{id}', 'bloqueController@verPaginaInWeb');
-            Route::get('topic-{id}', 'temaController@verPaginaInWeb');
-            Route::get('activity{id}', 'actividadController@verPaginaInWeb');
-            Route::post('goal/change', 'hijoController@changeMeta');
-            Route::post('getSpriteselected-{nameType}', 'secuenciaController@getSelectedSprite');
-            Route::post('get-videos', 'contenidoController@getAllVideos');
+						Route::group(array('before' => 'content'), function(){
+							Route::match(array('GET', 'POST'), '/', 'contenidoController@viewPage');
+							Route::get('home', 'contenidoController@getInicio');
+							Route::post('get-videos', 'contenidoController@getAllVideos');
+						});
+						Route::group(array('before' => 'son'), function(){
+							Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
+							Route::post('assign/avatar', 'hijoController@asignAvatar');
+							Route::post('goal/change', 'hijoController@changeMeta');
+						});
+            Route::group(array('before' => ''),function(){
+							Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
+							Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
+							Route::get('activity{id}', 'actividadController@verPaginaInWeb');
+						});
+						Route::group(array('before' => ''), function(){
+							Route::match(array('GET', 'POST'), '/', 'nivelController@viewPage');
+							Route::get('level', 'nivelController@verPaginaInWeb');
+						});
+            Route::group(array('before' => ''), function(){
+							Route::match(array('GET', 'POST'), '/', 'inteligenciaController@viewPage');
+							Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
+						})
+						Route::group(array('before' => ''), function(){
+							Route::match(array('GET', 'POST'), '/', 'bloqueController@viewPage');
+							Route::get('block-{id}', 'bloqueController@verPaginaInWeb');
+						});
+						Route::group(array('before' => ''), function(){
+							Route::match(array('GET', 'POST'), '/', 'temaController@View');
+							Route::get('topic-{id}', 'temaController@verPaginaInWeb');
+						});
+						Route::group(array('before' => ''), function(){
+							Route::match(array('GET', 'POST'), '/', 'secuenciaController@viewPage');
+							Route::post('getSpriteselected-{nameType}', 'secuenciaController@getSelectedSprite');
+						});
         });
 
 		// NOVEDADES
 
-		/*Route::group(array('before' => 'gestionar_novedades'),function(){
-			// Validaciones remotas
-			Route::match(array('GET','POST'), '/tituloRemoto-papa', 'novedadesController@tituloNov_papa');
-			Route::match(array('GET','POST'), '/tituloRemoto-hijo', 'novedadesController@tituloNov_hijo');
-      		Route::match(array('GET','POST'), '/linkRemoto-hijo', 'novedadesController@linkNov_hijo');
+		Route::group(array('before' => 'gestionar_novedades'),function(){
+			Route::group(array('prefix' => 'news'), function(){
+				Route::match(array('GET', 'POST'), '/', 'novedadesController@viewPage');
+				// Validaciones remotas
+				Route::match('tituloRemoto-papa', 'novedadesController@tituloNov_papa');
+				Route::match('tituloRemoto-hijo', 'novedadesController@tituloNov_hijo');
+	      Route::match('linkRemoto-hijo', 'novedadesController@linkNov_hijo');
+				// Gestión Novedades
+				Route::match('viewNews', 'novedadesController@getViewNovedad');
+				Route::match('add-dad', 'novedadesController@add_papaNovedad');
+				Route::match('edit-dad/{id}', 'novedadesController@edit_papaNovedad');
+				Route::match('delete-dad/{id}', 'novedadesController@delete_papaNovedad');
+				Route::match('add-son', 'novedadesController@add_hijoNovedad');
+				Route::match('edit-son/{id}', 'novedadesController@edit_hijoNovedad');
+				Route::match('delete-son/{id}', 'novedadesController@delete_hijoNovedad');
 
-			// Gestión Novedades
-			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
-
-			Route::match(array('GET','POST'), '/add-papaNovedad', 'novedadesController@add_papaNovedad');
-			Route::match(array('GET','POST'), '/edit-papaNovedad/{id}', 'novedadesController@edit_papaNovedad');
-			Route::match(array('GET','POST'), '/delete-papaNovedad/{id}', 'novedadesController@delete_papaNovedad');
-			Route::match(array('GET','POST'), '/add-hijoNovedad', 'novedadesController@add_hijoNovedad');
-			Route::match(array('GET','POST'), '/edit-hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
-			Route::match(array('GET','POST'), '/delete-hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
+			});
 
 		});
 
@@ -390,4 +437,3 @@ Route::group(array('before' => 'auth'), function(){
 
 
 });*/
-
