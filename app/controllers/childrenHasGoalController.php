@@ -4,7 +4,7 @@ class childrenHasGoal extends BaseController{
 
     public function update(){
         $idGoal = Input::get('data');
-        $idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
+        $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
 
         DB::table('hijos_metas_diarias')
         ->where('hijo_id', '=', $idSon)
