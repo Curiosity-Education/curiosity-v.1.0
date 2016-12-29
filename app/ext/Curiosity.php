@@ -99,25 +99,21 @@ class Curiosity{
       }
    }
 
-   public static function bubleSortObject($array = [], $attr = "", $asc = false){
-      for ($e=0; $e < count($array); $e++) {
-         if (!$asc){
-            for ($izq=0; $izq < (count($array) - $e); $izq++) {
-               $der = $izq + 1;
-               if ($array[$izq][$attr] < $array[$der][$attr]){
-                  $objTemp = $array[$izq];
-                  $array[$izq] = $array[$der];
-                  $array[$der] = $objTemp;
+   public static function bubleSortObject($array = [], $attr = "", $order = 'asc'){
+      for ($i=0; $i < count($array); $i++) {
+         for ($e = 0; $e < count($array); $e++) {
+            if ($order == 'asc'){
+               if ($array[$i][$attr] < $array[$e][$attr]){
+                  $temp = $array[$i];
+                  $array[$i] = $array[$e];
+                  $array[$e] = $temp;
                }
             }
-         }
-         else{
-            for ($izq=0; $izq < (count($array) - $e); $izq++) {
-               $der = $izq + 1;
-               if ($array[$izq][$attr] < $array[$der][$attr]){
-                  $objTemp = $array[$izq];
-                  $array[$izq] = $array[$der];
-                  $array[$der] = $objTemp;
+            else{
+               if ($array[$i][$attr] > $array[$e][$attr]){
+                  $temp = $array[$i];
+                  $array[$i] = $array[$e];
+                  $array[$e] = $temp;
                }
             }
          }

@@ -2,7 +2,9 @@
 class activitiesController extends BaseController{
 
 	function get(){
-
+		$id = Input::get('data.id');
+		$activity = Activity::where('id', '=', $id)->get();
+		return $activity;
 	}
 
 	function all(){
@@ -109,7 +111,7 @@ class activitiesController extends BaseController{
 				array_push($rankingGroup, array('activity' => $activity, 'average' => $average));
 			}
 		}
-		$rankingGroup = Curiosity::bubleSortObject($rankingGroup, 'average', true);
+		$rankingGroup = Curiosity::bubleSortObject($rankingGroup, 'average', 'desc');
 		return $rankingGroup;
 	}
 
