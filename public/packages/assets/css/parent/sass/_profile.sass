@@ -1,6 +1,40 @@
 .bg-blue
-	background-color: $color-blue
+	background-color: $color-blue !important
 .container-fluid
 	padding-top: 1rem
-.p-novedades
+.p-novedades,.p-data-editing
 	margin-top: -1.7em !important
+	margin-bottom: 1rem !important
+	border-radius: $border-rad !important
+
+.card-border-standard
+	.card-block,.modal-footer
+		border-radius: $border-rad !important
+
+.p-card-user
+	display: none
+.border-left
+	border-left: .09rem solid $color-dark-gray !important
+.border-right
+	border-right: .09rem solid $color-dark-gray !important
+.p-list-news
+	padding: 2rem
+	padding-top: 1rem
+.p-list-news>li
+	margin-bottom: .9rem
+	cursor: pointer
+
+.card-block-right 
+	padding: 1rem
+	padding-right: 1rem
+.img-new
+	padding-left: -2rem !important
+	padding-right: -2rem !important
+.p-card-user
+	padding-left: 3rem
+	padding-right: 4rem
+div[class*="tab"]
+	display: none
+
+div[class*="tab"].active
+	display: block

@@ -48,18 +48,18 @@ class usersController extends BaseController(){
                 $user->skin_id=skin::all()->first()->id;
                 $user->save();
                 $user->attachRole(Input::get('role_admin'));
-                $persona = new persona();
-                $persona->nombre = Input::get('nombre_admin');
-                $persona->apellido_paterno = Input::get('apellido_paterno_admin');
-                $persona->apellido_materno = Input::get('apellido_materno_admin');
-                $persona->sexo = Input::get('sexo_admin');
-                $persona->fecha_nacimiento = Input::get('fecha_nacimiento_admin');
-                $persona->user_id = $user->id;
-                $persona->save();
-                $perfil = new perfil();
-                $perfil->foto_perfil="perfil-default.jpg";
-                $perfil->users_id=$user->id;
-                $perfil->save();
+                $person = new Person();
+                $person->nombre = Input::get('nombre_admin');
+                $person->apellido_paterno = Input::get('apellido_paterno_admin');
+                $person->apellido_materno = Input::get('apellido_materno_admin');
+                $person->sexo = Input::get('sexo_admin');
+                $person->fecha_nacimiento = Input::get('fecha_nacimiento_admin');
+                $person->user_id = $user->id;
+                $person->save();
+                $profile = new Profile();
+                $profile->foto_perfil="perfil-default.jpg";
+                $profile->users_id=$user->id;
+                $profile->save();
                 return Response::json(array("estado"=>200,"message"=>"El usuario ha sido registrado exitosamente"));
 
             }catch (Exception $e) {
@@ -109,16 +109,16 @@ class usersController extends BaseController(){
             $user->update($data);
             $person= $user->persona();
             $data_person = [
-                "nombre"            =>  $datos["nombre_persona"],
-                "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
-                "apellido_materno"  =>  $datos["apellido_materno_persona"],
-                "sexo"              =>  $datos["sexo_persona"],
-                "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
+                "nombre"            =>  $data["nombre_persona"],
+                "apellido_paterno"  =>  $data["apellido_paterno_persona"],
+                "apellido_materno"  =>  $data["apellido_materno_persona"],
+                "sexo"              =>  $data["sexo_persona"],
+                "fecha_nacimiento"  =>  $data["fecha_nacimiento_persona"]
             ];
             $person->update($data_person);
             $rolee = Auth::user()->roles[0]->name;
             if ($rolee == "padre" || $rolee == "padre_free" || $rolee == "demo_padre"){
-                $dadId = Auth::user()->persona()->first()->padre()->first()->id;
+                $dadId = Auth::user()->Person()->first()->Parent()->first()->id;
                 $dad = padre::where('id', '=', $dadId)->first();
                 $dad->update($data);
             }
@@ -130,63 +130,63 @@ class usersController extends BaseController(){
 	}
     public function verPagina(){
         if(Request::method() == "GET"){
-            $perfil = Auth::User()->perfil()->first();
-            $persona = Auth::User()->persona()->first();
-            $padre=$persona->padre()->first();
-            $estados = estado::all();
-            $escuelas = escuela::where('active', '=', '1')->get();
+            $perfil = Auth::User()->profile()->first();
+            $persona = Auth::User()->person()->first();
+            $padre=$persona->Padre()->first();
+            $estados = State::all();
+            $escuelas = School::where('active', '=', '1')->get();
             $idAuth = Auth::user()->id;
             $rol = Auth::user()->roles[0]->name;
             if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre')){
               $novedades = novedadesController::getNovedadesToDad();
-              $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
-              $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
+              $idDad = Auth::user()->Person()->first()->Parent()->pluck('id');
+              $sonData = Parent::join('hijos', 'hijos.padre_id', '=', 'padres.id')
               ->join('personas', 'personas.id', '=', 'hijos.persona_id')
               ->join('users', 'users.id', '=', 'personas.user_id')
               ->join('perfiles', 'perfiles.users_id','=', 'users.id')
               ->where('users.active', '=', '1')
-              ->where('hijos.padre_id', '=', $idPadre)
+              ->where('hijos.padre_id', '=', $idDad)
               ->select('hijos.id as idHijo', 'personas.nombre','personas.apellido_paterno','personas.apellido_materno','personas.fecha_nacimiento','users.active', 'perfiles.foto_perfil')->get();
-              return View::make('vista_papa_inicio')->with(array('datosHijos' => $datosHijos, 'novedades' => $novedades));
+              return View::make('vista_papa_inicio')->with(array('datosHijos' => $sonData, 'novedades' => $novedades));
             }
             else if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
               // Obtenemos el id del hijo logueado
-              $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+              $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
               // --- Verificamos la fecha para la meta diaria del hijo
               // --- Si es la primera vez del dia en la que ha iniciado sesión
               // --- se hace el registro de la fecha actual del servidor y se establece
               // --- su avance en cero (0) ya que no ha jugado nada en el dia
               $now = date("Y-m-d");
-              $meta = new metaController();
-              $metas = $meta->getAll();
-              $miMeta = $meta->getMetaHijo();
-              if (!$meta->hasMetaToday()){
+              $goal = new goalController();
+              $goals = $goal->getAll();
+              $myGoal = $goal->getMetaHijo();
+              if (!$goal->hasMetaToday()){
                 DB::table('avances_metas')->insert(array(
                   'avance' => 0,
                   'fecha' => $now,
-                  'avance_id' => $miMeta->metaAsignedId
+                  'avance_id' => $myGoal->metaAsignedId
                 ));
               }
-              $avanceMeta = $meta->getAvanceMetaHijo();
-              $experiencia = DB::table('hijo_experiencia')->where('hijo_id', '=', $idHijo)->first();
-              $coins = $experiencia->coins;
+              $advanceGoal = $goal->getAvanceMetaHijo();
+              $experience = DB::table('hijo_experiencia')->where('hijo_id', '=', $idSon)->first();
+              $coins = $experience->coins;
 
               // --- Calculo del avance en porcenaje de la meta del hijo
-              $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
-              if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
+              $avgAdvanceGoal = round(($advanceGoal * 100) / $miMeta->meta);
+              if ($avgAdvanceGoal > 100) { $avgAdvanceGoal = 100; }
 
               // --- Calculo de cuanto falta para cumplir la meta diaria
-              $faltanteMeta = $miMeta->meta - $avanceMeta;
-              if ($faltanteMeta < 0) { $faltanteMeta = 0; }
+              $missingGoal = $myGoal->meta - $advanceGoal;
+              if ($missingGoal < 0) { $missingGoal = 0; }
 
               return View::make('vista_hijo_inicio')
               ->with(array(
-                'experiencia' => $experiencia,
-                'metas' => $metas,
-                'miMeta' => $miMeta,
-                'porcAvanceMeta' => $porcAvanceMeta,
-                'avanceMeta' => $avanceMeta,
-                'faltanteMeta' => $faltanteMeta,
+                'experiencia' => $experience,
+                'metas' => $goals,
+                'miMeta' => $myGoal,
+                'porcAvanceMeta' => $avgAdvanceGoal,
+                'avanceMeta' => $advanceGoal,
+                'faltanteMeta' => $missingGoal,
                 'coins' => $coins,
                 'nombreAvatar' => avatarController::getSelectedInfo()->nombre
               ));

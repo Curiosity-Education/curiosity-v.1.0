@@ -25,9 +25,9 @@ class imageController extends BaseController{
             $profile->save();
             return asset(str_replace(public_path(),"",$imageSave).'?'.$v=rand());
         }else{
-            $image = Image::make(public_path().'/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
+            $image = Image::make(public_path().'/packages/images/perfil/original/'.Auth::user()->Profile()->first()->foto_perfil);
             $image->crop($width,$height,$x,$y);
-            $path= public_path().'/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
+            $path= public_path().'/packages/images/perfil/'.Auth::user()->Profile()->first()->foto_perfil;
             $image->save($path);
             return asset(str_replace(public_path(),"",$path).'?'.$v=rand());
         }
