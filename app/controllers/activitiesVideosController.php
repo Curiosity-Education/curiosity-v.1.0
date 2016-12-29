@@ -26,6 +26,7 @@ class activitiesVideosController extends BaseController{
       'escuelas_apoyo.nombre as schoolName',
       'escuelas_apoyo.logotipo as schoolLogo')
       ->get();
+      return $videos;
    }
 
    public static function save($activity){
