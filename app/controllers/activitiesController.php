@@ -159,7 +159,7 @@ class activitiesController extends BaseController{
 		}
 		else{
 			if ($this->NameActiveExist($data['tema'], $data['nombre'])){
-				// Return a message about the activity's name is living
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
 				$activity = new Activity($data);
@@ -173,6 +173,7 @@ class activitiesController extends BaseController{
 				$file = $data['wallpaper'];
 				$file->move($destinoPath, $activity->wallpaper);
 				$activity->save();
+				activitiesVideosController::save($activity);
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $activity));
 			}
 		}
@@ -212,7 +213,7 @@ class activitiesController extends BaseController{
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 			}
 			else{
-				// Return a message about the new activity's name is living
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 		}
 	}
