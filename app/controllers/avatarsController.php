@@ -2,7 +2,7 @@
 class avatarsController extends BaseController{
 	
 	function get(){
-		$idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
+		$idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $info = DB::table('hijos_avatars')
         ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
         ->join('avatars', 'avatars_estilos.avatars_id', '=', 'avatars.id')

@@ -133,7 +133,7 @@ class parentsController extends BaseController(){
         }
     }
     public function getSons(){
-        $idDad = Auth::user()->person()->first()->parent()->first()->id;
+        $idDad = Auth::user()->Person()->first()->Parent()->first()->id;
         return DB::select("Select users.username, hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
          from padres inner join hijos on hijos.padre_id = padres.id
         inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
@@ -163,7 +163,7 @@ class parentsController extends BaseController(){
     public function followingUpSon(){
       $son = Parent::join('hijos', 'padres.id', '=', 'hijos.padre_id')
       ->join('personas', 'hijos.persona_id', '=', 'personas.id')
-      ->where('padres.id', '=', Auth::user()->person()->first()->parent()->first()->id)
+      ->where('padres.id', '=', Auth::user()->Person()->first()->Parent()->first()->id)
       ->select('hijos.id', 'personas.nombre', 'personas.apellido_paterno', 'personas.apellido_materno')
       ->get();
       $followingUps = [];
@@ -191,7 +191,7 @@ class parentsController extends BaseController(){
     }
     public function getUsePlataform(){
         $now = date("Y-m-d");
-        $idDad = Auth::user()->person()->first()->parent()->first()->id;
+        $idDad = Auth::user()->Person()->first()->Parent()->first()->id;
         return DB::select(
              "SELECT hijos.id, metas_diarias.meta, count(hijo_realiza_actividades.hijo_id) as 'total_jugados'
              FROM hijos

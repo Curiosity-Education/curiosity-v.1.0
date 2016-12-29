@@ -90,7 +90,7 @@ class avatarStylesController extends BaseController{
 
 
     public static function getInfo(){
-        $idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
+        $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $info = DB::table('hijos_avatars')
         ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
         ->where('hijos_avatars.hijo_id', '=', $idSon)
