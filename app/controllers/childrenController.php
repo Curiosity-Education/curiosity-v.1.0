@@ -3,7 +3,7 @@ class childrenController extends BaseController{
 	
 	function get(){
 		$role = Auth::user()->roles[0]->name;
-        $idDad = Auth::user()->persona()->first()->padre()->pluck('id');
+        $idDad = Auth::user()->Person()->first()->Parent()->pluck('id');
         $dataSons = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
         ->join('personas', 'personas.id', '=', 'hijos.persona_id')
         ->join('users', 'users.id', '=', 'personas.user_id')
@@ -85,7 +85,7 @@ class childrenController extends BaseController{
             $person->save();
             $son = new Son();
             $son->persona_id = $person->id;
-            $id_dad = Auth::user()->persona()->first()->padre()->first()->id;
+            $id_dad = Auth::user()->Person()->first()->Parent()->first()->id;
             $son->padre_id = $id_dad;
             $son->save();
             DB::table('escolaridades')->insert(array(
