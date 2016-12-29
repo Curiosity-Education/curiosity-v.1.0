@@ -14,7 +14,7 @@ class Address extends Eloquent{
   *
   ## An address has a parent
   */
-    public function Parents(){
+    public function Parent(){
         return $this->hasOne('padre','direccion_id');
     }
   /*

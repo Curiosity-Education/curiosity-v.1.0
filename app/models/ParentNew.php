@@ -1,6 +1,6 @@
 <?php
-class ParentsNews extends Eloquent{
-	
+class ParentNew extends Eloquent{
+
 	protected $table='novedades_papa';
 	  protected $fillable = ['titulo', 'pdf', 'status', 'administrativo_id'];
 
@@ -8,5 +8,5 @@ class ParentsNews extends Eloquent{
 	public function Administrative(){
 		return $this->belongsTo('administrativo');
 	}
-	
+
 }
