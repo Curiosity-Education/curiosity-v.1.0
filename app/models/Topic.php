@@ -1,8 +1,8 @@
 <?php
 class Topic extends Eloquent{
-	
+
 	protected $table='temas';
-  protected $fillable=['nombre','estatus','active','descripcion', 'bloque_id', 'bg_color', 'isPremium'];
+  protected $fillable=['nombre', 'active', 'bloque_id'];
   /*
   *
   ## A theme can have many activities

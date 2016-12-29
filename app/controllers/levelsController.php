@@ -13,7 +13,7 @@ class levelsController extends BaseController{
 		}
 		else{
 			if ($this->NameActiveExist($data['nombre'])){
-				// Return a message about the level's name is living
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
 				$level = new Level($data);
@@ -43,13 +43,11 @@ class levelsController extends BaseController{
 				}
 			}
 			if ($namePass){
-				Level::where('id', '=', $data['idUpdate'])->update(array(
-					'nombre' => $data['nombre']
-				));
+				Level::where('id', '=', $data['idUpdate'])->update(array( 'nombre' => $data['nombre'] ));
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 			}
 			else{
-				// Return a message about the new level's name is living
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 		}
 	}
