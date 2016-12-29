@@ -9,5 +9,7 @@ $(function(){
    curiosity.staticObject($(".fixedElement"), 90);
    // Initializing wow animation
    new WOW().init();
+   // Material Select Initialization
+   $('.mdb-select').material_select();
 
 });
