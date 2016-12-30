@@ -7,7 +7,7 @@ Curiosity | Perfil
  <i class="fa fa-user"></i> Mi perfil
 @stop
 @section('content-parent')
-   <div class="container-fluid">
+   <div class="container-fluid main">
       <div class="row">
          <div class="col-md-4 col-lg-4">
             <!--Card-->
