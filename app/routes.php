@@ -123,6 +123,7 @@ Route::get('/registro-exitoso',function(){
 /*
 *   Register for users
 */
+/*
 Route::group(array('prefix' => 'register'),function(){
 	Route::group(array('before' => ''), function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -160,7 +161,7 @@ Route::group(array('before' => 'unauth'), function(){
 //         Route::group(array('before' => 'only_session'), function(){
 //         Route::post('/buscarTema', 'temaController@temasFound');
         // padres
-        Route::group(array('before' => 'gestion_data_padre'), function(){
+/*        Route::group(array('before' => 'gestion_data_padre'), function(){
 					Route::group(array('before' => ''), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
 						Route::get('puntajes', 'padreController@getPuntajes');
