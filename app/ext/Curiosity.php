@@ -99,6 +99,28 @@ class Curiosity{
       }
    }
 
+   public static function bubleSortObject($array = [], $attr = "", $order = 'asc'){
+      for ($i=0; $i < count($array); $i++) {
+         for ($e = 0; $e < count($array); $e++) {
+            if ($order == 'asc'){
+               if ($array[$i][$attr] < $array[$e][$attr]){
+                  $temp = $array[$i];
+                  $array[$i] = $array[$e];
+                  $array[$e] = $temp;
+               }
+            }
+            else{
+               if ($array[$i][$attr] > $array[$e][$attr]){
+                  $temp = $array[$i];
+                  $array[$i] = $array[$e];
+                  $array[$e] = $temp;
+               }
+            }
+         }
+      }
+      return $array;
+   }
+
    // ===========================================================
    // Above this comment only private functions
    // ===========================================================

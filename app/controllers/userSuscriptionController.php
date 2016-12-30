@@ -17,9 +17,9 @@ class userSuscriptionController extends BaseController{
             try{
                 if($padreRole == "demo_padre"){
                     $customer = Conekta_Customer::create(array(
-                        "name" => Auth::user()->persona()->first()->nombre,
-                        "email" => Auth::user()->persona()->first()->padre()->first()->email,
-                        "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
+                        "name" => Auth::user()->Person()->first()->nombre,
+                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
+                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
                         "cards"=> array(Input::get('conektaTokenId'))
                     ));
 

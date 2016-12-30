@@ -17,6 +17,7 @@ ClassLoader::addDirectories(array(
 	app_path().'/controllers',
 	app_path().'/models',
 	app_path().'/database/seeds',
+	app_path().'/ext',
 
 ));
 
@@ -79,9 +80,7 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-require app_path().'/ext/validator.php';
-require app_path().'/ext/dreamDate.php';
-require app_path().'/ext/externalCall.php';
+
 App::missing(function($exception)
 {
     return Response::view('view-error404', array(), 404);

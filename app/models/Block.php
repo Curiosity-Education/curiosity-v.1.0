@@ -5,7 +5,7 @@
 class Block extends Eloquent
 {
     protected $table ='bloques';
-    protected $fillable=['nombre','estatus','active','descripcion', 'bg_color', 'imagen', 'inteligencia_id'];
+    protected $fillable=['nombre','active', 'inteligencia_id'];
   /*
   *
   ## Block belongs to a intelligence

@@ -12,7 +12,7 @@ class goalController extends BaseController{
     *
     */
     public function getGoalSon(){
-        $idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
+        $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $myGoal = DB::table('metas_diarias')
         ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
         ->where('hijos_metas_diarias.hijo_id', '=', $idSon)
@@ -32,7 +32,7 @@ class goalController extends BaseController{
     }
 
     public function hasGoalToday(){
-        $idSon = Auth::User()->persona()->first()->hijo()->pluck('id');
+        $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $currentDate = date("Y-m-d");
         $isFirst = DB::table('avances_metas')
         ->join('hijos_metas_diarias', 'hijos_metas_diarias.id', '=', 'avances_metas.avance_id')
