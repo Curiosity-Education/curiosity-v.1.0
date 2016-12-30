@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('/registry', function(){
+	return View::make('parent.registry');
+});
+
+Route::get('/registry-firstchild', function(){
+	return View::make('parent.registry_firstchild');
+});
+
 Route::get('/my-account', function(){
 	return View::make('child.configuration_account');
 });
@@ -62,6 +70,8 @@ Route::get('/juego', function(){
 });
 
 
+/*
+
 //Ahora las rutas se manejaran con prefijos
 Route::group(array('prefix' => 'teachers'), function()
 {
@@ -87,9 +97,10 @@ Route::group(array('prefix' => 'teachers'), function()
 *   it with the classes's functions current
 *   and to add the prefix
 
-
+*/
 
 // ---./ Webhooks para saber quien ha pagado y quien no
+/*
 Route::post('/webhook/check-suscription','userController@webhook_check_pay');
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
@@ -119,10 +130,11 @@ Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
 
-
+*/
 /*
 *   Register for users
 */
+/*
 Route::group(array('prefix' => 'register'),function(){
 	Route::group(array('before' => ''), function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -159,7 +171,8 @@ Route::group(array('before' => 'unauth'), function(){
 //         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
 //         Route::group(array('before' => 'only_session'), function(){
 //         Route::post('/buscarTema', 'temaController@temasFound');
-        // padres
+        // padres */
+/*
         Route::group(array('before' => 'gestion_data_padre'), function(){
 					Route::group(array('before' => ''), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -434,6 +447,5 @@ Route::group(array('before' => 'unauth'), function(){
         Route::post('/getAllVideosAdmin', 'contenidoController@myVideos');
         Route::post("/reindexarVideos",'contenidoController@reindexar');
     });
-
 
 });*/
