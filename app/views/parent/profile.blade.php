@@ -48,7 +48,6 @@ Curiosity | Perfil
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
                                  <hr>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>
@@ -59,7 +58,6 @@ Curiosity | Perfil
                               </div>
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>
@@ -70,7 +68,6 @@ Curiosity | Perfil
                               </div>
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>
