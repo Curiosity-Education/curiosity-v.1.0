@@ -1,8 +1,8 @@
 <?php
 class usersController extends BaseController(){
-	
+
 	function get(){
-		
+
 	}
 	function save(){
 		$dateNow = date("Y-m-d");
@@ -35,9 +35,9 @@ class usersController extends BaseController(){
                      "same"        =>  "Las contraseñas no coinciden",
                      "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
          ];
-        $validaciones = Validator::make(Input::all(),$rules,$messages);
-        if($validaciones->fails()){
-            return $validaciones->messages();
+        $validations = Validator::make(Input::all(),$rules,$messages);
+        if($validations->fails()){
+            return $validations->messages();
         }else{
             try {
                 $user = new User();
@@ -126,19 +126,19 @@ class usersController extends BaseController(){
         }
 	}
 	function delete(){
-		
+
 	}
     public function verPagina(){
         if(Request::method() == "GET"){
             $perfil = Auth::User()->profile()->first();
-            $persona = Auth::User()->person()->first();
-            $padre=$persona->Padre()->first();
-            $estados = State::all();
-            $escuelas = School::where('active', '=', '1')->get();
+            $person = Auth::User()->person()->first();
+            $parent=$person->Padre()->first();
+            $state = State::all();
+            $school = School::where('active', '=', '1')->get();
             $idAuth = Auth::user()->id;
             $rol = Auth::user()->roles[0]->name;
             if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre')){
-              $novedades = novedadesController::getNovedadesToDad();
+              $news = novedadesController::getNovedadesToDad();
               $idDad = Auth::user()->Person()->first()->Parent()->pluck('id');
               $sonData = Parent::join('hijos', 'hijos.padre_id', '=', 'padres.id')
               ->join('personas', 'personas.id', '=', 'hijos.persona_id')
@@ -147,7 +147,7 @@ class usersController extends BaseController(){
               ->where('users.active', '=', '1')
               ->where('hijos.padre_id', '=', $idDad)
               ->select('hijos.id as idHijo', 'personas.nombre','personas.apellido_paterno','personas.apellido_materno','personas.fecha_nacimiento','users.active', 'perfiles.foto_perfil')->get();
-              return View::make('vista_papa_inicio')->with(array('datosHijos' => $sonData, 'novedades' => $novedades));
+              return View::make('vista_papa_inicio')->with(array('datosHijos' => $sonData, 'novedades' => $news));
             }
             else if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
               // Obtenemos el id del hijo logueado
