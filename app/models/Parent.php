@@ -1,6 +1,6 @@
 <?php
-class Parents extends Eloquent{
-	
+class Parent extends Eloquent{
+
 	protected $table ='padres';
     protected $fillable =["email","telefono"];
 

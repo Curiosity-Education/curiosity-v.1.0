@@ -1,28 +1,27 @@
 <?php
-class intelligencesController extends BaseController{
+class topicsController extends BaseController{
 
 	function save(){
 		$data = Input::get('data');
 		$rules = array(
 			'nombre' => 'required',
-			'descripcion' => 'required',
-			'grado' => 'required'
+			'bloque' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return $validate->messages();
 		}
 		else{
-			if ($this->NameActiveExist($data['grado'], $data['nombre'])){
+			if ($this->NameActiveExist($data['nombre'], $data['bloque'])){
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
-				$int = new Intelligence($data);
-				$int->active = 1;
-				$int->nivel_id = $data['grado'];
-				$int->save();
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $int));
+				$topic = new Topic($data);
+				$topic->active = 1;
+				$topic->bloque_id = $data['bloque'];
+				$topic->save();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $topic));
 			}
 		}
 	}
@@ -31,8 +30,7 @@ class intelligencesController extends BaseController{
 		$data = Input::get('data');
 		$rules = array(
 			'nombre' => 'required',
-			'descripcion' => 'required',
-			'grado' => 'required'
+			'bloque' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
@@ -40,18 +38,15 @@ class intelligencesController extends BaseController{
 			return $validar->messages();
 		}
 		else{
-			$int = Intelligence::where('id', '=', $data['idUpdate'])->first();
+			$tp = Topic::where('id', '=', $data['idUpdate'])->get();
 			$namePass = true;
-			if ($int->nombre != $data['nombre']){
-				if ($this->NameActiveExist($data['grado'], $data['nombre'])){
+			if ($tp->nombre != $data['nombre']){
+				if ($this->NameActiveExist($data['nombre'], $data['bloque'])){
 					$namePass = false;
 				}
 			}
 			if ($namePass){
-				Intelligence::where('id', '=', $data['idUpdate'])->update(array(
-					'nombre' => $data['nombre'],
-					'descripcion' => $data['descripcion']
-				));
+				Topic::where('id', '=', $data['idUpdate'])->update(array( 'nombre' => $data['nombre'] ));
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 			}
 			else{
@@ -62,21 +57,18 @@ class intelligencesController extends BaseController{
 
 	function delete(){
 		$id = Input::get('data.id');
-		Intelligence::where('id', '=', $id)->update(array(
-			'active' => 0
-		));
+		Topic::where('id', '=', $id)->update(array( 'active' => 0 ));
 		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 	}
 
-	private function NameActiveExist($level, $name){
-		// We'll check if into database exists the same intelligence's name and that
-		// intelligence lives active into the level.
-		$objs = Intelligence::where('nivel_id', '=', $level)->select('nombre', 'active')->get();
+	private function NameActiveExist($name, $block){
+		$objs = Topic::where('bloque_id', '=', $block)->select('nombre', 'active')->get();
 		$toLive = false;
 		foreach ($objs as $obj) {
 			if($obj->nombre === $name && $obj->active === 1){ $toLive = true; }
 		}
 		return $toLive;
 	}
+
 }
 ?>

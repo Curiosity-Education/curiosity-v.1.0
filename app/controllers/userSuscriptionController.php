@@ -6,7 +6,7 @@ class userSuscriptionController extends BaseController{
         if(Request::method() == "GET")
             return View::make('vista_payment_card');
         else{
-            $padreRole = Auth::user()->roles[0]->name;
+            $parentRole = Auth::user()->roles[0]->name;
             /*
             *
             *   Conekta Settings
@@ -15,11 +15,11 @@ class userSuscriptionController extends BaseController{
             Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
             Conekta::setLocale('es');
             try{
-                if($padreRole == "demo_padre"){
+                if($parentRole == "demo_padre"){
                     $customer = Conekta_Customer::create(array(
-                        "name" => Auth::user()->persona()->first()->nombre,
-                        "email" => Auth::user()->persona()->first()->padre()->first()->email,
-                        "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
+                        "name" => Auth::user()->Person()->first()->nombre,
+                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
+                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
                         "cards"=> array(Input::get('conektaTokenId'))
                     ));
 
@@ -57,9 +57,9 @@ class userSuscriptionController extends BaseController{
 
         if ($event_json->type == 'subscription.paid'){
             if($event_json->object->status != "paid"){
-                $membresia = membresia::where("token_card","=",$event_json->object->customer_id);
-                $membresia->active = 0;
-                $membresia->save();
+                $membership = membresia::where("token_card","=",$event_json->object->customer_id);
+                $membership->active = 0;
+                $membership->save();
 
             }
         }
