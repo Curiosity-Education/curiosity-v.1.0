@@ -69,72 +69,9 @@ Route::get('/juego', function(){
     return View::make('child.view-game');
 });
 
-<<<<<<< HEAD
-
-/*
-
-//Ahora las rutas se manejaran con prefijos
-Route::group(array('prefix' => 'teachers'), function()
-{
-
-    Route::get('/', function()
-    {
-        if(Request::ajax())
-        {
-             $data = [
-                'status'    => '200',
-                'message'   => 'The ajax has been found success',
-                'type'      => 'JSON'
-            ];
-        }
-        return Response::json($data);
-    });
-
-
-});
-
-/*
-*   The routes will be updated for put
-*   it with the classes's functions current
-*   and to add the prefix
-
-*/
-
-// ---./ Webhooks para saber quien ha pagado y quien no
-/*
-Route::post('/webhook/check-suscription','userController@webhook_check_pay');
-Route::get('/', 'principalController@verPagina');
-Route::get('/nosotros', 'principalController@verNosotros');
-Route::get('/proximamente',function(){
-    return View::make('aviso_beta');
-});
-Route::get('/missedSession','sesionInfoController@missedSession');
-Route::post('/last-session','sesionInfoController@getLastSession');
-Route::get('/terminos-y-condiciones',function(){
-    return View::make('terminos');
-});
-Route::get('/aviso-privacidad',function(){
-    return View::make('aviso-privacidad');
-});
-
-Route::get('/nuestro-equipo',function(){
-	return View::make('nuestro-equipo');
-});
-Route::get('/mentores',function(){
-	return View::make('mentores');
-});
-Route::get('/preguntas-frecuentes',function(){
-	return View::make('preguntas-frecuentes');
-});
-
-Route::get('/registro-exitoso',function(){
-    return View::make('registro_exitoso');
-});
-=======
 Route::get('/1', 'activitiesVideosController@save');
->>>>>>> origin/master
 
-*/
+
 /*
 *   Register for users
 */
@@ -160,23 +97,6 @@ Route::group(array('before' => 'unauth'), function(){
     Route::post('check-user', 'loginController@verificarUsuario');
 	});
 });
-<<<<<<< HEAD
-// // Route::get('/getCiudades','ciudadController@getCiudades');
-// Route::post('/remote-username','userController@remoteUsername');
-// // Route::post('/sendMensaje','padreController@sendMensaje');
-// Route::group(array('before' => 'auth'), function(){
-//         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-//         /* Rutas para obtencion de datos de direccion por AJAX*/
-//         Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-//         Route::post('/getByCiudades', 'direccionController@getCiudades');
-//         /*Rutas para subir y ver juego*/
-//         Route::post('/actividad/setdata','actividadController@setDataActivity');
-//         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
-//         Route::group(array('before' => 'only_session'), function(){
-//         Route::post('/buscarTema', 'temaController@temasFound');
-        // padres */
-/*
-=======
 
 // Route::get('/getCiudades','ciudadController@getCiudades');
 Route::post('/remote-username','userController@remoteUsername');
@@ -193,9 +113,8 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/buscarTema', 'temaController@temasFound');
 
         // padres
->>>>>>> origin/master
-        Route::group(array('before' => 'gestion_data_padre'), function(){
-					Route::group(array('prefix' => 'parent'), function(){
+/*        Route::group(array('before' => 'gestion_data_padre'), function(){
+					Route::group(array('before' => ''), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
 						Route::get('Scores', 'padreController@getPuntajes');
 	          Route::get('alerts', 'padreController@getAlertasNow');
@@ -397,7 +316,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('update', 'escuelaController@update');
                 Route::post('delete', 'escuelaController@remove');
             });
-        });
+        });*/
         Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
@@ -482,11 +401,8 @@ Route::group(array('before' => 'auth'), function(){
         Route::post("/reindexarVideos",'contenidoController@reindexar');
     });
 
-<<<<<<< HEAD
-});*/
-=======
 
-});
+//});
 //
 // /*
 // *   The routes will be updated for put
@@ -538,4 +454,3 @@ Route::group(array('before' => 'auth'), function(){
 //     Route::group(array('before' => ''), function(){
 // 			Route::match(array('GET', 'POST'), '/', 'suscripcionController@viewPage');
 // 			Route::match(array('GET','POST'),'suscription','suscripcionController@suscripcion');
->>>>>>> origin/master

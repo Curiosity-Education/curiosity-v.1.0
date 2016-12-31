@@ -7,7 +7,7 @@ Curiosity | Perfil
  <i class="fa fa-user"></i> Mi perfil
 @stop
 @section('content-parent')
-   <div class="container-fluid">
+   <div class="container-fluid main">
       <div class="row">
          <div class="col-md-4 col-lg-4">
             <!--Card-->
@@ -48,7 +48,6 @@ Curiosity | Perfil
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
                                  <hr>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>
@@ -59,7 +58,6 @@ Curiosity | Perfil
                               </div>
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>
@@ -70,7 +68,6 @@ Curiosity | Perfil
                               </div>
                               <div class="card-block-right col-md-9">
                                  <h4 class="card-title">Card title</h4>
-                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               </div>
                             </div>
                         </li>

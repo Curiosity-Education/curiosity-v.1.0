@@ -10,7 +10,7 @@ class topicsController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return $validate->messages();
 		}
 		else{
 			if ($this->NameActiveExist($data['nombre'], $data['bloque'])){

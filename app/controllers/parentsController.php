@@ -1,6 +1,6 @@
 <?php
 class parentsController extends BaseController(){
-	
+
 
     public function remoteEmail(){
         if(padre::where("email","=",Input::get("email"))->first())
@@ -144,11 +144,11 @@ class parentsController extends BaseController(){
     public function sendMensaje(){
         try{
             $mensaje = new SonReminder();
-             $mensaje->hijo_recuerda=User::where('username','=',Input::get('hijo_recuerda'))->join('personas','personas.user_id','=','users.id')->join('hijos','hijos.persona_id','=','personas.id')->select('hijos.id')->get()[0]->id;
-            $mensaje->mensaje=Input::get('mensaje');
-            $mensaje->is_read = 0;
-            $mensaje->padre_avisa=Input::get('padre_avisa');
-            $mensaje->save();
+             $message->hijo_recuerda=User::where('username','=',Input::get('hijo_recuerda'))->join('personas','personas.user_id','=','users.id')->join('hijos','hijos.persona_id','=','personas.id')->select('hijos.id')->get()[0]->id;
+            $message->mensaje=Input::get('mensaje');
+            $message->is_read = 0;
+            $message->padre_avisa=Input::get('padre_avisa');
+            $message->save();
             return Response::json(array("message"=>"El mensaje se envio al hijo","estado"=>"200"));
         }catch(Exception $e){return $e;}
     }

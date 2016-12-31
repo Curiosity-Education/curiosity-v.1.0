@@ -1,5 +1,5 @@
 <?php
-class activitiesVideosController extends BaseController{
+class activitiesPdfsController extends BaseController{
 
    function getByActivity(){
       $id = Input::get('data.id');
