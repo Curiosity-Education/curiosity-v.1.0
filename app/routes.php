@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('/registry', function(){
+	return View::make('parent.registry');
+});
+
+Route::get('/registry-firstchild', function(){
+	return View::make('parent.registry_firstchild');
+});
+
 Route::get('/my-account', function(){
 	return View::make('child.configuration_account');
 });
