@@ -9,29 +9,8 @@ Curiosity | Perfil
 @section('content-parent')
    <div class="container-fluid main">
       <div class="row">
-         <div class="col-md-4 col-lg-4">
-            <!--Card-->
-            <div class="card card-border-standard testimonial-card animated fadeInLeft" data-wow-delay="1s">
-                <!--Bacground color-->
-                <div class="card-up bg-blue">
-                </div>
-
-                <!--Avatar-->
-                <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="rounded-circle img-responsive">
-                </div>
-
-                <div class="card-block">
-                    <!--Name-->
-                    <h4 class="card-title">Username´s parent</h4>
-                    <hr>
-                    <!--Quotation-->
-                    <a class="btn btn-green btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
-                </div>
-            </div>
-            <!--/.Card-->
-         </div>
-         <div class="col-md-8 col-lg-8 border-left">
-            <!--Form about novedades-->
+         <div class="col-md-8 col-lg-8">
+             <!--Form about novedades-->
             <div class="card card-border-standard animated fadeInRightBig" data-wow-delay="1s" id="card-news">
                 <div class="card-block">
 
@@ -43,11 +22,10 @@ Curiosity | Perfil
                         <li class="p-item-new">
                            <div class="card row hoverable">
                               <div class="card-left col-md-3 img-new">
-                                 <img class="img-fluid border-right" src="http://mdbootstrap.com/images/reg/reg%20(63).jpg" alt="Card image cap">
+                                 <img class="img-fluid" src="http://mdbootstrap.com/images/reg/reg%20(63).jpg" alt="Card image cap">
                               </div>
-                              <div class="card-block-right col-md-9">
+                              <div class="card-block-right col-md-9 text-center">
                                  <h4 class="card-title">Card title</h4>
-                                 <hr>
                               </div>
                             </div>
                         </li>
@@ -56,7 +34,7 @@ Curiosity | Perfil
                               <div class="card-left col-md-3 img-new">
                                  <img class="img-fluid" src="http://mdbootstrap.com/images/reg/reg%20(6).jpg" alt="Card image cap">
                               </div>
-                              <div class="card-block-right col-md-9">
+                              <div class="card-block-right col-md-9 text-center">
                                  <h4 class="card-title">Card title</h4>
                               </div>
                             </div>
@@ -66,7 +44,7 @@ Curiosity | Perfil
                               <div class="card-left col-md-3 img-new">
                                  <img class="img-fluid" src="http://mdbootstrap.com/images/reg/reg%20(3).jpg" alt="Card image cap">
                               </div>
-                              <div class="card-block-right col-md-9">
+                              <div class="card-block-right col-md-9 text-center">
                                  <h4 class="card-title">Card title</h4>
                               </div>
                             </div>
@@ -83,7 +61,7 @@ Curiosity | Perfil
 
             </div>
             <!--/Form about novedades-->
-            <!--Form for refresh perfil-->
+             <!--Form for refresh perfil-->
             <div class="card card-border-standard p-card-user animated fadeInRightBig" data-wow-delay="1s" id="card-data-editing">
                 <div class="card-block">
 
@@ -157,6 +135,34 @@ Curiosity | Perfil
 
             </div>
             <!--/Form for refresh perfil-->
+         </div>
+         <div class="col-md-4 col-lg-4 border-left">
+            <!--Card-->
+            <div class="card card-border-standard testimonial-card animated fadeInLeft" data-wow-delay="1s">
+                <!--Bacground color-->
+                <div class="card-up bg-blue">
+                </div>
+
+                <!--Avatar-->
+                <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="rounded-circle img-responsive">
+                </div>
+
+                <div class="card-block">
+                    <!--Name-->
+                    <h4 class="card-title">Username´s parent</h4>
+                    <hr>
+                    <!-- data list-->
+                    <ul class="list-group">
+                      <li class="list-group-item">Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
+                      <li class="list-group-item">Apellido(s)<span id="span-name">Jinestas garcía</span></li>
+                    </ul>
+                    <hr>
+                    <!--//.. end data list -->
+                    <!--Quotation-->
+                    <a class="btn btn-green btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
+                </div>
+            </div>
+            <!--/.Card-->
          </div>
       </div>
    </div>
