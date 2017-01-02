@@ -14,9 +14,13 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 			$(this).data("target","#card-data-editing");
 			$(this).html("<i class='fa fa-refresh'></i> Editar datos");
 			$(this).removeClass("bg-blue");
+			$(".bg-green").addClass("bg-blue");
+			$(".bg-blue").removeClass("bg-green");
 		}else{
 			$(this).data("target","#card-news");
 			$(this).html("<i class='fa fa-newspaper-o'></i> Ver novedades");
+			$(".bg-blue").addClass("bg-green");
+			$(".bg-green").removeClass("bg-blue");
 			$(this).addClass("bg-blue");
 		}
 		$($(this).data("target")).hide();
@@ -38,28 +42,33 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		}
 		moveTab(tab);
 	});
+
 	$(".upch-stepper-user>li").click(function(){
 		var tab = parseInt($(this).find("span").text());
 		moveTab(tab);
+	});
 
+	$(".upch-btn-update").click(function(){
+		alert("se actualizarán los datos los datos");
 	});
 
 	function moveTab(tab){//function for move in tabs
 		$(".btn-to-move").data("step",tab);
 		$("[class*='tab']").removeClass("active");
-		$("[class='tab-"+tab+"']").addClass("active");
+		$("[class*='tab-"+tab+"']").addClass("active");
 		$(".upch-stepper-user>li").removeClass("active");
 		$.each($(".upch-stepper-user>li"),function(index,object){
 			if(index==tab-1){
 				$(object).addClass("active");
 			}
-		})//find to step with active for put class active
+		});//find to step with active for put class active
 		if(tab>1){
 			$(".btn-return").show();
 			$(".btn-next").show();
+			$(".btn-return").prop("disabled",false);
 		}else{
 			$(".btn-next").show();
-			$(".btn-return").hide();
+			$(".btn-return").prop("disabled",true);
 		}
 		if(tab==$(".upch-stepper-user>li").length){
 			$(".btn-next").hide();
