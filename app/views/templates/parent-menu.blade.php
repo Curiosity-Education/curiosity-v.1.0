@@ -52,7 +52,7 @@
 </div>
 @stop
 @section('content')
-<div class="container">
+<div class="container-fluid" id="container-baner">
   <!-- Banner -->
   <div class="row z-depth-1 animated fadeInRight" id="row-banner">
       <div class="view hm-black-strong z-depth-1 col-xs-12 banner-parent">

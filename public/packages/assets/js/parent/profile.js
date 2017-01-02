@@ -41,12 +41,12 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		moveTab(tab);
 	});
 
-	$(".upch-stepper-user>li").click(function(){
+	$(".p-stepper-user>li").click(function(){
 		var tab = parseInt($(this).find("span").text());
 		moveTab(tab);
 	});
 
-	$(".upch-btn-update").click(function(){
+	$(".p-btn-update").click(function(){
 		alert("se actualizarán los datos los datos");
 	});
 
@@ -54,8 +54,8 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		$(".btn-to-move").data("step",tab);
 		$("[class*='tab']").removeClass("active");
 		$("[class*='tab-"+tab+"']").addClass("active");
-		$(".upch-stepper-user>li").removeClass("active");
-		$.each($(".upch-stepper-user>li"),function(index,object){
+		$(".p-stepper-user>li").removeClass("active");
+		$.each($(".p-stepper-user>li"),function(index,object){
 			if(index==tab-1){
 				$(object).addClass("active");
 			}
@@ -68,11 +68,11 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 			$(".btn-next").show();
 			$(".btn-return").prop("disabled",true);
 		}
-		if(tab==$(".upch-stepper-user>li").length){
+		if(tab==$(".p-stepper-user>li").length){
 			$(".btn-next").hide();
-			$(".upch-btn-update").show();
+			$(".p-btn-update").show();
 		}else{
-			$(".upch-btn-update").hide();
+			$(".p-btn-update").hide();
 		}
 	}
 });
