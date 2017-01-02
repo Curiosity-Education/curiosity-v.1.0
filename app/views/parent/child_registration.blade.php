@@ -45,8 +45,13 @@
 
       <div id="prntHome-contentInfo" class="text-center upch-carouse-content">
          <center><div id="prntHome-contentInfo-arrow" class="upch-carousel-arrow"></div></center>
+         <div class="upch-content-card border-bottom texr-justify">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloremque quasi repudiandae nulla eaque recusandae saepe cupiditate hic atque veritatis?
+         </div>
+         <div class="upch-footer-card">
             <a class="rotate-btn btn btn-warning btn-border-curiosity"><i class="fa fa-refresh"></i> Modificar</a>
-            <a class="rotate-btn btn btn-danger btn-border-curiosity"><i class="fa fa-trash"></i> Eliminar</a>
+            <a class="rotate-btn btn btn-danger btn-border-curiosity"><i class="fa fa-trash"></i> Dar de baja</a>
+         </div>
       </div>
    </div>
    <div class="col-md-5 col-lg-5 upch-col-upload-child">
@@ -77,37 +82,57 @@
                   <!--Content-->
                   <h4>Panel de registro</h4>
                   <hr>
-                  <form class="upch-frm">
+                  <form class="upch-frm-child">
                     <!--Body-->
-                       <!--Body-->
-                        <div class="md-form">
-                           <i class="fa fa-user prefix"></i>
-                           <input type="text" id="upch-username" name="upch-username" class="form-control">
-                           <label for="upch-username">username niño</label>
+                    <div class="step-1 active animated fadeInUpBig">
+                      <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="upch-username" name="upch-username" class="form-control">
+                        <label for="upch-username">username niño</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="upch-pass" name="upch-pass" class="form-control">
+                        <label for="upch-pass">Contraseña</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="upch-cpass" name="upch-cpass" class="form-control">
+                        <label for="upch-cpass">Confirmar Contraseña</label>
+                      </div>
+                      <div class="md-form">
+                        <h5 class="text-center">
+                          <i class="fa"></i>
+                          Promedio
+                        </h5>
+                       <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
+                      </div>
+                    </div>
+                    <div class="step-2 animated fadeInUpBig">
+                      <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="upch-username" name="upch-username" class="form-control">
+                        <label for="upch-username">Nombre(s)</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="upch-username" name="upch-username" class="form-control">
+                        <label for="upch-username">Apellido(s)</label>
+                      </div>
+                       <div class="md-form">
+                            <select class="mdb-select">
+                                <option value="" disabled selected>Sexo</option>
+                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
+                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+                            </select>
                         </div>
-                        <div class="md-form">
-                           <i class="fa fa-user prefix"></i>
-                           <input type="text" id="upch-pass" name="upch-pass" class="form-control">
-                           <label for="upch-pass">Contraseña</label>
-                        </div>
-                        <div class="md-form">
-                           <i class="fa fa-user prefix"></i>
-                           <input type="text" id="upch-cpass" name="upch-cpass" class="form-control">
-                           <label for="upch-cpass">Confirmar Contraseña</label>
-                        </div>
-                        <div class="md-form">
-                           <h5 class="text-center">
-                              <i class="fa"></i>
-                              Promedio
-                           </h5>
-                           <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
-                        </div>
-                        <hr>
-                        <div class="text-xs-center">
-                           <button type="reset" data-card="card-1" class="btn btn-warning btn-border-curiosity rotate-btn">Cancelar</button>
-                           <button type="button" class="btn btn-indigo btn-border-curiosity">Siguiente</button>
-                        </div>
-                     </form>
+                    </div>
+                    <hr>
+                    <div class="text-xs-center">
+                      <button type="button" data-card="card-1" class="btn btn-cancel btn-warning btn-border-curiosity rotate-btn">Cancelar</button>
+                      <button type="button" class="btn btn-indigo btn-border-curiosity btn-next">Siguiente</button>
+                    </div>
+                  </form>
                   <!--Triggering button-->
               </div>
               <!--/.Back Side-->

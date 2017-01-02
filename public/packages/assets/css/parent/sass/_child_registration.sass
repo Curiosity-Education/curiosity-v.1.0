@@ -7,7 +7,7 @@
 	text-align: center
 .btn-green
 	background-color: $color-green !important
-.upch-frm
+.upch-frm-child
 	.md-form
 		.prefix
 			left: .1rem
@@ -16,7 +16,21 @@
 
 .card-wrapper,.face,.card-up
 	border-radius: $border-rad !important
-.upch-carousel-content
+
+.upch-carouse-content
 	padding: 1rem !important
+	margin-top: -2.9rem !important
+	position: relative
+	z-index: 10000
+.upch-carousel-arrow
+	position: absolute
+	z-index: -99
+	left: 15rem
+	top: 4rem
 
+[class*="step-"]
+	display: none
+	min-height: 18rem
 
+[class*="step-"].active
+	display: block
