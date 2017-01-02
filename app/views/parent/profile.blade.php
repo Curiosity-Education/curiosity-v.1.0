@@ -182,7 +182,7 @@ Curiosity | Perfil
                     <hr>
                     <!--//.. end data list -->
                     <!--Quotation-->
-                    <a class="btn btn-green btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
+                    <a class="btn bg-blue btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
                 </div>
             </div>
             <!--/.Card-->
