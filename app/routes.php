@@ -61,6 +61,10 @@ Route::get('/juego', function(){
     return View::make('child.view-game');
 });
 
+Route::get('/administer', function(){
+    return View::make('administer.admin-topics');
+});
+
 Route::get('/1', 'activitiesVideosController@save');
 
 
