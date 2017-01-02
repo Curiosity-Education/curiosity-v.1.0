@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('/registry', function(){
+	return View::make('parent.registry');
+});
+
+Route::get('/registry-firstchild', function(){
+	return View::make('parent.registry_firstchild');
+});
+
 Route::get('/my-account', function(){
 	return View::make('child.configuration_account');
 });
@@ -71,6 +79,7 @@ Route::get('/1', 'activitiesVideosController@save');
 /*
 *   Register for users
 */
+/*
 Route::group(array('prefix' => 'register'),function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
 		Route::post('remote-email','padreController@remoteEmail');
@@ -108,8 +117,8 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/buscarTema', 'temaController@temasFound');
 
         // padres
-        Route::group(array('before' => 'gestion_data_padre'), function(){
-					Route::group(array('prefix' => 'parent'), function(){
+/*        Route::group(array('before' => 'gestion_data_padre'), function(){
+					Route::group(array('before' => ''), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
 						Route::get('Scores', 'padreController@getPuntajes');
 	          Route::get('alerts', 'padreController@getAlertasNow');
@@ -311,7 +320,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('update', 'escuelaController@update');
                 Route::post('delete', 'escuelaController@remove');
             });
-        });
+        });*/
         Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
@@ -397,7 +406,7 @@ Route::group(array('before' => 'auth'), function(){
     });
 
 
-});
+//});
 //
 // /*
 // *   The routes will be updated for put

@@ -1,6 +1,10 @@
+.text-left
+	text-align: left 
+.text-right
+	text-align: right
 .bg-blue
 	background-color: $color-blue !important
-.container-fluid
+.container-fluid.main
 	padding-top: 1rem
 .p-novedades,.p-data-editing
 	margin-top: -1.7em !important
@@ -8,33 +12,95 @@
 	border-radius: $border-rad !important
 
 .card-border-standard
-	.card-block,.modal-footer
+	.card-block,.modal-footer,&
 		border-radius: $border-rad !important
 
+.upch-img-new
+	over-flow: hidden
+	img
+		width: 5rem !important
+		height: 5rem !important
+		max-width: 100%
+		border-radius: 50%
+		margin-top: 1rem
+		border: .1rem solid $color-black-light-elegant
+		&:hover
+			+transform(scale(1.01))
+.card 
+	.card-left
+		width: 20%
+		display: inlinte-block
+		float: left
+.card
+	.card-right
+		width: 76%
+		display: inline-block
+		float: left
+		margin-left: .4rem
+		padding: .6rem
+		p
+			margin-bottom: 0 !important
+		hr
+			margin-bottom: .2rem
+			margin-top: .2rem
+.upch-card-new
+	.card-block
+		padding-bottom: .3rem !important
+
+.card
+	.upch-card-title
+		background-color: $color-black-light-elegant
+		color: $color-white
+		position: absolute
+		top: -.3rem
+		left: 10rem
+		border-radius: $border-rad
+		padding: .6rem
+		font-weight: bold
+		width: 20rem
+		h5
+			margin-bottom: 0 !important
+.upch-card-new-parent
+	.card-block
+		padding-bottom: .1rem
+.card
+	.upch-card-description
+		margin-top: 2rem
 .p-card-user
 	display: none
 .border-left
-	border-left: .09rem solid $color-dark-gray !important
+	border-left: .09rem solid $color-light-gray !important
 .border-right
-	border-right: .09rem solid $color-dark-gray !important
+	border-right: .09rem solid $color-light-gray !important
+.border-bottom
+	border-bottom: .03rem solid $color-light-gray !important
+.border-top
+	border-top: .09rem solid $color-dark-gray !important
 .p-list-news
 	padding: 2rem
-	padding-top: 1rem
+	padding-top: .5rem
+	padding-bottom: .2rem
 .p-list-news>li
 	margin-bottom: .9rem
 	cursor: pointer
+.upch-card-update-user
+	.card-block
+		padding-bottom: .1rem
 
 .card-block-right 
 	padding: 1rem
 	padding-right: 1rem
-.img-new
-	padding-left: -2rem !important
-	padding-right: -2rem !important
+.border-standard
+	border-radius: $border-rad
 .p-card-user
 	padding-left: 3rem
 	padding-right: 4rem
+	
 div[class*="tab"]
 	display: none
+	min-height: 12.8rem
 
 div[class*="tab"].active
 	display: block
+.hidden
+	display: none
