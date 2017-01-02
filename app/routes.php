@@ -66,7 +66,7 @@ Route::get('/tienda', function(){
 });
 
 Route::get('/juego', function(){
-    return View::make('child.view-game');
+    return View::make('child.game-start');
 });
 
 Route::get('/administer', function(){
