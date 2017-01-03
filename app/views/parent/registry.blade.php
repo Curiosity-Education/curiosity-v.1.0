@@ -8,42 +8,39 @@
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
 	<title>Curiosity | Mi primer hijo</title>
+
+	<!--Navbar-->
+	<nav class="navbar navbar-fixed-top navbar-dark bg-primary reg-navbar">
+
+		<!-- Collapse button-->
+		<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+			<i class="fa fa-bars"></i>
+		</button>
+
+		<div class="container">
+
+			<!--Collapse content-->
+			<div class="collapse navbar-toggleable-xs" id="collapseEx2">
+				<!--Navbar Brand-->
+				<a class="navbar-brand" id="reg-navlogo">
+					<img src="/packages/assets/media/images/system/icon.png" class="img-fluid reg-logo" id="reg-imgLogo">
+					Curiosity Educación
+				</a>
+				<!--Links-->
+				<ul class="nav navbar-nav pull-right">
+					<li class="nav-item active">
+						<a class="nav-link"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+					</li>
+				</ul>
+			</div>
+			<!--/.Collapse content-->
+
+		</div>
+
+	</nav>
+	<!--/.Navbar-->
 </head>
 <body id="reg-bg">
-
-
-<!--Navbar-->
-<nav class="navbar navbar-dark bg-primary reg-navbar">
-
-    <!-- Collapse button-->
-    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
-        <i class="fa fa-bars"></i>
-    </button>
-
-    <div class="container">
-
-        <!--Collapse content-->
-        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-            <!--Navbar Brand-->
-            <a class="navbar-brand">
-            	<img src="/packages/assets/media/images/system/icon.png" class="img-fluid reg-logo" id="reg-imgLogo">
-            	Curiosity Educación
-            </a>
-            <!--Links-->
-            <ul class="nav navbar-nav pull-right">
-                <li class="nav-item active">
-                    <a class="nav-link"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-        <!--/.Collapse content-->
-
-    </div>
-
-</nav>
-<!--/.Navbar-->
-
-
 
 	<div class="container-fluid">
 		<div class="row">
