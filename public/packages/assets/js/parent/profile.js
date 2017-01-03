@@ -75,4 +75,21 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 			$(".p-btn-update").hide();
 		}
 	}
+	$(".p-item-new").click(function(){
+		$("#p-row-main").hide();
+		$("#p-row-pdf").show();
+		$("#container-baner").hide();
+	});
+
+	$("body,html").keyup(function(ev){
+		if(ev.keyCode==27){
+			$(".dismiss-card").trigger("click");
+		}
+	});
+
+	$(".dismiss-card").click(function(ev){
+		$($(this).data("dismiss-card")).hide();
+		$("#container-baner").show();
+		$("#p-row-main").show();
+	});
 });

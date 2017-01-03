@@ -55,7 +55,7 @@
 <div class="container-fluid" id="container-baner">
   <!-- Banner -->
   <div class="row z-depth-1 animated fadeInRight" id="row-banner">
-      <div class="view hm-black-strong z-depth-1 col-xs-12 banner-parent">
+      <div class="view border-standard hm-black-strong z-depth-1 col-xs-12 banner-parent">
         <div class="mask flex-center waves-effect waves-light">
           <h4 class="h4-responsive white-text">&nbsp; @yield('title-baner') &nbsp;&nbsp;</h4>
         </div>
