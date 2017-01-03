@@ -2,28 +2,34 @@
 @import "../../_standardVariables.sass"
 @import "../../_mixins.sass"
 
+
+*
+	font-family: $font-curiosity
+
 .reg-navbar
 	margin-bottom: 1.5rem
 
 #reg-bg
 	background-color: #eeeeee
 	height: 100% !important
+	padding-top: 5rem
 
 #reg-registry
 	padding-top: 3rem
 
 #reg-gender
 	.mdb-select
-		width: 115% !important
-		@media (max-width: $smartphone-size-portrait + 30px)
-			width: 100% !important
-	.mdb-select
+		width: 95% !important
+		margin-left: 1rem !important
 		@media (max-width: $smartphone-size-portrait + 30px)
 			width: 84% !important
 			margin-left: 3rem !important
 
 .reg-rounded
 	border-radius: $border-rad !important
+	.img-fluid
+		@media (min-width: $smartphone-size-landscape + 30px) and (max-width: $tablet-size-portrait - 50px)
+			width: 100% !important
 
 .reg-colorHeader
 	background-color: $color-blue
@@ -32,9 +38,14 @@
 
 #reg-form
 	.md-form
+		width: 100% !important
 		@media (max-width: $smartphone-size-portrait + 30px)
 			width: 155% !important
 			margin-left: -5rem
+			.prefix
+				display: none
+		@media (min-width: $smartphone-size-landscape + 30px) and (max-width: $tablet-size-portrait - 50px)
+			margin-left: 0rem
 			.prefix
 				display: none
 
@@ -44,3 +55,7 @@
 
 .reg-logo
 	display: inline !important
+
+#reg-navlogo
+	@media (max-width: $smartphone-size-portrait + 30px)
+		font-size: 1rem !important
