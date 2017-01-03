@@ -8,12 +8,11 @@ Curiosity | Perfil
 @stop
 @section('content-parent')
    <div class="container-fluid main">
-      <div class="row">
+      <div class="row" id="p-row-main">
          <div class="col-md-8 col-lg-8">
              <!--Form about novedades-->
             <div class="card card-border-standard animated fadeInRightBig p-card-new-parent" data-wow-delay="1s" id="card-news">
                 <div class="card-block">
-
                     <!--Header-->
                     <div class="form-header p-novedades bg-blue darken-4">
                         <h3><i class="fa fa-matk-question"></i> Quizas te interese!</h3>
@@ -24,7 +23,7 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="http://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20%28106%29.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
                                 </div>
                               </div>
                               <div class="card-right">
@@ -47,7 +46,7 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="http://mdbootstrap.com/img/Photos/Slides/img%20%2858%29.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
                                 </div>
                               </div>
                               <div class="card-right">
@@ -70,7 +69,7 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="http://mdbootstrap.com/img/Photos/Slides/img%20%2858%29.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
                                 </div>
                               </div>
                               <div class="card-right">
@@ -211,6 +210,24 @@ Curiosity | Perfil
             <!--/.Card-->
          </div>
       </div>
+      <!-- view pdf -->
+      <div class="row animated bounceIn hidden" id="p-row-pdf">
+        <div class="col-md-12">
+            <div class="card card-border-standard" id="p-card-pdf">
+              <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
+                <div class="mask border-standard flex-center">
+                 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-dismiss-card="#p-row-pdf" data-placement="bottom" title="Cerrar PDF"></i></h4>
+                </div>
+                 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+              </div>
+              <div class="card-block">
+                <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="p-pdf">
+                <h1 class="h1-responsive text-xs-center" id="p-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!--//.. end view pdf -->
    </div>
 @stop
 
