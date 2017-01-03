@@ -70,7 +70,7 @@ Route::get('/juego', function(){
 });
 
 Route::get('/administer', function(){
-    return View::make('administer.admin-topics');
+    return View::make('administer.admin-levels');
 });
 
 Route::get('/1', 'activitiesVideosController@save');

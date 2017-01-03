@@ -1385,31 +1385,136 @@ a.dismiss:hover {
   src: url("/packages/assets/systemFonts/muli.ttf");
 }
 
-/* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+/* line 6, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
 .gst-card {
   background-color: white;
   padding: 1rem;
   border-radius: 0.28rem;
 }
 
-/* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+/* line 11, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-material {
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* line 16, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
 #gst-dataGame h1 {
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
-  color: rgba(42, 42, 42, 0.65);
+  color: rgba(42, 42, 42, 0.75);
 }
-/* line 15, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
-#gst-dataGame hr {
-  border: solid 0.1rem rgba(189, 189, 189, 0.3);
-}
-/* line 17, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+/* line 21, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
 #gst-dataGame img {
   border-radius: 0.28rem;
 }
 
-/* line 20, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+/* line 24, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
 .gst-btnGame {
   margin: 0;
   margin-top: 1rem;
+}
+
+/* line 28, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-back {
+  background-color: white;
+  cursor: pointer;
+}
+
+/* line 32, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-btnInstructs {
+  border-color: #2262ae;
+  color: #2262ae !important;
+}
+
+/* line 36, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-btnPlay {
+  border: solid #2262ae;
+  background-color: #2262ae;
+}
+
+/* line 41, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-info #gst-max {
+  margin: -1rem;
+  padding: 1rem;
+  background-color: #2262ae;
+  color: white;
+  border-top-left-radius: 0.28rem;
+  border-top-right-radius: 0.28rem;
+}
+/* line 48, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-info #gst-max h5 {
+  font-weight: bold;
+}
+/* line 50, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-info #gst-ranking {
+  margin: -1rem;
+  padding: 1rem;
+  padding-top: 2.3rem;
+  color: rgba(42, 42, 42, 0.75);
+}
+/* line 55, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-info #gst-ranking h6 {
+  font-weight: bold;
+}
+
+/* line 58, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+.gst-hr {
+  border: solid 0.1rem rgba(189, 189, 189, 0.3);
+}
+
+/* line 62, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-material h6 {
+  text-align: center;
+  font-weight: bold;
+  color: rgba(42, 42, 42, 0.75);
+}
+
+/* line 69, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content {
+  border-radius: 0.5rem;
+}
+/* line 71, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body {
+  border-radius: 0.5rem;
+  text-align: center;
+  background-image: url(/packages/assets/media/images/avatar/backgrounds/menDefSkBlue098754.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 78, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body #gst-avCel {
+  width: 195px;
+  height: 258px;
+  background-image: url(/packages/assets/media/images/avatar/sprites/sprite.png);
+  background-position: 195px 258px;
+  background-repeat: repeat;
+  transform: scale(0.85);
+  margin: 0 auto;
+}
+/* line 86, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body h1 {
+  font-weight: bold;
+}
+/* line 88, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body button {
+  background-color: #2262ae !important;
+}
+/* line 90, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body .row {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+/* line 94, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+#gst-modal .modal-dialog .modal-content .modal-body .row div h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* line 98, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/child/sass/_game_start.sass */
+.gst-material {
+  border-color: #2262ae;
+  color: #2262ae !important;
 }

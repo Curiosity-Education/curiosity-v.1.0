@@ -69,7 +69,7 @@
       </div>
    </div>
 
-   <div class="modal fade msad-mdl" id="aint-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+   <div class="modal fade msad-mdl" id="aint-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header"></div>

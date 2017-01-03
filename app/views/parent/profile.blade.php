@@ -77,7 +77,7 @@ Curiosity | Perfil
                         <h3><i class="fa fa-matk-question"></i> Mis datos!</h3>
                     </div>
                      <!--Body-->
-                    <div class="tab-1 active">
+                    <div class="tab-1 active animated fadeIn">
                         <div class="md-form">
                             <i class="fa fa-user prefix"></i>
                             <input type="text" id="username" name="username" class="form-control" value="roger17">
@@ -95,7 +95,7 @@ Curiosity | Perfil
                             <label for="apellidos">Apellido(s)</label>
                         </div>
                     </div>
-                    <div class="tab-2">
+                    <div class="tab-2 animated fadeIn">
                         <div class="md-form">
                             <i class="fa fa-lock prefix"></i>
                             <input type="password" id="old-password" name="old-password" class="form-control">
@@ -112,7 +112,7 @@ Curiosity | Perfil
                             <label for="cnew-password">Confirmar contraseña</label>
                         </div>
                     </div>
-                    <div class="tab-3">
+                    <div class="tab-3 animated fadeIn">
                         <div class="md-form">
                             <i class="fa fa-phone prefix"></i>
                             <input type="password" id="telefono" name="telefono" class="form-control">
@@ -126,8 +126,8 @@ Curiosity | Perfil
                             </select>
                         </div>
                     </div>
-                    <div class="text-xs-center upch-content-buttons">
-                      <button class="btn btn-deep-orange border-standard btn-return btn-to-move hidden" data-step="1">Regresar</button>
+                    <div class="text-xs-center upch-content-buttons animated fadeIn">
+                      <button class="btn btn-deep-orange border-standard btn-return btn-to-move" disabled data-step="1">Regresar</button>
                       <button class="btn btn-deep-purple border-standard btn-next btn-to-move" data-step="1">Siguiente</button>
                       <button class="btn btn-green border-standard upch-btn-update hidden">Guardar cambios</button>
                     </div>
@@ -182,7 +182,7 @@ Curiosity | Perfil
                     <hr>
                     <!--//.. end data list -->
                     <!--Quotation-->
-                    <a class="btn btn-green btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
+                    <a class="btn bg-blue btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
                 </div>
             </div>
             <!--/.Card-->
