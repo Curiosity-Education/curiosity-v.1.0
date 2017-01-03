@@ -1,0 +1,60 @@
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
+.alev-buttons
+   margin-top: 1rem
+   margin-bottom: 1rem
+   button
+      margin: 0
+
+#alev-btnNew
+   color: $color-white
+   background-color: $color-blue
+
+#alev-save
+   border-radius: $border-rad
+   background-color: $color-blue
+   color: $color-white
+   background-color: $color-blue !important
+   border: solid $color-blue !important
+
+#alev-cancel
+   border-color: $color-orange !important
+   color: $color-orange !important
+   border-radius: $border-rad
+
+#aint-btnNew
+   @extend #alev-btnNew
+
+#aint-save
+   @extend #alev-save
+
+#aint-cancel
+   @extend #alev-cancel
+
+.aint-buttons
+   @extend .alev-buttons
+
+#ablk-btnNew
+   @extend #alev-btnNew
+
+#ablk-save
+   @extend #alev-save
+
+#ablk-cancel
+   @extend #alev-cancel
+
+.ablk-buttons
+   @extend .alev-buttons
+
+#atpc-btnNew
+   @extend #alev-btnNew
+
+#atpc-save
+   @extend #alev-save
+
+#atpc-cancel
+   @extend #alev-cancel
+
+.atpc-buttons
+   @extend .alev-buttons
