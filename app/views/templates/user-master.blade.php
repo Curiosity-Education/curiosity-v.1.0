@@ -31,7 +31,10 @@
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
                         <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up" id="slideBtn"><i class="fa fa-bars"></i></a>
-                        <a class="nav-link hidden-md-down">Salir&nbsp;<span class="fa fa-caret-right"></span></a>
+                        <a class="btn btn-outline-primary btn-rounded hidden-md-down" id="btnGoOut">
+                           Salir&nbsp;
+                           <span class="fa fa-caret-right"></span>
+                        </a>
                      </li>
                   </ul>
                </div>
