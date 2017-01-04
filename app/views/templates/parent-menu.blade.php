@@ -12,45 +12,45 @@
 @stop
 
 @section('menu-links')
-<div data-url="" class="linkMenu linkMenu-active">
+<div data-url="#" class="linkMenu waves-effect">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="" class="linkMenu">
+<div data-url="#" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
-<div data-url="" class="linkMenu">
+<div data-url="#" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
 @stop
 
 @section('menu-links-aside')
-<div data-url="" class="linkMenu linkMenuAside linkMenu-active">
+<div data-url="#" class="linkMenu linkMenuAside linkMenu-active">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="" class="linkMenu linkMenuAside">
+<div data-url="#" class="linkMenu linkMenuAside">
    <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
-<div data-url="" class="linkMenu linkMenuAside">
+<div data-url="#" class="linkMenu linkMenuAside">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
-<div class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+<div data-url="#" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
-<div data-url="" class="linkMenu linkMenuAside">
+<div data-url="#" class="linkMenu linkMenuAside">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir
 </div>
 @stop
 
 @section('under-menu')
-<div id="parentMenu-addChild" class="z-depth-1">
+<div data-url="#" id="parentMenu-addChild" class="z-depth-1 waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>

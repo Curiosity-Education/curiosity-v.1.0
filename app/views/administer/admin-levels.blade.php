@@ -13,7 +13,9 @@
    <div class='row'>
       <div class='col-xs-12'>
          <div class='alev-buttons float-xs-right'>
-            <a class='btn-floating btn-small primary-color-dark waves-effect waves-light' id='alev-btnNew'></a>
+            <a class='btn-floating btn-small primary-color-dark waves-effect waves-light' id='alev-btnNew'>
+               <i class="fa fa-plus"></i>
+            </a>
          </div>
       </div>
    </div>
