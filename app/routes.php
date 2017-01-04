@@ -11,31 +11,31 @@
 |
 */
 
-Route::get('/registry', function(){
+Route::get('registry', function(){
 	return View::make('parent.registry');
 });
 
-Route::get('/registry-firstchild', function(){
+Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
 
-Route::get('/my-account', function(){
+Route::get('my-account', function(){
 	return View::make('child.configuration_account');
 });
 
-Route::get('/profile-child', function(){
+Route::get('profile-child', function(){
 	return View::make('child.profile');
 });
 
-Route::get('/library-pdfs', function(){
+Route::get('library-pdfs', function(){
 	return View::make('parent.library_pdfs');
 });
 
-Route::get('/library-videos', function(){
+Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('/parent-profile', function(){
+Route::get('parent-profile', function(){
     return View::make('parent.profile');
 });
 
