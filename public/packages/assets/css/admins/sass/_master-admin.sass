@@ -1,0 +1,95 @@
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
+#msad-profileContainer
+   background: $color-blue
+   margin: -1rem
+   padding: 2rem
+   margin-bottom: 1rem
+   border-top-left-radius: $border-rad
+   border-top-right-radius: $border-rad
+
+#msad-imgProfile
+   border-radius: 100%
+   border: solid .5rem $color-white
+
+#msad-banner
+   height: 5rem
+   border-radius: $border-rad
+   font-size: 1.2rem
+
+.msad-table
+   width: 100%
+   background: $color-white
+   border-radius: $border-rad
+   thead
+      tr
+         th
+            background-color: $color-blue
+            color: $color-white
+            text-align: center !important
+   tbody
+      tr
+         td
+            text-align: center !important
+            vertical-align: middle
+
+.msad-table-btnConf
+   background-color: $color-blue
+   color: $color-white
+   border-radius: $border-rad !important
+   border: solid $color-blue
+
+.msad-table-btnDel
+   border-color: $color-red !important
+   color: $color-red !important
+   border-radius: $border-rad !important
+
+#msad-icon-cubes
+   color: $color-pink
+
+#msad-icon-users
+   color: $color-green
+
+.msad-mdl
+   .modal-dialog
+      .modal-content
+         border-top-left-radius: .5rem
+         border-top-right-radius: .5rem
+         border-bottom-left-radius: .25rem
+         border-bottom-right-radius: .25rem
+         .modal-header
+            background-color: $color-blue
+            border-top-left-radius: .25rem
+            border-top-right-radius: .25rem
+            margin-bottom: 1rem
+            .close
+               font-weight: 100 !important
+               color: #fff !important
+               opacity: .8 !important
+         .modal-footer
+            background-color: rgba($color-light-gray, .3)
+            border-bottom-left-radius: .25rem
+            border-bottom-right-radius: .25rem
+
+.msad-mdl-label
+   margin-bottom: -.5rem
+   color: #8e8e8e
+   font-weight: bold
+
+.msad-mdl-textArea
+   @extend .msad-mdl-label
+   margin-bottom: .5rem
+
+.msad-selectGroup
+   background: $color-white
+   padding: 1rem
+   margin-bottom: 2rem
+   border-radius: $border-rad
+
+.msad-select
+   border: solid .15rem rgba($color-light-gray, .5)
+   padding-left: .5rem
+   padding-right: .5rem
+   border-radius: $border-rad
+   cursor: pointer

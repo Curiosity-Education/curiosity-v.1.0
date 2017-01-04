@@ -43,6 +43,10 @@
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
+<div data-url="" class="linkMenu linkMenuAside">
+   <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
+   Salir
+</div>
 @stop
 
 @section('under-menu')

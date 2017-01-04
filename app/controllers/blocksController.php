@@ -1,6 +1,26 @@
 <?php
 class blocksController extends BaseController{
 
+	function all(){
+		$blocks = Block::where('active', '=', 1)->get();
+		return $blocks;
+	}
+
+	function getWithActivities(){
+		$blocks = Activity::join('temas', 'actividades.tema_id', '=', 'temas.id')
+		->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
+		->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
+		->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+		->where('actividades.active', '=', 1)
+		->where('temas.active', '=', 1)
+		->where('bloques.active', '=', 1)
+		->where('inteligencias.active', '=', 1)
+		->where('niveles.active', '=', 1)
+		->where('actividades.estatus', '=', 'eneabled')
+		->select('bloques.*')->get();
+		return $blocks;
+	}
+
 	function save(){
 		$data = Input::get('data');
 		$rules = array(

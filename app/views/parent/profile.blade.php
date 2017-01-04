@@ -216,9 +216,9 @@ Curiosity | Perfil
             <div class="card card-border-standard" id="p-card-pdf">
               <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
                 <div class="mask border-standard flex-center">
-                 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-dismiss-card="#p-row-pdf" data-placement="bottom" title="Cerrar PDF"></i></h4>
+                 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
                 </div>
-                 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+                 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
               </div>
               <div class="card-block">
                 <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="p-pdf">

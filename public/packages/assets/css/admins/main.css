@@ -1,0 +1,164 @@
+/* main-master */
+@font-face {
+  font-family: "font-curiosity";
+  src: url("/packages/assets/systemFonts/muli.ttf");
+}
+
+/* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+#msad-profileContainer {
+  background: #2262ae;
+  margin: -1rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-top-left-radius: 0.28rem;
+  border-top-right-radius: 0.28rem;
+}
+
+/* line 12, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+#msad-imgProfile {
+  border-radius: 100%;
+  border: solid 0.5rem white;
+}
+
+/* line 16, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+#msad-banner {
+  height: 5rem;
+  border-radius: 0.28rem;
+  font-size: 1.2rem;
+}
+
+/* line 21, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-table {
+  width: 100%;
+  background: white;
+  border-radius: 0.28rem;
+}
+/* line 27, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-table thead tr th {
+  background-color: #2262ae;
+  color: white;
+  text-align: center !important;
+}
+/* line 33, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-table tbody tr td {
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+/* line 37, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-table-btnConf {
+  background-color: #2262ae;
+  color: white;
+  border-radius: 0.28rem !important;
+  border: solid #2262ae;
+}
+
+/* line 43, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-table-btnDel {
+  border-color: #ec2726 !important;
+  color: #ec2726 !important;
+  border-radius: 0.28rem !important;
+}
+
+/* line 48, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+#msad-icon-cubes {
+  color: #e6218f;
+}
+
+/* line 51, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+#msad-icon-users {
+  color: #3cb54a;
+}
+
+/* line 56, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl .modal-dialog .modal-content {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+/* line 61, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl .modal-dialog .modal-content .modal-header {
+  background-color: #2262ae;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+/* line 66, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl .modal-dialog .modal-content .modal-header .close {
+  font-weight: 100 !important;
+  color: white !important;
+  opacity: 0.8 !important;
+}
+/* line 70, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl .modal-dialog .modal-content .modal-footer {
+  background-color: rgba(189, 189, 189, 0.3);
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+/* line 75, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl-label, .msad-mdl-textArea {
+  margin-bottom: -0.5rem;
+  color: #8e8e8e;
+  font-weight: bold;
+}
+
+/* line 80, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-mdl-textArea {
+  margin-bottom: 0.5rem;
+}
+
+/* line 84, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-selectGroup {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.28rem;
+}
+
+/* line 90, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-select {
+  border: solid 0.15rem rgba(189, 189, 189, 0.5);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.28rem;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "font-curiosity";
+  src: url("/packages/assets/systemFonts/muli.ttf");
+}
+
+/* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+.alev-buttons, .aint-buttons, .ablk-buttons, .atpc-buttons {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+/* line 7, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+.alev-buttons button, .aint-buttons button, .ablk-buttons button, .atpc-buttons button {
+  margin: 0;
+}
+
+/* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#alev-btnNew, #aint-btnNew, #ablk-btnNew, #atpc-btnNew {
+  color: white;
+  background-color: #2262ae;
+}
+
+/* line 14, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#alev-save, #aint-save, #ablk-save, #atpc-save {
+  border-radius: 0.28rem;
+  background-color: #2262ae;
+  color: white;
+  background-color: #2262ae !important;
+  border: solid #2262ae !important;
+}
+
+/* line 21, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#alev-cancel, #aint-cancel, #ablk-cancel, #atpc-cancel {
+  border-color: #ed6922 !important;
+  color: #ed6922 !important;
+  border-radius: 0.28rem;
+}
