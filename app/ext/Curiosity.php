@@ -139,24 +139,43 @@ class Curiosity{
                if (!is_dir($route . $file) && $file!="." && $file!=".."){
                   // if the file is only distinct that "." and ".."
                   // we found the extension
-                  foreach ($typeAndFolder as $type => $directory) {
-                     if ($type == $this->getFileExtension($file)){
-                        if ($boolean == 'yes'){
-                           $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                  if (is_array($typeAndFolder)){
+                     foreach ($typeAndFolder as $type => $directory) {
+                        if ($type == $this->getFileExtension($file)){
+                           if ($boolean == 'yes'){
+                              $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                           }
+                           else if ($boolean == 'not'){
+                              $fileName = $file;
+                           }
+                           else if ($boolean == 'both'){
+                              $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                           }
+                           $this->moveFile($route.$file, public_path().$typeAndFolder.$fileName);
+                           array_push($filesSaved, array(
+                              'name' => $fileName,
+                              'route' => $directory,
+                              'type' => $type
+                           ));
                         }
-                        else if ($boolean == 'not'){
-                           $fileName = $file;
-                        }
-                        else if ($boolean == 'both'){
-                           $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
-                        }
-                        $this->moveFile($route.$file, public_path().$directory.$fileName);
-                        array_push($filesSaved, array(
-                           'name' => $fileName,
-                           'route' => $directory,
-                           'type' => $type
-                        ));
                      }
+                  }
+                  else{
+                     if ($boolean == 'yes'){
+                        $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                     }
+                     else if ($boolean == 'not'){
+                        $fileName = $file;
+                     }
+                     else if ($boolean == 'both'){
+                        $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                     }
+                     $this->moveFile($route.$file, public_path().$directory.$fileName);
+                     array_push($filesSaved, array(
+                        'name' => $fileName,
+                        'route' => $directory,
+                        'type' => $type
+                     ));
                   }
                }
             }
