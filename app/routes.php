@@ -75,6 +75,7 @@ Route::get('/administer', function(){
 
 Route::get('/1', 'activitiesVideosController@save');
 
+Route::get('view-{viewName}-{controller?}-{method?}');
 
 /*
 *   Register for users
