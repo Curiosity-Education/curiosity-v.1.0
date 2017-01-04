@@ -109,13 +109,13 @@ Route::post('/remote-username','userController@remoteUsername');
 Route::group(array('before' => 'auth'), function(){
         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
         /* Rutas para obtencion de datos de direccion por AJAX*/
-        Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-        Route::post('/getByCiudades', 'direccionController@getCiudades');
+        //Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+        //Route::post('/getByCiudades', 'direccionController@getCiudades');
         /*Rutas para subir y ver juego*/
-        Route::post('/actividad/setdata','actividadController@setDataActivity');
-        Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
-        Route::group(array('before' => 'only_session'), function(){
-        Route::post('/buscarTema', 'temaController@temasFound');
+        //Route::post('/actividad/setdata','actividadController@setDataActivity');
+        //Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
+        //Route::group(array('before' => 'only_session'), function(){
+        //Route::post('/buscarTema', 'temaController@temasFound');
 
         // padres
 /*        Route::group(array('before' => 'gestion_data_padre'), function(){
@@ -320,10 +320,10 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('delete', 'escuelaController@remove');
             });
         });*/
-        Route::group(array('before' => 'gestionar_ventas'), function(){
+        /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
-                Route::get('/', 'vendedorController@verPagina');
+                /*Route::get('/', 'vendedorController@verPagina');
                 Route::post('save', 'vendedorController@guardar');
                 Route::post('update', 'vendedorController@actualizar');
                 Route::post('delete', 'vendedorController@eliminar');
@@ -389,7 +389,7 @@ Route::group(array('before' => 'auth'), function(){
 
         /*
         *  Monitoreo de Navegadores
-        */
+
         Route::group(array('prefix' => 'browser'),function(){
             Route::match(array('GET','POST'),'get/{limit?}','sesionInfoController@getBrowsers')
                 ->where('limit','[0-9]+');
