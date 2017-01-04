@@ -11,31 +11,31 @@
 |
 */
 
-Route::get('/registry', function(){
+Route::get('registry', function(){
 	return View::make('parent.registry');
 });
 
-Route::get('/registry-firstchild', function(){
+Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
 
-Route::get('/my-account', function(){
+Route::get('my-account', function(){
 	return View::make('child.configuration_account');
 });
 
-Route::get('/profile-child', function(){
+Route::get('profile-child', function(){
 	return View::make('child.profile');
 });
 
-Route::get('/library-pdfs', function(){
+Route::get('library-pdfs', function(){
 	return View::make('parent.library_pdfs');
 });
 
-Route::get('/library-videos', function(){
+Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('/parent-profile', function(){
+Route::get('parent-profile', function(){
     return View::make('parent.profile');
 });
 
@@ -45,35 +45,35 @@ Route::get('/', function()
 	return View::make('child.init');
 });
 
-Route::get('/menu-studio',function(){
+Route::get('menu-studio',function(){
 	return View::make('child.menu-studio');
 });
 
-Route::get("/child-registration",function(){
+Route::get("child-registration",function(){
     return View::make("parent.child_registration");
 });
 
-Route::get('/padre-inicio', function(){
+Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('/menu-estudio', function(){
+Route::get('menu-estudio', function(){
 	return View::make('child.studyMenu');
 });
 
-Route::get('/tienda', function(){
+Route::get('tienda', function(){
     return View::make('child.curiosity-store');
 });
 
-Route::get('/juego', function(){
+Route::get('juego', function(){
     return View::make('child.game-start');
 });
 
-Route::get('/administer', function(){
+Route::get('administer', function(){
     return View::make('administer.admin-levels');
 });
 
-Route::get('/1', 'activitiesVideosController@save');
+Route::get('1', 'activitiesVideosController@save');
 
 Route::get('view-{viewName}-{controller?}-{method?}');
 
