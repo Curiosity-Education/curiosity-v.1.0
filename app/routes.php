@@ -45,35 +45,35 @@ Route::get('/', function()
 	return View::make('child.init');
 });
 
-Route::get('/menu-studio',function(){
+Route::get('menu-studio',function(){
 	return View::make('child.menu-studio');
 });
 
-Route::get("/child-registration",function(){
+Route::get("child-registration",function(){
     return View::make("parent.child_registration");
 });
 
-Route::get('/padre-inicio', function(){
+Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('/menu-estudio', function(){
+Route::get('menu-estudio', function(){
 	return View::make('child.studyMenu');
 });
 
-Route::get('/tienda', function(){
+Route::get('tienda', function(){
     return View::make('child.curiosity-store');
 });
 
-Route::get('/juego', function(){
+Route::get('juego', function(){
     return View::make('child.game-start');
 });
 
-Route::get('/administer', function(){
+Route::get('administer', function(){
     return View::make('administer.admin-levels');
 });
 
-Route::get('/1', 'activitiesVideosController@save');
+Route::get('1', 'activitiesVideosController@save');
 
 Route::get('view-{viewName}-{controller?}-{method?}');
 
