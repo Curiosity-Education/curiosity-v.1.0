@@ -30,7 +30,7 @@
    <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
-<div data-url="/tienda" class="linkMenu waves-effect" id="linkCh-store">
+<div data-url="view-hello" class="linkMenu waves-effect" id="linkCh-store">
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
