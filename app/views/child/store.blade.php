@@ -92,32 +92,5 @@
 
 @section('js-plus')
    <script src="/packages/libs/OwlCarousel2-2.2.0/dist/owl.carousel.min.js" charset="utf-8"></script>
-   <script type="text/javascript">
-      $(function(){
-         $('.owl-carousel').owlCarousel({
-             loop:true,
-             autoplay:true,
-             margin:10,
-             nav:false,
-             dots:false,
-             responsive:{
-                 0:{
-                     items:1
-                 },
-                 300:{
-                    items:1
-                 },
-                 1050:{
-                     items:1
-                 },
-                 1200:{
-                     items:2
-                 }
-             }
-         });
-         $("body").on('click', '.cst-btnGet', function(){
-            alert();
-         });
-      });
-   </script>
+   <script src="/packages/assets/js/child/dispatchers/dsp-store.js" charset="utf-8"></script>
 @stop
