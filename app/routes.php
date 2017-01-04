@@ -118,22 +118,22 @@ Route::group(array('before' => 'auth'), function(){
 
         // padres
 /*        Route::group(array('before' => 'gestion_data_padre'), function(){
-					Route::group(array('before' => ''), function(){
+					Route::group(array('before' => 'my-son'), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
-						Route::get('Scores', 'padreController@getPuntajes');
-	          Route::get('alerts', 'padreController@getAlertasNow');
+						Route::get('scores', 'padreController@getPuntajes');
+	                    Route::get('alerts', 'padreController@getAlertasNow');
 						Route::get('getsons','padreController@gethijos');
-						Route::post('GetUsePlatform','padreController@getUsoPlataforma');
-						Route::post('cutSons','padreController@getCountHijos');
-	          Route::post('getsegs','padreController@seguimientoHijo');
-	          Route::post('tour-first','padreController@tourFirst');
+						Route::post('get-use-platform','padreController@getUsoPlataforma');
+						Route::post('cut-sons','padreController@getCountHijos');
+                        Route::post('get-follow-up','padreController@seguimientoHijo');
+	                    Route::post('tour-first','padreController@tourFirst');
 					});
 					Route::group(array('prefix' => 'sons'), function(){
 						Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
 						Route::get('my', 'hijoController@info');
-	          Route::post('breakdown/{idHijo}','hijoController@desgloceJuegos');
-	          Route::post('getMeta/{idHijo}','hijoController@getMeta');
-	          Route::post('reg','hijoController@addHijo');
+	                    Route::post('breakdown/{idHijo}','hijoController@desgloceJuegos');
+	                    Route::post('getMeta/{idHijo}','hijoController@getMeta');
+	                    Route::post('reg','hijoController@addHijo');
 					});
 
 
@@ -146,7 +146,6 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/hasgame','actividadController@hasGame');
         Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
         Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
-        // Route::get('/recordatorio','hijoController@recordatorio');
         Route::get('block', 'bloqueController@verPagina');
         Route::get('profile', 'userController@verPagina');
 
@@ -196,8 +195,7 @@ Route::group(array('before' => 'auth'), function(){
 							Route::post('assign/avatar', 'hijoController@asignAvatar');
 							Route::post('goal/change', 'hijoController@changeMeta');
 						});
-            // Route::group(array('prefix' => ''),function(){
-				// 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
+            // Route::group(array('prefix' => 'game'),function(){
 				// 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
 				// 			Route::get('activity{id}', 'actividadController@verPaginaInWeb');
 				// 		});
