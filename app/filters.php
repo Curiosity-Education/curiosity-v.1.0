@@ -88,3 +88,16 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Filters obout the system Curiosity
+|--------------------------------------------------------------------------}
+*/
+
+Route::filter('manage_content',function(){
+   if(!Entrust::can('manage_content')){
+       return View::make('view-error404');
+   }
+});

@@ -18,7 +18,7 @@ class Curiosity{
    public static function getValidationMessages(){
       $curiosity = self::singleton();
       $messages = [
-             "required"    =>  "Este campo :attribute es requerido",
+             "required"    =>  "El campo :attribute es requerido",
              "alpha"       =>  "Solo puedes ingresar letras",
              "date"        =>  "Formato de fecha invalido",
              "numeric"     =>  "Solo se permiten digitos",
@@ -119,6 +119,12 @@ class Curiosity{
          }
       }
       return $array;
+   }
+
+   public static function makeArrayByObject($obj){
+      $arr = array();
+		foreach ($obj as $key => $value) { $arr[$key] = $value; }
+      return $arr;
    }
 
    // ===========================================================
