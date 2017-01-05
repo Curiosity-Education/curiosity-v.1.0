@@ -122,6 +122,7 @@ class Curiosity{
    }
 
    public static function makeArrayByObject($obj){
+      $obj = json_decode(json_encode($obj));
       $arr = array();
 		foreach ($obj as $key => $value) { $arr[$key] = $value; }
       return $arr;
