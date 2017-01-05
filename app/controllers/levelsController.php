@@ -22,7 +22,7 @@ class levelsController extends BaseController{
 	}
 
 	function save(){
-		$data = Curiosity::makeArrayByObject(json_decode(json_encode(Input::all())));
+		$data = Curiosity::makeArrayByObject(Input::all());
 		$rules = array(
 			'nombre' => 'required'
 		);
@@ -45,7 +45,7 @@ class levelsController extends BaseController{
 	}
 
 	function update(){
-		$data = Curiosity::makeArrayByObject(json_decode(json_encode(Input::all())));
+		$data = Curiosity::makeArrayByObject(Input::all());
 		$rules = array(
 			'nombre' => 'required'
 		);
@@ -74,7 +74,7 @@ class levelsController extends BaseController{
 	}
 
 	function delete(){
-		$id = Curiosity::makeArrayByObject(json_decode(json_encode(Input::all())));
+		$id = Curiosity::makeArrayByObject(Input::all());
 		Level::where('id', '=', $id)->update(array( 'active' => 0 ));
 		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 	}
