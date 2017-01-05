@@ -78,6 +78,30 @@ Route::get('1', 'activitiesVideosController@save');
 Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView');
 
 /*
+* -----------------------------------------------------------------------------
+* Routes to manage the levels.
+* only for the administers into the system.
+* -----------------------------------------------------------------------------
+*/
+// Route::group(array('before' => 'manage_content'),function(){
+	Route::group(array('prefix' =>  'levels'),function(){
+		Route::post('save', 'levelsController@save');
+		Route::post('update', 'levelsController@update');
+		Route::post('delete', 'levelsController@remove');
+	});
+// });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to levels.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'levels'),function(){
+	Route::post('all', 'levelsController@all');
+});
+
+/*
 *   Register for users
 */
 /*
