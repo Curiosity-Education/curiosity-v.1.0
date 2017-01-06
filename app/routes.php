@@ -70,7 +70,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-levels');
+    return View::make('administer.admin-intelligences');
 });
 
 Route::get('1', 'activitiesVideosController@save');
@@ -79,15 +79,22 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 
 /*
 * -----------------------------------------------------------------------------
-* Routes to manage the levels.
+* Routes to manage the content.
 * only for the administers into the system.
 * -----------------------------------------------------------------------------
 */
 // Route::group(array('before' => 'manage_content'),function(){
+	// Manage the levels
 	Route::group(array('prefix' =>  'levels'),function(){
 		Route::post('save', 'levelsController@save');
 		Route::post('update', 'levelsController@update');
 		Route::post('delete', 'levelsController@delete');
+	});
+	// Manage the intelligences
+	Route::group(array('prefix' =>  'intelligences'),function(){
+		Route::post('save', 'intelligencesController@save');
+		Route::post('update', 'intelligencesController@update');
+		Route::post('delete', 'intelligencesController@delete');
 	});
 // });
 
@@ -100,6 +107,18 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
 });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to intelligences.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'intelligences'),function(){
+	Route::post('all', 'intelligencesController@all');
+	Route::post('getByLevel', 'intelligencesController@getByLevel');
+});
+
 
 /*
 *   Register for users

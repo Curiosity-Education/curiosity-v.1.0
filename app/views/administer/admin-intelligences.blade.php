@@ -26,9 +26,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="aint-levels">Niveles (Grados Escolares)</label>
-                <select class="form-control msad-select" name="">
-                   <option value="x">1ro</option>
-                </select>
+                <select class="form-control msad-select" name="aint_lvlSel" id="aint_lvlSel"></select>
               </div>
            </div>
          </div>
@@ -43,30 +41,7 @@
                   <th>Nombre</th><th>Acciones</th>
                </tr>
             </thead>
-            <tbody>
-               <tr>
-                  <td>1ro</td>
-                  <td>
-                     <button type='button' class='btn msad-table-btnConf aint-btnConf'>
-                        <span class='fa fa-gears'></span>
-                     </button>
-                     <button type='button' class='btn btn-outline-default msad-table-btnDel aint-btnDel'>
-                        <span class='fa fa-trash-o'></span>
-                     </button>
-                  </td>
-               </tr>
-               <tr>
-                  <td>2do</td>
-                  <td>
-                     <button type='button' class='btn msad-table-btnConf aint-btnConf'>
-                        <span class='fa fa-gears'></span>
-                     </button>
-                     <button type='button' class='btn btn-outline-default msad-table-btnDel aint-btnDel'>
-                        <span class='fa fa-trash-o'></span>
-                     </button>
-                  </td>
-               </tr>
-            </tbody>
+            <tbody></tbody>
          </table>
       </div>
    </div>
@@ -79,16 +54,16 @@
             <form class="form form-horizontal" id="aint-form">
                <div class="form-group">
                  <label for="aint-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control" id="aint-name" name="aint-name">
+                 <input type="text" class="form-control aintInp" id="aint_name" name="aint_name">
                </div>
                <div class="form-group">
                  <label for="aint-name" class="msad-mdl-textArea">Descripción</label>
-                 <textarea id="aint-descript" name="aint-descript" rows="15" class="form-control"></textarea>
+                 <textarea id="aint_descript" name="aint_descript" rows="15" class="form-control aintInp"></textarea>
                </div>
             </form>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-default" id="aint-cancel">
+            <button type="button" class="btn btn-outline-default" id="aint-cancel" data-dismiss="modal">
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
@@ -104,6 +79,7 @@
 
 @section('js-plus')
    <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/aintController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/aint.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-aint.js" charset="utf-8"></script>
 @stop
