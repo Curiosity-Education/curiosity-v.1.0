@@ -1,4 +1,4 @@
-class CORM{
+class  CORM{
     constructor(){
         this.database = new Database();
     }

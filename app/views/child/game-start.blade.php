@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-   <div class="row">
+   <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">
          <div class="chip animated bounce" id="gst-back">
             <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/arrow-back-icon.png">
@@ -62,17 +62,21 @@
          </div>
       </div>
    </div>
-
+   <div class="row hidden" id="gst-row-game">
+    <div class="col-md-12">
+       <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+    </div>
+   </div>
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-body">
             <div id="gst-avCel"></div>
-            <h1>200 puntos</h1>
+            <h1 id="gst-score">200 puntos</h1>
             <div class="row">
               <div class="col-sm-4">
                  <h4>Aciertos</h4>
-                 <h5>20</h5>
+                 <h5 id="gst-hits">20</h5>
               </div>
               <div class="col-sm-4">
                  <h4>Experiencia</h4>
@@ -94,6 +98,9 @@
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
 <script type="text/javascript">
    $(function(){
       // $("#gst-modal").modal('show');
