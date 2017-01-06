@@ -25,7 +25,7 @@
     	</div>
 	</div>
 	<div class="container">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10 offset-md-1">
 			<div class="introduccion">
 				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primer nivel debe ser accesible para todos.
 				En <i>Curiosity Educación</i> buscamos brindar equidad educativa de una manera divertida.

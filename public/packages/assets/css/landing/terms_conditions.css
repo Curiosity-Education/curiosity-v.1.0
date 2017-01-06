@@ -44,9 +44,8 @@ h1.titulo-apartado{
 	color: #fff;
 }
 
-.light-side-nav .logo-wrapper {
-	background: url("/media/fondo2.jpg") center center no-repeat;
-	background-size: cover;
+#logoAside{
+	height: 80px;
 }
 
 .side-nav {
@@ -70,7 +69,6 @@ h1.titulo-apartado{
 	font-size: 1rem;
 	height: 64px;
 	line-height: 24px !important;
-	padding-left: 30px;
 }
 
 a#desplege{
@@ -118,6 +116,10 @@ li{
 	padding-top: 5px;
 }
 
+li a{
+	font-weight: bold !important;
+}
+
 li a:hover{
 	background-color: #f68e55;
 	color: #fff !important;
@@ -131,4 +133,13 @@ li a:hover{
 .tab2{
 	margin-left: 50px;
 	font-size: 1.1em;
+}
+
+div.main-wrapper{
+	padding-top: 52px;
+}
+
+#slide-out{
+	margin-top: 52px;
+	height: 100%;
 }
