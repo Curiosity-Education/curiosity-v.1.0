@@ -2,7 +2,7 @@
 <html lang="es">
 <head name="theme-color">
 	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
+	<link rel="icon" type="image/png" href="/packages/assets/media/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="keywords" content="Curiosity, Educación,equidad, divertida,juegos,pdf, documentos, videos,retroalimentación,aventura,limites,evaluado,resultados, profesores">
@@ -67,7 +67,7 @@
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-	<script type="text/javascript" src="/packages/js/curiosity/app-index.js"></script>
+	<script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(function () {
