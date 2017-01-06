@@ -11,71 +11,99 @@
 |
 */
 
-Route::get('/registry', function(){
+Route::get('/', function(){
+	return View::make('landing.index');
+});
+
+Route::get('registry', function(){
 	return View::make('parent.registry');
 });
 
-Route::get('/registry-firstchild', function(){
+Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
 
-Route::get('/my-account', function(){
+Route::get('my-account', function(){
 	return View::make('child.configuration_account');
 });
 
-Route::get('/profile-child', function(){
+Route::get('profile-child', function(){
 	return View::make('child.profile');
 });
 
-Route::get('/library-pdfs', function(){
+Route::get('library-pdfs', function(){
 	return View::make('parent.library_pdfs');
 });
 
-Route::get('/library-videos', function(){
+Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('/parent-profile', function(){
+Route::get('parent-profile', function(){
     return View::make('parent.profile');
 });
 
 
-Route::get('/', function()
+Route::get('/hijo-inicio', function()
 {
 	return View::make('child.init');
 });
 
-Route::get('/menu-studio',function(){
+Route::get('menu-studio',function(){
 	return View::make('child.menu-studio');
 });
 
-Route::get("/child-registration",function(){
+Route::get("child-registration",function(){
     return View::make("parent.child_registration");
 });
 
-Route::get('/padre-inicio', function(){
+Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('/menu-estudio', function(){
+Route::get('menu-estudio', function(){
 	return View::make('child.studyMenu');
 });
 
-Route::get('/tienda', function(){
+Route::get('tienda', function(){
     return View::make('child.curiosity-store');
 });
 
-Route::get('/juego', function(){
+Route::get('juego', function(){
     return View::make('child.game-start');
 });
 
-Route::get('/administer', function(){
+Route::get('administer', function(){
     return View::make('administer.admin-levels');
 });
 
-Route::get('/1', 'activitiesVideosController@save');
+Route::get('1', 'activitiesVideosController@save');
 
-Route::get('view-{viewName}-{controller?}-{method?}');
+Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to manage the levels.
+* only for the administers into the system.
+* -----------------------------------------------------------------------------
+*/
+// Route::group(array('before' => 'manage_content'),function(){
+	Route::group(array('prefix' =>  'levels'),function(){
+		Route::post('save', 'levelsController@save');
+		Route::post('update', 'levelsController@update');
+		Route::post('delete', 'levelsController@remove');
+	});
+// });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to levels.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'levels'),function(){
+	Route::post('all', 'levelsController@all');
+});
 
 /*
 *   Register for users
@@ -109,13 +137,13 @@ Route::post('/remote-username','userController@remoteUsername');
 Route::group(array('before' => 'auth'), function(){
         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
         /* Rutas para obtencion de datos de direccion por AJAX*/
-        Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-        Route::post('/getByCiudades', 'direccionController@getCiudades');
+        //Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+        //Route::post('/getByCiudades', 'direccionController@getCiudades');
         /*Rutas para subir y ver juego*/
-        Route::post('/actividad/setdata','actividadController@setDataActivity');
-        Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
-        Route::group(array('before' => 'only_session'), function(){
-        Route::post('/buscarTema', 'temaController@temasFound');
+        //Route::post('/actividad/setdata','actividadController@setDataActivity');
+        //Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
+        //Route::group(array('before' => 'only_session'), function(){
+        //Route::post('/buscarTema', 'temaController@temasFound');
 
         // padres
 /*        Route::group(array('before' => 'gestion_data_padre'), function(){
@@ -320,10 +348,10 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('delete', 'escuelaController@remove');
             });
         });*/
-        Route::group(array('before' => 'gestionar_ventas'), function(){
+        /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
-                Route::get('/', 'vendedorController@verPagina');
+                /*Route::get('/', 'vendedorController@verPagina');
                 Route::post('save', 'vendedorController@guardar');
                 Route::post('update', 'vendedorController@actualizar');
                 Route::post('delete', 'vendedorController@eliminar');
@@ -389,7 +417,7 @@ Route::group(array('before' => 'auth'), function(){
 
         /*
         *  Monitoreo de Navegadores
-        */
+
         Route::group(array('prefix' => 'browser'),function(){
             Route::match(array('GET','POST'),'get/{limit?}','sesionInfoController@getBrowsers')
                 ->where('limit','[0-9]+');
