@@ -1,6 +1,19 @@
 <?php
 class intelligencesController extends BaseController{
 
+	function all(){
+		$ints = Intelligence::where('active', '=', 1)->get();
+		return $ints;
+	}
+
+	function getByLevel(){
+		$data = Input::all();
+		$ints = Intelligence::where("active", "=", 1)
+		->where("nivel_id", "=", $data['id'])
+		->get();
+		return $ints;
+	}
+
 	function getWithActivities(){
 		$intelligences = Activity::join('temas', 'actividades.tema_id', '=', 'temas.id')
 		->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
@@ -17,11 +30,11 @@ class intelligencesController extends BaseController{
 	}
 
 	function save(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'descripcion' => 'required',
-			'grado' => 'required'
+			'nivel' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
@@ -29,13 +42,13 @@ class intelligencesController extends BaseController{
 			return $validar->messages();
 		}
 		else{
-			if ($this->NameActiveExist($data['grado'], $data['nombre'])){
+			if ($this->NameActiveExist($data['nivel'], $data['nombre'])){
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
 				$int = new Intelligence($data);
 				$int->active = 1;
-				$int->nivel_id = $data['grado'];
+				$int->nivel_id = $data['nivel'];
 				$int->save();
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $int));
 			}
@@ -43,31 +56,32 @@ class intelligencesController extends BaseController{
 	}
 
 	function update(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'descripcion' => 'required',
-			'grado' => 'required'
+			'nivel' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return $validation->messages();
 		}
 		else{
-			$int = Intelligence::where('id', '=', $data['idUpdate'])->first();
+			$int = Intelligence::where('id', '=', $data['id'])->first();
 			$namePass = true;
 			if ($int->nombre != $data['nombre']){
-				if ($this->NameActiveExist($data['grado'], $data['nombre'])){
+				if ($this->NameActiveExist($data['nivel'], $data['nombre'])){
 					$namePass = false;
 				}
 			}
 			if ($namePass){
-				Intelligence::where('id', '=', $data['idUpdate'])->update(array(
+				Intelligence::where('id', '=', $data['id'])->update(array(
 					'nombre' => $data['nombre'],
 					'descripcion' => $data['descripcion']
 				));
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+				$ints = Intelligence::where('id', '=', $data['id'])->first();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $ints));
 			}
 			else{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
@@ -76,11 +90,12 @@ class intelligencesController extends BaseController{
 	}
 
 	function delete(){
-		$id = Input::get('data.id');
-		Intelligence::where('id', '=', $id)->update(array(
+		$data = Input::all();
+		Intelligence::where('id', '=', $data['id'])->update(array(
 			'active' => 0
 		));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		$int = Intelligence::where('id', '=', $data['id'])->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $int));
 	}
 
 	private function NameActiveExist($level, $name){

@@ -22,14 +22,14 @@ class levelsController extends BaseController{
 	}
 
 	function save(){
-		$data = Input::get('data');
+		$data = Curiosity::makeArrayByObject(Input::all());
 		$rules = array(
 			'nombre' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
 			if ($this->NameActiveExist($data['nombre'])){
@@ -45,17 +45,17 @@ class levelsController extends BaseController{
 	}
 
 	function update(){
-		$data = Input::get('data');
+		$data = Curiosity::makeArrayByObject(Input::all());
 		$rules = array(
 			'nombre' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
-			$level = Level::where('id', '=', $data['idUpdate'])->first();
+			$level = Level::where('id', '=', $data['id'])->first();
 			$namePass = true;
 			if ($level->nombre != $data['nombre']){
 				if ($this->NameActiveExist($data['nombre'])){
@@ -63,8 +63,9 @@ class levelsController extends BaseController{
 				}
 			}
 			if ($namePass){
-				Level::where('id', '=', $data['idUpdate'])->update(array( 'nombre' => $data['nombre'] ));
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+				Level::where('id', '=', $data['id'])->update(array( 'nombre' => $data['nombre'] ));
+				$lvlupdtd = Level::where('id', '=', $data['id'])->first();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $lvlupdtd));
 			}
 			else{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
@@ -73,9 +74,10 @@ class levelsController extends BaseController{
 	}
 
 	function delete(){
-		$id = Input::get('data.id');
+		$id = Curiosity::makeArrayByObject(Input::all());
 		Level::where('id', '=', $id)->update(array( 'active' => 0 ));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		$lvl = Level::where('id', '=', $id)->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $lvl));
 	}
 
 	private function NameActiveExist($name){

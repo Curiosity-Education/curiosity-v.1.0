@@ -11,70 +11,154 @@
 |
 */
 
-Route::get('/registry', function(){
+Route::get('/', function(){
+	return View::make('landing.index');
+});
+
+Route::get('terminos', function(){
+	return View::make('landing.terms_conditions');
+});
+
+Route::get('aviso-privacidad', function(){
+	return View::make('landing.notice_privacy');
+});
+
+Route::get('equipo', function(){
+	return View::make('landing.team');
+});
+
+Route::get('mentores', function(){
+	return View::make('landing.mentors');
+});
+
+Route::get('login', function(){
+	return View::make('landing.login');
+});
+
+Route::get('registry', function(){
 	return View::make('parent.registry');
 });
 
-Route::get('/registry-firstchild', function(){
+Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
 
-Route::get('/my-account', function(){
+Route::get('my-account', function(){
 	return View::make('child.configuration_account');
 });
 
-Route::get('/profile-child', function(){
+Route::get('profile-child', function(){
 	return View::make('child.profile');
 });
 
-Route::get('/library-pdfs', function(){
+Route::get('library-pdfs', function(){
 	return View::make('parent.library_pdfs');
 });
 
-Route::get('/library-videos', function(){
+Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('/parent-profile', function(){
+Route::get('parent-profile', function(){
     return View::make('parent.profile');
 });
 
 
-Route::get('/', function()
+Route::get('hijo-inicio', function()
 {
 	return View::make('child.init');
 });
 
-Route::get('/menu-studio',function(){
+Route::get('menu-studio',function(){
 	return View::make('child.menu-studio');
 });
 
-Route::get("/child-registration",function(){
+Route::get("child-registration",function(){
     return View::make("parent.child_registration");
 });
 
-Route::get('/padre-inicio', function(){
+Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('/menu-estudio', function(){
+Route::get('menu-estudio', function(){
 	return View::make('child.studyMenu');
 });
 
-Route::get('/tienda', function(){
+Route::get('tienda', function(){
     return View::make('child.curiosity-store');
 });
 
-Route::get('/juego', function(){
+Route::get('juego', function(){
     return View::make('child.game-start');
 });
 
-Route::get('/administer', function(){
+Route::get('administer', function(){
     return View::make('administer.admin-levels');
 });
 
-Route::get('/1', 'activitiesVideosController@save');
+Route::get('1', 'activitiesVideosController@save');
 
+Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to manage the content.
+* only for the administers into the system.
+* -----------------------------------------------------------------------------
+*/
+// Route::group(array('before' => 'manage_content'),function(){
+	// Manage the levels
+	Route::group(array('prefix' =>  'levels'),function(){
+		Route::post('save', 'levelsController@save');
+		Route::post('update', 'levelsController@update');
+		Route::post('delete', 'levelsController@delete');
+	});
+	// Manage the intelligences
+	Route::group(array('prefix' =>  'intelligences'),function(){
+		Route::post('save', 'intelligencesController@save');
+		Route::post('update', 'intelligencesController@update');
+		Route::post('delete', 'intelligencesController@delete');
+	});
+	// Manage the Blocks
+	Route::group(array('prefix' =>  'blocks'),function(){
+		Route::post('save', 'blocksController@save');
+		Route::post('update', 'blocksController@update');
+		Route::post('delete', 'blocksController@delete');
+	});
+// });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to levels.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'levels'),function(){
+	Route::post('all', 'levelsController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to intelligences.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'intelligences'),function(){
+	Route::post('all', 'intelligencesController@all');
+	Route::post('getByLevel', 'intelligencesController@getByLevel');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to blocks.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'blocks'),function(){
+	Route::post('all', 'blocksController@all');
+	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+});
 
 /*
 *   Register for users
@@ -108,32 +192,32 @@ Route::post('/remote-username','userController@remoteUsername');
 Route::group(array('before' => 'auth'), function(){
         Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
         /* Rutas para obtencion de datos de direccion por AJAX*/
-        Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-        Route::post('/getByCiudades', 'direccionController@getCiudades');
+        //Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+        //Route::post('/getByCiudades', 'direccionController@getCiudades');
         /*Rutas para subir y ver juego*/
-        Route::post('/actividad/setdata','actividadController@setDataActivity');
-        Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
-        Route::group(array('before' => 'only_session'), function(){
-        Route::post('/buscarTema', 'temaController@temasFound');
+        //Route::post('/actividad/setdata','actividadController@setDataActivity');
+        //Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
+        //Route::group(array('before' => 'only_session'), function(){
+        //Route::post('/buscarTema', 'temaController@temasFound');
 
         // padres
 /*        Route::group(array('before' => 'gestion_data_padre'), function(){
-					Route::group(array('before' => ''), function(){
+					Route::group(array('before' => 'my-son'), function(){
 						Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
-						Route::get('Scores', 'padreController@getPuntajes');
-	          Route::get('alerts', 'padreController@getAlertasNow');
+						Route::get('scores', 'padreController@getPuntajes');
+	                    Route::get('alerts', 'padreController@getAlertasNow');
 						Route::get('getsons','padreController@gethijos');
-						Route::post('GetUsePlatform','padreController@getUsoPlataforma');
-						Route::post('cutSons','padreController@getCountHijos');
-	          Route::post('getsegs','padreController@seguimientoHijo');
-	          Route::post('tour-first','padreController@tourFirst');
+						Route::post('get-use-platform','padreController@getUsoPlataforma');
+						Route::post('cut-sons','padreController@getCountHijos');
+                        Route::post('get-follow-up','padreController@seguimientoHijo');
+	                    Route::post('tour-first','padreController@tourFirst');
 					});
 					Route::group(array('prefix' => 'sons'), function(){
 						Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
 						Route::get('my', 'hijoController@info');
-	          Route::post('breakdown/{idHijo}','hijoController@desgloceJuegos');
-	          Route::post('getMeta/{idHijo}','hijoController@getMeta');
-	          Route::post('reg','hijoController@addHijo');
+	                    Route::post('breakdown/{idHijo}','hijoController@desgloceJuegos');
+	                    Route::post('getMeta/{idHijo}','hijoController@getMeta');
+	                    Route::post('reg','hijoController@addHijo');
 					});
 
 
@@ -143,10 +227,8 @@ Route::group(array('before' => 'auth'), function(){
         // salir (cerrar sesion)
         Route::get('/logout', 'loginController@salir');
         // Acceder a juego
-        Route::post('/hasgame','actividadController@hasGame');
         Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
         Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
-        // Route::get('/recordatorio','hijoController@recordatorio');
         Route::get('block', 'bloqueController@verPagina');
         Route::get('profile', 'userController@verPagina');
 
@@ -161,8 +243,8 @@ Route::group(array('before' => 'auth'), function(){
 				Route::group(array('prefix' => 'remote-username'), function(){
 					Route::match(array('GET', 'POST'), '/', 'userController@viewPage');
 					Route::post('update','userController@remoteUsernameUpdate');
-	      	Route::post('son','userController@remoteUsernameHijo');
-	        Route::post('admin','userController@remoteUsernameAdmin');
+	      	        Route::post('son','userController@remoteUsernameHijo');
+	                Route::post('admin','userController@remoteUsernameAdmin');
 
 					Route::group(array('prefix' => 'remote-password'), function(){
 						Route::post('update','userController@remotePasswordUpdate');
@@ -198,7 +280,7 @@ Route::group(array('before' => 'auth'), function(){
 				Route::post('goal/change', 'hijoController@changeMeta');
 			});
 
-            Route::group(array('prefix' => ,""), function(){
+            Route::group(array('prefix' => ,"childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
             });
             /*Route::group(array('prefix' => ''),function(){
@@ -226,7 +308,7 @@ Route::group(array('before' => 'auth'), function(){
 				// 			Route::match(array('GET', 'POST'), '/', 'secuenciaController@viewPage');
 				// 			Route::post('getSpriteselected-{nameType}', 'secuenciaController@getSelectedSprite');
 				// 		});
-        });
+            });
 
 		// NOVEDADES
 
@@ -236,7 +318,7 @@ Route::group(array('before' => 'auth'), function(){
 				// Validaciones remotas
 				Route::match(array('GET', 'POST'),'tituloRemoto-papa', 'novedadesController@tituloNov_papa');
 				Route::match(array('GET', 'POST'),'tituloRemoto-hijo', 'novedadesController@tituloNov_hijo');
-	      Route::match(array('GET', 'POST'),'linkRemoto-hijo', 'novedadesController@linkNov_hijo');
+	            Route::match(array('GET', 'POST'),'linkRemoto-hijo', 'novedadesController@linkNov_hijo');
 				// Gestión Novedades
 				Route::match(array('GET', 'POST'),'viewNews', 'novedadesController@getViewNovedad');
 				Route::match(array('GET', 'POST'),'add-dad', 'novedadesController@add_papaNovedad');
@@ -253,7 +335,7 @@ Route::group(array('before' => 'auth'), function(){
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
             // Niveles
-            Route::group(array('prefix' =>  'level'),function(){
+            Route::group(array('prefix' =>  'level-admin'),function(){
                 Route::match(array('GET', 'POST'), '/', 'nivelController@verPagina');
                 Route::post('update', 'nivelController@update');
                 Route::post('delete', 'nivelController@remove');
@@ -266,7 +348,7 @@ Route::group(array('before' => 'auth'), function(){
 
         Route::group(array('before' => 'gestionar_inteligencias'),function(){
             // Intelligence
-            Route::group(array('prefix' =>  'intelligence'),function(){
+            Route::group(array('prefix' =>  'intelligence-admin'),function(){
                 Route::match(array('GET', 'POST'), '{nivel}', 'inteligenciaController@verPagina');
                 Route::post('update', 'inteligenciaController@update');
                 Route::post('delete', 'inteligenciaController@remove');
@@ -278,7 +360,7 @@ Route::group(array('before' => 'auth'), function(){
         });
         Route::group(array('before' => 'gestionar_bloques'),function(){
             // Block
-            Route::group(array('prefix' =>  'block'),function(){
+            Route::group(array('prefix' =>  'block-admin'),function(){
                 Route::match(array('GET', 'POST'), '/{id}{nivelID}', 'bloqueController@verPagina');
                 Route::post('update', 'bloqueController@update');
                 Route::post('delete', 'bloqueController@remove');
@@ -290,7 +372,7 @@ Route::group(array('before' => 'auth'), function(){
         });
         Route::group(array('before' => 'gestionar_temas'),function(){
             // Temas
-            Route::group(array('prefix' =>  'topic'),function(){
+            Route::group(array('prefix' =>  'topic-admin'),function(){
                 Route::match(array('GET', 'POST'), '{id}{inteligencia}{nivel}', 'temaController@verPagina');
                 Route::post('update', 'temaController@update');
                 Route::post('delete', 'temaController@remove');
@@ -302,7 +384,7 @@ Route::group(array('before' => 'auth'), function(){
 
         Route::group(array('before' => 'gestionar_actividades'),function(){
             // Activities
-            Route::group(array('prefix' =>  'activity'),function(){
+            Route::group(array('prefix' =>  'activity-admin'),function(){
                 Route::match(array('GET', 'POST'), '{id}{bloque}{inteligencia}{nivel}', 'actividadController@verPagina');
                 Route::post('update', 'actividadController@update');
                 Route::post('delete', 'actividadController@remove');
@@ -326,10 +408,10 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('delete', 'escuelaController@remove');
             });
         });*/
-        Route::group(array('before' => 'gestionar_ventas'), function(){
+        /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
-                Route::get('/', 'vendedorController@verPagina');
+                /*Route::get('/', 'vendedorController@verPagina');
                 Route::post('save', 'vendedorController@guardar');
                 Route::post('update', 'vendedorController@actualizar');
                 Route::post('delete', 'vendedorController@eliminar');
@@ -395,7 +477,7 @@ Route::group(array('before' => 'auth'), function(){
 
         /*
         *  Monitoreo de Navegadores
-        */
+
         Route::group(array('prefix' => 'browser'),function(){
             Route::match(array('GET','POST'),'get/{limit?}','sesionInfoController@getBrowsers')
                 ->where('limit','[0-9]+');

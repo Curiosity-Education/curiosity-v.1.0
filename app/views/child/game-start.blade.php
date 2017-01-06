@@ -8,7 +8,7 @@
    <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">
          <div class="chip animated bounce" id="gst-back">
-            <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/arrow-back-icon.png">
+            <img src="/packages/assets/media/images/system/iconBack.png">
             Regresar
          </div>
          <div class="gst-card z-depth-1" id="gst-info">
