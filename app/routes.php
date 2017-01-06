@@ -70,7 +70,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-intelligences');
+    return View::make('administer.admin-blocks');
 });
 
 Route::get('1', 'activitiesVideosController@save');
@@ -96,6 +96,12 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 		Route::post('update', 'intelligencesController@update');
 		Route::post('delete', 'intelligencesController@delete');
 	});
+	// Manage the Blocks
+	Route::group(array('prefix' =>  'blocks'),function(){
+		Route::post('save', 'blocksController@save');
+		Route::post('update', 'blocksController@update');
+		Route::post('delete', 'blocksController@delete');
+	});
 // });
 
 /*
@@ -119,6 +125,16 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 	Route::post('getByLevel', 'intelligencesController@getByLevel');
 });
 
+/*
+* -----------------------------------------------------------------------------
+* Routes to blocks.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'blocks'),function(){
+	Route::post('all', 'blocksController@all');
+	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+});
 
 /*
 *   Register for users

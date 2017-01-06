@@ -26,17 +26,13 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="ablk-levels">Niveles (Grados Escolares)</label>
-                <select class="form-control msad-select" name="">
-                   <option value="x">1ro</option>
-                </select>
+                <select class="form-control msad-select" name="ablk_lvlSel" id="ablk_lvlSel"></select>
               </div>
            </div>
            <div class="col-sm-4">
              <div class="form-group">
                <label for="ablk-intelligences">Inteligencias (Materias)</label>
-               <select class="form-control msad-select" name="">
-                  <option value="x">Matematicas</option>
-               </select>
+               <select class="form-control msad-select" name="ablk_intSel" id="ablk_intSel"></select>
              </div>
           </div>
          </div>
@@ -51,21 +47,7 @@
                   <th>Nombre</th><th>Acciones</th>
                </tr>
             </thead>
-            <tbody>
-               @for ($i = 0; $i < 5; $i++)
-               <tr>
-                  <td>B1</td>
-                  <td>
-                     <button type='button' class='btn msad-table-btnConf ablk-btnConf'>
-                        <span class='fa fa-gears'></span>
-                     </button>
-                     <button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel'>
-                        <span class='fa fa-trash-o'></span>
-                     </button>
-                  </td>
-               </tr>
-               @endfor
-            </tbody>
+            <tbody></tbody>
          </table>
       </div>
    </div>
@@ -78,12 +60,12 @@
             <form class="form form-horizontal" id="ablk-form">
                <div class="form-group">
                  <label for="ablk-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control" id="ablk-name" name="ablk-name">
+                 <input type="text" class="form-control ablkInp" id="ablk_name" name="ablk_name">
                </div>
             </form>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-default" id="ablk-cancel">
+            <button type="button" class="btn btn-outline-default" id="ablk-cancel" data-dismiss="modal">
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
@@ -99,6 +81,8 @@
 
 @section('js-plus')
    <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/ablkController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/ablk.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-ablk.js" charset="utf-8"></script>
 @stop
