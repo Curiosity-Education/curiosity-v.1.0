@@ -11,6 +11,30 @@
 |
 */
 
+Route::get('/', function(){
+	return View::make('landing.index');
+});
+
+Route::get('terminos', function(){
+	return View::make('landing.terms_conditions');
+});
+
+Route::get('aviso-privacidad', function(){
+	return View::make('landing.notice_privacy');
+});
+
+Route::get('equipo', function(){
+	return View::make('landing.team');
+});
+
+Route::get('mentores', function(){
+	return View::make('landing.mentors');
+});
+
+Route::get('login', function(){
+	return View::make('landing.login');
+});
+
 Route::get('registry', function(){
 	return View::make('parent.registry');
 });
@@ -40,7 +64,7 @@ Route::get('parent-profile', function(){
 });
 
 
-Route::get('/', function()
+Route::get('hijo-inicio', function()
 {
 	return View::make('child.init');
 });
