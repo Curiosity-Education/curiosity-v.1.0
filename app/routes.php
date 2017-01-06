@@ -87,7 +87,7 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 	Route::group(array('prefix' =>  'levels'),function(){
 		Route::post('save', 'levelsController@save');
 		Route::post('update', 'levelsController@update');
-		Route::post('delete', 'levelsController@remove');
+		Route::post('delete', 'levelsController@delete');
 	});
 // });
 
