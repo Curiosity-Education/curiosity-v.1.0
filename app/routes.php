@@ -94,7 +94,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-blocks');
+    return View::make('administer.admin-levels');
 });
 
 Route::get('1', 'activitiesVideosController@save');

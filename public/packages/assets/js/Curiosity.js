@@ -33,8 +33,22 @@ var Curiosity = {
          allowOutsideClick: false
       }).then(function () {
          $fn();
-         // alert();
       });
+   },
+
+   noty : {
+      success : function($text, $title){
+         toastr.success($text, $title);
+      },
+      error : function($text, $title){
+         toastr.error($text, $title);
+      },
+      warning : function($text, $title){
+         toastr.warning($text, $title);
+      },
+      info : function($text, $title){
+         toastr.info($text, $title);
+      }
    },
 
    toastLoading : {

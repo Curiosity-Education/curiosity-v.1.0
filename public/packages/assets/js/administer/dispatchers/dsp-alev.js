@@ -24,6 +24,10 @@ $(function(){
       e.preventDefault();
    });
 
+   $("#alev-cancel").click(function(){
+      alevController.clearInputs();
+   });
+
    alevController.getAll();
 
 });
