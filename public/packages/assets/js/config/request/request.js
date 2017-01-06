@@ -11,7 +11,7 @@ class Request{
             if (this.readyState == 4 && this.status == 200) {
                 var response = JSON.parse(this.responseText);
                 var status = this.status;
-                callback(status,response,this);
+                callback(response,status,this);
             }
           };
           xhttp.open(method, path, true);

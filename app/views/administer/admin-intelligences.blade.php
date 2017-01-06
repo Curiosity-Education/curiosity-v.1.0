@@ -13,7 +13,9 @@
    <div class='row'>
       <div class='col-xs-12'>
          <div class='aint-buttons float-xs-right'>
-            <a class='btn-floating btn-small waves-effect waves-light' id='aint-btnNew'></a>
+            <a class='btn-floating btn-small waves-effect waves-light' id='aint-btnNew'>
+               <i class="fa fa-plus"></i>
+            </a>
          </div>
       </div>
    </div>
