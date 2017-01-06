@@ -18,6 +18,43 @@ var Curiosity = {
 
    makeLinkActive : function($el){
       $el.addClass("linkMenu-active");
+   },
+
+   notyConfirm : function($title, $text, $type, $fn){
+      swal({
+         title: $title,
+         text: $text,
+         type: $type,
+         showCancelButton: true,
+         confirmButtonColor: '#2262ae',
+         cancelButtonColor: '#ed6922',
+         confirmButtonText: 'Aceptar',
+         cancelButtonText: 'Cancelar',
+         allowOutsideClick: false
+      }).then(function () {
+         $fn();
+         // alert();
+      });
+   },
+
+   toastLoading : {
+      show : function(){
+         var mdl = "<div class='modal fade' id='mdlpgrss' tabindex='-1' role='dialog' aria-hidden='true' data-backdrop='static'"+ "data-keyboard='false'>"+
+           "<div class='modal-dialog flex-center' style='height:80%;'>"+
+             "<div class='modal-content' style='background-color:rgba(0, 0, 0, 0.8);color:#fff;border-radius:1rem;padding:2.5rem;border:solid"+ ".2rem rgba(0, 0, 0, 0.85);'>"+
+               "<div class='modal-body' style='text-align:center;'>"+
+                  "<i class='fa fa-spinner fa-pulse fa-3x fa-fw'></i><br><br>Un Momento"+
+               "</div>"+
+             "</div>"+
+           "</div>"+
+         "</div>";
+         $("body").append(mdl);
+         $("body").find("#mdlpgrss").modal("show");
+      },
+      hide : function(){
+         $("body").find("#mdlpgrss").modal("hide");
+         $("body").find(".modal-backdrop").remove();
+      }
    }
 
 }
