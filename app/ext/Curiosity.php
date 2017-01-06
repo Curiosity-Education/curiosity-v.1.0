@@ -18,7 +18,7 @@ class Curiosity{
    public static function getValidationMessages(){
       $curiosity = self::singleton();
       $messages = [
-             "required"    =>  "Este campo :attribute es requerido",
+             "required"    =>  "El campo :attribute es requerido",
              "alpha"       =>  "Solo puedes ingresar letras",
              "date"        =>  "Formato de fecha invalido",
              "numeric"     =>  "Solo se permiten digitos",
@@ -121,6 +121,13 @@ class Curiosity{
       return $array;
    }
 
+   public static function makeArrayByObject($obj){
+      $obj = json_decode(json_encode($obj));
+      $arr = array();
+		foreach ($obj as $key => $value) { $arr[$key] = $value; }
+      return $arr;
+   }
+
    // ===========================================================
    // Above this comment only private functions
    // ===========================================================
@@ -139,24 +146,43 @@ class Curiosity{
                if (!is_dir($route . $file) && $file!="." && $file!=".."){
                   // if the file is only distinct that "." and ".."
                   // we found the extension
-                  foreach ($typeAndFolder as $type => $directory) {
-                     if ($type == $this->getFileExtension($file)){
-                        if ($boolean == 'yes'){
-                           $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                  if (is_array($typeAndFolder)){
+                     foreach ($typeAndFolder as $type => $directory) {
+                        if ($type == $this->getFileExtension($file)){
+                           if ($boolean == 'yes'){
+                              $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                           }
+                           else if ($boolean == 'not'){
+                              $fileName = $file;
+                           }
+                           else if ($boolean == 'both'){
+                              $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                           }
+                           $this->moveFile($route.$file, public_path().$typeAndFolder.$fileName);
+                           array_push($filesSaved, array(
+                              'name' => $fileName,
+                              'route' => $directory,
+                              'type' => $type
+                           ));
                         }
-                        else if ($boolean == 'not'){
-                           $fileName = $file;
-                        }
-                        else if ($boolean == 'both'){
-                           $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
-                        }
-                        $this->moveFile($route.$file, public_path().$directory.$fileName);
-                        array_push($filesSaved, array(
-                           'name' => $fileName,
-                           'route' => $directory,
-                           'type' => $type
-                        ));
                      }
+                  }
+                  else{
+                     if ($boolean == 'yes'){
+                        $fileName = $this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                     }
+                     else if ($boolean == 'not'){
+                        $fileName = $file;
+                     }
+                     else if ($boolean == 'both'){
+                        $fileName = $file."-".$this->makeRandomName(true, true).".".$this->getFileExtension($file);
+                     }
+                     $this->moveFile($route.$file, public_path().$directory.$fileName);
+                     array_push($filesSaved, array(
+                        'name' => $fileName,
+                        'route' => $directory,
+                        'type' => $type
+                     ));
                   }
                }
             }

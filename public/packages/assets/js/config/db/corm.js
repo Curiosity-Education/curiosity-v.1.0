@@ -46,4 +46,9 @@ class CORM{
         Database.all(prefix,options);
     }
 
+    static any(data,method,success,prefix,pathRoute){
+      var path = prefix + "/" + pathRoute;
+      Database.any(method,path,success,data);
+   }
+
 }

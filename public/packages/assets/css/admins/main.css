@@ -67,7 +67,7 @@
 
 /* line 51, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
 #msad-icon-users {
-  color: #3cb54a;
+  color: #007e33;
 }
 
 /* line 56, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
@@ -124,6 +124,11 @@
   padding-right: 0.5rem;
   border-radius: 0.28rem;
   cursor: pointer;
+}
+
+/* line 98, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_master-admin.sass */
+.msad-item span {
+  color: #e6218f;
 }
 
 @font-face {
