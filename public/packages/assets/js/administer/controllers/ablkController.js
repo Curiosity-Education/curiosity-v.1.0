@@ -1,9 +1,8 @@
-var aintController = {
+var ablkController = {
 
    typeOfSave : "save",
-   formulary : $("#aint-form"),
-   inputName : $("#aint_name"),
-   inputDescript : $("#aint_descript"),
+   formulary : $("#ablk-form"),
+   inputName : $("#ablk_name"),
    id : null,
 
    setTypeOfSave : function(type){
@@ -20,14 +19,16 @@ var aintController = {
    },
 
    makeLevelsList : function(response){
+      $("#ablk-table tbody").html("");
       if (response.length > 0){
          $.each(response, function(i, obj){
-            $("#aint_lvlSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
+            $("#ablk_lvlSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
          });
-         $("#aint_lvlSel").trigger("change");
+         $("#ablk_lvlSel").trigger("change");
       }
       else{
-         $("#aint_lvlSel").prop("disabled", true);
+         Curiosity.toastLoading.hide();
+         $("#ablk-btnNew").hide();
       }
    },
 
@@ -37,10 +38,31 @@ var aintController = {
    },
 
    makeIntelligencesList : function(response){
-      $("#aint-table tbody").html("");
+      $("#ablk_intSel").html("");
+      $("#ablk-table tbody").html("");
+      if (response.length > 0){
+         $("#ablk-btnNew").show("slow");
+         $.each(response, function(i, obj){
+            $("#ablk_intSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
+         });
+         $("#ablk_intSel").trigger("change");
+      }
+      else{
+         Curiosity.toastLoading.hide();
+         $("#ablk-btnNew").hide("slow");
+      }
+   },
+
+   getBlocks : function($int){
+      Curiosity.toastLoading.show();
+      Block.any({id : $int}, "POST", this.makeBlocksList, "getByIntelligent");
+   },
+
+   makeBlocksList : function(response){
+      $("#ablk-table tbody").html("");
       $.each(response, function(i, obj){
-         var newRow = "<tr id='"+obj.id+"'><td class='tdName'>"+obj.nombre+"</td><td><button type='button' class='btn msad-table-btnConf aint-btnConf "+obj.id+"Name "+obj.id+"id' data-dti='"+obj.id+"' data-dtn='"+obj.nombre+"' data-dtd='"+obj.descripcion+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel aint-btnDel "+obj.id+"id' data-dti='"+obj.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-         $("#aint-table tbody").append(newRow);
+         var newRow = "<tr id='"+obj.id+"'><td class='tdName'>"+obj.nombre+"</td><td><button type='button' class='btn msad-table-btnConf ablk-btnConf "+obj.id+"Name "+obj.id+"id' data-dti='"+obj.id+"' data-dtn='"+obj.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel "+obj.id+"id' data-dti='"+obj.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
+         $("#ablk-table tbody").append(newRow);
       });
       Curiosity.toastLoading.hide();
    },
@@ -50,29 +72,25 @@ var aintController = {
          case "save":
             this.formulary.validate({
                rules : {
-                  aint_name : {required:true, maxlength:100},
-                  aint_descript : {required:true, maxlength:2000},
-                  aint_lvlSel : {required:true}
+                  ablk_name : {required:true, maxlength:100}
                }
             });
             if (this.formulary.valid()){
-               var intelligence = new Intelligence(this.inputName.val(), this.inputDescript.val(), $("#aint_lvlSel").val());
+               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
                Curiosity.toastLoading.show();
-               intelligence.save("POST", this.addSuccess);
+               block.save("POST", this.addSuccess);
             }
             break;
          case "update":
             this.formulary.validate({
                rules : {
-                  aint_name : {required:true, maxlength:100},
-                  aint_descript : {required:true, maxlength:2000},
-                  aint_lvlSel : {required:true}
+                  ablk_name : {required:true, maxlength:100}
                }
             });
             if (this.formulary.valid()){
-               var intelligence = new Intelligence(this.inputName.val(), this.inputDescript.val(), $("#aint_lvlSel").val());
+               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
                Curiosity.toastLoading.show();
-               intelligence.update(this.id, "POST", this.updSuccess);
+               block.update(this.id, "POST", this.updSuccess);
             }
             break;
          default:
@@ -82,16 +100,16 @@ var aintController = {
    },
 
    delete : function(){
-      var $title = "Eliminar Inteligencia";
-      var $text = "¿Estas seguro que deseas eliminar la inteligencia selecccionada?";
+      var $title = "Eliminar Bloque";
+      var $text = "¿Estas seguro que deseas eliminarel bloque selecccionado?";
       var $type = "warning";
       var $id = this.id;
-      Curiosity.notyConfirm($title, $text, $type, function(){ aintController.deleteIn($id); });
+      Curiosity.notyConfirm($title, $text, $type, function(){ ablkController.deleteIn($id); });
    },
 
    deleteIn : function($id){
       Curiosity.toastLoading.show();
-      Intelligence.delete($id, "POST", this.delSuccess);
+      Block.delete($id, "POST", this.delSuccess);
    },
 
    addSuccess : function(response){
@@ -99,10 +117,10 @@ var aintController = {
       switch (response.status) {
          case 200:
             console.log("Registro exitoso");
-            $("#aint-modal").modal("hide");
-            aintController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf aint-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"' data-dtd='"+response.data.descripcion+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel aint-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-            $("#aint-table tbody").append(newRow);
+            $("#ablk-modal").modal("hide");
+            ablkController.clearInputs();
+            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf ablk-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
+            $("#ablk-table tbody").append(newRow);
             break;
          case "CU-103":
             console.log("Lo siento, los datos que intentas guardar ya exiten");
@@ -126,10 +144,9 @@ var aintController = {
       switch (response.status) {
          case 200:
             console.log("Actualización exitosa");
-            $("#aint-modal").modal("hide");
-            aintController.clearInputs();
+            $("#ablk-modal").modal("hide");
+            ablkController.clearInputs();
             $("body").find("."+response.data.id+"Name").data("dtn", response.data.nombre);
-            $("body").find("."+response.data.id+"Name").data("dtd", response.data.descripcion);
             $("body").find("#"+response.data.id+" .tdName").html(response.data.nombre);
             $("body").find("."+response.data.id+"id").data("dti", response.data.id);
             break;
@@ -162,7 +179,7 @@ var aintController = {
    },
 
    clearInputs : function(){
-      $(".aintInp").val("");
+      $(".ablkInp").val("");
    }
 
 }

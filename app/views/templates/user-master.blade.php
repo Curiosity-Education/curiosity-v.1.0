@@ -6,6 +6,7 @@
       <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
       <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
       <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/packages/libs/sweetalert2/sweetalert2.min.css">
       <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
       @yield('css')
       <title>@yield('title')</title>
@@ -67,10 +68,12 @@
             </div>
          </div>
       </section>
+
       <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
       <script src="/packages/libs/mdb/js/tether.min.js"></script>
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
+      <script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
       <script src="/packages/assets/js/Curiosity.js"></script>
       <script src="/packages/assets/js/app-master.js"></script>
       @yield('js')

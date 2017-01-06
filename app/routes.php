@@ -103,15 +103,28 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 
 /*
 * -----------------------------------------------------------------------------
-* Routes to manage the levels.
+* Routes to manage the content.
 * only for the administers into the system.
 * -----------------------------------------------------------------------------
 */
 // Route::group(array('before' => 'manage_content'),function(){
+	// Manage the levels
 	Route::group(array('prefix' =>  'levels'),function(){
 		Route::post('save', 'levelsController@save');
 		Route::post('update', 'levelsController@update');
-		Route::post('delete', 'levelsController@remove');
+		Route::post('delete', 'levelsController@delete');
+	});
+	// Manage the intelligences
+	Route::group(array('prefix' =>  'intelligences'),function(){
+		Route::post('save', 'intelligencesController@save');
+		Route::post('update', 'intelligencesController@update');
+		Route::post('delete', 'intelligencesController@delete');
+	});
+	// Manage the Blocks
+	Route::group(array('prefix' =>  'blocks'),function(){
+		Route::post('save', 'blocksController@save');
+		Route::post('update', 'blocksController@update');
+		Route::post('delete', 'blocksController@delete');
 	});
 // });
 
@@ -123,6 +136,28 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 */
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to intelligences.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'intelligences'),function(){
+	Route::post('all', 'intelligencesController@all');
+	Route::post('getByLevel', 'intelligencesController@getByLevel');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to blocks.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'blocks'),function(){
+	Route::post('all', 'blocksController@all');
+	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
 });
 
 /*

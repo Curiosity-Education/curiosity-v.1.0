@@ -76,7 +76,8 @@ class levelsController extends BaseController{
 	function delete(){
 		$id = Curiosity::makeArrayByObject(Input::all());
 		Level::where('id', '=', $id)->update(array( 'active' => 0 ));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		$lvl = Level::where('id', '=', $id)->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $lvl));
 	}
 
 	private function NameActiveExist($name){

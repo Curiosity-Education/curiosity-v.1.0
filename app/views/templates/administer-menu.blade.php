@@ -20,11 +20,11 @@
       Gestión de contenido
    </div>
    <div class="dropdown-menu" aria-labelledby="dropdownMenu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-      <a class="dropdown-item msad-item" href="#"><span class="fa fa-cube"></span>&nbsp; Niveles (Grados)</a>
-      <a class="dropdown-item msad-item" href="#"><span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)</a>
-      <a class="dropdown-item msad-item" href="#"><span class="fa fa-cube"></span>&nbsp; Bloques</a>
-      <a class="dropdown-item msad-item" href="#"><span class="fa fa-cube"></span>&nbsp; Temas</a>
-      <a class="dropdown-item msad-item" href="#"><span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)</a>
+      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Niveles (Grados)</a>
+      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)</a>
+      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Bloques</a>
+      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Temas</a>
+      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)</a>
    </div>
 </div>
 <div data-url="#" class="linkMenu waves-effect">

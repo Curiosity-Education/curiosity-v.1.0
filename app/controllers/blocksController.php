@@ -6,6 +6,14 @@ class blocksController extends BaseController{
 		return $blocks;
 	}
 
+	function getByIntelligent(){
+		$data = Input::all();
+		$blocks = Block::where("active", "=", 1)
+		->where("inteligencia_id", "=", $data['id'])
+		->get();
+		return $blocks;
+	}
+
 	function getWithActivities(){
 		$blocks = Activity::join('temas', 'actividades.tema_id', '=', 'temas.id')
 		->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
@@ -22,7 +30,7 @@ class blocksController extends BaseController{
 	}
 
 	function save(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'inteligencia' => 'required'
@@ -30,7 +38,7 @@ class blocksController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return $validation->messages();
 		}
 		else{
 			if ($this->NameActiveExist($data['nombre'], $data['inteligencia'])){
@@ -47,7 +55,7 @@ class blocksController extends BaseController{
 	}
 
 	function update(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'inteligencia' => 'required'
@@ -55,10 +63,10 @@ class blocksController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return $validation->messages();
 		}
 		else{
-			$bk = Block::where('id', '=', $data['idUpdate'])->get();
+			$bk = Block::where('id', '=', $data['id'])->first();
 			$namePass = true;
 			if ($bk->nombre != $data['nombre']){
 				if ($this->NameActiveExist($data['nombre'], $data['inteligencia'])){
@@ -66,8 +74,9 @@ class blocksController extends BaseController{
 				}
 			}
 			if ($namePass){
-				Block::where('id', '=', $data['idUpdate'])->update(array( 'nombre' => $data['nombre'] ));
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+				Block::where('id', '=', $data['id'])->update(array( 'nombre' => $data['nombre'] ));
+				$block = Block::where('id', '=', $data['id'])->first();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $block));
 			}
 			else{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
@@ -76,9 +85,10 @@ class blocksController extends BaseController{
 	}
 
 	function delete(){
-		$id = Input::get('data.id');
-		Block::where('id', '=', $id)->update(array( 'active' => 0 ));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		$data = Input::all();
+		Block::where('id', '=', $data['id'])->update(array( 'active' => 0 ));
+		$block = Block::where('id', '=', $data['id'])->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $block));
 	}
 
 	private function NameActiveExist($name, $intel){
