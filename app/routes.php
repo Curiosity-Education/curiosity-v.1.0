@@ -259,38 +259,43 @@ Route::group(array('before' => 'auth'), function(){
 			// 		});
 			// 	});
 
-        // Realizar Actividades
+        
+        // Realizar Actividades*/
         Route::group(array('before' => 'realizar_actividades'),function(){
             Route::group(array('prefix' => 'skin'), function(){
 				Route::match(array('GET', 'POST'),'/', 'tiendaController@viewPage');
                 Route::get('tienda', 'tiendaController@viewPage');
 				Route::post('change', 'tiendaController@cambiarSkin');
-		        Route::post('buy', 'tiendaController@comprarSkin');
-		        Route::post('change', 'tiendaController@cambiarAvatar');
+	            Route::post('buy', 'tiendaController@comprarSkin');
+	            Route::post('change', 'tiendaController@cambiarAvatar');
             });
-            Route::group(array('prefix' => 'content'), function(){
-                Route::match(array('GET', 'POST'), '/', 'contenidoController@viewPage');
-                Route::get('home', 'contenidoController@getInicio');
-                Route::post('get-videos', 'contenidoController@getAllVideos');
-            });
-            Route::group(array('prefix' => 'son'), function(){
-                Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
-                Route::post('assign/avatar', 'hijoController@asignAvatar');
-                Route::post('goal/change', 'hijoController@changeMeta');
-            });
-            Route::group(array('prefix' => 'game'),function(){
-                Route::get('{idActividad}/{nombre}','actividadController@getViewJuego');
-				Route::get('{id}', 'actividadController@verPaginaInWeb');
-                Route::post('has','actividadController@hasGame');
+			Route::group(array('prefix' => 'content'), function(){
+		        Route::match(array('GET', 'POST'), '/', 'contenidoController@viewPage');
+			    Route::get('home', 'contenidoController@getInicio');
+			    Route::post('get-videos', 'contenidoController@getAllVideos');
+			});
+			Route::group(array('prefix' => 'son'), function(){
+				Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
+				Route::post('assign/avatar', 'hijoController@asignAvatar');
+				Route::post('goal/change', 'hijoController@changeMeta');
+			});
 
+            Route::group(array('prefix' => ,"childDoActivities"), function(){
+                Route::post("/save",'childrenDoActivitiesController@save');
             });
-            Route::group(array('prefix' => 'level'), function(){
-                Route::match(array('GET', 'POST'), '/', 'nivelController@verPaginaInWeb');
-            });
+            /*Route::group(array('prefix' => ''),function(){
+	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
+	 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
+				Route::get('activity{id}', 'actividadController@verPaginaInWeb');
+			});
+	 		Route::group(array('prefix' => ''), function(){
+	 			Route::match(array('GET', 'POST'), '/', 'nivelController@viewPage');
+	 			Route::get('level', 'nivelController@verPaginaInWeb');
+	 		});
             Route::group(array('prefix' => ''), function(){
 				Route::match(array('GET', 'POST'), '/', 'inteligenciaController@viewPage');
-				// 			Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
-				// 		});
+				Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
+			});*/
 				// 		Route::group(array('prefix' => ''), function(){
 				// 			Route::match(array('GET', 'POST'), '/', 'bloqueController@viewPage');
 				// 			Route::get('block-{id}', 'bloqueController@verPaginaInWeb');
