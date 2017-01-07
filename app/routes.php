@@ -280,7 +280,7 @@ Route::group(array('before' => 'auth'), function(){
 				Route::post('goal/change', 'hijoController@changeMeta');
 			});
 
-            Route::group(array('prefix' => ,"childDoActivities"), function(){
+            Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
             });
             /*Route::group(array('prefix' => ''),function(){
@@ -407,7 +407,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('update', 'escuelaController@update');
                 Route::post('delete', 'escuelaController@remove');
             });
-        });*/
+        });
         /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/

@@ -98,8 +98,8 @@
 @stop
 
 @section('js-plus')
-<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
 <script type="text/javascript">
    $(function(){

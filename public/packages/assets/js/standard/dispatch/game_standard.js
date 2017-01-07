@@ -65,7 +65,7 @@ var $juego = {
             $("#zona-play").hide();//desaparecer zona juego
             $("#zona-obj").show();//aparecer zona del objetivo
             $juego.game.save();
-            $juego.modal.score.show($juego.game.score,$juego.game.hits);
+            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
             $juego.game.scoreCurrent=0;
             $juego.game.attempts = 0;
             $juego.game.mistakes = 0;
@@ -85,7 +85,7 @@ var $juego = {
             else{
               $juego.game.efficiency = 0;
             }
-            if($juego.game.scoreCurrent > $juego.game.scoreCurrent){
+            if($juego.game.scoreCurrent > $juego.game.scoreMax){
                 // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
                 $juego.game.scoreMax = $juego.game.scoreCurrent;
                 // Cambiamos el puntaje maximo en pantalla
@@ -96,7 +96,7 @@ var $juego = {
             $juego.game.unity.salir();
         },
         restart:function(){
-            $juego.hits=0;
+            $juego.game.hits=0;
             $juego.game.combo=0;//reiniciar continuos
             $juego.game.attempts = 0;
             $juego.game.mistakes = 0;
@@ -115,14 +115,14 @@ var $juego = {
             $juego.game.scoreCurrent=0;
         },
         save:function(){
-              data={
-                score:$juego.game.puntajeActual,
-                efficiency:$juego.game.eficiencia,
-                hits:$juego.game.aciertos,//Se agrega el envio de los datos aciertos y errores
-                mistakes:$juego.game.errores,
-                average:($juego.game.aciertos*100)/$juego.game.intentos//El promedio se define diferente
-              }
-             
+            data={
+                score      : $juego.game.scoreCurrent,
+                efficiency : $juego.game.efficiency,
+                hits       : $juego.game.hits,//Se agrega el envio de los datos aciertos y errores
+                mistakes   : $juego.game.mistakes,
+                average    : ($juego.game.hits*100)/$juego.game.attempts//El promedio se define diferente
+            }
+            childDoActivityCtrl.save(data);
             $("#game").trigger('save');
         },
         salir:function(){
@@ -136,51 +136,32 @@ var $juego = {
             $juego.cronometro.stop();            
             $("#game").trigger('exit');
         },
-        setCombo:function(valorCombo){
+        setCombo:function(combo){
             $cbo = $("<div/>",{class:"combo"}).text("+"+combo+"");
             $("#combo").append($cbo);
             $cbo.css({"animation":"2s combo 1 forwards",});
             setTimeout(function(){$("#combo").empty();},2000);//eliminar el elemento dom que genera el combo cuando este termine
         },
         setCorrecto:function(){
-            $("#countPuntaje").text($juego.game.puntajeActual += $juego.game.valorPuntos);
+            $("#countPuntaje").text($juego.game.scoreCurrent += $juego.game.scoreValue);
             // Sumamos +1 a los aciertos continuos que llevamos
             $juego.game.combo++;
             $juego.game.hits++;
             $juego.game.attempts++;
             $juego.game.calcCombo();
-            // coloca<mos una palomita en la esquina inferior derecha dentro del div con la clase verific indicando que el usuario ha seleccionado la opcion correcta
-            $(".verific").html("<i class='fa fa-check fa-4x'></i>").css('color', 'rgb(255, 255, 255)');
-            // establecemos que despues de 600 milisegundos la clase de error se eliminara del contenedor del juego
-            setTimeout(function(){
-              // eliminamos el contenido del div con la clase verific el cual contenia una palomita
-            $(".verific").empty();
-            // Establecemos en cuantos milisegundos se realizará la funcion
-            }, 600);
+           
         },
-        setError:function(puntosMenos){
+        setError:function(scoreMenius){
             // regresamos la cantidad de aciertos continuos a cero
             $juego.game.combo = 0;
             $juego.game.attempts++;
             $juego.game.mistakes++;//Se agregó esta linea para aumentar los errores cada vez que se equivoque por que esto se mostrará al padre.
-            if($juego.game.scoreCurrent>puntosMenos){
-              if(/^[0-9]*$/.test(puntosMenos))
-                $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);
+            if($juego.game.scoreCurrent>scoreMenius){
+              if(/^[0-9]*$/.test(scoreMenius))
+                $("#countPuntaje").text($juego.game.scoreCurrent-=scoreMenius);
             }
             // Regresamos el valor de los puntos por acirto a 100
             $juego.game.scoreValue = 100;
-            // añadimos la clase creada en css para poner una sombra roja fuera del contenedor del juego
-            $(".zona-juego").addClass('error-shadow');
-            // colocamos una equis en la esquina inferior derecha dentro del div con la clase verific indicando que el usuario se ha equivocado
-            $(".verific").html("<i class='fa fa-close fa-4x'></i>").css('color', 'rgb(215, 36, 36)');
-            // establecemos que despues de 600 milisegundos la clase de error se eliminara del contenedor del juego
-            setTimeout(function(){
-              // removemos la clase de error-shadow
-              $(".zona-juego").removeClass('error-shadow');
-              // eliminamos el contenido del div con la clase verific el cual contenia una equis
-              $(".verific").empty();
-              // Establecemos en cuantos milisegundos se realizará la funcion
-            }, 600);
         },
         calcCombo:function(){
             if($juego.game.combo !== 0){
