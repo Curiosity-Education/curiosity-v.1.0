@@ -19,12 +19,15 @@
                <h6>15</h6>
             </div>
             <div id="gst-ranking">
-               <h6>Calificame</h6>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
+              <h6>Calificame</h6>
+              <ul class="curiosity-ranking animated bounceIn" data-stars="3.5">
+                <li class="star-text"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Malo"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Bueno"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Muy bueno"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Excelente"></li>
+              </ul>
             </div>
          </div>
          <div class="gst-card z-depth-1" id="gst-material">
@@ -108,6 +111,7 @@
          $("#gst-modal").modal('show');
       });
       new WOW().init();
+      new Ranking().init();
    });
 </script>
 @stop

@@ -64,5 +64,6 @@
 @stop
 
 @section('js')
+<script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js"></script>
 @yield('js-plus')
 @stop
