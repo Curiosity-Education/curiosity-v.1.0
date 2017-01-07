@@ -32,7 +32,7 @@
   					<a class="btn warning-rounded-outline waves-effect pull-right">Registrarse</a>
           </div><br>
           <a href="/" class="navbar-brand pull-left  chicle font-curiosity">
-						<span><img src="/packages/images/landing/logo.png" alt="logo-curiosity" class="logo-current"></span>
+						<span><img src="/packages/assets/media/images/landing/logo.png" alt="logo-curiosity" class="logo-current"></span>
 						Curiosity Educación
           </a>
           <!--Links-->

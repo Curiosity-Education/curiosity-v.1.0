@@ -26,7 +26,7 @@
     	</div>
 	</div>
 	<div class="container">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10 offset-md-1">
 			<div class="introduccion">
 				<p class="text-xs-center">Personas sumamente profesionales y con gran experiencia en sus respectivas áreas. Todos ellos han brindado su apoyo y mentoreo
 				para hacer de <i>Curiosity Educación</i> aún mejor y seguir creciendo.</p>

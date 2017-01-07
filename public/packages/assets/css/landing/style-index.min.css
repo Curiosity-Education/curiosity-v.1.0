@@ -20,7 +20,7 @@ div#collapseEx2{font-family:"Helvetica";}
 div#collapseEx2 > ul.navbar-nav > li.nav-item > a{}
 div#collapseEx2 > ul.navbar-nav > li.anc:hover{border-bottom:2px solid #44c6ee;}
 .selection{border-bottom:2px solid #44c6ee;}
-div.view-entrada{background:url("/packages/images/landing/fondo-full-min.jpg");height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;}
+div.view-entrada{background:url("/packages/assets/media/images/landing/fondo-full-min.jpg");height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;}
 section#nosotros{background-color:#fff;}
 #logo_entrada{margin-top:140px;}
 @font-face{font-family:'Arial Rounded MT Bold';font-style:normal;font-weight:normal;src:local('Arial Rounded MT Bold'), url('/packages/css/libs/fonts/ARLRDBD_0.woff') format('woff');}
@@ -33,7 +33,7 @@ section#funcionamiento{background-color:#F5F5F5;}
 p.text-justify b{font-size:1.5em;color:#8a489b;}
 div.funcionamiento-text{word-wrap:break-word;padding-top:30px;text-align:center;}
 div.funcionamiento-text p:first-line{font-weight:bold;font-size:1.3em}
-div#separador1{height:200px;background:url("/packages/images/landing/separador1.jpg") repeat center center fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
+div#separador1{height:200px;background:url("/packages/assets/media/images/landing/separador1.jpg") repeat center center fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 ::-webkit-scrollbar{width:13px;}
 ::-webkit-scrollbar-track{background-color:#fff;}
 ::-webkit-scrollbar-thumb{background-color:#2262ae;border:solid 3px #fff;border-radius:10px;}
@@ -49,14 +49,14 @@ div#carusel-testimonial div.card{min-height:333px;max-height:333px;}
 div#carusel-testimonial div.card div.card-block{}
 section#colaboradores{background-color:#F5F5F5;}
 div#carusel-colaboradores div.card{}
-div#separador2{height:200px;background:url("/packages/images/landing/separador2.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
+div#separador2{height:200px;background:url("/packages/assets/media/images/landing/separador2.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 section#membresia{background-color:#fff;}
 div.proximamente{opacity:0.5;}
 .bg-navbar{background-color:#2262ae;transition:.6s;-webkit-transition:.6s;-moz-transition:.6s;-o-transition:.6s;}
 .bg-azul{background-color:#44c6ee;}
 .bg-naranja{background-color:#f68e55;}
 .bg-morado{background-color:#65499d;}
-section#noticias{background:url("/packages/images/landing/bg-noticias2.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;height:420px;}
+section#noticias{background:url("/packages/assets/media/images/landing/bg-noticias2.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;height:420px;}
 div.bg-noticias{background-color:rgba(0,0,0,.7);height:110%;width:100%;}
 section#noticias form#mail_noticia i.fa, section#noticias form#mail_noticia label{color:#fff;}
 input#correo_noticia{color:#fff !important;}
@@ -87,7 +87,7 @@ padding-right:10px;!important}
 }
 div.divider-new{margin-top:0px !important;}
 .margen-dispositivo{padding-top:30px !important;}
-div#equipo{height:300px;background:url("/packages/images/landing/equipo2.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
+div#equipo{height:300px;background:url("/packages/assets/media/images/landing/equipo2-min.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 h1.titulo-apartado{border-top:2px solid white;border-bottom:2px solid white;padding:10px;}
 h5.titulo-apartado a{color:#44c6ee !important;}
 h5.titulo-apartado a:hover{color:#2d96ba !important;}
@@ -95,7 +95,7 @@ div.introduccion p:first-letter{font-weight:bold;font-size:2em}
 img-equipo{}
 div#content-integrantes{margin-top:50px;}
 div#content-integrantes div.card{box-shadow:none !important;}
-div#colaboradores{height:300px;background:url("/packages/images/landing/colaboradores3.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
+div#colaboradores{height:300px;background:url("/packages/assets/media/images/landing/colaboradores3-min.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 div.img-medida img{height:100%;max-height:230px;min-height:230px;width:100%;}
 div#preguntas{height:300px;background:url("/packages/images/landing/preguntas.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 @media only screen and (max-width:485px){div.img-medida img{height:100%;max-height:200px;min-height:200px;width:100%;}
