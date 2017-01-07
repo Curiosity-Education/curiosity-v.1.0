@@ -92,7 +92,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-topics');
+    return View::make('administer.admin-libraryPdfs');
 });
 
 Route::get('1', 'activitiesVideosController@save');
@@ -129,6 +129,11 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 		Route::post('save', 'topicsController@save');
 		Route::post('update', 'topicsController@update');
 		Route::post('delete', 'topicsController@delete');
+	});
+	// Manage PDF's Library
+	Route::group(array('prefix' =>  'pdfs'),function(){
+		Route::post('save', 'libraryPdfController@save');
+		Route::post('delete', 'libraryPdfController@delete');
 	});
 // });
 
@@ -173,6 +178,18 @@ Route::group(array('prefix' =>  'blocks'),function(){
 Route::group(array('prefix' =>  'topics'),function(){
 	Route::post('all', 'topicsController@all');
 	Route::post('getByBlock', 'topicsController@getByBlock');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to pdf's library.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'pdfs'),function(){
+	Route::post('all', 'libraryPdfController@all');
+	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
+	Route::post('getByTopic', 'libraryPdfController@getByTopic');
 });
 
 /*

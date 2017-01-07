@@ -69,6 +69,33 @@ var Curiosity = {
          $("body").find("#mdlpgrss").modal("hide");
          $("body").find(".modal-backdrop").remove();
       }
+   },
+
+   file : {
+      validExtension : function ($file, $types) {
+         extension = ($file.substring($file.lastIndexOf("."))).toLowerCase();
+         $available = false;
+         for (var i = 0; i < $types.length; i++) {
+            if ($types[i] == extension) {
+               $available = true;
+               break;
+            }
+         }
+         if ($available) {
+            return true;
+         }else{
+            return false;
+         }
+      },
+      validSize : function($idElement, $max){
+         var files = document.getElementById($idElement).files;
+         if(files[0].size > $max){
+            return null;
+         }
+         else{
+            return files[0];
+         }
+      }
    }
 
 }

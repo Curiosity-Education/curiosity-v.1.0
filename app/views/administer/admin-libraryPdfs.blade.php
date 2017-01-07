@@ -6,14 +6,14 @@
 @stop
 
 @section('baner-tittle')
-   Biblioteca de videos
+   Biblioteca de Pdfs
 @stop
 
 @section('content-administer')
    <div class='row'>
       <div class='col-xs-12'>
-         <div class='ablk-buttons float-xs-right'>
-            <a class='btn-floating btn-small waves-effect waves-light' id='ablk-btnNew'>
+         <div class='albpdf-buttons float-xs-right'>
+            <a class='btn-floating btn-small waves-effect waves-light' id='albpdf-btnNew'>
                <i class="fa fa-plus"></i>
             </a>
          </div>
@@ -23,25 +23,37 @@
    <div class="row">
       <div class="container-fluid">
          <div class="col-xs-12 msad-selectGroup z-depth-1">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <div class="form-group">
-                <label for="ablk-levels">Niveles (Grados Escolares)</label>
-                <select class="form-control msad-select" name="ablk_lvlSel" id="ablk_lvlSel"></select>
+                <label for="albpdf_lvlSel">Niveles (Grados Escolares)</label>
+                <select class="form-control msad-select" name="albpdf_lvlSel" id="albpdf_lvlSel"></select>
               </div>
            </div>
-           <div class="col-sm-4">
+           <div class="col-sm-3">
              <div class="form-group">
-               <label for="ablk-intelligences">Inteligencias (Materias)</label>
-               <select class="form-control msad-select" name="ablk_intSel" id="ablk_intSel"></select>
+               <label for="albpdf_intSel">Inteligencias (Materias)</label>
+               <select class="form-control msad-select" name="albpdf_intSel" id="albpdf_intSel"></select>
              </div>
           </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="albpdf_blSel">Bloques</label>
+              <select class="form-control msad-select" name="albpdf_blSel" id="albpdf_blSel"></select>
+            </div>
+         </div>
+         <div class="col-sm-3">
+           <div class="form-group">
+             <label for="albpdf_tpSel">Temas</label>
+             <select class="form-control msad-select" name="albpdf_tpSel" id="albpdf_tpSel"></select>
+           </div>
+        </div>
          </div>
       </div>
    </div>
 
    <div class='row'>
       <div class='col-xs-12'>
-         <table class='table table-hover table-striped z-depth-1 msad-table' id='ablk-table'>
+         <table class='table table-hover table-striped z-depth-1 msad-table' id='albpdf-table'>
             <thead>
                <tr>
                   <th>Nombre</th><th>Acciones</th>
@@ -52,24 +64,30 @@
       </div>
    </div>
 
-   <div class="modal fade msad-mdl" id="ablk-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+   <div class="modal fade msad-mdl" id="albpdf-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header"></div>
          <div class="modal-body">
-            <form class="form form-horizontal" id="ablk-form">
-               <div class="form-group">
-                 <label for="ablk-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control ablkInp" id="ablk_name" name="ablk_name">
+            <div class="form-group">
+               <div class="input-group">
+                 <span class="input-group-addon" id="albpdf-open">
+                    <span class="fa fa-folder-open"></span>&nbsp;
+                    Examinar
+                 </span>
+                 <input type="text" class="form-control albpdfInp" id="albpdf_name" name="albpdf_name" readonly>
                </div>
+            </div>
+            <form class="form form-horizontal" id="albpdf-form">
+               <input type="file" name="albpdf_pdf" id="albpdf_pdf" class="albpdfInp">
             </form>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-default" id="ablk-cancel" data-dismiss="modal">
+            <button type="button" class="btn btn-outline-default" id="albpdf-cancel" data-dismiss="modal">
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
-           <button type="button" class="btn btn-default" id="ablk-save">
+           <button type="button" class="btn btn-default" id="albpdf-save">
              <span class="fa fa-upload"></span>&nbsp;
              Guardar
            </button>
@@ -83,6 +101,8 @@
    <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/ablkController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-ablk.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Library_pdf.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/albpdfController.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-albpdf.js" charset="utf-8"></script>
 @stop

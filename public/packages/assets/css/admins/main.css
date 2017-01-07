@@ -137,23 +137,23 @@
 }
 
 /* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-.alev-buttons, .aint-buttons, .ablk-buttons, .atp-buttons {
+.alev-buttons, .aint-buttons, .ablk-buttons, .atp-buttons, .albpdf-buttons {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 /* line 7, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-.alev-buttons button, .aint-buttons button, .ablk-buttons button, .atp-buttons button {
+.alev-buttons button, .aint-buttons button, .ablk-buttons button, .atp-buttons button, .albpdf-buttons button {
   margin: 0;
 }
 
 /* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-btnNew, #aint-btnNew, #ablk-btnNew, #atp-btnNew {
+#alev-btnNew, #aint-btnNew, #ablk-btnNew, #atp-btnNew, #albpdf-btnNew {
   color: white;
   background-color: #2262ae;
 }
 
 /* line 14, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-save, #aint-save, #ablk-save, #atp-save {
+#alev-save, #aint-save, #ablk-save, #atp-save, #albpdf-save {
   border-radius: 0.28rem;
   background-color: #2262ae;
   color: white;
@@ -162,8 +162,32 @@
 }
 
 /* line 21, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-cancel, #aint-cancel, #ablk-cancel, #atp-cancel {
+#alev-cancel, #aint-cancel, #ablk-cancel, #atp-cancel, #albpdf-cancel {
   border-color: #ed6922 !important;
   color: #ed6922 !important;
   border-radius: 0.28rem;
+}
+
+/* line 71, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#albpdf-open {
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  cursor: pointer;
+  background-color: #2262ae;
+  color: white;
+  border-top-left-radius: 0.28rem;
+  border-bottom-left-radius: 0.28rem;
+}
+
+/* line 81, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#albpdf_name {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+/* line 86, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
+#albpdf_pdf {
+  display: none;
 }

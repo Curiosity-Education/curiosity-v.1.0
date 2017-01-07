@@ -39,7 +39,7 @@ class intelligencesController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
 			if ($this->NameActiveExist($data['nivel'], $data['nombre'])){
@@ -65,7 +65,7 @@ class intelligencesController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validation->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
 			$int = Intelligence::where('id', '=', $data['id'])->first();

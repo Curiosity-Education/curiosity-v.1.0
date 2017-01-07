@@ -34,14 +34,14 @@ class Curiosity{
        return $messages;
    }
 
-   public static function makeRandomName($rand = false, $date = false){
+   public static function makeRandomName($rand = true, $date = true){
       $curiosity = self::singleton();
       $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
       $limit = 5;
 		$word = "";
 		for($i=0; $i < $limit; $i++) { $word .= substr($characters, rand(0, strlen($characters)), 1); }
-      if ($rand) { $word."_".rand(); }
-      if ($date) { $word."_".date("y").date("m").date("d"); }
+      if ($rand) { $word.=rand(); }
+      if ($date) { $word.="_".date("d").date("m").date("y"); }
 		return $word;
    }
 
