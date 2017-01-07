@@ -12,6 +12,7 @@ class ChildDoActivity extends CORM {
         super.setPrefix('/childDoActivities');
     }
     save(method,success){
+        console.log(this.childDoActivity);
         super.save(this.childDoActivity,method,success);
     }
     update(id,method,success){

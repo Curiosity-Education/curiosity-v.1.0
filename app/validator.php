@@ -15,6 +15,10 @@ Validator::extend('alpha_spaces',function($attribute,$value,$parameters){
 	return preg_match('/^([-a-zA-Z0-9_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s])+$/i',$value);
 });
 
+//this password is for validate a double number or float number
+Validator::extend('decimal',function($attribute,$value,$parameters){
+	return preg_match('/^(\d|-)?(\d|,)*\.?\d*$/',$value);
+});
 // this validation accept only letters with accents
 Validator::extend('letter',function($attribute,$value,$parameters){
 	return preg_match('/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/', $value);
@@ -46,8 +50,4 @@ Validator::extend('user_check',function($attribute, $value, $parameters){
 	if(DB::table("users")->where("username","=",$value)->where("username","!=",Auth::user()->username)->get()){
 		return false;
 	}else return true;
-});
-//this password is for validate a double number or float number
-Validator::extend('double',function($attribute,$value,$parameters){
-	return preg_match('/^(\d|-)?(\d|,)*\.?\d*$/',$value);
 });
