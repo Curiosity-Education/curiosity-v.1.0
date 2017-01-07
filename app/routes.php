@@ -92,7 +92,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-levels');
+    return View::make('administer.admin-topics');
 });
 
 Route::get('1', 'activitiesVideosController@save');
@@ -123,6 +123,12 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 		Route::post('save', 'blocksController@save');
 		Route::post('update', 'blocksController@update');
 		Route::post('delete', 'blocksController@delete');
+	});
+	// Manage the Topics
+	Route::group(array('prefix' =>  'topics'),function(){
+		Route::post('save', 'topicsController@save');
+		Route::post('update', 'topicsController@update');
+		Route::post('delete', 'topicsController@delete');
 	});
 // });
 
@@ -156,6 +162,17 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 Route::group(array('prefix' =>  'blocks'),function(){
 	Route::post('all', 'blocksController@all');
 	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to topics.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'topics'),function(){
+	Route::post('all', 'topicsController@all');
+	Route::post('getByBlock', 'topicsController@getByBlock');
 });
 
 /*
@@ -257,7 +274,7 @@ Route::group(array('before' => 'auth'), function(){
 			// 		});
 			// 	});
 
-        
+
         // Realizar Actividades*/
         Route::group(array('before' => 'realizar_actividades'),function(){
             Route::group(array('prefix' => 'skin'), function(){

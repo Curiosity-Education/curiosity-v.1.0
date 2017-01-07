@@ -1,4 +1,4 @@
-<!-- Prefix 'atp' -->
+<!-- Prefix 'albpdf' -->
 
 @extends('templates.administer-menu')
 
@@ -6,14 +6,14 @@
 @stop
 
 @section('baner-tittle')
-   Temas
+   Biblioteca de videos
 @stop
 
 @section('content-administer')
    <div class='row'>
       <div class='col-xs-12'>
-         <div class='atp-buttons float-xs-right'>
-            <a class='btn-floating btn-small waves-effect waves-light' id='atp-btnNew'>
+         <div class='ablk-buttons float-xs-right'>
+            <a class='btn-floating btn-small waves-effect waves-light' id='ablk-btnNew'>
                <i class="fa fa-plus"></i>
             </a>
          </div>
@@ -25,29 +25,23 @@
          <div class="col-xs-12 msad-selectGroup z-depth-1">
             <div class="col-sm-4">
               <div class="form-group">
-                <label for="atp-levels">Niveles (Grados Escolares)</label>
-                <select class="form-control msad-select" name="atp_lvlSel" id="atp_lvlSel"></select>
+                <label for="ablk-levels">Niveles (Grados Escolares)</label>
+                <select class="form-control msad-select" name="ablk_lvlSel" id="ablk_lvlSel"></select>
               </div>
            </div>
            <div class="col-sm-4">
              <div class="form-group">
-               <label for="atp-intelligences">Inteligencias (Materias)</label>
-               <select class="form-control msad-select" name="atp_intSel" id="atp_intSel"></select>
+               <label for="ablk-intelligences">Inteligencias (Materias)</label>
+               <select class="form-control msad-select" name="ablk_intSel" id="ablk_intSel"></select>
              </div>
           </div>
-          <div class="col-sm-4">
-            <div class="form-group">
-              <label for="atp-block msad-select">Bloques</label>
-              <select class="form-control msad-select" name="atp_blSel" id="atp_blSel"></select>
-            </div>
-         </div>
          </div>
       </div>
    </div>
 
    <div class='row'>
       <div class='col-xs-12'>
-         <table class='table table-hover table-striped z-depth-1 msad-table' id='atp-table'>
+         <table class='table table-hover table-striped z-depth-1 msad-table' id='ablk-table'>
             <thead>
                <tr>
                   <th>Nombre</th><th>Acciones</th>
@@ -58,24 +52,24 @@
       </div>
    </div>
 
-   <div class="modal fade msad-mdl" id="atp-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal fade msad-mdl" id="ablk-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header"></div>
          <div class="modal-body">
-            <form class="form form-horizontal" id="atp-form">
+            <form class="form form-horizontal" id="ablk-form">
                <div class="form-group">
-                 <label for="atp-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control atpInp" id="atp_name" name="atp_name">
+                 <label for="ablk-name" class="msad-mdl-label">Nombre</label>
+                 <input type="text" class="form-control ablkInp" id="ablk_name" name="ablk_name">
                </div>
             </form>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-default" id="atp-cancel" data-dismiss="modal">
+            <button type="button" class="btn btn-outline-default" id="ablk-cancel" data-dismiss="modal">
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
-           <button type="button" class="btn btn-default" id="atp-save">
+           <button type="button" class="btn btn-default" id="ablk-save">
              <span class="fa fa-upload"></span>&nbsp;
              Guardar
            </button>
@@ -89,7 +83,6 @@
    <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/atpController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-atp.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/ablkController.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-ablk.js" charset="utf-8"></script>
 @stop

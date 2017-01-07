@@ -137,23 +137,23 @@
 }
 
 /* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-.alev-buttons, .aint-buttons, .ablk-buttons, .atpc-buttons {
+.alev-buttons, .aint-buttons, .ablk-buttons, .atp-buttons {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 /* line 7, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-.alev-buttons button, .aint-buttons button, .ablk-buttons button, .atpc-buttons button {
+.alev-buttons button, .aint-buttons button, .ablk-buttons button, .atp-buttons button {
   margin: 0;
 }
 
 /* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-btnNew, #aint-btnNew, #ablk-btnNew, #atpc-btnNew {
+#alev-btnNew, #aint-btnNew, #ablk-btnNew, #atp-btnNew {
   color: white;
   background-color: #2262ae;
 }
 
 /* line 14, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-save, #aint-save, #ablk-save, #atpc-save {
+#alev-save, #aint-save, #ablk-save, #atp-save {
   border-radius: 0.28rem;
   background-color: #2262ae;
   color: white;
@@ -162,7 +162,7 @@
 }
 
 /* line 21, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_content.sass */
-#alev-cancel, #aint-cancel, #ablk-cancel, #atpc-cancel {
+#alev-cancel, #aint-cancel, #ablk-cancel, #atp-cancel {
   border-color: #ed6922 !important;
   color: #ed6922 !important;
   border-radius: 0.28rem;
