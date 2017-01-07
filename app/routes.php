@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-	return View::make('landing.index');
-});
+Route::get('/', 'landingController@landingpage');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
