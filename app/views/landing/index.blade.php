@@ -1,4 +1,4 @@
-@extends('indexBase')
+@extends('landing.indexBase')
 
 @section('title')
 	Curiosity Educación | Videojuegos educativos
@@ -6,36 +6,83 @@
 
 @section('menu')
 	<li class="nav-item anc">
-			<a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
+		<a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item anc">
-			<a class="nav-link" href="#nosotros">{{Lang::get('landingPage.menu.whatIs')}}</a>
+		<a class="nav-link" href="#nosotros">{{--Lang::get('landingPage.menu.whatIs')--}}</a>
 	</li>
 	<li class="nav-item anc">
-			<a class="nav-link" href="#funcionamiento">{{Lang::get('landingPage.menu.howfunction')}}</a>
+		<a class="nav-link" href="#funcionamiento">{{--Lang::get('landingPage.menu.howfunction')--}}</a>
 	</li>
 	 <li class="nav-item anc">
-			<a class="nav-link" href="#video">{{Lang::get('landingPage.menu.video')}}</a>
+		<a class="nav-link" href="#video">{{--Lang::get('landingPage.menu.video')--}}</a>
 	</li>
 	<li class="nav-item anc">
-			<a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
+		<a class="nav-link" href="#membresia">{{--Lang::get('landingPage.menu.paymentOption')--}}</a>
 	</li>
 	<li class="nav-item">
-			<a class="btn success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">{{Lang::get('landingPage.menu.logIn')}}</a>
+		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right" style="color:#fff !important;">Iniciar Sesión{{--Lang::get('landingPage.menu.logIn')--}}</a>
 	</li>
 	<li class="nav-item">
-			<a class="btn danger-rounded-outline waves-effect pull-right" style="color:#fff; margin-left:-15px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		<a class="btn btn-warning btn-rounded pull-right" style="color:#fff; margin-left:10px;" href="/suscripcion">Registrarme{{--Lang::get('landingPage.menu.createAccount')--}}</a>
 	</li>
 @stop
 
 @section('contenido')
+
+<!-- Modal de login -->
+<div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3><i class="fa fa-user"></i> Login</h3>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="form2" class="form-control">
+                    <label for="form2">Your email</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input type="password" id="form3" class="form-control">
+                    <label for="form3">Your password</label>
+                </div>
+                <div class="text-xs-center">
+                    <button class="btn btn-primary btn-lg">Login</button>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer">
+                <div class="options">
+                    <p>Not a member? <a href="#">Sign Up</a></p>
+                    <p>Forgot <a href="#">Password?</a></p>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- / Modal de login -->
+
 <!-- Sección de imagen a pantalla completa -->
 	<div class="view-entrada hm-black-strong" id="inicio">
 		<div class="full-bg-img flex-center">
 			<ul class="animated rubberBand"><br>
 				<li class="container-fluid">
-					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-						<img src="/packages/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
+					<div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
+						<img src="/packages/assets/media/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
 					</div>
 				</li>
 				<li class="container-fluid">
@@ -55,9 +102,9 @@
 
 <!-- Sección ¿Qué es curiosity? -->
 	<section id="nosotros" class="margen-dispositivo">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow zoomInUp">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow zoomInUp">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/computing.png" alt="Curiosity" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/computing.png" alt="Curiosity" style="width:35px; height:35px;" class="">
 				¿Qué es Curiosity?
 			</h2>
 		</div>
@@ -65,7 +112,7 @@
 			<div class="col-md-12">
 				<div class="col-md-6 col-sm-12 elemento-nosotros" id="">
 					<div class="col-md-3 col-sm-4 col-xs-12">
-						<img src="/packages/images/landing/iconos/laptop.png" alt="plataforma" style="" class="wow bounceInLeft img-fluid">
+						<img src="/packages/assets/media/images/landing/laptop.png" alt="plataforma" style="" class="wow bounceInLeft img-fluid">
 					</div>
 					<div class="col-md-9 col-sm-7">
                       <p class="text-justify"><b>Plataforma web </b> diseñada para mejorar la educación de los niños y aprender jugando.
@@ -75,16 +122,16 @@
 				<div class="col-md-6">
 				    <div class="col-md-12  col-sm-12 elemento-nosotros" id="">
                       <div class="col-md-3 col-sm-4">
-                          <img src="/packages/images/landing/equidad.svg" alt="equidad" style="" class="wow bounceInLeft img-fluid">
+                          <img src="/packages/assets/media/images/landing/equidad.svg" alt="equidad" style="" class="wow bounceInLeft img-fluid">
                       </div>
                       <div class="col-md-9 col-sm-7">
                           <p class="text-justify"><b>Equidad.</b> Acceso a los mejores profesores de diferentes escuelas para así evitar la desigualdad educativa.</p>
                       </div>
                   </div>
               </div>
-				<div class="col-md-6  col-md-offset-3 col-sm-12 elemento-nosotros" id="content-elemento">
+				<div class="col-md-6 offset-md-3 col-sm-12 elemento-nosotros" id="content-elemento">
 					<div class="col-md-3 col-sm-4">
-						<img src="/packages/images/landing/diversion.svg" alt="diversion" style="" class="img-responsive wow bounceInLeft img-fluid">
+						<img src="/packages/assets/media/images/landing/diversion.svg" alt="diversion" style="" class="img-responsive wow bounceInLeft img-fluid">
 					</div>
 					<div class="col-md-9 col-sm-7">
                       <p class="text-justify"><b>Diversión </b> en el mundo de la educación, para volver el aprendizaje uno de sus mejores momentos.</p>
@@ -98,9 +145,9 @@
 
 <!-- Sección ¿Cómo funciona curiosity? -->
 	<section id="funcionamiento" class="margen-dispositivo">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceIn">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow bounceIn">
 				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/pencil.png" alt="como funciona curiosity" style="width:35px; height:35px;" class="">
+					<img src="/packages/assets/media/images/landing/pencil.png" alt="como funciona curiosity" style="width:35px; height:35px;" class="">
 					¿Cómo funciona?
 				</h2>
 			</div>
@@ -108,7 +155,7 @@
 				<div class="col-md-12">
 				    <div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-orange-strong">
-							<img src="/packages/images/landing/fun-game.jpg" alt="Juegos" class="img-thumbnail img-responsive img-fluid">
+							<img src="/packages/assets/media/images/landing/fun-game.jpg" alt="Juegos" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
 							<h4 class="white-text">Juegos</h4>
 						</div>
@@ -118,7 +165,7 @@
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-purple-strong">
-							<img src="/packages/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
+							<img src="/packages/assets/media/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
 							<h4 class="white-text">Videos explicativos</h4>
 						</div>
@@ -128,7 +175,7 @@
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-blue-strong">
-							<img src="/packages/images/landing/fun-pdf.jpg" alt="PDF" class="img-thumbnail img-responsive img-fluid">
+							<img src="/packages/assets/media/images/landing/fun-pdf.jpg" alt="PDF" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
 							<h4 class="white-text">Documentos PDF</h4>
 						</div>
@@ -138,7 +185,7 @@
 					</div>
 					<div class="col-md-3 col-sm-6" id="content-elemento">
 						<div class="view hm-zoom overlay hm-yellow-strong">
-							<img src="/packages/images/landing/fun-feedback.jpg" alt="Retroalimentación" class="img-thumbnail img-responsive img-fluid">
+							<img src="/packages/assets/media/images/landing/fun-feedback.jpg" alt="Retroalimentación" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
 							<h4 class="white-text">Retroalimentación</h4>
 						</div>
@@ -164,16 +211,16 @@
 
 <!-- Sección de Video -->
 	<section id="video" class="">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow pulse">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow pulse">
 				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/mortarboard.png" alt="Conoce mejor a curiosity" style="width:35px; height:35px;" class="">
+					<img src="/packages/assets/media/images/landing/mortarboard.png" alt="Conoce mejor a curiosity" style="width:35px; height:35px;" class="">
 					Conócenos mejor
 				</h2>
 			</div>
 			<div class="container">
 				<div class="col-md-12" id="">
 					<div class="col-md-6">
-						<img src="/packages/images/landing/video-img.jpg" alt="construccion curiosity" class="img-fluid center-block animated zoomInRight" id="img-video">
+						<img src="/packages/assets/media/images/landing/video-img.jpg" alt="construccion curiosity" class="img-fluid center-block animated zoomInRight" id="img-video">
 					</div>
 					<div class="col-md-6" id="content-iframe">
 						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/9Ixi5LyyMuw" frameborder="0" allowfullscreen=""></iframe><br><br>
@@ -189,9 +236,9 @@
 
 <!-- Sección de Colaboradores -->
 	<section id="colaboradores" class="margen-dispositivo">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceInRight">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow bounceInRight">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/school.png" alt="escuela" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/school.png" alt="escuela" style="width:35px; height:35px;" class="">
 				Colaboradores
 			</h2>
 		</div>
@@ -203,7 +250,6 @@
 
 						<!--Controls-->
 						<div class="controls-top">
-							<h3 class="h3-responsive">Escuelas <hr style="border-color:#2262ae;"></h3><br>
 							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
 							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
 						</div>
@@ -240,7 +286,7 @@
                                       @endif
                                       <div class="col-md-4 col-sm-4">
                                           <div class="card">
-                                              {{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
+                                              {{HTML::image('/packages/assets/media/images/schools/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
                                           </div>
                                       </div>
                                       <?php $contador_esc+=1; $control+=1;?>
@@ -276,120 +322,119 @@
 
 <!-- Sección de Membresías -->
 	<section id="membresia" class="">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow rotateInUpLeft">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
 				Membresía
 			</h2>
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 
-				<div class="row">
 
-					<!--First column-->
-					<div class="col-md-4 col-md-offset-2 col-sm-6">
 
-						<!--Pricing card-->
-						<div class="card pricing-card hoverable z-depth-3">
-							<!--Price-->
-							<div class="price" style="background-color: #44c6ee;">
-								<h2>0</h2>
-								<div class="version">
-									<h5>Beta</h5>
+					<!--Section: Pricing v.1-->
+					<section class="section">
+
+						<!--First row-->
+						<div class="row">
+
+							<!--First column-->
+							<div class="col-md-4 offset-md-2 mb-r">
+
+								<!--Pricing card-->
+								<div class="card pricing-card">
+									<!--Price-->
+									<div class="price header blue">
+										<h1>10</h1>
+										<div class="version">
+											<h5>Basic</h5>
+										</div>
+									</div>
+									<!--/.Price-->
+
+									<!--Features-->
+									<div class="card-block striped text-xs-center">
+										<ul>
+											<li>
+												<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
+											</li>
+											<li>
+												<p><i class="fa fa-check"></i> 2 Email Accounts</p>
+											</li>
+											<li>
+												<p><i class="fa fa-times"></i> 24h Tech Support</p>
+											</li>
+											<li>
+												<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
+											</li>
+											<li>
+												<p><i class="fa fa-times"></i> User Management </p>
+											</li>
+										</ul>
+
+										<button class="btn btn-primary">Buy now</button>
+									</div>
+									<!--/.Features-->
+
 								</div>
-							</div>
-							<!--/.Price-->
+								<!--/.Pricing card-->
 
-							<!--Features-->
-							<div class="card-block">
-								<ul>
-									<li>
-										<p><i class="fa fa-check"></i> Juegos Educativos</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Documentos PDF</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Videos Explicativos</p>
-									</li>
-									<li>
-										<p><i class="fa fa-times"></i> Acceso a todo el contenido</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
-									</li>
-									<li>
-										<p><i class="fa fa-times"></i> Items de Regalo</p>
-									</li>
-									<li>
-										<p><i class="fa fa-times"></i> Análisis de problema de aprendizaje</p>
-									</li>
-								</ul>
-
-								<center><button class="btn" style="background-color: #44c6ee;" href="/suscripcion">Obtener</button></center>
 							</div>
-							<!--/.Features-->
+							<!--/First column-->
+
+							<!--Second column-->
+							<div class="col-md-4 mb-r">
+
+								<!--Pricing card-->
+								<div class="card pricing-card">
+									<!--Price-->
+									<div class="price header indigo">
+										<h1>20</h1>
+										<div class="version">
+											<h5>Pro</h5>
+										</div>
+									</div>
+									<!--/.Price-->
+
+									<!--Features-->
+									<div class="card-block striped text-xs-center">
+										<ul>
+											<li>
+												<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
+											</li>
+											<li>
+												<p><i class="fa fa-check"></i> 4 Email Accounts</p>
+											</li>
+											<li>
+												<p><i class="fa fa-check"></i> 24h Tech Support</p>
+											</li>
+											<li>
+												<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
+											</li>
+											<li>
+												<p><i class="fa fa-times"></i> User Management </p>
+											</li>
+										</ul>
+
+										<button class="btn btn-primary">Buy now</button>
+									</div>
+									<!--/.Features-->
+
+								</div>
+								<!--/.Pricing card-->
+
+							</div>
+							<!--/Second column-->
 
 						</div>
-						<!--/.Pricing card-->
+						<!--/First row-->
 
-					</div>
-					<!--/.First column-->
+					</section>
+					<!--/Section: Pricing v.1-->
 
-					<!--Second column-->
 
-					<!--Third column-->
-					<div class="col-md-4 col-sm-6">
-
-						<!--Pricing card-->
-						<div class="card pricing-card proximamente hoverable">
-							<!--Price-->
-							<div class="price" style="background-color: #65499d;">
-								<h2>58</h2>
-								<div class="version">
-									<h5>Premium</h5>
-								</div>
-							</div>
-							<!--/.Price-->
-
-							<!--Features-->
-							<div class="card-block">
-								<ul>
-									<li>
-										<p><i class="fa fa-check"></i> Juegos Educativos</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Documentos PDF</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Videos Explicativos</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Acceso a todo el contenido</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Items de Regalo</p>
-									</li>
-									<li>
-										<p><i class="fa fa-check"></i> Análisis de problema de aprendizaje</p>
-									</li>
-								</ul>
-
-								<center><button disabled class="btn" style="background-color: #65499d;">Suscribrse</button></center>
-							</div>
-							<!--/.Features-->
-
-						</div>
-						<!--/.Pricing card-->
-
-					</div>
-					<!--/.Third column-->
-				</div>
-			</div>
+			</div> <!-- Cierre de conyenedor -->
 		</div>
 	</section>
 <!-- Fin Sección de Membresías -->
@@ -397,27 +442,27 @@
 <!-- Sección con el Apoyo -->
 
 	<section id="apoyo" class="margen-dispositivo">
-		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow fadeInUpBig">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/compass.png" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/compass.png" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
 				Con el Apoyo:
 			</h2>
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/penoles.png" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/penoles.png" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/logo-fs.jpg" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logo-fs.jpg" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 
 			</div>
@@ -440,9 +485,9 @@
 					<li class="container-fluid">
 						<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
 					</li>
-					<div class="col-md-6 col-md-offset-3">
+					<div class="col-md-8 offset-md-2">
 						<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
-						 style="padding-top:20px; padding-left:20px;">
+						 style="padding-top:20px; padding-left:20px; border:1px solid #fff;">
 						<div class="md-form form-group">
 
 							<input type="email" id="correo_noticia" class="form-control validate">
@@ -469,7 +514,7 @@
 		<div class="row">
 
 			<!--First column-->
-			<div class="col-md-3 col-md-offset-1">
+			<div class="col-md-3 offset-md-1">
 				<h4 class="h4-responsive font-italic font-curiosity">Porque una educación divertida es posible.</h4>
 
 			</div>
@@ -478,7 +523,7 @@
 			<hr class="hidden-md-up">
 
 			<!--Second column-->
-			<div class="col-md-2 col-md-offset-1">
+			<div class="col-md-2 offset-md-1">
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul class="ul-content">
 					<li><a href="/nuestro-equipo">- Nuestro equipo</a></li>

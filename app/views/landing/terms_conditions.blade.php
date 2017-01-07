@@ -19,7 +19,7 @@
 
 			<!-- Logo -->
 			<div class="logo-wrapper waves-light">
-				<center><a href="#"><img src="/packages/assets/media/images/landing/logo_png.png" alt="logo-curiosity" class="img-fluid flex-center"></a></center>
+				<center><img src="packages/assets/media/images/landing/logo_png.png" class="img-fluid flex-center" id="logoAside"></center>
 			</div>
 			<!--/. Logo -->
 
@@ -63,10 +63,10 @@
 			<div class="main-wrapper">
 
 				<!--Navbar-->
-				<nav class="navbar navbar-dark bg-nav">
+				<nav class="navbar navbar-fixed-top navbar-dark bg-nav">
 
 					<!-- Collapse button-->
-					<a href="#" data-activates="slide-out" class="button-collapse" id="desplege"><i class="fa fa-bars"></i></a>
+					<a href="#" data-activates="slide-out" class="button-collapse pull-left" id="desplege"><i class="fa fa-bars"></i></a>
 					<a id="inicio" class="nav-link pull-right waves-effect" href="/"><i class="fa fa-home"></i> INICIO <span class="sr-only">(current)</span></a>					<div class="">
 
 						<!--Collapse content-->
@@ -101,7 +101,7 @@
 					<!-- Fin Encabezado -->
 
 					<!-- Descripción de los terminos -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="descripcion" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="descripcion" >
 						<p style="font-size:1.1em;"><b style="font-size:2em; color:#f68e55;">E</b>stimado Usuario le informamos a través del mismo, Términos y Condiciones de
 							Uso y Privacidad, les son aplicables por el simple uso o acceso a nuestra plataforma
 							educativa que lleva como nombre “Curiosity Educación”, por lo que entenderemos que los
@@ -115,7 +115,7 @@
 					<!-- Fin de Descripción -->
 
 					<!-- USO Y RESTRICCIONES  -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="uso_restricciones" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="uso_restricciones" >
 						<h3 class="h3-responsive" style="color:#f68e55;">1. USO Y RESTRICCIONES </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>l acceso o utilización de la plataforma expresan la adhesión plena y sin reservas
 							del Usuario a los presentes Términos y Condiciones de Uso y Privacidad. A través
@@ -155,7 +155,7 @@
 					<!-- Fin USO Y RESTRICCIONES  -->
 
 					<!-- PROPIEDAD INTELECTUAL  -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="propiedad_intelectual" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="propiedad_intelectual" >
 						<h3 class="h3-responsive" style="color:#f68e55;">2. PROPIEDAD INTELECTUAL </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">L</b>os derechos de propiedad intelectual respecto de los Servicios y Contenidos y los
 						signos distintivos y dominios de las plataforma, así como los derechos de uso y
@@ -171,7 +171,7 @@
 					<!-- Fin PROPIEDAD INTELECTUAL  -->
 
 					<!-- PROPIEDAD INTELECTUAL DE TERCEROS -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="propiedad_intelectual_terceros">
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="propiedad_intelectual_terceros">
 						<h3 class="h3-responsive" style="color:#f68e55;">3. PROPIEDAD INTELECTUAL DE TERCEROS </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>l Usuario acuerda que las disposiciones que se establecen en el inciso 2 anterior
 						respecto de la titularidad de los derechos de Curiosity también son aplicables a los
@@ -182,7 +182,7 @@
 					<!-- Fin PROPIEDAD INTELECTUAL DE TERCEROS -->
 
 					<!-- USOS PERMITIDOS -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="usos_permitidos" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="usos_permitidos" >
 						<h3 class="h3-responsive" style="color:#f68e55;">4. USOS PERMITIDOS </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>l aprovechamiento de los Servicios y Contenidos de la plataforma es exclusiva
 							responsabilidad del Usuario, quien en todo caso deberá servirse de ellos acorde a
@@ -199,7 +199,7 @@
 					<!-- Fin USOS PERMITIDOS -->
 
 					<!-- RESTRICCIONES -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="restricciones" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="restricciones" >
 						<h3 class="h3-responsive" style="color:#f68e55;">5. RESTRICCIONES </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>l Usuario no tiene el derecho de colocar hiperligas en la plataforma, ni el derecho
 							de colocar o utilizar los Servicios y Contenidos de la plataforma en sitios o páginas
@@ -211,7 +211,7 @@
 					<!-- Fin RESTRICCIONES -->
 
 					<!-- CALIDAD DE LOS SERVICIOS Y CONTENIDOS -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="calidad_servicios" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="calidad_servicios" >
 						<h3 class="h3-responsive" style="color:#f68e55;">6. CALIDAD DE LOS SERVICIOS Y CONTENIDOS </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">N</b>i Curiosity, ni sus proveedores o socios comerciales serán responsables de
 							cualquier daño o perjuicio que sufra el Usuario a consecuencia de inexactitudes,
@@ -226,7 +226,7 @@
 					<!-- Fin CALIDAD DE LOS SERVICIOS Y CONTENIDOS  -->
 
 					<!-- CONFIDENCIALIDAD -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="confidencialidad" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="confidencialidad" >
 						<h3 class="h3-responsive" style="color:#f68e55;">7. CONFIDENCIALIDAD </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">L</b>a empresa Curiosity se obliga a mantener confidencial la información que reciba
 							del Usuario que tenga dicho carácter conforme a las disposiciones legales
@@ -240,7 +240,7 @@
 					<!-- Fin CONFIDENCIALIDAD  -->
 
 					<!-- USO DE LA INFORMACIÓN NO CONFIDENCIAL O INDIVIDUAL  -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="uso_informacion" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="uso_informacion" >
 						<h3 class="h3-responsive" style="color:#f68e55;">8. USO DE LA INFORMACIÓN NO CONFIDENCIAL O INDIVIDUAL </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">M</b>ediante el uso del Portal, el Usuario autoriza a Curiosity  a utilizar, publicar,
 							reproducir, divulgar, comunicar públicamente y transmitir la información no
@@ -252,7 +252,7 @@
 					<!-- Fin USO DE LA INFORMACIÓN NO CONFIDENCIAL O INDIVIDUAL   -->
 
 					<!-- COOKIES  -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="cookies" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="cookies" >
 						<h3 class="h3-responsive" style="color:#f68e55;">9. COOKIES </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>l Usuario que tenga acceso a la plataforma, conviene en recibir archivos que les
 							transmitan los servidores de Curiosity. "Cookie" significa un archivo de datos que se
@@ -266,7 +266,7 @@
 					<!-- Fin COOKIES -->
 
 					<!-- AVISO DE PRIVACIDAD DE DATOS PERSONALES   -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="aviso_privacidad" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="aviso_privacidad" >
 						<h3 class="h3-responsive" style="color:#f68e55;">10. AVISO DE PRIVACIDAD DE DATOS PERSONALES </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">T</b>oda la información que Curiosity recabe del Usuario es tratada con absoluta
 							confidencialidad conforme las disposiciones legales aplicables.
@@ -277,7 +277,7 @@
 					<!-- Fin AVISO DE PRIVACIDAD DE DATOS PERSONALES  -->
 
 					<!-- CLAVES DE ACCESO -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="claves_acceso" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="claves_acceso" >
 						<h3 class="h3-responsive" style="color:#f68e55;">11. CLAVES DE ACCESO </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">E</b>n todo momento, el Usuario es el responsable único y final de mantener en secreto
 							su claves de acceso con la cual tenga acceso a ciertos Servicios y Contenidos de la
@@ -287,7 +287,7 @@
 					<!-- Fin CLAVES DE ACCESO  -->
 
 					<!-- MODIFICACIONES -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="modificaciones" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="modificaciones" >
 						<h3 class="h3-responsive" style="color:#f68e55;">12. MODIFICACIONES </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">L</b>a empresa Curiosity tendrá el derecho de modificar en cualquier momento los
 							Términos y Condiciones de Uso y Privacidad. En consecuencia, el Usuario debe
@@ -307,7 +307,7 @@
 					<!-- Fin MODIFICACIONES  -->
 
 					<!-- LEYES APLICABLES Y JURISDICCIÓN -->
-					<div class="col-md-8 col-sm-10 col-xs-12 jumbotron offset-md-3 offset-sm-1 animated bounceInRight secciones" id="leyes_aplicables" >
+					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron offset-md-1 offset-sm-1 animated bounceInRight secciones" id="leyes_aplicables" >
 						<h3 class="h3-responsive" style="color:#f68e55;">13. LEYES APLICABLES Y JURISDICCIÓN  </h3><hr>
 						<p style="font-size:1.1em;" class="text-justify"><b style="font-size:1.4em;">P</b>ara la interpretación, cumplimiento y ejecución de los presentes Términos y
 							Condiciones de Uso y Privacidad, el Usuario está de acuerdo en que serán
