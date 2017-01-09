@@ -92,7 +92,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-libraryPdfs');
+    return View::make('administer.asociateSchool');
 });
 
 Route::get('1', 'activitiesVideosController@save');

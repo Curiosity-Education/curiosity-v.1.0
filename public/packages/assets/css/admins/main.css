@@ -191,3 +191,46 @@
 #albpdf_pdf {
   display: none;
 }
+
+@font-face {
+  font-family: "font-curiosity";
+  src: url("/packages/assets/systemFonts/muli.ttf");
+}
+
+/* line 4, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch-btnNew {
+  color: white;
+  background-color: #2262ae;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+.asch-container {
+  cursor: pointer;
+}
+/* line 12, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+.asch-container img {
+  border-top-left-radius: 0.28rem;
+  border-top-right-radius: 0.28rem;
+}
+/* line 15, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+.asch-container h6 {
+  background-color: #2262ae;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.7rem;
+  color: white;
+  border-bottom-right-radius: 0.28rem;
+  border-bottom-left-radius: 0.28rem;
+}
+
+/* line 24, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+.asch-btnConf {
+  background-color: #2262ae !important;
+}
+
+/* line 27, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+.asch-btnDel {
+  background-color: #ec2726 !important;
+}
