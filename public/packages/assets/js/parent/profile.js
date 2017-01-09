@@ -12,12 +12,12 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		$($(this).data("target")).show();
 		if($(this).data("target")=="#card-news"){
 			$(this).data("target","#card-data-editing");
-			$(this).html("<i class='fa fa-refresh'></i> Editar datos");
+			$(this).html("<i class='fa fa-edit'></i> Editar mis datos");
 			$(".bg-green").addClass("bg-blue");
 			$(".bg-blue").removeClass("bg-green");
 		}else{
 			$(this).data("target","#card-news");
-			$(this).html("<i class='fa fa-newspaper-o'></i> Ver novedades");
+			$(this).html("<i class='fa fa-newspaper-o'></i>&nbsp; Ver novedades");
 			$(".bg-blue").addClass("bg-green");
 			$(".bg-green").removeClass("bg-blue");
 		}

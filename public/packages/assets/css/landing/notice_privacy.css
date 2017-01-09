@@ -1,6 +1,12 @@
 *{
 	margin: 0;
 	padding: 0;
+	font-family: 'font-curiosity';
+}
+
+@font-face{
+   font-family: 'font-curiosity';
+   src:  url('/packages/assets/systemFonts/muli.ttf');
 }
 
 div#titulo{
@@ -52,7 +58,7 @@ div.bg-negro{
 
 a#inicio{
 	color: #fff;
-	margin: 5px 5px;
+	margin: 8px 5px;
 }
 
 .bg-nav{
@@ -97,4 +103,29 @@ li a:hover{
 .tab2{
 	margin-left: 50px;
 	font-size: 1.1em;
+}
+
+div.main-wrapper{
+	padding-top: 52px;
+}
+
+#imgLogo{
+	height: 2rem !important;
+	width: 2rem !important;
+	display: inline !important;
+}
+
+.secciones{
+	border-radius: .28rem;
+}
+
+.active{
+	background-color: rgba(255,255,255,.1);
+}
+
+@media (min-width: 310px) and (max-width: 570px){
+	div.main-wrapper{
+		padding-top: 47px;
+	}
+
 }

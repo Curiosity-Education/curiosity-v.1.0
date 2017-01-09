@@ -1,13 +1,13 @@
 @extends('templates.parent-menu')
 
 @section('title')
-Curiosity | Perfil
+Mi Perfil
 @stop
-@section('title-baner')
+@section('title-banner')
  <i class="fa fa-user"></i> Mi perfil
 @stop
 @section('content-parent')
-   <div class="container-fluid main">
+   <div class="container-fluid main"><br>
       <div class="row" id="p-row-main">
          <div class="col-md-8 col-lg-8">
              <!--Form about novedades-->
@@ -23,14 +23,14 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
                                 </div>
                               </div>
                               <div class="card-right">
                                 <div class="p-card-title text-center">
                                   <h5>Suceciones Númericas</h5>
                                 </div>
-                                <div class="p-card-description">
+                                <div class="p-card-description text-xs-left">
                                   <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
                                 </div>
                                 <hr>
@@ -46,14 +46,14 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
                                 </div>
                               </div>
                               <div class="card-right">
                                 <div class="p-card-title text-center">
                                   <h5>Resolución de problemas</h5>
                                 </div>
-                                <div class="p-card-description">
+                                <div class="p-card-description text-xs-left">
                                   <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
                                 </div>
                                 <hr>
@@ -69,14 +69,14 @@ Curiosity | Perfil
                             <div class="card-block">
                               <div class="card-left border-right">
                                 <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.jpg">
+                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
                                 </div>
                               </div>
                               <div class="card-right">
                                 <div class="p-card-title text-center">
                                   <h5>Grafica de barras</h5>
                                 </div>
-                                <div class="p-card-description">
+                                <div class="p-card-description text-xs-left">
                                   <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
                                 </div>
                                 <hr>
@@ -183,7 +183,7 @@ Curiosity | Perfil
             <!--Card-->
             <div class="card card-border-standard testimonial-card animated fadeInLeft" data-wow-delay="1s">
                 <!--Bacground color-->
-                <div class="card-up bg-blue">
+                <div class="card-up bg-blue pf-bgCardEdit">
                 </div>
 
                 <!--Avatar-->
@@ -195,16 +195,15 @@ Curiosity | Perfil
                     <h4 class="card-title">Username´s parent</h4>
                     <hr>
                     <!-- data list-->
-                    <ul class="list text-justify">
-                      <li class="list-item">Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
-                      <li class="list-item">Apellido(s): <span id="span-name">Jinestas garcía</span></li>
-                      <li class="list-item">hijos registraods <span id="span-name">1</span></li>
-                      <li class="list-item">telefono: <span id="span-name">+52 8711010214</span> <i class="fa fa-phone"></i></li>
+                    <ul class="list text-justify" >
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-name">Jinestas garcía</span></li>
+						<li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-name">+52 8711010214</span></li>
                     </ul>
                     <hr>
                     <!--//.. end data list -->
                     <!--Quotation-->
-                    <a class="btn bg-blue btn-border-curiosity waves-effect waves-light" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-refresh"></i> Editar mis datos</a>  
+                    <a class="btn pf-bg-default btn-border-curiosity waves-effect waves-light pf-border-rounded" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-edit"></i> Editar mis datos</a>
                 </div>
             </div>
             <!--/.Card-->

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" type="image/png" href="/packages/assets/media/images/landing/logo.png">
     <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -10,7 +11,7 @@
 	<title>Curiosity | Mi primer hijo</title>
 
 	<!--Navbar-->
-	<nav class="navbar navbar-fixed-top navbar-dark bg-primary rfc-navbar">
+	<nav class="navbar navbar-fixed-top navbar-dark rfc-navbar">
 
 		<div class="container">
 
@@ -29,15 +30,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-12">
-				<div class="jumbotron animated" id="rfc-info">
-					<h3 class="h3-responsive">Registro de tu primer(a) Hijo(a) <i class="fa fa-male"></i> <i class="fa fa-female"></i> <a class="btn-floating btn-small blue pull-right hidden-xs-down rfc-close-info"><i class="fa fa-close"></i></a></h3>
+				<div class="jumbotron animated flash" id="rfc-info">
+					<h3 class="h3-responsive">Registro de tu primer(a) Hijo(a) <i class="fa fa-male"></i> <i class="fa fa-female"></i> <a class="btn-floating btn-small pull-right hidden-xs-down rfc-close-info rfc-infoCloseMD"><i class="fa fa-close"></i></a></h3>
 
 					<hr>
 
-					<p class=""><span class="tag tag-default"><i class="fa fa-question"></i></span> Te preguntaras, ¿Por qué un registro más?</p>
-					<p class=""><span class="tag tag-info"><i class="fa fa-info"></i></span> Este registro es necesario, ya que crearás la cuenta de tu primer hijo y así tener acceso a la plataforma, posteriormente podrás registrar más hijos desde tu cuenta.</p>
+					<p class=""><span class="tag rfc-tag-default"><i class="fa fa-question"></i></span> Te preguntaras, ¿Por qué un registro más?</p>
+					<p class=""><span class="tag rfc-tag-info"><i class="fa fa-info"></i></span> Este registro es necesario, ya que crearás la cuenta de tu primer hijo y así tener acceso a la plataforma, posteriormente podrás registrar más hijos desde tu cuenta.</p>
 					<hr class="hidden-sm-up">
-					<button type="button" class="btn btn-outline-warning waves-effect float-xs-right rfc-rounded hidden-sm-up rfc-close-info">Ocultar</button><br class="hidden-sm-up"><br class="hidden-sm-up">
+					<button type="button" class="btn btn-outline-warning waves-effect float-xs-right rfc-rounded hidden-sm-up rfc-close-info rfc-infoCloseSM">Ocultar</button><br class="hidden-sm-up"><br class="hidden-sm-up">
 				</div>
 				<a class="rfc-hidde" href="#" id="rfc-show-info">
 					<div class="chip rfc-details animated bounce">
@@ -100,7 +101,7 @@
 									<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
 
 										<hr>
-										<button class="btn btn-default rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment">Registrar</button>
+										<button class="btn rfc-btn-default rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment">Registrar</button>
 									</div>
 								</div>
 							</div>
@@ -116,8 +117,8 @@
 					<!--Content-->
 					<div class="modal-content">
 						<!--Header-->
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<div class="modal-header rfc-modal-header">
+							<button type="button" class="close rfc-modalClose" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 							<h4 class="modal-title text-xs-center" id="myModalLabel"><i class="fa fa-credit-card-alt"></i>&nbsp; Datos de pago</h4>
@@ -128,8 +129,8 @@
 						</div>
 						<!--Footer-->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary rfc-rounded" data-dismiss="modal">Regresar</button>
-							<button type="button" class="btn btn-primary rfc-rounded">Terminar registro</button>
+							<button type="button" class="btn btn-outline-warning waves-effect rfc-rounded rfc-btnCancel" data-dismiss="modal">Regresar</button>
+							<button type="button" class="btn rfc-btn-primary rfc-rounded">Terminar registro</button>
 						</div>
 					</div>
 					<!--/.Content-->
