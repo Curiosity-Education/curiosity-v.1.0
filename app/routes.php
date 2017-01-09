@@ -75,7 +75,14 @@ Route::get('administer', function(){
 
 Route::get('1', 'activitiesVideosController@save');
 
-Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView');
+Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
+    ->where(
+        array(
+            'controller' => "^[a-zA-Z]*$",
+            'method' => "^[a-zA-Z]*$"
+        )
+    );
+Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 
 /*
 * -----------------------------------------------------------------------------
@@ -316,16 +323,17 @@ Route::group(array('before' => 'auth'), function(){
                    Route::post('update', 'temaController@changeImage');
                 });
             });
-        });
+        });*/
 
-        Route::group(array('before' => 'gestionar_actividades'),function(){
+        //Route::group(array('before' => 'gestionar_actividades'),function(){
             // Activities
             Route::group(array('prefix' =>  'activity-admin'),function(){
-                Route::match(array('GET', 'POST'), '{id}{bloque}{inteligencia}{nivel}', 'actividadController@verPagina');
-                Route::post('update', 'actividadController@update');
-                Route::post('delete', 'actividadController@remove');
+                Route::post('all', 'activitiesController@all');
+                Route::post('save', 'activitiesController@save');
+                Route::post('update', 'activitiesController@update');
+                Route::post('delete', 'activitiesController@delete');
                 Route::group(array('prefix' =>  'photo'),function(){
-                   Route::post('update', 'actividadController@changeImage');
+                   Route::post('update', 'activitiesController@changeImage');
                 });
 
                 Route::group(array('prefix' =>  'game'),function(){
@@ -335,8 +343,8 @@ Route::group(array('before' => 'auth'), function(){
 
             });
 
-        });
-        // Schools
+        //});
+        /*// Schools
         Route::group(array('before' => 'gestionar_escuelas'), function(){
             Route::group(array('prefix' =>  'school'),function(){
                 Route::match(array('GET', 'POST'), '/', 'escuelaController@verPagina');
