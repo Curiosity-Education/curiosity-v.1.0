@@ -1,11 +1,17 @@
+// Import of the archive global of variables
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
 .text-left
 	text-align: left 
 .text-right
 	text-align: right
 .bg-blue
-	background-color: $color-blue !important
+	background-color: $color-primary !important
+.pf-bg-default
+	background-color: $color-default !important
 .bg-green
-	background-color: $color-green !important
+	background-color: $color-warning-light !important
 #container-baner
 	padding-left: 2rem
 	padding-right: 2rem
@@ -28,9 +34,8 @@
 		height: 5rem !important
 		max-width: 100%
 		margin-top: 1rem
-		border: .1rem solid $color-black-light-elegant
-		&:hover
-			+transform(scale(1.01))
+		border-radius: 50%
+
 .card 
 	.card-left
 		width: 20%
@@ -54,7 +59,7 @@
 
 .card
 	.p-card-title
-		background-color: $color-black-light-elegant
+		background-color: $color-info-dark
 		color: $color-white
 		position: absolute
 		top: -.3rem
@@ -74,13 +79,13 @@
 .p-card-user
 	display: none
 .border-left
-	border-left: .09rem solid $color-light-gray !important
+	border-left: .09rem solid $color-gray-light !important
 .border-right
-	border-right: .09rem solid $color-light-gray !important
+	border-right: .09rem solid $color-gray-light !important
 .border-bottom
-	border-bottom: .03rem solid $color-light-gray !important
+	border-bottom: .03rem solid $color-gray-light !important
 .border-top
-	border-top: .09rem solid $color-dark-gray !important
+	border-top: .09rem solid $color-gray-dark !important
 .p-list-news
 	padding: 2rem
 	padding-top: .5rem
@@ -116,3 +121,12 @@ div[class*="tab"].active
 	overflow: hidden
 #p-row-pdf
 	margin-top: -1rem
+.pf-border-rounded
+	border-radius: $border-rad
+.pf-bgCardEdit
+	border-top-left-radius: $border-rad
+	border-top-right-radius: $border-rad
+.stepper-horizontal
+	li
+		&:hover
+			background-color: transparent !important

@@ -7,6 +7,7 @@ $(function(){
 
 	$("#rfc-show-info").click(function(){
 		$(this).addClass('rfc-hidde');
+		$("#rfc-info").removeClass('flash');
 		$("#rfc-info").addClass('fadeInRight');
 		$("#rfc-info").removeClass('rfc-hidde');
 	});
