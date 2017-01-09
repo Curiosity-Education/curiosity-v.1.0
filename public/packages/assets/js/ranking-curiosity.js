@@ -68,7 +68,7 @@ class Ranking { //object for ranking in curiosity
         }
 		
 	}
-	
+
 	setEventClick(clickfunction){
 		if($.isFunction(clickfunction)){
 			$(".curiosity-ranking>li.item-ranking").click(clickfunction);

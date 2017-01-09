@@ -22,10 +22,10 @@
               <h6>Calificame</h6>
               <ul class="curiosity-ranking animated bounceIn" data-stars="4.6" >
                 <li class="star-text"></li>
-                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Malo"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Mala"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
-                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Bueno"></li>
-                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Muy bueno"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Buena"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Muy buena"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Excelente"></li>
               </ul>
             </div>
@@ -104,6 +104,8 @@
 <script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/sonRatesActivity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
 <script type="text/javascript">
    $(function(){
