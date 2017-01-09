@@ -84,7 +84,7 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-topics');
+    return View::make('administer.asociateSchool');
 });
 
 Route::get('1', 'activitiesVideosController@save');
@@ -129,6 +129,11 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		Route::post('update', 'topicsController@update');
 		Route::post('delete', 'topicsController@delete');
 	});
+	// Manage PDF's Library
+	Route::group(array('prefix' =>  'pdfs'),function(){
+		Route::post('save', 'libraryPdfController@save');
+		Route::post('delete', 'libraryPdfController@delete');
+	});
 // });
 
 /*
@@ -172,6 +177,18 @@ Route::group(array('prefix' =>  'blocks'),function(){
 Route::group(array('prefix' =>  'topics'),function(){
 	Route::post('all', 'topicsController@all');
 	Route::post('getByBlock', 'topicsController@getByBlock');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to pdf's library.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'pdfs'),function(){
+	Route::post('all', 'libraryPdfController@all');
+	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
+	Route::post('getByTopic', 'libraryPdfController@getByTopic');
 });
 
 /*
@@ -394,7 +411,7 @@ Route::group(array('before' => 'auth'), function(){
                    Route::post('update', 'temaController@changeImage');
                 });
             });
-        });*/
+        });
 
         //Route::group(array('before' => 'gestionar_actividades'),function(){
             // Activities
