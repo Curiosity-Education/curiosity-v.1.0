@@ -17,16 +17,19 @@
 			<div class="main-wrapper">
 
 				<!--Navbar-->
-				<nav class="navbar navbar-dark bg-nav">
+				<nav class="navbar navbar-fixed-top navbar-dark bg-nav">
 
 					<!-- Collapse button-->
 					<!--<a href="#" data-activates="slide-out" class="button-collapse" id="desplege"><i class="fa fa-bars"></i></a>-->
-					<a id="inicio" class="nav-link pull-right waves-effect" href="/"><i class="fa fa-home"></i> INICIO <span class="sr-only">(current)</span></a>					<div class="">
-
+					<div class="container">
+						<a id="inicio" class="nav-link pull-right waves-effect" href="/"><i class="fa fa-home"></i>&nbsp; Inicio <span class="sr-only">(current)</span></a>
 						<!--Collapse content-->
 						<div class="collapse navbar-toggleable-xs" id="collapseEx2">
 							<!--Navbar Brand-->
-
+							<a class="navbar-brand" id="reg-navlogo">
+								<img src="/packages/assets/media/images/system/icon.png" class="img-fluid reg-logo" id="imgLogo">
+								Curiosity Educación
+							</a>
 							<!--Links-->
 							<ul class="nav navbar-nav pull-right">
 								<li class="nav-item active">

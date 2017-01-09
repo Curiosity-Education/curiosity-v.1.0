@@ -34,42 +34,50 @@
 <div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!--Content-->
-        <div class="modal-content">
+        <div class="modal-content borderRounded">
 
             <!--Header-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3><i class="fa fa-user"></i> Login</h3>
+                <h3><i class="fa fa-user-circle"></i> Iniciar Sesión</h3>
             </div>
 
             <!--Body-->
             <div class="modal-body">
-                <div class="md-form">
-                    <i class="fa fa-envelope prefix"></i>
-                    <input type="text" id="form2" class="form-control">
-                    <label for="form2">Your email</label>
-                </div>
+                <div class="container-fluid">
+                	<div class="col-md-12">
+                		<div class="col-md-5">
+                			<center>
+                				<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" alt="..." class="rounded-circle">
+                			</center>
+                			<hr>
+							<p class="text-xs-center"><i class="fa fa-quote-left"></i> Brindar equidad educativa de una manera divertida.</p>
+                		</div>
+                		<div class="col-md-7" id="form-content">
+							<div class="row">
+								<div class="md-form">
+									<i class="fa fa-user prefix"></i>
+									<input type="text" id="form2" class="form-control">
+									<label for="form2">Usuario</label>
+								</div>
 
-                <div class="md-form">
-                    <i class="fa fa-lock prefix"></i>
-                    <input type="password" id="form3" class="form-control">
-                    <label for="form3">Your password</label>
-                </div>
-                <div class="text-xs-center">
-                    <button class="btn btn-primary btn-lg">Login</button>
+								<div class="md-form">
+									<i class="fa fa-lock prefix"></i>
+									<input type="password" id="form3" class="form-control">
+									<label for="form3">Contraseña</label>
+								</div>
+								<div class="text-xs-center">
+									<button class="btn btn-primaryCur btn-lg borderRounded">Iniciar</button>
+								</div>
+							</div>
+                		</div>
+                	</div>
                 </div>
             </div>
 
-            <!--Footer-->
-            <div class="modal-footer">
-                <div class="options">
-                    <p>Not a member? <a href="#">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
-                </div>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+
         </div>
         <!--/.Content-->
     </div>

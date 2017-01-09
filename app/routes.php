@@ -29,10 +29,6 @@ Route::get('mentores', function(){
 	return View::make('landing.mentors');
 });
 
-Route::get('login', function(){
-	return View::make('landing.login');
-});
-
 Route::get('registry', function(){
 	return View::make('parent.registry');
 });
@@ -79,12 +75,8 @@ Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('menu-estudio', function(){
-	return View::make('child.studyMenu');
-});
-
 Route::get('tienda', function(){
-    return View::make('child.curiosity-store');
+    return View::make('child.store');
 });
 
 Route::get('juego', function(){
