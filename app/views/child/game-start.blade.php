@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-   <div class="row">
+   <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">
          <div class="chip animated bounce" id="gst-back">
             <img src="/packages/assets/media/images/system/iconBack.png">
@@ -19,12 +19,15 @@
                <h6>15</h6>
             </div>
             <div id="gst-ranking">
-               <h6>Calificame</h6>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
-               <span class="fa fa-star"></span>
+              <h6>Calificame</h6>
+              <ul class="curiosity-ranking animated bounceIn" data-stars="4.6" >
+                <li class="star-text"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Malo"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Bueno"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Muy bueno"></li>
+                <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Excelente"></li>
+              </ul>
             </div>
          </div>
          <div class="gst-card z-depth-1" id="gst-material">
@@ -62,17 +65,21 @@
          </div>
       </div>
    </div>
-
+   <div class="row hidden" id="gst-row-game">
+    <div class="col-md-12">
+       <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+    </div>
+   </div>
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-body">
             <div id="gst-avCel"></div>
-            <h1>200 puntos</h1>
+            <h1 id="gst-score">200 puntos</h1>
             <div class="row">
               <div class="col-sm-4">
                  <h4>Aciertos</h4>
-                 <h5>20</h5>
+                 <h5 id="gst-hits">20</h5>
               </div>
               <div class="col-sm-4">
                  <h4>Experiencia</h4>
@@ -94,6 +101,10 @@
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
 <script type="text/javascript">
    $(function(){
       // $("#gst-modal").modal('show');

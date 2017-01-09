@@ -3,11 +3,12 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" type="image/png" href="/packages/assets/media/images/landing/logo.png">
     <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
-	<title>Curiosity | Mi primer hijo</title>
+	<title>Registro Cuenta Papá</title>
 
 	<!--Navbar-->
 	<nav class="navbar navbar-fixed-top navbar-dark bg-primary reg-navbar">
@@ -28,7 +29,7 @@
 				</a>
 				<!--Links-->
 				<ul class="nav navbar-nav pull-right">
-					<li class="nav-item active">
+					<li class="nav-item reg-nav-item">
 						<a class="nav-link"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
@@ -46,7 +47,7 @@
 		<div class="row">
 			<div class="col-md-3 offset-md-1 col-sm-4">
 				    <!--Card-->
-					<div class="card card-cascade narrower reg-rounded">
+					<div class="card card-cascade narrower reg-rounded animated fadeInLeft">
 
 						<!--Card image-->
 						<div class="view overlay hm-white-slight reg-rounded">
@@ -67,7 +68,7 @@
 							<hr>
 							<center>
 								<div class="options">
-									<a href="#" class="btn btn-primary reg-rounded">Iniciar Sesión</a>
+									<a href="#" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
 									<p>¿Ya tienes cuenta?<br>¡ Inicia sesión ahora !</p>
 								</div>
 							</center>
@@ -135,7 +136,7 @@
 												<label for="checkbox1">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
 											</fieldset>
 											<hr>
-											<button class="btn btn-default reg-rounded">Registrarme</button>
+											<button class="btn reg-btnRegister reg-rounded">Registrarme</button>
 										</div>
 									</div>
 								</div>

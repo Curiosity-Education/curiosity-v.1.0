@@ -41,7 +41,7 @@
             <form class="form form-horizontal" id="alev-form">
                <div class="form-group">
                  <label for="alev-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control" id="alev_name" name="alev_name">
+                 <input type="text" class="form-control alevInp" id="alev_name" name="alev_name">
                </div>
             </form>
          </div>

@@ -11,6 +11,24 @@
 |
 */
 
+Route::get('/', 'landingController@landingpage');
+
+Route::get('terminos', function(){
+	return View::make('landing.terms_conditions');
+});
+
+Route::get('aviso-privacidad', function(){
+	return View::make('landing.notice_privacy');
+});
+
+Route::get('equipo', function(){
+	return View::make('landing.team');
+});
+
+Route::get('mentores', function(){
+	return View::make('landing.mentors');
+});
+
 Route::get('registry', function(){
 	return View::make('parent.registry');
 });
@@ -40,7 +58,7 @@ Route::get('parent-profile', function(){
 });
 
 
-Route::get('/', function()
+Route::get('hijo-inicio', function()
 {
 	return View::make('child.init');
 });
@@ -57,12 +75,8 @@ Route::get('padre-inicio', function(){
 	return View::make('parent.home');
 });
 
-Route::get('menu-estudio', function(){
-	return View::make('child.studyMenu');
-});
-
 Route::get('tienda', function(){
-    return View::make('child.curiosity-store');
+    return View::make('child.store');
 });
 
 Route::get('juego', function(){
@@ -86,15 +100,28 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 
 /*
 * -----------------------------------------------------------------------------
-* Routes to manage the levels.
+* Routes to manage the content.
 * only for the administers into the system.
 * -----------------------------------------------------------------------------
 */
 // Route::group(array('before' => 'manage_content'),function(){
+	// Manage the levels
 	Route::group(array('prefix' =>  'levels'),function(){
 		Route::post('save', 'levelsController@save');
 		Route::post('update', 'levelsController@update');
-		Route::post('delete', 'levelsController@remove');
+		Route::post('delete', 'levelsController@delete');
+	});
+	// Manage the intelligences
+	Route::group(array('prefix' =>  'intelligences'),function(){
+		Route::post('save', 'intelligencesController@save');
+		Route::post('update', 'intelligencesController@update');
+		Route::post('delete', 'intelligencesController@delete');
+	});
+	// Manage the Blocks
+	Route::group(array('prefix' =>  'blocks'),function(){
+		Route::post('save', 'blocksController@save');
+		Route::post('update', 'blocksController@update');
+		Route::post('delete', 'blocksController@delete');
 	});
 // });
 
@@ -106,6 +133,28 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 */
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to intelligences.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'intelligences'),function(){
+	Route::post('all', 'intelligencesController@all');
+	Route::post('getByLevel', 'intelligencesController@getByLevel');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to blocks.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'blocks'),function(){
+	Route::post('all', 'blocksController@all');
+	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
 });
 
 /*
@@ -207,38 +256,43 @@ Route::group(array('before' => 'auth'), function(){
 			// 		});
 			// 	});
 
-        // Realizar Actividades
+        
+        // Realizar Actividades*/
         Route::group(array('before' => 'realizar_actividades'),function(){
             Route::group(array('prefix' => 'skin'), function(){
 				Route::match(array('GET', 'POST'),'/', 'tiendaController@viewPage');
                 Route::get('tienda', 'tiendaController@viewPage');
 				Route::post('change', 'tiendaController@cambiarSkin');
-		        Route::post('buy', 'tiendaController@comprarSkin');
-		        Route::post('change', 'tiendaController@cambiarAvatar');
+	            Route::post('buy', 'tiendaController@comprarSkin');
+	            Route::post('change', 'tiendaController@cambiarAvatar');
             });
-            Route::group(array('prefix' => 'content'), function(){
-                Route::match(array('GET', 'POST'), '/', 'contenidoController@viewPage');
-                Route::get('home', 'contenidoController@getInicio');
-                Route::post('get-videos', 'contenidoController@getAllVideos');
-            });
-            Route::group(array('prefix' => 'son'), function(){
-                Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
-                Route::post('assign/avatar', 'hijoController@asignAvatar');
-                Route::post('goal/change', 'hijoController@changeMeta');
-            });
-            Route::group(array('prefix' => 'game'),function(){
-                Route::get('{idActividad}/{nombre}','actividadController@getViewJuego');
-				Route::get('{id}', 'actividadController@verPaginaInWeb');
-                Route::post('has','actividadController@hasGame');
+			Route::group(array('prefix' => 'content'), function(){
+		        Route::match(array('GET', 'POST'), '/', 'contenidoController@viewPage');
+			    Route::get('home', 'contenidoController@getInicio');
+			    Route::post('get-videos', 'contenidoController@getAllVideos');
+			});
+			Route::group(array('prefix' => 'son'), function(){
+				Route::match(array('GET', 'POST'), '/', 'hijoController@viewPage');
+				Route::post('assign/avatar', 'hijoController@asignAvatar');
+				Route::post('goal/change', 'hijoController@changeMeta');
+			});
 
+            Route::group(array('prefix' => "childDoActivities"), function(){
+                Route::post("/save",'childrenDoActivitiesController@save');
             });
-            Route::group(array('prefix' => 'level'), function(){
-                Route::match(array('GET', 'POST'), '/', 'nivelController@verPaginaInWeb');
-            });
+            /*Route::group(array('prefix' => ''),function(){
+	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
+	 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
+				Route::get('activity{id}', 'actividadController@verPaginaInWeb');
+			});
+	 		Route::group(array('prefix' => ''), function(){
+	 			Route::match(array('GET', 'POST'), '/', 'nivelController@viewPage');
+	 			Route::get('level', 'nivelController@verPaginaInWeb');
+	 		});
             Route::group(array('prefix' => ''), function(){
 				Route::match(array('GET', 'POST'), '/', 'inteligenciaController@viewPage');
-				// 			Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
-				// 		});
+				Route::get('intelligence-{idNivel}', 'inteligenciaController@verPaginaInWeb');
+			});*/
 				// 		Route::group(array('prefix' => ''), function(){
 				// 			Route::match(array('GET', 'POST'), '/', 'bloqueController@viewPage');
 				// 			Route::get('block-{id}', 'bloqueController@verPaginaInWeb');
@@ -351,7 +405,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('update', 'escuelaController@update');
                 Route::post('delete', 'escuelaController@remove');
             });
-        });*/
+        });
         /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
