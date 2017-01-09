@@ -27,7 +27,8 @@ var aintController = {
          $("#aint_lvlSel").trigger("change");
       }
       else{
-         $("#aint_lvlSel").prop("disabled", true);
+         Curiosity.toastLoading.hide();
+         $("#aint-btnNew").hide();
       }
    },
 
@@ -98,25 +99,25 @@ var aintController = {
       Curiosity.toastLoading.hide();
       switch (response.status) {
          case 200:
-            console.log("Registro exitoso");
+            Curiosity.noty.success("Registro exitoso", "Bien hecho");
             $("#aint-modal").modal("hide");
             aintController.clearInputs();
             var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf aint-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"' data-dtd='"+response.data.descripcion+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel aint-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
             $("#aint-table tbody").append(newRow);
             break;
          case "CU-103":
-            console.log("Lo siento, los datos que intentas guardar ya exiten");
+            Curiosity.noty.warning("Los datos que intentas guardar ya exiten", "Atención");
             break;
          case "CU-104":
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
-                  console.log(message);
+                  Curiosity.noty.warning(message, "Algo va mal");
               });
             });
             break;
          default:
             console.log(response);
-            console.log("Error desconocido\nConsulta con el administrador");
+            Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
             break;
       }
    },
@@ -125,7 +126,7 @@ var aintController = {
       Curiosity.toastLoading.hide();
       switch (response.status) {
          case 200:
-            console.log("Actualización exitosa");
+            Curiosity.noty.success("Actualización exitosa", "Bien hecho");
             $("#aint-modal").modal("hide");
             aintController.clearInputs();
             $("body").find("."+response.data.id+"Name").data("dtn", response.data.nombre);
@@ -134,18 +135,18 @@ var aintController = {
             $("body").find("."+response.data.id+"id").data("dti", response.data.id);
             break;
          case "CU-103":
-            console.log("Lo siento, los datos que intentas guardar ya exiten");
+            Curiosity.noty.warning("Los datos que intentas guardar ya existen", "Atención");
             break;
          case "CU-104":
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
-                  console.log(message);
+                  Curiosity.noty.warning(message, "Algo va mal");
               });
             });
             break;
          default:
             console.log(response);
-            console.log("Error desconocido\nConsulta con el administrador");
+            Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
             break;
       }
    },
@@ -154,10 +155,11 @@ var aintController = {
       if (response.status == 200){
          $("body").find("#"+response.data.id).remove();
          Curiosity.toastLoading.hide();
+         Curiosity.noty.success("Removido exitosamente", "Bien hecho");
       }
       else{
          console.log(response);
-         console.log("Error desconocido\nConsulta con el administrador");
+         Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
       }
    },
 

@@ -1,8 +1,8 @@
-var ablkController = {
+var atpController = {
 
    typeOfSave : "save",
-   formulary : $("#ablk-form"),
-   inputName : $("#ablk_name"),
+   formulary : $("#atp-form"),
+   inputName : $("#atp_name"),
    id : null,
 
    setTypeOfSave : function(type){
@@ -19,16 +19,16 @@ var ablkController = {
    },
 
    makeLevelsList : function(response){
-      $("#ablk-table tbody").html("");
+      $("#atp-table tbody").html("");
       if (response.length > 0){
          $.each(response, function(i, obj){
-            $("#ablk_lvlSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
+            $("#atp_lvlSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
          });
-         $("#ablk_lvlSel").trigger("change");
+         $("#atp_lvlSel").trigger("change");
       }
       else{
          Curiosity.toastLoading.hide();
-         $("#ablk-btnNew").hide();
+         $("#atp-btnNew").hide();
       }
    },
 
@@ -38,18 +38,19 @@ var ablkController = {
    },
 
    makeIntelligencesList : function(response){
-      $("#ablk_intSel").html("");
-      $("#ablk-table tbody").html("");
+      $("#atp_intSel").html("");
+      $("#atp_blSel").html("");
+      $("#atp-table tbody").html("");
       if (response.length > 0){
-         $("#ablk-btnNew").show("slow");
+         $("#atp-btnNew").show("slow");
          $.each(response, function(i, obj){
-            $("#ablk_intSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
+            $("#atp_intSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
          });
-         $("#ablk_intSel").trigger("change");
+         $("#atp_intSel").trigger("change");
       }
       else{
          Curiosity.toastLoading.hide();
-         $("#ablk-btnNew").hide("slow");
+         $("#atp-btnNew").hide("slow");
       }
    },
 
@@ -59,10 +60,31 @@ var ablkController = {
    },
 
    makeBlocksList : function(response){
-      $("#ablk-table tbody").html("");
+      $("#atp_blSel").html("");
+      $("#atp-table tbody").html("");
+      if (response.length > 0){
+         $("#atp-btnNew").show("slow");
+         $.each(response, function(i, obj){
+            $("#atp_blSel").append("<option value='"+obj.id+"'>"+obj.nombre+"</option>");
+         });
+         $("#atp_blSel").trigger("change");
+      }
+      else{
+         Curiosity.toastLoading.hide();
+         $("#atp-btnNew").hide("slow");
+      }
+   },
+
+   getTopics : function($int){
+      Curiosity.toastLoading.show();
+      Topic.any({id : $int}, "POST", this.makeTopicsList, "getByBlock");
+   },
+
+   makeTopicsList : function(response){
+      $("#atp-table tbody").html("");
       $.each(response, function(i, obj){
-         var newRow = "<tr id='"+obj.id+"'><td class='tdName'>"+obj.nombre+"</td><td><button type='button' class='btn msad-table-btnConf ablk-btnConf "+obj.id+"Name "+obj.id+"id' data-dti='"+obj.id+"' data-dtn='"+obj.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel "+obj.id+"id' data-dti='"+obj.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-         $("#ablk-table tbody").append(newRow);
+         var newRow = "<tr id='"+obj.id+"'><td class='tdName'>"+obj.nombre+"</td><td><button type='button' class='btn msad-table-btnConf atp-btnConf "+obj.id+"Name "+obj.id+"id' data-dti='"+obj.id+"' data-dtn='"+obj.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel atp-btnDel "+obj.id+"id' data-dti='"+obj.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
+         $("#atp-table tbody").append(newRow);
       });
       Curiosity.toastLoading.hide();
    },
@@ -72,25 +94,25 @@ var ablkController = {
          case "save":
             this.formulary.validate({
                rules : {
-                  ablk_name : {required:true, maxlength:100}
+                  atp_name : {required:true, maxlength:100}
                }
             });
             if (this.formulary.valid()){
-               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
+               var topic = new Topic(this.inputName.val(), $("#atp_blSel").val());
                Curiosity.toastLoading.show();
-               block.save("POST", this.addSuccess);
+               topic.save("POST", this.addSuccess);
             }
             break;
          case "update":
             this.formulary.validate({
                rules : {
-                  ablk_name : {required:true, maxlength:100}
+                  atp_name : {required:true, maxlength:100}
                }
             });
             if (this.formulary.valid()){
-               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
+               var topic = new Topic(this.inputName.val(), $("#atp_blSel").val());
                Curiosity.toastLoading.show();
-               block.update(this.id, "POST", this.updSuccess);
+               topic.update(this.id, "POST", this.updSuccess);
             }
             break;
          default:
@@ -100,16 +122,16 @@ var ablkController = {
    },
 
    delete : function(){
-      var $title = "Eliminar Bloque";
-      var $text = "¿Estas seguro que deseas eliminar el bloque selecccionado?";
+      var $title = "Eliminar Tema";
+      var $text = "¿Estas seguro que deseas eliminar el Tema selecccionado?";
       var $type = "warning";
       var $id = this.id;
-      Curiosity.notyConfirm($title, $text, $type, function(){ ablkController.deleteIn($id); });
+      Curiosity.notyConfirm($title, $text, $type, function(){ atpController.deleteIn($id); });
    },
 
    deleteIn : function($id){
       Curiosity.toastLoading.show();
-      Block.delete($id, "POST", this.delSuccess);
+      Topic.delete($id, "POST", this.delSuccess);
    },
 
    addSuccess : function(response){
@@ -117,10 +139,10 @@ var ablkController = {
       switch (response.status) {
          case 200:
             Curiosity.noty.success("Registro exitoso", "Bien hecho");
-            $("#ablk-modal").modal("hide");
-            ablkController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf ablk-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-            $("#ablk-table tbody").append(newRow);
+            $("#atp-modal").modal("hide");
+            atpController.clearInputs();
+            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf atp-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel atp-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
+            $("#atp-table tbody").append(newRow);
             break;
          case "CU-103":
             Curiosity.noty.warning("Los datos que intentas guardar ya exiten", "Atención");
@@ -144,8 +166,8 @@ var ablkController = {
       switch (response.status) {
          case 200:
             Curiosity.noty.success("Actualización exitosa", "Bien hecho");
-            $("#ablk-modal").modal("hide");
-            ablkController.clearInputs();
+            $("#atp-modal").modal("hide");
+            atpController.clearInputs();
             $("body").find("."+response.data.id+"Name").data("dtn", response.data.nombre);
             $("body").find("#"+response.data.id+" .tdName").html(response.data.nombre);
             $("body").find("."+response.data.id+"id").data("dti", response.data.id);
@@ -180,7 +202,7 @@ var ablkController = {
    },
 
    clearInputs : function(){
-      $(".ablkInp").val("");
+      $(".atpInp").val("");
    }
 
 }
