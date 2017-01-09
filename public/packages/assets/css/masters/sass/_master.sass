@@ -1,4 +1,5 @@
 @import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
 
 *
    font-family: $font-curiosity
@@ -103,4 +104,24 @@ body
    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)
    -webkit-border-radius: 10px
    border-radius: 10px
-/* ============================================
+/* ==============================================
+//end to style scroll
+/*===============================================
+
+
+//=================================
+//            style ranking
+//==================================*/
+.curiosity-ranking
+   display: none
+   .item-ranking
+      cursor: pointer
+      &:hover
+         +transform(scale(1.1))
+   margin: -1rem
+   padding: 1rem
+   padding-top: 1rem
+   color: rgba(46,46,46,0.75)
+/* ==============================================
+//end to style f ranking
+/*===============================================
