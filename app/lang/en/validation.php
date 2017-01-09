@@ -89,7 +89,14 @@ return array(
 			'rule-name' => 'custom-message',
 		),
 	),
-
+	"alpha_spaces"		=> "The :attribute solo puede contener letras y numeros.",
+	"letter"			=> "El  :attribute solo puede contener letras.",
+	"telephone"			=> "El :attribute  solo puede contener EL formato de numero establecido.",
+	"cvc"				=> "El :attribute  solo puede contener un formato de 3 numeros.",
+	"credit_card"		=> "El :attribute  solo puede contener formato de Visa y MasterCard.",
+	"numero_casa"		=> "El formato de :attribute de casa es invalido.  Ejemplo 1, 12, 124, 1248, 1A, 12B, 124C, 1248C",
+	"user_check"		=> "El nombre de usuario que ingreso ya se encuentra en uso",
+	"validate_password" => "La contraseña es incorrecta",
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Attributes
@@ -100,15 +107,7 @@ return array(
 	| of "email". This simply helps us make messages a little cleaner.
 	|
 	*/
-	"alpha_spaces"		=> "El :attribute solo puede contener letras y numeros.",
-	"letter"			=> "El :attribute solo puede contener letras.",
-	"telephone"			=> "El :attribute  tiene que contener el formato de número telefonico de diez digitos incluyendo lada télefonica.",
-	"cvc"				=> "El :attribute  solo puede contener un formato de 3 numeros.",
-	"credit_card"		=> "El :attribute  solo puede contener formato de Visa y MasterCard.",
-	"numero_casa"		=> "El formato de :attribute de casa es invalido.  Ejemplo 1, 12, 124, 1248, 1A, 12B, 124C, 1248C",
-	"user_check"		=> "El nombre de usuario que ingreso ya se encuentra en uso",
-	"validate_password" => "La contraseña es incorrecta",
-	"decimal"			=> "El :attribute tiene que tener el formato de número decimal",
+
 	'attributes' => array(),
 
 );
