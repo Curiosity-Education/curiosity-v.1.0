@@ -100,7 +100,7 @@ div.img-medida img{height:100%;max-height:230px;min-height:230px;width:100%;}
 div#preguntas{height:300px;background:url("/packages/images/landing/preguntas.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 @media only screen and (max-width:485px){div.img-medida img{height:100%;max-height:200px;min-height:200px;width:100%;}
 }
-.hr-apartado{width:50%;margin-left:25%;}
+.hr-apartado{width:50%;margin-left:25%;background-color: #2262ae;}
 div#bg-login{height:100%;background:url("../media/bg-login.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;}
 div#wrapper-form{border:2px solid #2d96ba;background-color:rgba(45, 150, 186, 0.7);padding:20px 30px 0px;border-radius:3px;margin-top:110px;}
 div#wrapper-form img.img-thumbnail{display:inline-block;max-width:100%;height:auto;padding:.25rem;line-height:1.5;background-color:#165e6f;border:1px solid #166474;border-radius:.25rem;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out;}
@@ -133,3 +133,9 @@ section#apoyo div.container div#content-elemento img.hoverable{opacity:0.5;trans
 section#apoyo div.container div#content-elemento img.hoverable:hover{opacity:1;}
 li.separacion{margin-top:8px;}
 ul.ul-content li a:hover{color:#f68e55;}
+.borderRounded{border-radius: .28rem !important;}
+#form-content{border-left:2px solid #2262ae; padding-left: 43px;}
+.modal-header{background-color: #2262ae; color: #fff !important; border-top-left-radius: .20rem !important; border-top-right-radius: .20rem !important;}
+button.close{color: #fff;} button.close:hover{color: #fff;}
+button.btn-primaryCur{background-color: #2d96ba; color: #fff;}
+div.card-block hr{background-color: #2262ae !important;}
