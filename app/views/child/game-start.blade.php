@@ -20,7 +20,7 @@
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
-              <ul class="curiosity-ranking animated bounceIn" data-stars="3.5">
+              <ul class="curiosity-ranking animated bounceIn" data-stars="4.6" >
                 <li class="star-text"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Malo"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
@@ -104,6 +104,7 @@
 <script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
 <script type="text/javascript">
    $(function(){
       // $("#gst-modal").modal('show');
@@ -111,7 +112,6 @@
          $("#gst-modal").modal('show');
       });
       new WOW().init();
-      new Ranking().init();
    });
 </script>
 @stop
