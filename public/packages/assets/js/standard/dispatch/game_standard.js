@@ -3,8 +3,8 @@ var $juego = {
         hits:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         mistakes:0,//variable que lleva el control de los errores dentro del juego
         attempts:0,//varoable para almacenar los intentos realizados dentro del juego
-        scoreValue:100,// valor que tendrán los puntos cada vez que el usario acierte 
-        scoreCurrent:0,// puntaje con el que el usario iniciará 
+        scoreValue:100,// valor que tendrán los puntos cada vez que el usario acierte
+        scoreCurrent:0,// puntaje con el que el usario iniciará
         scoreMax:0,//variable para almacenar el puntaje más alto que el niño a tenido en esta actividad
         efficiency:0,//variable para almacenar el nivel de eficiencia que el usuario tubo al realizar la actividad
         combo:0,//variable para determinar combos dentro del juego.
@@ -110,7 +110,7 @@ var $juego = {
         restart_game_unity:function(){
             $juego.game.hits=0;
             $juego.game.attempts = 0;
-            $juego.game.mistakes = 0;  
+            $juego.game.mistakes = 0;
             $juego.game.combo=0;//reiniciar continuos
             $juego.game.scoreCurrent=0;
         },
@@ -133,7 +133,7 @@ var $juego = {
             $("#gst-row-gamelay").hide();//desaparecer zona juego
             $("#gst-row-information-game").show();//aparecer zona del objetivo
             $juego.game.scoreCurrent=0;
-            $juego.cronometro.stop();            
+            $juego.cronometro.stop();
             $("#game").trigger('exit');
         },
         setCombo:function(combo){
@@ -149,7 +149,7 @@ var $juego = {
             $juego.game.hits++;
             $juego.game.attempts++;
             $juego.game.calcCombo();
-           
+
         },
         setError:function(scoreMenius){
             // regresamos la cantidad de aciertos continuos a cero

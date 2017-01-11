@@ -9,7 +9,7 @@
 	+background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
 
 .text-left
-	text-align: left 
+	text-align: left
 .text-right
 	text-align: right
 .bg-blue
@@ -45,7 +45,7 @@
 			width: 3.5rem !important
 			height: 3.5rem !important
 
-.card 
+.card
 	.card-left
 		width: 20%
 		display: inlinte-block
@@ -93,6 +93,9 @@
 	display: none
 .border-left
 	border-left: .09rem solid $color-gray-light !important
+	@media (min-width: $smartphone-size-portrait - 20px) and (max-width: $smartphone-size-landscape + 100px)
+		border-left: 0rem solid $color-gray-light !important
+
 .border-right
 	border-right: .09rem solid $color-gray-light !important
 .border-bottom
@@ -112,7 +115,7 @@
 	.card-block
 		padding-bottom: .1rem
 
-.card-block-right 
+.card-block-right
 	padding: 1rem
 	padding-right: 1rem
 .border-standard
@@ -163,3 +166,30 @@ div[class*="tab"].active
 	@media (max-width: $tablet-size-landscape + 10px)
 		display: none !important
 
+#p-content-novelty
+	margin-top: -1.5rem !important
+
+#p-cardData
+	width: auto
+	@media (max-width: $smartphone-size-portrait + 20px)
+		width: 180%
+		margin-left: -4rem
+
+.p-data-editing
+	@media (max-width: $smartphone-size-portrait + 20px)
+		margin-left: 1.5rem !important
+
+.p-tab
+	@media (max-width: $smartphone-size-portrait + 20px)
+		margin-left: -2rem !important
+	.md-form
+		.prefix
+			@media (max-width: $smartphone-size-portrait + 20px)
+				display: none !important
+	.mdb-select
+		@media (max-width: $smartphone-size-portrait + 20px)
+			width: 82%
+			margin-left: 3rem !important
+
+.p-content-buttons
+	margin-top: 1rem

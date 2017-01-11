@@ -4,7 +4,7 @@ $green-skin-color: #003830;
 $purple-skin-color: #650696;
 $deep-orange-skin-color: #8A1A00;
 $pink-skin-color: #c2185b;
-$light-grey-skin-color: #757575; 
+$light-grey-skin-color: #757575;
 
 // Blue skin
 .blue-skin {
@@ -870,7 +870,7 @@ $light-grey-skin-color: #757575;
     .top-nav-collapse {
         background-color: lighten( $stylish-color, 5%);
     }
-    
+
     .carousel-multi-item {
         .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
             background-color: lighten( $stylish-color, 5%);
@@ -945,7 +945,7 @@ $light-grey-skin-color: #757575;
         &.active {
             background-color: darken( $unique-color-dark, 20%)!important;
         }
-    }  
+    }
     .btn-default,
     .card .btn-action {
         background: #154771;

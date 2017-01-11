@@ -1,8 +1,8 @@
 <?php
 class childrenDoActivitiesController extends BaseController{
-	
+
 	function get(){
-		
+
 	}
 	function save(){
 		if(Request::method()=="POST"){
@@ -54,10 +54,10 @@ class childrenDoActivitiesController extends BaseController{
 		}
 	}
 	function update(){
-		
+
 	}
 	function delete(){
-		
+
 	}
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 class childrenController extends BaseController{
-	
+
 	function get(){
 		$role = Auth::user()->roles[0]->name;
         $idDad = Auth::user()->Person()->first()->Parent()->pluck('id');
@@ -61,15 +61,10 @@ class childrenController extends BaseController{
             $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
             $user->active=1;
             $user->save();
-                if($roleDad == "padre"){
-                    $myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
+                if($roleDad == "parent"){
+                    $myRole = DB::table('roles')->where('name', '=', 'child')->pluck('id');
                 }
-                else if ($roleDad == "padre_free"){
-                    $myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
-                }
-                else if ($roleDad == "demo_padre"){
-                    $myRole = DB::table('roles')->where('name', '=', 'demo_hijo')->pluck('id');
-                }
+
             $user->attachRole($myRole);
             $profile = new Profile();
                 if ($data['sexo'] == 'm'){
@@ -102,7 +97,7 @@ class childrenController extends BaseController{
                 'cantidad_exp' => 0,
                 'coins' => 0
             ));
-            if ($roleDad == "padre" || $roleDad == "padre_free"){
+            if ($roleDad == "parent" ){
                 $membership_plan = new MembershipPlan();
                 $membership = new Membership(array(
                     "token_card" => Session::get('sub_id'),
@@ -122,10 +117,10 @@ class childrenController extends BaseController{
 		}
 	}
 	function update(){
-		
+
 	}
 	function delete(){
-		
+
 	}
 
     /*Esta función no recuerdo mucho su funcionamiento pendiente para actualización*/

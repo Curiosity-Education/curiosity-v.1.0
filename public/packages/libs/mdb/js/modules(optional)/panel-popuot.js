@@ -1,4 +1,4 @@
-//Collapse other tabs for popout 
+//Collapse other tabs for popout
 $(function () {
     var active = true;
 

@@ -5,9 +5,9 @@ $(function(){
     |--------------------------------------------------------------------------
     | managent of steps for registrate the children
     |--------------------------------------------------------------------------
-    | in this section of code, we manage the steps for register the children 
-    | show and hide steps 
-    |   
+    | in this section of code, we manage the steps for register the children
+    | show and hide steps
+    |
     */
     $(".btn-next").click(function(ev){
    		$("[class*='step-']").removeClass("active");
@@ -20,7 +20,7 @@ $(function(){
     });
 
     $(".btn-upload-child").click(function(ev){
-    	alert("desea registrar este mocoso?");	
+    	alert("desea registrar este mocoso?");
     });
 
     $(".btn-cancel").click(function(ev){

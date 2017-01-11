@@ -1,6 +1,6 @@
-<?php 
+<?php
 class SonRatesActivity extends Eloquent{
-	
+
 	protected $table ='hijo_califica_actividades';
     public $timestamps = false;
   /*
@@ -18,5 +18,5 @@ class SonRatesActivity extends Eloquent{
         return $this->belongsTo('actividad');
     }
 
-	
+
 }

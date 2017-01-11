@@ -1,8 +1,8 @@
 <?php
 class avatarStylesController extends BaseController{
-	
+
 	function get(){
-		
+
 	}
 	function save(){
 		$data = Input::all();

@@ -10,7 +10,7 @@
   margin: 0;
 }
 /**
- * The times on the clock. 
+ * The times on the clock.
  */
 .picker__list-item {
   border-bottom: 1px solid #dddddd;
@@ -390,7 +390,7 @@
     &.active {
         background-color: darken( $primary-color, 20%)!important;
         @extend .z-depth-1-half;
-    }  
+    }
 }
 .btn-floating.btn-flat.active {
   background-color: rgba(0, 150, 136, 0.25);

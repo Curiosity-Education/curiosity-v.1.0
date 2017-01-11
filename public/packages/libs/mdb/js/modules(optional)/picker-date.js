@@ -1368,7 +1368,7 @@ $.extend($.fn.pickadate.defaults, {
 
       onRender: function () {
       var $pickerInstance = this.$root;
- 
+
           var year = this.get('highlight', 'yyyy');
           var day = this.get('highlight', 'dd');
           var month = this.get('highlight', 'mmm');

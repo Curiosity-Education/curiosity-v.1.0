@@ -1,6 +1,6 @@
 <?php
 class Son extends Eloquent{
-	
+
 	protected $table = 'hijos';
 
   /*

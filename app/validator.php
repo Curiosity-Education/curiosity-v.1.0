@@ -7,7 +7,7 @@
 	|
 	| This section is for create custom validation of input data of client and
 	| this data is resived in served and validate with this validations
-	| 	
+	|
 	*/
 
 //this validation accept letter width spaces
