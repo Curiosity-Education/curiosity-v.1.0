@@ -112,7 +112,7 @@ var actiController = {
    makeActivityList : function(response){
       $("#acti-table tbody").html("");
       $.each(response, function(i, data){
-         var newRow = "<tr id='"+data.id+"'><td class='tdName'>"+data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf' data-info='"+JSON.stringify(data)+"' data-dti='"+data.id+"' data-dtn='"+data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+data.id+"id' data-dti='"+data.id+"'><span class='fa fa-trash-o'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+data.id+"id' data-dti='"+data.id+"'><span class='fa fa-gamepad'></span></button></td></tr></td></tr>";
+         var newRow = "<tr id='"+data.id+"'><td class='tdName'>"+data.nombre+"</td><td><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnGame "+data.id+"id' data-dti='"+data.id+"'><span class='fa fa-gamepad'></span></button><button type='button' class='btn msad-table-btnConf acti-btnConf' data-info='"+JSON.stringify(data)+"' data-dti='"+data.id+"' data-dtn='"+data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+data.id+"id' data-dti='"+data.id+"'><span class='fa fa-trash-o'></span></button></td></tr></td></tr>";
          $("#acti-table tbody").append(newRow);
       });
       Curiosity.toastLoading.hide();
@@ -124,7 +124,7 @@ var actiController = {
          if(Curiosity.file.validExtension($file.val(), exts)){
             var files = Curiosity.file.validSize($file.attr("id"), 2048000);
             if (files != null){
-               $("#"+idInput).val(files.name);
+               $(idInput).val(files.name);
             }
             else{
                $file.val("");

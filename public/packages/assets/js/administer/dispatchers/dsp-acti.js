@@ -32,12 +32,12 @@ $(function(){
 
    $("#game").change(function(){
       var exts = new Array(".zip");
-      actiController.selectFile($(this),exts,"acti_name");
+      actiController.selectFile($(this),exts,"#acti_name");
    });
 
    $("#act_wallpaper").change(function(){
       var exts = new Array(".jpg",".jpeg",".JPG",".png",".PNG");
-      actiController.selectFile($(this),exts,"acti_name_wallpaper");
+      actiController.selectFile($(this),exts,"#acti_name_wallpaper");
    });
 
    $("#acti-form").submit(function(e){
