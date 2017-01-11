@@ -66,9 +66,9 @@ class Ranking { //object for ranking in curiosity
         else{
             console.error("El parametro de la funcion setBackgroundColor debe ser hexadecimal o rgb");
         }
-		
+
 	}
-	
+
 	setEventClick(clickfunction){
 		if($.isFunction(clickfunction)){
 			$(".curiosity-ranking>li.item-ranking").click(clickfunction);

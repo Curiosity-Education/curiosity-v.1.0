@@ -1,6 +1,6 @@
-<?php 
+<?php
 class MembershipPlan extends Eloquent{
-	
+
 	 protected $table = 'membresias_planes';
     public $timestamps =false;
 

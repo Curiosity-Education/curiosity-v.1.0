@@ -1,6 +1,6 @@
 <?php
 class School extends Eloquent{
-	
+
 	 protected $table='escuelas_apoyo';
     protected $fillable=['nombre','web','logotipo','active'];
   /*

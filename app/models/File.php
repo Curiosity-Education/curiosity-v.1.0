@@ -1,6 +1,6 @@
 <?php
 class File extends Eloquent{
-	
+
 	protected $table='archivos';
   protected $fillable = ['archivos'];
   /*

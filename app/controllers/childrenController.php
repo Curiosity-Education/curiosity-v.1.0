@@ -1,6 +1,6 @@
 <?php
 class childrenController extends BaseController{
-	
+
 	function get(){
 		$role = Auth::user()->roles[0]->name;
         $idDad = Auth::user()->Person()->first()->Parent()->pluck('id');
@@ -117,10 +117,10 @@ class childrenController extends BaseController{
 		}
 	}
 	function update(){
-		
+
 	}
 	function delete(){
-		
+
 	}
 
     /*Esta función no recuerdo mucho su funcionamiento pendiente para actualización*/

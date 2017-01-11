@@ -4,9 +4,9 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 	|--------------------------------------------------------------------------
 	| Event click of button editing data
 	|--------------------------------------------------------------------------
-	| this function is ejecuted for show card where the user(parent) 
+	| this function is ejecuted for show card where the user(parent)
 	| editing her perfil and where user wath news of curiosity
-	| 
+	|
 	*/
 	$("#btn-toggle-cards").click(function(){
 		$($(this).data("target")).show();
@@ -29,14 +29,14 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 	|--------------------------------------------------------------------------
 	| this event function is ejecuted for to move en perfil tabs
 	| and update perfil
-	| 
+	|
 	*/
 	$(".btn-to-move").click(function(ev){
 		var tab;
 		if($(this).hasClass("btn-next")){//if btn has class btn-next move to fron
-			tab = parseInt($(this).data("step"))+1;	
+			tab = parseInt($(this).data("step"))+1;
 		}else{//move to back
-			tab = parseInt($(this).data("step"))-1;	
+			tab = parseInt($(this).data("step"))-1;
 		}
 		moveTab(tab);
 	});

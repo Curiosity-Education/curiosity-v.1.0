@@ -1,6 +1,6 @@
 <?php
 class Membership extends Eloquent{
-	
+
 	protected $table ='membresias';
     protected $fillable=['token_card','fecha_registro','active','padre_id'];
   /*

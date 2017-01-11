@@ -35,7 +35,7 @@ $(function(){
       actiController.selectFile($(this),exts,"#acti_name");
    });
 
-   $("#act_wallpaper").change(function(){
+   $("#acti_wallpaper").change(function(){
       var exts = new Array(".jpg",".jpeg",".JPG",".png",".PNG");
       actiController.selectFile($(this),exts,"#acti_name_wallpaper");
    });

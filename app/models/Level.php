@@ -7,5 +7,5 @@ class Level extends Eloquent{
 	public function Intelligence(){
 		return;
 	}
-	
+
 }
