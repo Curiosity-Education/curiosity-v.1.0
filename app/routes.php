@@ -192,6 +192,18 @@ Route::group(array('prefix' =>  'pdfs'),function(){
 });
 
 /*
+* -----------------------------------------------------------------------------
+* Routes to activities.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'activity-admin'),function(){
+	Route::post('all', 'activitiesController@all');
+	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
+	Route::post('getByTopic', 'activitiesController@getByTopic');
+});
+
+/*
 *   Register for users
 */
 /*
