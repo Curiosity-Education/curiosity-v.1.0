@@ -15,7 +15,6 @@ class Request{
             }
           };
           xhttp.open(method, path, true);
-
           if(data != null){
                 try{
                     console.log(data.get("val"));
@@ -41,8 +40,6 @@ class Request{
           else{
             xhttp.send();
           }
-
-
     }
 
 }

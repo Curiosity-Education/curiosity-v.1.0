@@ -326,6 +326,16 @@ Route::group(array('before' => 'auth'), function(){
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
             });
+            Route::group(array('prefix' => "sonRatesActivity"), function(){
+                Route::post("/save",'sonRatesActivitiesController@save');
+                Route::match(["POST","GET"],"/find","sonRatesActivitiesController@find");
+            });
+            Route::group(array('prefix' => "activity"), function(){
+                Route::get("/find-new","acitivitiesController@getRecentsAdded");
+                Route::get("/find-populars","acitivitiesController@getPopulars");
+                Route::get("/find-rank","acitivitiesController@getMaxRank");
+                Route::get("/find-recomended","acitivitiesController@getRecomended");
+            });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
 	 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');

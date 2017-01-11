@@ -44,4 +44,16 @@ $(function(){
 		}
 	});
 
+	/*
+	|--------------------------------------------------------------------------
+	| clicik para cerrar ventana
+	|--------------------------------------------------------------------------
+	|
+	| Ventana que se muestra cuando el usuario da click en las cartas
+	| de la ventana principal, la cual muestra su correspondiente co-
+	| tenido, al dar click en la x de la ventanta, esta se cerrará y
+	| mostrará nuevamente las cartas principales
+	*/
+	
+	
 });

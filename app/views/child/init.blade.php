@@ -173,4 +173,7 @@
     @stop
 @section('js')
   <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-child-home.js"></script>
 @stop
