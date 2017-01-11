@@ -148,29 +148,31 @@ class activitiesController extends BaseController{
 	function save(){
 		$data = Input::all();
 		$rules = array(
-        'nombre'		=> 'required',
-        'wallpaper'	=> 'required',
-        'tema' 		=> 'required'
-      );
+            'acti_name'		=> 'required',
+            'acti_estatus'		=> 'required',
+            'tema' 		=> 'required',
+            'acti_wallpaper' => 'required'
+        );
+
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
-			if ($this->NameActiveExist($data['tema'], $data['nombre'])){
+			if ($this->NameActiveExist($data['tema'], $data['acti_name'])){
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
-				$activity = new Activity($data);
-				$activity->nombre = $data['nombre'];
-				$activity->estatus = 'disabled';
-				$activity->wallpaper = Curiosity::makeRandomName(true, true).".".$data['wallpaper']->getClientOriginalExtension();
+				$activity = new Activity();
+				$activity->nombre = $data['acti_name'];
+				$activity->estatus = $data['acti_estatus'];
+				$activity->wallpaper = Curiosity::makeRandomName(true, true).".".Input::file('acti_wallpaper')->getClientOriginalExtension();
 				$activity->vistos = 0;
 				$activity->active = 1;
 				$activity->tema_id = $data['tema'];
 				$destinoPath = public_path()."/packages/assets/media/images/games/wallpapers/";
-				$file = $data['wallpaper'];
+				$file = Input::file('acti_wallpaper');
 				$file->move($destinoPath, $activity->wallpaper);
 				$activity->save();
 				activitiesVideosController::save($activity);
@@ -180,37 +182,39 @@ class activitiesController extends BaseController{
 	}
 
 	function update(){
-		$data = Input::all();
+		$data = Curiosity::makeArrayByObject(Input::all());
 		$rules = array(
-			'nombre' => 'required',
-			'tema'	=> 'required'
+			'acti_name'		=> 'required',
+            'acti_estatus'		=> 'required',
+            'tema' 		=> 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
-			$activity = Activity::where('id', '=', $data['idUpdate'])->first();
+			$activity = Activity::where('id', '=', $data['id'])->first();
 			$namePass = true;
-			if ($activity->nombre != $data["nombre"]){
-				if ($this->NameActiveExist($data['tema'], $data['nombre'])){
+			if ($activity->nombre != $data["acti_name"]){
+				if ($this->NameActiveExist($data['tema'], $data['acti_name'])){
 					$namePass = false;
 				}
 			}
 			if ($namePass){
 				$wallpaperName = "";
-				if($data['wallpaper'] == null){ $wallpaperName = $activity->wallpaper; }
+				if($data['acti_wallpaper'] == null){ $wallpaperName = $activity->wallpaper; }
 				else{
 					$destinoPath = public_path()."/packages/assets/media/images/games/wallpapers/";
-					$file = $data['wallpaper'];
+					$file = Input::file('acti_wallpaper');
 					$wallpaperName = Curiosity::makeRandomName(true, true).".".$file->getClientOriginalExtension();
 					$file->move($destinoPath, $wallpaperName);
 				}
-				$activity->nombre = $data['nombre'];
+				$activity->nombre = $data['acti_name'];
 				$activity->wallpaper = $wallpaperName;
 				$activity->save();
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+                $act = Activity::where('id', '=', $data['id'])->first();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $act));
 			}
 			else{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
@@ -219,9 +223,9 @@ class activitiesController extends BaseController{
 	}
 
 	function delete(){
-		$id = Input::get('data.id');
+		$id = Curiosity::makeArrayByObject(Input::all());
 		Activity::where('id', '=', $id)->update(array( 'active' => 0 ));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => Response::json(array('id'=>$id))));
 	}
 
 	private function NameActiveExist($topic, $name){
@@ -234,5 +238,41 @@ class activitiesController extends BaseController{
 		}
 		return $toLive;
 	}
+
+
+	function getByTopic(){
+		$data = Input::all();
+		$activity = Activity::where("active", "=", 1)
+		->where("tema_id", "=", $data['id'])
+		->get();
+		return $activity;
+	}
+
+	function getByIntelligent(){
+		$data = Input::all();
+		$activity = Activity::where("active", "=", 1)
+		->join("temas", "actividades.tema_id", "=", "temas.id")
+		->join("bloques", "temas.bloque_id", "=", "bloques.id")
+		->join("inteligencias", "bloques.inteligencia_id", "=", "inteligencias.id")
+		->where("inteligencias.id", "=", $data['id'])
+		->get();
+		return $activity;
+	}
+
+    function game_save(){
+        if(Input::hasFile()){
+            $packRoutes = array('*.copy' => '*');
+            $uploadFile = Curiosity::extractZip(Input::file('game'),$packRoutes,'yes');
+
+        }
+    }
+
+    function game_update(){
+
+    }
+
+    function game_delete(){
+
+    }
 }
 ?>
