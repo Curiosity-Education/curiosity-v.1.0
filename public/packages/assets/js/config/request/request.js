@@ -17,8 +17,26 @@ class Request{
           xhttp.open(method, path, true);
 
           if(data != null){
-            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp.send(JSON.stringify(data));
+                try{
+                    console.log(data.get("val"));
+                    $.ajax({
+                        url:path,
+                        method:method,
+                        data:data,
+                        processData:false,
+                        contentType:false
+                    }).done(function(response){
+                        callback(response);
+                    }).fail(function(error){
+                        callback(error);
+                    });
+                }
+                catch(e){
+                    console.log(e);
+                    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xhttp.send(JSON.stringify(data));
+                }
+
           }
           else{
             xhttp.send();
