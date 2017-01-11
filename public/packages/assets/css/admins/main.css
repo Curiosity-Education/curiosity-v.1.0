@@ -206,31 +206,76 @@
 }
 
 /* line 10, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch-save {
+  border-radius: 0.28rem;
+  background-color: #2262ae;
+  color: white;
+  background-color: #2262ae !important;
+  border: solid #2262ae !important;
+}
+
+/* line 17, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch-cancel {
+  border-color: #ed6922 !important;
+  color: #ed6922 !important;
+  border-radius: 0.28rem;
+}
+
+/* line 22, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
 .asch-container {
   cursor: pointer;
+  border-radius: 0.28rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
-/* line 12, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+/* line 27, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
 .asch-container img {
   border-top-left-radius: 0.28rem;
   border-top-right-radius: 0.28rem;
+  background-color: white;
+  padding: 1rem;
 }
-/* line 15, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+/* line 32, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
 .asch-container h6 {
   background-color: #2262ae;
   padding: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0rem;
   font-size: 0.7rem;
   color: white;
   border-bottom-right-radius: 0.28rem;
   border-bottom-left-radius: 0.28rem;
 }
 
-/* line 24, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+/* line 41, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
 .asch-btnConf {
   background-color: #2262ae !important;
 }
 
-/* line 27, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+/* line 44, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
 .asch-btnDel {
   background-color: #ec2726 !important;
+}
+
+/* line 47, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch-open {
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  cursor: pointer;
+  background-color: #2262ae;
+  color: white;
+  border-top-left-radius: 0.28rem;
+  border-bottom-left-radius: 0.28rem;
+}
+
+/* line 57, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch_name {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+/* line 62, C:/xampp/htdocs/Curiosity/curiosity_v1/public/packages/assets/css/admins/sass/_ascSchool.sass */
+#asch_pdf {
+  display: none;
 }
