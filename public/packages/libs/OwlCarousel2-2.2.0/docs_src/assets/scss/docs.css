@@ -1,0 +1,98 @@
+/*
+Error: Undefined variable: "$owl-gray-color".
+        on line 26 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.scss
+
+21: 		li{
+22: 			margin: 0;
+23: 			padding: .3rem 3rem .3rem 0;
+24: 			&:hover,
+25: 			&.active {
+26: 				background: $owl-gray-color;
+27: 				a{
+28: 					color: #000;
+29: 					background-color: transparent;
+30: 				}
+31: 			}
+
+Backtrace:
+/srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.scss:26
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/home/Tolu/Downloads/koala/bin/sass:18:in `load'
+/home/Tolu/Downloads/koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$owl-gray-color\".\A         on line 26 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.scss\A \A 21: 		li{\A 22: 			margin: 0;\A 23: 			padding: .3rem 3rem .3rem 0;\A 24: 			&:hover,\A 25: 			&.active {\A 26: 				background: $owl-gray-color;\A 27: 				a{\A 28: 					color: #000;\A 29: 					background-color: transparent;\A 30: 				}\A 31: 			}"; }
