@@ -84,12 +84,19 @@ Route::get('juego', function(){
 });
 
 Route::get('administer', function(){
-    return View::make('administer.admin-levels');
+    return View::make('administer.asociateSchool');
 });
 
 Route::get('1', 'activitiesVideosController@save');
 
-Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView');
+Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
+    ->where(
+        array(
+            'controller' => "^[a-zA-Z]*$",
+            'method' => "^[a-zA-Z]*$"
+        )
+    );
+Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 
 /*
 * -----------------------------------------------------------------------------
@@ -115,6 +122,17 @@ Route::get('view-{viewName}-{controller?}-{method?}', 'viewsController@getView')
 		Route::post('save', 'blocksController@save');
 		Route::post('update', 'blocksController@update');
 		Route::post('delete', 'blocksController@delete');
+	});
+	// Manage the Topics
+	Route::group(array('prefix' =>  'topics'),function(){
+		Route::post('save', 'topicsController@save');
+		Route::post('update', 'topicsController@update');
+		Route::post('delete', 'topicsController@delete');
+	});
+	// Manage PDF's Library
+	Route::group(array('prefix' =>  'pdfs'),function(){
+		Route::post('save', 'libraryPdfController@save');
+		Route::post('delete', 'libraryPdfController@delete');
 	});
 // });
 
@@ -148,6 +166,41 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 Route::group(array('prefix' =>  'blocks'),function(){
 	Route::post('all', 'blocksController@all');
 	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to topics.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'topics'),function(){
+	Route::post('all', 'topicsController@all');
+	Route::post('getByBlock', 'topicsController@getByBlock');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to pdf's library.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'pdfs'),function(){
+	Route::post('all', 'libraryPdfController@all');
+	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
+	Route::post('getByTopic', 'libraryPdfController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to activities.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'activity-admin'),function(){
+	Route::post('all', 'activitiesController@all');
+	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
+	Route::post('getByTopic', 'activitiesController@getByTopic');
 });
 
 /*
@@ -249,7 +302,7 @@ Route::group(array('before' => 'auth'), function(){
 			// 		});
 			// 	});
 
-        
+
         // Realizar Actividades*/
         Route::group(array('before' => 'realizar_actividades'),function(){
             Route::group(array('prefix' => 'skin'), function(){
@@ -382,14 +435,15 @@ Route::group(array('before' => 'auth'), function(){
             });
         });
 
-        Route::group(array('before' => 'gestionar_actividades'),function(){
+        //Route::group(array('before' => 'gestionar_actividades'),function(){
             // Activities
             Route::group(array('prefix' =>  'activity-admin'),function(){
-                Route::match(array('GET', 'POST'), '{id}{bloque}{inteligencia}{nivel}', 'actividadController@verPagina');
-                Route::post('update', 'actividadController@update');
-                Route::post('delete', 'actividadController@remove');
+                Route::post('all', 'activitiesController@all');
+                Route::post('save', 'activitiesController@save');
+                Route::post('update', 'activitiesController@update');
+                Route::post('delete', 'activitiesController@delete');
                 Route::group(array('prefix' =>  'photo'),function(){
-                   Route::post('update', 'actividadController@changeImage');
+                   Route::post('update', 'activitiesController@changeImage');
                 });
 
                 Route::group(array('prefix' =>  'game'),function(){
@@ -399,8 +453,8 @@ Route::group(array('before' => 'auth'), function(){
 
             });
 
-        });
-        // Schools
+        //});
+        /*// Schools
         Route::group(array('before' => 'gestionar_escuelas'), function(){
             Route::group(array('prefix' =>  'school'),function(){
                 Route::match(array('GET', 'POST'), '/', 'escuelaController@verPagina');

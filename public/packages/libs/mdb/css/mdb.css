@@ -19,7 +19,7 @@
  *
  * Support: http://mdbootstrap.com/forums/forum/support/
  *
- * Contact: office@mdbootstrap.com 
+ * Contact: office@mdbootstrap.com
  *
  * Atribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
  *
@@ -6398,11 +6398,11 @@ blockquote p {
 
 /*!
  * Waves v0.7.5
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2016 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2016 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 .waves-effect {
   position: relative;
@@ -9141,7 +9141,7 @@ select {
 }
 
 /***************
-     Switch 
+     Switch
 ***************/
 .switch,
 .switch * {
@@ -11831,7 +11831,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 */
 /*
-	
+
 	1. Buttons
 
  */
@@ -12116,7 +12116,7 @@ a.pswp__share--download:hover {
 }
 
 /*
-	
+
 	4. Caption
 
  */
@@ -12211,8 +12211,8 @@ a.pswp__share--download:hover {
 }
 
 .pswp--css_animation .pswp__preloader__cut {
-  /* 
-			The idea of animating inner circle is based on Polymer ("material") loading indicator 
+  /*
+			The idea of animating inner circle is based on Polymer ("material") loading indicator
 			 by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
 		*/
   position: relative;
@@ -12268,7 +12268,7 @@ a.pswp__share--download:hover {
 }
 
 /*
-	
+
 	6. Additional styles
 
  */
@@ -16029,7 +16029,7 @@ button.toast-close-button {
   border-color: #0089ec;
 }
 
-/** 
+/**
  * The holder is the only "scrollable" top-level container element.
  */
 .picker__holder {
@@ -16634,7 +16634,7 @@ button.picker__close:focus {
 }
 
 /**
- * The times on the clock. 
+ * The times on the clock.
  */
 .picker__list-item {
   border-bottom: 1px solid #dddddd;

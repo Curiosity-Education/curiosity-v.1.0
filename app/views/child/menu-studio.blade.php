@@ -28,7 +28,7 @@
             </a>
           </div>
         </div>
-            
+
         <div class="row row-bloque">
           <div class="col-md-11 col-sm-11">
             <div class="card-bloque">
@@ -219,7 +219,7 @@
             </div>
             <!--/.Card-->
           </div>
-        </div>  
+        </div>
         <!--//.. row cards games -->
       </div>
     @stop

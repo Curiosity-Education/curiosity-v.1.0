@@ -2,5 +2,5 @@
 
 class LibraryVideos extends Eloquent
 {
-   protected $table='biblioteca_videos';   
+   protected $table='biblioteca_videos';
 }

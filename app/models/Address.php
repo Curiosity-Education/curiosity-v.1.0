@@ -1,6 +1,6 @@
 <?php
 class Address extends Eloquent{
-	
+
 	protected $table='direcciones';
   protected $fillable= ['calle','colonia','numero','codigo_postal','ciudad_id'];
   /*

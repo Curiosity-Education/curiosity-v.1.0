@@ -12,6 +12,12 @@ var Curiosity = {
       });
    },
 
+   compareInput:function(idInput){
+        var $input = $(idInput);
+        if($input.val() == $input.data('compare')){ return true; }
+        else{ return false; }
+   },
+
    goToUrl : function($url){
       window.location.href = $url;
    },
@@ -68,6 +74,42 @@ var Curiosity = {
       hide : function(){
          $("body").find("#mdlpgrss").modal("hide");
          $("body").find(".modal-backdrop").remove();
+      }
+   },
+   select:{
+        id:this.id,
+        val:function(val){
+            $(this.id).find('option').each(function(i,object){
+                if($(this).val() == val)
+                    $(this).prop('selected',true);
+            });
+        }
+   },
+
+   file : {
+      validExtension : function ($file, $types) {
+         extension = ($file.substring($file.lastIndexOf("."))).toLowerCase();
+         $available = false;
+         for (var i = 0; i < $types.length; i++) {
+            if ($types[i] == extension) {
+               $available = true;
+               break;
+            }
+         }
+         if ($available) {
+            return true;
+         }else{
+            return false;
+         }
+      },
+      validSize : function($idElement, $max){
+         var files = document.getElementById($idElement).files;
+         if(files[0].size > $max){
+            return null;
+         }
+         else{
+            return files[0];
+         }
       }
    }
 

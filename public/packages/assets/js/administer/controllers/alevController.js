@@ -59,7 +59,6 @@ var alevController = {
          case "CU-104":
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
-                  console.log(message);
                   Curiosity.noty.warning(message, "Algo va mal");
               });
             });

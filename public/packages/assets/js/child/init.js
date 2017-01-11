@@ -6,7 +6,7 @@ $(function(){
 	|--------------------------------------------------------------------------
 	|
 	| Al dar click a una carta que se muestra en la ventana principal
-	| de la vista del niño, ejecutaremos una función la cual oculta 
+	| de la vista del niño, ejecutaremos una función la cual oculta
 	| Toda la sección de las cartas principales y muestra el conteni-.
 	| do correspondiente a la carta que el usuario le dió click
 	*/

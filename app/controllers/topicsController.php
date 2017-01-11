@@ -6,6 +6,14 @@ class topicsController extends BaseController{
 		return $topics;
 	}
 
+	function getByBlock(){
+		$data = Input::all();
+		$tps = Topic::where("active", "=", 1)
+		->where("bloque_id", "=", $data['id'])
+		->get();
+		return $tps;
+	}
+
 	function getWithActivities(){
 		$topics = Activity::join('temas', 'actividades.tema_id', '=', 'temas.id')
 		->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
@@ -22,7 +30,7 @@ class topicsController extends BaseController{
 	}
 
 	function save(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'bloque' => 'required'
@@ -30,7 +38,7 @@ class topicsController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validate->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
 			if ($this->NameActiveExist($data['nombre'], $data['bloque'])){
@@ -47,7 +55,7 @@ class topicsController extends BaseController{
 	}
 
 	function update(){
-		$data = Input::get('data');
+		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'bloque' => 'required'
@@ -55,10 +63,10 @@ class topicsController extends BaseController{
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
 		if( $validation->fails()){
-			return $validar->messages();
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
 		}
 		else{
-			$tp = Topic::where('id', '=', $data['idUpdate'])->get();
+			$tp = Topic::where('id', '=', $data['id'])->first();
 			$namePass = true;
 			if ($tp->nombre != $data['nombre']){
 				if ($this->NameActiveExist($data['nombre'], $data['bloque'])){
@@ -66,8 +74,9 @@ class topicsController extends BaseController{
 				}
 			}
 			if ($namePass){
-				Topic::where('id', '=', $data['idUpdate'])->update(array( 'nombre' => $data['nombre'] ));
-				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+				Topic::where('id', '=', $data['id'])->update(array( 'nombre' => $data['nombre'] ));
+				$tp = Topic::where('id', '=', $data['id'])->first();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $tp));
 			}
 			else{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
@@ -76,9 +85,10 @@ class topicsController extends BaseController{
 	}
 
 	function delete(){
-		$id = Input::get('data.id');
+		$id = Input::all();
 		Topic::where('id', '=', $id)->update(array( 'active' => 0 ));
-		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
+		$tp = Topic::where('id', '=', $id)->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $tp));
 	}
 
 	private function NameActiveExist($name, $block){

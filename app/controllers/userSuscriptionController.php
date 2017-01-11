@@ -15,7 +15,7 @@ class userSuscriptionController extends BaseController{
             Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
             Conekta::setLocale('es');
             try{
-                if($parentRole == "demo_padre"){
+                if($parentRole == "parent"){
                     $customer = Conekta_Customer::create(array(
                         "name" => Auth::user()->Person()->first()->nombre,
                         "email" => Auth::user()->Person()->first()->Parent()->first()->email,

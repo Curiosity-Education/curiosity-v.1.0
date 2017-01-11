@@ -1,6 +1,6 @@
-<?php 
+<?php
 class City extends Eloquent{
-	
+
 	protected $table ='ciudades';
   /*
   *

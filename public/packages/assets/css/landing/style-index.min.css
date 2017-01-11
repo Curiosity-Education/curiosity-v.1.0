@@ -17,7 +17,7 @@ div#collapseEx2{font-family:"Helvetica";}
 50%{-ms-transform:scaleX(0.75) scaleY(2);}
 60%{-ms-transform:scaleX(1.15) scaleY(0.85);}
 }
-div#collapseEx2 > ul.navbar-nav > li.nav-item > a{}
+div#collapseEx2 > ul.navbar-nav > li.nav-item > a.btn-action{}
 div#collapseEx2 > ul.navbar-nav > li.anc:hover{border-bottom:2px solid #44c6ee;}
 .selection{border-bottom:2px solid #44c6ee;}
 div.view-entrada{background:url("/packages/assets/media/images/landing/fondo-full-min.jpg");height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;}

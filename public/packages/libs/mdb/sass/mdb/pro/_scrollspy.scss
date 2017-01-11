@@ -18,7 +18,7 @@
     }
     &:hover {
         background-color: transparent;
-        color: $mdb-color; 
+        color: $mdb-color;
         font-weight: 500;
         border-left: 1px solid $mdb-color;
     }
@@ -31,7 +31,7 @@
 @media only screen and (max-width: 769px) {
     .sticky,
     .sticky-placeholder {
-        display: none; 
+        display: none;
     }
 }
 

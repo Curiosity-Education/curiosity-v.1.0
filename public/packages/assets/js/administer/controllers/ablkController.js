@@ -101,7 +101,7 @@ var ablkController = {
 
    delete : function(){
       var $title = "Eliminar Bloque";
-      var $text = "¿Estas seguro que deseas eliminarel bloque selecccionado?";
+      var $text = "¿Estas seguro que deseas eliminar el bloque selecccionado?";
       var $type = "warning";
       var $id = this.id;
       Curiosity.notyConfirm($title, $text, $type, function(){ ablkController.deleteIn($id); });
@@ -116,25 +116,25 @@ var ablkController = {
       Curiosity.toastLoading.hide();
       switch (response.status) {
          case 200:
-            console.log("Registro exitoso");
+            Curiosity.noty.success("Registro exitoso", "Bien hecho");
             $("#ablk-modal").modal("hide");
             ablkController.clearInputs();
             var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf ablk-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel ablk-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
             $("#ablk-table tbody").append(newRow);
             break;
          case "CU-103":
-            console.log("Lo siento, los datos que intentas guardar ya exiten");
+            Curiosity.noty.warning("Los datos que intentas guardar ya exiten", "Atención");
             break;
          case "CU-104":
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
-                  console.log(message);
+                  Curiosity.noty.warning(message, "Algo va mal");
               });
             });
             break;
          default:
             console.log(response);
-            console.log("Error desconocido\nConsulta con el administrador");
+            Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
             break;
       }
    },
@@ -143,7 +143,7 @@ var ablkController = {
       Curiosity.toastLoading.hide();
       switch (response.status) {
          case 200:
-            console.log("Actualización exitosa");
+            Curiosity.noty.success("Actualización exitosa", "Bien hecho");
             $("#ablk-modal").modal("hide");
             ablkController.clearInputs();
             $("body").find("."+response.data.id+"Name").data("dtn", response.data.nombre);
@@ -151,18 +151,18 @@ var ablkController = {
             $("body").find("."+response.data.id+"id").data("dti", response.data.id);
             break;
          case "CU-103":
-            console.log("Lo siento, los datos que intentas guardar ya exiten");
+            Curiosity.noty.warning("Los datos que intentas guardar ya existen", "Atención");
             break;
          case "CU-104":
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
-                  console.log(message);
+                  Curiosity.noty.warning(message, "Algo va mal");
               });
             });
             break;
          default:
             console.log(response);
-            console.log("Error desconocido\nConsulta con el administrador");
+            Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
             break;
       }
    },
@@ -171,10 +171,11 @@ var ablkController = {
       if (response.status == 200){
          $("body").find("#"+response.data.id).remove();
          Curiosity.toastLoading.hide();
+         Curiosity.noty.success("Removido exitosamente", "Bien hecho");
       }
       else{
          console.log(response);
-         console.log("Error desconocido\nConsulta con el administrador");
+         Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
       }
    },
 
