@@ -196,11 +196,6 @@ class loginController extends BaseController{
                             $person->sexo = 'f';
                         $person->user_id=$user->id;
                         $person->save();
-                        // $membership = new membresia();
-                        // $membership->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
-                        // $membership->fecha_registro= date("Y-m-d");
-                        // $membership->active=1;
-                        // $membership->save();
                         $parent = new padre();
                         $parent->persona_id   = $persona->id;
                         $parent->email = (Input::get('email') == '')?'Sin email':Input::get('email');
@@ -293,17 +288,5 @@ class loginController extends BaseController{
     return $folio;
   }
 
-  function get(){
-
-	}
-	function save(){
-
-	}
-	function update(){
-
-	}
-	function delete(){
-
-	}
 }
 ?>
