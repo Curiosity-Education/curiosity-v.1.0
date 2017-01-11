@@ -15,7 +15,6 @@ class Request{
             }
           };
           xhttp.open(method, path, true);
-
           if(data != null){
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify(data));
@@ -23,8 +22,6 @@ class Request{
           else{
             xhttp.send();
           }
-
-
     }
 
 }

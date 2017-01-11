@@ -59,7 +59,7 @@ class activitiesController extends BaseController{
 		'niveles.nombre as levelName')
 		->orderBy('actividades.id', 'desc')
 		->get();
-		return $activities;
+		return Reponse::json(["data"=>$activities]);
 	}
 
 	function getPopulars(){
