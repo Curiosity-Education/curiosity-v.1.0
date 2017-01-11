@@ -1,0 +1,64 @@
+@import "../../_standardVariables.sass"
+@import "mixins.sass"
+
+#cst-banner
+   height: 5rem
+   border-radius: $border-rad
+   margin-bottom: 2rem
+   +background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+
+#cst-boxOfAvatar
+   margin-bottom: 2rem
+   border-right: solid .2rem $color-gray-light
+
+#cst-boxOfProfile
+   margin-bottom: 2rem
+
+.cst-titleSection
+   background-color: $color-skin
+   color: $color-white
+   padding: 1rem
+   border-radius: $border-rad
+
+.cst-titleCarousel
+   height: 10rem
+   border-top-left-radius: $border-rad
+   border-bottom-left-radius: $border-rad
+   margin-bottom: 1.5rem
+   background-color: $color-skin
+
+.cst-boxSlideItems
+   background-color: $color-white
+   margin-top: 2rem
+
+.cst-panelSlide
+   background-color: $color-white
+   padding: .5rem
+   height: 10rem
+   border-top-right-radius: $border-rad
+   border-bottom-right-radius: $border-rad
+   margin-bottom: 1.5rem
+
+.owl-dots
+   display: none !important
+
+.owl-nav
+   @extend .owl-dots
+
+.cst-item
+   +background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+   height: 100%
+   cursor: pointer
+   border-radius: $border-rad
+   h5
+      color: white
+      font-size: .7rem
+      background-color: rgba(0,0,0,0.6)
+      padding: .7rem
+      border-top-left-radius: $border-rad
+      border-top-right-radius: $border-rad
+      text-align: center
+
+.cst-btnGet
+   margin-top: 4rem
+   background-color: $color-skin !important

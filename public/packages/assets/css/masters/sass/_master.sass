@@ -1,0 +1,127 @@
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
+*
+   font-family: $font-curiosity
+
+body
+   background-color: $bg-color
+   background-image: $bg-color
+   background-position: center
+   background-repeat: no-repeat
+   background-size: cover
+   padding-top: 4.5rem
+
+#navbar
+   background-color: $color-skin
+   color: $color-white !important
+   //line-height: 3rem
+
+.menu
+   background-color: $color-white
+   padding: 1rem
+   border-radius: $border-rad
+
+.logOut
+   color: $color-white !important
+   text-decoration: none !important
+   outline: none !important
+   margin-right: 2.5rem
+
+#iconLogout
+   color: $color-white
+   font-size: 1.5rem
+   margin-bottom: .3rem
+
+.navbar-brand
+   font-size: 1rem
+   img
+      width: 2rem
+      display: inline !important
+
+.linkMenu
+   margin-left: -1rem
+   margin-right: -1rem
+   padding-left: 1rem
+   padding-right: 1rem
+   padding-top: .5rem
+   padding-bottom: .5rem
+   font-size: .9rem
+   display: block !important
+
+.linkMenu:hover
+   transition: .2s
+   background: $bg-color
+   cursor: pointer
+
+.linkMenu-active
+   background-color: $bg-color
+
+.linkMenuAside
+   @extend .linkMenu
+   padding-left: 2rem !important
+   padding-right: 2rem !important
+   color: $color-black-elegant-light !important
+
+#slideBtn
+   margin-top: .6rem
+   color: $color-white
+
+.logo-wrapper
+   background-color: $color-skin
+   margin-bottom: 1rem
+   height: 10rem !important
+
+#logOut-btn
+   margin-bottom: 0rem !important
+   margin-right: 0rem !important
+   margin-top: .25rem !important
+   background-color: $color-white !important
+   color: $color-primary
+
+.chip
+   img
+      margin: 0 8px 0 -14px !important
+
+.hidden
+   display: none
+
+
+//=================================
+//            scrooll
+//==================================*/
+::-webkit-scrollbar
+   width: 8px
+
+::-webkit-scrollbar-thumb
+   -webkit-border-radius: 10px
+   border-radius: 10px
+   background: $color-primary
+   cursor: pointer
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.5)
+
+::-webkit-scrollbar-track
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)
+   -webkit-border-radius: 10px
+   border-radius: 10px
+/* ==============================================
+//end to style scroll
+/*===============================================
+
+
+//=================================
+//            style ranking
+//==================================*/
+.curiosity-ranking
+   display: none
+   .item-ranking
+      cursor: pointer
+      &:hover
+         +transform(scale(1.1))
+   margin: -1rem
+   padding: 1rem
+   padding-top: 1rem
+   color: rgba(46,46,46,0.75)
+/* ==============================================
+//end to style f ranking
+/*===============================================
