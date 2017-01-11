@@ -1,6 +1,10 @@
 <?php
-class schoolController extends BaseController{
+class schoolAscController extends BaseController{
 
+	function all(){
+		$sch = SchoolAsc::where('active', '=', 1)->get();
+		return $sch;
+	}
 
 	function verPagina(){
     if(Request::method()=="GET"){
@@ -63,6 +67,48 @@ class schoolController extends BaseController{
         }
       }
     }
+  }
+
+  function save(){
+	  $data = Input::all();
+	  $rules = array(
+		 'nombre' => 'required',
+		 'logotipo' => 'required'
+	  );
+	//   $messages = Curioity::getVal
+	  $validate = Validator::make($form, $rules, $messages);
+	  if($validate->fails()){
+		 return $validate->messages();
+	  }
+	  else{
+		 $existActive = escuela::where('nombre', '=', $form['nombre'])->pluck('active');
+		 if($existActive === null){
+			$destinationPath = public_path()."/packages/images/escuelas/";
+			$file = $form['logotipo'];
+			$file->move($destinationPath, $file->getClientOriginalName());
+
+			$school = new escuela($form);
+			$school->logotipo = $form['logotipo']->getClientOriginalName();
+			$school->save();
+			return Response::json(array(0=>"success", 1=>$school));
+		 }
+		 else if($existActive === 0){
+			$destinationPath = public_path()."/packages/images/escuelas/";
+			$file = $form['logotipo'];
+			$file->move($destinationPath, $file->getClientOriginalName());
+
+			escuela::where('nombre', '=', $form['nombre'])->update(array(
+			  'active' => 1,
+			  'web' => $form['web'],
+			  'logotipo' => $file->getClientOriginalName()
+			));
+			$school = escuela::where('nombre', '=', $form['nombre'])->first();
+			return Response::json(array(0=>"success_exist", 1=>$school));
+		 }
+		 else{
+			return Response::json(array(0=>"same"));
+		 }
+	  }
   }
 
   function update(){
@@ -141,9 +187,6 @@ class schoolController extends BaseController{
 
 
 	function get(){
-
-	}
-	function save(){
 
 	}
 	function delete(){

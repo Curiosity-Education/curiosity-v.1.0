@@ -102,14 +102,27 @@ var Curiosity = {
             return false;
          }
       },
-      validSize : function($idElement, $max){
-         var files = document.getElementById($idElement).files;
+      validSize : function($idInput, $mb){
+         var files = document.getElementById($idInput).files;
+         $max = (1024000 * $mb);
          if(files[0].size > $max){
             return null;
          }
          else{
             return files[0];
          }
+      }
+   },
+
+   makeBlob : function($idInput){
+      try {
+         var files = document.getElementById($idInput).files;
+         var browser = window.URL || window.webkitURL;
+         var url = browser.createObjectURL(files[0]);
+         return url;
+      } catch (e) {
+         console.error(e);
+         return null;
       }
    }
 
