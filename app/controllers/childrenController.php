@@ -18,92 +18,79 @@ class childrenController extends BaseController{
         return View::make('vista_papa_misHijos')->with($data);
 	}
 	function save(){
-		$data = Input::get('data');
-		$currentDate = date("Y-m-d");
-        $date_min =strtotime("-4 year",strtotime($currentDate));
-        $date_min=date("Y-m-d",$date_min);
+		$data = Input::all();
+		//$currentDate = date("Y-m-d");
+        //$date_min =strtotime("-4 year",strtotime($currentDate));
+       // $date_min=date("Y-m-d",$date_min);
 		$rules=[
-			"username_hijo"     =>"required|unique:users,username|max:50",
-            "password"          =>"required|min:8|max:100",
-            "cpassword"         =>"required|same:password",
-            "nombre"            =>"required|letter|max:50",
-            "apellido_paterno"  =>"required|letter|max:30",
-            "apellido_materno"  =>"required|letter|max:30",
-            "sexo"              =>"required|string|size:1",
-            "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "promedio"				=>"required",
-            "grado_inicial"			=>"required"
+			"username"    =>"required|unique:users,username|max:50",
+            "password"    =>"required|min:8|max:100",
+            "cpassword"   =>"required|same:password",
+            "name"        =>"required|letter|max:50",
+            "surnames"    =>"required|letter|max:30",
+            "gender"      =>"required|string|size:1",
+            "average"	  =>"required",
 		];
 		$messages = [
-					 "required"    =>  "Este campo :attribute es requerido",
-					 "alpha"       =>  "Solo puedes ingresar letras",
-					 "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
-					 "date"        =>  "Formato de fecha invalido",
-					 "numeric"     =>  "Solo se permiten digitos",
-					 "email"       =>  "Ingresa un formato de correo valido",
-					 "unique"      =>  "Este usuario ya existe",
-					 "integer"     =>  "Solo se permiten numeros enteros",
-					 "exists"      =>  "El campo :attribute no existe en el sistema",
-					 "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-					 "integer"     =>  "Solo puedes ingresar numeros enteros",
-					 "same"        =>  "Las contraseñas no coinciden",
-					 "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-		 ];
-		$validates = Validator::make($data,$rules,$messages);
-		if($validates->fails()){
-	    return $validates->messages();
-		}else{
-			$roleDad = Auth::user()->roles[0]->name;
-            $user = new User();
-            $user->username=$data["username_hijo"];
-            $user->password=Hash::make($data["password"]);
-            $user->token=sha1($data["username_hijo"]);
-            $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
-            $user->active=1;
-            $user->save();
-                if($roleDad == "parent"){
-                    $myRole = DB::table('roles')->where('name', '=', 'child')->pluck('id');
-                }
-
-            $user->attachRole($myRole);
-            $profile = new Profile();
-                if ($data['sexo'] == 'm'){
-                    $profile->foto_perfil = "boy-def.png";
-                }
-                else{
-                    $profile->foto_perfil = "girl-def.png";
-                }
-            $profile->users_id = $user->id;
-            $profile->save();
-            $person = new Person($data);
-            $person->user_id = $user->id;
-            $person->save();
-            $son = new Son();
-            $son->persona_id = $person->id;
-            $id_dad = Auth::user()->Person()->first()->Parent()->first()->id;
-            $son->padre_id = $id_dad;
-            $son->save();
-            DB::table('escolaridades')->insert(array(
-                'grado' => $data['grado_inicial'],
-                'promedio' => $data['promedio'],
-                'hijo_id' => $son->id
+            "required"    =>  "Este campo :attribute es requerido",
+            "alpha"       =>  "Solo puedes ingresar letras",
+            "date"        =>  "Formato de fecha invalido",
+            "numeric"     =>  "Solo se permiten digitos",
+            "email"       =>  "Ingresa un formato de correo valido",
+            "unique"      =>  "Este usuario ya existe",
+            "integer"     =>  "Solo se permiten numeros enteros",
+            "exists"      =>  "El campo :attribute no existe en el sistema",
+            "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+            "integer"     =>  "Solo puedes ingresar numeros enteros",
+            "same"        =>  "Las contraseñas no coinciden",
+		];
+		$validation = Validator::make($data,$rules,$messages);
+		if($validation->fails()){
+	       //this format error is for developers
+            return Response::json(array(
+                'status'        => 'CU-104',
+                'statusMessage' => 'Inconsistency format data',
+                'message'       => 'this child hasn´t registred, the data recived dont have a format data set in database',
+                "data"          => $validation->messages()
             ));
+		}else{
+			$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
+            $user            = new User();
+            $user->username  = $data["username"];
+            $user->password  = Hash::make($data["password"]);
+            $user->token     = sha1($data["username"]);
+            $user->active    =1;
+          //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
+            $user->save();
+            if($roleDad == "parent"){
+                $myRole = Role::where('name', '=', 'child')->pluck('id');
+            }
+            $user->attachRole($myRole);
+            $person                = new Person($data);
+            $person->user_id       = $user->id;
+            $person->save();
+            $son                   = new Son();
+            $son->persona_id       = $person->id;
+            $id_dad = Auth::user()->Person()->first()->Parent()->first()->id;
+            $son->padre_id         = $id_dad;
+            $son->promedio_inicial = $data["average"];
+            $son->save();
             $advance = DB::table('hijos_metas_diarias')->insert(array(
-                'hijo_id' => $son->id,
+                'hijo_id'        => $son->id,
                 'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
             ));
             $exp = DB::table('hijo_experiencia')->insert(array(
-                'hijo_id' => $son->id,
+                'hijo_id'      => $son->id,
                 'cantidad_exp' => 0,
-                'coins' => 0
+                'coins'        => 0
             ));
-            if ($roleDad == "parent" ){
-                $membership_plan = new MembershipPlan();
-                $membership = new Membership(array(
-                    "token_card" => Session::get('sub_id'),
+            if ($roleDad == "parent"){
+                /*$membership_plan    = new MembershipPlan();
+                $membership         = new Membership(array(
+                    "token_card"     => Session::get('sub_id'),
                     "fecha_registro" => Date('Y-m-d'),
-                    "active"    => 1,
-                    "padre_id"  => $id_dad
+                    "active"         => 1,
+                    "padre_id"       => $id_dad
                 ));
                 $membership->save();
                 $membership_plan->membresia_id=$membership->id;
@@ -111,9 +98,14 @@ class childrenController extends BaseController{
                 $membership_plan->plan_id=$plan->id;
                 $membership_plan->hijo_id=$son->id;
                 $membership_plan->active=1;
-                $membership_plan->save();
+                $membership_plan->save();*/
             }
-            return Response::json(array("status" => 200,'statusMessage' => "success","data" => $profile->foto_perfil));
+            //this reponse message data is for user
+            return Response::json(array(
+                "status"        => 200,
+                'statusMessage' => "success",
+                'message'       => "Felicidades haz registrado tu primer hijo exitosamente!!!"
+            ));
 		}
 	}
 	function update(){

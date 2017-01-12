@@ -30,18 +30,18 @@ class Activity extends CORM{
     }
 
     static getNews(success){
-    	super.any(null,"POST",success,"/activity","/find-recomendeds");
+    	super.any(null,"GET",success,"/activity","find-new");
     }
 
     static getRank(success){
-    	super.any(null,"POST",success,"/activity","/find-recomendeds");
+    	super.any(null,"GET",success,"/activity","find-rank");
     }
 
     static getPopulars(success){
-    	super.any(null,"POST",success,"/activity","/find-recomendeds");
+    	super.any(null,"GET",success,"/activity","find-popular");
     }
 
     static getRecomended(success){
-    	super.any(null,"POST",success,"/activity","/find-recomendeds");
+    	super.any(null,"GET",success,"/activity","find-recomended");
     }
 }

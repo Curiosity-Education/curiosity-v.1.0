@@ -331,10 +331,13 @@ Route::group(array('before' => 'auth'), function(){
                 Route::match(["POST","GET"],"/find","sonRatesActivitiesController@find");
             });
             Route::group(array('prefix' => "activity"), function(){
-                Route::get("/find-new","acitivitiesController@getRecentsAdded");
-                Route::get("/find-populars","acitivitiesController@getPopulars");
-                Route::get("/find-rank","acitivitiesController@getMaxRank");
-                Route::get("/find-recomended","acitivitiesController@getRecomended");
+                Route::get("/find-new","activitiesController@getRecentsAdded");
+                Route::get("/find-popular","activitiesController@getPopulars");
+                Route::get("/find-rank","activitiesController@getMaxRank");
+                Route::get("/find-recomended","activitiesController@getRecomended");
+            });
+            Route::group(array('prefix' => "admin-child"), function(){
+                Route::post("/save","childrenController@save");
             });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
@@ -364,7 +367,6 @@ Route::group(array('before' => 'auth'), function(){
             });
 
 		// NOVEDADES
-
 		Route::group(array('before' => 'gestionar_novedades'),function(){
 			Route::group(array('prefix' => 'news'), function(){
 				Route::match(array('GET', 'POST'), '/', 'novedadesController@viewPage');

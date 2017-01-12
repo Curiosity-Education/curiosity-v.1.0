@@ -59,7 +59,13 @@ class activitiesController extends BaseController{
 		'niveles.nombre as levelName')
 		->orderBy('actividades.id', 'desc')
 		->get();
-		return Reponse::json(["data"=>$activities]);
+		//this format message is for developer
+		return Response::json(array(
+			'status' 		=>  200,
+			'statusMessage' => 'success',
+			'message'		=> 'Datos obtenidos correctamente!!',
+			'data'			=> $activities
+    	));
 	}
 
 	function getPopulars(){
@@ -80,7 +86,13 @@ class activitiesController extends BaseController{
 		'niveles.nombre as levelName')
 		->orderBy('vistos', 'desc')
 		->get();
-		return $populars;
+		//this format message is for developer
+		return Response::json(array(
+			'status' 		=>  200,
+			'statusMessage' => 'success',
+			'message'		=> 'Datos obtenidos correctamente!!',
+			'data'			=> $populars
+    	));
 	}
 
 	function getMaxRank(){
@@ -112,7 +124,13 @@ class activitiesController extends BaseController{
 			}
 		}
 		$rankingGroup = Curiosity::bubleSortObject($rankingGroup, 'average', 'desc');
-		return $rankingGroup;
+		//this format message is for developer
+		return Response::json(array(
+			'status' 		=>  200,
+			'statusMessage' => 'success',
+			'message'		=> 'Datos obtenidos correctamente!!',
+			'data'			=> $rankingGroup
+    	));
 	}
 
 	function getRecomended(){
@@ -142,7 +160,13 @@ class activitiesController extends BaseController{
 		if (count($recomended) < 3){
 			$recomended = $this->getRecentsAdded();
 		}
-		return $recomended;
+		//this format message is for developer
+		return Response::json(array(
+			'status' 		=>  200,
+			'statusMessage' => 'success',
+			'message'		=> 'Datos obtenidos correctamente!!',
+			'data'			=> $recomended
+    	));
 	}
 
 	function save(){
