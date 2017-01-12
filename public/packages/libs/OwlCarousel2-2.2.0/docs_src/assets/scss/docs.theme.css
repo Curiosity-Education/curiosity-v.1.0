@@ -1,0 +1,60 @@
+/*
+Error: File to import not found or unreadable: foundation/functions.
+       Load path: /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss
+        on line 13 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/_settings.scss
+        from line 1 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.theme.scss
+
+Backtrace:
+/srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/_settings.scss:13
+/srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.theme.scss:1
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:45:in `import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:28:in `imported_file'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:37:in `css_import?'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/home/Tolu/Downloads/koala/bin/sass:18:in `load'
+/home/Tolu/Downloads/koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: foundation/functions.\A        Load path: /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss\A         on line 13 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/_settings.scss\A         from line 1 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/docs.theme.scss"; }
