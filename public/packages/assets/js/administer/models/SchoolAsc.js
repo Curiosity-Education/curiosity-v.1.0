@@ -5,21 +5,10 @@ class Schoolasc extends CORM {
         super.setPrefix('/schoolasc');
     }
     save(method,success){
-      $.ajax({
-        url: '/schoolasc/save',
-        type: 'POST',
-        data: this.schoolAsc,
-        cache: false,
-        contentType: false,
-        processData: false,
-      })
-      .done(function(r){
-         success(r);
-      });
-      //   super.save(this.schoolAsc,method,success);
+      super.save(this.schoolAsc,method,success);
     }
     update(id,method,success){
-        this.schoolAsc.id = id;
+        this.schoolAsc.append('id', id);
         super.update(this.schoolAsc,method,success);
     }
     static delete(id,method,success){
