@@ -1,0 +1,60 @@
+/*
+Error: Undefined variable: "$small-up".
+        on line 30 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/demos.scss
+
+25: 		}
+26: 	}
+27: }
+28:
+29:
+30: @media #{$small-up} {
+31: 	.demo-list{
+32: 		[class*="column"]+[class*="column"]:last-child {
+33: 			float: left;
+34: 		}
+35: 	}
+
+Backtrace:
+/srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/demos.scss:30
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/interpolation.rb:100:in `_perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:526:in `block in run_interp_no_strip'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:524:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:524:in `run_interp_no_strip'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:531:in `run_interp'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:499:in `visit_media'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/home/Tolu/Downloads/koala/bin/sass:18:in `load'
+/home/Tolu/Downloads/koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$small-up\".\A         on line 30 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/demos.scss\A \A 25: 		}\A 26: 	}\A 27: }\A 28: \A 29: \A 30: @media #{$small-up} {\A 31: 	.demo-list{\A 32: 		[class*=\"column\"]+[class*=\"column\"]:last-child {\A 33: 			float: left;\A 34: 		}\A 35: 	}"; }

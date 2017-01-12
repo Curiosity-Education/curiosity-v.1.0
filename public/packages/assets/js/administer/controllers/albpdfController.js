@@ -113,15 +113,17 @@ var albpdfController = {
    selectFile : function($input){
       var exts = new Array(".pdf");
       var $file = $input;
+      var maxMegas = 2;
       if ($file.val() != ""){
          if(Curiosity.file.validExtension($file.val(), exts)){
-            var files = Curiosity.file.validSize($file.attr("id"), 2048000);
+            var files = Curiosity.file.validSize($file.attr("id"), maxMegas);
             if (files != null){
                $("#albpdf_name").val(files.name);
             }
             else{
+               $("#albpdf_name").val("");
                $file.val("");
-               Curiosity.noty.warning("El archivo excede los 2 MB máximos permitidos", "Demasiado grande");
+               Curiosity.noty.warning("El archivo excede los "+maxMegas+" MB máximos permitidos", "Demasiado grande");
             }
          }
          else{

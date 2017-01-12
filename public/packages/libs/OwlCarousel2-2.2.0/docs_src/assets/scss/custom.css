@@ -1,0 +1,56 @@
+/*
+Error: Undefined variable: "$screen".
+        on line 6 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/custom.scss
+
+1: $owl-primary-color: #1ccacd;
+2: $owl-success-color: #ff3f4d;
+3: $owl-gray-color: #f7f7f7;
+4:
+5:
+6: $medium-down: "#{$screen} and (max-width:#{lower-bound($medium-range)})" !default;
+7:
+8: /* Custom mixins *\/
+9:
+10: @mixin owl-transition($p:all, $t:300ms) {
+11: 	-webkit-transition: $p $t ease-in-out;
+
+Backtrace:
+/srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/custom.scss:6
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/string_interpolation.rb:83:in `_perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:458:in `visit_variable'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/home/Tolu/Downloads/koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/home/Tolu/Downloads/koala/bin/sass:18:in `load'
+/home/Tolu/Downloads/koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$screen\".\A         on line 6 of /srv/www/htdocs/curiosity-v.1.0/public/packages/libs/OwlCarousel2-2.2.0/docs_src/assets/scss/custom.scss\A \A 1: $owl-primary-color: #1ccacd;\A 2: $owl-success-color: #ff3f4d;\A 3: $owl-gray-color: #f7f7f7;\A 4: \A 5: \A 6: $medium-down: \"#{$screen} and (max-width:#{lower-bound($medium-range)})\" !default;\A 7: \A 8: /* Custom mixins */\A 9: \A 10: @mixin owl-transition($p:all, $t:300ms) {\A 11: 	-webkit-transition: $p $t ease-in-out;"; }

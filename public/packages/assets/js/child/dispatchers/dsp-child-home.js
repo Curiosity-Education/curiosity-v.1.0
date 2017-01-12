@@ -1,0 +1,14 @@
+$(function(){
+	activityCtrl.getNews(function(response){
+		console.log(response);
+	});
+	activityCtrl.getPopulars(function(response){
+		console.log(response);
+	});
+	activityCtrl.getRecomendies(function(response){
+		console.log(response);
+	});
+	activityCtrl.getRanks(function(response){
+		console.log(response);
+	});
+});

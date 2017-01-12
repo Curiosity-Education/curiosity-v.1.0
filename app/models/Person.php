@@ -6,7 +6,7 @@
 class Person extends Eloquent{
 
     protected $table = 'personas';
-    protected $fillable = ['nombre','apellido_paterno','apellido_materno','fecha_nacimiento','sexo'];
+    protected $fillable = ['nombre','apellidos','sexo'];
     /*
      *
      ## One person has child data
