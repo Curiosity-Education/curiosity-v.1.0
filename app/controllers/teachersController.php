@@ -115,7 +115,7 @@ class teachersController extends BaseController{
   }
 
 	function get(){
-		
+
 	}
 
 	function save(){

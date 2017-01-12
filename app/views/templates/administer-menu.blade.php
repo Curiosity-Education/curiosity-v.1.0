@@ -20,20 +20,38 @@
       Gestión de contenido
    </div>
    <div class="dropdown-menu" aria-labelledby="dropdownMenu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Niveles (Grados)</a>
-      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)</a>
-      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Bloques</a>
-      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Temas</a>
-      <a class="dropdown-item msad-item waves-effect" href="#"><span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)</a>
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-levels">
+         <span class="fa fa-cube"></span>&nbsp; Niveles (Grados)
+      </a>
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-intelligences">
+         <span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)
+      </a>
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-blocks">
+         <span class="fa fa-cube"></span>&nbsp; Bloques
+      </a>
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-topics">
+         <span class="fa fa-cube"></span>&nbsp; Temas
+      </a>
+      <a class="dropdown-item msad-item waves-effect" href="#">
+         <span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)
+      </a>
    </div>
 </div>
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="view-administer.asociateSchool" class="linkMenu waves-effect">
    <span class="fa fa-" id="msad-icon-"></span>&nbsp;
    Escuelas de apoyo
 </div>
 <div data-url="#" class="linkMenu waves-effect">
-   <span class="fa fa-users" id="msad-icon-users"></span>&nbsp;
+   <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
    Profesores de apoyo
+</div>
+<div data-url="view-administer.admin-libraryPdfs" class="linkMenu waves-effect">
+   <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
+   Biblioteca de Pdfs
+</div>
+<div data-url="#" class="linkMenu waves-effect">
+   <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
+   Biblioteca de Videos
 </div>
 @stop
 

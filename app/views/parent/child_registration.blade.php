@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
 @section('title-baner')
- <i class="fa fa-child"></i> Administración de hijos 
+ <i class="fa fa-child"></i> Administración de hijos
 @stop
 @section('content-parent')
 <div class="container-fluid">

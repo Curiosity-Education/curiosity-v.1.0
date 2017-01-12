@@ -1,6 +1,6 @@
 <?php
 class Profile extends Eloquent{
-	
+
 	protected $table='perfiles';
     public $timestamps=false;
   /*

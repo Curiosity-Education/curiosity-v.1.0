@@ -56,7 +56,7 @@
       function stickyScroll() {
 
         var windowTop  = $window.scrollTop(); // Check window's scroll position
-        
+
         if ( hasStopper && typeof stopper === 'string' ) {
           var stopperTop = $(stopper).offset().top,
               stopPoint  = (stopperTop - thisHeight) - topSpacing;
@@ -70,7 +70,7 @@
             position: 'fixed',
             top: topSpacing
           });
-          
+
           if (hasIndex) {
             $this.css({ zIndex: zIndex });
           }

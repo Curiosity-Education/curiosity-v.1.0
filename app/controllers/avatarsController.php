@@ -1,6 +1,6 @@
 <?php
 class avatarsController extends BaseController{
-	
+
 	function get(){
 		$idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $info = DB::table('hijos_avatars')

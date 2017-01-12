@@ -12,6 +12,12 @@ var Curiosity = {
       });
    },
 
+   compareInput:function(idInput){
+        var $input = $(idInput);
+        if($input.val() == $input.data('compare')){ return true; }
+        else{ return false; }
+   },
+
    goToUrl : function($url){
       window.location.href = $url;
    },
@@ -70,6 +76,15 @@ var Curiosity = {
          $("body").find(".modal-backdrop").remove();
       }
    },
+   select:{
+        id:this.id,
+        val:function(val){
+            $(this.id).find('option').each(function(i,object){
+                if($(this).val() == val)
+                    $(this).prop('selected',true);
+            });
+        }
+   },
 
    file : {
       validExtension : function ($file, $types) {
@@ -87,14 +102,27 @@ var Curiosity = {
             return false;
          }
       },
-      validSize : function($idElement, $max){
-         var files = document.getElementById($idElement).files;
+      validSize : function($idInput, $mb){
+         var files = document.getElementById($idInput).files;
+         $max = (1024000 * $mb);
          if(files[0].size > $max){
             return null;
          }
          else{
             return files[0];
          }
+      }
+   },
+
+   makeBlob : function($idInput){
+      try {
+         var files = document.getElementById($idInput).files;
+         var browser = window.URL || window.webkitURL;
+         var url = browser.createObjectURL(files[0]);
+         return url;
+      } catch (e) {
+         console.error(e);
+         return null;
       }
    }
 

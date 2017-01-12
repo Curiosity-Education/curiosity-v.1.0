@@ -138,6 +138,12 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		Route::post('save', 'libraryPdfController@save');
 		Route::post('delete', 'libraryPdfController@delete');
 	});
+	// Manage School asociated
+	 Route::group(array('prefix' =>  'schoolasc'),function(){
+		 Route::post('save', 'schoolAscController@save');
+		 Route::post('update', 'schoolAscController@update');
+		 Route::post('delete', 'schoolAscController@delete');
+	 });
 // });
 
 /*
@@ -193,6 +199,28 @@ Route::group(array('prefix' =>  'pdfs'),function(){
 	Route::post('all', 'libraryPdfController@all');
 	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
 	Route::post('getByTopic', 'libraryPdfController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to school asociated.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'schoolasc'),function(){
+	Route::post('all', 'schoolAscController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to activities.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'activity-admin'),function(){
+	Route::post('all', 'activitiesController@all');
+	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
+	Route::post('getByTopic', 'activitiesController@getByTopic');
 });
 
 /*
@@ -318,6 +346,16 @@ Route::group(array('before' => 'auth'), function(){
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
             });
+            Route::group(array('prefix' => "sonRatesActivity"), function(){
+                Route::post("/save",'sonRatesActivitiesController@save');
+                Route::match(["POST","GET"],"/find","sonRatesActivitiesController@find");
+            });
+            Route::group(array('prefix' => "activity"), function(){
+                Route::get("/find-new","acitivitiesController@getRecentsAdded");
+                Route::get("/find-populars","acitivitiesController@getPopulars");
+                Route::get("/find-rank","acitivitiesController@getMaxRank");
+                Route::get("/find-recomended","acitivitiesController@getRecomended");
+            });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
 	 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
@@ -436,14 +474,7 @@ Route::group(array('before' => 'auth'), function(){
             });
 
         //});
-        /*// Schools
-        Route::group(array('before' => 'gestionar_escuelas'), function(){
-            Route::group(array('prefix' =>  'school'),function(){
-                Route::match(array('GET', 'POST'), '/', 'escuelaController@verPagina');
-                Route::post('update', 'escuelaController@update');
-                Route::post('delete', 'escuelaController@remove');
-            });
-        });
+
         /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/

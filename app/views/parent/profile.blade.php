@@ -3,19 +3,19 @@
 @section('title')
 Mi Perfil
 @stop
-@section('title-banner')
+@section('title-baner')
  <i class="fa fa-user"></i> Mi perfil
 @stop
 @section('content-parent')
    <div class="container-fluid main"><br>
       <div class="row" id="p-row-main">
-         <div class="col-md-8 col-lg-8">
+         <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
              <!--Form about novedades-->
-            <div class="card card-border-standard animated fadeInRightBig p-card-new-parent" data-wow-delay="1s" id="card-news">
-                <div class="card-block">
+            <div class="card card-border-standard animated fadeInUpBig p-card-new-parent" data-wow-delay="1s" id="card-news">
+                <div class="card-block hidden-xs-down">
                     <!--Header-->
                     <div class="form-header p-novedades bg-blue darken-4">
-                        <h3><i class="fa fa-matk-question"></i> Quizas te interese!</h3>
+                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>¡ Quizas te interese!</h3>
                     </div>
                      <ul class="p-list-news">
                         <li class="p-item-new">
@@ -27,7 +27,7 @@ Mi Perfil
                                 </div>
                               </div>
                               <div class="card-right">
-                                <div class="p-card-title text-center">
+                                <div class="p-card-title text-xs-left">
                                   <h5>Suceciones Númericas</h5>
                                 </div>
                                 <div class="p-card-description text-xs-left">
@@ -50,7 +50,7 @@ Mi Perfil
                                 </div>
                               </div>
                               <div class="card-right">
-                                <div class="p-card-title text-center">
+                                <div class="p-card-title text-xs-left">
                                   <h5>Resolución de problemas</h5>
                                 </div>
                                 <div class="p-card-description text-xs-left">
@@ -73,7 +73,7 @@ Mi Perfil
                                 </div>
                               </div>
                               <div class="card-right">
-                                <div class="p-card-title text-center">
+                                <div class="p-card-title text-xs-left">
                                   <h5>Grafica de barras</h5>
                                 </div>
                                 <div class="p-card-description text-xs-left">
@@ -89,17 +89,27 @@ Mi Perfil
                         </li>
                      </ul>
                 </div>
+                <div class="hidden-sm-up" id="p-content-novelty">
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+						¡ Quizas te interese !
+					  </a>
+					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
+					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
+					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Gráfica de barras</a>
+					</div>
+                </div>
             </div>
             <!--/Form about novedades-->
              <!--Form for refresh perfil-->
             <div class="card card-border-standard p-card-update-user p-card-user animated fadeInRightBig" data-wow-delay="1s" id="card-data-editing">
-                <div class="card-block">
+                <div class="card-block" id="p-cardData">
                     <!--Header-->
                     <div class="form-header p-data-editing bg-blue darken-4">
-                        <h3><i class="fa fa-matk-question"></i> Mis datos!</h3>
+                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i> Mis datos</h3>
                     </div>
                      <!--Body-->
-                    <div class="tab-1 active animated fadeIn">
+                    <div class="tab-1 active animated fadeIn p-tab">
                         <div class="md-form">
                             <i class="fa fa-user prefix"></i>
                             <input type="text" id="username" name="username" class="form-control" value="roger17">
@@ -117,7 +127,7 @@ Mi Perfil
                             <label for="apellidos">Apellido(s)</label>
                         </div>
                     </div>
-                    <div class="tab-2 animated fadeIn">
+                    <div class="tab-2 animated fadeIn p-tab">
                         <div class="md-form">
                             <i class="fa fa-lock prefix"></i>
                             <input type="password" id="old-password" name="old-password" class="form-control">
@@ -134,7 +144,7 @@ Mi Perfil
                             <label for="cnew-password">Confirmar contraseña</label>
                         </div>
                     </div>
-                    <div class="tab-3 animated fadeIn">
+                    <div class="tab-3 animated fadeIn p-tab">
                         <div class="md-form">
                             <select class="mdb-select">
                                 <option value="" disabled selected>Sexo</option>
@@ -149,12 +159,14 @@ Mi Perfil
                         </div>
                     </div>
                     <div class="text-xs-center p-content-buttons animated fadeIn">
-                      <button class="btn btn-deep-orange border-standard btn-return btn-to-move" disabled data-step="1">Regresar</button>
-                      <button class="btn btn-deep-purple border-standard btn-next btn-to-move" data-step="1">Siguiente</button>
-                      <button class="btn btn-green border-standard p-btn-update hidden">Guardar cambios</button>
+                     	<center>
+                     		<button class="btn btn-outline-warning waves-effect border-standard btn-return btn-to-move p-btnBack" disabled data-step="1">Regresar</button>
+                      		<button class="btn border-standard btn-next btn-to-move p-btnNext" data-step="1">Siguiente</button>
+                      		<button class="btn btn-green border-standard p-btn-update hidden p-btnSave">Guardar cambios</button>
+                     	</center>
                     </div>
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-12 col-xs-12">
                           <ul class="stepper stepper-horizontal p-stepper-user">
                               <li class="active">
                                   <a>
@@ -179,9 +191,9 @@ Mi Perfil
             </div>
             <!--/Form for refresh perfil-->
          </div>
-         <div class="col-md-4 col-lg-4 border-left">
+         <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4 border-left">
             <!--Card-->
-            <div class="card card-border-standard testimonial-card animated fadeInLeft" data-wow-delay="1s">
+            <div class="card card-border-standard testimonial-card animated fadeInRight" data-wow-delay="1s">
                 <!--Bacground color-->
                 <div class="card-up bg-blue pf-bgCardEdit">
                 </div>
@@ -195,12 +207,12 @@ Mi Perfil
                     <h4 class="card-title">Username´s parent</h4>
                     <hr>
                     <!-- data list-->
-                    <ul class="list text-justify" >
+                    <ul class="list text-justify hidden-md-down p-cardInfo" >
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-name">Jinestas garcía</span></li>
 						<li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-name">+52 8711010214</span></li>
                     </ul>
-                    <hr>
+                    <hr class="hidden-md-down p-cardInfo">
                     <!--//.. end data list -->
                     <!--Quotation-->
                     <a class="btn pf-bg-default btn-border-curiosity waves-effect waves-light pf-border-rounded" data-card="card-1" id="btn-toggle-cards" data-target="#card-data-editing"><i class="fa fa-edit"></i> Editar mis datos</a>

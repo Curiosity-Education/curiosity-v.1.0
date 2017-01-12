@@ -1,11 +1,11 @@
 <?php
 class profilesController extends BaseController{
-	
+
 	function get(){
-		
+
 	}
 	function save(){
-		
+
 	}
     public function update(){
         $data  =	 Input::get('data');
@@ -71,7 +71,7 @@ class profilesController extends BaseController{
         }
     }
     function delete(){
-		
+
 	}
 
 }

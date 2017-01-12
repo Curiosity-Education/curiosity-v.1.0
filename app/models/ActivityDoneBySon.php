@@ -1,6 +1,6 @@
 <?php
 class ActivityDoneBySon extends Eloquent{
-	
+
 	protected $table ='hijo_realiza_actividades';
     protected $fillable =['puntaje','eficiencia','promedio','aciertos','incorrectos'];
   /*

@@ -1399,7 +1399,7 @@
 
 var initPhotoSwipeFromDOM = function (gallerySelector) {
 
-    // parse slide data (url, title, size ...) from DOM elements 
+    // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
     var parseThumbnailElements = function (el) {
         var thumbElements = el.childNodes,
@@ -1414,7 +1414,7 @@ var initPhotoSwipeFromDOM = function (gallerySelector) {
 
             figureEl = thumbElements[i]; // <figure> element
 
-            // include only element nodes 
+            // include only element nodes
             if (figureEl.nodeType !== 1) {
                 continue;
             }
@@ -1559,7 +1559,7 @@ var initPhotoSwipeFromDOM = function (gallerySelector) {
         // PhotoSwipe opened from URL
         if (fromURL) {
             if (options.galleryPIDs) {
-                // parse real index when custom PIDs are used 
+                // parse real index when custom PIDs are used
                 // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                 for (var j = 0; j < items.length; j++) {
                     if (items[j].pid == index) {

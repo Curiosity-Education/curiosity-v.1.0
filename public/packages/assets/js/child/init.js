@@ -6,7 +6,7 @@ $(function(){
 	|--------------------------------------------------------------------------
 	|
 	| Al dar click a una carta que se muestra en la ventana principal
-	| de la vista del niño, ejecutaremos una función la cual oculta 
+	| de la vista del niño, ejecutaremos una función la cual oculta
 	| Toda la sección de las cartas principales y muestra el conteni-.
 	| do correspondiente a la carta que el usuario le dió click
 	*/
@@ -43,5 +43,17 @@ $(function(){
 			$(".dismiss-card.active").trigger("click");
 		}
 	});
+
+	/*
+	|--------------------------------------------------------------------------
+	| clicik para cerrar ventana
+	|--------------------------------------------------------------------------
+	|
+	| Ventana que se muestra cuando el usuario da click en las cartas
+	| de la ventana principal, la cual muestra su correspondiente co-
+	| tenido, al dar click en la x de la ventanta, esta se cerrará y
+	| mostrará nuevamente las cartas principales
+	*/
+	
 	
 });

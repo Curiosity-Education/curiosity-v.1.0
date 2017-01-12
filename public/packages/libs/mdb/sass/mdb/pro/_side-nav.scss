@@ -190,7 +190,7 @@
             }
         }
     }
-    
+
     // Light Variation
     .light-side-nav {
         .logo-wrapper {
@@ -219,7 +219,7 @@
             margin: 10px;
         }
     }
-    
+
     // Dark Variation
     .dark-side-nav {
         background-color: $elegant-color-dark;
@@ -260,7 +260,7 @@
             }
         }
     }
-    
+
     // Colorful Variation
     .colorful-side-nav {
         background-color: $default-color-dark;
@@ -301,7 +301,7 @@
             }
         }
     }
-    
+
     // Stylish Variation
     // Dark Variation
     .stylish-side-nav {
@@ -343,7 +343,7 @@
             }
         }
     }
-    
+
     // Touch interaction
     .drag-target {
         height: 100%;
@@ -352,7 +352,7 @@
         top: 0;
         z-index: 998;
     }
-    
+
     // Fixed side-nav shown
     .side-nav.fixed {
         left: 0;
@@ -364,7 +364,7 @@
             left: auto;
         }
     }
-    
+
     // Fixed sideNav hide on smaller
     @media #{$medium-and-down} {
         .side-nav.fixed {
@@ -374,7 +374,7 @@
             }
         }
     }
-    
+
     #sidenav-overlay {
         position: fixed;
         top: 0;
@@ -385,7 +385,7 @@
         z-index: 997;
         will-change: opacity;
     }
-    
+
     //Button Collapse Without Navbar
     .side-nav .double-navbar .bc-min {
         padding: 5px 10px;
@@ -393,7 +393,7 @@
             padding-left: 0px;
         }
     }
-    
+
     // Input line color
     .light-side-nav .search-form {
         // Style Placeholders

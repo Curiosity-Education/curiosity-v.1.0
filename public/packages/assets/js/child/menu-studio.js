@@ -8,7 +8,7 @@ $(function(){
 	| this section is for management the inteligents and degrees, that
 	| those are hadled in curiosity
 	*/
-	
+
 	$(".btn-inteligent").click(function(){
 		if($(this).hasClass("active")){
 			$(".row-level").toggle("slow");
@@ -37,7 +37,7 @@ $(function(){
 		$($(this).data("dismiss-target")).hide("slow");
 		$(".btn-inteligent").removeClass("active");
 	});
-	
+
 	$("body,html").keyup(function(evt){
 		if(evt.keyCode==27){
 			$("a.dismiss").trigger("click");
@@ -56,8 +56,8 @@ $(function(){
 	|
 	| Este objeto de dicho modulo contendrá las funciones necesarioas
 	| para la iteraccion del usuario con dicho modulo
-	| 
-	| 
+	|
+	|
 	*/
 
 });
