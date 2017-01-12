@@ -474,7 +474,6 @@ Route::group(array('before' => 'auth'), function(){
             });
         });
 
-<<<<<<< HEAD
         /*// Schools
         Route::group(array('before' => 'gestionar_escuelas'), function(){
             Route::group(array('prefix' =>  'school'),function(){
@@ -483,7 +482,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('delete', 'escuelaController@remove');
             });
         });
-=======
+
         //Route::group(array('before' => 'gestionar_actividades'),function(){
             // Activities
             Route::group(array('prefix' =>  'activity-admin'),function(){
@@ -504,7 +503,6 @@ Route::group(array('before' => 'auth'), function(){
 
         //});
 
->>>>>>> 9067291d3a67ddfa9f0d5d756993dc4ded7502bb
         /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
