@@ -1,4 +1,5 @@
 <?php
+use App\Models\File;
 class activitiesController extends BaseController{
 
 	function get(){
@@ -258,6 +259,10 @@ class activitiesController extends BaseController{
 		->get();
 		return $activity;
 	}
+
+    public function hasGame(){
+        return File::where('actividad_id','=',Input::get('id'))->where('active','=','1')->select('*')->get();
+    }
 
     function game_save(){
         if(Input::hasFile()){
