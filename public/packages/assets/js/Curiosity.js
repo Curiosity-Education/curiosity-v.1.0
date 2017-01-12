@@ -42,6 +42,47 @@ var Curiosity = {
       });
    },
 
+   notyExtend : function($title, $text, $type,$options){
+      swal({
+         title: $title,
+         text: $text,
+         type: $type,
+         showCancelButton: true,
+         confirmButtonColor: ($options.leftBtnColor !== undefined) ? $options.leftBtnColor : '#2262ae',
+         cancelButtonColor: ($options.rightBtnColor !== undefined) ? $options.rightBtnColor : '#ed6922',
+         confirmButtonText: ($options.leftBtn != undefined) ? $options.leftBtn : "Confirmar",
+         cancelButtonText: ($options.rightBtn != undefined) ? $options.rightBtn : "Cancelar",
+      }).then(function () {
+          $options.leftBtnFn();
+        }, function (dismiss) {
+          $options.rightBtnFn();
+        });
+   },
+
+   notyInput : function($title,$type,$fn){
+        swal({
+          title: $title,
+          input: $type,
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+          showLoaderOnConfirm: true,
+          preConfirm: function (input) {
+            return new Promise(function (resolve, reject) {
+              setTimeout(function() {
+                if (input === '') {
+                  reject('La caja de texto no puede estar vacía')
+                } else {
+                  resolve()
+                }
+              }, 2000)
+            })
+          },
+          allowOutsideClick: false
+        }).then(function (input) {
+          $fn(input);
+        });
+   },
+
    noty : {
       success : function($text, $title){
          toastr.success($text, $title);
