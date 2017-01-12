@@ -87,6 +87,10 @@ Route::get('administer', function(){
     return View::make('administer.asociateSchool');
 });
 
+Route::get('childHelp', function(){
+    return View::make('parent.childHelp');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -150,6 +154,12 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
         });
 
     });
+	// Manage School asociated
+	 Route::group(array('prefix' =>  'schoolasc'),function(){
+		 Route::post('save', 'schoolAscController@save');
+		 Route::post('update', 'schoolAscController@update');
+		 Route::post('delete', 'schoolAscController@delete');
+	 });
 // });
 
 /*
@@ -205,6 +215,16 @@ Route::group(array('prefix' =>  'pdfs'),function(){
 	Route::post('all', 'libraryPdfController@all');
 	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
 	Route::post('getByTopic', 'libraryPdfController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to school asociated.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'schoolasc'),function(){
+	Route::post('all', 'schoolAscController@all');
 });
 
 /*
@@ -343,6 +363,19 @@ Route::group(array('before' => 'auth'), function(){
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
             });
+            Route::group(array('prefix' => "sonRatesActivity"), function(){
+                Route::post("/save",'sonRatesActivitiesController@save');
+                Route::match(["POST","GET"],"/find","sonRatesActivitiesController@find");
+            });
+            Route::group(array('prefix' => "activity"), function(){
+                Route::get("/find-new","activitiesController@getRecentsAdded");
+                Route::get("/find-popular","activitiesController@getPopulars");
+                Route::get("/find-rank","activitiesController@getMaxRank");
+                Route::get("/find-recomended","activitiesController@getRecomended");
+            });
+            Route::group(array('prefix' => "admin-child"), function(){
+                Route::post("/save","childrenController@save");
+            });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');
 	 			Route::get('juego/{idActividad}/{nombre}','actividadController@getViewJuego');
@@ -371,7 +404,6 @@ Route::group(array('before' => 'auth'), function(){
             });
 
 		// NOVEDADES
-
 		Route::group(array('before' => 'gestionar_novedades'),function(){
 			Route::group(array('prefix' => 'news'), function(){
 				Route::match(array('GET', 'POST'), '/', 'novedadesController@viewPage');
@@ -442,6 +474,7 @@ Route::group(array('before' => 'auth'), function(){
             });
         });
 
+<<<<<<< HEAD
         /*// Schools
         Route::group(array('before' => 'gestionar_escuelas'), function(){
             Route::group(array('prefix' =>  'school'),function(){
@@ -450,6 +483,28 @@ Route::group(array('before' => 'auth'), function(){
                 Route::post('delete', 'escuelaController@remove');
             });
         });
+=======
+        //Route::group(array('before' => 'gestionar_actividades'),function(){
+            // Activities
+            Route::group(array('prefix' =>  'activity-admin'),function(){
+                Route::post('all', 'activitiesController@all');
+                Route::post('save', 'activitiesController@save');
+                Route::post('update', 'activitiesController@update');
+                Route::post('delete', 'activitiesController@delete');
+                Route::group(array('prefix' =>  'photo'),function(){
+                   Route::post('update', 'activitiesController@changeImage');
+                });
+
+                Route::group(array('prefix' =>  'game'),function(){
+                    Route::post('update','actividadController@moveGame');
+                    Route::post('delete','actividadController@disabledGame');
+                });
+
+            });
+
+        //});
+
+>>>>>>> 9067291d3a67ddfa9f0d5d756993dc4ded7502bb
         /*Route::group(array('before' => 'gestionar_ventas'), function(){
             Route::group(array('prefix' =>  'salesperson'),function(){
                 /*** SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES**/
