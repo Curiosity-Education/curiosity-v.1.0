@@ -134,6 +134,22 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		Route::post('save', 'libraryPdfController@save');
 		Route::post('delete', 'libraryPdfController@delete');
 	});
+    // Activities
+    Route::group(array('prefix' =>  'activity-admin'),function(){
+        Route::post('all', 'activitiesController@all');
+        Route::post('save', 'activitiesController@save');
+        Route::post('update', 'activitiesController@update');
+        Route::post('delete', 'activitiesController@delete');
+        Route::group(array('prefix' =>  'photo'),function(){
+           Route::post('update', 'activitiesController@changeImage');
+        });
+
+        Route::group(array('prefix' =>  'game'),function(){
+            Route::post('update','actividadController@moveGame');
+            Route::post('delete','actividadController@disabledGame');
+        });
+
+    });
 // });
 
 /*
@@ -201,6 +217,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
+    Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
@@ -425,25 +442,6 @@ Route::group(array('before' => 'auth'), function(){
             });
         });
 
-        //Route::group(array('before' => 'gestionar_actividades'),function(){
-            // Activities
-            Route::group(array('prefix' =>  'activity-admin'),function(){
-                Route::post('all', 'activitiesController@all');
-                Route::post('save', 'activitiesController@save');
-                Route::post('update', 'activitiesController@update');
-                Route::post('delete', 'activitiesController@delete');
-                Route::group(array('prefix' =>  'photo'),function(){
-                   Route::post('update', 'activitiesController@changeImage');
-                });
-
-                Route::group(array('prefix' =>  'game'),function(){
-                    Route::post('update','actividadController@moveGame');
-                    Route::post('delete','actividadController@disabledGame');
-                });
-
-            });
-
-        //});
         /*// Schools
         Route::group(array('before' => 'gestionar_escuelas'), function(){
             Route::group(array('prefix' =>  'school'),function(){
