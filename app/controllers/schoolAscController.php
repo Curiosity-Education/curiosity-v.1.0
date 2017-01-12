@@ -6,191 +6,87 @@ class schoolAscController extends BaseController{
 		return $sch;
 	}
 
-	function verPagina(){
-    if(Request::method()=="GET"){
-
-      $schools = array('escuelas' => escuela::where('active', '=', 1)->get());
-      return View::make('vista_escuelas_admin', $schools);
-
-    }
-    else{
-      $form = Input::all();
-      $rules = array(
-        'nombre' => 'required',
-        'logotipo' => 'required'
-      );
-      $messages = [
-             "required"    =>  "Este campo :attribute es requerido",
-             "alpha"       =>  "Solo puedes ingresar letras",
-             "date"        =>  "Formato de fecha invalido",
-             "numeric"     =>  "Solo se permiten digitos",
-             "email"       =>  "Ingresa un formato de correo valido",
-             "unique"      =>  "Este usuario ya existe",
-             "integer"     =>  "Solo se permiten numeros enteros",
-             "exists"      =>  "El campo :attribute no existe en el sistema",
-             "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-             "integer"     =>  "Solo puedes ingresar numeros enteros",
-             "same"        =>  "Las contraseñas no coinciden",
-             "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-       ];
-      $validate = Validator::make($form, $rules, $messages);
-      if($validate->fails()){
-        return $validate->messages();
-      }
-      else{
-        $existActive = escuela::where('nombre', '=', $form['nombre'])->pluck('active');
-        if($existActive === null){
-          $destinationPath = public_path()."/packages/images/escuelas/";
-          $file = $form['logotipo'];
-          $file->move($destinationPath, $file->getClientOriginalName());
-
-          $school = new escuela($form);
-          $school->logotipo = $form['logotipo']->getClientOriginalName();
-          $school->save();
-          return Response::json(array(0=>"success", 1=>$school));
-        }
-        else if($existActive === 0){
-          $destinationPath = public_path()."/packages/images/escuelas/";
-          $file = $form['logotipo'];
-          $file->move($destinationPath, $file->getClientOriginalName());
-
-          escuela::where('nombre', '=', $form['nombre'])->update(array(
-            'active' => 1,
-            'web' => $form['web'],
-            'logotipo' => $file->getClientOriginalName()
-          ));
-          $school = escuela::where('nombre', '=', $form['nombre'])->first();
-          return Response::json(array(0=>"success_exist", 1=>$school));
-        }
-        else{
-          return Response::json(array(0=>"same"));
-        }
-      }
-    }
-  }
-
-  function save(){
-	  $data = Input::all();
-	  $rules = array(
-		 'nombre' => 'required',
-		 'logotipo' => 'required'
-	  );
-	//   $messages = Curioity::getVal
-	  $validate = Validator::make($form, $rules, $messages);
-	  if($validate->fails()){
-		 return $validate->messages();
-	  }
-	  else{
-		 $existActive = escuela::where('nombre', '=', $form['nombre'])->pluck('active');
-		 if($existActive === null){
-			$destinationPath = public_path()."/packages/images/escuelas/";
-			$file = $form['logotipo'];
-			$file->move($destinationPath, $file->getClientOriginalName());
-
-			$school = new escuela($form);
-			$school->logotipo = $form['logotipo']->getClientOriginalName();
-			$school->save();
-			return Response::json(array(0=>"success", 1=>$school));
-		 }
-		 else if($existActive === 0){
-			$destinationPath = public_path()."/packages/images/escuelas/";
-			$file = $form['logotipo'];
-			$file->move($destinationPath, $file->getClientOriginalName());
-
-			escuela::where('nombre', '=', $form['nombre'])->update(array(
-			  'active' => 1,
-			  'web' => $form['web'],
-			  'logotipo' => $file->getClientOriginalName()
-			));
-			$school = escuela::where('nombre', '=', $form['nombre'])->first();
-			return Response::json(array(0=>"success_exist", 1=>$school));
-		 }
-		 else{
-			return Response::json(array(0=>"same"));
-		 }
-	  }
-  }
-
-  function update(){
-    $form = Input::all();
-    $rules = array(
-      'nombre' => 'required'
-    );
-    $messages = [
-           "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",
-           "date"        =>  "Formato de fecha invalido",
-           "numeric"     =>  "Solo se permiten digitos",
-           "email"       =>  "Ingresa un formato de correo valido",
-           "unique"      =>  "Este usuario ya existe",
-           "integer"     =>  "Solo se permiten numeros enteros",
-           "exists"      =>  "El campo :attribute no existe en el sistema",
-           "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-           "integer"     =>  "Solo puedes ingresar numeros enteros",
-           "same"        =>  "Las contraseñas no coinciden",
-           "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-     ];
-    $validate = Validator::make($form, $rules, $messages);
-    if($validate->fails()){
-      return $validate->messages();
-    }
-    else{
-      $logo;
-      if($form['logotipo'] != null){
-        $destinationPath = public_path()."/packages/images/escuelas/";
-        $file = $form['logotipo'];
-        $file->move($destinationPath, $file->getClientOriginalName());
-        $logo = $file->getClientOriginalName();
-      }
-      else{
-        $logo = escuela::where('id', '=', $form['idUpdate'])->pluck('logotipo');
-      }
-
-      $active = escuela::where('nombre', '=', $form['nombre'])->pluck('active');
-      $nameEsc = escuela::where('id', '=', $form['idUpdate'])->pluck('nombre');
-
-      if($active === null){
-        escuela::where('id', '=', $form['idUpdate'])->update(array(
-          'nombre' => $form['nombre'],
-          'logotipo' => $logo,
-          'web' => $form['web']
-        ));
-        $school = escuela::where('id', '=', $form['idUpdate'])->pluck('logotipo');
-        return Response::json(array(0=>"success", 1=>$school));
-      }
-      else if($active === 0){
-        return Response::json(array(0=>"same_exist"));
-      }
-      else if($active === 1){
-        if($nameEsc == $form['nombre']){
-          escuela::where('id', '=', $form['idUpdate'])->update(array(
-            'logotipo' => $logo,
-            'web' => $form['web']
-          ));
-          $school = escuela::where('id', '=', $form['idUpdate'])->pluck('logotipo');
-          return Response::json(array(0=>"success", 1=>$school));
-        }
-        else{
-          return Response::json(array(0=>"same"));
-        }
-      }
-    }
-  }
-
-  function remove(){
-    $form = Input::all();
-    escuela::where('id', '=', $form)->update(array(
-      'active' => 0
-    ));
-    return Response::json(array(0=>"success"));
-  }
-
-
-	function get(){
-
+	function save(){
+		$data = Input::all();
+		$file = $data['asch_logo'];
+		$rules = array(
+			'nombre' => 'required',
+			'asch_logo' => 'required'
+		);
+		$messages = Curiosity::getValidationMessages();
+		$validate = Validator::make($data, $rules, $messages);
+		if($validate->fails()){
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validate->messages()));
+		}
+		else{
+			if ($this->NameActiveExist($data['nombre'])){
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
+			}
+			else{
+				$path = public_path()."/packages/assets/media/images/schools/";
+				$nameLogo = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+				$file->move($path, $nameLogo);
+				$school = new SchoolAsc($data);
+				$school->logotipo = $nameLogo;
+				$school->active = 1;
+				$school->save();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $school));
+			}
+		}
 	}
-	function delete(){
 
+	function update(){
+		$data = Input::all();
+		$file = $data['asch_logo'];
+		$rules = array(
+			'nombre' => 'required'
+		);
+		$msjs = Curiosity::getValidationMessages();
+		$validation = Validator::make($data, $rules, $msjs);
+		if( $validation->fails()){
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+		}
+		else{
+			$level = SchoolAsc::where('id', '=', $data['id'])->first();
+			$namePass = true;
+			if ($level->nombre != $data['nombre']){
+				if ($this->NameActiveExist($data['nombre'])){
+					$namePass = false;
+				}
+			}
+			if ($namePass){
+				$schoolUpd = SchoolAsc::where('id', '=', $data['id'])->first();
+				if ($file != null){
+					$path = public_path()."/packages/assets/media/images/schools/";
+					$nameLogo = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+					$file->move($path, $nameLogo);
+					unlink($path.$schoolUpd->logotipo);
+					$schoolUpd->logotipo = $nameLogo;
+				}
+				$schoolUpd->nombre = $data['nombre'];
+				$schoolUpd->save();
+				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $schoolUpd));
+			}
+			else{
+				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
+			}
+		}
+	}
+
+	function delete(){
+		$id = Input::all();
+		SchoolAsc::where('id', '=', $id)->update(array( 'active' => 0 ));
+		$schDel = SchoolAsc::where('id', '=', $id)->first();
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $schDel));
+	}
+
+	private function NameActiveExist($name){
+		$objs = SchoolAsc::where('nombre', '=', $name)->select('nombre', 'active')->get();
+		$toLive = false;
+		foreach ($objs as $obj) {
+			if($obj->nombre === $name && $obj->active === 1){ $toLive = true; }
+		}
+		return $toLive;
 	}
 }
 ?>
