@@ -106,7 +106,7 @@
        </div>
      </div>
    </div>
-   <div class="modal fade msad-mdl" id="acti-activity-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal fade msad-mdl" id="acti-game-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header"></div>
@@ -117,10 +117,10 @@
                     <span class="fa fa-folder-open-game"></span>&nbsp;
                     Seleccionar juego
                  </span>
-                 <input type="text" class="form-control sctiInp" id="acti_name" name="acti_name" readonly>
+                 <input type="text" class="form-control actiInp" id="acti_name_game" name="acti_name_game" readonly>
                </div>
             </div>
-            <form class="form form-horizontal" id="acti-form">
+            <form class="form form-horizontal" id="acti-form-game">
                <input type="file" name="game" id="game" class="actiInp" style="display:none;">
             </form>
          </div>
@@ -129,7 +129,7 @@
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
-           <button type="button" class="btn btn-default" id="acti-save">
+           <button type="button" class="btn btn-default" id="acti-save-game">
              <span class="fa fa-upload"></span>&nbsp;
              Guardar
            </button>
