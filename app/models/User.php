@@ -50,9 +50,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      */
     public function Profile(){
-        return $this->hasOne('perfil','users_id');
+        return $this->hasMany('perfil','users_id');
     }
-
+    /**
+     *
+     *##User has role assigned
+     *
+     */
+    public function AssignedRole(){
+        return $this->hasOne('AssignedRole','user_id');
+    }
 	public static function get_image_profile($id){
 		$foto = User::where('users.id', '=', $id)
 		          ->join('perfiles', 'users.id', '=', 'perfiles.users_id')

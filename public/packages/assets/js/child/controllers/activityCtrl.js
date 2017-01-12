@@ -2,13 +2,13 @@ var activityCtrl = {
 	getNews : function(success){
 		Activity.getNews(success);
 	},
-	getRank : function(success){
+	getRanks : function(success){
 		Activity.getRank(success);
 	},	
-	getPopulars: function(success){
+	getPopulars : function(success){
 		Activity.getPopulars(success);
 	},
-	getRecomended: function(success){
+	getRecomendies: function(success){
 		Activity.getPopulars(success);
 	}
 };
