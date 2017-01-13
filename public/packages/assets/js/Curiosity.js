@@ -55,7 +55,7 @@ var Curiosity = {
       }).then(function () {
           $options.leftBtnFn();
         }, function (dismiss) {
-          $options.rightBtnFn();
+          $options.rightBtnFn(dismiss);
         });
    },
 
@@ -66,6 +66,7 @@ var Curiosity = {
           showCancelButton: true,
           confirmButtonText: 'Aceptar',
           showLoaderOnConfirm: true,
+          allowEscapeKey:false,
           preConfirm: function (input) {
             return new Promise(function (resolve, reject) {
               setTimeout(function() {
