@@ -236,6 +236,7 @@ class activitiesController extends BaseController{
 					$file->move($destinoPath, $wallpaperName);
 				}
 				$activity->nombre = $data['acti_name'];
+                $activity->estatus = $data['acti_estatus'];
 				$activity->wallpaper = $wallpaperName;
 				$activity->save();
                 $act = Activity::where('id', '=', $data['id'])->first();
@@ -288,20 +289,43 @@ class activitiesController extends BaseController{
         return File::where('actividad_id','=',Input::get('id'))->where('active','=','1')->select('*')->get();
     }
 
-    function game_save(){
-        if(Input::hasFile()){
+    public function saveGame(){
+        if(Input::hasfile('game')){
             $packRoutes = array('*.copy' => '*');
             $uploadFile = Curiosity::extractZip(Input::file('game'),$packRoutes,'yes');
-
+            $fileGame = new File();
+            $fileGame->carpeta = $uploadFile["folder"];
+            //$fileGame->administrativo_id =Auth::user()->id;
+            $fileGame->active = 1;
+            $fileGame->actividad_id = Input::get('activity_id');
+            $fileGame->save();
+            return Response::json(array('status' => 200,'statusMessage' => 'success','data' => $fileGame));
         }
     }
 
-    function game_update(){
-
+    public function updateGame(){
+        if(Input::hasfile('game')){
+            $packRoutes = array('*.copy' => '*');
+            $uploadFile = Curiosity::extractZip(Input::file('game'),$packRoutes,'yes');
+            File::find(Input::get('id'))->update(array(
+                'carpeta' => $uploadFile['folder'],
+                'actividad_id' => Input::get('activity_id')
+            ));
+            return Response::json(array('status' => 200,'statusMessage' => 'success'));
+        }
+        else{
+            return Response::json(array('status' => 404,'statusMessage' => 'not found','data' => null));
+        }
     }
 
-    function game_delete(){
-
+    public function deleteGame(){
+        try{
+            $rowsAffected = File::find(Input::get('id'))->delete();
+            return Response::json(array('status' => 200,'statusMessage' => 'success','data' => $rowsAffected));
+        }
+        catch(Exception $e){
+            return  Response::json(array('status' => 500,'statusMessage' => 'Server Error','data' => null));
+        }
     }
 }
 ?>
