@@ -31,10 +31,10 @@ class JSON{
             fclose($archivo);
         }
     }
-    public function get($ruta){
+    public static function get($ruta){
 
         if(file_exists($ruta))
-            return file_get_contents($ruta);
+            return json_decode(file_get_contents($ruta));
         else
             return Response::json(["status"=>404,"statusMessage"=>"Not found"]);
     }
