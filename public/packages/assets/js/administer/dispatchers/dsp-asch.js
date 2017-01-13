@@ -30,13 +30,12 @@ $(function(){
    $("#asch_name").on('keydown', function(e){ if(e.keyCode == 13){ aschController.save(); } });
 
    $("body").on("click", ".asch-btnDel", function(){
-      // aschController.setId($(this).data("dti"));
-      // aschController.delete();
-      console.log($(this).data("asch"));
+      aschController.setId($(this).data("asch").id);
+      aschController.delete();
    });
 
    $("#asch-cancel").click(function(){
-      // aschController.clearInputs();
+      aschController.clearInputs();
    });
 
 });
