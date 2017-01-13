@@ -1,6 +1,19 @@
 <?php
 class teachersController extends BaseController{
 
+	public function getWithSchool(){
+		$th = Teacher::join("escuelas_apoyo", "profesores_apoyo.escuela_id", "=" , "escuelas_apoyo.id")
+		->where("profesores_apoyo.active", "=", 1)
+		->where("escuelas_apoyo.active", "=", 1)
+		->select(
+			"profesores_apoyo.*",
+			"escuelas_apoyo.nombre as escuelaNombre",
+			"escuelas_apoyo.id as escuelaId")
+		->orderBy("profesores_apoyo.id", "desc")
+		->get();
+		return $th;
+	}
+
 	function verPagina(){
     if(Request::method()=="GET"){
       $school = array('escuelas'=>escuela::where('active', '=', 1)->get());

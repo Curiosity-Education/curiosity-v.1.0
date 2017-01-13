@@ -144,6 +144,12 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		 Route::post('update', 'schoolAscController@update');
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
+	 // Manage Teachers asociated
+ 	 Route::group(array('prefix' =>  'admin-teacher'),function(){
+ 		 Route::post('save', 'teachersController@save');
+ 		 Route::post('update', 'teachersController@update');
+ 		 Route::post('delete', 'teachersController@delete');
+ 	 });
 // });
 
 /*
@@ -221,6 +227,16 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to teachers.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'teacher'),function(){
+	Route::post('getWithSchool', 'teachersController@getWithSchool');
 });
 
 /*
