@@ -149,8 +149,9 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
         });
 
         Route::group(array('prefix' =>  'game'),function(){
-            Route::post('update','actividadController@moveGame');
-            Route::post('delete','actividadController@disabledGame');
+            Route::post('save','activitiesController@saveGame');
+            Route::post('update','activitiesController@updateGame');
+            Route::post('delete','activitiesController@deleteGame');
         });
 
     });
