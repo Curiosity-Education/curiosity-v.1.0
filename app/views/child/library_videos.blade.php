@@ -17,8 +17,8 @@
 
 	<!-- Buttons with the differents topics -->
 	<div class="row" id="lp-btn-topics">
-		<button type="button" class="btn btn-primary btn-lg lp-topic-active lp-btnTopic">Matemáticas</button>
-		<button type="button" class="btn btn-info btn-lg lp-btnTopic">Robótica</button>
+		<button type="button" class="btn btn-lg lp-topic-active lp-btnTopic">Matemáticas</button>
+		<button type="button" class="btn btn-lg lp-btnTopic">Robótica</button>
 	</div>
 
     <!-- Carousel of buttons with the topics only smartphones -->
@@ -46,11 +46,11 @@
 				<div class="carousel-item active text-xs-center">
 
 					<div class="col-xs-12">
-						<button type="button" class="btn btn-primary lp-topic-active lp-btnTopic">Matemáticas</button>
+						<button type="button" class="btn lp-topic-active lp-btnTopic">Matemáticas</button>
 					</div>
 
 					<div class="col-xs-12">
-						<button type="button" class="btn btn-info lp-btnTopic">Robótica</button>
+						<button type="button" class="btn lp-btnTopic">Robótica</button>
 					</div>
 				</div>
 				<!--/.First slide-->
@@ -76,12 +76,12 @@
 			<div class="col-md-2 col-sm-3 lp-text-degrees text-xs-center ">
 				<h6 class="font-weight-bold lp-text">Grados</h6>
 			</div>
-			<button type="button" class="btn btn-info lp-btn-degrees lp-btn-active">1°</button>
-			<button type="button" class="btn btn-info lp-btn-degrees">2°</button>
-			<button type="button" class="btn btn-info lp-btn-degrees">3°</button>
-			<button type="button" class="btn btn-info lp-btn-degrees">4°</button>
-			<button type="button" class="btn btn-info lp-btn-degrees">5°</button>
-			<button type="button" class="btn btn-info lp-btn-degrees">6°</button>
+			<button type="button" class="btn lp-btn-degrees lp-btn-active">1°</button>
+			<button type="button" class="btn lp-btn-degrees">2°</button>
+			<button type="button" class="btn lp-btn-degrees">3°</button>
+			<button type="button" class="btn lp-btn-degrees">4°</button>
+			<button type="button" class="btn lp-btn-degrees">5°</button>
+			<button type="button" class="btn lp-btn-degrees">6°</button>
 		</div>
 	</div><br>
 
@@ -90,7 +90,7 @@
     	<div class="col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1">
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -106,7 +106,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -122,7 +122,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -138,7 +138,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -154,7 +154,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -170,7 +170,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -186,7 +186,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -202,7 +202,7 @@
     		</a>
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
-					<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+					<div class="lp-bg-card" >
 						<div class="card-overlay lp-card-pdf">
 						<!--Content-->
 							<div class="white-text text-xs-center">
@@ -244,7 +244,7 @@
 				<div class="carousel-item active text-xs-center">
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+						<div class="lp-bg-card" >
 							<div class="card-overlay lp-card-pdf">
 							<!--Content-->
 								<div class="white-text text-xs-center">
@@ -259,7 +259,7 @@
 					</div>
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+						<div class="lp-bg-card" >
 							<div class="card-overlay lp-card-pdf">
 							<!--Content-->
 								<div class="white-text text-xs-center">
@@ -277,7 +277,7 @@
 
 				<div class="carousel-item text-xs-center">
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+						<div class="lp-bg-card" >
 							<div class="card-overlay lp-card-pdf">
 							<!--Content-->
 								<div class="white-text text-xs-center">
@@ -292,7 +292,7 @@
 					</div>
 
 					<div class="col-xs-12">
-						<div class="lp-bg-card" data-toggle="tooltip" data-placement="top" title="click para ver">
+						<div class="lp-bg-card" >
 							<div class="card-overlay lp-card-pdf">
 							<!--Content-->
 								<div class="white-text text-xs-center">
