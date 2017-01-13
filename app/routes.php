@@ -138,6 +138,23 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		Route::post('save', 'libraryPdfController@save');
 		Route::post('delete', 'libraryPdfController@delete');
 	});
+    // Activities
+    Route::group(array('prefix' =>  'activity-admin'),function(){
+        Route::post('all', 'activitiesController@all');
+        Route::post('save', 'activitiesController@save');
+        Route::post('update', 'activitiesController@update');
+        Route::post('delete', 'activitiesController@delete');
+        Route::group(array('prefix' =>  'photo'),function(){
+           Route::post('update', 'activitiesController@changeImage');
+        });
+
+        Route::group(array('prefix' =>  'game'),function(){
+            Route::post('save','activitiesController@saveGame');
+            Route::post('update','activitiesController@updateGame');
+            Route::post('delete','activitiesController@deleteGame');
+        });
+
+    });
 	// Manage School asociated
 	 Route::group(array('prefix' =>  'schoolasc'),function(){
 		 Route::post('save', 'schoolAscController@save');
@@ -221,6 +238,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
+    Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
@@ -454,6 +472,15 @@ Route::group(array('before' => 'auth'), function(){
                 Route::group(array('prefix' =>  'photo'),function(){
                    Route::post('update', 'temaController@changeImage');
                 });
+            });
+        });
+
+        /*// Schools
+        Route::group(array('before' => 'gestionar_escuelas'), function(){
+            Route::group(array('prefix' =>  'school'),function(){
+                Route::match(array('GET', 'POST'), '/', 'escuelaController@verPagina');
+                Route::post('update', 'escuelaController@update');
+                Route::post('delete', 'escuelaController@remove');
             });
         });
 

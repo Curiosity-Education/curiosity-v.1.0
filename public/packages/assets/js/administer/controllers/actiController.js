@@ -38,11 +38,51 @@ var actiController = {
    },
 
    openModalUpdate:function(element){
-       console.log($(element).data('info'));
        var data = $(element).data('info');
        this.fillInputs(data);
        $("#acti-modal").modal("show");
        this.setTypeOfSave("update");
+   },
+
+   showOptionsGame:function(response){
+       if(response.length > 0){
+           actiController.typeOfSave = "update";
+           localStorage.setItem('currentActivity',JSON.stringify(response));
+           var messageDialog = {
+               title : "Espera un momento",
+               text: "Hemos detectado que esta actividad ya cuenta con un juego, elige la opción que deseas realizar.",
+               type: "question"
+           }
+           Curiosity.notyExtend(messageDialog.title,messageDialog.text,messageDialog.type,{
+               leftBtn:"<span class='fa fa-gears'></span> Actualizar",
+               leftBtnFn:function(){
+                   $("#acti-game-modal").modal('show');
+               },
+               rightBtn:"<span class='fa fa-trash-o'></span> Eliminar",
+               rightBtnColor:"#ec2726",
+               rightBtnFn:function(dissmiss){
+                   if(dissmiss != "esc"){
+                        Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
+                           if(input == "ELIMINAR" || input == "eliminar"){
+                               var currentActivity = JSON.parse(localStorage.getItem('currentActivity'));
+                               Curiosity.toastLoading.hide();
+                               actiController.deleteGameIn(currentActivity[0].id);
+                           }
+                       });
+                   }
+               }
+           });
+       }
+       else{
+           actiController.typeOfSave = "save";
+           $("#acti-game-modal").modal('show');
+       }
+   },
+
+   openModalGame:function(element){
+       var dti = $(element).data('dti');
+       $("#acti-form-game").data('dti',dti);
+       Activity.any({id : dti}, "POST" , this.showOptionsGame,"has-game");
    },
 
    makeIntelligencesList : function(response){
@@ -178,6 +218,47 @@ var actiController = {
       }
    },
 
+    saveGame : function(){
+      var formGame = $('#acti-form-game');
+      switch (actiController.typeOfSave) {
+         case "save":
+            formGame.validate({
+               rules : {
+                  game : {required:true}
+               }
+            });
+            if (formGame.valid()){
+
+               var formData = new FormData(formGame[0]);
+               formData.append("activity_id",formGame.data('dti'));
+               var game = new Game(formData);
+               Curiosity.toastLoading.show();
+               game.save("POST", this.saveGameSuccess);
+            }
+            break;
+        case "update":
+            var currentActivity = JSON.parse(localStorage.getItem('currentActivity'));
+            formGame.validate({
+               rules : {
+                  game:{required:true}
+               }
+            });
+            if (formGame.valid()){
+               var formData = new FormData(formGame[0]);
+               formData.append("activity_id", currentActivity[0].actividad_id);
+               var game = new Game(formData);
+               Curiosity.toastLoading.show();
+               game.update(currentActivity[0].id,"POST", this.updGameSuccess);
+            }
+            break;
+         default:
+            alert("error");
+            break;
+      }
+   },
+
+
+
    delete : function(){
       var $title = "Eliminar actividad de este tema";
       var $text = "¿Estas seguro que deseas eliminar la actividad selecccionada?";
@@ -192,6 +273,10 @@ var actiController = {
       Activity.delete($id, "POST", this.delSuccess);
    },
 
+   deleteGameIn : function($id){
+      Curiosity.toastLoading.show();
+      Game.delete($id, "POST", this.delGameSuccess);
+   },
    addSuccess : function(response){
       Curiosity.toastLoading.hide();
       switch (response.status) {
@@ -199,7 +284,7 @@ var actiController = {
             Curiosity.noty.success("Registro exitoso", "Bien hecho");
             $("#acti-modal").modal("hide");
             actiController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf' data-info='"+JSON.stringify(response.data)+"' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-gamepad'></span></button></td></tr></td></tr>";
+            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnGame "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-gamepad'></span></button><button type='button' class='btn msad-table-btnConf acti-btnConf' data-info='"+JSON.stringify(response.data)+"' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel acti-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr></td></tr>";
             $("#acti-table tbody").append(newRow);
             break;
          case "CU-103":
@@ -219,7 +304,31 @@ var actiController = {
       }
    },
 
-   updSuccess : function(response){
+   saveGameSuccess : function(response){
+        Curiosity.toastLoading.hide();
+        switch (response.status) {
+            case 200:
+                Curiosity.noty.success("El juego ha sido guardado con exito","Bien hecho");
+                actiController.clearInputGame();
+                $("#acti-game-modal").modal('hide');
+                break;
+            case 'CU-103':
+                Curiosity.noty.warning("Los datos que intentaste guardar ya existen","Atención");
+                break;
+            case 'CU-104':
+                $.each(response.data,function(index,value){
+                    $.each(value,function(i,message){
+                        Curiosity.noty.warning(message,"Algo va mal");
+                    });
+                });
+                break;
+            default:
+                Curiosity.noty.error("Consulta con el administrador","Error desconocido");
+                break;
+        }
+   },
+
+    updSuccess : function(response){
       Curiosity.toastLoading.hide();
       switch (response.status) {
          case 200:
@@ -246,6 +355,31 @@ var actiController = {
       }
    },
 
+    updGameSuccess : function(response){
+      Curiosity.toastLoading.hide();
+      switch (response.status) {
+         case 200:
+            Curiosity.noty.success("Actualización exitosa", "Bien hecho");
+            actiController.clearInputGame();
+            $("#acti-game-modal").modal("hide");
+            break;
+         case "CU-103":
+            Curiosity.noty.warning("Los datos que intentas guardar ya existen", "Atención");
+            break;
+         case "CU-104":
+            $.each(response.data, function(index, value){
+              $.each(value, function(i, message){
+                  Curiosity.noty.warning(message, "Algo va mal");
+              });
+            });
+            break;
+         default:
+            console.log(response);
+            Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
+            break;
+      }
+   },
+
    delSuccess : function(response){
       if (response.status == 200){
          $("body").find("#"+response.data.id).remove();
@@ -254,6 +388,20 @@ var actiController = {
       }
       else{
         $("#"+response.data.id).show();
+
+         Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
+      }
+   },
+
+    delGameSuccess : function(response){
+      if (response.status == 200){
+         Curiosity.toastLoading.hide();
+         swal({
+               type:"success",
+               title:"El juego ha sido eliminado.",
+           });
+      }
+      else{
           console.log(response);
          Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
       }
@@ -273,6 +421,11 @@ var actiController = {
 
    clearInputs : function(){
       $(".actiInp").val("");
+   },
+
+   clearInputGame :function(){
+        $("#acti_name_game").val("");
+        $("#game").val("");
    }
 
 }

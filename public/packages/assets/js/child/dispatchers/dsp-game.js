@@ -5,7 +5,7 @@ $(function(){
     $(".curiosity-ranking").attr("data-stars",response.data);
     ranking.init();// init to ranking
   });
-  ranking.setEventClick(function(event){//add event click to ranking 
+  ranking.setEventClick(function(event){//add event click to ranking
     var starAverage = $(this).index();// get value for set to ranking in data stars
     var these       = this;
     Curiosity.notyConfirm("Calificar actividad","¿Desas califcar esta actividad con "+starAverage+" estrellas?","question",function(){
