@@ -4,7 +4,7 @@ var activityCtrl = {
 	},
 	getRanks : function(success){
 		Activity.getRank(success);
-	},	
+	},
 	getPopulars : function(success){
 		Activity.getPopulars(success);
 	},

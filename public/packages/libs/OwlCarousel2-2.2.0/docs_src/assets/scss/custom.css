@@ -5,12 +5,12 @@ Error: Undefined variable: "$screen".
 1: $owl-primary-color: #1ccacd;
 2: $owl-success-color: #ff3f4d;
 3: $owl-gray-color: #f7f7f7;
-4: 
-5: 
+4:
+5:
 6: $medium-down: "#{$screen} and (max-width:#{lower-bound($medium-range)})" !default;
-7: 
+7:
 8: /* Custom mixins *\/
-9: 
+9:
 10: @mixin owl-transition($p:all, $t:300ms) {
 11: 	-webkit-transition: $p $t ease-in-out;
 

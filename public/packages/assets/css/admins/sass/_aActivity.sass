@@ -7,6 +7,42 @@
    margin-top: 1rem
    margin-bottom: 1rem
 
+#acti-save
+   border-radius: $border-rad
+   background-color: $color-primary
+   color: $color-white
+   background-color: $color-primary !important
+   border: solid $color-primary !important
+
+#acti-save-game
+   @extend #acti-save
+
+#acti-open
+   font-size: .8rem
+   padding-left: 1.5rem
+   padding-right: 1.5rem
+   cursor: pointer
+   background-color: $color-primary
+   color: $color-white
+   border-top-left-radius: $border-rad
+   border-bottom-left-radius: $border-rad
+
+#acti-open-wallpaper
+   @extend #acti-open
+
+#acti_name_game
+   padding-left: 1rem
+   padding-right: 1rem
+   box-sizing: border-box
+
+#acti_name_wallpaper
+   @extend #acti_name_game
+
+#acti-cancel
+   border-color: $color-warning-dark !important
+   color: $color-warning-dark !important
+   border-radius: $border-rad
+
 .acti-container
    cursor: pointer
    img

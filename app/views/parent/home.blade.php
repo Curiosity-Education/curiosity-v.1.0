@@ -1,5 +1,9 @@
 @extends('templates.parent-menu')
 
+@section('title')
+	 INICIO
+@stop
+
 @section('css-plus')
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
@@ -10,13 +14,13 @@
    <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
       <div class="itemCarousel">
          <img src="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" >
-         <h6>Nombre del hijo</h6>
+         <h6 class="h6-responsive text-xs-center">Nombre del hijo</h6>
       </div>
    </a>
    @endfor
 </div>
 
-<div id="prntHome-contentInfo">
+<div id="prntHome-contentInfo" class="z-depth-1">
    <center><div id="prntHome-contentInfo-arrow"></div></center>
    <h5>Nombre del hijo</h5>
    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, odio. Quis assumenda ipsa, non et autem tempore cum! Dolore harum tempore commodi rerum neque eligendi, ea illo nihil? Atque voluptatem, a id reprehenderit perferendis officiis repellat laudantium consequatur culpa cumque labore voluptas nihil molestiae perspiciatis, ut, doloribus provident dolores eaque nulla asperiores quos pariatur ex animi! Vero repellat tempora a pariatur sunt, sit inventore ex ut officia quam eum qui aspernatur tenetur, alias distinctio porro. Ratione excepturi, numquam dolores dolorum distinctio consequuntur sit consectetur nesciunt incidunt neque repellat expedita facilis fugit est error. Quia, officiis enim dolorem esse doloremque!

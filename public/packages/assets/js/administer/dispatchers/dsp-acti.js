@@ -23,7 +23,7 @@ $(function(){
       actiController.setTypeOfSave("save");
    });
 
-   $("#acti-open-game").click(function(){
+   $("#acti-open").click(function(){
       $("#game").trigger("click");
    });
    $("#acti-open-wallpaper").click(function(){
@@ -32,7 +32,7 @@ $(function(){
 
    $("#game").change(function(){
       var exts = new Array(".zip");
-      actiController.selectFile($(this),exts,"#acti_name");
+      actiController.selectFile($(this),exts,"#acti_name_game");
    });
 
    $("#acti_wallpaper").change(function(){
@@ -47,8 +47,12 @@ $(function(){
    $("#acti-table").on('click','.msad-table-btnConf',function(){
        actiController.openModalUpdate(this);
    });
+   $("#acti-table").on('click','.acti-btnGame',function(){
+       actiController.openModalGame(this);
+   });
 
    $("#acti-save").click(function(){ actiController.save(); });
+   $("#acti-save-game").click(function(){ actiController.saveGame(); });
    $("#acti_name").on('keydown', function(e){ if(e.keyCode == 13){ actiController.save(); } });
 
    $("body").on("click", ".acti-btnDel", function(){

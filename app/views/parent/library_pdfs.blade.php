@@ -1,21 +1,15 @@
 @extends('templates.parent-menu')
 
 @section('title')
-	 Rincón de PDF'S
+	 Bibliotca de PDF'S
 @stop
 
-@section('content')
+@section('title-baner')
+ <i class="fa fa-file-pdf-o"></i>&nbsp; Biblioteca de PDF'S
+@stop
 
+@section('content-parent')
 <div class="container-fluid animated" id="lp-container-all">
-
-	<!-- Banner -->
-	<div class="row">
-		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
-		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o"></i>&nbsp; Biblioteca de PDF'S</h4>
-		  </div>
-		</div>
-   	</div><br>
 
 	<!-- Buttons with the differents topics -->
 	<div class="row" id="lp-btn-topics">

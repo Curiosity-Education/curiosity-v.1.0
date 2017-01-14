@@ -12,7 +12,7 @@ $(function(){
 		$("#rfc-info").removeClass('rfc-hidde');
 	});
 
-	$("#rfc-btn-finish").click(function(event){		
+	$("#rfc-btn-finish").click(function(event){
 		data = {
 			username : document.getElementById("rfc-username").value,
 			name     : document.getElementById("rfc-name").value,
