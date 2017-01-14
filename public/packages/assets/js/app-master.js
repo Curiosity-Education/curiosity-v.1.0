@@ -14,4 +14,10 @@ $(function(){
    $("body").on("click", ".linkMenu", function(){
       Curiosity.goToUrl($(this).data('url'));
    });
+
+   loginController.formLogin = $("#formLogin");
+
+   $("#logOut-btn").click(function() {
+      loginController.logOut();
+   });
 });

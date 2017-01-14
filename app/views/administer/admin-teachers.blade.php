@@ -3,7 +3,7 @@
 @extends('templates.administer-menu')
 
 @section('css-plus')
-   <link rel="stylesheet" href="/packages/libs/bootstrap_table/bootstrap-table.css">
+   <link rel="stylesheet" href="/packages/libs/bootstrap-table/bootstrap-table.min.css">
 @stop
 
 @section('baner-tittle')
@@ -19,7 +19,7 @@
 
    <div class='row'>
       <div class='col-xs-12'>
-         <table id="ateach-table" class="msad-table z-depth-1"
+         <table id="ateach-table" class="table table-striped table-hover msad-table z-depth-1"
                      data-pagination="false"
                      data-search="true"
                      data-show-toggle="false"
@@ -96,8 +96,8 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/libs/bootstrap_table/bootstrap-table.js" charset="utf-8"></script>
-   <script src="/packages/libs/bootstrap_table/locale/bootstrap-table-es-MX.js" charset="utf-8"></script>
+   <script src="/packages/libs/bootstrap-table/bootstrap-table.min.js" charset="utf-8"></script>
+   <script src="/packages/libs/bootstrap-table/locale/bootstrap-table-es-MX.min.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Teacher.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Schoolasc.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/ateachController.js" charset="utf-8"></script>
