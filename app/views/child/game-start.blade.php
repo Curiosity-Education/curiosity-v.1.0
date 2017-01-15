@@ -14,9 +14,9 @@
          <div class="gst-card z-depth-1" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
-               <h6>1500 puntos</h6><br>
+               <h6 id="gst-score-max">1500 puntos</h6><br>
                <h5>Aciertos</h5>
-               <h6>15</h6>
+               <h6 id="gst-hits-max">15</h6>
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
@@ -33,11 +33,11 @@
          <div class="gst-card z-depth-1" id="gst-material">
             <h6>Material para tí</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialPdf">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
                <!-- <span class="fa fa-file"></span>&nbsp; -->
                Guía de estudio
             </button>
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialVideo">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
                <!-- <span class="fa fa-youtube-play"></span>&nbsp; -->
                Video
             </button>
@@ -70,6 +70,24 @@
        <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
+   <!-- view pdf -->
+    <div class="row animated bounceIn hidden" id="gst-row-pdf">
+      <div class="col-md-12">
+          <div class="card card-border-standard" id="gst-card-pdf">
+            <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
+              <div class="mask border-standard flex-center">
+               <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
+              </div>
+               <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="card-block">
+              <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="gst-pdf">
+              <h1 class="h1-responsive text-xs-center" id="p-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!--//.. end view pdf -->
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
@@ -94,6 +112,27 @@
                <span class="fa"></span>&nbsp;
                Aceptar
             </button>
+         </div>
+       </div>
+     </div>
+   </div>
+    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <a class="dismiss" data-dismiss="modal"><i class="fa fa-times-circle"></i></a>
+         <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <embed src="packages/assets/pdf/guia.pdf" width="100%" height="85%" id="gst-video">
+              </div>
+              <div class="col-md-4 col-sm-8 col-xs-12">
+                <div class="information">
+                  <h2>Información del profesor</h2>
+                </div>
+                <hr>
+              </div>
+            </div>
+            
          </div>
        </div>
      </div>

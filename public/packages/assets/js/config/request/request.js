@@ -9,7 +9,6 @@ class Request{
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
                 var response = JSON.parse(this.responseText);
                 var status = this.status;
                 callback(response,status,this);
