@@ -4,7 +4,7 @@
  */
 class Teacher extends Eloquent
 {
-    protected $table = 'profesores';
+    protected $table = 'profesores_apoyo';
     protected $fillable =['nombre','apellido_paterno','apellido_materno','email','gustos','foto','active', 'escuela_id'];
   /*
   *

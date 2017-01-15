@@ -84,7 +84,7 @@
                <div class="form-group">
                    <div class="input-group">
                      <span class="input-group-addon" id="acti-open-wallpaper">
-                        <span class="fa fa-folder-open"></span>&nbsp;
+                        <span class="fa fa-folder"></span>&nbsp;
                         Seleccionar wallpaper
                      </span>
                      <input type="text" class="form-control actiInp" id="acti_name_wallpaper" name="acti_name_wallpaper" readonly>
@@ -106,7 +106,7 @@
        </div>
      </div>
    </div>
-   <div class="modal fade msad-mdl" id="acti-activity-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal fade msad-mdl" id="acti-game-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header"></div>
@@ -114,13 +114,13 @@
             <div class="form-group">
                <div class="input-group">
                  <span class="input-group-addon" id="acti-open">
-                    <span class="fa fa-folder-open-game"></span>&nbsp;
+                    <span class="fa fa-folder-open"></span>&nbsp;
                     Seleccionar juego
                  </span>
-                 <input type="text" class="form-control sctiInp" id="acti_name" name="acti_name" readonly>
+                 <input type="text" class="form-control actiInp" id="acti_name_game" name="acti_name_game" readonly>
                </div>
             </div>
-            <form class="form form-horizontal" id="acti-form">
+            <form class="form form-horizontal" id="acti-form-game" enctype="multipart/form-data">
                <input type="file" name="game" id="game" class="actiInp" style="display:none;">
             </form>
          </div>
@@ -129,7 +129,7 @@
               <span class="fa fa-reply"></span>&nbsp;
               Cancelar
             </button>
-           <button type="button" class="btn btn-default" id="acti-save">
+           <button type="button" class="btn btn-default" id="acti-save-game">
              <span class="fa fa-upload"></span>&nbsp;
              Guardar
            </button>
@@ -145,6 +145,7 @@
    <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/Activity.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Game.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/actiController.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-acti.js" charset="utf-8"></script>
 @stop

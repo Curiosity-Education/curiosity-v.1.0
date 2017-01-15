@@ -1,6 +1,53 @@
 <?php
 class loginController extends BaseController{
 
+   public function logIn(){
+      $data = Input::all();
+      $rules = array(
+         "username" => "required",
+         "password" => "required"
+      );
+      $msjs = Curiosity::getValidationMessages();
+      $validation = Validator::make($data, $rules, $msjs);
+		if( $validation->fails()){
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+		}
+      else{
+         $auth = array(
+            'username'  =>  $data["username"],
+            'password'  =>  $data["password"],
+            'active'    =>  1
+         );
+         if(Auth::attempt($auth)){
+            if (Auth::user()->hasRole('hijo')){
+               $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
+               $membershipPlan = MembershipPlan::where('hijo', '=', $idSon)->first();
+               if($$membershipPlan  == null){
+                  return Response::json(array(0=>'success', 1=>'h'));
+               }
+               else if($$membershipPlan->active == 1){
+                  return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => ""));
+               }
+               else{
+                  Auth::logout();
+                  return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => null));
+               }
+            }
+            else{
+               return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-teachers"));
+            }
+         }
+         else {
+            return Response::json(array("status" => "CU-106", 'statusMessage' => "Access denied", "data" => null));
+         }
+      }
+   }
+
+   public function logOut(){
+      Auth::logout();
+      return Redirect::to('/');
+   }
+
   function verPagina()
   {
     if(Request::method() == 'POST')
@@ -136,10 +183,7 @@ class loginController extends BaseController{
          return View::make('vista_login');
       }
     }
-    public function goOut(){
-        Auth::logout();
-        return Redirect::to('/');
-    }
+
     public function checkUser(){
       $rules = array(
         'username' => 'required'

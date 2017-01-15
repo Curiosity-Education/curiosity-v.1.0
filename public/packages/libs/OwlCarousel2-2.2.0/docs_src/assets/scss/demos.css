@@ -5,8 +5,8 @@ Error: Undefined variable: "$small-up".
 25: 		}
 26: 	}
 27: }
-28: 
-29: 
+28:
+29:
 30: @media #{$small-up} {
 31: 	.demo-list{
 32: 		[class*="column"]+[class*="column"]:last-child {

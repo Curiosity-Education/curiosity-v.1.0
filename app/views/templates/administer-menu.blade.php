@@ -38,10 +38,10 @@
    </div>
 </div>
 <div data-url="view-administer.asociateSchool" class="linkMenu waves-effect">
-   <span class="fa fa-" id="msad-icon-"></span>&nbsp;
+   <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
    Escuelas de apoyo
 </div>
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="view-administer.admin-teachers" class="linkMenu waves-effect">
    <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
    Profesores de apoyo
 </div>

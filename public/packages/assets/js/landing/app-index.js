@@ -1,4 +1,13 @@
 $(function(){
+
+	$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+
+	new WOW().init();
+	$('a').click(function(e){
+		e.preventDefault();
+		window.location = $(this).attr('href');
+	});
+
 	function goSection(ancla){
             $('html,body').animate({scrollTop:$(ancla).offset().top-95},1000);
     }

@@ -89,32 +89,31 @@ class sonRatesActivitiesController extends BaseController{
       ));
 
     }else{//request method get
-      //find for get
-      //get child current id
-      //$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-      //get Activity current id
-      //$activityId = Session::get('idActivity');
-      //comparate if this child has qualified this activity
-      $sonRateActivity = SonRatesActivity::where("hijo_id","=","27")
-                        ->where("actividad_id","=","8")
-                        ->first();
-      if($sonRateActivity){
-        //this format message is for developer
-        return Response::json(array(
-          'status'    =>  200,
-          'statusMessage' => 'success',
-          'message'   => 'Esta actidad ya ha sido calificada',
-          'data'      =>  $sonRateActivity->calificacion
-          ));
-      }else{
-        //this format message is for developer
-        return Response::json(array(
-          'status'    =>  200,
-          'statusMessage' => 'success',
-          'message'   => 'Esta actidad ya ha sido calificada',
-          'data'      =>  0
-          ));
-      }
-    }
-  }
+			//get child current id
+			//$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+			//get Activity current id
+			//$activityId = Session::get('idActivity');
+			//comparate if this child has qualified this activity
+			$sonRateActivity = SonRatesActivity::where("hijo_id","=","27")
+												->where("actividad_id","=","8")
+												->first();
+			if($sonRateActivity){
+				//this format message is for developer
+				return Response::json(array(
+					'status' 		=>  200,
+					'statusMessage' => 'success',
+					'message'		=> 'Esta actidad ya ha sido calificada',
+					'data'			=>  $sonRateActivity->calificacion
+		    	));
+			}else{
+				//this format message is for developer
+				return Response::json(array(
+					'status' 		=>  200,
+					'statusMessage' => 'success',
+					'message'		=> 'Esta actidad ya ha sido calificada',
+					'data'			=>  0
+		    	));
+			}
+		}
+	}
 }

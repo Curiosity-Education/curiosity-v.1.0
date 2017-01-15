@@ -50,10 +50,10 @@ var aschController = {
                "<img src='/packages/assets/media/images/schools/"+obj.logotipo+"' class='img-fluid asch"+obj.id+"'>"+
                "<div class='mask flex-center'>"+
                   "<center>"+
-                     "<a class='btn-floating btn-small waves-effect waves-light asch-btnConf' data-asch='"+JSON.stringify(obj)+"'>"+
+                     "<a class='btn-floating btn-small waves-effect waves-light dt"+obj.id+" asch-btnConf' data-asch='"+JSON.stringify(obj)+"'>"+
                         "<i class='fa fa-gears'></i>"+
                      "</a>"+
-                     "<a class='btn-floating btn-small waves-effect waves-light asch-btnDel' data-asch='"+JSON.stringify(obj)+"'>"+
+                     "<a class='btn-floating btn-small waves-effect waves-light dt"+obj.id+" asch-btnDel' data-asch='"+JSON.stringify(obj)+"'>"+
                         "<i class='fa fa-trash-o'></i>"+
                      "</a>"+
                   "</center>"+
@@ -81,35 +81,22 @@ var aschController = {
                else{
                   var formData = new FormData($("#asch-form")[0]);
                   formData.append("nombre", this.inputName.val());
-                  $.ajax({
-                    url: '/schoolasc/save',
-                    type: 'POST',
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                  })
-                  .done(function(r){
-                     aschController.addSuccess(r);
-                  });
-                  // var sch = new Schoolasc("formData");
+                  var sc1 = new Schoolasc(formData);
                   Curiosity.toastLoading.show();
-                  // sch.save("POST", this.addSuccess);
+                  sc1.save("POST", this.addSuccess);
                }
             }
             break;
          case "update":
             this.formulary.validate({
-               rules : {
-                  asch_name : {required:true, maxlength:100}
-               }
+               rules : { asch_name : {required:true, maxlength:100} }
             });
             if (this.formulary.valid()){
                var formData = new FormData($("#asch-form")[0]);
                formData.append("nombre", this.inputName.val());
-               var Schoolasc = new Schoolasc(formData);
+               var sc2 = new Schoolasc(formData);
                Curiosity.toastLoading.show();
-               Schoolasc.update(this.id, "POST", this.updSuccess);
+               sc2.update(this.id, "POST", this.updSuccess);
             }
             break;
          default:
@@ -138,8 +125,23 @@ var aschController = {
             Curiosity.noty.success("Registro exitoso", "Bien hecho");
             $("#asch-modal").modal("hide");
             aschController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre+"</td><td><button type='button' class='btn msad-table-btnConf asch-btnConf "+response.data.id+"Name "+response.data.id+"id' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel asch-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-            $("#asch-table tbody").append(newRow);
+            var newRow = "<div class='col-sm-3' id='"+response.data.id+"'>"+
+               "<div class='view overlay asch-container z-depth-1'>"+
+                  "<img src='/packages/assets/media/images/schools/"+response.data.logotipo+"' class='img-fluid asch"+response.data.id+"'>"+
+                  "<div class='mask flex-center'>"+
+                     "<center>"+
+                        "<a class='btn-floating btn-small waves-effect waves-light dt"+response.data.id+" asch-btnConf' data-asch='"+JSON.stringify(response.data)+"'>"+
+                           "<i class='fa fa-gears'></i>"+
+                        "</a>"+
+                        "<a class='btn-floating btn-small waves-effect waves-light dt"+response.data.id+" asch-btnDel' data-asch='"+JSON.stringify(response.data)+"'>"+
+                           "<i class='fa fa-trash-o'></i>"+
+                        "</a>"+
+                     "</center>"+
+                  "</div>"+
+                  "<h6 id='asch"+response.data.id+"'>"+response.data.nombre+"</h6>"+
+               "</div>"+
+            "</div>";
+            $("#asch-schoolRow").append(newRow);
             break;
          case "CU-103":
             Curiosity.noty.warning("Los datos que intentas guardar ya exiten", "Atención");
@@ -165,9 +167,9 @@ var aschController = {
             Curiosity.noty.success("Actualización exitosa", "Bien hecho");
             $("#asch-modal").modal("hide");
             aschController.clearInputs();
-            $("body").find("."+response.data.id+"Name").data("dtn", response.data.nombre);
-            $("body").find("#"+response.data.id+" .tdName").html(response.data.nombre);
-            $("body").find("."+response.data.id+"id").data("dti", response.data.id);
+            $("body").find(".asch"+response.data.id).attr("src", "/packages/assets/media/images/schools/"+response.data.logotipo);
+            $("body").find("#asch"+response.data.id).html(response.data.nombre);
+            $("body").find(".dt"+response.data.id).data("asch", response.data);
             break;
          case "CU-103":
             Curiosity.noty.warning("Los datos que intentas guardar ya existen", "Atención");

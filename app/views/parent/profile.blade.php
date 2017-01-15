@@ -222,7 +222,7 @@ Mi Perfil
          </div>
       </div>
       <!-- view pdf -->
-      <div class="row animated bounceIn hidden" id="p-row-pdf">
+      <div class="row animated fadeInUp hidden" id="p-row-pdf">
         <div class="col-md-12">
             <div class="card card-border-standard" id="p-card-pdf">
               <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">

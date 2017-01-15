@@ -31,7 +31,6 @@ class Request{
                 });
             }
             catch(e){
-                console.log(e);
                 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 xhttp.send(JSON.stringify(data));
             }

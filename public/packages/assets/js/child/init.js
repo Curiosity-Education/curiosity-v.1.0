@@ -54,6 +54,6 @@ $(function(){
 	| tenido, al dar click en la x de la ventanta, esta se cerrará y
 	| mostrará nuevamente las cartas principales
 	*/
-	
-	
+
+
 });

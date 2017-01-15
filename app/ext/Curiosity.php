@@ -52,7 +52,7 @@ class Curiosity{
             // is the zip file type?
             if($inputFile->getClientOriginalExtension() == 'zip'){
                // We'll save the name in the var $log
-               $log = $inputFile->getClientOriginalName();
+               $log = str_replace(" ","_",$inputFile->getClientOriginalName());
                // ask in one conditional if the folder exists
                if(!file_exists(public_path()."/packages/saveFilesZipTemp/")){
                   $dirTempJuegoZip = mkdir(public_path()."/packages/saveFilesZipTemp/");
@@ -66,8 +66,8 @@ class Curiosity{
                // the var $routeZIP is the route of Zip
                $routeZIP = $directoryPath.$log;
                // Extract the file in the route into parameter
-               $extraccion = $this->extractFile($routeZIP, $typeAndFolder, $boolean);
-               if($extraccion[0] == true){
+               $extraccion = $curiosity->extractFile($routeZIP,str_replace(".zip","",$log), $typeAndFolder, $boolean);
+               if($extraccion['status'] == 200){
                   return $extraccion;
                }
                else {
@@ -194,30 +194,57 @@ class Curiosity{
       }
    }
 
-   private function extractFile($routeZIP, $typeAndFolder, $boolean){
+    private function searchJsonGame($route){
+      $curiosity = self::singleton();
+      $filesSaved = [];
+      // open a directory and list it
+      // the route is a directory?
+      if (is_dir($route)) {
+         // open the directory
+         if ($dh = opendir($route)) {
+            // while the directory can be readeable
+            while (($file = readdir($dh)) !== false) {
+               // this line can be used if we want to list the files into directory
+               if (!is_dir($route . $file) && $file!="." && $file!=".."){
+                  // if the file is only distinct that "." and ".."
+                  // we found the extension
+                   if ('json' == $curiosity->getFileExtension($file)){
+                        $filesSaved = array($route.'/'.$file);
+                   }
+               }
+            }
+            closedir($dh);
+            return $filesSaved;
+         }
+      }else{
+         return null;
+      }
+   }
+
+   private function extractFile($routeZIP,$log, $typeAndFolder, $boolean){
       $curiosity = self::singleton();
       // create a ZipArchive Object
       $enzipado = new ZipArchive();
       // Open the file
       $enzipado->open($routeZIP);
-      if(!file_exists(public_path()."/packages/zipFilesTemp/")){
-         $Zipdescompress = mkdir(public_path()."/packages/zipFilesTemp/");
+      if(!file_exists(public_path()."/packages/games/")){
+         $Zipdescompress = mkdir(public_path()."/packages/games/");
       }
-      $route = public_path()."/packages/zipFilesTemp/";
+      $route = public_path()."/packages/games/";
       // Extract the ZipFile in the route
       $extract = $enzipado->extractTo($route);
       // the file will be closed
       $enzipado->close();
       unlink($routeZIP);
       // Run the route to validate the files
-      $saved = $this->run_route($route, $typeAndFolder, $boolean);
-      // if the extract is success, list the file names
-      if($extract == true){
-         return array(true, $saved);
-      }
-      else{
-         return false;
-      }
+      $saved = $curiosity->searchJsonGame($route.$log);
+      if(count($saved) > 0)
+            $data = JSON::get($saved[0]);
+      return [
+          'status' => 200,
+          'data' => $data,
+          'folder' => $log
+      ];
    }
 
    private function moveFile($dirNow,$newDir){
