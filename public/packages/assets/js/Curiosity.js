@@ -166,6 +166,28 @@ var Curiosity = {
          console.error(e);
          return null;
       }
+   },
+
+   youtubeEmbed : {
+      makeCode : function(){
+         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+         var match = url.match(regExp);
+         if (match && match[2].length == 11) {
+            return 'https://www.youtube.com/embed/' + match[2];
+         }
+         else {
+            console.error("Error trying to make a codeEmbed");
+            return null;
+         }
+      },
+      validLink : function(){
+         if(/^www\.youtube\.com\/embed\/\S*$/.test(codeEmbed)){
+            return true;
+         }
+         else{
+            return false;
+         }
+      }
    }
 
 }
