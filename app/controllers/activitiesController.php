@@ -200,7 +200,8 @@ class activitiesController extends BaseController{
 				$file = Input::file('acti_wallpaper');
 				$file->move($destinoPath, $activity->wallpaper);
 				$activity->save();
-				activitiesVideosController::save($activity);
+				activitiesVideosController::saveFromActivity($activity);
+				activitiesPdfsController::saveFromActivity($activity);
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $activity));
 			}
 		}

@@ -32,7 +32,7 @@
       <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-topics">
          <span class="fa fa-cube"></span>&nbsp; Temas
       </a>
-      <a class="dropdown-item msad-item waves-effect" href="#">
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-activities">
          <span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)
       </a>
    </div>
