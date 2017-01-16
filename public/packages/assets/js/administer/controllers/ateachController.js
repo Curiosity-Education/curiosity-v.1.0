@@ -1,12 +1,15 @@
 var ateachController = {
 
-   typeOfSave : "save",
-   formulary : $("#ateach-form"),
-   inputName : $("#ateach_name"),
-   id : null,
-   photo : "/packages/assets/media/images/parents/profile/mom-def.png",
-   photoImg : $("#ateach_ph"),
-   data : null,
+   typeOfSave     : "save",
+   formulary      : null,
+   formularyFile  : null,
+   inputName      : null,
+   id             : null,
+   photoUrl       : null,
+   photo          : null,
+   photoDef       : null,
+   photoImg       : null,
+   data           : null,
 
    setPhoto : function(url){
       this.photo = url;
@@ -96,26 +99,52 @@ var ateachController = {
          case "save":
             this.formulary.validate({
                rules : {
-                  ateach_name : {required:true}
+                  ateach_name : {required:true, maxlength:50},
+                  ateach_lName : {required:true, maxlength:250},
+                  ateach_email : {required:true, maxlength:100, email:true},
+                  ateach_school : {required:true}
                }
             });
             if (this.formulary.valid()){
-               var formData = new FormData($("#ateach-form")[0]);
-               formData.append("tema", $("#ateach_tpSel").val());
-               var pdf = new Library_pdf(formData);
+               var formData = new FormData(this.formularyFile[0]);
+               formData.append("nombre", $("#ateach_name").val());
+               formData.append("apellidos", $("#ateach_lName").val());
+               formData.append("email", $("#ateach_email").val());
+               formData.append("escuela", $("#ateach_school").val());
+               var th = new Teacher(formData);
                Curiosity.toastLoading.show();
-               pdf.save("POST", this.addSuccess);
+               th.save("POST", this.success);
+            }
+            break;
+         case "update":
+            this.formulary.validate({
+               rules : {
+                  ateach_name : {required:true, maxlength:50},
+                  ateach_lName : {required:true, maxlength:250},
+                  ateach_email : {required:true, maxlength:100, email:true},
+                  ateach_school : {required:true}
+               }
+            });
+            if (this.formulary.valid()){
+               var formData = new FormData(this.formularyFile[0]);
+               formData.append("nombre", $("#ateach_name").val());
+               formData.append("apellidos", $("#ateach_lName").val());
+               formData.append("email", $("#ateach_email").val());
+               formData.append("escuela", $("#ateach_school").val());
+               var th2 = new Teacher(formData);
+               Curiosity.toastLoading.show();
+               th2.update(this.id, "POST", this.success);
             }
             break;
          default:
-            alert("error");
+            Curiosity.noty.error("Consulte al administrador", "Error desconocido");
             break;
       }
    },
 
    delete : function(){
-      var $title = "Eliminar PDF de este tema";
-      var $text = "¿Estas seguro que deseas eliminar el PDF selecccionado?";
+      var $title = "Eliminar Profesor";
+      var $text = "¿Estas seguro que deseas eliminar el Profesor selecccionado?";
       var $type = "warning";
       var $id = this.id;
       Curiosity.notyConfirm($title, $text, $type, function(){ ateachController.deleteIn($id); });
@@ -123,60 +152,49 @@ var ateachController = {
 
    deleteIn : function($id){
       Curiosity.toastLoading.show();
-      Library_pdf.delete($id, "POST", this.delSuccess);
+      Teacher.delete($id, "POST", this.success);
    },
 
-   addSuccess : function(response){
-      Curiosity.toastLoading.hide();
+   success : function(response){
       switch (response.status) {
          case 200:
-            Curiosity.noty.success("Registro exitoso", "Bien hecho");
-            $("#ateach-modal").modal("hide");
-            ateachController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.nombre_real+"</td><td><button type='button' class='btn btn-outline-default msad-table-btnDel ateach-btnDel "+response.data.id+"id' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
-            $("#ateach-table tbody").append(newRow);
+            window.location.reload();
             break;
          case "CU-103":
+            Curiosity.toastLoading.hide();
             Curiosity.noty.warning("Los datos que intentas guardar ya exiten", "Atención");
             break;
          case "CU-104":
+            Curiosity.toastLoading.hide();
             $.each(response.data, function(index, value){
               $.each(value, function(i, message){
                   Curiosity.noty.warning(message, "Algo va mal");
               });
             });
             break;
+         case 401:
+            Curiosity.toastLoading.hide();
+            Curiosity.noty.error("Lo sentimos no cuentas con los permisos suficientes para realizar esta acción", "Error 401");
+            break;
          default:
-            console.log(response);
+            Curiosity.toastLoading.hide();
             Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
             break;
       }
    },
 
-   delSuccess : function(response){
-      if (response.status == 200){
-         $("body").find("#"+response.data.id).remove();
-         Curiosity.toastLoading.hide();
-         Curiosity.noty.success("Removido exitosamente", "Bien hecho");
-      }
-      else{
-         console.log(response);
-         Curiosity.noty.error("Consulta con el administrador", "Error desconocido");
-      }
-   },
-
    clearInputs : function(){
-      this.photo = "/packages/assets/media/images/parents/profile/mom-def.png";
+      this.photo = this.photoUrl +""+ this.photoDef;
       this.resetImage();
       $(".ateachInp").val("");
    },
 
    fillInputs : function(){
       $("#ateach_name").val(this.data.nombre);
-      $("#ateach_lastName").val(this.data.apellidos);
+      $("#ateach_lName").val(this.data.apellidos);
       $("#ateach_email").val(this.data.email);
       $("#ateach_school").val(this.data.escuelaId);
-      this.photoImg.attr('src', "/packages/assets/media/images/parents/profile/"+this.data.foto);
+      this.photoImg.attr('src', this.photoUrl +""+ this.data.foto);
    }
 
 }

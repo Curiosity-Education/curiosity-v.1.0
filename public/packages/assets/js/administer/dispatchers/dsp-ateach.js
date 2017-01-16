@@ -3,6 +3,13 @@ $(function(){
    ateachController.getSchools();
    ateachController.getTeachers();
 
+   ateachController.formularyFile = $("#ateach-formPhoto");
+   ateachController.formulary = $("#ateach-form");
+   ateachController.inputName = $("#ateach_name");
+   ateachController.photoImg  = $("#ateach_ph");
+   ateachController.photoUrl  = "/packages/assets/media/images/teachersAsc/";
+   ateachController.photoDef  = "teacherDefProfileImage.png";
+
    $("#ateach_lvlSel").on("change", function(){
       ateachController.getIntelligences($(this).val());
    });
@@ -20,6 +27,7 @@ $(function(){
    });
 
    $("#ateach-btnNew").click(function(){
+      ateachController.clearInputs();
       $("#ateach-modal").modal("show");
       ateachController.setTypeOfSave("save");
    });
@@ -45,7 +53,8 @@ $(function(){
 
    $("body").on("click", ".ateach-btnConf", function(){
       ateachController.setData($(this).data("teach"));
-      ateachController.setPhoto("/packages/assets/media/images/parents/profile/"+$(this).data("teach").foto);
+      ateachController.setId($(this).data("teach").id);
+      ateachController.setPhoto("/packages/assets/media/images/teachersAsc/"+$(this).data("teach").foto);
       ateachController.fillInputs();
       $("#ateach-modal").modal("show");
       ateachController.setTypeOfSave("update");

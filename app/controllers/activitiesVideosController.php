@@ -29,13 +29,13 @@ class activitiesVideosController extends BaseController{
       return $videos;
    }
 
-   public static function save($activity){
+   public static function saveFromActivity($activity){
       $videos = LibraryVideos::where('tema_id', '=', $activity->tema_id)->get();
       if (count($videos) > 0){
          foreach ($videos as $key => $video) {
             $rel = new ActivityVideo();
             $rel->actividad_id = $activity->id;
-            $rel->biblioteca_video = $video->id;
+            $rel->biblioteca_video_id = $video->id;
             $rel->save();
          }
       }
