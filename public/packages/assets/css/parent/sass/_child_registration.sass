@@ -9,6 +9,9 @@
 	margin-top: -.5rem
 	margin-left: 1rem
 	margin-right: 1rem
+	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-landscape + 10px)
+	width: 90% !important
+	margin-left: 5% !important
 
 #upch-container
 	padding-top: 1rem !important
@@ -17,6 +20,8 @@
 	padding-top: 0
 	padding-bottom: 1rem
 	margin-top: -2rem !important
+	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-landscape + 10px)
+	margin-top: -5rem !important
 
 .text-center
 	text-align: center
@@ -38,12 +43,15 @@
 	padding: 1rem !important
 	margin-top: -2.9rem !important
 	position: relative
-	z-index: 10000
+
 .upch-carousel-arrow
 	position: absolute
 	z-index: -99
 	left: 15rem
 	top: 4rem
+	@media (max-width: $smartphone-size-portrait + 30px)
+		left: 40% !important
+
 
 [class*="step-"]
 	display: none
@@ -59,6 +67,10 @@
 	margin-top: -4.5rem
 	transform: rotate(45deg)
 	margin-bottom: .5rem
+	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-portrait + 30px)
+		margin-left: 5rem!important
+	@media (min-width: $tablet-size-landscape - 10px) and (max-width: $tablet-size-landscape + 30px)
+		margin-left: -4rem !important
 
 .upch-content-card
 	padding-bottom: .5rem
@@ -95,3 +107,27 @@
 .btn-upload-child
 	color: $color-white
 	background-color: $color-default
+
+.upch-tab2
+	margin-bottom: 5.5rem
+
+.upch-select
+	.select-wrapper
+		width: 96% !important
+		margin-left: 1rem !important
+
+.upch-average
+	width: 96% !important
+	margin-left: 1rem !important
+
+.upch-col-upload-child
+	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-portrait + 30px)
+		margin-left: 25% !important
+
+#upch-content-formReg
+	@media (min-width: $tablet-size-landscape - 10px) and (max-width: $tablet-size-landscape + 30px)
+		height: 108% !important
+		margin-bottom: 1rem !important
+	@media (max-width: $smartphone-size-portrait + 30px)
+		height: 110% !important
+		margin-bottom: 1rem !important
