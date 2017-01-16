@@ -5,7 +5,7 @@
 class Teacher extends Eloquent
 {
     protected $table = 'profesores_apoyo';
-    protected $fillable =['nombre','apellido_paterno','apellido_materno','email','gustos','foto','active', 'escuela_id'];
+    protected $fillable =['nombre','apellidos','email','foto','active','escuela_id'];
   /*
   *
   ## A teacher can have many videos
@@ -18,6 +18,6 @@ class Teacher extends Eloquent
   ## A teacher belongs to a school
   */
     public function School(){
-        return $this->belongsTo('escuela');
+        return $this->belongsTo('SchoolAsc');
     }
 }

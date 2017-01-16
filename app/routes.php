@@ -148,7 +148,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('delete', 'libraryPdfController@delete');
 		});
 	});
-	Route::group(array('before' => 'mk'),function(){
+	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
 		Route::group(array('prefix' =>  'schoolasc'),function(){
 			Route::post('save', 'schoolAscController@save');
