@@ -20,6 +20,29 @@ class activitiesPdfsController extends BaseController{
       return $pdfs;
    }
 
+   public function getPdfs(){
+      if(Request::method()=="GET"){
+         $pdfs = DB::table('actividades')
+                     ->join('actividades_pdfs','actividades.id','=','actividades_pdfs.acvidad_id')
+                     ->join('biblioteca_pdfs','actividades_pdfs.biblioteca_archivo_id','=','biblioteca_pdfs.id')
+                     ->select('biblioteca_pdfs.*')
+                     ->get();
+         //this format message is for user
+         return Response::json(array(
+            'status'        =>  200,
+            'statusMessage' => 'success',
+            'message'       => 'Bien hecho, datos obtenidos correctamente!',
+            'data'          =>  $pdfs
+         ));
+      }else{
+          //this format error is for developers
+         return Response::json(array(
+           'status'        => 'CU-107',
+           'statusMessage' => 'Request method not allowed',
+           'message'       => 'the send formt is wrong, the send format should be GET'
+         ));
+      }
+   }
    public static function save($activity){
       $pdfs = LibraryPdfs::where('tema_id', '=', $activity->tema_id)->get();
       if (count($pdfs) > 0){

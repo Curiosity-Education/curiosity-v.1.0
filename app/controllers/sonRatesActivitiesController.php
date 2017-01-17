@@ -39,7 +39,7 @@ class sonRatesActivitiesController extends BaseController{
           'status'    =>  200,
           'statusMessage' => 'success',
           'message'   => 'Actividad Calificada, Bien echo!!'
-          ));
+        ));
 
       }
     }else{
@@ -48,7 +48,7 @@ class sonRatesActivitiesController extends BaseController{
         'status'    => 'CU-103',
         'statusMessage' => 'send format wrong',
         'message'   => 'the send formt is wrong, the send format should be POST and ajax'
-        ));
+      ));
     }
   }
   public function find(){
@@ -71,6 +71,8 @@ class sonRatesActivitiesController extends BaseController{
                       ->join('profesores_apoyo','profesores_apoyo.id','=','biblioteca_videos.profesor_apoyo_id')
                       ->join('escuelas_apoyo','escuelas_apoyo.id','=','profesores_apoyo.escuela_id')
                       ->join('temas','temas.id','=','biblioteca_videos.tema_id')
+                      ->where('actividades.id','=','18')
+                      ->where('actividades.active','=','1')
                       ->select('biblioteca_videos.id','biblioteca_videos.embed','biblioteca_videos.poster','biblioteca_videos.vistos','temas.nombre','profesores_apoyo.nombre','escuelas_apoyo.nombre')
                       ->get();
       //get pdf information
@@ -78,7 +80,10 @@ class sonRatesActivitiesController extends BaseController{
                       ->join('actividades_pdfs','actividades_pdfs.biblioteca_archivo_id','=','biblioteca_pdfs.id')
                       ->join('actividades','actividades.id','=','actividades_pdfs.actividad_id')
                       ->join('temas','temas.id','=','biblioteca_pdfs.tema_id')
-                      ->select('biblioteca_pdfs.id','biblioteca_pdfs.nombre','biblioteca_pdfs.nombre_real','biblioteca_pdfs.vistos','temas.nombre')
+                      ->where('actividades.id','=','8')
+                      ->where('actividades.active','=','1')
+                      ->select('biblioteca_pdfs.id','biblioteca_pdfs.nombre','biblioteca_pdfs.nombre_real','biblioteca_pdfs.vistos','temas.nombre as tema')
+                      ->orderBy('biblioteca_pdfs.vistos','desc')
                       ->get();
       //this format message is for developer
       return Response::json(array(
