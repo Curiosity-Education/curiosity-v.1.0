@@ -144,7 +144,7 @@ Mi Perfil
                             <label for="cnew-password">Confirmar contraseña</label>
                         </div>
                     </div>
-                    <div class="tab-3 animated fadeIn p-tab">
+                    <div class="tab-3 animated fadeIn p-tab p-tab3">
                         <div class="md-form">
                             <select class="mdb-select">
                                 <option value="" disabled selected>Sexo</option>

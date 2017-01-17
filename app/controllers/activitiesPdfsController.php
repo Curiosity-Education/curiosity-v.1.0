@@ -14,7 +14,7 @@ class activitiesPdfsController extends BaseController{
       ->select('biblioteca_videos.embed',
       'biblioteca_pdfs.nombre as pdfName',
       'biblioteca_pdfs.nombre_real as pdfRealName',
-      'biblioteca_pdfs.vistos as pdfSaws'
+      'biblioteca_pdfs.vistos as pdfSaws',
       'temas.nombre as topicName')
       ->get();
       return $pdfs;
@@ -43,13 +43,27 @@ class activitiesPdfsController extends BaseController{
          ));
       }
    }
-   public static function save($activity){
+
+   public static function saveFromActivity($activity){
       $pdfs = LibraryPdfs::where('tema_id', '=', $activity->tema_id)->get();
       if (count($pdfs) > 0){
          foreach ($pdfs as $key => $pdf) {
             $rel = new ActivityPdf();
             $rel->actividad_id = $activity->id;
-            $rel->biblioteca_archivo = $pdf->id;
+            $rel->biblioteca_archivo_id = $pdf->id;
+            $rel->save();
+         }
+      }
+   }
+
+   public static function saveFromLibrary($pdf){
+      $acts = Topic::join("actividades", "temas.id", "=", "actividades.tema_id")
+      ->where('temas.id', '=', $pdf->tema_id)->get();
+      if (count($acts) > 0){
+         foreach ($acts as $key => $act) {
+            $rel = new ActivityPdf();
+            $rel->actividad_id = $act->id;
+            $rel->biblioteca_archivo_id = $pdf->id;
             $rel->save();
          }
       }

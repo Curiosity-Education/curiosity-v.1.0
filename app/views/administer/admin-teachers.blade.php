@@ -46,7 +46,7 @@
          <div class="modal-body">
             <div class="row">
                <div class="col-sm-4">
-                  <img src="/packages/assets/media/images/parents/profile/mom-def.png" class="img-fluid img-thumbnail z-depth-1" id="ateach_ph">
+                  <img src="" class="img-fluid img-thumbnail z-depth-1" id="ateach_ph">
                   <button type="button" class="btn btn-outline-default btn-block" id="ateach-selectPhoto">
                     <span class="fa fa-folder-open"></span>&nbsp;
                     Abrir
@@ -65,8 +65,8 @@
                        <input type="text" class="form-control ateachInp" id="ateach_name" name="ateach_name">
                      </div>
                      <div class="form-group">
-                       <label for="ateach_lastName" class="msad-mdl-label">Apellidos</label>
-                       <input type="text" class="form-control ateachInp" id="ateach_lastName" name="ateach_lastName">
+                       <label for="ateach_lName" class="msad-mdl-label">Apellidos</label>
+                       <input type="text" class="form-control ateachInp" id="ateach_lName" name="ateach_lName">
                      </div>
                      <div class="form-group">
                        <label for="ateach_email" class="msad-mdl-label">E-Mail</label>

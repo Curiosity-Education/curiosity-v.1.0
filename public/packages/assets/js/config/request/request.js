@@ -17,7 +17,7 @@ class Request{
         xhttp.open(method, path, true);
         if(data != null){
             try{
-                console.log(data.get("val"));
+                data.append('tryalUndefined', null);
                 $.ajax({
                     url:path,
                     method:method,
