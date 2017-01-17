@@ -236,6 +236,7 @@ Route::group(array('prefix' =>  'pdfs'),function(){
 	Route::post('all', 'libraryPdfController@all');
 	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
 	Route::post('getByTopic', 'libraryPdfController@getByTopic');
+	Route::get('find-pdfs','activitiesPdfsController@findPdfs');
 });
 
 /*
