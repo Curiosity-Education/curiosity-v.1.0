@@ -102,3 +102,54 @@ iframe body
 .gst-material
    border-color: $color-skin
    color: $color-skin !important
+.text-left
+   text-align: left
+#gst-modal-pdf-video
+   background-color: rgba(0,0,0,.9) !important
+   .modal-body
+      padding: 0 !important
+   .modal-content
+      border-radius: $border-rad !important
+   .close
+      position: absolute
+      right: .2rem
+      top: 0
+      cursor: pointer
+      z-index: 1000
+   .gst-information  
+      padding-top: 1rem
+      padding-left: 0
+      padding-right: 1rem
+      margin-bottom: .9rem
+      max-width: 100%
+   .gst-col
+      padding: 0 !important
+   .row
+      margin-right: 0
+      margin-left: 0
+   .gst-information-list
+      max-height: 48%
+      overflow: auto
+      .media
+         padding: .5rem
+         cursor: pointer
+         &:hover
+            background-color: #e9ebee
+         &.active
+            background-color: #e9ebee
+   p
+      margin-bottom: 0
+   .gst-name-content
+      font-size: .9rem
+   .gst-title-conten
+      margin-top: 1rem
+   .gst-name-content-list,.gst-views-content-list
+      font-size: .7rem
+.gst-bg-gray
+   background-color: #e9ebee !important
+#gst-video-pdf
+   border: none
++mediaQuerieMin(576px)
+   #gst-modal-pdf-video
+      .modal-dialog
+         min-width: 1000px

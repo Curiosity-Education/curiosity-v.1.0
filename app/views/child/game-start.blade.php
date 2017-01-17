@@ -14,9 +14,9 @@
          <div class="gst-card z-depth-1" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
-               <h6>1500 puntos</h6><br>
+               <h6 id="gst-score-max">1500 puntos</h6><br>
                <h5>Aciertos</h5>
-               <h6>15</h6>
+               <h6 id="gst-hits-max">15</h6>
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
@@ -33,11 +33,11 @@
          <div class="gst-card z-depth-1" id="gst-material">
             <h6>Material para tí</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialPdf">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
                <!-- <span class="fa fa-file"></span>&nbsp; -->
                Guía de estudio
             </button>
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialVideo">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
                <!-- <span class="fa fa-youtube-play"></span>&nbsp; -->
                Video
             </button>
@@ -70,6 +70,24 @@
        <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
+   <!-- view pdf -->
+    <div class="row animated bounceIn hidden" id="gst-row-pdf">
+      <div class="col-md-12">
+          <div class="card card-border-standard" id="gst-card-pdf">
+            <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
+              <div class="mask border-standard flex-center">
+               <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
+              </div>
+               <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="card-block">
+              <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="gst-pdf">
+              <h1 class="h1-responsive text-xs-center" id="p-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!--//.. end view pdf -->
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
@@ -98,9 +116,131 @@
        </div>
      </div>
    </div>
+    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-body">
+            <div class="row">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="col-md-8 col-sm-8 col-xs-12 gst-col">
+                <iframe src="/packages/assets/pdf/guia.pdf" type="application/pdf"  width="100%" height="90%" id="gst-video-pdf"></iframe>
+              </div>
+              <div class="col-md-4 col-sm-8 col-xs-12 gst-col">
+                <div class="gst-information">
+                 <div class="gst-informataion-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img src="/packages/assets/media/images/system/pdf.png" class="gst-img-content img-fluid">
+                    </div>
+                    <div class="col-md-9">
+                      <h5 class="gst-tema-content text-left">Tema</h5>
+                      <p class="gst-name-content text-left">Nombre del archivo pdf</p>
+                      <p class="gst-views-content">Vistos 0</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <h4 class="text-center gst-title-content">Biblioteca de Pdfs</h4>
+                  </div>  
+                 </div>
+                 <hr>
+                 <div class="gst-information-list">
+                  <div class="col-md-12 gst-col">
+                    <!--First review-->
+                    <div class="media hoverable active">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <h5 class="media-heading">Nathan Casie</h5>
+                        <div class="media-body">
+                            <p class="gst-views-content">Vistos: 3</p>
+                            <p class="gst-name-content-list">pdf nombre</p>
+                        </div>
+                    </div>
+
+                    <!--Second review-->
+                    <div class="media hoverable">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">Nathan Casie</h5>
+                            <div class="media-body">
+                                <p class="gst-views-content">Vistos: 3</p>
+                                <p class="gst-name-content-list">pdf nombre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Second review-->
+                    <div class="media hoverable">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">Dave Snow</h5>
+                            <div class="media-body">
+                                <p class="gst-views-content">Vistos: 3</p>
+                                <p class="gst-name-content-list">pdf nombre</p>
+                            </div>
+                        </div>
+                    </div>
+                   <!--Second review-->
+                    <div class="media hoverable">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">Dave Snow</h5>
+                            <div class="media-body">
+                                <p class="gst-views-content">Vistos: 3</p>
+                                <p class="gst-name-content-list">pdf nombre</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Second review-->
+                    <div class="media hoverable">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">Dave Snow</h5>
+                            <div class="media-body">
+                                <p class="gst-views-content">Vistos: 3</p>
+                                <p class="gst-name-content-list">pdf nombre</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Second review-->
+                    <div class="media hoverable">
+                        <a class="media-left waves-light col-md-3">
+                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">Dave Snow</h5>
+                            <div class="media-body">
+                                <p class="gst-views-content">Vistos: 3</p>
+                                <p class="gst-name-content-list">pdf nombre</p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="gst-information-footer"></div>
+                </div>
+              </div>
+            </div>            
+         </div>
+       </div>
+     </div>
+   </div>
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>

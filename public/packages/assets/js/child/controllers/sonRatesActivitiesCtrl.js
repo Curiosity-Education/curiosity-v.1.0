@@ -12,6 +12,9 @@ var sonRatesActivitiesCtrl = {
 		}
 	},
 	getCalification : function(success){
-		SonRatesActivity.getCurrent("GET",success);
+		SonRatesActivity.getCurrent(success);
+	},
+	getMaxScoreAndHits : function(success){
+		SonRatesActivity.getMaxScoreAndHits(success);
 	}
 }
