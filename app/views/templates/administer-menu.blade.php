@@ -14,28 +14,25 @@
 @stop
 
 @section('menu-links')
-<div class="dropup">
-   <div data-url="#" class="dropdown-toggle linkMenu waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="fa fa-cubes" id="msad-icon-cubes"></span>&nbsp;
-      Gestión de contenido
-   </div>
-   <div class="dropdown-menu" aria-labelledby="dropdownMenu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-levels">
-         <span class="fa fa-cube"></span>&nbsp; Niveles (Grados)
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-intelligences">
-         <span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-blocks">
-         <span class="fa fa-cube"></span>&nbsp; Bloques
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-topics">
-         <span class="fa fa-cube"></span>&nbsp; Temas
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-activities">
-         <span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)
-      </a>
-   </div>
+<div data-url="view-administer.admin-levels" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Niveles (Grados)
+</div>
+<div data-url="view-administer.admin-intelligences" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Inteligencias (Materias)
+</div>
+<div data-url="view-administer.admin-blocks" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Bloques
+</div>
+<div data-url="view-administer.admin-topics" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Temas
+</div>
+<div data-url="view-administer.admin-activities" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Actividades (Juegos)
 </div>
 <div data-url="view-administer.asociateSchool" class="linkMenu waves-effect">
    <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
