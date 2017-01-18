@@ -169,6 +169,8 @@ var plnsController = {
       $("#plns_name").data('compare',data.name);
       $("#plns_amount").val(data.amount);
       $("#plns_amount").data('compare',data.amount);
+      $("#plns_limit").val(data.limit);
+      $("#plns_limit").data('compare',data.limit);
       $("#plns_freeTrialDays").val(data.trial_period_days);
       $("#plns_freeTrialDays").prop('disabled',true);
       $("#plns_freeTrialDays").data('compare',data.trial_period_days);
