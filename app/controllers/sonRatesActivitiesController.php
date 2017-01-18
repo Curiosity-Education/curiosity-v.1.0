@@ -65,7 +65,13 @@ class sonRatesActivitiesController extends BaseController{
                                       ->select('puntaje','aciertos')
                                       ->first();
       //get video information
-      $dataVideos   = DB::table('biblioteca_videos')
+      $dataVideos   = DB::select("select bv.id,bv.embed,bv.poster,bv.vistos,t.nombre,pa.nombre profesor,ea.nombre escuela from actividades a
+join actividades_videos av on a.id = av.actividad_id
+join biblioteca_videos bv on av.biblioteca_video_id = bv.id
+join profesores_apoyo pa on pa.id = bv.profesor_apoyo_id
+join escuelas_apoyo ea on pa.escuela_id = ea.id
+join temas t on bv.tema_id = t.id
+where a.active = 1 and a.id = 8;");/*table('biblioteca_videos')
                       ->join('actividades_videos','actividades_videos.biblioteca_video_id','=','biblioteca_videos.id')
                       ->join('actividades','actividades.id','=','actividades_videos.actividad_id')
                       ->join('profesores_apoyo','profesores_apoyo.id','=','biblioteca_videos.profesor_apoyo_id')
@@ -74,7 +80,7 @@ class sonRatesActivitiesController extends BaseController{
                       ->where('actividades.id','=','18')
                       ->where('actividades.active','=','1')
                       ->select('biblioteca_videos.id','biblioteca_videos.embed','biblioteca_videos.poster','biblioteca_videos.vistos','temas.nombre','profesores_apoyo.nombre','escuelas_apoyo.nombre')
-                      ->get();
+                      ->get();*/
       //get pdf information
       $dataPdfs     = DB::table('biblioteca_pdfs')
                       ->join('actividades_pdfs','actividades_pdfs.biblioteca_archivo_id','=','biblioteca_pdfs.id')

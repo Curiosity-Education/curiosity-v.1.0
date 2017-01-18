@@ -67,7 +67,7 @@ class childrenController extends BaseController{
                             ->select('id')
                             ->where('name','=','child')
                             ->first()->id;/*Role::where('name', '=', 'child')->pluck('id');*/
-               
+
             }
             //$user->attachRole($myRole);
             $person                = new Person($data);

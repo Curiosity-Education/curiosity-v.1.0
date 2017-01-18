@@ -2,7 +2,8 @@
 @import "mixins.sass"
 
 $title-color: rgba($color-black-elegant-light, .75)
-
+.text-right
+   text-align: right
 .gst-card
    background-color: $color-white
    padding: 1rem
@@ -105,6 +106,10 @@ iframe body
 .text-left
    text-align: left
 #gst-modal-pdf-video
+   #gst-iframe-content
+      border: none
+      border-left-top-radius: $border-rad
+      border-left-bottom-radius: $border-rad
    background-color: rgba(0,0,0,.9) !important
    .modal-body
       padding: 0 !important
@@ -116,27 +121,46 @@ iframe body
       top: 0
       cursor: pointer
       z-index: 1000
-   .gst-information  
-      padding-top: 1rem
+   .gst-information
+      padding-top: 0
       padding-left: 0
-      padding-right: 1rem
-      margin-bottom: .9rem
+      padding-right: 0
+      margin-bottom: 0
       max-width: 100%
+      .gst-information-footer
+         background-color: #ebeff1
+         color: $color-gray-dark
+         padding-top: .5rem
+         padding-bottom: .5rem
+         padding-right: .5rem
+         position: relative
+         bottom: 0
+
    .gst-col
       padding: 0 !important
    .row
       margin-right: 0
       margin-left: 0
+   .gst-hr-top
+      margin-top: 0
+   .gst-hr-bottom
+      margin-bottom: 0
    .gst-information-list
-      max-height: 48%
+      max-height: 54%
       overflow: auto
       .media
          padding: .5rem
          cursor: pointer
          &:hover
-            background-color: #e9ebee
+            background-color: #ebeff1
          &.active
-            background-color: #e9ebee
+            background-color: #ebeff1
+   .gst-informataion-header
+      padding-top: 1rem
+      padding-bottom: 1rem
+      background-color: $color-primary
+      color: $color-white
+      border-top-right-radius: $border-rad
    p
       margin-bottom: 0
    .gst-name-content

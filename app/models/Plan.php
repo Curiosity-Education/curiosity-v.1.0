@@ -5,7 +5,7 @@
 class Plan extends Eloquent
 {
     protected $table='planes';
-    protected $fillable=['name','amount','currency','interval','active'];
+    protected $fillable=['name','amount','currency','interval','trial_period_days','reference','limit'];
   /*
   *
   ## A plan has a membership

@@ -49,7 +49,7 @@
    <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
    Biblioteca de Pdfs
 </div>
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="view-administer.admin-libraryVideos" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
    Biblioteca de Videos
 </div>

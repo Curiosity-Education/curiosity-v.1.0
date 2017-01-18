@@ -6,6 +6,17 @@ class teachersController extends BaseController{
 		return $th;
 	}
 
+	public function getBySchool(){
+		$id = Input::all();
+		$th = Teacher::join("escuelas_apoyo", "profesores_apoyo.escuela_id", "=", "escuelas_apoyo.id")
+		->where("profesores_apoyo.escuela_id", "=", $id)
+		->where("profesores_apoyo.active", "=", 1)
+		->where("escuelas_apoyo.active", "=", 1)
+		->select("profesores_apoyo.*")
+		->get();
+		return $th;
+	}
+
 	public function getWithSchool(){
 		$th = Teacher::join("escuelas_apoyo", "profesores_apoyo.escuela_id", "=" , "escuelas_apoyo.id")
 		->where("profesores_apoyo.active", "=", 1)

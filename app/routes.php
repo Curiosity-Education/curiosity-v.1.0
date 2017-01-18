@@ -143,6 +143,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('save', 'libraryPdfController@save');
 			Route::post('delete', 'libraryPdfController@delete');
 		});
+		// Manage Videos' Library
+		Route::group(array('prefix' =>  'admin-video'),function(){
+			Route::post('save', 'libraryVideoController@save');
+			Route::post('update', 'libraryVideoController@update');
+			Route::post('delete', 'libraryVideoController@delete');
+		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
@@ -172,12 +178,28 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
 
+    });
+
+    // Plans
+    Route::group(array('prefix' =>  'plans-admin'),function(){
+        Route::post('all', 'plansController@all');
+        Route::post('save', 'plansController@save');
+        Route::post('update', 'plansController@update');
+        Route::post('delete', 'plansController@delete');
+
+    });
+	// Manage School asociated
+	 Route::group(array('prefix' =>  'schoolasc'),function(){
+		 Route::post('save', 'schoolAscController@save');
+		 Route::post('update', 'schoolAscController@update');
+		 Route::post('delete', 'schoolAscController@delete');
+	 });
+// });
 		Route::group(array('prefix' =>  'game'),function(){
 			Route::post('save','activitiesController@saveGame');
 			Route::post('update','activitiesController@updateGame');
 			Route::post('delete','activitiesController@deleteGame');
 		});
-	});
 
 /*
 * -----------------------------------------------------------------------------
@@ -266,6 +288,17 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 */
 Route::group(array('prefix' =>  'teacher'),function(){
 	Route::post('getWithSchool', 'teachersController@getWithSchool');
+	Route::post('getBySchool', 'teachersController@getBySchool');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to library videos.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'video'),function(){
+	Route::post('getByTopic', 'libraryVideoController@getByTopic');
 });
 
 /*

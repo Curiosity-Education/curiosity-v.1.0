@@ -125,33 +125,33 @@
                 <span aria-hidden="true">&times;</span>
               </button>
               <div class="col-md-8 col-sm-8 col-xs-12 gst-col">
-                <iframe src="/packages/assets/pdf/guia.pdf" type="application/pdf"  width="100%" height="90%" id="gst-video-pdf"></iframe>
+                <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
               </div>
               <div class="col-md-4 col-sm-8 col-xs-12 gst-col">
                 <div class="gst-information">
                  <div class="gst-informataion-header">
                   <div class="row">
                     <div class="col-md-3">
-                      <img src="/packages/assets/media/images/system/pdf.png" class="gst-img-content img-fluid">
+                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
                     </div>
                     <div class="col-md-9">
-                      <h5 class="gst-tema-content text-left">Tema</h5>
-                      <p class="gst-name-content text-left">Nombre del archivo pdf</p>
-                      <p class="gst-views-content">Vistos 0</p>
+                      <h5 class="gst-tema-content text-left">Nombre profe</h5>
+                      <p class="gst-name-content text-left">Video nombre</p>
+                      <p class="gst-views-content">Escuela nombre</p>
                     </div>
                   </div>
-                  <hr>
-                  <div class="row">
-                    <h4 class="text-center gst-title-content">Biblioteca de Pdfs</h4>
-                  </div>  
                  </div>
-                 <hr>
+                 <hr class="gst-hr-top">
+                 <div class="row">
+                    <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
+                 </div>
+                 <hr class="gst-hr-bottom">
                  <div class="gst-information-list">
                   <div class="col-md-12 gst-col">
                     <!--First review-->
                     <div class="media hoverable active">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="content ico">
                         </a>
                         <h5 class="media-heading">Nathan Casie</h5>
                         <div class="media-body">
@@ -162,8 +162,8 @@
 
                     <!--Second review-->
                     <div class="media hoverable">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
                         </a>
                         <div class="media-body">
                             <h5 class="media-heading">Nathan Casie</h5>
@@ -176,8 +176,8 @@
 
                     <!--Second review-->
                     <div class="media hoverable">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
                         </a>
                         <div class="media-body">
                             <h5 class="media-heading">Dave Snow</h5>
@@ -189,8 +189,8 @@
                     </div>
                    <!--Second review-->
                     <div class="media hoverable">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
                         </a>
                         <div class="media-body">
                             <h5 class="media-heading">Dave Snow</h5>
@@ -202,8 +202,8 @@
                     </div>
                     <!--Second review-->
                     <div class="media hoverable">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
                         </a>
                         <div class="media-body">
                             <h5 class="media-heading">Dave Snow</h5>
@@ -215,8 +215,8 @@
                     </div>
                     <!--Second review-->
                     <div class="media hoverable">
-                        <a class="media-left waves-light col-md-3">
-                            <img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">
+                        <a class="media-left waves-light col-md-4">
+                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
                         </a>
                         <div class="media-body">
                             <h5 class="media-heading">Dave Snow</h5>
@@ -228,10 +228,12 @@
                     </div>
                   </div>
                  </div>
-                 <div class="gst-information-footer"></div>
+                 <div class="gst-information-footer">
+                  <p class="text-right">Curiosity-Educación</p>
+                 </div>
                 </div>
               </div>
-            </div>            
+            </div>
          </div>
        </div>
      </div>
