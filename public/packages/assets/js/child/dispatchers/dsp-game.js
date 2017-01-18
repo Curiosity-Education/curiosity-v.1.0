@@ -8,15 +8,15 @@ $(function(){
     ranking.init();// init to ranking
   });
   sonRatesActivitiesCtrl.getMaxScoreAndHits(function(response){
+    console.log(response);
     document.getElementById('gst-score-max').innerHTML = response.data.score.puntaje;
     document.getElementById('gst-hits-max').innerHTML  = response.data.score.aciertos;
     pdfs    = response.data.pdf;//get pdfs for server+
     videos  = response.data.videos;
-    console.log(response);
     createElsementsVideos();//create element width video
     createElementsPdfs();//create element width pdf
   });
-  ranking.setEventClick(function(event){//add event click to ranking 
+  ranking.setEventClick(function(event){//add event click to ranking
     var starAverage = $(this).index();// get value for set to ranking in data stars
     var these       = this;
     Curiosity.notyConfirm("Calificar actividad","¿Desas califcar esta actividad con "+starAverage+" estrellas?","question",function(){
@@ -42,7 +42,7 @@ $(function(){
       $(".gst-information-list").append($videos);
       //set information in modal
       $(".gst-information-list>div").children().first().addClass('active');
-      $("#gst-modal-pdf-video").removeClass("gst-pdf-active");      
+      $("#gst-modal-pdf-video").removeClass("gst-pdf-active");
       $("#gst-modal-pdf-video").addClass('gst-video-active');
       setInformationModal();
     }
