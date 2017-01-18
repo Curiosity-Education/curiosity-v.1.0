@@ -47,8 +47,7 @@ class libraryVideoController extends BaseController{
 				$lb->profesor_apoyo_id = $data['profesor'];
 				$lb->save();
 				$file->move($path, $posterName);
-				// activitiesVideosController::saveFromActivity($lb);
-				// activitiesPdfsController::saveFromLibrary($lb);
+				activitiesVideosController::saveFromLibrary($lb);
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $lb));
 			}
 		}
