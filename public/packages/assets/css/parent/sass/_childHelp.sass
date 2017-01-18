@@ -9,9 +9,12 @@
 //this class change the background color of all the sections
 .chp-backColor
   background-color: $color-primary
+  border-top-left-radius: $border-rad !important
+  border-top-right-radius: $border-rad !important
 //this class make a border-radious to all the sections
 .chp-cards
   border-radius: $border-rad !important
+  height: 14rem
 //this class make all the btns rounded
 .chp-btn
   border-radius: $border-rad !important
@@ -21,14 +24,15 @@
 /*sass section for weaknesses section*/
 //This class makes all the image that is in the section of weaknesses are round
 .chp-imgWeak
-  margin-top: 1rem
+  margin-top: .5rem
   border-radius: 100% !important
   @media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10)
     width: 3rem
+  @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
+    margin-top: .3rem
 //This section adds a scroll to the section and leaves a fixed height
 .chp-Weak-card
-  height: 26rem
-  overflow-y: scroll
+  height: auto
   @media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10)
     height: 20rem
 //This section gives a height to the topics of weaknesses
@@ -39,7 +43,7 @@
   padding-top: 0
 
 .chp-topicDesc
-  padding-top: 1rem
+  padding-top: .5rem
 
 .card-right
   margin: 0 !important
@@ -48,11 +52,9 @@
 /*sass section for material section*/
 //this class change the color of the btn in material section
 .chp-btn-material
-  background-color: $color-default
+  background-color: $color-secondary
 //this secton accomodate the button from material section
 .chp-btn-mat
-  padding-top: 2rem
-  padding-left: 4.2rem
   @media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10)
     padding-left: 6rem !important
   //media query for smartphone-size-portrait
@@ -61,7 +63,10 @@
     padding-left: 2.2rem
 //this section accommodate the img from material section
 .chp-videoImg
-  padding-left: 4rem
+  margin-top: -.5rem
+  height: 50%
+  width: 50%
+  border-radius: $border-rad !important
   //media query for smartphone-size-portrait
   @media (min-width: $smartphone-size-portrait) and (max-width: $smartphone-size-landscape - 10)
     padding-left: 0
@@ -70,16 +75,29 @@
     margin-left: auto
     margin-right: auto
 
+.chp-pdfImg
+  height: 40% !important
+  @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
+    height: 20% !important
+
 .chp-border
   //media query for smartphone-size-portrait
   @media (min-width: $smartphone-size-portrait) and (max-width: $smartphone-size-landscape - 10)
     border-top: solid 1px black
+  @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
+    border-top: solid 1px $color-gray-light
+    padding-top: 1rem
 
+.chp-border-left
+  border-left: .09rem solid $color-gray-light !important
+  @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
+    border-left: 0rem solid $color-gray-light !important
 
 /*sass section for bookshopsection*/
 //this class change the color of the btn in bookshop section
 .chp-btn-bookshop
-  background-color: $color-default
+  background-color: $color-warning-dark
+  letter-spacing: 3px
 //this section accomodate the btn from bookshop section
 .chp-btn-book
   padding-top: 1rem
@@ -92,8 +110,24 @@
   @media (min-width: $smartphone-size-portrait) and (max-width: $smartphone-size-landscape - 10)
     padding-top: 0.6rem
 .chp-bookImg
+  height: 60% !important
   //media query for smartphone-size-portrait
   @media (min-width: $smartphone-size-portrait) and (max-width: $smartphone-size-landscape - 10)
     display: block
     margin-left: auto
     margin-right: auto
+
+.chp-cardTopic
+  border-radius: $border-rad !important
+  border: .2rem solid $color-info-light
+
+.chp-active
+  border: .2rem solid $color-secondary !important
+
+#chp-contentTopics
+  height: 26rem
+  overflow-y: scroll
+
+#chp-contentMaterial
+  @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
+    height: auto !important

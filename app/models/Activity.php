@@ -28,7 +28,14 @@ class Activity extends Eloquent
   *
   ## An activity belongs to topic
   */
-    public function Topic(){
-        return $this->belongsTo('tema');
-    }
+  public function Topic(){
+    return $this->belongsTo('tema');
+  }
+  public function ActivityVideo(){
+    return $this->hasMany('ActivityVideo','actividad_id');
+  }
+
+  public function ActivityPdf(){
+    return $this->hasMane('ActivityPdf','biblioteca_archivo_id');
+  }
 }
