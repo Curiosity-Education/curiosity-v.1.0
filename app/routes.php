@@ -182,6 +182,23 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
 
+    });
+
+    // Plans
+    Route::group(array('prefix' =>  'plans-admin'),function(){
+        Route::post('all', 'plansController@all');
+        Route::post('save', 'plansController@save');
+        Route::post('update', 'plansController@update');
+        Route::post('delete', 'plansController@delete');
+
+    });
+	// Manage School asociated
+	 Route::group(array('prefix' =>  'schoolasc'),function(){
+		 Route::post('save', 'schoolAscController@save');
+		 Route::post('update', 'schoolAscController@update');
+		 Route::post('delete', 'schoolAscController@delete');
+	 });
+// });
 		Route::group(array('prefix' =>  'game'),function(){
 			Route::post('save','activitiesController@saveGame');
 			Route::post('update','activitiesController@updateGame');

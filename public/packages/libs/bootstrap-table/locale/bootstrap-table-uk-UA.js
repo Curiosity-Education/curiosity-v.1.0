@@ -4,7 +4,7 @@
  */
  (function ($) {
     'use strict';
-    
+
     $.fn.bootstrapTable.locales['uk-UA'] = {
         formatLoadingMessage: function () {
             return 'Завантаження, будь ласка, зачекайте...';

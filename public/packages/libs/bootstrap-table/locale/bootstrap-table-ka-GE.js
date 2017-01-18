@@ -34,7 +34,7 @@
             return 'სვეტები';
         }
     };
-    
+
     $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['ka-GE']);
 
 })(jQuery);

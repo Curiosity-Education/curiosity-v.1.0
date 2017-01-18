@@ -144,7 +144,7 @@
                  <hr class="gst-hr-top">
                  <div class="row">
                     <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
-                 </div>  
+                 </div>
                  <hr class="gst-hr-bottom">
                  <div class="gst-information-list">
                   <div class="col-md-12 gst-col">
@@ -233,7 +233,7 @@
                  </div>
                 </div>
               </div>
-            </div>            
+            </div>
          </div>
        </div>
      </div>
