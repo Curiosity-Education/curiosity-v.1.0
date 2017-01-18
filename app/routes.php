@@ -147,6 +147,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('save', 'libraryPdfController@save');
 			Route::post('delete', 'libraryPdfController@delete');
 		});
+		// Manage Videos' Library
+		Route::group(array('prefix' =>  'admin-video'),function(){
+			Route::post('save', 'libraryVideoController@save');
+			Route::post('update', 'libraryVideoController@update');
+			Route::post('delete', 'libraryVideoController@delete');
+		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
@@ -270,6 +276,17 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 */
 Route::group(array('prefix' =>  'teacher'),function(){
 	Route::post('getWithSchool', 'teachersController@getWithSchool');
+	Route::post('getBySchool', 'teachersController@getBySchool');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to library videos.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'video'),function(){
+	Route::post('getByTopic', 'libraryVideoController@getByTopic');
 });
 
 /*
