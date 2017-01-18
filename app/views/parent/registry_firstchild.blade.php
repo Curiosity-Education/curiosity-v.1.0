@@ -26,7 +26,6 @@
 	<!--/.Navbar-->
 </head>
 <body id="rfc-bg">
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-12">
@@ -47,7 +46,6 @@
 					</div>
 				</a>
 				<br>
-
 				<div class="card rfc-rounded">
 					<div class="card-block">
 

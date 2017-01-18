@@ -8,11 +8,11 @@ $(function(){
     ranking.init();// init to ranking
   });
   sonRatesActivitiesCtrl.getMaxScoreAndHits(function(response){
+    console.log(response);
     document.getElementById('gst-score-max').innerHTML = response.data.score.puntaje;
     document.getElementById('gst-hits-max').innerHTML  = response.data.score.aciertos;
     pdfs    = response.data.pdf;//get pdfs for server+
     videos  = response.data.videos;
-    console.log(response);
     createElsementsVideos();//create element width video
     createElementsPdfs();//create element width pdf
   });
