@@ -187,7 +187,7 @@ var albvidController = {
                var formData = new FormData($("#albvid-form")[0]);
                formData.append("tema", $("#albvid_tpSel").val());
                formData.append("profesor", $("#albvid_teacher").val());
-               formData.append("embed", $("#albvid_link").val());
+               formData.append("embed", Curiosity.youtubeEmbed.makeCode($("#albvid_link").val()));
                var video = new Library_video(formData);
                Curiosity.toastLoading.show();
                video.save("POST", this.addSuccess);
@@ -206,7 +206,7 @@ var albvidController = {
                   var formData = new FormData($("#albvid-form")[0]);
                   formData.append("tema", $("#albvid_tpSel").val());
                   formData.append("profesor", $("#albvid_teacher").val());
-                  formData.append("embed", $("#albvid_link").val());
+                  formData.append("embed", Curiosity.youtubeEmbed.makeCode($("#albvid_link").val()));
                   var video = new Library_video(formData);
                   Curiosity.toastLoading.show();
                   video.update(this.id, "POST", this.updSuccess);
