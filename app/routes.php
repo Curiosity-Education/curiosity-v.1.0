@@ -87,10 +87,6 @@ Route::get('administer', function(){
     return View::make('administer.asociateSchool');
 });
 
-Route::get('childHelp', function(){
-    return View::make('parent.childHelp');
-});
-
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
