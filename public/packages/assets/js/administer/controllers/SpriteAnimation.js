@@ -1,23 +1,34 @@
 var SpriteAnimation = function (e, w, h, x, y, fps){
 
-	this.elemento = document.getElementById(e);
-	this.anchura = w;
-	this.altura = h;
-	this.cantidadCuadrosX = x;
-	this.cantidadCuadrosY = y;
-	this.iteracionX = 0;
-	this.iteracionY = 0;
-	this.velocidad = fps;
+	this.element = document.getElementById(e);
+   this.elementjq = $("#"+e);
+	this.widthFrame = w;
+	this.heightFrame = h;
+	this.fx = x;
+	this.fy = y;
+	this.iterationX = 0;
+	this.iterationY = 0;
+	this.speed = fps;
+   this.spreetsheet = "";
 
 	this.play = function(){
-		this.elemento.style.backgroundPosition = (this.iteracionX * this.anchura) + "px " + (this.iteracionY * this.altura) + "px";
-		if (this.iteracionX == this.cantidadCuadrosX) {
-			this.iteracionX = 0;
-			this.iteracionY += 1;
-			if (this.iteracionY == this.cantidadCuadrosY) {
-				this.iteracionY = 0;
+      this.elementjq.css({
+         "width": this.widthFrame+"px",
+         "height": this.heightFrame+"px",
+         "background-image": "url("+this.spreetsheet+")",
+         "background-position": this.widthFrame+"px "+this.heightFrame+"px",
+         "background-repeat": "repeat",
+         "transform": "scale(.85)",
+         "margin": "0 auto",
+      });
+		this.element.style.backgroundPosition = (this.iterationX * this.widthFrame) + "px " + (this.iterationY * this.heightFrame) + "px";
+		if (this.iterationX == this.fx) {
+			this.iterationX = 0;
+			this.iterationY += 1;
+			if (this.iterationY == this.fy) {
+				this.iterationY = 0;
 			}
 		}
-		this.iteracionX += 1;
-	};
+		this.iterationX += 1;
+	};   
 }

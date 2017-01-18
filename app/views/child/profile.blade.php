@@ -109,8 +109,9 @@
 	{{ HTML::script('/packages/assets/js/child/profile.js') }}
 	<script type="text/javascript">
 		$(function(){
-			var animation = new SpriteAnimation('childMenu-avatarContainerDiv', 195, 258, 18, 7, 40);
-			setInterval(function(){ animation.play(); }, animation.velocidad);
+			var animation = new SpriteAnimation('childMenu-avatarContainerDiv', 195, 258, 18, 7, 45);
+			animation.spreetsheet = "/packages/assets/media/images/avatar/sprites/sprite.png";
+			setInterval(function(){ animation.play(); }, animation.speed);
 		});
 	</script>
 @stop
