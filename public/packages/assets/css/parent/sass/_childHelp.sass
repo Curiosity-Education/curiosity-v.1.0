@@ -2,6 +2,11 @@
 @import "../../_standardVariables.sass"
 @import "../../_mixins.sass"
 
+#chp-banner
+  height: $height-banner
+  border-radius: $border-rad
+  +background-cover("/packages/assets/media/images/child/store/cstbannerskblue.jpg")
+
 /* sass section is for the global settings*?
 // This class makes a padding to the whole section
 .chp-help
@@ -15,6 +20,8 @@
 .chp-cards
   border-radius: $border-rad !important
   height: 14rem
+  @media (min-width: $smartphone-size-portrait - 20px) and (max-width: $smartphone-size-landscape)
+    height: auto
 //this class make all the btns rounded
 .chp-btn
   border-radius: $border-rad !important
@@ -30,6 +37,10 @@
     width: 3rem
   @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
     margin-top: .3rem
+  @media (min-width: $tablet-size-landscape - 200px) and (max-width: $desktop-size - 100px)
+    margin-top: 1rem !important
+
+
 //This section adds a scroll to the section and leaves a fixed height
 .chp-Weak-card
   height: auto
@@ -56,11 +67,12 @@
 //this secton accomodate the button from material section
 .chp-btn-mat
   @media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10)
-    padding-left: 6rem !important
+    padding-left: 0rem !important
   //media query for smartphone-size-portrait
   @media (min-width: $smartphone-size-portrait) and (max-width: $smartphone-size-landscape - 10)
     padding: 0
     padding-left: 2.2rem
+
 //this section accommodate the img from material section
 .chp-videoImg
   margin-top: -.5rem
@@ -79,6 +91,12 @@
   height: 40% !important
   @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
     height: 20% !important
+  @media (min-width: $tablet-size-landscape - 200px) and (max-width: $desktop-size - 50px)
+    height: 30% !important
+  @media (min-width: $smartphone-size-portrait - 20px) and (max-width: $smartphone-size-landscape)
+    height: 20% !important
+  @media (min-width: $smartphone-size-landscape - 10px) and (max-width: $tablet-size-portrait - 50px)
+    height: 27% !important
 
 .chp-border
   //media query for smartphone-size-portrait
@@ -88,16 +106,21 @@
     border-top: solid 1px $color-gray-light
     padding-top: 1rem
 
+
 .chp-border-left
   border-left: .09rem solid $color-gray-light !important
   @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
     border-left: 0rem solid $color-gray-light !important
-
+  @media (min-width: $smartphone-size-portrait - 20px) and (max-width: $smartphone-size-landscape)
+    border-left: 0rem solid $color-gray-light !important
 /*sass section for bookshopsection*/
 //this class change the color of the btn in bookshop section
 .chp-btn-bookshop
   background-color: $color-warning-dark
   letter-spacing: 3px
+  @media (min-width: $tablet-size-landscape - 200px) and (max-width: $desktop-size - 50px)
+    width: 99% !important
+    letter-spacing: 0px
 //this section accomodate the btn from bookshop section
 .chp-btn-book
   padding-top: 1rem
@@ -116,6 +139,8 @@
     display: block
     margin-left: auto
     margin-right: auto
+    height: 0% !important
+
 
 .chp-cardTopic
   border-radius: $border-rad !important
@@ -126,8 +151,17 @@
 
 #chp-contentTopics
   height: 26rem
+  padding: .7rem !important
   overflow-y: scroll
+  @media (min-width: $tablet-size-landscape - 200px) and (max-width: $desktop-size - 50px)
+    height: 24rem
 
 #chp-contentMaterial
   @media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape - 50px)
     height: auto !important
+  .card-block
+    @media (min-width: $smartphone-size-landscape - 30px) and (max-width: $tablet-size-portrait - 50px)
+      display: flex !important
+
+.chp-panels
+  margin-top: 1rem
