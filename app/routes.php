@@ -155,6 +155,15 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
         });
 
     });
+
+    // Plans
+    Route::group(array('prefix' =>  'plans-admin'),function(){
+        Route::post('all', 'plansController@all');
+        Route::post('save', 'plansController@save');
+        Route::post('update', 'plansController@update');
+        Route::post('delete', 'plansController@delete');
+
+    });
 	// Manage School asociated
 	 Route::group(array('prefix' =>  'schoolasc'),function(){
 		 Route::post('save', 'schoolAscController@save');
