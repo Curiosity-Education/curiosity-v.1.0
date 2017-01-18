@@ -107,4 +107,10 @@
 @section('js-plus')
 	{{ HTML::script('/packages/libs/chart/Chart.min.js') }}
 	{{ HTML::script('/packages/assets/js/child/profile.js') }}
+	<script type="text/javascript">
+		$(function(){
+			var animation = new SpriteAnimation('childMenu-avatarContainerDiv', 195, 258, 18, 7, 40);
+			setInterval(function(){ animation.play(); }, animation.velocidad);
+		});
+	</script>
 @stop
