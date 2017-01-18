@@ -169,7 +169,7 @@ var Curiosity = {
    },
 
    youtubeEmbed : {
-      makeCode : function(){
+      makeCode : function(url){
          var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
          var match = url.match(regExp);
          if (match && match[2].length == 11) {
@@ -180,7 +180,7 @@ var Curiosity = {
             return null;
          }
       },
-      validLink : function(){
+      validLink : function(codeEmbed){
          if(/^www\.youtube\.com\/embed\/\S*$/.test(codeEmbed)){
             return true;
          }
