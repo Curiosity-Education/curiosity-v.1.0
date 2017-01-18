@@ -33,11 +33,11 @@
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
                         <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up flex-center" id="slideBtn"><i class="fa fa-bars"></i></a>
-
                         <a href="#" class="hidden-md-down">
-                        	<div class="chip hoverable" id="logOut-btn">
-								<img src="packages/assets/media/images/system/iconLogOut.png" alt="Contact Person"> Cerrar Sesión
-							</div>
+                           <div class="chip hoverable" id="logOut-btn">
+                              <img src="packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
+                              Cerrar Sesión
+                           </div>
                         </a>
                      </li>
                   </ul>
@@ -55,7 +55,9 @@
                         <div class="menu fixedElement z-depth-1">
                            @yield('menu-title')
                            @yield('menu-photo')
-                           @yield('menu-links')
+                           <div class="linksMenu">
+                              @yield('menu-links')
+                           </div>
                         </div>
                      </div>
                   </div>
