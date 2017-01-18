@@ -12,8 +12,9 @@ $(function(){
     document.getElementById('gst-hits-max').innerHTML  = response.data.score.aciertos;
     pdfs    = response.data.pdf;//get pdfs for server+
     videos  = response.data.videos;
-    console.log(pdfs);
-    createElements();//create element width pdf
+    console.log(response);
+    createElsementsVideos();//create element width video
+    createElementsPdfs();//create element width pdf
   });
   ranking.setEventClick(function(event){//add event click to ranking 
     var starAverage = $(this).index();// get value for set to ranking in data stars
@@ -25,30 +26,46 @@ $(function(){
     });
   });
   $("#gst-materialPdf").click(function(event){
-    if(!$("#gst-modal-pdf-video").hasClass('.gst-pdf-active')){
+    if(!$("#gst-modal-pdf-video").hasClass('gst-pdf-active')){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($pdfs);
       //set information in modal
       $(".gst-information-list>div").children().first().addClass('active');
+      $("#gst-modal-pdf-video").removeClass('gst-video-active');
+      $("#gst-modal-pdf-video").addClass("gst-pdf-active");
       setInformationModal();
     }
-    $("#gst-modal-pdf-video").removeClass('.gst-video-active');
-    $("#gst-modal-pdf-video").addClass(".gst-pdf-active");
   });
+  $("#gst-materialVideo").click(function(event){
+    if(!$("#gst-modal-pdf-video").hasClass('gst-video-active')){
+      $(".gst-information-list").empty();
+      $(".gst-information-list").append($videos);
+      //set information in modal
+      $(".gst-information-list>div").children().first().addClass('active');
+      $("#gst-modal-pdf-video").removeClass("gst-pdf-active");      
+      $("#gst-modal-pdf-video").addClass('gst-video-active');
+      setInformationModal();
+    }
+  });
+
   function setInformationModal(){//fumction for set information of item active in modal
-    var $pdfActive = $(".gst-information-list>div>.media.active");
+    var $active = $(".gst-information-list>div>.media.active");
     //set data in modal
-    $("#gst-video-pdf").attr("src","/packages/assets/pdf/"+$pdfActive.data("name"));//set src of pdf in embed element
-    $(".gst-tema-content").text($pdfActive.find(".media-heading").text());
-    $(".gst-name-content").text($pdfActive.find("p.gst-name-content-list").text());
-    $(".gst-views-content").text($pdfActive.find("p.gst-views-content-list").text());
+    if(!$("#gst-modal-pdf-video").hasClass('gst-video-active')){
+      $("#gst-iframe-content").attr("src","/packages/assets/pdf/"+$active.data("name"));//set src of pdf in embed element
+    }else{
+      $("#gst-iframe-content").attr("src",$active.data("name"));//set src of pdf in embed element
+    }
+    $(".gst-tema-content").text($active.find(".media-heading").text());
+    $(".gst-name-content").text($active.find("p.gst-name-content-list").text());
+    $(".gst-views-content").text($active.find("p.gst-views-content-list").text());
   }
   $("#gst-modal-pdf-video").on("click",".media",function(event){//event click en item elemene of library pdf
     $("#gst-modal-pdf-video .media").removeClass('active');
     $(this).addClass('active');
     setInformationModal();
   });
-  function createElements(){// function for create elements with pdf information and add in dom element
+  function createElementsPdfs(){// function for create elements with pdf information and add in dom element
     $pdfs = $("<div/>");
     $.each(pdfs,function(index,pdf){
       $pdfs.append($(
@@ -65,6 +82,24 @@ $(function(){
               '</div>'+
           '</div>'
       ));
+    });
+  }
+  function createElsementsVideos(){
+    //all code here
+    $videos = $("<div/>");
+    $.each(videos,function(index,video){
+           $videos.append('<div class="media hoverable" data-name="'+video.embed+'">'+
+              '<a class="media-left waves-light col-md-4">'+
+                  '<img class="img-fluid" src="/packages/assets/media/images/posters/'+video.poster+'" alt="pdf ico">'+
+              '</a>'+
+              '<div class="media-body">'+
+                  '<h6 class="media-heading">'+video.nombre+'</h6>'+
+                  '<div class="media-body">'+
+                      '<p class="gst-views-content-list">Escuela: '+video.escuela+'</p>'+
+                      '<p class="gst-name-content-list">Profesor: '  +video.profesor+'</p>'+
+                  '</div>'+
+              '</div>'+
+          '</div>');
     });
   }
 });
