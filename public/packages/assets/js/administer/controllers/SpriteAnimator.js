@@ -1,4 +1,4 @@
-var SpriteAnimation = function (e, w, h, x, y, fps){
+var SpriteAnimator = function (e, w, h, x, y, fps){
 
 	this.element = document.getElementById(e);
    this.elementjq = $("#"+e);
@@ -30,5 +30,5 @@ var SpriteAnimation = function (e, w, h, x, y, fps){
 			}
 		}
 		this.iterationX += 1;
-	};   
+	};
 }

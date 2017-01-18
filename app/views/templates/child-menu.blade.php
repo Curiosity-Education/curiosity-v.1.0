@@ -66,6 +66,6 @@
 @section('js')
 <script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js"></script>
 <script src="/packages/assets/js/administer/models/Avatar.js"></script>
-<script src="/packages/assets/js/administer/controllers/SpriteAnimation.js"></script>
+<script src="/packages/assets/js/administer/controllers/SpriteAnimator.js"></script>
 @yield('js-plus')
 @stop
