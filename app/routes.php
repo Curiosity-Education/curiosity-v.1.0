@@ -204,7 +204,6 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update','activitiesController@updateGame');
 			Route::post('delete','activitiesController@deleteGame');
 		});
-	});
 
 /*
 * -----------------------------------------------------------------------------
