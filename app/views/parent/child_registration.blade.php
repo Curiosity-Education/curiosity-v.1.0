@@ -61,7 +61,7 @@
 		  </div>
       </div>
    </div>
-   <div class="col-md-5 col-lg-5 upch-col-upload-child">
+   <div class="col-md-5 col-lg-5 col-sm-6 upch-col-upload-child">
      <div class="row">
      	 <!--Rotating card-->
       <div class="card-wrapper">
@@ -86,13 +86,13 @@
               <!--/.Front Side-->
 
               <!--Back Side-->
-              <div class="face back">
+              <div class="face back" id="upch-content-formReg">
                   <!--Content-->
                   <h4 class="h4-responsive"><i class="fa fa-child"></i> Registro Nuevo Hijo</h4>
                   <hr>
                   <form class="upch-frm-child">
                     <!--Body-->
-                    <div class="tab-1 active animated fadeInUpBig">
+                    <div class="tab-1 active animated fadeIn">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
                         <input type="text" id="upch-username" name="upch-username" class="form-control">
@@ -108,15 +108,14 @@
                         <input type="text" id="upch-cpass" name="upch-cpass" class="form-control">
                         <label for="upch-cpass">Confirmar Contraseña</label>
                       </div>
-                      <div class="md-form">
-                        <h5 class="text-center">
-                          <i class="fa"></i>
-                          Promedio
-                        </h5>
+                      <div class="md-form upch-average">
+                        <h6 class="text-left">
+                          Promedio Actual de tu Hijo:
+                        </h6>
                        <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
                       </div>
                     </div>
-                    <div class="tab-2 animated fadeInUpBig">
+                    <div class="tab-2 animated fadeIn upch-tab2">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
                         <input type="text" id="upch-username" name="upch-username" class="form-control">
@@ -127,7 +126,7 @@
                         <input type="text" id="upch-username" name="upch-username" class="form-control">
                         <label for="upch-username">Apellido(s)</label>
                       </div>
-                       <div class="md-form">
+                       <div class="md-form upch-select">
                             <select class="mdb-select">
                                 <option value="" disabled selected>Sexo</option>
                                 <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>

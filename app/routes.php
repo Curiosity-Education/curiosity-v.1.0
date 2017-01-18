@@ -104,55 +104,83 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 
 /*
 * -----------------------------------------------------------------------------
+* Routes to manage the access to the acount.
+* -----------------------------------------------------------------------------
+*/
+Route::post('logIn', 'loginController@logIn');
+Route::get('logout', 'loginController@logOut');
+
+/*
+* -----------------------------------------------------------------------------
 * Routes to manage the content.
 * only for the administers into the system.
 * -----------------------------------------------------------------------------
 */
-// Route::group(array('before' => 'manage_content'),function(){
-	// Manage the levels
-	Route::group(array('prefix' =>  'levels'),function(){
-		Route::post('save', 'levelsController@save');
-		Route::post('update', 'levelsController@update');
-		Route::post('delete', 'levelsController@delete');
+Route::group(array('before' => 'auth'), function(){
+	Route::group(array('before' => 'manage_content'),function(){
+		// Manage the levels
+		Route::group(array('prefix' =>  'levels'),function(){
+			Route::post('save', 'levelsController@save');
+			Route::post('update', 'levelsController@update');
+			Route::post('delete', 'levelsController@delete');
+		});
+		// Manage the intelligences
+		Route::group(array('prefix' =>  'intelligences'),function(){
+			Route::post('save', 'intelligencesController@save');
+			Route::post('update', 'intelligencesController@update');
+			Route::post('delete', 'intelligencesController@delete');
+		});
+		// Manage the Blocks
+		Route::group(array('prefix' =>  'blocks'),function(){
+			Route::post('save', 'blocksController@save');
+			Route::post('update', 'blocksController@update');
+			Route::post('delete', 'blocksController@delete');
+		});
+		// Manage the Topics
+		Route::group(array('prefix' =>  'topics'),function(){
+			Route::post('save', 'topicsController@save');
+			Route::post('update', 'topicsController@update');
+			Route::post('delete', 'topicsController@delete');
+		});
+		// Manage PDF's Library
+		Route::group(array('prefix' =>  'pdfs'),function(){
+			Route::post('save', 'libraryPdfController@save');
+			Route::post('delete', 'libraryPdfController@delete');
+		});
+		// Manage Videos' Library
+		Route::group(array('prefix' =>  'admin-video'),function(){
+			Route::post('save', 'libraryVideoController@save');
+			Route::post('update', 'libraryVideoController@update');
+			Route::post('delete', 'libraryVideoController@delete');
+		});
 	});
-	// Manage the intelligences
-	Route::group(array('prefix' =>  'intelligences'),function(){
-		Route::post('save', 'intelligencesController@save');
-		Route::post('update', 'intelligencesController@update');
-		Route::post('delete', 'intelligencesController@delete');
+	Route::group(array('before' => 'manage_school_aliance'),function(){
+		// Manage School asociated
+		Route::group(array('prefix' =>  'schoolasc'),function(){
+			Route::post('save', 'schoolAscController@save');
+			Route::post('update', 'schoolAscController@update');
+			Route::post('delete', 'schoolAscController@delete');
+		});
 	});
-	// Manage the Blocks
-	Route::group(array('prefix' =>  'blocks'),function(){
-		Route::post('save', 'blocksController@save');
-		Route::post('update', 'blocksController@update');
-		Route::post('delete', 'blocksController@delete');
+	Route::group(array('before' => 'manage_teacher_aliance'),function(){
+		// Manage Teachers asociated
+		Route::group(array('prefix' =>  'admin-teacher'),function(){
+			Route::post('save', 'teachersController@save');
+			Route::post('update', 'teachersController@update');
+			Route::post('delete', 'teachersController@delete');
+		});
 	});
-	// Manage the Topics
-	Route::group(array('prefix' =>  'topics'),function(){
-		Route::post('save', 'topicsController@save');
-		Route::post('update', 'topicsController@update');
-		Route::post('delete', 'topicsController@delete');
-	});
-	// Manage PDF's Library
-	Route::group(array('prefix' =>  'pdfs'),function(){
-		Route::post('save', 'libraryPdfController@save');
-		Route::post('delete', 'libraryPdfController@delete');
-	});
-    // Activities
-    Route::group(array('prefix' =>  'activity-admin'),function(){
-        Route::post('all', 'activitiesController@all');
-        Route::post('save', 'activitiesController@save');
-        Route::post('update', 'activitiesController@update');
-        Route::post('delete', 'activitiesController@delete');
-        Route::group(array('prefix' =>  'photo'),function(){
-           Route::post('update', 'activitiesController@changeImage');
-        });
+});
 
-        Route::group(array('prefix' =>  'game'),function(){
-            Route::post('save','activitiesController@saveGame');
-            Route::post('update','activitiesController@updateGame');
-            Route::post('delete','activitiesController@deleteGame');
-        });
+	// Activities
+	Route::group(array('prefix' =>  'activity-admin'),function(){
+		Route::post('all', 'activitiesController@all');
+		Route::post('save', 'activitiesController@save');
+		Route::post('update', 'activitiesController@update');
+		Route::post('delete', 'activitiesController@delete');
+		Route::group(array('prefix' =>  'photo'),function(){
+			Route::post('update', 'activitiesController@changeImage');
+		});
 
     });
 
@@ -171,6 +199,12 @@ Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
+		Route::group(array('prefix' =>  'game'),function(){
+			Route::post('save','activitiesController@saveGame');
+			Route::post('update','activitiesController@updateGame');
+			Route::post('delete','activitiesController@deleteGame');
+		});
+	});
 
 /*
 * -----------------------------------------------------------------------------
@@ -225,6 +259,7 @@ Route::group(array('prefix' =>  'pdfs'),function(){
 	Route::post('all', 'libraryPdfController@all');
 	Route::post('getByIntelligent', 'libraryPdfController@getByIntelligent');
 	Route::post('getByTopic', 'libraryPdfController@getByTopic');
+	Route::get('find-pdfs','activitiesPdfsController@findPdfs');
 });
 
 /*
@@ -248,6 +283,27 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
     Route::post('has-game','activitiesController@hasGame');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to teachers.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'teacher'),function(){
+	Route::post('getWithSchool', 'teachersController@getWithSchool');
+	Route::post('getBySchool', 'teachersController@getBySchool');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to library videos.
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'video'),function(){
+	Route::post('getByTopic', 'libraryVideoController@getByTopic');
 });
 
 /*

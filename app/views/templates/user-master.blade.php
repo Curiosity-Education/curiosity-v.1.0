@@ -78,6 +78,7 @@
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
       <script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
       <script src="/packages/assets/js/Curiosity.js"></script>
+      <script src="/packages/assets/js/landing/controllers/loginController.js"></script>
       <script src="/packages/assets/js/app-master.js"></script>
       <script src="/packages/assets/js/config/db/corm.js"></script>
       <script src="/packages/assets/js/config/db/database.js"></script>

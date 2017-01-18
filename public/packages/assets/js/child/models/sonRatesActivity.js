@@ -23,7 +23,10 @@ class SonRatesActivity extends CORM {
     static find(id,method,success){
         super.find({id:id},method,success,'/sonRatesActivity');
     }
-    static getCurrent(method,success){
-        super.find(null,method,success,'/sonRatesActivity');
+    static getCurrent(success){
+        super.find(null,'GET',success,'/sonRatesActivity');
+    }
+    static getMaxScoreAndHits(success){
+        super.find(null,'POST',success,'/sonRatesActivity');
     }
 }

@@ -44,4 +44,7 @@ class Activity extends CORM{
     static getRecomended(success){
     	super.any(null,"GET",success,"/activity","find-recomended");
     }
+    static getPdfs(success){
+        super.any(null,"GET",success,"/pdfs","find-pdfs");
+    }
 }

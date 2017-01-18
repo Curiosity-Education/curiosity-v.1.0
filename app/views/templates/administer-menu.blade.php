@@ -32,7 +32,7 @@
       <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-topics">
          <span class="fa fa-cube"></span>&nbsp; Temas
       </a>
-      <a class="dropdown-item msad-item waves-effect" href="#">
+      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-activities">
          <span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)
       </a>
    </div>
@@ -41,7 +41,7 @@
    <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
    Escuelas de apoyo
 </div>
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="view-administer.admin-teachers" class="linkMenu waves-effect">
    <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
    Profesores de apoyo
 </div>
@@ -49,7 +49,7 @@
    <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
    Biblioteca de Pdfs
 </div>
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="view-administer.admin-libraryVideos" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
    Biblioteca de Videos
 </div>

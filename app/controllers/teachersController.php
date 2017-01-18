@@ -1,129 +1,107 @@
 <?php
 class teachersController extends BaseController{
 
-	function verPagina(){
-    if(Request::method()=="GET"){
-      $school = array('escuelas'=>escuela::where('active', '=', 1)->get());
-      return View::make('vista_profesores_admin', $school);
-    }
-    else{
-      $form = Input::all();
-      $rules = array(
-        'nombre' => 'required',
-        'apellido_paterno' => 'required',
-        'escuela_id' => 'required'
-      );
-      $messages = [
-             "required"    =>  "Este campo :attribute es requerido",
-             "alpha"       =>  "Solo puedes ingresar letras",
-             "date"        =>  "Formato de fecha invalido",
-             "numeric"     =>  "Solo se permiten digitos",
-             "email"       =>  "Ingresa un formato de correo valido",
-             "unique"      =>  "Este usuario ya existe",
-             "integer"     =>  "Solo se permiten numeros enteros",
-             "exists"      =>  "El campo :attribute no existe en el sistema",
-             "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-             "integer"     =>  "Solo puedes ingresar numeros enteros",
-             "same"        =>  "Las contraseñas no coinciden",
-             "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-       ];
-      $validate = Validator::make($form, $rules, $messages);
-      if($validate->fails()){
-        return $validarte>messages();
-      }
-      else{
-        if($form['foto'] != null){
-          $destinationPath = public_path()."/packages/images/profesores/";
-          $file = $form['foto'];
-          $file->move($destinationPath, $file->getClientOriginalName());
-          $thePhoto = $form['foto']->getClientOriginalName();
-        }
-        else{
-          $thePhoto = 'prof-default.jpg';
-        }
-        $teacher = new profesor($form);
-        $teacher->photo = $thePhoto;
-        $teacher->save();
-        return Response::json(array(0=>"success"));
-      }
-    }
-  }
+	public function all(){
+		$th = Teacher::where("active", "=", 1)->get();
+		return $th;
+	}
 
-  function update(){
-    $form = Input::all();
-    $rules = array(
-      'nombre' => 'required',
-      'apellido_paterno' => 'required',
-      'escuela_id' => 'required'
-    );
-    $messages = [
-           "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",
-           "date"        =>  "Formato de fecha invalido",
-           "numeric"     =>  "Solo se permiten digitos",
-           "email"       =>  "Ingresa un formato de correo valido",
-           "unique"      =>  "Este usuario ya existe",
-           "integer"     =>  "Solo se permiten numeros enteros",
-           "exists"      =>  "El campo :attribute no existe en el sistema",
-           "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-           "integer"     =>  "Solo puedes ingresar numeros enteros",
-           "same"        =>  "Las contraseñas no coinciden",
-           "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-     ];
-    $validate = Validator::make($form, $rules, $messages);
-    if($validate->fails()){
-      return $validate->messages();
-    }
-    else{
-      $photo;
-      if($form['foto'] != null){
-        $destinationPath = public_path()."/packages/images/profesores/";
-        $file = $form['foto'];
-        $file->move($destinationPath, $file->getClientOriginalName());
-        $photo = $file->getClientOriginalName();
-      }
-      else{
-        $photo = profesor::where('id', '=', $form['id'])->pluck('foto');
-      }
-      profesor::where('id', '=', $form['id'])->update(array(
-        'nombre' => $form['nombre'],
-        'apellido_paterno' => $form['apellido_paterno'],
-        'apellido_materno' => $form['apellido_materno'],
-        'email' => $form['email'],
-        'gustos' => $form['gustos'],
-        'foto' => $photo,
-        'escuela_id' => $form['escuela_id']
-      ));
-      return Response::json(array(0=>"success"));
-    }
-  }
+	public function getBySchool(){
+		$id = Input::all();
+		$th = Teacher::join("escuelas_apoyo", "profesores_apoyo.escuela_id", "=", "escuelas_apoyo.id")
+		->where("profesores_apoyo.escuela_id", "=", $id)
+		->where("profesores_apoyo.active", "=", 1)
+		->where("escuelas_apoyo.active", "=", 1)
+		->select("profesores_apoyo.*")
+		->get();
+		return $th;
+	}
 
-  function remove(){
-    $form = Input::get('data');
-    profesor::where('id', '=', $form['id'])->update(array(
-      'active' => 0
-    ));
-  }
-
-  function getTeacherInfo()
-  {
-    return profesor::join('escuelas', 'escuelas.id', '=', 'profesores.escuela_id')
-    ->where('profesores.active', '=', 1)
-    ->where('escuelas.active', '=', 1)
-    ->select('profesores.*', 'escuelas.nombre as escuela_nombre', 'escuelas.id as escuela_id')
-    ->get();
-  }
-
-	function get(){
-
+	public function getWithSchool(){
+		$th = Teacher::join("escuelas_apoyo", "profesores_apoyo.escuela_id", "=" , "escuelas_apoyo.id")
+		->where("profesores_apoyo.active", "=", 1)
+		->where("escuelas_apoyo.active", "=", 1)
+		->select(
+			"profesores_apoyo.*",
+			"escuelas_apoyo.nombre as escuelaNombre",
+			"escuelas_apoyo.id as escuelaId")
+		->orderBy("profesores_apoyo.id", "desc")
+		->get();
+		return $th;
 	}
 
 	function save(){
-
+		$data = Input::all();
+      $rules = array(
+			'nombre' => 'required',
+			'apellidos' => 'required',
+			'email' => 'required|email',
+			'escuela' => 'required'
+		);
+      $msjs = Curiosity::getValidationMessages();
+      $validation = Validator::make($data, $rules, $msjs);
+      if($validation->fails()){
+			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+      }
+		else{
+			if($data['ateach_photo'] != null){
+				$destinationPath = public_path()."/packages/assets/media/images/teachersAsc/";
+				$file = $data['ateach_photo'];
+				$phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+				$file->move($destinationPath, $phName);
+			}
+			else{
+				$phName = 'teacherDefProfileImage.png';
+			}
+			$teacher = new Teacher($data);
+			$teacher->foto = $phName;
+			$teacher->escuela_id = $data["escuela"];
+			$teacher->active = 1;
+			$teacher->save();
+			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $teacher));
+		}
 	}
 
-	function delete(){
+  function update(){
+    $form = Input::all();
+	 $file = $form['ateach_photo'];
+	 $rules = array(
+		 'nombre' => 'required',
+		 'apellidos' => 'required',
+		 'email' => 'required|email',
+		 'escuela' => 'required'
+	 );
+    $msjs = Curiosity::getValidationMessages();
+    $validate = Validator::make($form, $rules, $msjs);
+    if($validate->fails()){
+      return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+    }
+    else{
+		$teacherUpd = Teacher::where("id", "=", $form['id'])->first();
+      if($file != null){
+        $destinationPath = public_path()."/packages/assets/media/images/teachersAsc/";
+		  $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+        $file->move($destinationPath, $phName);
+		  if ($teacherUpd->foto != "teacherDefProfileImage.png"){
+		  	unlink($destinationPath.$teacherUpd->foto);
+		  }
+		  $teacherUpd->foto = $phName;
+      }
+		$teacherUpd->nombre = $form['nombre'];
+		$teacherUpd->apellidos = $form['apellidos'];
+		$teacherUpd->email = $form['email'];
+		$teacherUpd->escuela_id = $form['escuela'];
+		$teacherUpd->save();
+      return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $teacherUpd));
+    }
+  }
 
+	function delete(){
+		$id = Input::all();
+		Teacher::where("id", "=", $id)->update(array(
+			"active" => 0
+		));
+		return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => null));
 	}
 }
 ?>

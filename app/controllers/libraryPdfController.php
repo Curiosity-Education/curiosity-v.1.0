@@ -52,6 +52,7 @@ class libraryPdfController extends BaseController{
 				$lb->tema_id = $data['tema'];
 				$lb->save();
 				$file->move($path, $pdfName);
+				activitiesPdfsController::saveFromLibrary($lb);
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $lb));
 			}
 		}

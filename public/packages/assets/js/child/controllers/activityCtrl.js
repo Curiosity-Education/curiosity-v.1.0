@@ -10,5 +10,8 @@ var activityCtrl = {
 	},
 	getRecomendies: function(success){
 		Activity.getPopulars(success);
+	},
+	getPdfs: function(success){
+		Activity.getPdfs(success);
 	}
 };

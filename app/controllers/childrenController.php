@@ -63,15 +63,21 @@ class childrenController extends BaseController{
           //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
             $user->save();
             if($roleDad == "parent"){
-                $myRole = Role::where('name', '=', 'child')->pluck('id');
+                $myRole = (integer)DB::table('roles')
+                            ->select('id')
+                            ->where('name','=','child')
+                            ->first()->id;/*Role::where('name', '=', 'child')->pluck('id');*/
+
             }
-            $user->attachRole($myRole);
+            //$user->attachRole($myRole);
             $person                = new Person($data);
+            $person->nombre        = $data["name"];
+            $person->apellidos     = $data["surnames"];
             $person->user_id       = $user->id;
             $person->save();
             $son                   = new Son();
             $son->persona_id       = $person->id;
-            $id_dad = Auth::user()->Person()->first()->Parent()->first()->id;
+            $id_dad = 12;//Auth::user()->Person()->first()->Parent()->first()->id;
             $son->padre_id         = $id_dad;
             $son->promedio_inicial = $data["average"];
             $son->save();
