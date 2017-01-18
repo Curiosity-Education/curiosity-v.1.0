@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'cdbr-85c1502512-3.cloudapp.net',
+			'host'      => 'localhost',
 			'database'  => 'curiosity_db',
-			'username'  => 'u177700d1e3feb',
-			'password'  => 'pe72e6baccfc58',
+			'username'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

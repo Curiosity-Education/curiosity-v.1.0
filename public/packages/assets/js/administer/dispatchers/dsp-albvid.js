@@ -82,7 +82,8 @@ $(function(){
    });
 
    $(".albvid-close").click(function() {
-      $("#albvid_embedPrev").attr("src", "");
+      $("#albvid-preview").modal("hide");
+      $("#albvid_embedPrev").removeAttr('src');
    });
 
 });

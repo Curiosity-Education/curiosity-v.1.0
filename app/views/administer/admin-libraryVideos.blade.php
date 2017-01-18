@@ -118,11 +118,11 @@
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header albvid-modal-header">
-           <button type="button" class="close albvid-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <button type="button" class="close albvid-close">&times;</button>
            <h4 class="modal-title" id=""></h4>
          </div>
          <div class="modal-body albvid-modal-body">
-            <embed src="" width="300" height="300" id="albvid_embedPrev">
+            <iframe src="" width="300" height="300" id="albvid_embedPrev" style="border:none;"></iframe>
          </div>
          <div class="modal-footer albvid-modal-footer"></div>
        </div>
