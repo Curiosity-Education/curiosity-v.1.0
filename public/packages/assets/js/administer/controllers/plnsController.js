@@ -103,7 +103,7 @@ var plnsController = {
             Curiosity.noty.success("Registro exitoso", "Bien hecho");
             $("#"+plnsController.prefix+"-modal").modal("hide");
             plnsController.clearInputs();
-            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.name+"</td><td><button type='button' class='btn msad-table-btnConf "+this.prefix+"-btnConf "+response.data.id+"Name "+response.data.id+"id' data-info='"+JSON.stringify(response.data)+"' data-reference='"+response.data.reference+"' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel "+plnsController.prefix+"-btnDel "+response.data.id+"id' data-reference='"+response.data.reference+"' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
+            var newRow = "<tr id='"+response.data.id+"'><td class='tdName'>"+response.data.name+"</td><td><button type='button' class='btn msad-table-btnConf "+plnsController.prefix+"-btnConf "+response.data.id+"Name "+response.data.id+"id' data-info='"+JSON.stringify(response.data)+"' data-reference='"+response.data.reference+"' data-dti='"+response.data.id+"' data-dtn='"+response.data.nombre+"'><span class='fa fa-gears'></span></button><button type='button' class='btn btn-outline-default msad-table-btnDel "+plnsController.prefix+"-btnDel "+response.data.id+"id' data-reference='"+response.data.reference+"' data-dti='"+response.data.id+"'><span class='fa fa-trash-o'></span></button></td></tr>";
             $("#"+plnsController.prefix+"-table tbody").append(newRow);
             break;
          case "CU-103":
