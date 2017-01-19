@@ -302,6 +302,59 @@ Route::group(array('prefix' =>  'video'),function(){
 });
 
 /*
+* -----------------------------------------------------------------------------
+* Routes to avatar
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'avatar'),function(){
+	Route::post('all', 'avatarController@all');
+	Route::post('getForChild', 'avatarController@getForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to item groups (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'itemGroup'),function(){
+	Route::post('all', 'itemGroupsController@all');
+	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to items (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'item'),function(){
+	Route::post('all', 'itemController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to sprites (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sprite'),function(){
+	Route::post('all', 'spriteController@all');
+	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to secuences (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'secuence'),function(){
+	Route::post('all', 'secuenceController@all');
+});
+
+/*
 *   Register for users
 */
 /*

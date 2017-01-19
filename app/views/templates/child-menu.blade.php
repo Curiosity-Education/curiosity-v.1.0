@@ -66,6 +66,16 @@
 @section('js')
 <script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js"></script>
 <script src="/packages/assets/js/administer/models/Avatar.js"></script>
+<script src="/packages/assets/js/administer/models/ItemGroup.js"></script>
+<script src="/packages/assets/js/administer/models/Item.js"></script>
+<script src="/packages/assets/js/administer/models/Secuence.js"></script>
+<script src="/packages/assets/js/administer/models/Sprite.js"></script>
 <script src="/packages/assets/js/administer/controllers/SpriteAnimator.js"></script>
+<script type="text/javascript">
+   $(function(){
+      Sprite.any(null, "POST", function(r){ StorageDB.table.create("spritesChild", r); }, "getByAvatarForChild");
+      Secuence.all("POST", function(r){ StorageDB.table.create("secuences", r); });
+   });
+</script>
 @yield('js-plus')
 @stop
