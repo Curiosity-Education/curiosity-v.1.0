@@ -85,6 +85,7 @@
       <script src="/packages/assets/js/config/db/corm.js"></script>
       <script src="/packages/assets/js/config/db/database.js"></script>
       <script src="/packages/assets/js/config/request/request.js"></script>
+      <script src="/packages/assets/js/config/db/StorageDB.js"></script>
       @yield('js')
    </body>
 </html>
