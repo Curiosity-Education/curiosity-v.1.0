@@ -113,3 +113,9 @@ Route::filter('manage_teacher_aliance',function(){
        return View::make('errors.404');
    }
 });
+
+Route::filter('manage_employees',function(){
+   if(!Entrust::can('manage_employees')){
+       return View::make('errors.404');
+   }
+});
