@@ -50,21 +50,53 @@
    <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
    Biblioteca de Videos
 </div>
+<div data-url="view-administer.admin-plans" class="linkMenu waves-effect">
+   <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
+   Planes
+</div>
 @stop
 
 @section('menu-links-aside')
-<!-- <div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-home" id="msad-icon-home"></span>&nbsp;
-   Inicio
+<div data-url="view-administer.admin-levels" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Niveles (Grados)
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-youtube-play" id="msad-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+<div data-url="view-administer.admin-intelligences" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Inteligencias (Materias)
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-file-pdf-o" id="msad-icon-files"></span>&nbsp;
-   Biblioteca de archivos
-</div> -->
+<div data-url="view-administer.admin-blocks" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Bloques
+</div>
+<div data-url="view-administer.admin-topics" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Temas
+</div>
+<div data-url="view-administer.admin-activities" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Actividades (Juegos)
+</div>
+<div data-url="view-administer.asociateSchool" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
+   Escuelas de apoyo
+</div>
+<div data-url="view-administer.admin-teachers" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
+   Profesores de apoyo
+</div>
+<div data-url="view-administer.admin-libraryPdfs" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
+   Biblioteca de Pdfs
+</div>
+<div data-url="view-administer.admin-libraryVideos" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
+   Biblioteca de Videos
+</div>
+<div data-url="view-administer.admin-plans" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
+   Planes
+</div>
 @stop
 
 @section('content')
