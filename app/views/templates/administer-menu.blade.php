@@ -97,6 +97,10 @@
    <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
    Planes
 </div>
+<div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
+   <span class="fa fa-caret-right msad-icon-exit" id="msad-icon-exit"></span>&nbsp;
+   Salir
+</div>
 @stop
 
 @section('content')
