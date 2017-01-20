@@ -57,7 +57,7 @@
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect">
+<div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right childMenu-icon-exit" id="childMenu-icon-exit"></span>&nbsp;
    Salir
 </div>
