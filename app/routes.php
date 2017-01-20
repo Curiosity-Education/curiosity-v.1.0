@@ -96,7 +96,15 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
             'method' => "^[a-zA-Z]*$"
         )
     );
-Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to access the views when need a log In
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('before' => 'auth'), function(){
+	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+});
 
 /*
 * -----------------------------------------------------------------------------
