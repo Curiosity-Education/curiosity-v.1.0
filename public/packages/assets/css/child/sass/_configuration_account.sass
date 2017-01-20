@@ -2,6 +2,9 @@
 @import "../../_standardVariables.sass"
 @import "../../_mixins.sass"
 
+.ca-btn-default
+	background-color: $color-default !important
+
 .ca-card
 	border-radius: $border-rad
 	.activator
@@ -22,6 +25,7 @@
 		height: 80% !important
 
 .ca-btnConf
+	@extend .ca-btn-default
 	@media (min-width: $tablet-size-portrait - 20px) and (max-width: $tablet-size-landscape)
 		margin-top: 3rem !important
 
@@ -70,3 +74,19 @@
 	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait - 10px)
 		display: block
 		position: static
+
+.ca-cancel
+	border-color: $color-warning-dark !important
+	color: $color-warning-dark !important
+	&:hover
+		border-color: $color-warning-dark !important
+		color: $color-warning-dark !important
+	&:active
+		border-color: $color-warning-dark !important
+		color: $color-warning-dark !important
+
+.ca-save
+	background-color: $color-success-light !important
+
+.ca-next
+	background-color: $color-secondary !important
