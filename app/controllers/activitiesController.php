@@ -3,9 +3,16 @@ use App\Models\File;
 class activitiesController extends BaseController{
 
 	function get(){
-		$id = Input::get('data.id');
-		$activity = Activity::where('id', '=', $id)->get();
-		return $activity;
+        try{
+            if(Request::method() == Method::POST){
+                $id = Input::get('data.id');
+                $activity = Activity::where('id', '=', $id)->get();
+                return $activity;
+            }
+        }
+        catch(Exception $e){
+            return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
+        }
 	}
 
 	function all(){
