@@ -11,7 +11,8 @@ class viewsController extends BaseController{
       "administer.admin-topics" => "manage_content",
       "administer.admin-teachers" => "manage_teacher_aliance",
       "administer.asociateSchool" => "manage_school_aliance",
-      "administer.admin-employees" => "manage_employees",
+      "administer.admin-employees" => "manage_administrative",
+      "administer.admin-salescode" => "manage_administrative"
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
