@@ -171,7 +171,7 @@
           <!-- Fin de la zona de paneles-->
       </div>
     @stop
-@section('js')
+@section('js-plus')
   <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js"></script>
   <script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
   <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
