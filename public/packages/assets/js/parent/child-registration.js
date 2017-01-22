@@ -111,7 +111,9 @@ $(function(){
 	//validation data for register child
 	$formChild.validate({
 		rules:{
-			username:{required:true,maxlength:50},
+			username:{required:true,maxlength:50,remote:{
+				"url":""
+			}},
 			name:{required:true,maxlength:100},
 			surnames:{required:true,maxlength:100},
 			password:{required:true,minlength:5},

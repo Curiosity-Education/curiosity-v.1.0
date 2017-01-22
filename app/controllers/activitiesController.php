@@ -18,7 +18,7 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'eneabled')
+		->where('actividades.estatus', '=', 'unlock')
 		->select(
 		'actividades.id as activityId',
 		'actividades.nombre as activityName',
@@ -52,21 +52,17 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'eneabled')
+		->where('actividades.estatus', '=', 'unlock')
 		->select('actividades.*',
 		'temas.nombre as topicName',
 		'bloques.nombre as blockName',
 		'inteligencias.nombre as intelligenceName',
 		'niveles.nombre as levelName')
 		->orderBy('actividades.id', 'desc')
+		->limit(6)
 		->get();
 		//this format message is for developer
-		return Response::json(array(
-			'status' 		=>  200,
-			'statusMessage' => 'success',
-			'message'		=> 'Datos obtenidos correctamente!!',
-			'data'			=> $activities
-    	));
+		return $activities;
 	}
 
 	function getPopulars(){
@@ -79,25 +75,21 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'eneabled')
+		->where('actividades.estatus', '=', 'unlock')
 		->select('actividades.*',
 		'temas.nombre as topicName',
 		'bloques.nombre as blockName',
 		'inteligencias.nombre as intelligenceName',
 		'niveles.nombre as levelName')
 		->orderBy('vistos', 'desc')
+		->limit(6)
 		->get();
 		//this format message is for developer
-		return Response::json(array(
-			'status' 		=>  200,
-			'statusMessage' => 'success',
-			'message'		=> 'Datos obtenidos correctamente!!',
-			'data'			=> $populars
-    	));
+		return $populars;
 	}
 
 	function getMaxRank(){
-		$activities = Activity::where('active', '=', 1)->where('estatus', '=', 'eneabled')->select('id')->groupBy('id')->get();
+		$activities = Activity::where('active', '=', 1)->where('estatus', '=', 'unlock')->select('id')->groupBy('id')->get();
 		$rankingGroup = array();
 		foreach ($activities as $key => $value) {
 			$average = round(DB::table('hijo_califica_actividades')
@@ -112,7 +104,7 @@ class activitiesController extends BaseController{
 			->where('bloques.active', '=', 1)
 			->where('inteligencias.active', '=', 1)
 			->where('niveles.active', '=', 1)
-			->where('actividades.estatus', '=', 'eneabled')
+			->where('actividades.estatus', '=', 'unlock')
 			->where('actividades.id', '=', $value->id)
 			->select('actividades.*',
 			'temas.nombre as topicName',
@@ -126,12 +118,7 @@ class activitiesController extends BaseController{
 		}
 		$rankingGroup = Curiosity::bubleSortObject($rankingGroup, 'average', 'desc');
 		//this format message is for developer
-		return Response::json(array(
-			'status' 		=>  200,
-			'statusMessage' => 'success',
-			'message'		=> 'Datos obtenidos correctamente!!',
-			'data'			=> $rankingGroup
-    	));
+		return  $rankingGroup;
 	}
 
 	function getRecomended(){
@@ -147,7 +134,7 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'eneabled')
+		->where('actividades.estatus', '=', 'unlock')
 		->where('personas.user_id', '=', Auth::user()->id)
 		->select(DB::raw("AVG( hijo_realiza_actividades.promedio ) as 'average',
 		actividades.*,
@@ -157,19 +144,27 @@ class activitiesController extends BaseController{
 		niveles.nombre as 'levelName'"))
 		->groupBy('actividades.nombre')
 		->orderBy('average')
+		->limit(6)
 		->get();
 		if (count($recomended) < 3){
 			$recomended = $this->getRecentsAdded();
 		}
 		//this format message is for developer
-		return Response::json(array(
-			'status' 		=>  200,
-			'statusMessage' => 'success',
-			'message'		=> 'Datos obtenidos correctamente!!',
-			'data'			=> $recomended
-    	));
+		return $recomended;
 	}
-
+	public function getAll(){//function for get alldata in homa page for child
+		$recents    = $this->getRecentsAdded();
+		$populars   = $this->getPopulars();
+		$ranks      = $this->getMaxRank();
+		$recomended = $this->getRecomended();
+		//this format message is for user
+        return Response::json(array(
+           'status'        =>  200,
+           'statusMessage' => 'success',
+           'message'       => 'Bien hecho, datos obtenidos correctamente!',
+           'data'          =>  ["recents"=>$recents,"populars"=>$populars,"ranks"=>$ranks,"recomended"=>$recomended]
+        ));
+	}
 	function save(){
 		$data = Input::all();
 		$rules = array(

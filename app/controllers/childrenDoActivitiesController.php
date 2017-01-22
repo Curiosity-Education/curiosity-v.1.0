@@ -1,4 +1,5 @@
 <?php
+use App\Models\File;
 class childrenDoActivitiesController extends BaseController{
 
 	function get(){
@@ -59,5 +60,34 @@ class childrenDoActivitiesController extends BaseController{
 	function delete(){
 
 	}
+	public function getGame(){
+		//get child current id
+		//$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+		//get Activity current id
+		//$activityId = Session::get('idActivity');
+		$activityId     = 9;
+		$file           =  File::where('actividad_id','=',$activityId)->where('active','=',"1")->select('*')->first();
+        $scoreAndHits   = ActivityDoneBySon::where('actividad_id','=',$activityId)
+                              ->where('hijo_id','=',27)
+                              ->where('puntaje','=',ActivityDoneBySon::max('puntaje'))
+                              ->select('puntaje','aciertos')
+                              ->first();
+		$sonRateActivity = SonRatesActivity::where("hijo_id","=","27")
+									->where("actividad_id","=","$activityId")
+									->first();
+        $data = ["folder"=>$file->carpeta];
+		if($sonRateActivity){
+			$data["qualification"] = $sonRateActivity->calificacion;
+		}
+		if($scoreAndHits){
+			$data["score"] = $scoreAndHits->puntaje;
+			$data["hits"]  = $scoreAndHits->aciertos;
+		}
+		if(!$scoreAndHits && !$sonRateActivity){ //child playes for first time
+			$data["score"]         = 0;
+			$data["qualification"] = 0;
+			$data["hits"]          = 0;
+		}
+		return View::make('child.game-start')->with("data",$data);
+	}
 }
-?>

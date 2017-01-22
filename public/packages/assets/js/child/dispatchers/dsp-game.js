@@ -3,14 +3,8 @@ $(function(){
   var ranking  = new Ranking(); //create instance for ranking class
   var pdfs,videos;//variables for save data json of videos and pdfs
   var $pdfs,$videos;//variables for save html content element videos and pdfs
-  sonRatesActivitiesCtrl.getCalification(function(response){
-    $(".curiosity-ranking").attr("data-stars",response.data);
-    ranking.init();// init to ranking
-  });
+  ranking.init();
   sonRatesActivitiesCtrl.getMaxScoreAndHits(function(response){
-    console.log(response);
-    document.getElementById('gst-score-max').innerHTML = response.data.score.puntaje;
-    document.getElementById('gst-hits-max').innerHTML  = response.data.score.aciertos;
     pdfs    = response.data.pdf;//get pdfs for server+
     videos  = response.data.videos;
     createElsementsVideos();//create element width video

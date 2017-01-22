@@ -14,13 +14,13 @@
          <div class="gst-card z-depth-1" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
-               <h6 id="gst-score-max">1500 puntos</h6><br>
+               <h6 id="gst-score-max" data-score="{{$data['score']}}">{{$data["score"]}} puntos</h6><br>
                <h5>Aciertos</h5>
-               <h6 id="gst-hits-max">15</h6>
+               <h6 id="gst-hits-max">{{$data["hits"]}}</h6>
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
-              <ul class="curiosity-ranking animated bounceIn" data-stars="4.6" >
+              <ul class="curiosity-ranking animated bounceIn" data-stars="{{$data['qualification']}}" >
                 <li class="star-text"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Mala"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
@@ -47,7 +47,7 @@
          <div class="gst-card z-depth-1" id="gst-dataGame">
             <h1>Nombre del Juego</h1>
             <hr class="gst-hr">
-            <img src="/packages/assets/media/images/games/instructions/cstbannerskblue.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/unity/{{$data['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
                  <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs" data-target="#gst-modal-instruction" data-toggle="modal">
@@ -67,7 +67,7 @@
    </div>
    <div class="row hidden" id="gst-row-game">
     <div class="col-md-12">
-       <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+       <iframe data-folder="{{$data['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
    <!-- view pdf -->
@@ -125,14 +125,14 @@
                 <span aria-hidden="true">&times;</span>
               </button>
               <div class="col-md-12 gst-col">
-                <img src="/packages/assets/media/images/games/instructions/cstbannerskblue.jpg" class="img-fluid z-depth-1">
+                <img src="/packages/assets/iframes/games/unity/{{$data['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
               </div>
             </div>
          </div>
        </div>
      </div>
    </div>
-    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-body">
