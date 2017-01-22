@@ -62,7 +62,7 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="email" id="rfc-username" name="username" class="form-control">
+												<input type="text" id="rfc-username" name="username" class="form-control">
 												<label for="rfc-username">Usuario</label>
 											</div>
 											<div class="md-form form-group">
@@ -74,7 +74,7 @@
 												<select class="mdb-select" id="rfc-gender" name="gender">
 													<option value="" disabled selected>Genero</option>
 													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Niño</option>
-													<option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
+													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
 												</select>
 											</div>
 										</div>
@@ -103,7 +103,7 @@
 									<hr>
 									<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
 										<button type="reset" class="btn btn-warning rfc-rounded">Limpiar Datos</button>
-										<button type="button" class="btn {{--rfc-btn-default--}} btn-success rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment">Registrar</button>
+										<button type="button" class="btn {{--rfc-btn-default--}} btn-success rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment" id="rfc-btn-finish">Registrar</button>
 									</div>
 								</div>
 							</div>
@@ -111,32 +111,6 @@
 
 					</div>
 				</div><br>
-			</div>
-
-			<!-- Modal data of Payments -->
-			<div class="modal fade" id="rfc-modalPayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<!--Content-->
-					<div class="modal-content">
-						<!--Header-->
-						<div class="modal-header rfc-modal-header">
-							<button type="button" class="close rfc-modalClose" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<h4 class="modal-title text-xs-center" id="myModalLabel"><i class="fa fa-credit-card-alt"></i>&nbsp; Datos de pago</h4>
-						</div>
-						<!--Body-->
-						<div class="modal-body">
-							...
-						</div>
-						<!--Footer-->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-warning waves-effect rfc-rounded rfc-btnCancel" data-dismiss="modal">Regresar</button>
-							<button type="button" class="btn rfc-btn-primary rfc-rounded" id="rfc-btn-finish">Terminar registro</button>
-						</div>
-					</div>
-					<!--/.Content-->
-				</div>
 			</div>
 		</div>
 	</div>
@@ -146,6 +120,9 @@
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
     <script type="text/javascript" src="/packages/assets/js/config/request/request.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
     <script type="text/javascript" src="/packages/assets/js/config/db/database.js"></script>
     <script type="text/javascript" src="/packages/assets/js/config/db/corm.js"></script>
     <script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>

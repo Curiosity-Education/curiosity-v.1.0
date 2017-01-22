@@ -484,6 +484,7 @@ Route::group(array('before' => 'auth'), function(){
 
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
+                Route::get('/game','childrenDoActivitiesController@getGame');
             });
             Route::group(array('prefix' => "sonRatesActivity"), function(){
                 Route::post("/save",'sonRatesActivitiesController@save');
@@ -494,6 +495,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-popular","activitiesController@getPopulars");
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
+                Route::get("find-all","activitiesController@getAll");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
