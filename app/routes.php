@@ -87,10 +87,6 @@ Route::get('administer', function(){
     return View::make('administer.asociateSchool');
 });
 
-Route::get('childHelp', function(){
-    return View::make('parent.childHelp');
-});
-
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -100,7 +96,15 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
             'method' => "^[a-zA-Z]*$"
         )
     );
-Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to access the views when need a log In
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('before' => 'auth'), function(){
+	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+});
 
 /*
 * -----------------------------------------------------------------------------
@@ -182,12 +186,28 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
 
+    });
+
+    // Plans
+    Route::group(array('prefix' =>  'plans-admin'),function(){
+        Route::post('all', 'plansController@all');
+        Route::post('save', 'plansController@save');
+        Route::post('update', 'plansController@update');
+        Route::post('delete', 'plansController@delete');
+
+    });
+	// Manage School asociated
+	 Route::group(array('prefix' =>  'schoolasc'),function(){
+		 Route::post('save', 'schoolAscController@save');
+		 Route::post('update', 'schoolAscController@update');
+		 Route::post('delete', 'schoolAscController@delete');
+	 });
+// });
 		Route::group(array('prefix' =>  'game'),function(){
 			Route::post('save','activitiesController@saveGame');
 			Route::post('update','activitiesController@updateGame');
 			Route::post('delete','activitiesController@deleteGame');
 		});
-	});
 
 /*
 * -----------------------------------------------------------------------------
@@ -287,6 +307,59 @@ Route::group(array('prefix' =>  'teacher'),function(){
 */
 Route::group(array('prefix' =>  'video'),function(){
 	Route::post('getByTopic', 'libraryVideoController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to avatar
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'avatar'),function(){
+	Route::post('all', 'avatarController@all');
+	Route::post('getForChild', 'avatarController@getForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to item groups (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'itemGroup'),function(){
+	Route::post('all', 'itemGroupsController@all');
+	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to items (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'item'),function(){
+	Route::post('all', 'itemController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to sprites (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sprite'),function(){
+	Route::post('all', 'spriteController@all');
+	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to secuences (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'secuence'),function(){
+	Route::post('all', 'secuenceController@all');
 });
 
 /*

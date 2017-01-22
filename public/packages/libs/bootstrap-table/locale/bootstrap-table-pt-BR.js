@@ -16,19 +16,19 @@
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
             return 'Exibindo ' + pageFrom + ' até ' + pageTo + ' de ' + totalRows + ' linhas';
         },
-        formatSearch: function () { 
+        formatSearch: function () {
             return 'Pesquisar';
         },
-        formatRefresh: function () { 
+        formatRefresh: function () {
             return 'Recarregar';
         },
-        formatToggle: function () { 
+        formatToggle: function () {
             return 'Alternar';
         },
-        formatColumns: function () { 
+        formatColumns: function () {
             return 'Colunas';
         },
-        formatPaginationSwitch: function () { 
+        formatPaginationSwitch: function () {
             return 'Ocultar/Exibir paginação';
         },
         formatNoMatches: function () {

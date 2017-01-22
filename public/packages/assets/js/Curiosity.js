@@ -1,5 +1,11 @@
 var Curiosity = {
 
+   methodSend:{
+        POST:"POST",
+        GET:"GET",
+        PUT:"PUT",
+        DELETE:"DELETE"
+   },
    staticObject : function(element, top){
       var $fx        = element;
       var $window    = $(window);
@@ -11,6 +17,31 @@ var Curiosity = {
          } else { $fx.stop().animate({ marginTop: 0 },0); }
       });
    },
+
+   getCleanedString: function(cadena){
+       // Definimos los caracteres que queremos eliminar
+       var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+
+       // Los eliminamos todos
+       for (var i = 0; i < specialChars.length; i++) {
+           cadena= cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+       }
+
+       // Lo queremos devolver limpio en minusculas
+       cadena = cadena.toLowerCase();
+
+       // Quitamos espacios y los sustituimos por _ porque nos gusta mas asi
+       cadena = cadena.replace(/ /g,"_");
+
+       // Quitamos acentos y "ñ". Fijate en que va sin comillas el primer parametro
+       cadena = cadena.replace(/á/gi,"a");
+       cadena = cadena.replace(/é/gi,"e");
+       cadena = cadena.replace(/í/gi,"i");
+       cadena = cadena.replace(/ó/gi,"o");
+       cadena = cadena.replace(/ú/gi,"u");
+       cadena = cadena.replace(/ñ/gi,"n");
+       return cadena;
+    },
 
    compareInput:function(idInput){
         var $input = $(idInput);

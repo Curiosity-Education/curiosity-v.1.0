@@ -9,33 +9,31 @@
 
 @section('menu-photo')
 <div id="msad-profileContainer" class="text-center">
-   <img src="/packages/assets/media/images/parents/profile/mom-def.png" class="img-fluid" id="msad-imgProfile">
+   <img src="/packages/assets/media/images/administers/adminDefProfile.png" class="img-fluid" id="msad-imgProfile"
+   style="background:white;">
 </div>
 @stop
 
 @section('menu-links')
-<div class="dropup">
-   <div data-url="#" class="dropdown-toggle linkMenu waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="fa fa-cubes" id="msad-icon-cubes"></span>&nbsp;
-      Gestión de contenido
-   </div>
-   <div class="dropdown-menu" aria-labelledby="dropdownMenu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-levels">
-         <span class="fa fa-cube"></span>&nbsp; Niveles (Grados)
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-intelligences">
-         <span class="fa fa-cube"></span>&nbsp; Inteligencias (Materias)
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-blocks">
-         <span class="fa fa-cube"></span>&nbsp; Bloques
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-topics">
-         <span class="fa fa-cube"></span>&nbsp; Temas
-      </a>
-      <a class="dropdown-item msad-item waves-effect" href="view-administer.admin-activities">
-         <span class="fa fa-cube"></span>&nbsp; Actividades (Juegos)
-      </a>
-   </div>
+<div data-url="view-administer.admin-levels" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Niveles (Grados)
+</div>
+<div data-url="view-administer.admin-intelligences" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Inteligencias (Materias)
+</div>
+<div data-url="view-administer.admin-blocks" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Bloques
+</div>
+<div data-url="view-administer.admin-topics" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Temas
+</div>
+<div data-url="view-administer.admin-activities" class="linkMenu waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Actividades (Juegos)
 </div>
 <div data-url="view-administer.asociateSchool" class="linkMenu waves-effect">
    <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
@@ -53,21 +51,65 @@
    <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
    Biblioteca de Videos
 </div>
+<div data-url="view-administer.admin-plans" class="linkMenu waves-effect">
+   <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
+   Planes
+</div>
+<div data-url="view-administer.admin-employees" class="linkMenu waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Empleados
+</div>
 @stop
 
 @section('menu-links-aside')
-<!-- <div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-home" id="msad-icon-home"></span>&nbsp;
-   Inicio
+<div data-url="view-administer.admin-levels" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Niveles (Grados)
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-youtube-play" id="msad-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+<div data-url="view-administer.admin-intelligences" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Inteligencias (Materias)
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect">
-   <span class="fa fa-file-pdf-o" id="msad-icon-files"></span>&nbsp;
-   Biblioteca de archivos
-</div> -->
+<div data-url="view-administer.admin-blocks" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Bloques
+</div>
+<div data-url="view-administer.admin-topics" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Temas
+</div>
+<div data-url="view-administer.admin-activities" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-cube"></span></span>&nbsp;
+   Actividades (Juegos)
+</div>
+<div data-url="view-administer.asociateSchool" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
+   Escuelas de apoyo
+</div>
+<div data-url="view-administer.admin-teachers" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
+   Profesores de apoyo
+</div>
+<div data-url="view-administer.admin-libraryPdfs" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
+   Biblioteca de Pdfs
+</div>
+<div data-url="view-administer.admin-libraryVideos" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
+   Biblioteca de Videos
+</div>
+<div data-url="view-administer.admin-plans" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
+   Planes
+</div>
+<div data-url="view-administer.admin-employees" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Empleados
+</div>
+<div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
+   <span class="fa fa-caret-right msad-icon-exit" id="msad-icon-exit"></span>&nbsp;
+   Salir
+</div>
 @stop
 
 @section('content')

@@ -1,54 +1,85 @@
 <?php
-use \Stripe\Plan;
 
 class plansController extends BaseController{
 
 	public function __construct(){
 
-}
+    }
 
-public function createPlan(){
-		if(Request::method() == 'POST'){
-				Stripe::setApiKey('sk_test_TaoOe9Er8wZhp4nqBB46V7fO');
+    public function save(){
+            if(Request::method() == 'POST'){
+                    try{
+                        Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+                        $plan = Conekta_Plan::create(array(
+                          "id" => Input::get('reference'),
+                          "name"=> Input::get('name'),
+                          "amount"=> Input::get('amount').'00',
+                          "currency"=> Input::get('currency'),
+                          'trial_period_days' => Input::get('trial_period_days'),
+                          "interval"=> Input::get('interval')
+                        ));
+                        $newPlan = new Plan(Input::all());
+                        $newPlan->active = 1;
+                        $newPlan->save();
+                        return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
+                    }
+                    catch(Exception $e){
+                            return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
+                    }
+            }
+            else{
 
-				Plan::create(array(
-					"amount" => Input::get('amount'),
-					"interval" => Input::get('interval'),
-					"name" => Input::get('name'),
-					"currency" => Input::get('currency'),
-					"id" => Input::get('type'))
-				);
-				try{
-						$newPlan = new Plan(Input::all());
-						$newPlan->save();
-						return array(0  =>  "success");
-				}
-				catch(Exception $e){
-						return $e;
-				}
-		}
-}
+            }
+    }
 
-public function showView(){
-		if(Request::method() == 'GET')
-				return View::make('vista_planes_admin');
-}
+    public function update(){
+            if(Request::method() == 'POST'){
+                try{
+                    Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+                    $plan = Conekta_Plan::find(Input::get('reference'));
+                    $plan->update(array(
+                      "name"=> Input::get('name'),
+                      "amount"=> Input::get('amount').'00'
+                    ));
+                    $newPlan = Plan::find(Input::get('id'))->update(array(
+                      "name"=> Input::get('name'),
+                      "amount"=> Input::get('amount').'00'
+                    ));
+                    return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
+                }
+                catch(Exception $e){
+                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => Response::json($e)));
+                }
+            }
+    }
 
-public function getPlans(){
-		return [];
-}
+    public function delete(){
+        if(Request::method() == 'POST'){
+            try{
+                Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+                Conekta::setLocale('es');
+                $plan = Conekta_Plan::find(Input::get('id')['reference']);
+                $id = Input::get('id')['id'];
+                Plan::find($id)->delete();
+                $plan->delete();
+                return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data' => array('id' => $id)));
+            }
+            catch(Exception $e){
+                return $e;
+            }
+        }
+        else{
+        }
+    }
 
-	function get(){
+    public function showView(){
+            if(Request::method() == 'GET')
+                    return View::make('vista_planes_admin');
+    }
 
-	}
-	function save(){
+    public function all(){
+            return Plan::all();
+    }
 
-	}
-	function update(){
-
-	}
-	function delete(){
-
-	}
 }
 ?>

@@ -48,6 +48,23 @@ class loginController extends BaseController{
       return Redirect::to('/');
    }
 
+   public static function getAccess(){
+      if (Auth::user()->hasRole('hijo')){
+         $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
+         $membershipPlan = MembershipPlan::where('hijo', '=', $idSon)->first();
+         if($$membershipPlan->active == 1){
+            return "";
+         }
+         else{
+            Auth::logout();
+            return "/";
+         }
+      }
+      else{
+         return "view-administer.admin-teachers";
+      }
+   }
+
   function verPagina()
   {
     if(Request::method() == 'POST')
