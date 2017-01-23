@@ -91,6 +91,10 @@ Route::get('parent-register', function(){
     return View::make('parent.registry');
 });
 
+Route::get('admin-novedades', function(){
+	return View::make('administer.admin-news');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -196,6 +200,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('save', 'salersCodeController@save');
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
+		});
+		// Manage news parent and child
+		Route::group(array('prefix' => 'news'),function(){
+			Route::post('save', 'dadNewsController@save');
+			Route::post('update', 'dadNewsController@update');
+			Route::post('delete', 'dadNewsController@delete');
+			Route::post('get', 'dadNewsController@get');
 		});
 	});
 });
