@@ -67,12 +67,17 @@ class loginController extends BaseController{
          $person = Person::where("user_id", "=", $user["id"])->first();
          $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
          $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-         if($membershipPlan->active == 1){
-            return "view-child.init";
-         }
-         else{
+         if ($membershipPlan == null || count($membershipPlan) <= 0 || $membershipPlan == ""){
             Auth::logout();
             return "/";
+         }else{
+            if($membershipPlan->active == 1){
+               return "view-child.init";
+            }
+            else{
+               Auth::logout();
+               return "/";
+            }
          }
       }
       else if (Auth::user()->hasRole('root') ||
