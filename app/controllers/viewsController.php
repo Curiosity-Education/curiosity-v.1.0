@@ -19,7 +19,8 @@ class viewsController extends BaseController{
       "child.library_videos"            => "child_actions",
       "child.store"                     => "child_actions",
       "parent.profile"                  => "parent_actions",
-      "parent.pay-suscription"                  => "parent_actions",
+      "parent.pay-suscription"          => "parent_actions",
+      "parent.registry_firstchild"      => "parent_actions",
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){

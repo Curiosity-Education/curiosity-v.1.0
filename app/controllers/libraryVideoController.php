@@ -1,6 +1,6 @@
 <?php
 class libraryVideoController extends BaseController{
-
+  
 	function all(){
 		$vids = LibraryVideos::where("active", "=", 1)->get();
 		return $vids;

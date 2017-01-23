@@ -1,15 +1,35 @@
-@extends('templates.parent-menu')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" type="image/png" href="/packages/assets/media/images/landing/logo.png">
+  <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
+  <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+	<title>Curiosity | Mi primer hijo</title>
 
-@section('title')
-Datos de la tarjeta
-@stop
-@section('title-baner')
- <i class="fa fa-user"></i> Agregar Tarjeta
-@stop
-@section('content-parent')
+	<!--Navbar-->
+	<nav class="navbar navbar-fixed-top navbar-dark rfc-navbar">
+
+		<div class="container">
+
+			<a class="navbar-brand">
+				<img src="/packages/assets/media/images/system/icon.png" class="img-fluid reg-logo" id="reg-imgLogo">
+				Curiosity Educación
+			</a>
+
+		</div>
+
+	</nav>
+	<!--/.Navbar-->
+</head>
+<body id="rfc-bg">
    <div class="container-fluid main"><br>
       <div class="row" id="p-row-main">
-         <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+        <div class="col-md-2"></div>
+         <div class="col-md-8">
             <form action="#" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
                 <div class="pymnt-itm card active">
@@ -49,20 +69,32 @@ Datos de la tarjeta
                                 <button class="btn btn-danger pull-right" id="pay-button">Pagar</button>
                         </div>
                     </div>
+                    </form>
                 </div>
-            </form>
-         </div>
-         <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4 border-left">
-
+                <div class="col-md-2"></div>
          </div>
       </div>
 
-   </div>
-@stop
-
-@section('js-plus')
+    </div>
+    <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+    <script src="/packages/libs/mdb/js/tether.min.js"></script>
+    <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
+    <script src="/packages/libs/mdb/js/mdb.min.js"></script>
+    <script src="/packages/assets/js/Curiosity.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/request/request.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
+    <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/database.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js"></script>
     <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+    <script src="/packages/assets/js/administer/models/Plan.js"></script>
     <script src="/packages/assets/js/parent/models/Parent.js"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js"></script>
-@stop
+    <script type="text/javascript">
+		 $(document).ready(function() {
+			$('.mdb-select').material_select();
+		  });
+	</script>
+</body>
