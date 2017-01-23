@@ -515,7 +515,7 @@
             $("#suscriptionBtn").click(function(e){
                 e.preventDefault();
                 localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
-                window.location = '/view-parent.registry';
+                window.location = '/parent-register';
             });
         });
     </script>

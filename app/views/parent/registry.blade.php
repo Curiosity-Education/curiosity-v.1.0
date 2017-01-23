@@ -97,13 +97,11 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix"></i>
-												<input type="email" id="email" name="email" class="form-control validate">
-												<label for="email" data-error="Correo Invalido" data-success="Correcto">Correo</label>
+												<input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control validate">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="nombre" name="nombre" class="form-control">
-												<label for="reg-name">Nombre</label>
+												<input type="text" id="nombre" name="nombre" placeholder="¿Cuál es tu nombre?" class="form-control">
 											</div>
 											<div class="md-form form-group" id="reg-gender">
 												<select class="mdb-select" id="sexo" name="sexo">
@@ -116,18 +114,15 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="password" name="password" class="form-control" length="8">
-												<label for="password">Contraseña</label>
+												<input type="password" id="password" name="password" class="form-control" length="8" placeholder="Ingresa tu contraseña">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="apellidos" name="apellidos" class="form-control">
-												<label for="apellidos">Apellidos</label>
+												<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="¿Cuáles son tus apellidos?">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-phone prefix"></i>
-												<input type="text" id="telefono" name="telefono" class="form-control" length="10">
-												<label for="telefono">Teléfono</label>
+												<input type="text" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" class="form-control" length="10">
 											</div>
 										</div>
 										<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
