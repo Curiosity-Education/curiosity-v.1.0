@@ -11,7 +11,13 @@ class viewsController extends BaseController{
       "administer.admin-topics" => "manage_content",
       "administer.admin-teachers" => "manage_teacher_aliance",
       "administer.asociateSchool" => "manage_school_aliance",
-      "child.profile" => "manage_content",
+      "administer.admin-employees" => "manage_administrative",
+      "administer.admin-salescode" => "manage_administrative",
+      "child.init" => "child_actions",
+      "child.menu-studio" => "child_actions",
+      "child.profile" => "child_actions",
+      "child.library_videos" => "child_actions",
+      "child.store" => "child_actions",
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){

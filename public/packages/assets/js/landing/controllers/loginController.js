@@ -16,6 +16,7 @@ var loginController = {
             }
          })
          .done(function(response) {
+            console.log(response);
             switch (response.status) {
                case 200:
                   window.location.href = response.data;
