@@ -90,6 +90,9 @@ Route::get('administer', function(){
 Route::get('parent-register', function(){
     return View::make('parent.registry');
 });
+Route::group(array('prefix' => 'plans'),function(){
+   Route::post('get','plansController@get');
+});
 
 Route::get('1', 'activitiesVideosController@save');
 
