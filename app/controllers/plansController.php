@@ -48,7 +48,7 @@ class plansController extends BaseController{
                     return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
                 }
                 catch(Exception $e){
-                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => Response::json($e)));
+                    return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
                 }
             }
     }
@@ -65,7 +65,7 @@ class plansController extends BaseController{
                 return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data' => array('id' => $id)));
             }
             catch(Exception $e){
-                return $e;
+                return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
             }
         }
         else{
@@ -77,7 +77,7 @@ class plansController extends BaseController{
                     return View::make('vista_planes_admin');
     }
 
-    public function all(){
+    public static function all(){
             return Plan::all();
     }
 
