@@ -90,53 +90,53 @@
 						</div>
 
 						<!--Body-->
-						<form action="" class="form-inline text-xs-center" id="reg-form">
+						<form action="" class="form-inline text-xs-center" id="parent-form">
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix"></i>
-												<input type="email" id="reg-email" class="form-control">
-												<label for="reg-email">Correo</label>
+												<input type="email" id="email" name="email" class="form-control validate">
+												<label for="email" data-error="Correo Invalido" data-success="Correcto">Correo</label>
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="reg-name" class="form-control">
+												<input type="text" id="nombre" name="nombre" class="form-control">
 												<label for="reg-name">Nombre</label>
 											</div>
 											<div class="md-form form-group" id="reg-gender">
-												<select class="mdb-select" id="reg-selgender">
+												<select class="mdb-select" id="sexo" name="sexo">
 													<option value="" disabled selected>Genero</option>
-													<option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Caballero</option>
-													<option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Dama</option>
+													<option value="m" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Caballero</option>
+													<option value="f" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Dama</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="reg-password" class="form-control">
-												<label for="reg-password">Contraseña</label>
+												<input type="password" id="password" name="password" class="form-control" length="8">
+												<label for="password">Contraseña</label>
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="reg-surnames" class="form-control">
-												<label for="reg-surnames">Apellidos</label>
+												<input type="text" id="apellidos" name="apellidos" class="form-control">
+												<label for="apellidos">Apellidos</label>
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-phone prefix"></i>
-												<input type="text" id="reg-phone" class="form-control">
-												<label for="reg-phone">Teléfono</label>
+												<input type="text" id="telefono" name="telefono" class="form-control" length="10">
+												<label for="telefono">Teléfono</label>
 											</div>
 										</div>
 										<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
 											<fieldset class="form-group">
-												<input type="checkbox" id="checkbox1">
-												<label for="checkbox1">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
+												<input type="checkbox" id="accept_conditions" name="accept_conditions">
+												<label for="accept_conditions">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
 											</fieldset>
 											<hr>
-											<button class="btn reg-btnRegister reg-rounded">Registrarme</button>
+											<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
 										</div>
 									</div>
 								</div>
@@ -152,10 +152,18 @@
 	</div>
 
 	<script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+	<script src="/packages/assets/js/Curiosity.js"></script>
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-    <script src="/packages/assets/js/parent/registry.js"></script>
+    <script src="/packages/libs/validation/jquery.validate.min.js"></script>
+    <script src="/packages/libs/validation/localization/messages_es.min.js"></script>
+    <script src="/packages/assets/js/config/db/corm.js"></script>
+    <script src="/packages/assets/js/config/db/database.js"></script>
+    <script src="/packages/assets/js/config/request/request.js"></script>
+    <script src="/packages/assets/js/parent/models/Parent.js"></script>
+    <script src="/packages/assets/js/parent/controllers/parentController.js"></script>
+    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js"></script>
     <script type="text/javascript">
 		 $(document).ready(function() {
 			$('.mdb-select').material_select();

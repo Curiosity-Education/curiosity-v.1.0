@@ -2,7 +2,7 @@ $(function(){
 	var ac_recents,ac_populars,ac_ranks,ac_recomended,videos;// variables for save all information handled in this view;
 	activityCtrl.getAll(function(response){//get all information
 		console.log(response);
-		ac_recents    = response.data.recents;//activities recentes 
+		ac_recents    = response.data.recents;//activities recentes
 		ac_populars   = response.data.populars;//Activities populars
 		ac_ranks      = response.data.ranks;//Activities ranks
 		ac_recomended = response.data.recomended;//Activities recomendeds

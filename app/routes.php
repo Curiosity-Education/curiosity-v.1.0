@@ -412,6 +412,15 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 /*
 *   Register for users
 */
+Route::group(array('prefix' => 'parent'),function(){
+   Route::post('save','parentsController@save');
+   Route::post('update','parentsController@update');
+   Route::post('remote-email','parentsController@remoteEmail');
+   Route::post('confirm/{token}','parentsController@confirm');
+   Route::post('payment-suscription','parentsController@payment_suscription');
+});
+
+
 /*
 Route::group(array('prefix' => 'register'),function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -422,7 +431,7 @@ Route::group(array('prefix' => 'register'),function(){
 			Route::match(array('GET', 'POST'), '/', 'suscripcionController@viewPage');
 			Route::match(array('GET', 'POST'),'suscription','suscripcionController@suscripcion');
 	    Route::match(array('GET','POST'),'parent','padreController@addPadre');
-		});
+        });
 });
 
 // Facebook user
