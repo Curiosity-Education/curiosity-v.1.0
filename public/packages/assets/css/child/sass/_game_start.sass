@@ -30,17 +30,20 @@ iframe body
    margin: 0
    margin-top: 1rem
 
+#gst-info
+   height: 16rem !important
+
 #gst-back
    background-color: $color-white
    cursor: pointer
 
 #gst-btnInstructs
-   border-color: $color-skin
-   color: $color-skin !important
+   border-color: $color-info-dark
+   color: $color-info-dark !important
 
 #gst-btnPlay
-   border: solid $color-skin
-   background-color: $color-skin
+   border: solid $color-info-dark
+   background-color: $color-info-dark
 
 #gst-info
    #gst-max
@@ -92,6 +95,9 @@ iframe body
                font-weight: bold
             button
                background-color: $color-skin !important
+               width: 70% !important
+               margin-left: 15%
+               letter-spacing: 3px
             .row
                margin-top: 2rem
                margin-bottom: 2rem
@@ -100,9 +106,7 @@ iframe body
                      font-size: 1.3rem
                      font-weight: bold
 
-.gst-material
-   border-color: $color-skin
-   color: $color-skin !important
+
 .text-left
    text-align: left
 #gst-modal-instruction
@@ -183,6 +187,15 @@ iframe body
       .modal-dialog
          min-width: 1000px
 
+#gst-materialPdf
+   border-color: $color-secondary
+   color: $color-secondary !important
+#gst-materialVideo
+   border-color: $color-danger
+   color: $color-danger !important
+#gst-dataGame
+   margin-bottom: 1rem
+  
 +mediaQuerie(576px,776px)
    #gst-modal-pdf-video,#gst-modal-instruction
       .modal-dialog
