@@ -14,6 +14,15 @@ class landingController extends BaseController
      else {
         $escuelas = School::where('active', '=', 1)->get();
         $planes = Plan::where("active", "=", 1)->where("visible", "=", 1)->get();
+      //   return array(
+      //        'escuelas' => $escuelas,
+      //        'planes'   => $planes,
+      //        'trans'    => [
+      //            'month' => 'mes',
+      //            'semester'  => 'semestre',
+      //            'year'  =>  'año'
+      //        ]
+      //    );
     	return View::make('landing.index',array(
             'escuelas' => $escuelas,
             'planes'   => $planes,
