@@ -336,18 +336,24 @@
 
                                     <!--Content-->
                                     <div class="text-xs-center">
-                                        <div class="card-block">
-                                            <center><h5>{{$plan->name}}</h5></center>
+                                        <div class="card-block" style="background-color:#2d96ba;color:#fff;border-radius:.23rem;">
+                                            <center><h5 style="background: #1d657d;
+																				   margin: -1.2rem;
+																				   padding: 1rem;
+																				   margin-bottom: .5rem;
+																				   border-top-left-radius: .23rem;
+																				   border-top-right-radius: .23rem;
+																					box-shadow: 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);">{{$plan->name}}</h5></center>
                                             <div class="flex-center" style="height:30%;">
                                                 <div class="card-circle">
-                                                    <i class="fa fa-home blue-text"></i>
+                                                    <i class="fa fa-credit-card-alt" style="color:#fff !important;"></i>
                                                 </div>
                                             </div>
 
                                             <!--Price-->
                                             <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
-                                            <p>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</p>
-                                            <center><a class="btn btn-primary btn-rounded" data-id-plan="{{$plan->id}}" id="suscriptionBtn" >Suscribirme</a></center>
+                                            <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
+                                            <center><a class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Suscribirme</a></center>
                                         </div>
                                     </div>
 
@@ -512,7 +518,7 @@
 	<script src="/packages/assets/js/Curiosity.js" charset="utf-8"></script>
 	<script type="text/javascript">
         $(function(){
-            $("#suscriptionBtn").click(function(e){
+            $(".suscriptionBtn").click(function(e){
                 e.preventDefault();
                 localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
                 window.location = '/parent-register';
