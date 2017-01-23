@@ -361,6 +361,7 @@ Route::group(array('prefix' =>  'sprite'),function(){
 Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
+Route::post('/remote-username','usersController@remoteUsername');
 
 /*
 *   Register for users
@@ -484,7 +485,10 @@ Route::group(array('before' => 'auth'), function(){
 
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
-                Route::get('/game','childrenDoActivitiesController@getGame');
+                Route::get('/game-{activityId}','childrenDoActivitiesController@getGame')
+    			->where(array(
+		            'controller' => "^[0-9]*$"
+			    ));
             });
             Route::group(array('prefix' => "sonRatesActivity"), function(){
                 Route::post("/save",'sonRatesActivitiesController@save');

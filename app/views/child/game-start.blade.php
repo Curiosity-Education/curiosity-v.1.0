@@ -14,13 +14,13 @@
          <div class="gst-card z-depth-1" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
-               <h6 id="gst-score-max" data-score="{{$data['score']}}">{{$data["score"]}} puntos</h6><br>
+               <h6 id="gst-score-max" data-score="{{$game['score']}}">{{$game["score"]}} puntos</h6><br>
                <h5>Aciertos</h5>
-               <h6 id="gst-hits-max">{{$data["hits"]}}</h6>
+               <h6 id="gst-hits-max">{{$game["hits"]}}</h6>
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
-              <ul class="curiosity-ranking animated bounceIn" data-stars="{{$data['qualification']}}" >
+              <ul class="curiosity-ranking animated bounceIn" data-stars="{{$game['qualification']}}" >
                 <li class="star-text"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Mala"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
@@ -45,9 +45,9 @@
       </div>
       <div class="col-sm-8">
          <div class="gst-card z-depth-1" id="gst-dataGame">
-            <h1>Nombre del Juego</h1>
+            <h1><i class="fa fa-gamepad"></i> {{$game["name"]}}</h1>
             <hr class="gst-hr">
-            <img src="/packages/assets/iframes/games/unity/{{$data['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
                  <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs" data-target="#gst-modal-instruction" data-toggle="modal">
@@ -67,7 +67,7 @@
    </div>
    <div class="row hidden" id="gst-row-game">
     <div class="col-md-12">
-       <iframe data-folder="{{$data['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+       <iframe data-folder="{{$game['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
    <!-- view pdf -->
@@ -125,7 +125,9 @@
                 <span aria-hidden="true">&times;</span>
               </button>
               <div class="col-md-12 gst-col">
-                <img src="/packages/assets/iframes/games/unity/{{$data['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
+                <div class="flex-center">
+                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
+                </div>
               </div>
             </div>
          </div>
@@ -148,7 +150,7 @@
                  <div class="gst-informataion-header">
                   <div class="row">
                     <div class="col-md-3">
-                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
+                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
                     </div>
                     <div class="col-md-9">
                       <h5 class="gst-tema-content text-left">Nombre profe</h5>

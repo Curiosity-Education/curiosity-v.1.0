@@ -1,5 +1,5 @@
 <?php
-class usersController extends BaseController(){
+class usersController extends BaseController{
 
 	function get(){
 

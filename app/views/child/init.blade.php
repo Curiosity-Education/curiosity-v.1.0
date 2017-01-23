@@ -123,8 +123,8 @@
                             </div>
                             <!--/.Card image-->
                           <div class="card-footer-game text-center">
-                            <ul class="curiosity-ranking animated bounceIn" data-stars="" >
-                              <li class="star-text"></li>
+                            <ul class="curiosity-ranking animated bounceIn" data-stars="4" >
+                              <li class="star-text" style="display:none"></li>
                               <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Mala"></li>
                               <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
                               <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Buena"></li>
