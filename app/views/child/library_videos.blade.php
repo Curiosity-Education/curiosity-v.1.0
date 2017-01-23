@@ -72,7 +72,7 @@
 
     <!-- Buttons with the degrees -->
 	<div class="row" id="lp-row-degrees">
-		<div class="col-md-8 col-sm-12 lp-container-degrees z-depth-1">
+		<div class="col-md-8 col-sm-12 lp-container-degrees z-depth-1 animated fadeInRight">
 			<div class="col-md-2 col-sm-3 lp-text-degrees text-xs-center ">
 				<h6 class="font-weight-bold lp-text">Grados</h6>
 			</div>
@@ -87,7 +87,7 @@
 
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
-    	<div class="col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1">
+    	<div class="col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1 animated bounceIn">
     		<a href="#">
     			<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="lp-bg-card" >
