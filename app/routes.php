@@ -174,6 +174,20 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('delete', 'teachersController@delete');
 		});
 	});
+	Route::group(array('before' => 'manage_administrative'),function(){
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-employee'),function(){
+			Route::post('save', 'employeeController@save');
+			Route::post('update', 'employeeController@update');
+			Route::post('delete', 'employeeController@delete');
+		});
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-salerCode'),function(){
+			Route::post('save', 'salersCodeController@save');
+			Route::post('update', 'salersCodeController@update');
+			Route::post('delete', 'salersCodeController@delete');
+		});
+	});
 });
 
 	// Activities
@@ -194,6 +208,7 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('save', 'plansController@save');
         Route::post('update', 'plansController@update');
         Route::post('delete', 'plansController@delete');
+		  Route::post('getHidden', 'plansController@getHidden');
 
     });
 	// Manage School asociated
@@ -362,6 +377,37 @@ Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
 Route::post('/remote-username','usersController@remoteUsername');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to positions
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'position'),function(){
+	Route::post('all', 'positionController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to employees
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'employee'),function(){
+	Route::post('getByPosition', 'employeeController@getByPosition');
+	Route::post('getBySalers', 'employeeController@getBySalers');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to salers code
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'salerCode'),function(){
+	Route::post('all', 'salersCodeController@all');
+});
 
 /*
 *   Register for users
