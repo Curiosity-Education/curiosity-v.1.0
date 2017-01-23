@@ -2,15 +2,22 @@
 class parentsController extends BaseController(){
 
 
-    public function remoteEmail(){
-        if(padre::where("email","=",Input::get("email"))->first())
-            return "false";
-        else return "true";
-    }
-    public function tourFirst(){
+  public function remoteEmail(){
+    if(padre::where("email","=",Input::get("email"))->first())
+      return "false";
+    else return "true";
+  }
+  public function tourFirst(){
 		return Response::json(["respuesta" => "true"]);
 	}
-    public function save(){
+
+  public function getDataPerfil(){
+    if(Auth::User()){
+      $data = Auth::User()->Person->Parent;
+    }
+    return null;
+  }
+  public function save(){
         $data = Input::get('data');
         $dateNow = date("Y-m-d");
         $date_min =strtotime("-18 year",strtotime($dateNow));
