@@ -42,7 +42,7 @@
 									<!--Title-->
 									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp; USERNAME</h4>
 									<hr>
-									<a class="activator btn btn-default btn-rounded ca-btnConf">Editar mis datos</a>
+									<a class="activator btn btn-rounded ca-btnConf">Editar mis datos</a>
 								</div>
 								<!--/.Card content-->
 
@@ -76,8 +76,8 @@
 
 										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn">Cancelar</a></li>
-											<li><a class="btn btn-secondary btn-rounded">Siguiente</a></li>
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel">Cancelar</a></li>
+											<li><a class="btn btn-rounded ca-next">Siguiente</a></li>
 										</ul>
 
 									</div>
@@ -115,7 +115,7 @@
 									<!--Title-->
 									<h4 class="card-title text-xs-left"><i class="fa fa-flag-checkered"></i>&nbsp; Meta diaria</h4>
 									<hr>
-									<a class="activator btn btn-info btn-rounded ca-btnConf">cambiar mi meta</a>
+									<a class="activator btn btn-rounded ca-btnConf">cambiar mi meta</a>
 								</div>
 								<!--/.Card content-->
 
@@ -134,7 +134,7 @@
 													<div class="row">
 														<!-- image of Daily goal -->
 														<div class="">
-															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid" alt="" id="ca-img-goal"></center>
+															<center><img src="packages/assets/media/images/child/objective-excited.png" class="img-fluid" alt="" id="ca-img-goal"></center>
 														</div>
 														<!-- name of Daily goal -->
 														<div class="text-xs-center">
@@ -150,19 +150,19 @@
 												<div class="row">
 													<a href="#">
 														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
-															<h6 class="h6-responsive black-text"><span class="tag blue">Normal</span><br><br>3 juegos</h6>
+															<center><img src="packages/assets/media/images/child/objective-relax.png" class="img-fluid ca-goals-img" alt=""></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">Relajado</span><br><br>3 juegos</h6>
 														</div>
 													</a>
 													<a href="#">
 														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
-															<h6 class="h6-responsive black-text"><span class="tag blue">Conquistador</span><br><br>5 juegos</h6>
+															<center><img src="packages/assets/media/images/child/objective-normal.png" class="img-fluid ca-goals-img" alt=""></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">Normal</span><br><br>5 juegos</h6>
 														</div>
 													</a>
 													<a href="#">
 														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid ca-goals-img" alt=""></center>
+															<center><img src="packages/assets/media/images/child/objective-excited.png" class="img-fluid ca-goals-img" alt=""></center>
 															<h6 class="h6-responsive black-text"><span class="tag blue">Emocionado</span><br><br>8 juegos</h6>
 														</div>
 													</a>
@@ -172,8 +172,8 @@
 										<hr>
 										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn">Cancelar</a></li>
-											<li><a class="btn btn-success btn-rounded">Guardar</a></li>
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel">Cancelar</a></li>
+											<li><a class="btn btn-rounded ca-save">Guardar</a></li>
 										</ul>
 
 									</div>

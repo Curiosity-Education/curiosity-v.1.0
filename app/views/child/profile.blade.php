@@ -21,25 +21,25 @@
 			<div class="row">
 				<div class="z-depth-1 col-md-12 col-sm-12 col-xs-12" id="pf-content-cards">
 					<div class="pf-indicators text-xs-center">
-						<span class="tag warning-color-dark">Mejorar</span>
-						<span class="tag default-color-dark">Muy bien</span>
-						<span class="tag info-color-dark">Excelente</span>
+						<span class="tag pf-warning">Mejorar</span>
+						<span class="tag pf-good">Muy bien</span>
+						<span class="tag pf-perfect">Excelente</span>
 					</div>
 					<div class="" id="pf-cardScore">
 						<!--Card-->
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up warning-color-dark">
+							<div class="card-up pf-warning">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/like.jpg" class="rounded-circle img-responsive">
+							<div class="avatar"><img src="packages/assets/media/images/child/emoji-warning.png" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Experiencia: <span class="tag warning-color-dark pf-tag">10000 pts</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Experiencia: <span class="tag pf-warning pf-tag">10000 pts</span></h6>
 								<hr>
 							</div>
 
@@ -49,16 +49,16 @@
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up default-color-dark">
+							<div class="card-up pf-good">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/like.jpg" class="rounded-circle img-responsive">
+							<div class="avatar"><img src="packages/assets/media/images/child/emoji-good.png" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Curiosity Coins: <span class="tag default-color-dark pf-tag">1000 cc</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Curiosity Coins: <span class="tag pf-good pf-tag">1000 cc</span></h6>
 								<hr>
 							</div>
 
@@ -68,16 +68,16 @@
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up info-color-dark">
+							<div class="card-up pf-perfect">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/like.jpg" class="rounded-circle img-responsive">
+							<div class="avatar"><img src="packages/assets/media/images/child/objective-excited.png" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Meta Diaria: <span class="tag info-color-dark pf-tag">Emocionado</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Meta Diaria: <span class="tag pf-perfect pf-tag">Emocionado</span></h6>
 								<hr>
 							</div>
 

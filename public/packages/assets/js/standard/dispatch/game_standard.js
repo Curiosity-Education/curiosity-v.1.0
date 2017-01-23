@@ -9,7 +9,7 @@ var $juego = {
         efficiency:0,//variable para almacenar el nivel de eficiencia que el usuario tubo al realizar la actividad
         combo:0,//variable para determinar combos dentro del juego.
         unity:{//objeto para iteractuar con los juegos desarrollados en unity
-          salir:function(){
+        salir:function(){
               $juego.game.hits=0;
               $juego.game.combo=0;//reiniciar continuos
               $("#gst-row-game").hide();//desaparecer zona juego
@@ -25,19 +25,19 @@ var $juego = {
             //hide data zone game and show game
             $("#gst-row-game").show("fast");
             $("#gst-row-information-game").hide("slow");
-            document.querySelector("iframe[name='iframe_juego']").setAttribute("src","/packages/assets/iframes/games/unity/centavos/index.html");
+            document.querySelector("iframe[name='iframe_juego']").setAttribute("src","/packages/assets/iframes/games/unity/"+document.querySelector("iframe[name='iframe_juego']").getAttribute("data-folder")+"/index.html");
           }
         },
         start:function(duracion,inverso){
-            $("#zona-play").show();
-            $("#zona-obj").hide();
-            $("#countPuntaje").text($juego.game.scoreCurrent);
+            $("#gst-row-game").show();
+            $("#gst-row-information-game").hide();
+            $("#gst-score-max").text($juego.game.scoreCurrent);
             $("#game").trigger('start');
             $juego.cronometro.start(duracion,inverso);
         },
         _start:function(){
-            $("#zona-play").show();
-            $("#zona-obj").hide();
+            $("#gst-row-game").show();
+            $("#gst-row-information-game").hide();
             $("#countPuntaje").text($juego.game.scoreCurrent);
             $("#game").trigger('start');
             document.querySelector("iframe[name='iframe_juego']").setAttribute("src",$juego.game.unity.iframe_src);
@@ -60,10 +60,10 @@ var $juego = {
             // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
             $juego.game.scoreMax = $juego.game.scoreCurrent;
             // Cambiamos el puntaje maximo en pantalla
-            $("#num-max-pts").html($juego.game.puntajeMaximo + " pts");
+            $("#gst-score-max").html($juego.game.scoreMax + " puntos");
             }
-            $("#zona-play").hide();//desaparecer zona juego
-            $("#zona-obj").show();//aparecer zona del objetivo
+            $("#gst-row-game").hide();//desaparecer zona juego
+            $("#gst-row-information-game").show();//aparecer zona del objetivo
             $juego.game.save();
             $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
             $juego.game.scoreCurrent=0;
@@ -85,10 +85,15 @@ var $juego = {
             else{
               $juego.game.efficiency = 0;
             }
+            console.log($juego.game.scoreCurrent+" "+$juego.game.scoreMax);
             if($juego.game.scoreCurrent > $juego.game.scoreMax){
                 // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
                 $juego.game.scoreMax = $juego.game.scoreCurrent;
                 // Cambiamos el puntaje maximo en pantalla
+                $("#gst-score-max").text($juego.game.scoreMax +" puntos");
+                $("#gst-score-max").data("score",$juego.game.scoreMax);
+                $("#gst-hits-max").text($juego.game.hits);
+
             }
             $juego.game.save();
             $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
@@ -115,12 +120,18 @@ var $juego = {
             $juego.game.scoreCurrent=0;
         },
         save:function(){
+            var average;
+            if($juego.game.attempts==0){
+                average = 0;
+            }else{
+                average = (($juego.game.hits*100)/$juego.game.attempts);
+            }
             data={
                 score      : $juego.game.scoreCurrent,
                 efficiency : $juego.game.efficiency,
                 hits       : $juego.game.hits,//Se agrega el envio de los datos aciertos y errores
                 mistakes   : $juego.game.mistakes,
-                average    : ($juego.game.hits*100)/$juego.game.attempts//El promedio se define diferente
+                average    : average//El promedio se define diferente
             }
             childDoActivityCtrl.save(data);
             $("#game").trigger('save');
@@ -212,5 +223,6 @@ var $juego = {
 // events
 document.getElementById("gst-btnPlay").addEventListener("click",function(){
   $juego.game.unity.start();
+  $juego.game.scoreMax = $("#gst-score-max").data("score");
 },false);
 

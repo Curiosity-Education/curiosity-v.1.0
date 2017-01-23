@@ -47,4 +47,7 @@ class Activity extends CORM{
     static getPdfs(success){
         super.any(null,"GET",success,"/pdfs","find-pdfs");
     }
+    static findAll(method,success){
+        super.any(null,method,success,"activity","find-all");
+    }
 }
