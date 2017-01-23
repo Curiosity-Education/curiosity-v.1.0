@@ -1,5 +1,5 @@
 <?php
-class Parent extends Eloquent{
+class Dad extends Eloquent{
 
 	protected $table ='padres';
     protected $fillable =["email","telefono"];
@@ -16,14 +16,14 @@ class Parent extends Eloquent{
   ## A parent can have many children
   */
     public function Son(){
-        return $this->hasMany('hijo','padre_id');
+        return $this->hasMany('Son','padre_id');
     }
   /*
   *
   ## The data of a parent belongs to a person
   */
     public function Person(){
-        return $this->belongsTo('persona');
+        return $this->belongsTo('Person');
     }
   /*
   *

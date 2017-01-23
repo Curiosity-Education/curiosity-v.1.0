@@ -75,7 +75,6 @@
 		<!--/.Carousel Wrapper-->
     </div>
 
-
 		<!-- Buttons with the differents topics -->
 		<div class="row" id="lp-btn-topics">
 

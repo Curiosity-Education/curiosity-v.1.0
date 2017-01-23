@@ -1,14 +1,14 @@
 @import "../../_standardVariables.sass"
 @import "mixins.sass"
 
+.ms-active
+	background-color: $color-default !important
+
 .btn-inteligent
 	border-radius: $border-rad
 
-.btn-purple
-	background-color: $color-purple
-
 .btn-red
-	background-color: $color-danger
+	background-color: $color-default
 
 .btn-green
 	background-color: $color-success-dark
@@ -44,7 +44,6 @@
 a.dismiss
 	position: absolute
 	right: 1.7rem
-	top: .6rem
 	cursor: pointer
 	color: $color-white
 	&:hover
@@ -127,7 +126,10 @@ a.dismiss
 	transition-timing-function: initial
 	transition-delay: initial
 .card-level
-	background-color: $color-gray-dark
+	background-color: $color-white
+	.card-content-bloque
+		h6
+			color: $color-black-elegant-dark !important
 
 .card
 	border-radius: $border-rad !important
@@ -141,10 +143,9 @@ a.dismiss
 		display: inline-block
 
 .card-title-bloque,.card-title-level
-	border-right: .06rem solid #000
+	border-right: .06rem solid #000 !important
 	display: inline-block !important
 	padding: .6rem 1.4rem
-	font-weight: 500
 	margin-right: 1rem
 .card-title-level
 	border-right: .06rem solid #fff
@@ -171,10 +172,10 @@ a.dismiss
 
 .card-bloque
 	a.btn-bloque.active
-		background-color: $color-danger !important
+		background-color: $color-default !important
 .card-level
 	a.btn-level.active
-		background-color: $color-danger !important
+		background-color: $color-default !important
 
 
 .text-center
@@ -199,3 +200,31 @@ a.dismiss
 
 .card-game
 	border-radiud: $border-rad
+
+.ms-card
+	.mask
+		border-top-left-radius: $border-rad !important
+		border-top-right-radius: $border-rad !important
+
+#ms-conteiner-all
+	background-color: $color-white
+	border-radius: $border-rad
+	padding: 1rem
+	margin-bottom: 1rem
+	margin-top: 1rem
+
+.ms-btn-info
+	background-color: $color-warning-dark
+
+.ms-btnTopic
+	background-color: $color-info-light
+
+.btn-bloque, .btn-level
+	background-color: $color-info-light
+	border-radius: $border-rad
+
+.ms-close
+	color: $color-warning-dark !important
+	margin-top: .6rem
+	@media (max-width: $smartphone-size-portrait + 30px)
+		margin-top: -9.5rem !important
