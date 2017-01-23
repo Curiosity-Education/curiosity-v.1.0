@@ -40,7 +40,7 @@ class parentsController extends BaseController{
             return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validator->messages()));
         }
         else {
-                //DB::transaction(function () {
+                DB::transaction(function () {
                     try {
                         $user = new User($data);
                         $user->password=Hash::make($data["password"]);
@@ -73,7 +73,7 @@ class parentsController extends BaseController{
                         return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
                     }
 
-                //}, 5);
+                }, 5);
 
 
             /* Uncomment for production */
