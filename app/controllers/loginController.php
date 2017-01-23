@@ -35,7 +35,7 @@ class loginController extends BaseController{
             else if(Auth::user()->hasRole('parent')){
                 $email   = Auth::User()->Person->Dad->email; 
                 $parent  = Dad::where('email','=',$email)->first();
-                $hasPlan = Plan::where('padre_id','=',$parent->id)->first();
+                $hasPlan = Membership::where('padre_id','=',$parent->id)->first();
                 if(!$hasPlan){
                     return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
                 }

@@ -62,16 +62,13 @@ class parentsController extends BaseController{
                         /*------------------------------*/
                         $dad->email = $data['email'];
                         $dad->persona_id = $person->id;
-                        //if($lada){
-                            $dad->telefono = $data['telefono'];
-                        //}
+                        $dad->telefono = $data['telefono'];
                         $dad->save();
                     }
                     catch (PDOException $pdoException){
                         return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $pdoException->getMessage()));
                     }
                     catch (Exception $e){
-                        return $e;
                         return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
                     }
 
@@ -131,7 +128,6 @@ class parentsController extends BaseController{
                         "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
                         "cards"=> array(Input::get('conektaTokenId'))
                     ));
-
                     $plan = Plan::find(Input::get('plan_id'));
                     $subscription = $customer->createSubscription(array(
                       "plan_id"=> $plan->reference
