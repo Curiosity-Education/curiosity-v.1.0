@@ -13,7 +13,7 @@ $title-color: rgba($color-black-elegant-light, .75)
    margin-top: 1.2rem
    margin-bottom: 1rem
 #gst-row-game
-   margin-top: -3rem !important
+   margin-top: 0rem !important
 iframe body
    border-radius: $border-rad
 
@@ -105,6 +105,10 @@ iframe body
    color: $color-skin !important
 .text-left
    text-align: left
+#gst-modal-instruction
+   .modal-content
+      background-color: transparent !important
+
 #gst-modal-pdf-video,#gst-modal-instruction
    #gst-iframe-content
       border: none
@@ -121,6 +125,7 @@ iframe body
       top: 0
       cursor: pointer
       z-index: 1000
+      color: $color-white
    .gst-information
       padding-top: 0
       padding-left: 0
@@ -184,4 +189,7 @@ iframe body
          min-width: 750px   
 #gst-img-instruction
    cursor: pointer
+   width: 100%
+   min-height: 46vh
+   max-height: 62vh
 

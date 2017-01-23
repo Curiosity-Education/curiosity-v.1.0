@@ -112,7 +112,11 @@ $(function(){
 	$formChild.validate({
 		rules:{
 			username:{required:true,maxlength:50,remote:{
-				"url":""
+				"url":"/remote-username",
+				"type":"POST",
+				"username":function(){
+					return $("input[name='username']").val();
+				}
 			}},
 			name:{required:true,maxlength:100},
 			surnames:{required:true,maxlength:100},
@@ -123,7 +127,8 @@ $(function(){
 			gender:{required:true},
 			average:{required:true}
 		},messages:{
-			cpassword:{equalTo:"Las constraseñas"}
+			cpassword:{equalTo:"Las contraseñas son diferentes"},
+			username:{remote:"Nombre de usuario no disponible"}
 		}
 	});
 

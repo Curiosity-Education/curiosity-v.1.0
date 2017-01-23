@@ -95,18 +95,15 @@
                     <div class="tab-1 active animated fadeIn">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-username" name="username" class="form-control">
-                        <label for="upch-username">username niño</label>
+                        <input type="text" id="upch-username" name="username" class="form-control" placeholder="Nombre de usuario">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="password" id="upch-pass" name="password" class="form-control">
-                        <label for="upch-pass">Contraseña</label>
+                        <input type="password" id="upch-pass" name="password" class="form-control" placeholder="contraseña">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="password" id="upch-cpass" name="cpassword" class="form-control">
-                        <label for="upch-cpass">Confirmar Contraseña</label>
+                        <input type="password" id="upch-cpass" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
                       </div>
                       <div class="md-form upch-average">
                         <h6 class="text-left">
@@ -118,13 +115,11 @@
                     <div class="tab-2 animated fadeIn upch-tab2">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-name" name="name" class="form-control">
-                        <label for="upch-username">Nombre(s)</label>
+                        <input type="text" id="upch-name" name="name" class="form-control" placeholder="Nombre(s)">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-surnames" name="surnames" class="form-control">
-                        <label for="upch-surnames">Apellido(s)</label>
+                        <input type="text" id="upch-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
                       </div>
                        <div class="md-form upch-select">
                             <select class="mdb-select" id="upch-gender" name="gender">

@@ -27,6 +27,7 @@ $(function(){
 				gender   : document.getElementById("rfc-gender").value,
 				average  : document.getElementById("rfc-average").value
 			};
+			console.log(data);
 			$(this).prop("disabled",true);
 			var text  = $(this).text()
 			var these = this;
@@ -37,10 +38,10 @@ $(function(){
 					toastr.warning(response.message);
 				}else{
 					toastr.success(response.message);
+					document.location = "/padre-inicio";
 				}
 				$(these).prop("disabled",false);
 				$(these).html(text);
-				document.location = "/padre-inicio";
 			});
 		}else{
 			toastr.info("Verifica la información ingresada, algunos datos no son validos");
@@ -49,7 +50,13 @@ $(function(){
 	//validation data for register child
 	$formChild.validate({
 		rules:{
-			username:{required:true,maxlength:50},
+			username:{required:true,maxlength:50,remote:{
+				"url":"/remote-username",
+				"type":"POST",
+				"username":function(){
+					return $("input[name='username']").val();
+				}
+			}},
 			name:{required:true,maxlength:100},
 			surnames:{required:true,maxlength:100},
 			password:{required:true,minlength:5},
@@ -59,7 +66,8 @@ $(function(){
 			gender:{required:true},
 			average:{required:true}
 		},messages:{
-			cpassword:{equalTo:"Las constraseñas"}
+			cpassword:{equalTo:"Las contraseñas son diferentes"},
+			username:{remote:"Nombre de usuario no disponible"}
 		}
 	});
 });

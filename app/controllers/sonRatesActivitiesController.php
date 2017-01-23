@@ -17,12 +17,12 @@ class sonRatesActivitiesController extends BaseController{
           ));
       }else{
         //get child current id
-        //$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+        $idHijo = Auth::User()->Person->Son->id;
         //get Activity current id
-        //$activityId = Session::get('idActivity');
+        $activityId = Session::get('idActivity');
         //comparate if this child has qualified this activity
-        $sonRateActivity = SonRatesActivity::where("hijo_id","=","27")
-                          ->where("actividad_id","=","8")
+        $sonRateActivity = SonRatesActivity::where("hijo_id","=","$idHijo")
+                          ->where("actividad_id","=","$activityId")
                           ->first();
         if($sonRateActivity){
           $sonRateActivity->calificacion = $data["qualification"];
@@ -30,8 +30,8 @@ class sonRatesActivitiesController extends BaseController{
         }else{
           $sonRateActivity = new SonRatesActivity();
           $sonRateActivity->calificacion = $data["qualification"];
-          $sonRateActivity->hijo_id      = 27;
-          $sonRateActivity->actividad_id = 8;
+          $sonRateActivity->hijo_id      = $idHijo;
+          $sonRateActivity->actividad_id = $activityId;
           $sonRateActivity->save();
         }
         //this format message is for user
@@ -55,12 +55,12 @@ class sonRatesActivitiesController extends BaseController{
     if(Request::method()=="POST"){
       //find for post
       //get child current id
-      //$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+      $idHijo = Auth::User()->Person->Son->id;
       //get Activity current id
-      //$activityId = Session::get('idActivity');
+      $activityId = Session::get('idActivity');
       //comparate if this child has qualified this activity
-      $socreAndHits = ActivityDoneBySon::where('actividad_id','=',8)
-                                      ->where('hijo_id','=',27)
+      $socreAndHits = ActivityDoneBySon::where('actividad_id','=',$activityId)
+                                      ->where('hijo_id','=',$idHijo)
                                       ->where('puntaje','=',ActivityDoneBySon::max('puntaje'))
                                       ->select('puntaje','aciertos')
                                       ->first();
@@ -71,7 +71,7 @@ join biblioteca_videos bv on av.biblioteca_video_id = bv.id
 join profesores_apoyo pa on pa.id = bv.profesor_apoyo_id
 join escuelas_apoyo ea on pa.escuela_id = ea.id
 join temas t on bv.tema_id = t.id
-where a.active = 1 and a.id = 8;");/*table('biblioteca_videos')
+where a.active = 1 and a.id = $activityId;");/*table('biblioteca_videos')
                       ->join('actividades_videos','actividades_videos.biblioteca_video_id','=','biblioteca_videos.id')
                       ->join('actividades','actividades.id','=','actividades_videos.actividad_id')
                       ->join('profesores_apoyo','profesores_apoyo.id','=','biblioteca_videos.profesor_apoyo_id')
@@ -86,7 +86,7 @@ where a.active = 1 and a.id = 8;");/*table('biblioteca_videos')
                       ->join('actividades_pdfs','actividades_pdfs.biblioteca_archivo_id','=','biblioteca_pdfs.id')
                       ->join('actividades','actividades.id','=','actividades_pdfs.actividad_id')
                       ->join('temas','temas.id','=','biblioteca_pdfs.tema_id')
-                      ->where('actividades.id','=','8')
+                      ->where('actividades.id','=','$activityId')
                       ->where('actividades.active','=','1')
                       ->select('biblioteca_pdfs.id','biblioteca_pdfs.nombre','biblioteca_pdfs.nombre_real','biblioteca_pdfs.vistos','temas.nombre as tema')
                       ->orderBy('biblioteca_pdfs.vistos','desc')
@@ -101,12 +101,12 @@ where a.active = 1 and a.id = 8;");/*table('biblioteca_videos')
 
     }else{//request method get
 			//get child current id
-			//$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+			$idHijo = Auth::User()->Person->Son->id;
 			//get Activity current id
-			//$activityId = Session::get('idActivity');
+			$activityId = Session::get('idActivity');
 			//comparate if this child has qualified this activity
-			$sonRateActivity = SonRatesActivity::where("hijo_id","=","27")
-												->where("actividad_id","=","8")
+			$sonRateActivity = SonRatesActivity::where("hijo_id","=","$idHijo")
+												->where("actividad_id","=","$activityId")
 												->first();
 			if($sonRateActivity){
 				//this format message is for developer

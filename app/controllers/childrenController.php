@@ -73,6 +73,7 @@ class childrenController extends BaseController{
             $person                = new Person($data);
             $person->nombre        = $data["name"];
             $person->apellidos     = $data["surnames"];
+            $person->sexo          = $data["gender"];
             $person->user_id       = $user->id;
             $person->save();
             $son                   = new Son();

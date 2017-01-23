@@ -6,6 +6,19 @@ class Ranking { //object for ranking in curiosity
 		ranking.stars         = 0;//number of stars in ranking
 		ranking.averageStars  = 0;//average of ranking
 	}
+	show (color){
+		ranking.colorActive   = color;//colors of active stars
+		ranking.colorUnActive = "rgba(46,46,46,0.75)";//colors for unactive stars
+		ranking.stars         = 0;//number of stars in ranking
+		ranking.averageStars  = 0;//average of ranking
+		$.each($(".curiosity-ranking"),function(indx,object){//rut to rankings
+			object.style 		 = "display:block";//show rankings
+			ranking.averageStars = object.getAttribute("data-stars");// get data stars
+			ranking.stars 		 = (Math.floor(ranking.averageStars));// convert to int data stars
+			$(object).find(".star-text").text(ranking.averageStars);
+			ranking.runRankingSetColors($(object),ranking.stars);
+		});
+	} 
 
 	init(){//init function
 		this.setDatasToRankings();
@@ -92,5 +105,5 @@ var ranking = {//object with values to use in this class
 			}
 		});
 	}
-}
+};
 //end of document

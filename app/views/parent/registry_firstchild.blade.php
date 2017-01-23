@@ -62,17 +62,15 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="rfc-username" name="username" class="form-control">
-												<label for="rfc-username">Usuario</label>
+												<input type="text" id="rfc-username" name="username" class="form-control" placeholder="nombre de usuario">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="rfc-name" name="name" class="form-control">
-												<label for="rfc-name">Nombre</label>
+												<input type="text" id="rfc-name" name="name" class="form-control" placeholder="Nombre(s)">
 											</div>
 											<div class="md-form form-group" id="slc-rfc-gender">
 												<select class="mdb-select" id="rfc-gender" name="gender">
-													<option value="" disabled selected>Genero</option>
+													<option value="H" disabled selected>Genero</option>
 													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Niño</option>
 													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
 												</select>
@@ -81,18 +79,15 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="rfc-password" name="password" class="form-control">
-												<label for="rfc-password">Contraseña</label>
+												<input type="password" id="rfc-password" name="password" class="form-control" placeholder="Contraseña">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="rfc-cpassword" name="cpassword" class="form-control">
-												<label for="rfc-cpassword">Confirmar Contraseña</label>
+												<input type="password" id="rfc-cpassword" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
-												<input type="text" id="rfc-surnames" name="rfc-surnames" class="form-control">
-												<label for="rfc-surnames">Apellidos</label>
+												<input type="text" id="rfc-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
 											</div>
 											<div class="md-form form-group rfc-content-average">
 												<h5 class="h5-responsive text-xs-left">Promedio Escolar:</h5>
