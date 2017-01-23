@@ -106,6 +106,53 @@ class parentsController extends BaseController{
         }
 
     }
+    public function payment_suscription(){
+        $padreRole = Auth::user()->roles[0]->name;
+            /*
+                Configuración con Conekta
+
+            */
+            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            Conekta::setLocale('es');
+            try{
+                if($padreRole == "parent"){
+                    $customer = Conekta_Customer::create(array(
+                        "name" => Input::get('nombre'),
+                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
+                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
+                        "cards"=> array(Input::get('conektaTokenId'))
+                    ));
+
+                    $plan = Plan::find(Input::get('plan_id'));
+                    $subscription = $customer->createSubscription(array(
+                      "plan_id"=> $plan->reference
+                    ));
+                    if ($subscription->status == 'active') {
+                            $membresia_plan = new MembershipPlan();
+                            $membresia = new Membership(array(
+                                "token_card" => $subscription->id,
+                                "fecha_registro" => Date('Y-m-d'),
+                                "active"    => 1,
+                                "padre_id"  => Auth::user()->Person()->first()->Parent()->first()->id
+                            ));
+                            $membresia->save();
+                         //la suscripción inicializó exitosamente!
+                        return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
+
+                    }
+                    elseif ($subscription->status == 'past_due') {
+                     //la suscripción falló a inicializarse
+                      return Response::json(array(0=>'error'));
+                    }
+                }
+                else{
+                    return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
+                }
+            }catch (Conekta_Error $e){
+              echo $e->getMessage();
+             //el cliente no pudo ser creado
+            }
+    }
     public function confirm($token){
         $user = User::where("token","=",$token)->first();
         if($user){
