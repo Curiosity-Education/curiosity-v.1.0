@@ -18,9 +18,9 @@ class loginController extends BaseController{
             'password'  =>  $data["password"]
          );
          if(Auth::attempt($auth)){
-            if (Auth::user()->hasRole('hijo')){
+            if (Auth::user()->hasRole('son')){
                $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
-               $membershipPlan = MembershipPlan::where('hijo', '=', $idSon)->first();
+               $membershipPlan = MembershipPlan::where('son', '=', $idSon)->first();
                if($$membershipPlan  == null){
                   return Response::json(array(0=>'success', 1=>'h'));
                }
@@ -31,6 +31,16 @@ class loginController extends BaseController{
                   Auth::logout();
                   return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => null));
                }
+            }
+            else if(Auth::user()->hasRole('parent')){
+                $parent = Dad::where('username','=',$auth['username'])->first();
+                $hasPlan = Plan::where('padre_id','=',$parent->id)->first();
+                if(!$hasPlan){
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
+                else{
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
             }
             else{
                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-teachers"));
