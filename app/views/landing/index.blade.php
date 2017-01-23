@@ -24,7 +24,7 @@
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
 	<li class="nav-item">
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
 	</li>
 @stop
 
@@ -94,8 +94,10 @@
 				</li>
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
-					<a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
-					<a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
+					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
+					<!-- <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a> -->
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+					<!-- <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="#membresia">Registrarse</a> -->
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -513,7 +515,7 @@
             $("#suscriptionBtn").click(function(e){
                 e.preventDefault();
                 localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
-                window.location = '/view-parent.registry';
+                window.location = '/parent-register';
             });
         });
     </script>
