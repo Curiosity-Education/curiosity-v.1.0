@@ -19,6 +19,7 @@ class plansController extends BaseController{
                           "interval"=> Input::get('interval')
                         ));
                         $newPlan = new Plan(Input::all());
+								$newPlan->visible = 0;
                         $newPlan->active = 1;
                         $newPlan->save();
                         return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
@@ -78,8 +79,14 @@ class plansController extends BaseController{
     }
 
     public function all(){
-            return Plan::all();
+            return Plan::where("active", "=", 1)->get();
     }
+
+	 public function getHidden(){
+		 		return Plan::where("active", "=", 1)
+				->where("visible", "=", 0)
+				->get();
+	 }
 
 }
 ?>

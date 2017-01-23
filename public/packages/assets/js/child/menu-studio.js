@@ -9,7 +9,10 @@ $(function(){
 	| those are hadled in curiosity
 	*/
 
-	$(".btn-inteligent").click(function(){
+	$("body").on("click", ".btn-inteligent", function(){
+		console.log($(this).data('data'));
+		$(".card-title-level").text($(this).text()+" | Grados");
+		// makeGrades();
 		if($(this).hasClass("active")){
 			$(".row-level").toggle("slow");
 			$(this).removeClass("active");
@@ -19,8 +22,6 @@ $(function(){
 			$(this).addClass("active");
 		}
 		$(".row-bloque").hide("slow");
-		$(".card-title-level").text($(this).text()+" | Grados");
-
 	});
 	$(".btn-level").click(function(){
 		$(".row-level").toggle("slow");
@@ -59,5 +60,30 @@ $(function(){
 	|
 	|
 	*/
+
+	$("#row-inteligents").html("");
+   var intells = StorageDB.table.getData("intelligences");
+   $.each(intells, function(index, obj) {
+      var code = "<div class='col-xs-12 col-sm-4 col-md-3 col-inteligent'>"+
+        "<a class='btn btn-purple btn-block btn-inteligent btn-"+obj.id+"' data-data='"+JSON.stringify(obj)+"'><i class='fa fa-book'></i>&nbsp; "+obj.nombre+""+
+          "<div class='ms-arrow'></div>"+
+        "</a>"+
+      "</div>";
+      $("#row-inteligents").append(code);
+   });
+
+	var makeGrades = function(int, grad){
+		var intSel = StorageDB.table.getByAttr("intelligences", "id", int);
+		// var grades = StorageDB.table.getByAttr("levels", );
+
+		var code = "<a class='btn btn-purple btn-level'> 1°</a>"+
+		"<a class='btn btn-purple btn-level'> 2°</a>"+
+		"<a class='btn btn-purple btn-level'> 3°</a>"+
+		"<a class='btn btn-purple btn-level'> 4°</a>"+
+		"<a class='btn btn-purple btn-level'> 5°</a>"+
+		"<a class='btn btn-purple btn-level'> 6°</a>"+
+		"<a class='dismiss' data-dismiss-target='.row-level'>x</a>";
+		$(".card-level > div").append(code);
+	}
 
 });

@@ -13,5 +13,8 @@ var activityCtrl = {
 	},
 	getPdfs: function(success){
 		Activity.getPdfs(success);
-	}
+	},
+	getAll: function(success){
+		Activity.findAll("GET",success);
+	},
 };

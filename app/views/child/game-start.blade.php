@@ -14,13 +14,13 @@
          <div class="gst-card z-depth-1 animated bounceInUp" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
-               <h6 id="gst-score-max">1500 puntos</h6><br>
+               <h6 id="gst-score-max" data-score="{{$game['score']}}">{{$game["score"]}} puntos</h6><br>
                <h5>Aciertos</h5>
-               <h6 id="gst-hits-max">15</h6>
+               <h6 id="gst-hits-max">{{$game["hits"]}}</h6>
             </div>
             <div id="gst-ranking">
               <h6>Calificame</h6>
-              <ul class="curiosity-ranking animated bounceIn" data-stars="4.6" >
+              <ul class="curiosity-ranking animated bounceIn" data-stars="{{$game['qualification']}}" >
                 <li class="star-text"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Mala"></li>
                 <li class="fa fa-star item-ranking" data-toggle="tooltip" data-placement="bottom" title="Aceptable"></li>
@@ -45,12 +45,14 @@
       </div>
       <div class="col-sm-8">
          <div class="gst-card z-depth-1 animated bounceInRight" id="gst-dataGame">
-            <h1>Nombre del Juego</h1>
+            <h1>{{$game["name"]}}</h1>
+
             <hr class="gst-hr">
-            <img src="/packages/assets/media/images/games/instructions/cstbannerskblue.jpg" class="img-fluid z-depth-1">
+            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
-                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs">
+
+                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs data-target="#gst-modal-instruction" data-toggle="modal">
                     <span class="fa fa-map-o"></span>&nbsp;
                     Instrucciones
                  </button>
@@ -67,7 +69,7 @@
    </div>
    <div class="row hidden" id="gst-row-game">
     <div class="col-md-12">
-       <iframe src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+       <iframe data-folder="{{$game['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
    <!-- view pdf -->
@@ -116,7 +118,7 @@
        </div>
      </div>
    </div>
-    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal fade" id="gst-modal-instruction" tabindex="-1" role="dialog" aria-hidden="true">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-body">
@@ -124,15 +126,33 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <div class="col-md-8 col-sm-8 col-xs-12 gst-col">
+              <div class="col-md-12 gst-col">
+                <div class="flex-center">
+                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
+                </div>
+              </div>
+            </div>
+         </div>
+       </div>
+     </div>
+   </div>
+    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-body">
+            <div class="row">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="col-md-8 col-sm-12 col-xs-12 gst-col">
                 <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
               </div>
-              <div class="col-md-4 col-sm-8 col-xs-12 gst-col">
+              <div class="col-md-4 col-sm-12 col-xs-12 gst-col">
                 <div class="gst-information">
                  <div class="gst-informataion-header">
                   <div class="row">
                     <div class="col-md-3">
-                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
+                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
                     </div>
                     <div class="col-md-9">
                       <h5 class="gst-tema-content text-left">Nombre profe</h5>
@@ -250,12 +270,5 @@
 <script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
 <script type="text/javascript">
-   $(function(){
-      // $("#gst-modal").modal('show');
-      $("#gst-btnInstructs").click(function(){
-         $("#gst-modal").modal('show');
-      });
-      new WOW().init();
-   });
 </script>
 @stop

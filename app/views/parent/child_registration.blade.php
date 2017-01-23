@@ -95,49 +95,46 @@
                     <div class="tab-1 active animated fadeIn">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-username" name="upch-username" class="form-control">
-                        <label for="upch-username">username niño</label>
+                        <input type="text" id="upch-username" name="username" class="form-control" placeholder="Nombre de usuario">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-pass" name="upch-pass" class="form-control">
-                        <label for="upch-pass">Contraseña</label>
+                        <input type="password" id="upch-pass" name="password" class="form-control" placeholder="contraseña">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-cpass" name="upch-cpass" class="form-control">
-                        <label for="upch-cpass">Confirmar Contraseña</label>
+                        <input type="password" id="upch-cpass" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
                       </div>
                       <div class="md-form upch-average">
                         <h6 class="text-left">
                           Promedio Actual de tu Hijo:
                         </h6>
-                       <input type="range" id="upch-promedio" min="5" max="10" step=".1" name="upch-promedio" class="form-control" value="5">
+                       <input type="range" id="upch-average" min="5" max="10" step=".1" name="average" class="form-control" value="5">
                       </div>
                     </div>
                     <div class="tab-2 animated fadeIn upch-tab2">
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-username" name="upch-username" class="form-control">
-                        <label for="upch-username">Nombre(s)</label>
+                        <input type="text" id="upch-name" name="name" class="form-control" placeholder="Nombre(s)">
                       </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="upch-username" name="upch-username" class="form-control">
-                        <label for="upch-username">Apellido(s)</label>
+                        <input type="text" id="upch-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
                       </div>
                        <div class="md-form upch-select">
-                            <select class="mdb-select">
+                            <select class="mdb-select" id="upch-gender" name="gender">
                                 <option value="" disabled selected>Sexo</option>
-                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
-                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+                                <option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
+                                <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
                             </select>
                         </div>
                     </div>
                     <hr>
                     <div class="text-xs-center">
-                      <button type="button" data-card="card-1" class="btn btn-outline-warning waves-effect waves-light btn-cancel btn-border-curiosity rotate-btn upch-btnCalcel">Cancelar</button>
-                      <button type="button" class="btn upch-btnNext btn-to-move btn-border-curiosity btn-next">Siguiente</button>
+                      <button type="reset" data-card="card-1" class="btn btn-outline-warning waves-effect waves-light btn-cancel btn-border-curiosity rotate-btn upch-btnCalcel">Cancelar</button>
+                      <button type="button" class="btn btn-to-move btn-return btn-outline btn-warning waves-effect waves-light btn-border-curiosity upch-btnCancel hidden" data-step="1">Regresar</button>
+                      <button type="button" class="btn upch-btnNext btn-to-move btn-next btn-border-curiosity btn-next btn-upload-child hidden">Registrar</button>
+                      <button type="button" class="btn btn-to-move btn-next btn-border-curiosity upch-btnNext" data-step="1"> Siguiente</button>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
@@ -171,6 +168,11 @@
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js"></script>
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
 <script src="/packages/assets/js/parent/child-registration.js" charset="utf-8"></script>
 @stop

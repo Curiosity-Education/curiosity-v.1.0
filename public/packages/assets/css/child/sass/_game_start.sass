@@ -13,7 +13,7 @@ $title-color: rgba($color-black-elegant-light, .75)
    margin-top: 1.2rem
    margin-bottom: 1rem
 #gst-row-game
-   margin-top: -3rem !important
+   margin-top: 0rem !important
 iframe body
    border-radius: $border-rad
 
@@ -109,7 +109,11 @@ iframe body
 
 .text-left
    text-align: left
-#gst-modal-pdf-video
+#gst-modal-instruction
+   .modal-content
+      background-color: transparent !important
+
+#gst-modal-pdf-video,#gst-modal-instruction
    #gst-iframe-content
       border: none
       border-left-top-radius: $border-rad
@@ -125,6 +129,7 @@ iframe body
       top: 0
       cursor: pointer
       z-index: 1000
+      color: $color-white
    .gst-information
       padding-top: 0
       padding-left: 0
@@ -177,10 +182,11 @@ iframe body
    background-color: #e9ebee !important
 #gst-video-pdf
    border: none
-+mediaQuerieMin(576px)
-   #gst-modal-pdf-video
++mediaQuerieMin(780px)
+   #gst-modal-pdf-video,#gst-modal-instruction
       .modal-dialog
          min-width: 1000px
+
 
 #gst-materialPdf
    border-color: $color-secondary
@@ -190,3 +196,14 @@ iframe body
    color: $color-danger !important
 #gst-dataGame
    margin-bottom: 1rem
+  
++mediaQuerie(576px,776px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 750px   
+#gst-img-instruction
+   cursor: pointer
+   width: 100%
+   min-height: 46vh
+   max-height: 62vh
+
