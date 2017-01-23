@@ -25,11 +25,13 @@ class parentsController extends BaseController{
         $today= date("Y-m-d");
         $rules = [
             "password"          =>"required|min:8|max:100",
+            "cpassword"         =>"required|same:password",
             "nombre"            =>"required|letter|max:50",
             "apellidos"  =>"required|letter|max:50",
             "sexo"              =>"required|string|size:1",
             "email"             =>"required|email|unique:padres,email",
-            "telefono"          =>"required"
+            "username"          =>"required|unique:users,username",
+            "telefono"          =>"required|decimal"
         ];
         try {
          $validator = Validator::make($data,$rules,Curiosity::getValidationMessages());
@@ -44,7 +46,7 @@ class parentsController extends BaseController{
                     try {
                         $user = new User($data);
                         $user->password=Hash::make($data["password"]);
-                        $user->username = $data['email'];
+                        $user->username = $data['username'];
                         $user->token=sha1($data['email']);
                         $user->save();
                         $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
@@ -98,7 +100,7 @@ class parentsController extends BaseController{
             //      return $code;
             //  }
             $dataset = [
-                'username'  =>  $data['email'],
+                'username'  =>  $data['username'],
                 'password'  =>  $data['password']
             ];
             return Response::json(array(
