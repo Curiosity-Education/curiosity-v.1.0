@@ -91,13 +91,17 @@
 
 						<!--Body-->
 						<form action="" class="form-inline text-xs-center" id="parent-form">
-							<div class="container-fluid">
+							<div class="">
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix"></i>
 												<input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control validate">
+											</div>
+											<div class="md-form form-group">
+												<i class="fa fa-unlock-alt prefix"></i>
+												<input type="password" id="password" name="password" class="form-control" length="20" placeholder="Ingresa tu contraseña">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
@@ -113,8 +117,12 @@
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
+												<i class="fa fa-user prefix"></i>
+												<input type="text" id="username" name="username" placeholder="Username" class="form-control validate" length="20">
+											</div>
+											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="password" name="password" class="form-control" length="8" placeholder="Ingresa tu contraseña">
+												<input type="password" id="cpassword" name="cpassword" class="form-control" length="20" placeholder="Confirmar contraseña">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix"></i>
@@ -126,12 +134,18 @@
 											</div>
 										</div>
 										<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
-											<fieldset class="form-group">
-												<input type="checkbox" id="accept_conditions" name="accept_conditions">
-												<label for="accept_conditions">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
-											</fieldset>
 											<hr>
-											<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
+											<div class="row">
+												<div class="col-md-6">
+													<fieldset class="form-group">
+														<input type="checkbox" id="accept_conditions" name="accept_conditions">
+														<label for="accept_conditions">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
+													</fieldset>
+												</div>
+												<div>
+													<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>

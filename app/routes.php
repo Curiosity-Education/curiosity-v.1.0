@@ -90,6 +90,9 @@ Route::get('administer', function(){
 Route::get('parent-register', function(){
     return View::make('parent.registry');
 });
+Route::group(array('prefix' => 'plans'),function(){
+   Route::post('get','plansController@get');
+});
 
 Route::get('admin-novedades', function(){
 	return View::make('administer.admin-news');
@@ -320,7 +323,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
-    Route::post('has-game','activitiesController@hasGame');
+  Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
@@ -332,6 +335,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 Route::group(array('prefix' =>  'teacher'),function(){
 	Route::post('getWithSchool', 'teachersController@getWithSchool');
 	Route::post('getBySchool', 'teachersController@getBySchool');
+	Route::post('all', 'teachersController@all');
 });
 
 /*
@@ -342,6 +346,7 @@ Route::group(array('prefix' =>  'teacher'),function(){
 */
 Route::group(array('prefix' =>  'video'),function(){
 	Route::post('getByTopic', 'libraryVideoController@getByTopic');
+	Route::post('all', 'libraryVideoController@all');
 });
 
 /*

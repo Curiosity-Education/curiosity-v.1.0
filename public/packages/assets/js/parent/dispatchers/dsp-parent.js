@@ -1,6 +1,7 @@
 $(function(){
     var prefix = "parent";
 
+    parentController.getPlan(localStorage.getItem('plan-user-selected'));
     $("#pay-button").click(function(){
        $("#pay-button").prop("disabled",true);
        parentController.payment();

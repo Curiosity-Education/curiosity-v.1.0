@@ -9,6 +9,17 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                     required:true,
                     email:true
                 },
+                username:{
+                  required:true,
+                  maxlength:40,
+                  remote:{
+                    "url":"/remote-username",
+                    "type":"POST",
+                    "username":function(){
+                      return $("input[name='username']").val();
+                    }
+                  }
+                },
                 nombre:{
                     required:true
                 },
@@ -22,11 +33,22 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                     required:true,
                     minlength:8
                 },
+                cpassword:{
+                  required: true,
+                  minlength:8,
+                  equalTo:function(){
+                    return $("input[name='password']");
+                  }
+                },
                 telefono:{
                     required:true,
+                    digits:true,
                     minlength:7,
                     maxlength:13
                 }
+           },messages:{
+              cpassword:{equalTo:"Las contraseñas son diferentes"},
+              username:{remote:"Nombre de usuario no disponible"}
            }
        },
        data:function(){
@@ -36,13 +58,17 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                 'apellidos':$("#apellidos").val(),
                 'sexo':$("#sexo").val(),
                 'password':$("#password").val(),
-                'telefono':$("#telefono").val()
+                'telefono':$("#telefono").val(),
+                'username':$("#username").val(),
+                'cpassword':$("#cpassword").val()
             }
        },
        id : null,
-
-
-
+       getPlan:function(id){
+           return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
+               $("#pay-button").text("Pagar plan "+response.name);
+           },'/plans','get');
+       },
        save : function(){
             parentController.formulary.validate(parentController.rulesFormulary);
             if (parentController.formulary.valid()){
@@ -144,6 +170,7 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
             switch(response.status){
                 case 200:
                     Curiosity.noty.success("Se ha realizado el cobró con exito.");
+                    window.location = '/view-parent.registry_firstchild';
                     break;
                 default:
                     Curiosity.noty.error("Ups algo ha salido mal reportelo con el administrador.");
