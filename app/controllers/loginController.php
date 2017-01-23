@@ -15,10 +15,10 @@ class loginController extends BaseController{
       else{
          $auth = array(
             'username'  =>  $data["username"],
-            'password'  =>  $data["password"],
-            'active'    =>  1
+            'password'  =>  $data["password"]
          );
          if(Auth::attempt($auth)){
+
             $user = Auth::user();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
@@ -31,6 +31,16 @@ class loginController extends BaseController{
                   Auth::logout();
                   return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => "/"));
                }
+            }
+            else if(Auth::user()->hasRole('parent')){
+                $parent = Dad::where('username','=',$auth['username'])->first();
+                $hasPlan = Plan::where('padre_id','=',$parent->id)->first();
+                if(!$hasPlan){
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
+                else{
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
             }
             else if (Auth::user()->hasRole('root') ||
                      Auth::user()->hasRole('administer content 1') ||

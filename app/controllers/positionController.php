@@ -5,6 +5,6 @@ class positionController extends BaseController{
 		$pos = Position::all();
 		return $pos;
 	}
-   
+
 }
 ?>

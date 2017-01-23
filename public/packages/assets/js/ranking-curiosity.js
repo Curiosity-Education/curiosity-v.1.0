@@ -18,7 +18,7 @@ class Ranking { //object for ranking in curiosity
 			$(object).find(".star-text").text(ranking.averageStars);
 			ranking.runRankingSetColors($(object),ranking.stars);
 		});
-	} 
+	}
 
 	init(){//init function
 		this.setDatasToRankings();

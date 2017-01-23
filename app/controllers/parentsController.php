@@ -1,5 +1,5 @@
 <?php
-class parentsController extends BaseController(){
+class parentsController extends BaseController{
 
 
   public function remoteEmail(){
@@ -18,85 +18,64 @@ class parentsController extends BaseController(){
     return null;
   }
   public function save(){
-        $data = Input::get('data');
+        $data = Input::all();
         $dateNow = date("Y-m-d");
         $date_min =strtotime("-18 year",strtotime($dateNow));
         $date_min=date("Y-m-d",$date_min);
         $today= date("Y-m-d");
         $rules = [
-            "username"          =>"required|unique:users,username|max:50",
             "password"          =>"required|min:8|max:100",
-            "cpassword"         =>"required|same:password",
             "nombre"            =>"required|letter|max:50",
-            "apellido_paterno"  =>"required|letter|max:30",
-            "apellido_materno"  =>"required|letter|max:30",
+            "apellidos"  =>"required|letter|max:50",
             "sexo"              =>"required|string|size:1",
-            "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
             "email"             =>"required|email|unique:padres,email",
-            "telefono"          =>"required",
-            "pais"              =>"required|exists:ladas_paises,name"
+            "telefono"          =>"required"
         ];
-        $messages = [
-               "required"    =>  "El campo :attribute es requerido",
-               "alpha"       =>  "Solo puedes ingresar letras",
-               "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
-               "date"        =>  "Formato de fecha invalido",
-               "numeric"     =>  "Solo se permiten digitos",
-               "email"       =>  "Ingresa un formato de correo valido",
-               "unique"      =>  "Este usuario ya existe",
-               "integer"     =>  "Solo se permiten numeros enteros",
-               "exists"      =>  "El campo :attribute no existe en el sistema",
-               "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
-               "integer"     =>  "Solo puedes ingresar numeros enteros",
-               "same"        =>  "Las contraseñas no coinciden",
-               "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-         ];
         try {
-         $validator = Validator::make($data,$rules,$messages);
+         $validator = Validator::make($data,$rules,Curiosity::getValidationMessages());
         } catch (Exception $e) {
-            return $e->getMessage();
+           return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
         }
         if($validator->fails()){
-            return $validator->messages();
+            return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validator->messages()));
         }
         else {
-            try {
-                $user = new User($data);
-                $user->password=Hash::make($data["password"]);
-                $user->token=sha1($data['email']);
-                $user->skin_id=skin::all()->first()->id;
-                $user->save();
-                $myRole = DB::table('roles')->where('name', '=', 'padre_free')->pluck('id');
-                $user->attachRole($myRole);
-                $person = new persona($data);
-                $person->user_id=$user->id;
-                $person->save();
-                $dad = new padre($data);
-                /*-------------------------------
-                    Get LADA of country selected
-                --------------------------------*/
-                $lada = ladaPais::where("name","=",$data["pais"])->select("phone_code")->get()[0];
-                /*------------------------------*/
-                $dad->persona_id = $person->id;
-                if($lada){
-                    $dad->telefono = "+".$lada->phone_code." ".$dad->telefono;
-                }
-                $dad->save();
-                $profile = new perfil();
-                if ($data['sexo'] == 'm'){
-                  $profile->foto_perfil="dad-def.png";
-                }
-                else{
-                  $profile->foto_perfil="mom-def.png";
-                }
-                $profile->gustos="¿Cuáles son tus gustos?";
-                $profile->users_id=$user->id;
-                $profile->save();
+                //DB::transaction(function () {
+                    try {
+                        $user = new User($data);
+                        $user->password=Hash::make($data["password"]);
+                        $user->username = $data['email'];
+                        $user->token=sha1($data['email']);
+                        $user->save();
+                        $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
+                        $user->attachRole($myRole);
+                        $person = new Person($data);
+                        $person->user_id=$user->id;
+                        $person->save();
+                        $dad = new Dad();
+                        /*-------------------------------
+                            Get LADA of country selected
+                        --------------------------------*/
+                        //$lada = LadaCountry::where("name","=",$data["pais"])->select("phone_code")->get()[0];
+                        /*------------------------------*/
+                        $dad->email = $data['email'];
+                        $dad->persona_id = $person->id;
+                        //if($lada){
+                            $dad->telefono = $data['telefono'];
+                        //}
+                        $dad->save();
+                    }
+                    catch (PDOException $pdoException){
+                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $pdoException->getMessage()));
+                    }
+                    catch (Exception $e){
+                        return $e;
+                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
+                    }
 
-            } catch (Exception $e){
-                $user->delete();
-                return $e->getMessage();
-            }
+                //}, 5);
+
+
             /* Uncomment for production */
             //  $dataSend = [
             //      "name"     =>       "Equipo Curiosity",
@@ -121,13 +100,65 @@ class parentsController extends BaseController(){
             //      $code = $e->getCode();
             //      return $code;
             //  }
+            $dataset = [
+                'username'  =>  $data['email'],
+                'password'  =>  $data['password']
+            ];
             return Response::json(array(
                 'status'    =>  200,
-                'statusMessage' =>  'success'
+                'statusMessage' =>  'success',
+                'data'  => $dataset
             ));
 
         }
 
+    }
+    public function payment_suscription(){
+        $padreRole = Auth::user()->roles[0]->name;
+            /*
+                Configuración con Conekta
+
+            */
+            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            Conekta::setLocale('es');
+            try{
+                if($padreRole == "parent"){
+                    $customer = Conekta_Customer::create(array(
+                        "name" => Input::get('nombre'),
+                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
+                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
+                        "cards"=> array(Input::get('conektaTokenId'))
+                    ));
+
+                    $plan = Plan::find(Input::get('plan_id'));
+                    $subscription = $customer->createSubscription(array(
+                      "plan_id"=> $plan->reference
+                    ));
+                    if ($subscription->status == 'active') {
+                            $membresia_plan = new MembershipPlan();
+                            $membresia = new Membership(array(
+                                "token_card" => $subscription->id,
+                                "fecha_registro" => Date('Y-m-d'),
+                                "active"    => 1,
+                                "padre_id"  => Auth::user()->Person()->first()->Parent()->first()->id
+                            ));
+                            $membresia->save();
+                         //la suscripción inicializó exitosamente!
+                        return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
+
+                    }
+                    elseif ($subscription->status == 'past_due') {
+                     //la suscripción falló a inicializarse
+                      return Response::json(array(0=>'error'));
+                    }
+                }
+                else{
+                    return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
+                }
+            }catch (Conekta_Error $e){
+              echo $e->getMessage();
+             //el cliente no pudo ser creado
+            }
     }
     public function confirm($token){
         $user = User::where("token","=",$token)->first();
@@ -146,7 +177,7 @@ class parentsController extends BaseController(){
         inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
         inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
         inner join personas on hijos.persona_id = personas.id
-        inner join users on users.id = personas.user_id where padres.id = '"++"'");
+        inner join users on users.id = personas.user_id where padres.id = '2'");
     }
     public function sendMensaje(){
         try{
