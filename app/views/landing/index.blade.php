@@ -308,7 +308,7 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
 				</h2>
 			</center>
 	  	</div>

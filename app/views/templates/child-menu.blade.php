@@ -18,7 +18,7 @@
    <span class="fa fa-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="view-child.menu-studio" class="linkMenu waves-effect" style="display:none !important;">
+<div data-url="view-child.menu-studio" class="linkMenu waves-effect">
    <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Menú de estudio
 </div>
@@ -41,7 +41,7 @@
    <span class="fa fa-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="#" class="linkMenu linkMenuAside waves-effect" style="display:none !important;">
+<div data-url="#" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Menú de estudio
 </div>
