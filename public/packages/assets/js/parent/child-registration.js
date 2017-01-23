@@ -10,7 +10,7 @@ $(function(){
     | show and hide steps
     |
     */
-  
+
 
     $(".btn-upload-child").click(function(ev){
     	console.log(this);
@@ -89,7 +89,7 @@ $(function(){
 			$(".btn-next").show();
 			$(".btn-upload-child").hide();
 		}
-		
+
 	}
 	$(".p-item-new").click(function(){
 		$("#p-row-main").hide();

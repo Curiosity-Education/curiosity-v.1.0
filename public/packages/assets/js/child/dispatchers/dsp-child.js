@@ -13,6 +13,6 @@ $(function(){
    Level.all("POST", function(r){ StorageDB.table.create("levels", r);});
    Intelligence.all("POST", function(r){ StorageDB.table.create("intelligences", r);});
    Block.all("POST", function(r){ StorageDB.table.create("blocks", r);});
-   Topic.all("POST", function(r){ StorageDB.table.create("topics", r);});   
+   Topic.all("POST", function(r){ StorageDB.table.create("topics", r);});
 
 });

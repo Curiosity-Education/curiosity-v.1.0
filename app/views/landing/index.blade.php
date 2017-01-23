@@ -313,7 +313,7 @@
 	</div>
 
 	<!-- Sección de Membresías -->
-	<section id="membresia" class="">
+	<section id="membresia" class="" style="max-height:100px;">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
@@ -322,91 +322,46 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
-				<!--Section: Pricing v.1-->
-				<section class="section">
-					<!--First row-->
-					<div class="row">
-						<!--First column-->
-						<div class="col-md-4 offset-md-2 mb-r">
-							<!--Pricing card-->
-							<div class="card pricing-card">
-								<!--Price-->
-								<div class="price header blue">
-									<h1>10</h1>
-									<div class="version">
-										<h5>Basic</h5>
-									</div>
-								</div>
-								<!--/.Price-->
-								<!--Features-->
-								<div class="card-block striped text-xs-center">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 2 Email Accounts</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 24h Tech Support</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> User Management </p>
-										</li>
-									</ul>
-									<button class="btn btn-primary">Buy now</button>
-								</div>
-								<!--/.Features-->
-							</div>
-							<!--/.Pricing card-->
-						</div>
-						<!--/First column-->
-						<!--Second column-->
-						<div class="col-md-4 mb-r">
-							<!--Pricing card-->
-							<div class="card pricing-card">
-								<!--Price-->
-								<div class="price header indigo">
-									<h1>20</h1>
-									<div class="version">
-										<h5>Pro</h5>
-									</div>
-								</div>
-								<!--/.Price-->
-								<!--Features-->
-								<div class="card-block striped text-xs-center">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 4 Email Accounts</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 24h Tech Support</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> User Management </p>
-										</li>
-									</ul>
-									<button class="btn btn-primary">Buy now</button>
-								</div>
-								<!--/.Features-->
-							</div>
-							<!--/.Pricing card-->
-						</div>
-						<!--/Second column-->
-					</div>
-					<!--/First row-->
-				</section>
-				<!--/Section: Pricing v.1-->
-			</div> <!-- Cierre de conyenedor -->
+                <section class="section">
+                   <?php $contador_plns=0; $long = count($planes); $control=0;?>
+                        @foreach($planes as $plan)
+                            @if($contador_plns == 0)
+                                <div class="row">
+                            @endif
+                            <div class="col-lg-4 col-md-12 mb-r">
+                                <!--Card-->
+                                <div class="card">
+
+                                    <!--Content-->
+                                    <div class="text-xs-center">
+                                        <div class="card-block">
+                                            <center><h5>{{$plan->name}}</h5></center>
+                                            <div class="flex-center" style="height:30%;">
+                                                <div class="card-circle">
+                                                    <i class="fa fa-home blue-text"></i>
+                                                </div>
+                                            </div>
+
+                                            <!--Price-->
+                                            <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
+                                            <p>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</p>
+                                            <center><a class="btn btn-primary btn-rounded" data-id-plan="{{$plan->id}}" id="suscriptionBtn" >Suscribirme</a></center>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--/.Card-->
+                            </div>
+                            <?php $contador_plns+=1; $control+=1;?>
+                            @if($contador_plns == 3 || $control == $long)
+                                </div>
+                                <?php $contador_plns=0;?>
+                            @endif
+                        @endforeach
+
+
+                </section>
+			</div> <!-- Cierre de contenedor -->
 		</div>
 	</section>
 	<!-- Fin Sección de Membresías -->
@@ -553,4 +508,13 @@
 
 @section('js')
 	<script src="/packages/assets/js/Curiosity.js" charset="utf-8"></script>
+	<script type="text/javascript">
+        $(function(){
+            $("#suscriptionBtn").click(function(e){
+                e.preventDefault();
+                localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
+                window.location = '/view-parent.registry';
+            });
+        });
+    </script>
 @stop

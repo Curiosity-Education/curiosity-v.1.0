@@ -6568,6 +6568,12 @@ blockquote p {
   align-items: center;
   height: 100%;
 }
+.flex-center-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:50%;
+}
 
 .flex-center p, .card-overlay p, .card .card-circle p, .testimonial-carousel .testimonial .avatar p, .section.team-section .avatar p {
   margin: 0;
@@ -13804,7 +13810,8 @@ button.toast-close-button {
   /* please don't change 'position' */
   background-color: #aaa;
   border-radius: 6px;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out,
+ border-radius .2s ease-in-out;
   bottom: 2px;
   /* there must be 'bottom' for ps-scrollbar-x */
   height: 6px;
@@ -13830,7 +13837,8 @@ button.toast-close-button {
   /* please don't change 'position' */
   background-color: #aaa;
   border-radius: 6px;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out,
+ border-radius .2s ease-in-out;
   right: 2px;
   /* there must be 'right' for ps-scrollbar-y */
   width: 6px;
