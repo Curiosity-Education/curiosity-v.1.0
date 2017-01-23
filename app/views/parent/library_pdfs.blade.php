@@ -73,42 +73,16 @@
 		<!-- Buttons with the differents topics -->
 		<div class="row" id="lp-btn-topics">
 
-		</div>
+		</div><br>
 
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
-    	<div class="col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1">
 
-    	</div>
     </div><br>
 
     <!-- Carousel of cards with the pdfs only smartphones -->
-    <div class="row z-depth-1 hidden-sm-up lp-row-slide" id="lp-row-slidePdfs">
-    	<!--Carousel Wrapper-->
-		<div id="lp-slide-cardPdf" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <div id="carrousel-pdfs">
 
-			<!--Controls-->
-			<div class="controls-top">
-				<a class="btn-floating btn-small" href="#lp-slide-cardPdf" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-				<a class="btn-floating btn-small" href="#lp-slide-cardPdf" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-			</div>
-			<!--/.Controls-->
-
-			<!--Indicators-->
-			<ol class="carousel-indicators">
-				<li data-target="#lp-slide-cardPdf" data-slide-to="0" class="active"></li>
-				<li data-target="#lp-slide-cardPdf" data-slide-to="1"></li>
-			</ol>
-			<!--/.Indicators-->
-
-			<!--Slides-->
-			<div class="carousel-inner pdfs-carrousel-container" role="listbox">
-				<!--First slide-->
-
-			</div>
-			<!--/.Slides-->
-		</div>
-		<!--/.Carousel Wrapper-->
     </div>
 
 </div> <!-- / container-fluid all -->
@@ -118,13 +92,13 @@
 	<div class="row z-depth-1 lp-content-disabled animated fadeInRight" id="lp-row-showPDF">
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner-showPDF">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
+			 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; <span id="topic-name"></span> &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
 		  </div>
 			 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down lp-close"><i class="fa fa-times"></i></a>
 		</div>
 
 		<div class="col-md-12 col-sm-12 col-xs-12 lp-content-pdf">
-			<embed src="packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="lp-pdf">
+
 			<h1 class="h1-responsive text-xs-center" id="lp-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
 		</div>
 	</div>
