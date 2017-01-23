@@ -8,14 +8,14 @@ class Son extends Eloquent{
   ## The data of a person belongs to a child
   */
     public function Person(){
-        return $this->belongsTo('Persona');
+        return $this->belongsTo('Person');
     }
   /*
   *
   ## A son belongs to a school
   */
     public function School(){
-        return $this->belongsTo('escuela');
+        return $this->belongsTo('School');
     }
   /*
   *

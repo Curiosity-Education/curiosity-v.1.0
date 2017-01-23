@@ -32,7 +32,7 @@ class childrenController extends BaseController{
             "average"	  =>"required",
 		];
 		$messages = [
-            "required"    =>  "Este campo :attribute es requerido",
+            "required"    =>  "El campo :attribute es requerido",
             "alpha"       =>  "Solo puedes ingresar letras",
             "date"        =>  "Formato de fecha invalido",
             "numeric"     =>  "Solo se permiten digitos",
@@ -59,7 +59,7 @@ class childrenController extends BaseController{
             $user->username  = $data["username"];
             $user->password  = Hash::make($data["password"]);
             $user->token     = sha1($data["username"]);
-            $user->active    =1;
+            $user->active    = 1;
           //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
             $user->save();
             if($roleDad == "parent"){
@@ -73,6 +73,7 @@ class childrenController extends BaseController{
             $person                = new Person($data);
             $person->nombre        = $data["name"];
             $person->apellidos     = $data["surnames"];
+            $person->sexo          = $data["gender"];
             $person->user_id       = $user->id;
             $person->save();
             $son                   = new Son();

@@ -98,18 +98,24 @@ Route::filter('csrf', function()
 
 Route::filter('manage_content',function(){
    if(!Entrust::can('manage_content')){
-       return View::make('view-error404');
+       return View::make('errors.404');
    }
 });
 
 Route::filter('manage_school_aliance',function(){
    if(!Entrust::can('manage_school_aliance')){
-       return View::make('view-error404');
+       return View::make('errors.404');
    }
 });
 
 Route::filter('manage_teacher_aliance',function(){
    if(!Entrust::can('manage_teacher_aliance')){
-       return View::make('view-error404');
+       return View::make('errors.404');
+   }
+});
+
+Route::filter('manage_employees',function(){
+   if(!Entrust::can('manage_employees')){
+       return View::make('errors.404');
    }
 });

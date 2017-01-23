@@ -96,7 +96,15 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
             'method' => "^[a-zA-Z]*$"
         )
     );
-Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to access the views when need a log In
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('before' => 'auth'), function(){
+	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+});
 
 /*
 * -----------------------------------------------------------------------------
@@ -166,6 +174,20 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('delete', 'teachersController@delete');
 		});
 	});
+	Route::group(array('before' => 'manage_administrative'),function(){
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-employee'),function(){
+			Route::post('save', 'employeeController@save');
+			Route::post('update', 'employeeController@update');
+			Route::post('delete', 'employeeController@delete');
+		});
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-salerCode'),function(){
+			Route::post('save', 'salersCodeController@save');
+			Route::post('update', 'salersCodeController@update');
+			Route::post('delete', 'salersCodeController@delete');
+		});
+	});
 });
 
 	// Activities
@@ -186,6 +208,7 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('save', 'plansController@save');
         Route::post('update', 'plansController@update');
         Route::post('delete', 'plansController@delete');
+		  Route::post('getHidden', 'plansController@getHidden');
 
     });
 	// Manage School asociated
@@ -299,6 +322,91 @@ Route::group(array('prefix' =>  'teacher'),function(){
 */
 Route::group(array('prefix' =>  'video'),function(){
 	Route::post('getByTopic', 'libraryVideoController@getByTopic');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to avatar
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'avatar'),function(){
+	Route::post('all', 'avatarController@all');
+	Route::post('getForChild', 'avatarController@getForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to item groups (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'itemGroup'),function(){
+	Route::post('all', 'itemGroupsController@all');
+	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to items (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'item'),function(){
+	Route::post('all', 'itemController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to sprites (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sprite'),function(){
+	Route::post('all', 'spriteController@all');
+	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to secuences (avatar)
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'secuence'),function(){
+	Route::post('all', 'secuenceController@all');
+});
+Route::post('/remote-username','usersController@remoteUsername');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to positions
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'position'),function(){
+	Route::post('all', 'positionController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to employees
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'employee'),function(){
+	Route::post('getByPosition', 'employeeController@getByPosition');
+	Route::post('getBySalers', 'employeeController@getBySalers');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to salers code
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'salerCode'),function(){
+	Route::post('all', 'salersCodeController@all');
 });
 
 /*
@@ -432,6 +540,10 @@ Route::group(array('before' => 'auth'), function(){
 
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
+                Route::get('/game-{activityId}','childrenDoActivitiesController@getGame')
+    			->where(array(
+		            'controller' => "^[0-9]*$"
+			    ));
             });
             Route::group(array('prefix' => "sonRatesActivity"), function(){
                 Route::post("/save",'sonRatesActivitiesController@save');
@@ -442,6 +554,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-popular","activitiesController@getPopulars");
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
+                Route::get("find-all","activitiesController@getAll");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");

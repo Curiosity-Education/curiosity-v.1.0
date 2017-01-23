@@ -7,8 +7,13 @@ class landingController extends BaseController
 {
 
   function landingpage(){
-    $escuelas = School::where('active', '=', 1)->get();
-    $planes = Plan::all();
+     if(Auth::check()){
+        $routeView = loginController::getAccess();
+        return Redirect::to($routeView);
+     }
+     else {
+        $escuelas = array('escuelas' => School::where('active', '=', 1)->get());
+        $planes = Plan::all();
     	return View::make('landing.index',array(
             'escuelas' => $escuelas,
             'planes'   => $planes,
@@ -18,6 +23,7 @@ class landingController extends BaseController
                 'year'  =>  'año'
             ]
         ));
+     }
   }
 
 }
