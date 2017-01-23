@@ -19,22 +19,25 @@ class loginController extends BaseController{
             'active'    =>  1
          );
          if(Auth::attempt($auth)){
-            if (Auth::user()->hasRole('hijo')){
-               $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
-               $membershipPlan = MembershipPlan::where('hijo', '=', $idSon)->first();
-               if($$membershipPlan  == null){
-                  return Response::json(array(0=>'success', 1=>'h'));
-               }
-               else if($$membershipPlan->active == 1){
-                  return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => ""));
+            $user = Auth::user();
+            if (Auth::user()->hasRole('child')){
+               $person = Person::where("user_id", "=", $user["id"])->first();
+               $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
+               $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+               if($membershipPlan->active == 1){
+                  return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
                }
                else{
                   Auth::logout();
-                  return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => null));
+                  return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => "/"));
                }
             }
-            else{
-               return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-teachers"));
+            else if (Auth::user()->hasRole('root') ||
+                     Auth::user()->hasRole('administer content 1') ||
+                     Auth::user()->hasRole('administer content 2') ||
+                     Auth::user()->hasRole('administer content 3')
+                     ){
+               return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-levels"));
             }
          }
          else {
@@ -49,18 +52,24 @@ class loginController extends BaseController{
    }
 
    public static function getAccess(){
-      if (Auth::user()->hasRole('hijo')){
-         $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
-         $membershipPlan = MembershipPlan::where('hijo', '=', $idSon)->first();
-         if($$membershipPlan->active == 1){
-            return "";
+      $user = Auth::user();
+      if (Auth::user()->hasRole('child')){
+         $person = Person::where("user_id", "=", $user["id"])->first();
+         $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
+         $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+         if($membershipPlan->active == 1){
+            return "view-child.init";
          }
          else{
             Auth::logout();
             return "/";
          }
       }
-      else{
+      else if (Auth::user()->hasRole('root') ||
+               Auth::user()->hasRole('administer content 1') ||
+               Auth::user()->hasRole('administer content 2') ||
+               Auth::user()->hasRole('administer content 3')
+               ){
          return "view-administer.admin-teachers";
       }
    }
@@ -126,9 +135,9 @@ class loginController extends BaseController{
                     if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('demo_hijo') || Auth::user()->hasRole('hijo_free')){
                       $idSon = Auth::user()->persona()->first()->hijo()->first()->id;
                       $membershipPlan = membresiaPlan::where('hijo_id','=',$idSon)->first();
-                        if($$membershipPlan  == null)
+                        if($membershipPlan  == null)
                             return Response::json(array(0=>'success', 1=>'h'));
-                        else if($$membershipPlan->active == 1)
+                        else if($membershipPlan->active == 1)
                             return Response::json(array(0=>'success', 1=>'h'));
                         else{
                             Auth::logout();
