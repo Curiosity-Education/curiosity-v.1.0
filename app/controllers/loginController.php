@@ -15,8 +15,7 @@ class loginController extends BaseController{
       else{
          $auth = array(
             'username'  =>  $data["username"],
-            'password'  =>  $data["password"],
-            'active'    =>  1
+            'password'  =>  $data["password"]
          );
          if(Auth::attempt($auth)){
             if (Auth::user()->hasRole('hijo')){
@@ -25,7 +24,7 @@ class loginController extends BaseController{
                if($$membershipPlan  == null){
                   return Response::json(array(0=>'success', 1=>'h'));
                }
-               else if($$membershipPlan->active == 1){
+               else if($membershipPlan->active == 1){
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => ""));
                }
                else{
