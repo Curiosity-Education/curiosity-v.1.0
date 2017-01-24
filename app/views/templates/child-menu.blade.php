@@ -14,23 +14,23 @@
 @stop
 
 @section('menu-links')
-<div data-url="view-child.init" class="linkMenu waves-effect" id="linkCh-home">
+<div data-url="/view-child.init" class="linkMenu waves-effect" id="linkCh-home">
    <span class="fa fa-home childMenu-icon-menu" id="childMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="view-child.menu-studio" class="linkMenu waves-effect" style="display:none !important;">
+<div data-url="/view-child.menu-studio" class="linkMenu waves-effect" style="display:none !important;">
    <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Menú de estudio
 </div>
-<div data-url="view-child.profile" class="linkMenu waves-effect">
+<div data-url="/view-child.profile" class="linkMenu waves-effect">
    <span class="fa fa-user-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
    Perfil
 </div>
-<div data-url="view-child.library_videos" class="linkMenu waves-effect">
+<div data-url="/view-child.library_videos" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
    Biblioteca de videos
 </div>
-<div data-url="view-child.store" class="linkMenu waves-effect" id="linkCh-store" style="display:none !important;">
+<div data-url="/view-child.store" class="linkMenu waves-effect" id="linkCh-store" style="display:none !important;">
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
