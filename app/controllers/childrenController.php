@@ -30,6 +30,7 @@ class childrenController extends BaseController{
             "surnames"    =>"required|letter|max:30",
             "gender"      =>"required|string|size:1",
             "average"	  =>"required",
+            "level"       =>"required|exists:niveles,id",
 		];
 		$messages = [
             "required"    =>  "El campo :attribute es requerido",
@@ -78,9 +79,10 @@ class childrenController extends BaseController{
             $person->save();
             $son                   = new Son();
             $son->persona_id       = $person->id;
-            $id_dad = 12;//Auth::user()->Person()->first()->Parent()->first()->id;
+            $id_dad = Auth::user()->Person->Dad->id;
             $son->padre_id         = $id_dad;
             $son->promedio_inicial = $data["average"];
+            $son->nivel_id         = $data["level"];
             $son->save();
             $advance = DB::table('hijos_metas_diarias')->insert(array(
                 'hijo_id'        => $son->id,

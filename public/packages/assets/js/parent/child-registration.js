@@ -22,7 +22,8 @@ $(function(){
 				password : document.getElementById("upch-pass").value,
 				cpassword: document.getElementById("upch-cpass").value,
 				gender   : document.getElementById("upch-gender").value,
-				average  : document.getElementById("upch-average").value
+				average  : document.getElementById("upch-average").value,
+				level    : document.getElementById("upch-level").value
 			};
 			console.log(data);
 			$(this).prop("disabled",true);
