@@ -15,7 +15,7 @@ var msConstroller = {
    makeCard : function($obj, type, objRef, typeRef){
       $("#ms-conteiner-all > div").html("");
       if (type != "level"){
-         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar </div></div>";
+         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a Grados </div></div>";
          $("#ms-conteiner-all > div").append(code);
       }
       $.each($obj, function(index, obj) {
@@ -46,7 +46,6 @@ var msConstroller = {
          $("#ms-conteiner-all > div").append(code);
       }
       $.each($obj, function(index, obj) {
-         console.log(obj);
    		var code = "<div class='col-md-4 col-sm-4'>"+
    			"<div class='card card-game hm-black-light ms-card animated zoomIn'>"+
    				"<div class='view mask'>"+
@@ -84,7 +83,12 @@ var msConstroller = {
          this.activities = StorageDB.table.getByAttr("activities", "activityTopicId", obj["id"]);
          acts.push(this.activities[0]);
       });
-      this.makeActs(acts, "activities", block, "block");
+      this.makeActs(acts, "activity", block, "block");
+   },
+
+   goToPlay : function(act){
+      console.log(act);
+      window.location.href = "/childDoActivities/game-"+act["activityId"];
    }
 
 }
