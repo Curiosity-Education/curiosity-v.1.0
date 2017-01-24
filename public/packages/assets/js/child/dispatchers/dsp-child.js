@@ -14,5 +14,7 @@ $(function(){
    Intelligence.all("POST", function(r){ StorageDB.table.create("intelligences", r);});
    Block.all("POST", function(r){ StorageDB.table.create("blocks", r);});
    Topic.all("POST", function(r){ StorageDB.table.create("topics", r);});
+   // Activity.all("POST", function(r){ StorageDB.table.create("activities", r);});
+   Activity.all("POST", function(r){ console.log(r);});
 
 });

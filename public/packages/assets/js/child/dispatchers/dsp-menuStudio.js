@@ -12,6 +12,12 @@ $(function(){
 			case "level":
 				msConstroller.getIntelligences(obj);
 			break;
+			case "intelligence":
+				msConstroller.getBlocks(obj);
+			break;
+			case "block":
+				msConstroller.getActivities(obj);
+			break;
 			default:
 				console.log("error");
 			break;
@@ -24,6 +30,10 @@ $(function(){
 		switch (type) {
 			case "level":
 				msConstroller.getLevels();
+			break;
+			case "intelligence":
+				var levels = StorageDB.table.getByAttr("levels", "id", obj["nivel_id"]);
+				msConstroller.makeCard(levels, "level");
 			break;
 		}
 	});

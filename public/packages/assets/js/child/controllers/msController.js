@@ -2,6 +2,9 @@ var msConstroller = {
 
    levels : [],
    intelligences : [],
+   blocks : [],
+   topics : [],
+   activities : [],
 
    getLevels : function(){
       this.levels = StorageDB.table.getData("levels");
@@ -11,7 +14,7 @@ var msConstroller = {
    makeCard : function($obj, type, objRef, typeRef){
       $("#ms-conteiner-all > div").html("");
       if (type != "level"){
-         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar </div></div>";
+         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar </div></div>";
          $("#ms-conteiner-all > div").append(code);
       }
       $.each($obj, function(index, obj) {
@@ -39,5 +42,21 @@ var msConstroller = {
       this.intelligences = StorageDB.table.getByAttr("intelligences", "nivel_id", level["id"]);
       this.makeCard(this.intelligences, "intelligence", null, "level");
    },
+
+   getBlocks : function(intelligence){
+      this.blocks = StorageDB.table.getByAttr("blocks", "inteligencia_id", intelligence["id"]);
+      this.makeCard(this.blocks, "block", intelligence, "intelligence");
+   },
+
+   getActivities : function(block){
+      console.log(StorageDB.table.getData("activities"));
+      this.topics = StorageDB.table.getByAttr("topics", "bloque_id", block["id"]);
+      var acts = new Array();
+      $.each(this.topics, function(index, obj) {
+         this.activities = StorageDB.table.getByAttr("activities", "tema_id", obj["id"]);
+         acts.push(this.activities);
+      });
+      console.log(acts);
+   }
 
 }
