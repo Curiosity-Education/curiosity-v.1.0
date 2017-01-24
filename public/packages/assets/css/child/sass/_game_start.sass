@@ -48,7 +48,8 @@ iframe body
 #gst-info
    #gst-max
       margin: -1rem
-      padding: 1rem
+      padding: .3rem 1rem
+      padding-top: .5rem
       background-color: $color-skin
       color: $color-white
       border-top-left-radius: $border-rad
@@ -106,6 +107,8 @@ iframe body
                      font-size: 1.3rem
                      font-weight: bold
 
+#in-content-activity
+   padding: 1.5rem
 
 .text-left
    text-align: left
@@ -182,10 +185,6 @@ iframe body
    background-color: #e9ebee !important
 #gst-video-pdf
    border: none
-+mediaQuerieMin(780px)
-   #gst-modal-pdf-video,#gst-modal-instruction
-      .modal-dialog
-         min-width: 1000px
 
 #gst-materialPdf
    border-color: $color-secondary
@@ -200,6 +199,16 @@ iframe body
    #gst-modal-pdf-video,#gst-modal-instruction
       .modal-dialog
          min-width: 750px
++mediaQuerieMin(780px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 1000px
+  
++mediaQuerie(576px,776px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 750px   
+
 #gst-img-instruction
    cursor: pointer
    width: 100%
