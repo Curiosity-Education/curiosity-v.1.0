@@ -94,6 +94,10 @@ Route::group(array('prefix' => 'plans'),function(){
    Route::post('get','plansController@get');
 });
 
+Route::get('novedades-admin', function(){
+    return View::make('administer.admin-news');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -170,6 +174,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'libraryVideoController@update');
 			Route::post('delete', 'libraryVideoController@delete');
 		});
+		// Manage News for parents
+		Route::group(array('prefix' => 'news'),function(){
+			Route::post('save', 'dadNewsController@save');
+			Route::post('update', 'dadNewsController@update');
+			Route::post('delete', 'dadNewsController@delete');
+			Route::get('get', 'dadNewsController@get');
+		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
@@ -200,6 +211,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
 		});
+
 	});
 });
 
