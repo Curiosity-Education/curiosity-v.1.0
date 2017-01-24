@@ -16,4 +16,4 @@ var newsCtrl = {
 		News.get(success);
 	}
 
-}
+};
