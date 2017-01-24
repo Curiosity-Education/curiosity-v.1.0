@@ -15,22 +15,33 @@ class loginController extends BaseController{
       else{
          $auth = array(
             'username'  =>  $data["username"],
-            'password'  =>  $data["password"],
-            'active'    =>  1
+            'password'  =>  $data["password"]
          );
          if(Auth::attempt($auth)){
+
             $user = Auth::user();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
                $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
-               $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-               if($membershipPlan->active == 1){
+     //          $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+      //         if($membershipPlan->active == 1){
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
-               }
+     /*          }
                else{
                   Auth::logout();
                   return Response::json(array("status" => "CU-105", 'statusMessage' => "Past Due", "data" => "/"));
-               }
+               }*/
+            }
+            else if(Auth::user()->hasRole('parent')){
+                $email   = Auth::User()->Person->Dad->email; 
+                $parent  = Dad::where('email','=',$email)->first();
+                $hasPlan = Membership::where('padre_id','=',$parent->id)->first();
+                if(!$hasPlan){
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
+                else{
+                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                }
             }
             else if (Auth::user()->hasRole('root') ||
                      Auth::user()->hasRole('administer content 1') ||
@@ -57,12 +68,17 @@ class loginController extends BaseController{
          $person = Person::where("user_id", "=", $user["id"])->first();
          $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
          $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-         if($membershipPlan->active == 1){
-            return "view-child.init";
-         }
-         else{
+         if ($membershipPlan == null || count($membershipPlan) <= 0 || $membershipPlan == ""){
             Auth::logout();
             return "/";
+         }else{
+            if($membershipPlan->active == 1){
+               return "view-child.init";
+            }
+            else{
+               Auth::logout();
+               return "/";
+            }
          }
       }
       else if (Auth::user()->hasRole('root') ||

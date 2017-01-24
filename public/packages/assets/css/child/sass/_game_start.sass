@@ -30,22 +30,26 @@ iframe body
    margin: 0
    margin-top: 1rem
 
+#gst-info
+   height: 16rem !important
+
 #gst-back
    background-color: $color-white
    cursor: pointer
 
 #gst-btnInstructs
-   border-color: $color-skin
-   color: $color-skin !important
+   border-color: $color-info-dark
+   color: $color-info-dark !important
 
 #gst-btnPlay
-   border: solid $color-skin
-   background-color: $color-skin
+   border: solid $color-info-dark
+   background-color: $color-info-dark
 
 #gst-info
    #gst-max
       margin: -1rem
-      padding: 1rem
+      padding: .3rem 1rem
+      padding-top: .5rem
       background-color: $color-skin
       color: $color-white
       border-top-left-radius: $border-rad
@@ -92,6 +96,9 @@ iframe body
                font-weight: bold
             button
                background-color: $color-skin !important
+               width: 70% !important
+               margin-left: 15%
+               letter-spacing: 3px
             .row
                margin-top: 2rem
                margin-bottom: 2rem
@@ -100,9 +107,9 @@ iframe body
                      font-size: 1.3rem
                      font-weight: bold
 
-.gst-material
-   border-color: $color-skin
-   color: $color-skin !important
+#in-content-activity
+   padding: 1.5rem
+
 .text-left
    text-align: left
 #gst-modal-instruction
@@ -178,6 +185,20 @@ iframe body
    background-color: #e9ebee !important
 #gst-video-pdf
    border: none
+
+#gst-materialPdf
+   border-color: $color-secondary
+   color: $color-secondary !important
+#gst-materialVideo
+   border-color: $color-danger
+   color: $color-danger !important
+#gst-dataGame
+   margin-bottom: 1rem
+  
++mediaQuerie(576px,776px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 750px
 +mediaQuerieMin(780px)
    #gst-modal-pdf-video,#gst-modal-instruction
       .modal-dialog
@@ -187,6 +208,7 @@ iframe body
    #gst-modal-pdf-video,#gst-modal-instruction
       .modal-dialog
          min-width: 750px   
+
 #gst-img-instruction
    cursor: pointer
    width: 100%

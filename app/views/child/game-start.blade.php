@@ -11,7 +11,7 @@
             <img src="/packages/assets/media/images/system/iconBack.png">
             Regresar
          </div>
-         <div class="gst-card z-depth-1" id="gst-info">
+         <div class="gst-card z-depth-1 animated bounceInUp" id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
                <h6 id="gst-score-max" data-score="{{$game['score']}}">{{$game["score"]}} puntos</h6><br>
@@ -30,34 +30,36 @@
               </ul>
             </div>
          </div>
-         <div class="gst-card z-depth-1" id="gst-material">
+         <div class="gst-card z-depth-1 animated bounceInUp" id="gst-material">
             <h6>Material para tí</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
-               <!-- <span class="fa fa-file"></span>&nbsp; -->
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
+                <span class="fa fa-file-pdf-o"></span>&nbsp;
                Guía de estudio
             </button>
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
-               <!-- <span class="fa fa-youtube-play"></span>&nbsp; -->
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
+               <span class="fa fa-youtube-play"></span>&nbsp;
                Video
             </button>
          </div>
       </div>
       <div class="col-sm-8">
-         <div class="gst-card z-depth-1" id="gst-dataGame">
-            <h1><i class="fa fa-gamepad"></i> {{$game["name"]}}</h1>
+         <div class="gst-card z-depth-1 animated bounceInRight" id="gst-dataGame">
+            <h1>{{$game["name"]}}</h1>
+
             <hr class="gst-hr">
             <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
+
                  <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs" data-target="#gst-modal-instruction" data-toggle="modal">
-                    <span class="fa"></span>&nbsp;
+                    <span class="fa fa-map-o"></span>&nbsp;
                     Instrucciones
                  </button>
               </div>
               <div class="col-sm-6">
                  <button type="button" class="btn btn-rounded btn-block gst-btnGame" id="gst-btnPlay">
-                    <span class="fa"></span>&nbsp;
+                    <span class="fa fa-gamepad"></span>&nbsp;
                     Jugar
                  </button>
               </div>

@@ -10,9 +10,10 @@ $(function(){
    animation.spreetsheet = "/packages/assets/media/images/avatar/sprites"+saludo[0].ruta+saludo[0].imagen;
    setInterval(function(){ animation.play(); }, animation.speed);
 
-   Level.all("POST", function(r){ StorageDB.table.create("levels", r);});
-   Intelligence.all("POST", function(r){ StorageDB.table.create("intelligences", r);});
-   Block.all("POST", function(r){ StorageDB.table.create("blocks", r);});
-   Topic.all("POST", function(r){ StorageDB.table.create("topics", r);});   
+   Level.any(null, "POST", function(r){ StorageDB.table.create("levels", r);}, "getWithActivities");
+   Intelligence.any(null, "POST", function(r){ StorageDB.table.create("intelligences", r);}, "getWithActivities");
+   Block.any(null, "POST", function(r){ StorageDB.table.create("blocks", r);}, "getWithActivities");
+   Topic.any(null, "POST", function(r){ StorageDB.table.create("topics", r);}, "getWithActivities");
+   Activity.all("POST", function(r){ StorageDB.table.create("activities", r);});
 
 });

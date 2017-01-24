@@ -3,14 +3,12 @@ var StorageDB = {
    table : {
 
       create : function(name, obj){
-         var data = this.getData(name);
-         if (data == null || data == ""){
-            try {
-               localStorage.setItem(name, JSON.stringify(obj));
-            } catch (e) {
-               console.error(e);
-            }
+         try {
+            localStorage.setItem(name, JSON.stringify(obj));
+         } catch (e) {
+            console.error(e);
          }
+
       },
 
       getData : function(name){

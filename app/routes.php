@@ -87,6 +87,17 @@ Route::get('administer', function(){
     return View::make('administer.asociateSchool');
 });
 
+Route::get('parent-register', function(){
+    return View::make('parent.registry');
+});
+Route::group(array('prefix' => 'plans'),function(){
+   Route::post('get','plansController@get');
+});
+
+Route::get('novedades-admin', function(){
+    return View::make('administer.admin-news');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -104,6 +115,12 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+	Route::get('view-{controller}-{method}-{viewName}','viewsController@getViewWithData')->where(
+        array(
+            'controller' => "^[a-zA-Z]*$",
+            'method' => "^[a-zA-Z]*$"
+        )
+    );
 });
 
 /*
@@ -157,6 +174,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'libraryVideoController@update');
 			Route::post('delete', 'libraryVideoController@delete');
 		});
+		// Manage News for parents
+		Route::group(array('prefix' => 'news'),function(){
+			Route::post('save', 'dadNewsController@save');
+			Route::post('update', 'dadNewsController@update');
+			Route::post('delete', 'dadNewsController@delete');
+			Route::get('get', 'dadNewsController@get');
+		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
@@ -187,6 +211,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
 		});
+
 	});
 });
 
@@ -199,7 +224,6 @@ Route::group(array('before' => 'auth'), function(){
 		Route::group(array('prefix' =>  'photo'),function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
-
     });
 
     // Plans
@@ -232,6 +256,7 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
+	Route::post('getWithActivities', 'levelsController@getWithActivities');
 });
 
 /*
@@ -243,6 +268,7 @@ Route::group(array('prefix' =>  'levels'),function(){
 Route::group(array('prefix' =>  'intelligences'),function(){
 	Route::post('all', 'intelligencesController@all');
 	Route::post('getByLevel', 'intelligencesController@getByLevel');
+	Route::post('getWithActivities', 'intelligencesController@getWithActivities');
 });
 
 /*
@@ -254,6 +280,7 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 Route::group(array('prefix' =>  'blocks'),function(){
 	Route::post('all', 'blocksController@all');
 	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+	Route::post('getWithActivities', 'blocksController@getWithActivities');
 });
 
 /*
@@ -265,6 +292,7 @@ Route::group(array('prefix' =>  'blocks'),function(){
 Route::group(array('prefix' =>  'topics'),function(){
 	Route::post('all', 'topicsController@all');
 	Route::post('getByBlock', 'topicsController@getByBlock');
+	Route::post('getWithActivities', 'topicsController@getWithActivities');
 });
 
 /*
@@ -300,7 +328,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
-    Route::post('has-game','activitiesController@hasGame');
+  Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
@@ -312,6 +340,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 Route::group(array('prefix' =>  'teacher'),function(){
 	Route::post('getWithSchool', 'teachersController@getWithSchool');
 	Route::post('getBySchool', 'teachersController@getBySchool');
+	Route::post('all', 'teachersController@all');
 });
 
 /*
@@ -322,6 +351,7 @@ Route::group(array('prefix' =>  'teacher'),function(){
 */
 Route::group(array('prefix' =>  'video'),function(){
 	Route::post('getByTopic', 'libraryVideoController@getByTopic');
+	Route::post('all', 'libraryVideoController@all');
 });
 
 /*
@@ -412,6 +442,15 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 /*
 *   Register for users
 */
+Route::group(array('prefix' => 'parent'),function(){
+   Route::post('save','parentsController@save');
+   Route::post('update','parentsController@update');
+   Route::post('remote-email','parentsController@remoteEmail');
+   Route::post('confirm/{token}','parentsController@confirm');
+   Route::post('payment-suscription','parentsController@payment_suscription');
+});
+
+
 /*
 Route::group(array('prefix' => 'register'),function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -422,7 +461,7 @@ Route::group(array('prefix' => 'register'),function(){
 			Route::match(array('GET', 'POST'), '/', 'suscripcionController@viewPage');
 			Route::match(array('GET', 'POST'),'suscription','suscripcionController@suscripcion');
 	    Route::match(array('GET','POST'),'parent','padreController@addPadre');
-		});
+        });
 });
 
 // Facebook user

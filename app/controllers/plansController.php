@@ -49,7 +49,7 @@ class plansController extends BaseController{
                     return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
                 }
                 catch(Exception $e){
-                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => Response::json($e)));
+                    return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
                 }
             }
     }
@@ -66,7 +66,7 @@ class plansController extends BaseController{
                 return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data' => array('id' => $id)));
             }
             catch(Exception $e){
-                return $e;
+                return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
             }
         }
         else{
@@ -78,14 +78,20 @@ class plansController extends BaseController{
                     return View::make('vista_planes_admin');
     }
 
+    public function get(){
+        if(Request::method() == Method::POST){
+            return Plan::find(Input::get('id'));
+        }
+    }
+
     public function all(){
             return Plan::where("active", "=", 1)->get();
     }
 
 	 public function getHidden(){
-		 		return Plan::where("active", "=", 1)
-				->where("visible", "=", 0)
-				->get();
+            return Plan::where("active", "=", 1)
+            ->where("visible", "=", 0)
+            ->get();
 	 }
 
 }

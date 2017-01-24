@@ -1,26 +1,31 @@
 <?php
 class viewsController extends BaseController{
    protected $objViews = array(
-      "administer.admin-activities" => "manage_content",
-      "administer.admin-blocks" => "manage_content",
-      "administer.admin-intelligences" => "manage_content",
-      "administer.admin-levels" => "manage_content",
-      "administer.admin-libraryPdfs" => "manage_content",
-      "administer.admin-libraryVideos" => "manage_content",
-      "administer.admin-plans" => "manage_content",
-      "administer.admin-topics" => "manage_content",
-      "administer.admin-teachers" => "manage_teacher_aliance",
-      "administer.asociateSchool" => "manage_school_aliance",
-      "administer.admin-employees" => "manage_administrative",
-      "administer.admin-salescode" => "manage_administrative",
-      "child.init" => "child_actions",
-      "child.menu-studio" => "child_actions",
-      "child.profile" => "child_actions",
-      "child.library_videos" => "child_actions",
-      "child.store" => "child_actions",
+      "administer.admin-plans"          => "manage_content",
+      "administer.admin-activities"     => "manage_content",
+      "administer.admin-blocks"         => "manage_content",
+      "administer.admin-intelligences"  => "manage_content",
+      "administer.admin-levels"         => "manage_content",
+      "administer.admin-libraryPdfs"    => "manage_content",
+      "administer.admin-libraryVideos"  => "manage_content",
+      "administer.admin-plans"          => "manage_content",
+      "administer.admin-topics"         => "manage_content",
+      "administer.admin-teachers"       => "manage_teacher_aliance",
+      "administer.asociateSchool"       => "manage_school_aliance",
+      "administer.admin-employees"      => "manage_administrative",
+      "administer.admin-salescode"      => "manage_administrative",
+      "child.init"                      => "child_actions",
+      "child.menu-studio"               => "child_actions",
+      "child.profile"                   => "child_actions",
+      "child.library_videos"            => "child_actions",
+      "child.store"                     => "child_actions",
+      "parent.profile"                  => "parent_actions",
+      "parent.pay-suscription"          => "parent_actions",
+      "parent.registry_firstchild"      => "parent_actions",
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
+      return "Nada";
       if($controller != '' || $method != ''){
          $callback = $controller."Controller@".$method;
          $data = ExternalCall::execute($callback);

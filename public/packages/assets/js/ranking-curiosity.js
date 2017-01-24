@@ -18,7 +18,7 @@ class Ranking { //object for ranking in curiosity
 			$(object).find(".star-text").text(ranking.averageStars);
 			ranking.runRankingSetColors($(object),ranking.stars);
 		});
-	} 
+	}
 
 	init(){//init function
 		this.setDatasToRankings();
@@ -89,7 +89,7 @@ class Ranking { //object for ranking in curiosity
 			console.error("El parametro recibido tiene que ser una función");
 		}
 	}
-}
+};
 
 var ranking = {//object with values to use in this class
 	colorActive   		: "",
