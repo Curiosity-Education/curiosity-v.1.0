@@ -256,6 +256,7 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
+	Route::post('getWithActivities', 'levelsController@getWithActivities');
 });
 
 /*
@@ -267,6 +268,7 @@ Route::group(array('prefix' =>  'levels'),function(){
 Route::group(array('prefix' =>  'intelligences'),function(){
 	Route::post('all', 'intelligencesController@all');
 	Route::post('getByLevel', 'intelligencesController@getByLevel');
+	Route::post('getWithActivities', 'intelligencesController@getWithActivities');
 });
 
 /*
@@ -278,6 +280,7 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 Route::group(array('prefix' =>  'blocks'),function(){
 	Route::post('all', 'blocksController@all');
 	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+	Route::post('getWithActivities', 'blocksController@getWithActivities');
 });
 
 /*
@@ -289,6 +292,7 @@ Route::group(array('prefix' =>  'blocks'),function(){
 Route::group(array('prefix' =>  'topics'),function(){
 	Route::post('all', 'topicsController@all');
 	Route::post('getByBlock', 'topicsController@getByBlock');
+	Route::post('getWithActivities', 'topicsController@getWithActivities');
 });
 
 /*
