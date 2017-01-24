@@ -20,12 +20,15 @@ class activitiesController extends BaseController{
 		->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
 		->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
 		->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+		->join('archivos', 'actividades.id', '=', 'archivos.actividad_id')
 		->where('actividades.active', '=', 1)
 		->where('temas.active', '=', 1)
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'unlock')
+		->where('archivos.active', '=', 1)
+		->where('actividades.estatus', '=', 'eneabled')
+		->distinct()
 		->select(
 		'actividades.id as activityId',
 		'actividades.nombre as activityName',
@@ -44,7 +47,8 @@ class activitiesController extends BaseController{
 		'inteligencias.descripcion as intelligenceDescription',
 		'inteligencias.nivel_id as intelligenceLevelId',
 		'niveles.id as levelId',
-		'niveles.nombre as levelName'
+		'niveles.nombre as levelName',
+		'archivos.carpeta as folder'
 		)->get();
 		return $activities;
 	}

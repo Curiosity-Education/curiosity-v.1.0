@@ -1,6 +1,6 @@
 <?php
 class teachersController extends BaseController{
-
+ 
 	public function all(){
 		$th = Teacher::where("active", "=", 1)->get();
 		return $th;
