@@ -74,6 +74,7 @@
 <script src="/packages/assets/js/administer/models/Intelligence.js"></script>
 <script src="/packages/assets/js/administer/models/Block.js"></script>
 <script src="/packages/assets/js/administer/models/Topic.js"></script>
+<script src="/packages/assets/js/administer/models/Activity.js"></script>
 <script src="/packages/assets/js/administer/controllers/SpriteAnimator.js"></script>
 <script src="/packages/assets/js/child/dispatchers/dsp-child.js"></script>
 @yield('js-plus')
