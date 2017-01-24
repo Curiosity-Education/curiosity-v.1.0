@@ -52,7 +52,7 @@
             <div class="row">
                <div class="col-sm-6">
 
-                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs data-target="#gst-modal-instruction" data-toggle="modal">
+                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs" data-target="#gst-modal-instruction" data-toggle="modal">
                     <span class="fa fa-map-o"></span>&nbsp;
                     Instrucciones
                  </button>

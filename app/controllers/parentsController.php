@@ -122,13 +122,17 @@ class parentsController extends BaseController{
             Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
+                    $parent = Auth::user()->Person->Dad;
                     $customer = Conekta_Customer::create(array(
                         "name" => Input::get('nombre'),
-                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
-                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
+                        "email" => $parent->email,
+                        "phone" => $parent->telefono,
                         "cards"=> array(Input::get('conektaTokenId'))
                     ));
                     $plan = Plan::find(Input::get('plan_id'));
+                    if(!$plan){
+                        return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
+                    }
                     $subscription = $customer->createSubscription(array(
                       "plan_id"=> $plan->reference
                     ));
@@ -138,7 +142,7 @@ class parentsController extends BaseController{
                                 "token_card" => $subscription->id,
                                 "fecha_registro" => Date('Y-m-d'),
                                 "active"    => 1,
-                                "padre_id"  => Auth::user()->Person()->first()->Parent()->first()->id
+                                "padre_id"  => Auth::user()->Person->Dad->id
                             ));
                             $membresia->save();
                          //la suscripción inicializó exitosamente!
@@ -149,12 +153,16 @@ class parentsController extends BaseController{
                      //la suscripción falló a inicializarse
                       return Response::json(array(0=>'error'));
                     }
+                    elseif ($subscription->status == 'in_trial'){
+                       //la suscripción falló a inicializarse
+                      return Response::json(array(0=>'error')); 
+                    }
                 }
                 else{
                     return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
                 }
             }catch (Conekta_Error $e){
-              echo $e->getMessage();
+              return Response::json(["message"=>$e->getMessage()]);
              //el cliente no pudo ser creado
             }
     }

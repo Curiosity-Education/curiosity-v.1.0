@@ -5,6 +5,7 @@ $(function(){
   var $pdfs,$videos;//variables for save html content element videos and pdfs
   ranking.init();
   sonRatesActivitiesCtrl.getMaxScoreAndHits(function(response){
+    console.log(response);
     pdfs    = response.data.pdf;//get pdfs for server+
     videos  = response.data.videos;
     createElsementsVideos();//create element width video
