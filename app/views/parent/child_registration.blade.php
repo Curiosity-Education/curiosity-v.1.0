@@ -105,14 +105,23 @@
                         <i class="fa fa-user prefix"></i>
                         <input type="password" id="upch-cpass" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
                       </div>
-                      <div class="md-form upch-average">
-                        <h6 class="text-left">
-                          Promedio Actual de tu Hijo:
-                        </h6>
-                       <input type="range" id="upch-average" min="5" max="10" step=".1" name="average" class="form-control" value="5">
+                      <div class="md-form form-group" id="slc-upch-level">
+                        <select class="mdb-select" id="upch-level" name="level">
+                          <option value="" disabled selected>Grado escolar</option>
+                          @foreach(Level::all() as $level)
+                          <option value="{{$level->id}}" class="rounded-circle">{{$level->nombre}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                     <div class="tab-2 animated fadeIn upch-tab2">
+                      <div class="md-form upch-select">
+                          <select class="mdb-select" id="upch-gender" name="gender">
+                              <option value="" disabled selected>Sexo</option>
+                              <option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
+                              <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+                          </select>
+                      </div>
                       <div class="md-form">
                         <i class="fa fa-user prefix"></i>
                         <input type="text" id="upch-name" name="name" class="form-control" placeholder="Nombre(s)">
@@ -121,13 +130,12 @@
                         <i class="fa fa-user prefix"></i>
                         <input type="text" id="upch-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
                       </div>
-                       <div class="md-form upch-select">
-                            <select class="mdb-select" id="upch-gender" name="gender">
-                                <option value="" disabled selected>Sexo</option>
-                                <option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
-                                <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
-                            </select>
-                        </div>
+                      <div class="md-form upch-average">
+                        <h6 class="text-left">
+                          Promedio Actual de tu Hijo:
+                        </h6>
+                       <input type="range" id="upch-average" min="5" max="10" step=".1" name="average" class="form-control" value="5">
+                      </div>
                     </div>
                     <hr>
                     <div class="text-xs-center">
