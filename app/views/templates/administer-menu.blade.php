@@ -59,6 +59,10 @@
    <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
    Empleados
 </div>
+<div data-url="view-administer.admin-salescode" class="linkMenu waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Códigos de vendedor
+</div>
 @stop
 
 @section('menu-links-aside')
@@ -105,6 +109,10 @@
 <div data-url="view-administer.admin-employees" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
    Empleados
+</div>
+<div data-url="view-administer.admin-salescode" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Códigos de vendedor
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right msad-icon-exit" id="msad-icon-exit"></span>&nbsp;

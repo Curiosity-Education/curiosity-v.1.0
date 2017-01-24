@@ -24,7 +24,7 @@
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
 	<li class="nav-item">
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
 	</li>
 @stop
 
@@ -94,8 +94,10 @@
 				</li>
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
-					<a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
-					<a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
+					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
+					<!-- <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a> -->
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+					<!-- <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="#membresia">Registrarse</a> -->
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -313,7 +315,7 @@
 	</div>
 
 	<!-- Sección de Membresías -->
-	<section id="membresia" class="">
+	<section id="membresia" class="" style="max-height:100px;">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
@@ -322,91 +324,52 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
-				<!--Section: Pricing v.1-->
-				<section class="section">
-					<!--First row-->
-					<div class="row">
-						<!--First column-->
-						<div class="col-md-4 offset-md-2 mb-r">
-							<!--Pricing card-->
-							<div class="card pricing-card">
-								<!--Price-->
-								<div class="price header blue">
-									<h1>10</h1>
-									<div class="version">
-										<h5>Basic</h5>
-									</div>
-								</div>
-								<!--/.Price-->
-								<!--Features-->
-								<div class="card-block striped text-xs-center">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 2 Email Accounts</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 24h Tech Support</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> User Management </p>
-										</li>
-									</ul>
-									<button class="btn btn-primary">Buy now</button>
-								</div>
-								<!--/.Features-->
-							</div>
-							<!--/.Pricing card-->
-						</div>
-						<!--/First column-->
-						<!--Second column-->
-						<div class="col-md-4 mb-r">
-							<!--Pricing card-->
-							<div class="card pricing-card">
-								<!--Price-->
-								<div class="price header indigo">
-									<h1>20</h1>
-									<div class="version">
-										<h5>Pro</h5>
-									</div>
-								</div>
-								<!--/.Price-->
-								<!--Features-->
-								<div class="card-block striped text-xs-center">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> 20 GB Of Storage</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 4 Email Accounts</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> 24h Tech Support</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> 300 GB Bandwidth</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> User Management </p>
-										</li>
-									</ul>
-									<button class="btn btn-primary">Buy now</button>
-								</div>
-								<!--/.Features-->
-							</div>
-							<!--/.Pricing card-->
-						</div>
-						<!--/Second column-->
-					</div>
-					<!--/First row-->
-				</section>
-				<!--/Section: Pricing v.1-->
-			</div> <!-- Cierre de conyenedor -->
+                <section class="section">
+                   <?php $contador_plns=0; $long = count($planes); $control=0;?>
+                        @foreach($planes as $plan)
+                            @if($contador_plns == 0)
+                                <div class="row">
+                            @endif
+                            <div class="col-lg-4 col-md-12 mb-r">
+                                <!--Card-->
+                                <div class="card">
+
+                                    <!--Content-->
+                                    <div class="text-xs-center">
+                                        <div class="card-block" style="background-color:#2d96ba;color:#fff;border-radius:.23rem;">
+                                            <center><h5 style="background: #1d657d;
+																				   margin: -1.2rem;
+																				   padding: 1rem;
+																				   margin-bottom: .5rem;
+																				   border-top-left-radius: .23rem;
+																				   border-top-right-radius: .23rem;
+																					box-shadow: 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);">{{$plan->name}}</h5></center>
+                                            <div class="flex-center" style="height:30%;">
+                                                <div class="card-circle">
+                                                    <i class="fa fa-credit-card-alt" style="color:#fff !important;"></i>
+                                                </div>
+                                            </div>
+
+                                            <!--Price-->
+                                            <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
+                                            <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
+                                            <center><a class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Suscribirme</a></center>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--/.Card-->
+                            </div>
+                            <?php $contador_plns+=1; $control+=1;?>
+                            @if($contador_plns == 3 || $control == $long)
+                                </div>
+                                <?php $contador_plns=0;?>
+                            @endif
+                        @endforeach
+
+
+                </section>
+			</div> <!-- Cierre de contenedor -->
 		</div>
 	</section>
 	<!-- Fin Sección de Membresías -->
@@ -553,4 +516,13 @@
 
 @section('js')
 	<script src="/packages/assets/js/Curiosity.js" charset="utf-8"></script>
+	<script type="text/javascript">
+        $(function(){
+            $(".suscriptionBtn").click(function(e){
+                e.preventDefault();
+                localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
+                window.location = '/parent-register';
+            });
+        });
+    </script>
 @stop

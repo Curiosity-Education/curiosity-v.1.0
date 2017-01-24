@@ -8,4 +8,6 @@ $(function(){
       loginController.validAccess();
    });
 
+   $("#username, #password").on('keydown', function(e){ if(e.keyCode == 13){ $("#btnLogin").trigger('click'); } });
+
 })

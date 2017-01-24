@@ -1,4 +1,5 @@
 $(function(){
+	var $formChild = $(".upch-frm-child");
     //Initializing carousel´s children
     $(".carousel").carousel();
     /*
@@ -9,31 +10,40 @@ $(function(){
     | show and hide steps
     |
     */
-    $(".btn-next").click(function(ev){
-   		$("[class*='step-']").removeClass("active");
-   		$("[class*='step-2']").addClass("active");
-   		$(this).removeClass("btn-next");
-   		$(this).addClass("btn-upload-child");
-   		$(".btn-cancel").removeAttr("data-card");
-      $(".btn-cancel").text("Regresar");
-      $(this).text("registrar");
-    });
+
 
     $(".btn-upload-child").click(function(ev){
-    	alert("desea registrar este mocoso?");
-    });
-
-    $(".btn-cancel").click(function(ev){
-    	if($(this).attr("data-card")==undefined){
-    		$("[class*='step-']").removeClass("active");
-   			$("[class*='step-1']").addClass("active");
-   			$(this).attr("data-card","card-1");
-        $(this).text("cancelar");
-        $(".btn-upload-child").addClass("btn-next").text("Siguiente");
-        $(".btn-next").removeClass("btn-upload-child");
-    	}else{
-        document.getElementById("upch-frm-child").reset();
-      }
+    	console.log(this);
+    	if($formChild.valid()){
+			data = {
+				username : document.getElementById("upch-username").value,
+				name     : document.getElementById("upch-name").value,
+				surnames : document.getElementById("upch-surnames").value,
+				password : document.getElementById("upch-pass").value,
+				cpassword: document.getElementById("upch-cpass").value,
+				gender   : document.getElementById("upch-gender").value,
+				average  : document.getElementById("upch-average").value
+			};
+			console.log(data);
+			$(this).prop("disabled",true);
+			var text = $(this).text()
+			var these = this;
+			$(this).html(text +' <i class="fa fa-spinner"></i>');
+			childrenCtrl.save(data,function(response){
+				console.log(response);
+				if(response.status!=200){
+					toastr.warning(response.message);
+				}else{
+					$(".btn-cancel").trigger("click");
+					$(".btn-return").trigger("click");
+					toastr.success(response.message);
+				}
+				$(these).prop("disabled",false);
+				$(these).html(text);
+			});
+		}else{
+			toastr.info("Verifica la información ingresada, algunos datos no son validos");
+		}
     });
     /*
     |--------------------------------------------------------------------------
@@ -47,7 +57,9 @@ $(function(){
 		}else{//move to back
 			tab = parseInt($(this).data("step"))-1;
 		}
-		moveTab(tab);
+		if(tab <= $(".p-stepper-user>li").length){
+			moveTab(tab);
+		}
 	});
 
 	$(".p-stepper-user>li").click(function(){
@@ -55,9 +67,6 @@ $(function(){
 		moveTab(tab);
 	});
 
-	$(".p-btn-update").click(function(){
-		alert("se actualizarán los datos los datos");
-	});
 
 	function moveTab(tab){//function for move in tabs
 		$(".btn-to-move").data("step",tab);
@@ -71,18 +80,16 @@ $(function(){
 		});//find to step with active for put class active
 		if(tab>1){
 			$(".btn-return").show();
-			$(".btn-next").show();
-			$(".btn-return").prop("disabled",false);
-		}else{
-			$(".btn-next").show();
-			$(".btn-return").prop("disabled",true);
-		}
-		if(tab==$(".p-stepper-user>li").length){
+			$(".btn-cancel").hide();
 			$(".btn-next").hide();
-			$(".p-btn-update").show();
+			$(".btn-upload-child").show();
 		}else{
-			$(".p-btn-update").hide();
+			$(".btn-return").hide();
+			$(".btn-cancel").show();
+			$(".btn-next").show();
+			$(".btn-upload-child").hide();
 		}
+
 	}
 	$(".p-item-new").click(function(){
 		$("#p-row-main").hide();
@@ -101,4 +108,28 @@ $(function(){
 		$("#container-baner").show();
 		$("#p-row-main").show();
 	});
+	//validation data for register child
+	$formChild.validate({
+		rules:{
+			username:{required:true,maxlength:50,remote:{
+				"url":"/remote-username",
+				"type":"POST",
+				"username":function(){
+					return $("input[name='username']").val();
+				}
+			}},
+			name:{required:true,maxlength:100},
+			surnames:{required:true,maxlength:100},
+			password:{required:true,minlength:5},
+			cpassword:{required:true,minlength:5,equalTo:function(){
+				return $("input[name='password']");
+			}},
+			gender:{required:true},
+			average:{required:true}
+		},messages:{
+			cpassword:{equalTo:"Las contraseñas son diferentes"},
+			username:{remote:"Nombre de usuario no disponible"}
+		}
+	});
+
 });

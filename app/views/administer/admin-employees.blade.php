@@ -51,16 +51,48 @@
        <div class="modal-content">
          <div class="modal-header"></div>
          <div class="modal-body">
-            <form class="form form-horizontal" id="aemp-form">
-               <div class="form-group">
-                 <label for="aemp-name" class="msad-mdl-label">Nombre</label>
-                 <input type="text" class="form-control aempInp" id="aemp_name" name="aemp_name">
+            <div class="row">
+               <div class="col-sm-4">
+                  <img src="" class="img-fluid img-thumbnail z-depth-1" id="aemp_ph">
+                  <button type="button" class="btn btn-outline-default btn-block" id="aemp-selectPhoto">
+                    <span class="fa fa-folder-open"></span>&nbsp;
+                    Abrir
+                  </button>
+                  <button type="button" class="btn btn-outline-default btn-block" id="aemp-resetPhoto">
+                    Restaurar
+                  </button>
+                  <form class="form form-horizontal" id="aemp-formPhoto">
+                     <input type="file" name="aemp_photo" id="aemp_photo" class="aempInp">
+                  </form>
                </div>
-               <div class="form-group">
-                 <label for="aemp-name" class="msad-mdl-textArea">Descripción</label>
-                 <textarea id="aemp_descript" name="aemp_descript" rows="15" class="form-control aempInp"></textarea>
+               <div class="col-sm-8">
+                  <form class="form form-horizontal" id="aemp-form">
+                     <div class="form-group">
+                       <label for="aemp_name" class="msad-mdl-label">Nombre</label>
+                       <input type="text" class="form-control aempInp" id="aemp_name" name="aemp_name">
+                     </div>
+                     <div class="form-group">
+                       <label for="aemp_lName" class="msad-mdl-label">Apellidos</label>
+                       <input type="text" class="form-control aempInp" id="aemp_lName" name="aemp_lName">
+                     </div>
+                     <div class="form-group">
+                       <label for="aemp_genre" class="msad-mdl-label">Sexo</label>
+                       <select class="form-control msad-select" name="aemp_genre" id="aemp_genre">
+                          <option value="m">Masculino</option>
+                          <option value="f">Femenino</option>
+                       </select>
+                     </div>
+                     <div class="form-group">
+                       <label for="aemp_email" class="msad-mdl-label">E-Mail</label>
+                       <input type="email" class="form-control aempInp" id="aemp_email" name="aemp_email">
+                     </div>
+                     <div class="form-group">
+                       <label for="aemp_phone" class="msad-mdl-label">Teléfono</label>
+                       <input type="text" class="form-control aempInp" id="aemp_phone" name="aemp_phone">
+                     </div>
+                  </form>
                </div>
-            </form>
+            </div>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-outline-default" id="aemp-cancel" data-dismiss="modal">
@@ -78,8 +110,8 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Position.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Employee.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/aempController.js" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-aemp.js" charset="utf-8"></script>
 @stop

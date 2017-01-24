@@ -87,6 +87,13 @@ Route::get('administer', function(){
     return View::make('administer.asociateSchool');
 });
 
+Route::get('parent-register', function(){
+    return View::make('parent.registry');
+});
+Route::group(array('prefix' => 'plans'),function(){
+   Route::post('get','plansController@get');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
 Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
@@ -104,6 +111,12 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
+	Route::get('view-{controller}-{method}-{viewName}','viewsController@getViewWithData')->where(
+        array(
+            'controller' => "^[a-zA-Z]*$",
+            'method' => "^[a-zA-Z]*$"
+        )
+    );
 });
 
 /*
@@ -174,6 +187,20 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('delete', 'teachersController@delete');
 		});
 	});
+	Route::group(array('before' => 'manage_administrative'),function(){
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-employee'),function(){
+			Route::post('save', 'employeeController@save');
+			Route::post('update', 'employeeController@update');
+			Route::post('delete', 'employeeController@delete');
+		});
+		// Manage employees
+		Route::group(array('prefix' =>  'admin-salerCode'),function(){
+			Route::post('save', 'salersCodeController@save');
+			Route::post('update', 'salersCodeController@update');
+			Route::post('delete', 'salersCodeController@delete');
+		});
+	});
 });
 
 	// Activities
@@ -185,7 +212,6 @@ Route::group(array('before' => 'auth'), function(){
 		Route::group(array('prefix' =>  'photo'),function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
-
     });
 
     // Plans
@@ -194,6 +220,7 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('save', 'plansController@save');
         Route::post('update', 'plansController@update');
         Route::post('delete', 'plansController@delete');
+		  Route::post('getHidden', 'plansController@getHidden');
 
     });
 	// Manage School asociated
@@ -363,10 +390,51 @@ Route::group(array('prefix' =>  'sprite'),function(){
 Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
+Route::post('/remote-username','usersController@remoteUsername');
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to positions
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'position'),function(){
+	Route::post('all', 'positionController@all');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to employees
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'employee'),function(){
+	Route::post('getByPosition', 'employeeController@getByPosition');
+	Route::post('getBySalers', 'employeeController@getBySalers');
+});
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to salers code
+* all without special permision
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'salerCode'),function(){
+	Route::post('all', 'salersCodeController@all');
+});
 
 /*
 *   Register for users
 */
+Route::group(array('prefix' => 'parent'),function(){
+   Route::post('save','parentsController@save');
+   Route::post('update','parentsController@update');
+   Route::post('remote-email','parentsController@remoteEmail');
+   Route::post('confirm/{token}','parentsController@confirm');
+   Route::post('payment-suscription','parentsController@payment_suscription');
+});
+
+
 /*
 Route::group(array('prefix' => 'register'),function(){
 		Route::match(array('GET', 'POST'), '/', 'padreController@viewPage');
@@ -377,7 +445,7 @@ Route::group(array('prefix' => 'register'),function(){
 			Route::match(array('GET', 'POST'), '/', 'suscripcionController@viewPage');
 			Route::match(array('GET', 'POST'),'suscription','suscripcionController@suscripcion');
 	    Route::match(array('GET','POST'),'parent','padreController@addPadre');
-		});
+        });
 });
 
 // Facebook user
@@ -486,6 +554,10 @@ Route::group(array('before' => 'auth'), function(){
 
             Route::group(array('prefix' => "childDoActivities"), function(){
                 Route::post("/save",'childrenDoActivitiesController@save');
+                Route::get('/game-{activityId}','childrenDoActivitiesController@getGame')
+    			->where(array(
+		            'controller' => "^[0-9]*$"
+			    ));
             });
             Route::group(array('prefix' => "sonRatesActivity"), function(){
                 Route::post("/save",'sonRatesActivitiesController@save');
@@ -496,6 +568,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-popular","activitiesController@getPopulars");
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
+                Route::get("find-all","activitiesController@getAll");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");

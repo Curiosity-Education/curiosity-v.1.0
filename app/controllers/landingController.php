@@ -12,8 +12,26 @@ class landingController extends BaseController
         return Redirect::to($routeView);
      }
      else {
-        $escuelas = array('escuelas' => School::where('active', '=', 1)->get());
-        return View::make('landing.index', $escuelas);
+        $escuelas = School::where('active', '=', 1)->get();
+        $planes = Plan::where("active", "=", 1)->where("visible", "=", 1)->get();
+      //   return array(
+      //        'escuelas' => $escuelas,
+      //        'planes'   => $planes,
+      //        'trans'    => [
+      //            'month' => 'mes',
+      //            'semester'  => 'semestre',
+      //            'year'  =>  'año'
+      //        ]
+      //    );
+    	return View::make('landing.index',array(
+            'escuelas' => $escuelas,
+            'planes'   => $planes,
+            'trans'    => [
+                'month' => 'mes',
+                'semester'  => 'semestre',
+                'year'  =>  'año'
+            ]
+        ));
      }
   }
 

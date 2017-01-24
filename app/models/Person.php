@@ -19,7 +19,7 @@ class Person extends Eloquent{
      ## One person has child data
     */
     public function Son(){
-        return $this->hasOne('hijo','persona_id');
+        return $this->hasOne('Son','persona_id');
     }
     /*
      *
@@ -28,7 +28,7 @@ class Person extends Eloquent{
     public function Administrative(){
         return $this->hasOne('administrativo','persona_id');
     }
-    public function Parent(){
-      return $this->hasOne('padre','persona_id');
+    public function Dad(){
+      return $this->hasOne('Dad','persona_id');
     }
 }
