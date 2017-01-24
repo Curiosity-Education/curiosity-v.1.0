@@ -4,7 +4,7 @@
 @stop
 
 @section('baner-tittle')
-  Novedades
+  Gestión de novedades
 @stop
 
 @section('content-administer')
