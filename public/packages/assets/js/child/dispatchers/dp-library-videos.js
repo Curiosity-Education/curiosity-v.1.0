@@ -1,7 +1,7 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var level, intelligencesId, blockId, topicId, pdfsId;
+  var level, intelligencesId, blockId, topicId, pdfsId, teacherId, teacher, school,schoolId;
   var countPdfs = [],cc = 0, countSlide = 0, nameTopic;
 
 
@@ -41,7 +41,6 @@ $(function(){
   tempTeachers = JSON.parse(localStorage.localTeachers);
   tempVideos = JSON.parse(localStorage.localVideos);
   tempSchools = JSON.parse(localStorage.localSchools);
-  console.log(tempTeachers);
 
   for (var i = 0; i < tempLevels.length; i++) {
    $(".lp-container-degrees").append($(
@@ -71,6 +70,18 @@ $(function(){
         if (blockId == tempTopics[i].bloque_id) {
           nameTopic = tempTopics[i].nombre;
           topicId = tempTopics[i].id;
+          teacherId = tempTopics[i].profesor_apoyo_id
+        }
+      }
+    }
+    for (var i = 0; i < tempVideos.length; i++) {
+      if (tempVideos[i].profesor_apoyo_id == teacherId) {
+        teacher = tempTeachers[i];
+        schoolId = tempTeachers[i].escuela_id;
+
+        if (schoolId == tempSchools[i]) {
+          school = tempSchools[i];
+          
         }
       }
     }
@@ -89,13 +100,15 @@ $(function(){
    for (var i = 0; i < tempVideos.length; i++) {
 
      if (topicId == tempVideos[i].tema_id) {
+       profe = tempVideos[i].profesor_apoyo_id;
+
 
         countPdfs[cc] = tempVideos[i];
         cc += 1;
 
        $(".lp-container-pdf").append($(
 
-         "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-link-video='" + tempVideos[0].embed + "' data-teacher='" + tempTeachers[0].nombre + " " + tempTeachers[0].apellidos + "'>" +
+         "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-link-video='" + tempVideos[i].embed + "'>" +
            "<div class='col-md-3 col-sm-3 col-xs-4'>" +
              "<div class='lp-bg-card' title='click para ver'>" +
                "<div class='card-overlay lp-card-pdf'>" +
@@ -150,100 +163,95 @@ $(function(){
     //   ));
     // }
 
-    $("#carrousel-videos").append($(
-
-      "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
-        "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
-
-
-          "<div class='controls-top'>" +
-            "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
-            "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
-          "</div>" +
-
-
-
-          "<ol class='carousel-indicators'>" +
-            "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
-            "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
-          "</ol>" +
-
-
-
-          "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
-
-
-          "</div>" +
-
-        "</div>" +
-
-      "</div>"
-
-    ));
-
-
-    for (var i = 0; i < countPdfs.length; i++) {
-      if (i % 2 === 0) {
-
-        countSlide += 1;
-        $(".pdfs-carrousel-container").append($(
-
-          "<div class='carousel-item text-xs-center pair-pdfs"+ countSlide +"'>" +
-          "</div>"
-        ));
-        if (i <= 1) {
-
-          $(".pair-pdfs"+ countSlide).addClass("active");
-        }
-     }
-
-      $(".pair-pdfs"+countSlide).append($(
-
-       "<div class='col-xs-12'>" +
-         "<a class='lp-PDFselect' href='#'>" +
-           "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
-             "<div class='card-overlay lp-card-pdf'>" +
-
-               "<div class='white-text text-xs-center'>" +
-                 "<div class='card-block'>" +
-                   "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i> GUIA PDF</h5><hr class='lp-hr'>" +
-                   "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic + "</h4>" +
-
-                 "</div>" +
-               "</div>" +
-             "</div>" +
-           "</div>" +
-         "</a>" +
-       "</div>"
-
-      ));
-
-    }
+    // $("#carrousel-videos").append($(
+    //
+    //   "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
+    //     "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
+    //
+    //
+    //       "<div class='controls-top'>" +
+    //         "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
+    //         "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
+    //       "</div>" +
+    //
+    //
+    //
+    //       "<ol class='carousel-indicators'>" +
+    //         "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
+    //         "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
+    //       "</ol>" +
+    //
+    //
+    //
+    //       "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
+    //
+    //
+    //       "</div>" +
+    //
+    //     "</div>" +
+    //
+    //   "</div>"
+    //
+    // ));
+    //
+    //
+    // for (var i = 0; i < countPdfs.length; i++) {
+    //   if (i % 2 === 0) {
+    //
+    //     countSlide += 1;
+    //     $(".pdfs-carrousel-container").append($(
+    //
+    //       "<div class='carousel-item text-xs-center pair-pdfs"+ countSlide +"'>" +
+    //       "</div>"
+    //     ));
+    //     if (i <= 1) {
+    //
+    //       $(".pair-pdfs"+ countSlide).addClass("active");
+    //     }
+    //  }
+    //
+    //   $(".pair-pdfs"+countSlide).append($(
+    //
+    //    "<div class='col-xs-12'>" +
+    //      "<a class='lp-PDFselect' href='#'>" +
+    //        "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
+    //          "<div class='card-overlay lp-card-pdf'>" +
+    //
+    //            "<div class='white-text text-xs-center'>" +
+    //              "<div class='card-block'>" +
+    //                "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i> GUIA PDF</h5><hr class='lp-hr'>" +
+    //                "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic + "</h4>" +
+    //
+    //              "</div>" +
+    //            "</div>" +
+    //          "</div>" +
+    //        "</div>" +
+    //      "</a>" +
+    //    "</div>"
+    //
+    //   ));
+    //
+    // }
 
   });
 
   /* Transitions of the View ------------------------------------ */
 
 	$("body").on('click','.lp-PDFselect',function(){
-    console.log($(this).data("teacher"));
     $('#gst-link').append($(
       "<iframe src='" + $(this).data("link-video") + "' type='application/pdf'  width='100%' height='90%' name='iframeContent' id='gst-iframe-content'></iframe>"
     ));
-    $('')
+
     // $("#topic-name").text($(this).data('name-pdf'));
 
-	}); // show PDF
+	// show PDF
 
 	$("body").on('click','#close-modal',function(){
     $('#gst-iframe-content').remove();
 	}); // close PDF
 
-	$("body,html").keyup(function(evt){
-		if(evt.keyCode==27){
-			$(".lp-close").trigger("click");
-		}
-	}); // close PDF with "esc"
 
+});
 	/* ------------------------------------------------------------- */
 
 });
