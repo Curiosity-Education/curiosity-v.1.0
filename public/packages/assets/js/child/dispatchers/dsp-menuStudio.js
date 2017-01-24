@@ -35,6 +35,10 @@ $(function(){
 				var levels = StorageDB.table.getByAttr("levels", "id", obj["nivel_id"]);
 				msConstroller.makeCard(levels, "level");
 			break;
+			case "block":
+				var levels = StorageDB.table.getByAttr("levels", "id", obj["nivel_id"]);
+				msConstroller.makeCard(levels, "level");
+			break;
 		}
 	});
 
