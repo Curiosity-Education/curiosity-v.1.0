@@ -36,7 +36,7 @@
                         <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up flex-center" id="slideBtn"><i class="fa fa-bars"></i></a>
                         <a href="#" class="hidden-md-down">
                            <div class="chip hoverable" id="logOut-btn">
-                              <img src="packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
+                              <img src="/packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
                               Cerrar Sesión
                            </div>
                         </a>

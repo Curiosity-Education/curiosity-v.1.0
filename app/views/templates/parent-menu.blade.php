@@ -16,30 +16,30 @@
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="#" class="linkMenu waves-effect">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+<div data-url="/view-parent.profile" class="linkMenu linkMenu">
+   <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
+   Perfil
 </div>
-<div data-url="#" class="linkMenu waves-effect">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-files"></span>&nbsp;
+<div data-url="/view-parent.library_pdfs" class="linkMenu waves-effect">
+   <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
 @stop
 
 @section('menu-links-aside')
-<div data-url="#" class="linkMenu linkMenuAside linkMenu-active">
+<div data-url="/view-parent.home" class="linkMenu linkMenuAside linkMenu">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="#" class="linkMenu linkMenuAside">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+<div data-url="/view-parent.profile" class="linkMenu linkMenuAside linkMenu">
+   <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
+   Perfil
 </div>
-<div data-url="#" class="linkMenu linkMenuAside">
+<div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
-<div data-url="#" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+<div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
@@ -50,7 +50,7 @@
 @stop
 
 @section('under-menu')
-<div data-url="#" id="parentMenu-addChild" class="z-depth-1 waves-effect">
+<div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
