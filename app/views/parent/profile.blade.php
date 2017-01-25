@@ -113,7 +113,7 @@ Mi Perfil
                     <div class="tab-1 active animated fadeIn p-tab">
                         <div class="md-form">
                             <i class="fa fa-user prefix"></i>
-                            <input type="text" id="username" name="username" class="form-control" value="roger17">
+                            <input type="text" id="username" name="username" class="form-control" value="roger17" length="40">
                             <label for="username">username</label>
                         </div>
                         <div class="md-form">
