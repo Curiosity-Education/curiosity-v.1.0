@@ -40,7 +40,7 @@ class profilesController extends BaseController{
                "integer"     =>  "Solo puedes ingresar numeros enteros",
                "same"        =>  "Las contraseñas no coinciden",
                "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-         ];
+        ];
         if(!Hash::check($data["password_persona"],Auth::user()->password)){
             return Response::json("contraseña incorrecta");
         }
