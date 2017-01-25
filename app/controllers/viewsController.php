@@ -22,6 +22,7 @@ class viewsController extends BaseController{
       "parent.profile"                  => "parent_actions",
       "parent.pay-suscription"          => "parent_actions",
       "parent.registry_firstchild"      => "parent_actions",
+      "parent.home"                     => "parent_actions",
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
