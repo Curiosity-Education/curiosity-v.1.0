@@ -123,6 +123,14 @@ Route::group(array('before' => 'auth'), function(){
     );
 });
 
+// Manage News for parents
+Route::group(array('prefix' => 'news'),function(){
+	Route::post('save', 'dadNewsController@save');
+	Route::post('update', 'dadNewsController@update');
+	Route::post('delete', 'dadNewsController@delete');
+	Route::get('novedades-admin', 'dadNewsController@get');
+});
+
 /*
 * -----------------------------------------------------------------------------
 * Routes to manage the access to the acount.
@@ -173,13 +181,6 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('save', 'libraryVideoController@save');
 			Route::post('update', 'libraryVideoController@update');
 			Route::post('delete', 'libraryVideoController@delete');
-		});
-		// Manage News for parents
-		Route::group(array('prefix' => 'news'),function(){
-			Route::post('save', 'dadNewsController@save');
-			Route::post('update', 'dadNewsController@update');
-			Route::post('delete', 'dadNewsController@delete');
-			Route::get('get', 'dadNewsController@get');
 		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){

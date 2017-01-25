@@ -20,7 +20,21 @@
 					<h4 class="h4-responsive text-xs-left"><i class="fa fa-file-text"></i>&nbsp; Lista de Novedades</h4>
 					<hr>
 					<div id="adNews-contentNews">
-
+						@foreach($news as $new)
+						<!--Panel-->
+						<div class="card">
+							<div class="card-header adNews-colorDefault white-text">
+								<i class="fa fa-file-pdf-o"></i>&nbsp; {{$new -> titulo}}
+								<a href="" class="float-xs-right adNews-option" id="adNews-edit" data-id="{{$new -> id}}"><i class="fa fa-edit"></i></a>
+								<a href="" class="float-xs-right adNews-option" id="adNews-delete" data-id="{{$new -> id}}"><i class="fa fa-trash"></i></a>
+							</div>
+							<div class="card-block">
+								<a target="_blank" href="/packages/assets/pdf/{{$new -> pdf}}"><h6 class="card-title">{{$new -> pdf}}</h6></a>
+								<p class="card-text">Fecha Modificación: {{$new -> updated_at}}</p>
+							</div>
+						</div>
+						<!--/.Panel-->
+						@endforeach
 					</div>
 				</div>
 			</div>
