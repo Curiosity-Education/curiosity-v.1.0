@@ -13,7 +13,10 @@ class parentsController extends BaseController{
 
   public function getDataPerfil(){
     if(Auth::User()){
-      $data = Auth::User()->Person->Parent;
+      $data = User::join('personas','personas.user_id','=','users.id')
+                  ->join('padres','padres.persona_id','=','personas.id')
+                  ->where('user.id','=',Auth::user()->id)
+                  ->first();
     }
     return null;
   }
