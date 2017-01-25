@@ -18,7 +18,6 @@ class loginController extends BaseController{
             'password'  =>  $data["password"]
          );
          if(Auth::attempt($auth)){
-
             $user = Auth::user();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
@@ -33,9 +32,9 @@ class loginController extends BaseController{
                }
             }
             else if(Auth::user()->hasRole('parent')){
-                $email   = Auth::User()->Person->Dad->email;
-                $parent  = Dad::where('email','=',$email)->first();
-                $hasPlan = Membership::where('padre_id','=',$parent->id)->first();
+                $person = Person::where("user_id", "=", $user["id"])->first();
+                $parent = Dad::where("persona_id", "=", $person["id"])->first();
+                $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
                 if(!$hasPlan){
                     return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
                 }
