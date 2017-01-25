@@ -820,9 +820,9 @@ Route::group(array('before' => 'auth'), function(){
 // });
 // Route::get('/missedSession','sesionInfoController@missedSession');
 // Route::post('/last-session','sesionInfoController@getLastSession');
-// Route::get('/terminos-y-condiciones',function(){
-//     return View::make('terminos');
-// });
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
 // Route::get('/aviso-privacidad',function(){
 //     return View::make('aviso-privacidad');
 // });
