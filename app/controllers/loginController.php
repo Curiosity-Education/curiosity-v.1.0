@@ -80,6 +80,17 @@ class loginController extends BaseController{
             }
          }
       }
+      else if(Auth::user()->hasRole('parent')){
+          $person = Person::where("user_id", "=", $user["id"])->first();
+          $parent = Dad::where("persona_id", "=", $person["id"])->first();
+          $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
+          if($hasPlan != null){
+              return "view-parent.pay-suscription";
+          }
+          else{
+              return "view-parent.home";
+          }
+      }
       else if (Auth::user()->hasRole('root') ||
                Auth::user()->hasRole('administer content 1') ||
                Auth::user()->hasRole('administer content 2') ||
