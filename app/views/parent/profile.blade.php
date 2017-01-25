@@ -102,6 +102,7 @@ Mi Perfil
             </div>
             <!--/Form about novedades-->
              <!--Form for refresh perfil-->
+            <form id="p-frm-user">
             <div class="card card-border-standard p-card-update-user p-card-user animated fadeInRightBig" data-wow-delay="1s" id="card-data-editing">
                 <div class="card-block" id="p-cardData">
                     <!--Header-->
@@ -148,13 +149,13 @@ Mi Perfil
                         <div class="md-form">
                             <select class="mdb-select">
                                 <option value="" disabled selected>Sexo</option>
-                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
-                                <option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+                                <option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
+                                <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
                             </select>
                         </div>
                         <div class="md-form">
                             <i class="fa fa-phone prefix"></i>
-                            <input type="password" id="telefono" name="telefono" class="form-control">
+                            <input type="text" id="telefono" name="telefono" class="form-control" length="10">
                             <label for="telefono">Télefono</label>
                         </div>
                     </div>
@@ -189,6 +190,7 @@ Mi Perfil
                     </div>
                 </div>
             </div>
+            </form>
             <!--/Form for refresh perfil-->
          </div>
          <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4 border-left">
