@@ -20,7 +20,8 @@
   					<h1 class="h1-responsive font-curiosity titulo-apartado white-text">Mentores</h1>
   				</li>
   				<li class="container-fluid">
-  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/nuestro-equipo">Nuestro equipo</a> | <a href="#">Preguntas frecuentes</a></h5>
+  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/equipo">Nuestro equipo</a>
+						<!-- | <a href="#">Preguntas frecuentes</a></h5> -->
   				</li>
   			</ul>
     	</div>
