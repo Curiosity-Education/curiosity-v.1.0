@@ -128,7 +128,8 @@ Route::group(array('prefix' => 'news'),function(){
 	Route::post('save', 'dadNewsController@save');
 	Route::post('update', 'dadNewsController@update');
 	Route::post('delete', 'dadNewsController@delete');
-	Route::get('novedades-admin', 'dadNewsController@get');
+	Route::get('news-admin', 'dadNewsController@get');
+	Route::post('title', 'dadNewsController@titleExists');
 });
 
 /*
