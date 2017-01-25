@@ -22,6 +22,7 @@
       </div>
     @stop
 @section('js-plus')
+   <script src="/packages/assets/js/administer/models/Activity.js"></script>
    <script src='/packages/assets/js/child/controllers/msController.js'></script>
    <script src='/packages/assets/js/child/dispatchers/dsp-menuStudio.js'></script>
 @stop

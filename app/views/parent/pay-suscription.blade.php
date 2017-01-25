@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
   <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
-	<title>Curiosity | Mi primer hijo</title>
+	<title>Curiosity | Pago</title>
 
 	<!--Navbar-->
-	<nav class="navbar navbar-fixed-top navbar-dark rfc-navbar">
+	<nav class="navbar navbar-fixed-top navbar-dark">
 
 		<div class="container">
 
@@ -35,13 +35,13 @@
                 <div class="pymnt-itm card active">
                     <h2>Tarjeta de crédito o débito</h2>
                     <div class="pymnt-cntnt col-md-12 container">
-                        <div class="card-expl col-md-12">
+                        <div class="card-expl col-md-12" style="background-color:rgba(238, 238, 238, 0.63);padding-bottom:6.5rem;">
                             <div class="row">
                                 <div class="credit col-md-6"><h6>Tarjetas de crédito</h6></div>
                                 <div class="debit col-md-6"><h6>Tarjetas de débito</h6></div>
                             </div>
                         </div>
-                            <div class="sctn-row row">
+                            <div class="sctn-row row" style="margin-top: 2.5rem !important;">
                                 <div class="sctn-col l col-md-6 ">
                                 <label>Nombre del titular</label><input type="text" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="name" id="name" name="name">
                                 </div>
@@ -62,11 +62,11 @@
                                 </div>
                             </div>
                             <div class="row col-md-12">
-                                <div class="shield col-md-4 pull-right">Tus pagos se realizan de forma segura</div>
+                                <div class="shield col-md-4 pull-letf">Tus pagos se realizan de forma segura</div>
                             </div>
                         </div>
                         <div class="sctn-row container">
-                                <button class="btn btn-danger pull-right" id="pay-button">Pagar</button>
+                                <button class="btn btn-rounded pull-right" id="pay-button">Pagar</button>
                         </div>
                     </div>
                     </form>

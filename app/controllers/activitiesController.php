@@ -63,7 +63,7 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'unlock')
+		->where('actividades.estatus', '=', 'eneabled')
 		->select('actividades.*',
 		'temas.nombre as topicName',
 		'bloques.nombre as blockName',
@@ -86,7 +86,7 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'unlock')
+		->where('actividades.estatus', '=', 'eneabled')
 		->select('actividades.*',
 		'temas.nombre as topicName',
 		'bloques.nombre as blockName',
@@ -100,7 +100,7 @@ class activitiesController extends BaseController{
 	}
 
 	function getMaxRank(){
-		$activities = Activity::where('active', '=', 1)->where('estatus', '=', 'unlock')->select('id')->groupBy('id')->get();
+		$activities = Activity::where('active', '=', 1)->where('estatus', '=', 'eneabled')->select('id')->groupBy('id')->get();
 		$rankingGroup = array();
 		foreach ($activities as $key => $value) {
 			$average = round(DB::table('hijo_califica_actividades')
@@ -115,7 +115,7 @@ class activitiesController extends BaseController{
 			->where('bloques.active', '=', 1)
 			->where('inteligencias.active', '=', 1)
 			->where('niveles.active', '=', 1)
-			->where('actividades.estatus', '=', 'unlock')
+			->where('actividades.estatus', '=', 'eneabled')
 			->where('actividades.id', '=', $value->id)
 			->select('actividades.*',
 			'temas.nombre as topicName',
@@ -145,7 +145,7 @@ class activitiesController extends BaseController{
 		->where('bloques.active', '=', 1)
 		->where('inteligencias.active', '=', 1)
 		->where('niveles.active', '=', 1)
-		->where('actividades.estatus', '=', 'unlock')
+		->where('actividades.estatus', '=', 'eneabled')
 		->where('personas.user_id', '=', Auth::user()->id)
 		->select(DB::raw("AVG( hijo_realiza_actividades.promedio ) as 'average',
 		actividades.*,
