@@ -25,4 +25,8 @@ class News extends CORM{
 		super.any(null,"GET",success,"/news","get");
 	}
 
+	static title(success){
+		super.any(null,"POST",success,"/news","title")
+	}
+
 }
