@@ -25,11 +25,13 @@ class parentsController extends BaseController{
         $today= date("Y-m-d");
         $rules = [
             "password"          =>"required|min:8|max:100",
+            "cpassword"         =>"required|same:password",
             "nombre"            =>"required|letter|max:50",
             "apellidos"  =>"required|letter|max:50",
             "sexo"              =>"required|string|size:1",
             "email"             =>"required|email|unique:padres,email",
-            "telefono"          =>"required"
+            "username"          =>"required|unique:users,username",
+            "telefono"          =>"required|decimal"
         ];
         try {
          $validator = Validator::make($data,$rules,Curiosity::getValidationMessages());
@@ -44,7 +46,7 @@ class parentsController extends BaseController{
                     try {
                         $user = new User($data);
                         $user->password=Hash::make($data["password"]);
-                        $user->username = $data['email'];
+                        $user->username = $data['username'];
                         $user->token=sha1($data['email']);
                         $user->save();
                         $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
@@ -98,7 +100,7 @@ class parentsController extends BaseController{
             //      return $code;
             //  }
             $dataset = [
-                'username'  =>  $data['email'],
+                'username'  =>  $data['username'],
                 'password'  =>  $data['password']
             ];
             return Response::json(array(
@@ -120,13 +122,17 @@ class parentsController extends BaseController{
             Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
+                    $parent = Auth::user()->Person->Dad;
                     $customer = Conekta_Customer::create(array(
                         "name" => Input::get('nombre'),
-                        "email" => Auth::user()->Person()->first()->Parent()->first()->email,
-                        "phone" => Auth::user()->Person()->first()->Parent()->first()->telefono,
+                        "email" => $parent->email,
+                        "phone" => $parent->telefono,
                         "cards"=> array(Input::get('conektaTokenId'))
                     ));
                     $plan = Plan::find(Input::get('plan_id'));
+                    if(!$plan){
+                        return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
+                    }
                     $subscription = $customer->createSubscription(array(
                       "plan_id"=> $plan->reference
                     ));
@@ -136,7 +142,7 @@ class parentsController extends BaseController{
                                 "token_card" => $subscription->id,
                                 "fecha_registro" => Date('Y-m-d'),
                                 "active"    => 1,
-                                "padre_id"  => Auth::user()->Person()->first()->Parent()->first()->id
+                                "padre_id"  => Auth::user()->Person->Dad->id
                             ));
                             $membresia->save();
                          //la suscripción inicializó exitosamente!
@@ -147,12 +153,16 @@ class parentsController extends BaseController{
                      //la suscripción falló a inicializarse
                       return Response::json(array(0=>'error'));
                     }
+                    elseif ($subscription->status == 'in_trial'){
+                       //la suscripción falló a inicializarse
+                      return Response::json(array(0=>'error'));
+                    }
                 }
                 else{
                     return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
                 }
             }catch (Conekta_Error $e){
-              echo $e->getMessage();
+              return Response::json(["message"=>$e->getMessage()]);
              //el cliente no pudo ser creado
             }
     }
@@ -240,5 +250,62 @@ class parentsController extends BaseController{
              group by(hijo_realiza_actividades.hijo_id)"
         );
     }
+    public function update(){
+        $data    =   Input::get('data');
+
+        $rules= [
+            "username"                  =>"required|user_check|max:50",
+            "password_new"              =>"min:8|max:100",
+            "cpassword_new"             =>"same:password_new",
+            "nombre_persona"            =>"required|letter|max:50",
+            "apellido_paterno_persona"  =>"required|letter|max:30",
+            "apellido_materno_persona"  =>"required|letter|max:30",
+            "sexo_persona"              =>"required|string|size:1",
+            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min"
+        ];
+
+        $messages = [
+               "required"    =>  "Este campo :attribute es requerido",
+               "alpha"       =>  "Solo puedes ingresar letras",
+               "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
+               "date"        =>  "Formato de fecha invalido",
+               "numeric"     =>  "Solo se permiten digitos",
+               "email"       =>  "Ingresa un formato de correo valido",
+               "unique"      =>  "Este usuario ya existe",
+               "integer"     =>  "Solo se permiten numeros enteros",
+               "exists"      =>  "El campo :attribute no existe en el sistema",
+               "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+               "integer"     =>  "Solo puedes ingresar numeros enteros",
+               "same"        =>  "Las contraseñas no coinciden",
+               "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+        ];
+        if(!Hash::check($data["password_persona"],Auth::user()->password)){
+            return Response::json("contraseña incorrecta");
+        }
+        $valid = Validator::make($data,$rules,$messages);
+        if($valid->fails()){
+            return $valid->messages();
+        }else{
+            $data["password"]=Hash::make($data["password_new"]);
+            $data["username"]=$data["username_persona"];
+            $user =User::find(Auth::user()->id);
+            $user->update($data);
+            $person = $user->persona();
+            $data_person = [
+               "nombre"            =>  $data["nombre_persona"],
+               "apellido_paterno"  =>  $data["apellido_paterno_persona"],
+               "apellido_materno"  =>  $data["apellido_materno_persona"],
+               "sexo"              =>  $data["sexo_persona"],
+               "fecha_nacimiento"  =>  $data["fecha_nacimiento_persona"]
+           ];
+            $person->update($data_person);
+            $rolee = Auth::user()->roles[0]->name;
+            if ($rolee == "padre" || $rolee == "padre_free" || $rolee == "demo_padre"){
+                $dadId = Auth::user()->persona()->first()->padre()->first()->id;
+                $dad = padre::where('id', '=', $dadId)->first();
+                $dad->update($data);
+            }
+            return Response::json(array('status' => 200, 'statusMessage' => 'success'));
+        }
+    }
 }
-?>

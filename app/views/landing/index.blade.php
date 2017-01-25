@@ -24,7 +24,7 @@
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
 	<li class="nav-item">
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
 	</li>
 @stop
 
@@ -94,8 +94,10 @@
 				</li>
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
-					<a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
-					<a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
+					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
+					<!-- <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a> -->
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+					<!-- <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="#membresia">Registrarse</a> -->
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -306,7 +308,7 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
 				</h2>
 			</center>
 	  	</div>
@@ -334,18 +336,24 @@
 
                                     <!--Content-->
                                     <div class="text-xs-center">
-                                        <div class="card-block">
-                                            <center><h5>{{$plan->name}}</h5></center>
+                                        <div class="card-block" style="background-color:#2d96ba;color:#fff;border-radius:.23rem;">
+                                            <center><h5 style="background: #1d657d;
+																				   margin: -1.2rem;
+																				   padding: 1rem;
+																				   margin-bottom: .5rem;
+																				   border-top-left-radius: .23rem;
+																				   border-top-right-radius: .23rem;
+																					box-shadow: 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);">{{$plan->name}}</h5></center>
                                             <div class="flex-center" style="height:30%;">
                                                 <div class="card-circle">
-                                                    <i class="fa fa-home blue-text"></i>
+                                                    <i class="fa fa-credit-card-alt" style="color:#fff !important;"></i>
                                                 </div>
                                             </div>
 
                                             <!--Price-->
                                             <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
-                                            <p>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</p>
-                                            <center><a class="btn btn-primary btn-rounded" data-id-plan="{{$plan->id}}" id="suscriptionBtn" >Suscribirme</a></center>
+                                            <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
+                                            <center><a class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Suscribirme</a></center>
                                         </div>
                                     </div>
 
@@ -510,7 +518,7 @@
 	<script src="/packages/assets/js/Curiosity.js" charset="utf-8"></script>
 	<script type="text/javascript">
         $(function(){
-            $("#suscriptionBtn").click(function(e){
+            $(".suscriptionBtn").click(function(e){
                 e.preventDefault();
                 localStorage.setItem('plan-user-selected',$(this).data('idPlan'));
                 window.location = '/parent-register';

@@ -28,7 +28,7 @@ class Person extends Eloquent{
     public function Administrative(){
         return $this->hasOne('administrativo','persona_id');
     }
-    public function Parent(){
+    public function Dad(){
       return $this->hasOne('Dad','persona_id');
     }
 }

@@ -9,6 +9,17 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                     required:true,
                     email:true
                 },
+                username:{
+                  required:true,
+                  maxlength:40,
+                  remote:{
+                    "url":"/remote-username",
+                    "type":"POST",
+                    "username":function(){
+                      return $("input[name='username']").val();
+                    }
+                  }
+                },
                 nombre:{
                     required:true
                 },
@@ -22,11 +33,22 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                     required:true,
                     minlength:8
                 },
+                cpassword:{
+                  required: true,
+                  minlength:8,
+                  equalTo:function(){
+                    return $("input[name='password']");
+                  }
+                },
                 telefono:{
                     required:true,
+                    digits:true,
                     minlength:7,
                     maxlength:13
                 }
+           },messages:{
+              cpassword:{equalTo:"Las contraseñas son diferentes"},
+              username:{remote:"Nombre de usuario no disponible"}
            }
        },
        data:function(){
@@ -36,7 +58,9 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                 'apellidos':$("#apellidos").val(),
                 'sexo':$("#sexo").val(),
                 'password':$("#password").val(),
-                'telefono':$("#telefono").val()
+                'telefono':$("#telefono").val(),
+                'username':$("#username").val(),
+                'cpassword':$("#cpassword").val()
             }
        },
        id : null,

@@ -60,8 +60,10 @@
 		.card-game
 			cursor: pointer
 			.card-footer-game
-				background-color: $color-primary
-				color: $color-white
+
+				background-color: $color-default
+				.card-title
+					color: $color-white !important
 
 #container-main-child
 	padding-left: 0 !important
@@ -84,7 +86,6 @@
 	width: 100%
 	position: relative
 	border-radius: $border-rad
-	box-shadow: $shadow
 	margin: 0.5rem 0 1rem 0
 	transition-property: box-shadow
 	transition-duration: 0.25s
@@ -103,11 +104,14 @@
 	.card-content-game
 		width: 100%
 		min-height: 18vh
-		border-top-left-radius: $border-rad
-		border-top-left-radius: $border-rad
+		border-top-left-radius: $border-rad !important
+		border-top-right-radius: $border-rad !important
 		img
 			min-height: 7.8rem !important
 			max-height: 7.8rem !important
+
+
+
 .card-game
 	.card-footer-game
 		background-color: inherit
@@ -131,12 +135,8 @@
 		color: $color-white
 		cursor: pointer
 		font-weight: bold
-		font-size: 1.1rem
 		margin-top: .5rem
-		&:hover
-			text-decoration: none
-			+transform(scale(1.3))
-			color: $color-gray-light
+
 
 .btn-view-more
 	background-color: transparent!important
@@ -170,14 +170,22 @@
 		width: 100%
 		display: block !important
 
-.card
-	margin-top: .5rem !important
-	margin-bottom: 1.2rem !important
+.in-card
 	.mask
 		border-radius: $border-rad
 	.card-block
 		border-radius: $border-rad
 .btn-show-game
 	color: $color-white !important
+	border-color: $color-info-light !important
 .info-text
-	color: #33b5e5 !important
+	color: $color-info-light !important
+.row-slide-main
+	margin-top: .4rem !important
+.init-btnClose
+	margin-top: -4.1rem !important
+	background-color: $color-info-light !important
+.init-titleGame
+	height: 4rem !important
+.init-btnClose-xs
+	margin-top: -3.6rem !important

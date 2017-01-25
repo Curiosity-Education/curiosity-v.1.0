@@ -77,8 +77,8 @@
                <div class="form-group">
                  <label for="acti-status" class="msad-mdl-label">Estatus</label>
                  <select class="form-control msad-select" name="acti_estatus" id="acti_estatus">
-                    <option value="lock">Bloqueado</option>
-                    <option value="unlock">Desbloqueado</option>
+                    <option value="eneabled">Bloqueado</option>
+                    <option value="disabled">Desbloqueado</option>
                  </select>
                </div>
                <div class="form-group">

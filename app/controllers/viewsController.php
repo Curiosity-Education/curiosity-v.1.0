@@ -1,6 +1,7 @@
 <?php
 class viewsController extends BaseController{
    protected $objViews = array(
+      "administer.admin-plans"          => "manage_content",
       "administer.admin-activities"     => "manage_content",
       "administer.admin-blocks"         => "manage_content",
       "administer.admin-intelligences"  => "manage_content",
