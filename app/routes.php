@@ -13,10 +13,6 @@
 
 Route::get('/', 'landingController@landingpage');
 
-Route::get('/pago', function(){
-	return View::make('parent.pay-suscription');
-});
-
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
 });
