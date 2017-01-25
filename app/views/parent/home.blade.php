@@ -24,8 +24,21 @@
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
 	   <center><div id="prntHome-contentInfo-arrow"></div></center>
 	   <h5>Nombre del hijo</h5>
-	   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, odio. Quis assumenda ipsa, non et autem tempore cum! Dolore harum tempore commodi rerum neque eligendi, ea illo nihil? Atque voluptatem, a id reprehenderit perferendis officiis repellat laudantium consequatur culpa cumque labore voluptas nihil molestiae perspiciatis, ut, doloribus provident dolores eaque nulla asperiores quos pariatur ex animi! Vero repellat tempora a pariatur sunt, sit inventore ex ut officia quam eum qui aspernatur tenetur, alias distinctio porro. Ratione excepturi, numquam dolores dolorum distinctio consequuntur sit consectetur nesciunt incidunt neque repellat expedita facilis fugit est error. Quia, officiis enim dolorem esse doloremque!
-	   <button type="button" class="btn" id="hm-btn-HelpSon">Ayudar a mi Hijo</button>
+	   <div class="row">
+	       <div class="col-md-8">
+               <canvas id="myChart" width="200" height="200"></canvas>
+           </div>
+           <div class="col-md-4 col-md-offset-1">
+                <h3>Title</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, facere. Libero saepe ipsam quis, accusamus hic distinctio id labore cum odio consectetur sunt dolor quae illum voluptas nemo, temporibus? Ex.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, facere. Libero saepe ipsam quis, accusamus hic distinctio id labore cum odio consectetur sunt dolor quae illum voluptas nemo, temporibus? Ex.
+                </p>
+                <button type="button" class="btn" id="hm-btn-HelpSon">Ayudar a mi Hijo</button>
+           </div>
+	   </div>
 	</div>
 </div>
 
@@ -164,5 +177,6 @@
 
 @section('js')
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+<script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
 <script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
 @stop
