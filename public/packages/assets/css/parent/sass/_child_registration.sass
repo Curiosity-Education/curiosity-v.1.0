@@ -41,7 +41,7 @@
 
 .upch-carouse-content
 	padding: 1rem !important
-	margin-top: -2.9rem !important
+	margin-top: -2rem !important
 	position: relative
 
 .upch-carousel-arrow
@@ -83,30 +83,37 @@
 	color: $color-white
 
 #upch-btnEdit
-	color: $color-white
+	color: $color-white !important
 	background-color: $color-info-dark
+	i
+		color: $color-white !important
 
 #upch-btnDelete
 	color: $color-warning-dark !important
 	border-color: $color-warning-dark !important
+	i
+		color: $color-warning-dark !important
 	&:hover
 		color: $color-warning-dark !important
 		border-color: $color-warning-dark !important
 
 #upch-btnAdd
 	color: $color-white
-	background-color: $color-default
+	background-color: $color-primary
+	margin-top: 3rem
+	i
+		color: $color-white
 
 .upch-btnCalcel
 	@extend #upch-btnDelete
 
 .upch-btnNext
 	color: $color-white
-	background-color: $color-secondary
+	background-color: $color-primary
 
 .btn-upload-child
 	color: $color-white
-	background-color: $color-default
+	background-color: $color-primary
 
 .upch-tab2
 	margin-bottom: 5.5rem
@@ -125,9 +132,24 @@
 		margin-left: 25% !important
 
 #upch-content-formReg
+	h4
+		background-color: $color-primary
+		color: $color-white !important
+		margin: -1rem
+		padding: 1rem
+		border-top-left-radius: $border-rad
+		border-top-right-radius: $border-rad
+		i
+			color: $color-white !important
 	@media (min-width: $tablet-size-landscape - 10px) and (max-width: $tablet-size-landscape + 30px)
 		height: 108% !important
 		margin-bottom: 1rem !important
 	@media (max-width: $smartphone-size-portrait + 30px)
 		height: 110% !important
 		margin-bottom: 1rem !important
+
+.carousel .carousel-item
+	height: auto !important
+
+#upch-iconChild
+	color: $color-white

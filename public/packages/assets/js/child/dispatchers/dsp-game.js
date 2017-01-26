@@ -1,4 +1,5 @@
 $(function(){
+
   //example of how use to ranking curiosity
   var ranking  = new Ranking(); //create instance for ranking class
   var pdfs,videos;//variables for save data json of videos and pdfs
@@ -59,6 +60,9 @@ $(function(){
     $("#gst-modal-pdf-video .media").removeClass('active');
     $(this).addClass('active');
     setInformationModal();
+  });
+  $("#gst-back").click(function(event){
+    window.history.back();//return to preview page
   });
   function createElementsPdfs(){// function for create elements with pdf information and add in dom element
     $pdfs = $("<div/>");

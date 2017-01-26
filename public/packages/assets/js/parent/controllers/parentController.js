@@ -1,5 +1,8 @@
 var parentController = {
 
+       update: function(id,data,success){
+            new Parent(data).update(id,"POST",success);
+       },
        prefix:"parent",
        formulary : $("#parent-form"),
        rulesFormulary:{
@@ -343,6 +346,5 @@ var parentController = {
             }
             return exist;
         }
-
 
 }

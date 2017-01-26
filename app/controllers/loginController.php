@@ -39,7 +39,15 @@ class loginController extends BaseController{
                     return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
                 }
                 else{
-                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.home"));
+                    $id_dad = Auth::user()->Person->Dad->id;
+                    $sons = Son::where("padre_id", "=", $id_dad)->get();
+                    $conutSons = count($sons);
+                    if ($conutSons > 0){
+                       return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.home"));
+                    }
+                    else {
+                       return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.registry_firstchild"));
+                    }
                 }
             }
             else if (Auth::user()->hasRole('root') ||
@@ -84,11 +92,19 @@ class loginController extends BaseController{
           $person = Person::where("user_id", "=", $user["id"])->first();
           $parent = Dad::where("persona_id", "=", $person["id"])->first();
           $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
-          if($hasPlan != null){
+          if(!$hasPlan){
               return "view-parent.pay-suscription";
           }
           else{
-              return "view-parent.home";
+              $id_dad = Auth::user()->Person->Dad->id;
+              $sons = Son::where("padre_id", "=", $id_dad)->get();
+              $conutSons = count($sons);
+              if ($conutSons > 0){
+                 return "view-parent.home";
+              }
+              else {
+                 return "view-parent.registry_firstchild";
+              }
           }
       }
       else if (Auth::user()->hasRole('root') ||

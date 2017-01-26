@@ -43,7 +43,7 @@ var loginController = {
    },
 
    logOut : function(){
-      window.location.href = "logout";
+      window.location.href = "/logout";
    }
 
 }
