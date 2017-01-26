@@ -7,7 +7,7 @@
 
 @section('menu-photo')
 <div id="parentMenu-profileContainer" class="text-center">
-   <img src="/packages/assets/media/images/parents/profile/mom-def.png" id="parentMenu-imgProfile">
+   <img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" id="parentMenu-imgProfile">
 </div>
 @stop
 
