@@ -7,7 +7,7 @@ Mi Perfil
  <i class="fa fa-user"></i> Mi perfil 
 @stop
 @section('content-parent')
-   <div class="container-fluid main"><br>
+   <div class="container-fluid main" id="p-container-main">
       <div class="row" id="p-row-main">
          <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
              <!--Form about novedades-->
@@ -133,11 +133,11 @@ Mi Perfil
                         </div>
                         <div class="md-form">
                             <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="new_password" name="new_password" class="form-control" placeholder="Contraseña nueva">
+                            <input type="password" id="new_password" name="new_password" class="form-control" placeholder="Contraseña nueva" length="100">
                         </div>
                         <div class="md-form">
                             <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="cnew_password" name="cnew_password" class="form-control" placeholder="Confirmar contraseña">
+                            <input type="password" id="cnew_password" name="cnew_password" class="form-control" placeholder="Confirmar contraseña" length="100">
                         </div>
                     </div>
                     <div class="tab-3 animated fadeIn p-tab p-tab3">
