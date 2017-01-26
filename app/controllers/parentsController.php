@@ -12,10 +12,15 @@ class parentsController extends BaseController{
 	}
 
   public function getDataPerfil(){
-    if(Auth::User()){
-      $data = Auth::User()->Person->Parent;
+    if(Auth::user()){
+      $data = User::join('personas','personas.user_id','=','users.id')
+                  ->join('padres','padres.persona_id','=','personas.id')
+                  ->where('users.id','=',Auth::user()->id ) 
+                  ->first();
+      return $data;
+    }else{
+      return "no estas logeado";
     }
-    return null;
   }
   public function save(){
         $data = Input::all();
@@ -251,23 +256,24 @@ class parentsController extends BaseController{
         );
     }
     public function update(){
-        $data    =   Input::get('data');
-
+        $data    =   Input::all();
         $rules= [
             "username"                  =>"required|user_check|max:50",
-            "password_new"              =>"min:8|max:100",
-            "cpassword_new"             =>"same:password_new",
-            "nombre_persona"            =>"required|letter|max:50",
-            "apellido_paterno_persona"  =>"required|letter|max:30",
-            "apellido_materno_persona"  =>"required|letter|max:30",
-            "sexo_persona"              =>"required|string|size:1",
-            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min"
+            "new_password"              =>"min:8|max:100",
+            "cnew_password"             =>"same:new_password",
+            "nombre"                    =>"required|letter|max:50",
+            "apellidos"                 =>"required|letter|max:60",
+            "sexo"                      =>"required|string|size:1",
+            "telefono"                  =>"required"
         ];
-
+        if(isset($data["new_password"]) && isset($data["cnew_password"])){
+          if($data["new_password"]!="" && $data["cnew_password"]!=""){// if user want to chage password them password current is required
+            $rules["old_password"]= "required";
+          }
+        }
         $messages = [
                "required"    =>  "Este campo :attribute es requerido",
                "alpha"       =>  "Solo puedes ingresar letras",
-               "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
                "date"        =>  "Formato de fecha invalido",
                "numeric"     =>  "Solo se permiten digitos",
                "email"       =>  "Ingresa un formato de correo valido",
@@ -276,36 +282,51 @@ class parentsController extends BaseController{
                "exists"      =>  "El campo :attribute no existe en el sistema",
                "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
                "integer"     =>  "Solo puedes ingresar numeros enteros",
-               "same"        =>  "Las contraseñas no coinciden",
-               "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+               "same"        =>  "Las contraseñas son diferentes",
         ];
-        if(!Hash::check($data["password_persona"],Auth::user()->password)){
-            return Response::json("contraseña incorrecta");
-        }
+        
         $valid = Validator::make($data,$rules,$messages);
         if($valid->fails()){
-            return $valid->messages();
+            return Response::json(array('status'        => 'CU-104',
+                                        "statusMessage" => "Data corrupted",
+                                        "message"       => "Los datos no cumplen con el formato establecido en el sistema"
+                                  ));
         }else{
-            $data["password"]=Hash::make($data["password_new"]);
-            $data["username"]=$data["username_persona"];
+            $editPass = false;
+            if(isset($data["new_password"]) && isset($data["cnew_password"])){
+              if($data["new_password"]!="" && $data["cnew_password"]!=""){
+                if(Hash::check($data["old_password"],Auth::user()->password)){
+                  //update password in this case
+                  $user = Auth::user();
+                  $user->password = Hash::make($data["new_password"]); 
+                  $user->save();
+                  $editPass = true;
+                }
+                
+              }
+            }
+            //$data["password"]=Hash::make($data["new_password"]);
             $user =User::find(Auth::user()->id);
             $user->update($data);
-            $person = $user->persona();
+            $person = $user->Person();
             $data_person = [
-               "nombre"            =>  $data["nombre_persona"],
-               "apellido_paterno"  =>  $data["apellido_paterno_persona"],
-               "apellido_materno"  =>  $data["apellido_materno_persona"],
-               "sexo"              =>  $data["sexo_persona"],
-               "fecha_nacimiento"  =>  $data["fecha_nacimiento_persona"]
-           ];
+               "nombre"            =>  $data["nombre"],
+               "apellidos"         =>  $data["apellidos"],
+               "sexo"              =>  $data["sexo"],
+            ];
             $person->update($data_person);
             $rolee = Auth::user()->roles[0]->name;
-            if ($rolee == "padre" || $rolee == "padre_free" || $rolee == "demo_padre"){
-                $dadId = Auth::user()->persona()->first()->padre()->first()->id;
-                $dad = padre::where('id', '=', $dadId)->first();
+            if ($rolee == "parent" || $rolee == "padre_free" || $rolee == "demo_padre"){
+                $dad = Auth::user()->Person->Dad;
                 $dad->update($data);
             }
-            return Response::json(array('status' => 200, 'statusMessage' => 'success'));
+            $response = array('status'        => 200, 
+                              'statusMessage' => "success",
+                              'message'       =>'Bien echo haz editado tus datos y cambiado tu contraseña correctamente');
+            if(!$editPass){
+              $response["message"] = "Bien echo haz editado tus datos correctamente";
+            }
+            return Response::json($response);
         }
     }
 }

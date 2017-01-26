@@ -45,11 +45,6 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		var tab = parseInt($(this).find("span").text());
 		moveTab(tab);
 	});
-
-	$(".p-btn-update").click(function(){
-		alert("se actualizarán los datos los datos");
-	});
-
 	function moveTab(tab){//function for move in tabs
 		$(".btn-to-move").data("step",tab);
 		$("[class*='tab']").removeClass("active");
