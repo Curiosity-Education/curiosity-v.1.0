@@ -12,7 +12,7 @@
 @stop
 
 @section('menu-links')
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="/view-parent.home" class="linkMenu waves-effect">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
@@ -50,7 +50,7 @@
 @stop
 
 @section('under-menu')
-<div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 waves-effect">
+<div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
