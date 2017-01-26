@@ -109,7 +109,7 @@
 											<img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
 										</div>
 										<div class="col-md-9" id="video-info">
-											
+
 										</div>
 									</div>
 								 </div>
@@ -165,7 +165,7 @@
 
 	</script>
 	{{ HTML::script('/packages/assets/js/child/library_videos.js') }}
-	<script type="text/javascript" src="/packages/assets/js/child/models/library-videos.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/child/controllers/library-videosCrtrl.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dp-library-videos.js"></script>
+	<script type="text/javascript" src="/packages/assets/js/child/models/library-videos.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/child/controllers/library-videosCrtrl.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dp-library-videos.js?{{rand();}}"></script>
 @stop

@@ -1,17 +1,28 @@
 $(function(){
     var prefix = "parent";
 
-    parentController.getPlan(localStorage.getItem('plan-user-selected'));
+    if(parentController.validPlanSelected())
+        parentController.getPlan(localStorage.getItem('plan-user-selected'));
+
+    parentController.getSons();
+
     $("#pay-button").click(function(){
-       if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('plan-user-selected') != ''){
-         $("#pay-button").prop("disabled",true);
-         parentController.payment();
-       }
+        if(parentController.validPlanSelected()){
+            $("#pay-button").prop("disabled",true);
+            parentController.payment();
+        }else{
+            Curiosity.noty.info("Aun no haz seleccionado un plan, no puedes realizar esta acción");
+        }
     });
 
-   $("#"+prefix+"-form").submit(function(e){
-      e.preventDefault();
-   });
+
+    $(".hm-carousel").on('click','.carousel-item',function(){
+
+        parentController.createChartActivities($(this).data('id'),$(this).data('infoActivities'));
+        $("#hm-btn-HelpSon").data($(this).data('topicLow'));
+
+    });
+
 
    $("#"+prefix+"-save").click(function(){ eval(prefix+"Controller").save(); });
 

@@ -51,7 +51,7 @@ $(function(){
        		id:{required:true,digits:true},
             username:{
               required:true,
-              maxlength:40, 
+              maxlength:40,
               remote:{
               	"url":"/remote-username-update",
                 "type":"POST",

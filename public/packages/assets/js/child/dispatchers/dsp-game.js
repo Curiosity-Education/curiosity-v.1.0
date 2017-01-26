@@ -1,5 +1,5 @@
 $(function(){
-   
+
   //example of how use to ranking curiosity
   var ranking  = new Ranking(); //create instance for ranking class
   var pdfs,videos;//variables for save data json of videos and pdfs

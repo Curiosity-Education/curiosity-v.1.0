@@ -12,19 +12,19 @@ function UnityProgress (dom) {
 	this.background = background;
 
 	var logoImage = document.createElement("img");
-	logoImage.src = "TemplateData/progresslogo.png"; 
+	logoImage.src = "TemplateData/progresslogo.png";
 	logoImage.style.position = "absolute";
 	parent.appendChild(logoImage);
 	this.logoImage = logoImage;
 
 	var progressFrame = document.createElement("img");
-	progressFrame.src = "TemplateData/loadingbar.png"; 
+	progressFrame.src = "TemplateData/loadingbar.png";
 	progressFrame.style.position = "absolute";
 	parent.appendChild(progressFrame);
 	this.progressFrame = progressFrame;
 
 	var progressBar = document.createElement("img");
-	progressBar.src = "TemplateData/fullbar.png"; 
+	progressBar.src = "TemplateData/fullbar.png";
 	progressBar.style.position = "absolute";
 	parent.appendChild(progressBar);
 	this.progressBar = progressBar;
@@ -35,21 +35,21 @@ function UnityProgress (dom) {
 	this.messageArea = messageArea;
 
 
-	this.SetProgress = function (progress) { 
+	this.SetProgress = function (progress) {
 		if (this.progress < progress)
-			this.progress = progress; 
+			this.progress = progress;
 		this.messageArea.style.display = "none";
 		this.progressFrame.style.display = "inline";
-		this.progressBar.style.display = "inline";			
+		this.progressBar.style.display = "inline";
 		this.Update();
 	}
 
-	this.SetMessage = function (message) { 
-		this.message = message; 
+	this.SetMessage = function (message) {
+		this.message = message;
 		this.background.style.display = "inline";
 		this.logoImage.style.display = "inline";
 		this.progressFrame.style.display = "none";
-		this.progressBar.style.display = "none";			
+		this.progressBar.style.display = "none";
 		this.Update();
 	}
 

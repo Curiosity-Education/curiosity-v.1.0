@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
   <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
   <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+  <link rel="stylesheet" href="/packages/assets/css/parent/main.css?{{rand();}}">
 	<title>Mi primer hijo</title>
 
 	<!--Navbar-->
@@ -124,15 +124,15 @@
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/request/request.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/database.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js"></script>
-    <script src="/packages/assets/js/parent/registry_firstchild.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/registry_firstchild.js?{{rand();}}"></script>
     <script type="text/javascript">
 		 $(document).ready(function() {
 			$('.mdb-select').material_select();

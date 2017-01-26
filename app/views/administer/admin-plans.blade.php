@@ -88,7 +88,7 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Plan.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/plnsController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-plns.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Plan.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/plnsController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-plns.js?{{rand();}}" charset="utf-8"></script>
 @stop
