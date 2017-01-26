@@ -82,9 +82,9 @@
 @section('js-plus')
    <script src="/packages/libs/bootstrap-table/bootstrap-table.min.js" charset="utf-8"></script>
    <script src="/packages/libs/bootstrap-table/locale/bootstrap-table-es-MX.min.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Plan.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Employee.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/SalerCode.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/ascodeController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-ascode.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Plan.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Employee.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/SalerCode.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/ascodeController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-ascode.js?{{rand();}}" charset="utf-8"></script>
 @stop

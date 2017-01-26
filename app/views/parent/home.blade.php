@@ -178,11 +178,11 @@
 @stop
 
 @section('js')
-<script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/administer/models/Intelligence.js"></script>
-<script src="/packages/assets/js/parent/models/Parent.js"></script>
-    <script src="/packages/assets/js/parent/controllers/parentController.js"></script>
-    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js"></script>
-    <script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
+    <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+    <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
+    <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>
 @stop

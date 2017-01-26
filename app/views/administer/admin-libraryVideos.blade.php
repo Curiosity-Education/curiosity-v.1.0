@@ -131,13 +131,13 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Schoolasc.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Teacher.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Library_video.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/albvidController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-albvid.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Block.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Schoolasc.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Teacher.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Library_video.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/albvidController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-albvid.js?{{rand();}}" charset="utf-8"></script>
 @stop

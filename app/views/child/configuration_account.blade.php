@@ -191,5 +191,5 @@
 @stop
 
 @section('js-plus')
-	{{ HTML::script('/packages/assets/js/child/configuration_account.js') }}
+	<link rel="stylesheet" href="/packages/assets/js/child/configuration_account.js?{{rand();}}">
 @stop
