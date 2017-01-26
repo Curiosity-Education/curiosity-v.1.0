@@ -350,7 +350,7 @@ var parentController = {
 
         validPlanSelected:function(){
             var exist=0;
-            if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('plan-user-selected') != ''){
+            if(localStorage.getItem('plan-user-selected') != null || localStorage.getItem('plan-user-selected') != ''){
                 exist = 1;
             }
             return exist;
