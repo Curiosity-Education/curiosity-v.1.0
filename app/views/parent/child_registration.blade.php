@@ -179,8 +179,8 @@
 <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/child-registration.js" charset="utf-8"></script>
+<script src="/packages/assets/js/parent/child-registration.js?{{rand();}}" charset="utf-8"></script>
 @stop

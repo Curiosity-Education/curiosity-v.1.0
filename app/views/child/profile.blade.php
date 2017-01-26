@@ -106,5 +106,5 @@
 
 @section('js-plus')
 	{{ HTML::script('/packages/libs/chart/Chart.min.js') }}
-	{{ HTML::script('/packages/assets/js/child/profile.js') }}
+	<link rel="stylesheet" href="/packages/assets/js/child/profile.js?{{rand();}}">
 @stop

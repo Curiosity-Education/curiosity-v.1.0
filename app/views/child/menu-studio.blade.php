@@ -1,6 +1,6 @@
 @extends('templates.child-menu')
     @section('css')
-    <link rel='stylesheet' type='text/css' href='packages/assets/css/child/main.css'>
+    <link rel='stylesheet' type='text/css' href='packages/assets/css/child/main.css?{{rand();}}'>
     @stop
     @section('title')Biblioteca de Juegos @stop
     @section('content')
@@ -22,7 +22,7 @@
       </div>
     @stop
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Activity.js"></script>
-   <script src='/packages/assets/js/child/controllers/msController.js'></script>
-   <script src='/packages/assets/js/child/dispatchers/dsp-menuStudio.js'></script>
+   <script src="/packages/assets/js/administer/models/Activity.js?{{rand();}}"></script>
+   <script src='/packages/assets/js/child/controllers/msController.js?{{rand();}}'></script>
+   <script src='/packages/assets/js/child/dispatchers/dsp-menuStudio.js?{{rand();}}'></script>
 @stop
