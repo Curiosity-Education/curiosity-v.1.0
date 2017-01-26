@@ -33,11 +33,11 @@
          <div class="gst-card z-depth-1 animated bounceInUp" id="gst-material">
             <h6>Material para tí</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                 <span class="fa fa-file-pdf-o"></span>&nbsp;
                Guía de estudio
             </button>
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                <span class="fa fa-youtube-play"></span>&nbsp;
                Video
             </button>
