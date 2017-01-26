@@ -86,7 +86,7 @@
 			<ul class="animated rubberBand"><br>
 				<li class="container-fluid">
 					<div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
-						<img src="/packages/assets/media/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
+						<img src="/packages/assets/media/images/landing/nuevo_log.png?{{rand();}}" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
 					</div>
 				</li>
 				<li class="container-fluid">
