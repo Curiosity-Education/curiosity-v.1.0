@@ -61,15 +61,15 @@
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix rfc-icon"></i>
 												<input type="text" id="rfc-username" name="username" class="form-control" placeholder="nombre de usuario">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix rfc-icon"></i>
 												<input type="text" id="rfc-name" name="name" class="form-control" placeholder="Nombre(s)">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
+												<i class="fa fa-unlock-alt prefix rfc-icon"></i>
 												<input type="password" id="rfc-password" name="password" class="form-control" placeholder="Contraseña">
 											</div>
 											<div class="md-form form-group" id="slc-rfc-gender">
@@ -86,11 +86,11 @@
 												<input type="range" class="form-control" id="rfc-average" name="average" min="5" max="10" step=".1" />
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix rfc-icon"></i>
 												<input type="text" id="rfc-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
+												<i class="fa fa-unlock-alt prefix rfc-icon"></i>
 												<input type="password" id="rfc-cpassword" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
 											</div>
 											<div class="md-form form-group" id="slc-rfc-level">
@@ -101,12 +101,12 @@
 													@endforeach
 												</select>
 											</div>
-									
+
 										</div>
-										
+
 									</div>
 									<hr><hr>
-									<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center">
+									<div class="col-md-12 col-sm-12 col-xs-12 text-xs-right">
 										<button type="button" class="btn btn-outline-warning waves-effect rfc-rounded rfc-btnCancel">Limpiar datos</button>
 										<button type="button" class="btn rfc-btn-default rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment" id="rfc-btn-finish">Registrar</button>
 									</div>
