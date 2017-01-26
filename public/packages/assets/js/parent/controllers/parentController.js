@@ -169,6 +169,14 @@ var parentController = {
                 });
             }
        },
+       autoSelectedUser:function(){
+             $(".hm-carousel").children('.carousel-item').each(function(i,item){
+                if(i == 0){
+                    $(this).trigger('click');
+                    console.log($(this));
+                }
+             });
+       },
        createCarousel:function(response){
            if(response.sons.length > 0){
                 $.each(response.sons,function(id,son){
@@ -225,6 +233,7 @@ var parentController = {
 
                });
            });
+           parentController.autoSelectedUser();
        },
        getPlan:function(id){
            return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
