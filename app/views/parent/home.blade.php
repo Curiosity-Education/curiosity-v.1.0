@@ -11,14 +11,7 @@
 @section('content')
 <div id="hm-init" class="">
 	<div class="carousel hm-carousel animated fadeInDown">
-	   @for($i = 0; $i < 5; $i++)
-	   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
-		  <div class="itemCarousel">
-			 <img src="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" >
-			 <h6 class="h6-responsive text-xs-center">Nombre del hijo</h6>
-		  </div>
-	   </a>
-	   @endfor
+	    <!-- Carousel Javascript items sons -->
 	</div>
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
@@ -26,17 +19,26 @@
 	   <h5>Nombre del hijo</h5>
 	   <div class="row">
 	       <div class="col-md-8">
+
+                <form class="form-inline" id="materias" style="display:none;">
+
+                </form>
+               <div class="row">
+                   <img src="/packages/assets/media/images/parents/aviso_papa.png" style="display:none; margin-left:25%;" id="dadNotice" alt="Invita a jugar a tu hijo" class="col-md-7 col-md-offset-3">
+               </div>
                <canvas id="myChart" width="200" height="200"></canvas>
            </div>
            <div class="col-md-4 col-md-offset-1">
-                <h3>Title</h3>
+                <h3>Progreso de tu hijo</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, facere. Libero saepe ipsam quis, accusamus hic distinctio id labore cum odio consectetur sunt dolor quae illum voluptas nemo, temporibus? Ex.
+                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
+                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, facere. Libero saepe ipsam quis, accusamus hic distinctio id labore cum odio consectetur sunt dolor quae illum voluptas nemo, temporibus? Ex.
+                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
+                    Dando click en el botón de abajo podrás llegar a esta sección.
                 </p>
-                <button type="button" class="btn" id="hm-btn-HelpSon">Ayudar a mi Hijo</button>
+                <button type="button" class="btn" id="hm-btn-HelpSon" disabled>Ayudar a mi Hijo</button>
            </div>
 	   </div>
 	</div>
@@ -178,5 +180,9 @@
 @section('js')
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
 <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/models/Intelligence.js"></script>
+<script src="/packages/assets/js/parent/models/Parent.js"></script>
+    <script src="/packages/assets/js/parent/controllers/parentController.js"></script>
+    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js"></script>
+    <script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
 @stop
