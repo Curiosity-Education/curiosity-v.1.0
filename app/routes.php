@@ -122,7 +122,8 @@ Route::group(array('prefix' => 'news'),function(){
 	Route::post('save', 'dadNewsController@save');
 	Route::post('update', 'dadNewsController@update');
 	Route::post('delete', 'dadNewsController@delete');
-	Route::get('novedades-admin', 'dadNewsController@get');
+	Route::get('news-admin', 'dadNewsController@get');
+	Route::post('title', 'dadNewsController@titleExists');
 });
 
 /*
@@ -815,9 +816,9 @@ Route::group(array('before' => 'auth'), function(){
 // });
 // Route::get('/missedSession','sesionInfoController@missedSession');
 // Route::post('/last-session','sesionInfoController@getLastSession');
-// Route::get('/terminos-y-condiciones',function(){
-//     return View::make('terminos');
-// });
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
 // Route::get('/aviso-privacidad',function(){
 //     return View::make('aviso-privacidad');
 // });

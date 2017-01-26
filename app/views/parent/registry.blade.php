@@ -30,7 +30,7 @@
 				<!--Links-->
 				<ul class="nav navbar-nav pull-right">
 					<li class="nav-item reg-nav-item">
-						<a class="nav-link"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
@@ -68,7 +68,7 @@
 							<hr>
 							<center>
 								<div class="options">
-									<a href="#" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
+									<a href="/" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
 									<p>¿Ya tienes cuenta?<br>¡ Inicia sesión ahora !</p>
 								</div>
 							</center>
@@ -139,13 +139,13 @@
 												<div class="col-md-6">
 													<fieldset class="form-group">
 														<input type="checkbox" id="accept_conditions" name="accept_conditions">
-														<label for="accept_conditions">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
+														<label for="accept_conditions">Acepto los <a href="/terminos">Términos y Condiciones</a></label>
 													</fieldset>
 												</div>
 												<div>
 													<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
 												</div>
-											</div>											
+											</div>
 										</div>
 									</div>
 								</div>

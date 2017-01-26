@@ -55,66 +55,82 @@ class childrenController extends BaseController{
                 "data"          => $validation->messages()
             ));
 		}else{
-			$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
-            $user            = new User();
-            $user->username  = $data["username"];
-            $user->password  = Hash::make($data["password"]);
-            $user->token     = sha1($data["username"]);
-            $user->active    = 1;
-          //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
-            $user->save();
-            if($roleDad == "parent"){
-                $myRole = (integer)DB::table('roles')
-                            ->select('id')
-                            ->where('name','=','child')
-                            ->first()->id;/*Role::where('name', '=', 'child')->pluck('id');*/
+			$id_dad = Auth::user()->Person->Dad->id;
+			$sons = Son::where("padre_id", "=", $id_dad)->get();
+			$conutSons = count($sons);
+			$limit = Membership::join("membresias_planes", "membresias.id", "=", "membresias_planes.plan_id")
+			->join("planes", "membresias_planes.plan_id", "=", "planes.id")
+			->where('membresias.padre_id', '=', $id_dad)
+			->select("planes.limit")
+			->first();
+			if ($conutSons < $limit){
+				$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
+	         $user            = new User();
+	         $user->username  = $data["username"];
+	         $user->password  = Hash::make($data["password"]);
+	         $user->token     = sha1($data["username"]);
+	         $user->active    = 1;
+	       //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
+	         $user->save();
+	         if($roleDad == "parent"){
+	             $myRole = (integer)DB::table('roles')
+	                         ->select('id')
+	                         ->where('name','=','child')
+	                         ->first()->id;/*Role::where('name', '=', 'child')->pluck('id');*/
 
-            }
-            //$user->attachRole($myRole);
-            $person                = new Person($data);
-            $person->nombre        = $data["name"];
-            $person->apellidos     = $data["surnames"];
-            $person->sexo          = $data["gender"];
-            $person->user_id       = $user->id;
-            $person->save();
-            $son                   = new Son();
-            $son->persona_id       = $person->id;
-            $id_dad = Auth::user()->Person->Dad->id;
-            $son->padre_id         = $id_dad;
-            $son->promedio_inicial = $data["average"];
-            $son->nivel_id         = $data["level"];
-            $son->save();
-            $advance = DB::table('hijos_metas_diarias')->insert(array(
-                'hijo_id'        => $son->id,
-                'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
-            ));
-            $exp = DB::table('hijo_experiencia')->insert(array(
-                'hijo_id'      => $son->id,
-                'cantidad_exp' => 0,
-                'coins'        => 0
-            ));
-            if ($roleDad == "parent"){
-                /*$membership_plan    = new MembershipPlan();
-                $membership         = new Membership(array(
-                    "token_card"     => Session::get('sub_id'),
-                    "fecha_registro" => Date('Y-m-d'),
-                    "active"         => 1,
-                    "padre_id"       => $id_dad
-                ));
-                $membership->save();
-                $membership_plan->membresia_id=$membership->id;
-                $plan = Plan::where("name","=","1 Hijo")->first();
-                $membership_plan->plan_id=$plan->id;
-                $membership_plan->hijo_id=$son->id;
-                $membership_plan->active=1;
-                $membership_plan->save();*/
-            }
-            //this reponse message data is for user
-            return Response::json(array(
-                "status"        => 200,
-                'statusMessage' => "success",
-                'message'       => "Felicidades haz registrado tu primer hijo exitosamente!!!"
-            ));
+	         }
+	         //$user->attachRole($myRole);
+	         $person                = new Person($data);
+	         $person->nombre        = $data["name"];
+	         $person->apellidos     = $data["surnames"];
+	         $person->sexo          = $data["gender"];
+	         $person->user_id       = $user->id;
+	         $person->save();
+	         $son                   = new Son();
+	         $son->persona_id       = $person->id;
+	         $son->padre_id         = $id_dad;
+	         $son->promedio_inicial = $data["average"];
+	         $son->nivel_id         = $data["level"];
+	         $son->save();
+	         $advance = DB::table('hijos_metas_diarias')->insert(array(
+	             'hijo_id'        => $son->id,
+	             'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
+	         ));
+	         $exp = DB::table('hijo_experiencia')->insert(array(
+	             'hijo_id'      => $son->id,
+	             'cantidad_exp' => 0,
+	             'coins'        => 0
+	         ));
+	         if ($roleDad == "parent"){
+	             /*$membership_plan    = new MembershipPlan();
+	             $membership         = new Membership(array(
+	                 "token_card"     => Session::get('sub_id'),
+	                 "fecha_registro" => Date('Y-m-d'),
+	                 "active"         => 1,
+	                 "padre_id"       => $id_dad
+	             ));
+	             $membership->save();
+	             $membership_plan->membresia_id=$membership->id;
+	             $plan = Plan::where("name","=","1 Hijo")->first();
+	             $membership_plan->plan_id=$plan->id;
+	             $membership_plan->hijo_id=$son->id;
+	             $membership_plan->active=1;
+	             $membership_plan->save();*/
+	         }
+	         //this reponse message data is for user
+	         return Response::json(array(
+	             "status"        => 200,
+	             'statusMessage' => "success",
+	             'message'       => "Felicidades haz registrado tu primer hijo exitosamente!!!"
+	         ));
+			}
+			else {
+				return Response::json(array(
+	             "status"        => "CUE-304",
+	             'statusMessage' => "Limit of sons",
+	             'message'       => "Lo sentimos has alcanzado el limite de hijos por registrar según tu plan seleccionado."
+	         ));
+			}
 		}
 	}
 	function update(){

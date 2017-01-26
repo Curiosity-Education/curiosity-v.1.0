@@ -13,7 +13,6 @@ $(function(){
 
 
     $(".btn-upload-child").click(function(ev){
-    	console.log(this);
     	if($formChild.valid()){
 			data = {
 				username : document.getElementById("upch-username").value,

@@ -108,10 +108,8 @@
 										<div class="col-md-3">
 											<img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
 										</div>
-										<div class="col-md-9">
-											<h5 class="gst-tema-content text-left">Nombre profe</h5>
-											<p class="gst-name-content text-left">Video nombre</p>
-											<p class="gst-views-content">Escuela nombre</p>
+										<div class="col-md-9" id="video-info">
+											
 										</div>
 									</div>
 								 </div>
@@ -121,85 +119,8 @@
 								 </div>
 								 <hr class="gst-hr-bottom">
 								 <div class="gst-information-list">
-									<div class="col-md-12 gst-col">
-										<!--First review-->
-										<div class="media hoverable active">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="content ico">
-												</a>
-												<h5 class="media-heading">Nathan Casie</h5>
-												<div class="media-body">
-														<p class="gst-views-content">Vistos: 3</p>
-														<p class="gst-name-content-list">pdf nombre</p>
-												</div>
-										</div>
+									<div class="col-md-12 gst-col recommended-videos">
 
-										<!--Second review-->
-										<div class="media hoverable">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-												</a>
-												<div class="media-body">
-														<h5 class="media-heading">Nathan Casie</h5>
-														<div class="media-body">
-																<p class="gst-views-content">Vistos: 3</p>
-																<p class="gst-name-content-list">pdf nombre</p>
-														</div>
-												</div>
-										</div>
-
-										<!--Second review-->
-										<div class="media hoverable">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-												</a>
-												<div class="media-body">
-														<h5 class="media-heading">Dave Snow</h5>
-														<div class="media-body">
-																<p class="gst-views-content">Vistos: 3</p>
-																<p class="gst-name-content-list">pdf nombre</p>
-														</div>
-												</div>
-										</div>
-									 <!--Second review-->
-										<div class="media hoverable">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-												</a>
-												<div class="media-body">
-														<h5 class="media-heading">Dave Snow</h5>
-														<div class="media-body">
-																<p class="gst-views-content">Vistos: 3</p>
-																<p class="gst-name-content-list">pdf nombre</p>
-														</div>
-												</div>
-										</div>
-										<!--Second review-->
-										<div class="media hoverable">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-												</a>
-												<div class="media-body">
-														<h5 class="media-heading">Dave Snow</h5>
-														<div class="media-body">
-																<p class="gst-views-content">Vistos: 3</p>
-																<p class="gst-name-content-list">pdf nombre</p>
-														</div>
-												</div>
-										</div>
-										<!--Second review-->
-										<div class="media hoverable">
-												<a class="media-left waves-light col-md-4">
-														<img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-												</a>
-												<div class="media-body">
-														<h5 class="media-heading">Dave Snow</h5>
-														<div class="media-body">
-																<p class="gst-views-content">Vistos: 3</p>
-																<p class="gst-name-content-list">pdf nombre</p>
-														</div>
-												</div>
-										</div>
 									</div>
 								 </div>
 								 <div class="gst-information-footer">
