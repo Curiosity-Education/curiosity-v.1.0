@@ -77,6 +77,8 @@
 
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
+			<input type='hidden' id='current_page' />
+			<input type='hidden' id='show_per_page' />  
 
     </div><br>
 
