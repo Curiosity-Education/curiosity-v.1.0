@@ -289,7 +289,7 @@ class parentsController extends BaseController{
         if($valid->fails()){
             return Response::json(array('status'        => 'CU-104',
                                         "statusMessage" => "Data corrupted",
-                                        "message"       => "Los datos no cumplen con el formato establecido en el sistema"
+                                        "message"       => "Algunos datos ingresados son incorrectos, verifica la información ingresada e intenta nuevamente"
                                   ));
         }else{
             $editPass = false;
@@ -301,6 +301,11 @@ class parentsController extends BaseController{
                   $user->password = Hash::make($data["new_password"]); 
                   $user->save();
                   $editPass = true;
+                }else{
+                  return Response::json(array('status'     => 'CU-104',
+                                        "statusMessage"    => "Data corrupted",
+                                        "message"          => "La contraseña que haz ingresado es incorrecta, verifica e intenta nuevamente"
+                                  ));
                 }
                 
               }
