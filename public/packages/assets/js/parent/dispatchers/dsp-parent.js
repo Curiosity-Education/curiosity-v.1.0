@@ -3,8 +3,10 @@ $(function(){
 
     parentController.getPlan(localStorage.getItem('plan-user-selected'));
     $("#pay-button").click(function(){
-       $("#pay-button").prop("disabled",true);
-       parentController.payment();
+       if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('plan-user-selected') != ''){
+         $("#pay-button").prop("disabled",true);
+         parentController.payment();
+       }
     });
 
    $("#"+prefix+"-form").submit(function(e){
@@ -37,6 +39,6 @@ $(function(){
       eval(prefix+"Controller").clearInputs();
    });
 
-   
+
 
 });

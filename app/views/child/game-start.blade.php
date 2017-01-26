@@ -262,6 +262,7 @@
 
 @section('js-plus')
 <script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
+<script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js"></script>
 <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
 <script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>

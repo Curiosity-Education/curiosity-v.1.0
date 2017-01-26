@@ -1,6 +1,7 @@
-if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('plan-user-selected') != ''){
-    var parentController = {
-
+var parentController = {
+  update: function(id,data,success){
+      new Parent(data).update(id,"POST",success);
+  },
        prefix:"parent",
        formulary : $("#parent-form"),
        rulesFormulary:{
@@ -176,10 +177,4 @@ if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('p
                     Curiosity.noty.error("Ups algo ha salido mal reportelo con el administrador.");
             }
         }
-
     }
-
-}
-else{
-    window.location = '/';
-}
