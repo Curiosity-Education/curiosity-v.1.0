@@ -164,5 +164,5 @@
 
 @section('js')
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/homeParent-main.js" charset="utf-8"></script>
+<script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>
 @stop

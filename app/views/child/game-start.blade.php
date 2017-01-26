@@ -261,15 +261,15 @@
 @stop
 
 @section('js-plus')
-<script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/models/sonRatesActivity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/activity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/sonRatesActivity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js?{{rand();}}"></script>
 <script type="text/javascript">
 </script>
 @stop
