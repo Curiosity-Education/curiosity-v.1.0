@@ -53,9 +53,7 @@ Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('parent-profile', function(){
-    return View::make('parent.profile');
-});
+
 
 
 Route::get('hijo-inicio', function()
@@ -100,13 +98,7 @@ Route::get('novedades-admin', function(){
 
 Route::get('1', 'activitiesVideosController@save');
 
-Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
-    ->where(
-        array(
-            'controller' => "^[a-zA-Z]*$",
-            'method' => "^[a-zA-Z]*$"
-        )
-    );
+
 
 /*
 * -----------------------------------------------------------------------------
@@ -115,7 +107,9 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
-	Route::get('view-{controller}-{method}-{viewName}','viewsController@getViewWithData')->where(
+
+	Route::get('view-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
+    ->where(
         array(
             'controller' => "^[a-zA-Z]*$",
             'method' => "^[a-zA-Z]*$"
@@ -408,6 +402,7 @@ Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
 Route::post('/remote-username','usersController@remoteUsername');
+Route::post('/remote-username-update','usersController@remoteUsernameUpdate');
 
 /*
 * -----------------------------------------------------------------------------

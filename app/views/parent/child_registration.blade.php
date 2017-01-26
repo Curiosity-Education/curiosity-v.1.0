@@ -118,8 +118,8 @@
                       <div class="md-form upch-select">
                           <select class="mdb-select" id="upch-gender" name="gender">
                               <option value="" disabled selected>Sexo</option>
-                              <option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
-                              <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+                              <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
+                              <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
                           </select>
                       </div>
                       <div class="md-form">

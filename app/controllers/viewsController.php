@@ -26,7 +26,6 @@ class viewsController extends BaseController{
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
-      return "Nada";
       if($controller != '' || $method != ''){
          $callback = $controller."Controller@".$method;
          $data = ExternalCall::execute($callback);

@@ -110,8 +110,8 @@
 											<div class="md-form form-group" id="reg-gender">
 												<select class="mdb-select" id="sexo" name="sexo">
 													<option value="" disabled selected>Genero</option>
-													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Hombre</option>
-													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Mujer</option>
+													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
+													<option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
 												</select>
 											</div>
 										</div>
