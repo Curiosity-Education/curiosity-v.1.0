@@ -1,5 +1,5 @@
 $(function(){
-   $(".carousel").carousel();
+
 
 	/* Transitions of the View ------------------------------------ */
 
@@ -14,4 +14,8 @@ $(function(){
 		$('#hm-viewHelp').addClass("hm-content-disabled");
 
 	}); // hide HELP MY SON
+
+
+
+
 });

@@ -6,6 +6,16 @@ var Curiosity = {
         PUT:"PUT",
         DELETE:"DELETE"
    },
+   colors:function(){
+       return  ['rgb(242, 221, 73)','rgb(138, 72, 155)','rgb(246, 142, 85)','rgb(232, 126, 177)','rgb(45, 151, 186)','rgb(148, 188, 61)'];
+
+   },
+   colorsTransparent:function(opacity){
+       return  ['rgba(242, 221, 73,'+opacity+')','rgba(138, 72, 155,'+opacity+')','rgba(246, 142, 85,'+opacity+')','rgba(232, 126, 177,'+opacity+')','rgb(45, 151, 186,'+opacity+')','rgba(148, 188, 61,'+opacity+')'];
+
+   },
+
+   colorLogo:['#44c6ee','#ec2726'],
    staticObject : function(element, top){
       var $fx        = element;
       var $window    = $(window);

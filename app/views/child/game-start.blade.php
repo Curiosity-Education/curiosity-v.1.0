@@ -33,11 +33,11 @@
          <div class="gst-card z-depth-1 animated bounceInUp" id="gst-material">
             <h6>Material para tí</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" data-target="#gst-modal-pdf-video" data-toggle="modal">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                 <span class="fa fa-file-pdf-o"></span>&nbsp;
                Guía de estudio
             </button>
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" data-target="#gst-modal-pdf-video" data-toggle="modal">
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                <span class="fa fa-youtube-play"></span>&nbsp;
                Video
             </button>
@@ -52,7 +52,7 @@
             <div class="row">
                <div class="col-sm-6">
 
-                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs data-target="#gst-modal-instruction" data-toggle="modal">
+                 <button type="button" class="btn btn-outline-default btn-rounded btn-block gst-btnGame" id="gst-btnInstructs" data-target="#gst-modal-instruction" data-toggle="modal">
                     <span class="fa fa-map-o"></span>&nbsp;
                     Instrucciones
                  </button>
@@ -261,14 +261,15 @@
 @stop
 
 @section('js-plus')
-<script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/models/sonRatesActivity.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/activity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/ranking-curiosity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/models/childDoActivity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/controllers/childDoActivityCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/standard/dispatch/game_standard.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/sonRatesActivity.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/sonRatesActivitiesCtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-game.js?{{rand();}}"></script>
 <script type="text/javascript">
 </script>
 @stop

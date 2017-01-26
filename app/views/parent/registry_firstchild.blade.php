@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
   <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
   <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+  <link rel="stylesheet" href="/packages/assets/css/parent/main.css?{{rand();}}">
 	<title>Mi primer hijo</title>
 
 	<!--Navbar-->
@@ -61,68 +61,51 @@
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix rfc-icon"></i>
 												<input type="text" id="rfc-username" name="username" class="form-control" placeholder="nombre de usuario">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="rfc-cpassword" name="cpassword" class="form-control">
-												<label for="rfc-cpassword">Confirmar Contraseña</label>
+												<i class="fa fa-user prefix rfc-icon"></i>
+												<input type="text" id="rfc-name" name="name" class="form-control" placeholder="Nombre(s)">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
-
-												<input type="text" id="rfc-surnames" name="rfc-surnames" class="form-control">
-												<label for="rfc-surnames">Apellidos</label>
-											</div>
-											<div class="md-form form-group rfc-content-average"><br>
-												<h5 class="h5-responsive text-xs-left">Promedio Escolar:</h5>
-												<input type="range" class="form-control" id="rfc-average" name="average" min="5" max="10" step=".1" />
-
-											<input type="text" id="rfc-name" name="name" class="form-control" placeholder="Nombre(s)">
+												<i class="fa fa-unlock-alt prefix rfc-icon"></i>
+												<input type="password" id="rfc-password" name="password" class="form-control" placeholder="Contraseña">
 											</div>
 											<div class="md-form form-group" id="slc-rfc-gender">
 												<select class="mdb-select" id="rfc-gender" name="gender">
-													<option value="H" disabled selected>Genero</option>
-													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Niño</option>
-													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
+													<option value="m" disabled selected>Genero</option>
+													<option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" class="rounded-circle">Niño</option>
+													<option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefF.png" class="rounded-circle">Niña</option>
 												</select>
-
 											</div>
-
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
-												<input type="password" id="rfc-password" name="password" class="form-control" placeholder="Contraseña">
+											<div class="md-form form-group rfc-content-average"><br>
+												<h6 class="h6-responsive text-xs-left">Promedio Escolar:</h6>
+												<input type="range" class="form-control" id="rfc-average" name="average" min="5" max="10" step=".1" />
 											</div>
-
-
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
-												<input type="text" id="rfc-name" name="name" class="form-control">
-												<label for="rfc-name">Nombre</label>
-
+												<i class="fa fa-user prefix rfc-icon"></i>
+												<input type="text" id="rfc-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
+											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
+												<i class="fa fa-unlock-alt prefix rfc-icon"></i>
 												<input type="password" id="rfc-cpassword" name="cpassword" class="form-control" placeholder="Confirmar contraseña">
 											</div>
-											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
-												<input type="text" id="rfc-surnames" name="surnames" class="form-control" placeholder="Apellido(s)">
-
-											</div>
-											<div class="md-form form-group" id="rfc-gender">
-												<select class="mdb-select" name="gender">
-													<option value="" disabled selected>Genero</option>
-													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Niño</option>
-													<option value="" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
+											<div class="md-form form-group" id="slc-rfc-level">
+												<select class="mdb-select" id="rfc-level" name="level">
+													<option value="" disabled selected>Grado escolar</option>
+													@foreach(Level::all() as $level)
+													<option value="{{$level->id}}" class="rounded-circle">{{$level->nombre}}</option>
+													@endforeach
 												</select>
 											</div>
-										</div>
-									</div>
-									<hr>
 
+										</div>
+
+									</div>
+									<hr><hr>
 									<div class="col-md-12 col-sm-12 col-xs-12 text-xs-right">
 										<button type="button" class="btn btn-outline-warning waves-effect rfc-rounded rfc-btnCancel">Limpiar datos</button>
 										<button type="button" class="btn rfc-btn-default rfc-rounded" data-toggle="modal" data-target="#rfc-modalPayment" id="rfc-btn-finish">Registrar</button>
@@ -141,15 +124,15 @@
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/request/request.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/database.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js"></script>
-    <script src="/packages/assets/js/parent/registry_firstchild.js"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/registry_firstchild.js?{{rand();}}"></script>
     <script type="text/javascript">
 		 $(document).ready(function() {
 			$('.mdb-select').material_select();

@@ -1,6 +1,7 @@
 <?php
 class viewsController extends BaseController{
    protected $objViews = array(
+      "administer.admin-plans"          => "manage_content",
       "administer.admin-activities"     => "manage_content",
       "administer.admin-blocks"         => "manage_content",
       "administer.admin-intelligences"  => "manage_content",
@@ -21,10 +22,12 @@ class viewsController extends BaseController{
       "parent.profile"                  => "parent_actions",
       "parent.pay-suscription"          => "parent_actions",
       "parent.registry_firstchild"      => "parent_actions",
+      "parent.home"                     => "parent_actions",
+      "parent.library_pdfs"             => "parent_actions",
+      "parent.child_registration"       => "parent_actions"
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
-      return "Nada";
       if($controller != '' || $method != ''){
          $callback = $controller."Controller@".$method;
          $data = ExternalCall::execute($callback);

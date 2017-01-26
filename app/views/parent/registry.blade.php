@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+    <link rel="stylesheet" href="/packages/assets/css/parent/main.css?{{rand();}}">
 	<title>Registro Cuenta Papá</title>
 
 	<!--Navbar-->
@@ -30,7 +30,7 @@
 				<!--Links-->
 				<ul class="nav navbar-nav pull-right">
 					<li class="nav-item reg-nav-item">
-						<a class="nav-link"><i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/"><i class="fa fa-home reg-icon"></i> Inicio <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
@@ -45,7 +45,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-3 offset-md-1 col-sm-4">
+			<div class="col-sm-4 col-md-3">
 				    <!--Card-->
 					<div class="card card-cascade narrower reg-rounded animated fadeInLeft">
 
@@ -68,7 +68,7 @@
 							<hr>
 							<center>
 								<div class="options">
-									<a href="#" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
+									<a href="/" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
 									<p>¿Ya tienes cuenta?<br>¡ Inicia sesión ahora !</p>
 								</div>
 							</center>
@@ -78,7 +78,7 @@
 					</div>
 					<!--/.Card-->
 			</div>
-			<div class="col-md-6 offset-md-1 col-sm-8 col-xs-12" id="reg-registry">
+			<div class="col-sm-8 col-md-9" id="reg-registry">
 
 				<!--Form with header-->
 				<div class="card reg-rounded">
@@ -86,50 +86,50 @@
 
 						<!--Header-->
 						<div class="form-header reg-rounded reg-colorHeader">
-							<h3><i class="fa fa-user"></i> Registro</h3>
+							<h3><i class="fa fa-user reg-icon"></i> Registro</h3>
 						</div>
 
 						<!--Body-->
 						<form action="" class="form-inline text-xs-center" id="parent-form">
-							<div class="">
+							<div class="container-fluid">
 								<div class="row">
-									<div class="col-md-12 col-sm-12 col-xs-12">
+									<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-envelope prefix"></i>
+												<i class="fa fa-envelope prefix reg-icon-bl"></i>
 												<input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control validate">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
+												<i class="fa fa-unlock-alt prefix reg-icon-bl"></i>
 												<input type="password" id="password" name="password" class="form-control" length="20" placeholder="Ingresa tu contraseña">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix reg-icon-bl"></i>
 												<input type="text" id="nombre" name="nombre" placeholder="¿Cuál es tu nombre?" class="form-control">
 											</div>
 											<div class="md-form form-group" id="reg-gender">
 												<select class="mdb-select" id="sexo" name="sexo">
 													<option value="" disabled selected>Genero</option>
-													<option value="m" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Caballero</option>
-													<option value="f" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Dama</option>
+													<option value="m" data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+													<option value="f" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix reg-icon-bl"></i>
 												<input type="text" id="username" name="username" placeholder="Username" class="form-control validate" length="20">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix"></i>
+												<i class="fa fa-unlock-alt prefix reg-icon-bl"></i>
 												<input type="password" id="cpassword" name="cpassword" class="form-control" length="20" placeholder="Confirmar contraseña">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix"></i>
+												<i class="fa fa-user prefix reg-icon-bl"></i>
 												<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="¿Cuáles son tus apellidos?">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-phone prefix"></i>
+												<i class="fa fa-phone prefix reg-icon-bl"></i>
 												<input type="text" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" class="form-control" length="10">
 											</div>
 										</div>
@@ -137,17 +137,17 @@
 											<hr>
 											<div class="row">
 												<div class="col-md-6">
-													<fieldset class="form-group">
+													<fieldset class="form-group" id="reg-field">
 														<input type="checkbox" id="accept_conditions" name="accept_conditions">
-														<label for="accept_conditions">Acepto los <a href="/terminos-y-condiciones">Términos y Condiciones</a></label>
+														<label for="accept_conditions">Acepto los <a href="/terminos">Términos y Condiciones</a></label>
 													</fieldset>
 												</div>
 												<div>
 													<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
 												</div>
-											</div>											
+											</div>
 										</div>
-									</div>
+									<!-- </div> -->
 								</div>
 							</div>
 						</form>
@@ -161,18 +161,18 @@
 	</div>
 
 	<script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
-	<script src="/packages/assets/js/Curiosity.js"></script>
+	<script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
     <script src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script src="/packages/assets/js/config/db/corm.js"></script>
-    <script src="/packages/assets/js/config/db/database.js"></script>
-    <script src="/packages/assets/js/config/request/request.js"></script>
-    <script src="/packages/assets/js/parent/models/Parent.js"></script>
-    <script src="/packages/assets/js/parent/controllers/parentController.js"></script>
-    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js"></script>
+    <script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script type="text/javascript">
 		 $(document).ready(function() {
 			$('.mdb-select').material_select();

@@ -92,5 +92,5 @@
 
 @section('js-plus')
    <script src="/packages/libs/OwlCarousel2-2.2.0/dist/owl.carousel.min.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/child/dispatchers/dsp-store.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/dispatchers/dsp-store.js?{{rand();}}" charset="utf-8"></script>
 @stop

@@ -1,45 +1,50 @@
 @extends('templates.user-master')
 
 @section('css')
-<link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+<link rel="stylesheet" href="/packages/assets/css/parent/main.css?{{rand();}}">
 @yield('css-plus')
 @stop
 
 @section('menu-photo')
 <div id="parentMenu-profileContainer" class="text-center">
-   <img src="/packages/assets/media/images/parents/profile/mom-def.png" id="parentMenu-imgProfile">
+   <img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" id="parentMenu-imgProfile">
 </div>
 @stop
 
 @section('menu-links')
-<div data-url="#" class="linkMenu waves-effect">
+<div data-url="/view-parent.home" class="linkMenu waves-effect">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="#" class="linkMenu waves-effect">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
-</div>
-<div data-url="#" class="linkMenu waves-effect">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-files"></span>&nbsp;
-   Biblioteca de archivos
-</div>
-@stop
-
-@section('menu-links-aside')
-<div data-url="#" class="linkMenu linkMenuAside linkMenu-active">
-   <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
-   Inicio
-</div>
-<div data-url="#" class="linkMenu linkMenuAside">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
-</div>
-<div data-url="#" class="linkMenu linkMenuAside">
+<!-- <div data-url="/view-parent.profile" class="linkMenu linkMenu">
+   <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
+   Perfil
+</div> -->
+<div data-url="/view-parent.library_pdfs" class="linkMenu waves-effect">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
-<div data-url="#" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+<!-- <div data-url="/view-{parents}/{getDataPerfil}/view-{parent.profile}/" class="linkMenu waves-effect">
+   <span class="fa fa-user" id="parentMenu-icon-files"></span>&nbsp;
+   Mi perfil
+</div> -->
+@stop
+
+@section('menu-links-aside')
+<div data-url="/view-parent.home" class="linkMenu linkMenuAside linkMenu">
+   <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
+   Inicio
+</div>
+<div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside">
+   <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
+   Biblioteca de archivos
+</div>
+<!-- <div data-url="/view-parent.profile" class="linkMenu linkMenuAside linkMenu">
+   <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
+   Perfil
+</div> -->
+
+<div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
@@ -50,7 +55,8 @@
 @stop
 
 @section('under-menu')
-<div data-url="#" id="parentMenu-addChild" class="z-depth-1 waves-effect">
+
+<div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
@@ -70,6 +76,6 @@
 @yield('content-parent')
 @stop
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/parent/parent.js"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/parent.js?{{rand();}}"></script>
 @yield('js-plus')
 @stop

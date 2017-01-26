@@ -86,7 +86,7 @@
 			<ul class="animated rubberBand"><br>
 				<li class="container-fluid">
 					<div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
-						<img src="/packages/assets/media/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
+						<img src="/packages/assets/media/images/landing/nuevo_log.png?{{rand();}}" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
 					</div>
 				</li>
 				<li class="container-fluid">
@@ -204,7 +204,7 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-					<a href="/suscripcion" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
+					<a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
 				</h2>
 			</center>
 		</div>
@@ -308,7 +308,7 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
 				</h2>
 			</center>
 	  	</div>
@@ -453,7 +453,7 @@
 				<div class="col-md-2 offset-md-1">
 					<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 					<ul class="ul-content">
-						<li><a href="/nuestro-equipo">- Nuestro equipo</a></li>
+						<li><a href="/equipo">- Nuestro equipo</a></li>
 						<li class="separacion"><a href="/mentores">- Mentores</a></li>
 					</ul>
 				</div>
@@ -463,8 +463,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
 					<ul class="ul-content">
-						<li><a href="#">- Preguntas frecuentes</a></li>
-						<li class="separacion"><a href="/terminos-y-condiciones">- Términos y Condiciones</a></li>
+						<!-- <li><a href="#">- Preguntas frecuentes</a></li> -->
+						<li class="separacion"><a href="/terminos">- Términos y Condiciones</a></li>
 						<li class="separacion"><a href="/aviso-privacidad">- Aviso de privacidad</a></li>
 					</ul>
 				</div>
@@ -474,7 +474,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 					<ul>
-						<li>- (871)455-2887</li>
+						<li> > &nbsp;(871) 255 89 65 "RRHH"</li>
+						<li> > &nbsp;hola@curiosity.com.mx</li>
 					</ul>
 				</div>
 				<!--/.Fourth column-->
@@ -487,7 +488,7 @@
 			<ul>
 				<li>
 					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-				<li><a class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
+				<li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li>
 			</ul>
 		</div>
 		<!--/.Call to action-->

@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
       <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/packages/libs/sweetalert2/sweetalert2.min.css">
-      <link rel="stylesheet" href="/packages/assets/css/masters/main.css">
+      <link rel="stylesheet" href="/packages/assets/css/masters/main.css?{{rand();}}">
       @yield('css')
       <title>@yield('title')</title>
    </head>
@@ -26,16 +26,17 @@
             </ul>
             <div class="container-fluid">
                <div class="" id="collapseEx2">
-                  <a class="navbar-brand">
+                  <a class="navbar-brand" style="font-size:0.85rem;">
                      <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
-                     Curiosity Educación
+                     &nbsp;Curiosity Educación |
+                     {{ Auth::user()->username; }}
                   </a>
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
                         <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up flex-center" id="slideBtn"><i class="fa fa-bars"></i></a>
                         <a href="#" class="hidden-md-down">
                            <div class="chip hoverable" id="logOut-btn">
-                              <img src="packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
+                              <img src="/packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
                               Cerrar Sesión
                            </div>
                         </a>
@@ -79,13 +80,13 @@
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
       <script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
-      <script src="/packages/assets/js/Curiosity.js"></script>
-      <script src="/packages/assets/js/landing/controllers/loginController.js"></script>
-      <script src="/packages/assets/js/app-master.js"></script>
-      <script src="/packages/assets/js/config/db/corm.js"></script>
-      <script src="/packages/assets/js/config/db/database.js"></script>
-      <script src="/packages/assets/js/config/request/request.js"></script>
-      <script src="/packages/assets/js/config/db/StorageDB.js"></script>
+      <script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/landing/controllers/loginController.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/app-master.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
       @yield('js')
    </body>
 </html>

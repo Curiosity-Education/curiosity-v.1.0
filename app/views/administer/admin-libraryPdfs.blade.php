@@ -98,11 +98,11 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Library_pdf.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/albpdfController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-albpdf.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Block.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Library_pdf.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/albpdfController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-albpdf.js?{{rand();}}" charset="utf-8"></script>
 @stop

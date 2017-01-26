@@ -53,9 +53,7 @@ Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('parent-profile', function(){
-    return View::make('parent.profile');
-});
+
 
 
 Route::get('hijo-inicio', function()
@@ -94,15 +92,13 @@ Route::group(array('prefix' => 'plans'),function(){
    Route::post('get','plansController@get');
 });
 
+Route::get('novedades-admin', function(){
+    return View::make('administer.admin-news');
+});
+
 Route::get('1', 'activitiesVideosController@save');
 
-Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
-    ->where(
-        array(
-            'controller' => "^[a-zA-Z]*$",
-            'method' => "^[a-zA-Z]*$"
-        )
-    );
+
 
 /*
 * -----------------------------------------------------------------------------
@@ -111,12 +107,23 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
-	Route::get('view-{controller}-{method}-{viewName}','viewsController@getViewWithData')->where(
+
+	Route::get('view-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
+    ->where(
         array(
             'controller' => "^[a-zA-Z]*$",
             'method' => "^[a-zA-Z]*$"
         )
     );
+});
+
+// Manage News for parents
+Route::group(array('prefix' => 'news'),function(){
+	Route::post('save', 'dadNewsController@save');
+	Route::post('update', 'dadNewsController@update');
+	Route::post('delete', 'dadNewsController@delete');
+	Route::get('news-admin', 'dadNewsController@get');
+	Route::post('title', 'dadNewsController@titleExists');
 });
 
 /*
@@ -200,6 +207,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
 		});
+
 	});
 });
 
@@ -212,6 +220,12 @@ Route::group(array('before' => 'auth'), function(){
 		Route::group(array('prefix' =>  'photo'),function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
+		Route::group(array('prefix' =>  'game'),function(){
+			Route::post('save','activitiesController@saveGame');
+			Route::post('update','activitiesController@updateGame');
+			Route::post('delete','activitiesController@deleteGame');
+		});
+
     });
 
     // Plans
@@ -230,11 +244,6 @@ Route::group(array('before' => 'auth'), function(){
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
-		Route::group(array('prefix' =>  'game'),function(){
-			Route::post('save','activitiesController@saveGame');
-			Route::post('update','activitiesController@updateGame');
-			Route::post('delete','activitiesController@deleteGame');
-		});
 
 /*
 * -----------------------------------------------------------------------------
@@ -244,6 +253,7 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::group(array('prefix' =>  'levels'),function(){
 	Route::post('all', 'levelsController@all');
+	Route::post('getWithActivities', 'levelsController@getWithActivities');
 });
 
 /*
@@ -255,6 +265,7 @@ Route::group(array('prefix' =>  'levels'),function(){
 Route::group(array('prefix' =>  'intelligences'),function(){
 	Route::post('all', 'intelligencesController@all');
 	Route::post('getByLevel', 'intelligencesController@getByLevel');
+	Route::post('getWithActivities', 'intelligencesController@getWithActivities');
 });
 
 /*
@@ -266,6 +277,7 @@ Route::group(array('prefix' =>  'intelligences'),function(){
 Route::group(array('prefix' =>  'blocks'),function(){
 	Route::post('all', 'blocksController@all');
 	Route::post('getByIntelligent', 'blocksController@getByIntelligent');
+	Route::post('getWithActivities', 'blocksController@getWithActivities');
 });
 
 /*
@@ -277,6 +289,7 @@ Route::group(array('prefix' =>  'blocks'),function(){
 Route::group(array('prefix' =>  'topics'),function(){
 	Route::post('all', 'topicsController@all');
 	Route::post('getByBlock', 'topicsController@getByBlock');
+	Route::post('getWithActivities', 'topicsController@getWithActivities');
 });
 
 /*
@@ -391,6 +404,7 @@ Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
 Route::post('/remote-username','usersController@remoteUsername');
+Route::post('/remote-username-update','usersController@remoteUsernameUpdate');
 
 /*
 * -----------------------------------------------------------------------------
@@ -432,6 +446,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('remote-email','parentsController@remoteEmail');
    Route::post('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
+   Route::post('get-sons','parentsController@getSons');
 });
 
 
@@ -568,7 +583,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-popular","activitiesController@getPopulars");
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
-                Route::get("find-all","activitiesController@getAll");
+                Route::get("/find-all","activitiesController@getAll");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
@@ -803,9 +818,9 @@ Route::group(array('before' => 'auth'), function(){
 // });
 // Route::get('/missedSession','sesionInfoController@missedSession');
 // Route::post('/last-session','sesionInfoController@getLastSession');
-// Route::get('/terminos-y-condiciones',function(){
-//     return View::make('terminos');
-// });
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
 // Route::get('/aviso-privacidad',function(){
 //     return View::make('aviso-privacidad');
 // });

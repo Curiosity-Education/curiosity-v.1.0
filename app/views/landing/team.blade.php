@@ -19,7 +19,8 @@
   					<h1 class="h1-responsive font-curiosity titulo-apartado white-text">Nuestro Equipo</h1>
   				</li>
   				<li class="container-fluid">
-  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a> | <a href="#">Preguntas frecuentes</a></h5>
+  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a>
+						<!-- | <a href="#">Preguntas frecuentes</a></h5> -->
   				</li>
   			</ul>
     	</div>
@@ -95,7 +96,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/nhome/?trk=" target="_blank"><i class="fa fa-linkedin"></i></a>
 
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:willy.ramirez@curiosity.com.mx"  data-toggle="tooltip" title="willy.ramirez@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
