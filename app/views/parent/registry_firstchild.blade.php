@@ -74,9 +74,9 @@
 											</div>
 											<div class="md-form form-group" id="slc-rfc-gender">
 												<select class="mdb-select" id="rfc-gender" name="gender">
-													<option value="H" disabled selected>Genero</option>
-													<option value="H" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Niño</option>
-													<option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Niña</option>
+													<option value="m" disabled selected>Genero</option>
+													<option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" class="rounded-circle">Niño</option>
+													<option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefF.png" class="rounded-circle">Niña</option>
 												</select>
 											</div>
 										</div>

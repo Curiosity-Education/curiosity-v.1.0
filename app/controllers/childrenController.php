@@ -19,9 +19,6 @@ class childrenController extends BaseController{
 	}
 	function save(){
 		$data = Input::all();
-		//$currentDate = date("Y-m-d");
-        //$date_min =strtotime("-4 year",strtotime($currentDate));
-       // $date_min=date("Y-m-d",$date_min);
 		$rules=[
 			"username"    =>"required|unique:users,username|max:50",
             "password"    =>"required|min:8|max:100",
@@ -58,11 +55,11 @@ class childrenController extends BaseController{
 			$id_dad = Auth::user()->Person->Dad->id;
 			$sons = Son::where("padre_id", "=", $id_dad)->get();
 			$conutSons = count($sons);
-			$limit = Membership::join("membresias_planes", "membresias.id", "=", "membresias_planes.plan_id")
-			->join("planes", "membresias_planes.plan_id", "=", "planes.id")
-			->where('membresias.padre_id', '=', $id_dad)
-			->select("planes.limit")
-			->first();
+			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
+			Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+			$customer = Conekta_Customer::find($tokenCard);
+			$subscription = $customer->subscription;
+			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
 			if ($conutSons < $limit){
 				$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
 	         $user            = new User();
@@ -70,16 +67,9 @@ class childrenController extends BaseController{
 	         $user->password  = Hash::make($data["password"]);
 	         $user->token     = sha1($data["username"]);
 	         $user->active    = 1;
-	       //  $user->skin_id=Skin::where('skin', '=', 'skin-blue')->pluck('id');
 	         $user->save();
-	         if($roleDad == "parent"){
-	             $myRole = (integer)DB::table('roles')
-	                         ->select('id')
-	                         ->where('name','=','child')
-	                         ->first()->id;/*Role::where('name', '=', 'child')->pluck('id');*/
-
-	         }
-	         //$user->attachRole($myRole);
+				$myRole = Role::where("name", "=", "child")->pluck("id");
+	         $user->attachRole($myRole);
 	         $person                = new Person($data);
 	         $person->nombre        = $data["name"];
 	         $person->apellidos     = $data["surnames"];
@@ -87,36 +77,34 @@ class childrenController extends BaseController{
 	         $person->user_id       = $user->id;
 	         $person->save();
 	         $son                   = new Son();
+				$son->promedio_inicial = $data["average"];
 	         $son->persona_id       = $person->id;
 	         $son->padre_id         = $id_dad;
-	         $son->promedio_inicial = $data["average"];
 	         $son->nivel_id         = $data["level"];
 	         $son->save();
-	         $advance = DB::table('hijos_metas_diarias')->insert(array(
+				$advance = DB::table('hijos_metas_diarias')->insert(array(
 	             'hijo_id'        => $son->id,
 	             'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
 	         ));
-	         $exp = DB::table('hijo_experiencia')->insert(array(
+				$exp = DB::table('hijo_experiencia')->insert(array(
 	             'hijo_id'      => $son->id,
 	             'cantidad_exp' => 0,
 	             'coins'        => 0
 	         ));
-	         if ($roleDad == "parent"){
-	             /*$membership_plan    = new MembershipPlan();
-	             $membership         = new Membership(array(
-	                 "token_card"     => Session::get('sub_id'),
-	                 "fecha_registro" => Date('Y-m-d'),
-	                 "active"         => 1,
-	                 "padre_id"       => $id_dad
-	             ));
-	             $membership->save();
-	             $membership_plan->membresia_id=$membership->id;
-	             $plan = Plan::where("name","=","1 Hijo")->first();
-	             $membership_plan->plan_id=$plan->id;
-	             $membership_plan->hijo_id=$son->id;
-	             $membership_plan->active=1;
-	             $membership_plan->save();*/
-	         }
+				$tyPh = 2;
+				if ($person->sexo == "m"){ $tyPh = 2; }
+				$photo = DB::table('hijos_has_accesorios')->insert(array(
+	             'hijo_id'      => $son->id,
+	             'accesorio_id' => $tyPh
+	         ));
+				$skin = DB::table('hijos_has_accesorios')->insert(array(
+	             'hijo_id'      => $son->id,
+	             'accesorio_id' => 3
+	         ));
+				$menuBg = DB::table('hijos_has_accesorios')->insert(array(
+	             'hijo_id'      => $son->id,
+	             'accesorio_id' => 4
+	         ));
 	         //this reponse message data is for user
 	         return Response::json(array(
 	             "status"        => 200,

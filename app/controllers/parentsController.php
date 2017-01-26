@@ -139,7 +139,7 @@ class parentsController extends BaseController{
                     if ($subscription->status == 'active') {
                             $membresia_plan = new MembershipPlan();
                             $membresia = new Membership(array(
-                                "token_card" => $subscription->id,
+                                "token_card" => $customer->id,
                                 "fecha_registro" => Date('Y-m-d'),
                                 "active"    => 1,
                                 "padre_id"  => Auth::user()->Person->Dad->id
@@ -155,7 +155,7 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'in_trial'){
                        //la suscripción falló a inicializarse
-                      return Response::json(array(0=>'error')); 
+                      return Response::json(array(0=>'error'));
                     }
                 }
                 else{
