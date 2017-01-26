@@ -16,18 +16,18 @@
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="/view-parent.profile" class="linkMenu linkMenu">
+<!-- <div data-url="/view-parent.profile" class="linkMenu linkMenu">
    <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
    Perfil
-</div>
+</div> -->
 <div data-url="/view-parent.library_pdfs" class="linkMenu waves-effect">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
-<div data-url="/view-{parents}/{getDataPerfil}/view-{parent.profile}/" class="linkMenu waves-effect">
+<!-- <div data-url="/view-{parents}/{getDataPerfil}/view-{parent.profile}/" class="linkMenu waves-effect">
    <span class="fa fa-user" id="parentMenu-icon-files"></span>&nbsp;
    Mi perfil
-</div>
+</div> -->
 @stop
 
 @section('menu-links-aside')
@@ -35,17 +35,14 @@
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
-<div data-url="#" class="linkMenu linkMenuAside">
-   <span class="fa fa-youtube-play" id="parentMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
 <div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de archivos
 </div>
-<div data-url="/view-parent.profile" class="linkMenu linkMenuAside linkMenu">
+<!-- <div data-url="/view-parent.profile" class="linkMenu linkMenuAside linkMenu">
    <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
    Perfil
-</div>
+</div> -->
 
 <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
    <span class="fa fa-plus-circle"></span>&nbsp;
