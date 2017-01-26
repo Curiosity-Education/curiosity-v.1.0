@@ -15,7 +15,7 @@ class parentsController extends BaseController{
     if(Auth::user()){
       $data = User::join('personas','personas.user_id','=','users.id')
                   ->join('padres','padres.persona_id','=','personas.id')
-                  ->where('users.id','=',Auth::user()->id ) 
+                  ->where('users.id','=',Auth::user()->id )
                   ->first();
       return $data;
     }else{
@@ -68,6 +68,8 @@ class parentsController extends BaseController{
                         $dad->email = $data['email'];
                         $dad->persona_id = $person->id;
                         $dad->telefono = $data['telefono'];
+                        if ($person->sexo == "m"){ $dad->foto_perfil = "dad-def.png"; }
+                        else { $dad->foto_perfil = "mom-def.png"; }
                         $dad->save();
                     }
                     catch (PDOException $pdoException){
@@ -284,7 +286,7 @@ class parentsController extends BaseController{
                "integer"     =>  "Solo puedes ingresar numeros enteros",
                "same"        =>  "Las contraseñas son diferentes",
         ];
-        
+
         $valid = Validator::make($data,$rules,$messages);
         if($valid->fails()){
             return Response::json(array('status'        => 'CU-104',
@@ -298,7 +300,7 @@ class parentsController extends BaseController{
                 if(Hash::check($data["old_password"],Auth::user()->password)){
                   //update password in this case
                   $user = Auth::user();
-                  $user->password = Hash::make($data["new_password"]); 
+                  $user->password = Hash::make($data["new_password"]);
                   $user->save();
                   $editPass = true;
                 }else{
@@ -307,7 +309,7 @@ class parentsController extends BaseController{
                                         "message"          => "La contraseña que haz ingresado es incorrecta, verifica e intenta nuevamente"
                                   ));
                 }
-                
+
               }
             }
             //$data["password"]=Hash::make($data["new_password"]);
@@ -325,7 +327,7 @@ class parentsController extends BaseController{
                 $dad = Auth::user()->Person->Dad;
                 $dad->update($data);
             }
-            $response = array('status'        => 200, 
+            $response = array('status'        => 200,
                               'statusMessage' => "success",
                               'message'       =>'Bien echo haz editado tus datos y cambiado tu contraseña correctamente');
             if(!$editPass){
