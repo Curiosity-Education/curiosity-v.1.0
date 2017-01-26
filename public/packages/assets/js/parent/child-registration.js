@@ -13,7 +13,6 @@ $(function(){
 
 
     $(".btn-upload-child").click(function(ev){
-    	console.log(this);
     	if($formChild.valid()){
 			data = {
 				username : document.getElementById("upch-username").value,
@@ -22,7 +21,8 @@ $(function(){
 				password : document.getElementById("upch-pass").value,
 				cpassword: document.getElementById("upch-cpass").value,
 				gender   : document.getElementById("upch-gender").value,
-				average  : document.getElementById("upch-average").value
+				average  : document.getElementById("upch-average").value,
+				level    : document.getElementById("upch-level").value
 			};
 			console.log(data);
 			$(this).prop("disabled",true);

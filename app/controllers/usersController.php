@@ -221,7 +221,7 @@ class usersController extends BaseController{
         }
     }
     public function remoteUsernameUpdate(){
-        if(DB::table("users")->where("username","=",Input::get('username_persona'))->where("username","!=",Auth::user()->username)->get()){
+        if(DB::table("users")->where("username","=",Input::get('username'))->where("username","!=",Auth::user()->username)->get()){
             return "false";
         }else return "true";
     }

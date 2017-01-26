@@ -12,10 +12,15 @@ class parentsController extends BaseController{
 	}
 
   public function getDataPerfil(){
-    if(Auth::User()){
-      $data = Auth::User()->Person->Parent;
+    if(Auth::user()){
+      $data = User::join('personas','personas.user_id','=','users.id')
+                  ->join('padres','padres.persona_id','=','personas.id')
+                  ->where('users.id','=',Auth::user()->id )
+                  ->first();
+      return $data;
+    }else{
+      return "no estas logeado";
     }
-    return null;
   }
   public function save(){
         $data = Input::all();
@@ -63,6 +68,8 @@ class parentsController extends BaseController{
                         $dad->email = $data['email'];
                         $dad->persona_id = $person->id;
                         $dad->telefono = $data['telefono'];
+                        if ($person->sexo == "m"){ $dad->foto_perfil = "dad-def.png"; }
+                        else { $dad->foto_perfil = "mom-def.png"; }
                         $dad->save();
                     }
                     catch (PDOException $pdoException){
@@ -139,7 +146,7 @@ class parentsController extends BaseController{
                     if ($subscription->status == 'active') {
                             $membresia_plan = new MembershipPlan();
                             $membresia = new Membership(array(
-                                "token_card" => $subscription->id,
+                                "token_card" => $customer->id,
                                 "fecha_registro" => Date('Y-m-d'),
                                 "active"    => 1,
                                 "padre_id"  => Auth::user()->Person->Dad->id
@@ -155,7 +162,7 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'in_trial'){
                        //la suscripción falló a inicializarse
-                      return Response::json(array(0=>'error')); 
+                      return Response::json(array(0=>'error'));
                     }
                 }
                 else{
@@ -250,5 +257,83 @@ class parentsController extends BaseController{
              group by(hijo_realiza_actividades.hijo_id)"
         );
     }
+    public function update(){
+        $data    =   Input::all();
+        $rules= [
+            "username"                  =>"required|user_check|max:50",
+            "new_password"              =>"min:8|max:100",
+            "cnew_password"             =>"same:new_password",
+            "nombre"                    =>"required|letter|max:50",
+            "apellidos"                 =>"required|letter|max:60",
+            "sexo"                      =>"required|string|size:1",
+            "telefono"                  =>"required"
+        ];
+        if(isset($data["new_password"]) && isset($data["cnew_password"])){
+          if($data["new_password"]!="" && $data["cnew_password"]!=""){// if user want to chage password them password current is required
+            $rules["old_password"]= "required";
+          }
+        }
+        $messages = [
+               "required"    =>  "Este campo :attribute es requerido",
+               "alpha"       =>  "Solo puedes ingresar letras",
+               "date"        =>  "Formato de fecha invalido",
+               "numeric"     =>  "Solo se permiten digitos",
+               "email"       =>  "Ingresa un formato de correo valido",
+               "unique"      =>  "Este usuario ya existe",
+               "integer"     =>  "Solo se permiten numeros enteros",
+               "exists"      =>  "El campo :attribute no existe en el sistema",
+               "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+               "integer"     =>  "Solo puedes ingresar numeros enteros",
+               "same"        =>  "Las contraseñas son diferentes",
+        ];
+
+        $valid = Validator::make($data,$rules,$messages);
+        if($valid->fails()){
+            return Response::json(array('status'        => 'CU-104',
+                                        "statusMessage" => "Data corrupted",
+                                        "message"       => "Algunos datos ingresados son incorrectos, verifica la información ingresada e intenta nuevamente"
+                                  ));
+        }else{
+            $editPass = false;
+            if(isset($data["new_password"]) && isset($data["cnew_password"])){
+              if($data["new_password"]!="" && $data["cnew_password"]!=""){
+                if(Hash::check($data["old_password"],Auth::user()->password)){
+                  //update password in this case
+                  $user = Auth::user();
+                  $user->password = Hash::make($data["new_password"]);
+                  $user->save();
+                  $editPass = true;
+                }else{
+                  return Response::json(array('status'     => 'CU-104',
+                                        "statusMessage"    => "Data corrupted",
+                                        "message"          => "La contraseña que haz ingresado es incorrecta, verifica e intenta nuevamente"
+                                  ));
+                }
+
+              }
+            }
+            //$data["password"]=Hash::make($data["new_password"]);
+            $user =User::find(Auth::user()->id);
+            $user->update($data);
+            $person = $user->Person();
+            $data_person = [
+               "nombre"            =>  $data["nombre"],
+               "apellidos"         =>  $data["apellidos"],
+               "sexo"              =>  $data["sexo"],
+            ];
+            $person->update($data_person);
+            $rolee = Auth::user()->roles[0]->name;
+            if ($rolee == "parent" || $rolee == "padre_free" || $rolee == "demo_padre"){
+                $dad = Auth::user()->Person->Dad;
+                $dad->update($data);
+            }
+            $response = array('status'        => 200,
+                              'statusMessage' => "success",
+                              'message'       =>'Bien echo haz editado tus datos y cambiado tu contraseña correctamente');
+            if(!$editPass){
+              $response["message"] = "Bien echo haz editado tus datos correctamente";
+            }
+            return Response::json($response);
+        }
+    }
 }
-?>

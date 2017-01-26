@@ -8,7 +8,8 @@ class Child extends CORM {
             password  :data.password,
             cpassword :data.cpassword,
             gender    :data.gender,
-            average   :data.average
+            average   :data.average,
+            level     :data.level
         }
         super.setPrefix('/admin-child');
     }

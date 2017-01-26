@@ -204,7 +204,7 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-					<a href="/suscripcion" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
+					<a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
 				</h2>
 			</center>
 		</div>
@@ -453,7 +453,7 @@
 				<div class="col-md-2 offset-md-1">
 					<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 					<ul class="ul-content">
-						<li><a href="/nuestro-equipo">- Nuestro equipo</a></li>
+						<li><a href="/equipo">- Nuestro equipo</a></li>
 						<li class="separacion"><a href="/mentores">- Mentores</a></li>
 					</ul>
 				</div>
@@ -463,8 +463,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
 					<ul class="ul-content">
-						<li><a href="#">- Preguntas frecuentes</a></li>
-						<li class="separacion"><a href="/terminos-y-condiciones">- Términos y Condiciones</a></li>
+						<!-- <li><a href="#">- Preguntas frecuentes</a></li> -->
+						<li class="separacion"><a href="/terminos">- Términos y Condiciones</a></li>
 						<li class="separacion"><a href="/aviso-privacidad">- Aviso de privacidad</a></li>
 					</ul>
 				</div>
@@ -474,7 +474,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 					<ul>
-						<li>- (871)455-2887</li>
+						<li> > &nbsp;(871) 255 89 65 "RRHH"</li>
+						<li> > &nbsp;hola@curiosity.com.mx</li>
 					</ul>
 				</div>
 				<!--/.Fourth column-->
@@ -487,7 +488,7 @@
 			<ul>
 				<li>
 					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-				<li><a class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
+				<li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li>
 			</ul>
 		</div>
 		<!--/.Call to action-->

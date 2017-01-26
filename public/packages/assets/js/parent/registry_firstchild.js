@@ -25,7 +25,8 @@ $(function(){
 				password : document.getElementById("rfc-password").value,
 				cpassword: document.getElementById("rfc-cpassword").value,
 				gender   : document.getElementById("rfc-gender").value,
-				average  : document.getElementById("rfc-average").value
+				average  : document.getElementById("rfc-average").value,
+				level    : document.getElementById("rfc-level").value
 			};
 			console.log(data);
 			$(this).prop("disabled",true);
@@ -63,6 +64,7 @@ $(function(){
 			cpassword:{required:true,minlength:5,equalTo:function(){
 				return $("input[name='password']");
 			}},
+			level:{required:true,digits:true},
 			gender:{required:true},
 			average:{required:true}
 		},messages:{

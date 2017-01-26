@@ -53,9 +53,7 @@ Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
-Route::get('parent-profile', function(){
-    return View::make('parent.profile');
-});
+
 
 
 Route::get('hijo-inicio', function()
@@ -100,13 +98,7 @@ Route::get('novedades-admin', function(){
 
 Route::get('1', 'activitiesVideosController@save');
 
-Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
-    ->where(
-        array(
-            'controller' => "^[a-zA-Z]*$",
-            'method' => "^[a-zA-Z]*$"
-        )
-    );
+
 
 /*
 * -----------------------------------------------------------------------------
@@ -115,12 +107,23 @@ Route::get('section-{controller}/{method}/view-{viewName}/', 'viewsController@ge
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::get('view-{viewName}', 'viewsController@getViewWithOutData');
-	Route::get('view-{controller}-{method}-{viewName}','viewsController@getViewWithData')->where(
+
+	Route::get('view-{controller}/{method}/view-{viewName}/', 'viewsController@getViewWithData')
+    ->where(
         array(
             'controller' => "^[a-zA-Z]*$",
             'method' => "^[a-zA-Z]*$"
         )
     );
+});
+
+// Manage News for parents
+Route::group(array('prefix' => 'news'),function(){
+	Route::post('save', 'dadNewsController@save');
+	Route::post('update', 'dadNewsController@update');
+	Route::post('delete', 'dadNewsController@delete');
+	Route::get('news-admin', 'dadNewsController@get');
+	Route::post('title', 'dadNewsController@titleExists');
 });
 
 /*
@@ -174,13 +177,6 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'libraryVideoController@update');
 			Route::post('delete', 'libraryVideoController@delete');
 		});
-		// Manage News for parents
-		Route::group(array('prefix' => 'news'),function(){
-			Route::post('save', 'dadNewsController@save');
-			Route::post('update', 'dadNewsController@update');
-			Route::post('delete', 'dadNewsController@delete');
-			Route::get('get', 'dadNewsController@get');
-		});
 	});
 	Route::group(array('before' => 'manage_school_aliance'),function(){
 		// Manage School asociated
@@ -224,6 +220,12 @@ Route::group(array('before' => 'auth'), function(){
 		Route::group(array('prefix' =>  'photo'),function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
+		Route::group(array('prefix' =>  'game'),function(){
+			Route::post('save','activitiesController@saveGame');
+			Route::post('update','activitiesController@updateGame');
+			Route::post('delete','activitiesController@deleteGame');
+		});
+
     });
 
     // Plans
@@ -242,12 +244,7 @@ Route::group(array('before' => 'auth'), function(){
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
-		Route::group(array('prefix' =>  'game'),function(){
-			Route::post('save','activitiesController@saveGame');
-			Route::post('update','activitiesController@updateGame');
-			Route::post('delete','activitiesController@deleteGame');
-		});
-
+		
 /*
 * -----------------------------------------------------------------------------
 * Routes to levels.
@@ -407,6 +404,7 @@ Route::group(array('prefix' =>  'secuence'),function(){
 	Route::post('all', 'secuenceController@all');
 });
 Route::post('/remote-username','usersController@remoteUsername');
+Route::post('/remote-username-update','usersController@remoteUsernameUpdate');
 
 /*
 * -----------------------------------------------------------------------------
@@ -584,7 +582,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-popular","activitiesController@getPopulars");
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
-                Route::get("find-all","activitiesController@getAll");
+                Route::get("/find-all","activitiesController@getAll");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
@@ -819,9 +817,9 @@ Route::group(array('before' => 'auth'), function(){
 // });
 // Route::get('/missedSession','sesionInfoController@missedSession');
 // Route::post('/last-session','sesionInfoController@getLastSession');
-// Route::get('/terminos-y-condiciones',function(){
-//     return View::make('terminos');
-// });
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
 // Route::get('/aviso-privacidad',function(){
 //     return View::make('aviso-privacidad');
 // });

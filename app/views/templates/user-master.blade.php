@@ -26,16 +26,17 @@
             </ul>
             <div class="container-fluid">
                <div class="" id="collapseEx2">
-                  <a class="navbar-brand">
+                  <a class="navbar-brand" style="font-size:0.85rem;">
                      <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
-                     Curiosity Educación
+                     &nbsp;Curiosity Educación |
+                     {{ Auth::user()->username; }}
                   </a>
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
                         <a href="#" data-activates="slide-out" class="button-collapse hidden-lg-up flex-center" id="slideBtn"><i class="fa fa-bars"></i></a>
                         <a href="#" class="hidden-md-down">
                            <div class="chip hoverable" id="logOut-btn">
-                              <img src="packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
+                              <img src="/packages/assets/media/images/system/iconLogOut.png" alt="Contact Person">
                               Cerrar Sesión
                            </div>
                         </a>
