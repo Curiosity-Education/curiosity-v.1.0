@@ -1,7 +1,8 @@
 var parentController = {
-  update: function(id,data,success){
-      new Parent(data).update(id,"POST",success);
-  },
+
+       update: function(id,data,success){
+            new Parent(data).update(id,"POST",success);
+       },
        prefix:"parent",
        formulary : $("#parent-form"),
        rulesFormulary:{
@@ -65,6 +66,175 @@ var parentController = {
             }
        },
        id : null,
+       itemSon:function(id,name,infoActivities,topicLow){
+           return "<a href='javascript:void(0)' data-id="+id+" data-topic-low="+topicLow+" data-info-activities="+infoActivities+" class='carousel-item hm-carousel-item'>"+
+              "<div class=itemCarousel>"+
+                 "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
+                 "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
+              "</div>"+
+           "</a>";
+       },
+       createChartActivities:function(id,data){
+            if(data.length != 0){
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var materiaID = $("input[name='materia']:checked").val();
+                var materia,numRand,chartActivity;
+                var dataValues=[];
+                var data = {
+                    labels: [],
+                    datasets: []
+                };
+                $.eaach(data,function(i,activity){
+                    numRand = Math.random()*(Curiosity.colors.length-1);
+                    if(activity.idMateria == materiaID){
+                        if(activity.id == id){
+                            data.labels.push(activity.nombre_tema);
+                            dataValues.push(activity.promedio);
+                        }
+                    }
+                    materia = activity.Materia;
+                });
+            }
+
+            if(data.length == 0){
+                $("#dadNotice").show();
+            }else if(data.length < 5){
+                $("#materias").show();
+                data.datasets.push({
+                            label: materia,
+                            fill: false,
+                            lineTension: 0.1,
+                           backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(75,192,192,1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: dataValues,
+                            spanGaps: false,
+                });
+                chartActivity = new Chart(ctx, {
+                    type: 'bar',
+                    data: data
+                });
+
+
+            }else{
+                $("#materias").show();
+                data.datasets.push({
+                    label:materia,
+                    backgroundColor: Curiosity.colorsTransparent(.4)[numRand],
+                    borderColor: Curiosity.colors()[numRand],
+                    pointBackgroundColor: Curiosity.colors()[numRand],
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Curiosity.colors()[numRand],
+                    data:dataValues
+                });
+                var options ={
+                        scale: {
+                            reverse: false,
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                }
+                chartActivity = new Chart(ctx, {
+                    type: 'radar',
+                    data: data,
+                    options: options
+                });
+            }
+       },
+       autoSelectedUser:function(){
+             $(".hm-carousel").children('.carousel-item').each(function(i,item){
+                if(i == 0){
+                    $(this).trigger('click');
+                    console.log($(this));
+                }
+             });
+       },
+       createCarousel:function(response){
+           if(response.sons.length > 0){
+                $.each(response.sons,function(id,son){
+                    var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
+                    var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
+                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                });
+                $(".carousel").carousel();
+            }
+       },
+       createArrayDataSon:function(id,activities){
+            var dataset=[];
+            if($.isArray(activities)){
+                if(activities.length > 0){
+                    $.each(activities,function(i,activity){
+                        if(activity.id = id){
+                            dataset.push(activity);
+                        }
+                    });
+                }
+            }
+
+           return dataset;
+
+
+       },
+        createArrayDataTopicLowSon:function(id,topics){
+            var dataset=[];
+            if($.isArray(topics)){
+                if(topics.length > 0){
+                    $.each(topics,function(i,topic){
+                        if(topics.id = id){
+                            dataset.push(topic);
+                        }
+                    });
+                }
+            }
+
+           return dataset;
+
+
+       },
+       getSons:function(){
+           Parent.any({},Curiosity.methodSend.POST,function(response){
+                parentController.createCarousel(response);
+           },'get-sons');
+           Intelligence.all(Curiosity.methodSend.POST,function(response){
+               $.each(response,function(i,intelligence){
+
+                   if(i == 0)
+                        $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                   else
+                        $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+
+               });
+           });
+           parentController.autoSelectedUser();
+       },
        getPlan:function(id){
            return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
                $("#pay-button").text("Pagar plan "+response.name);
@@ -176,5 +346,14 @@ var parentController = {
                 default:
                     Curiosity.noty.error("Ups algo ha salido mal reportelo con el administrador.");
             }
+        },
+
+        validPlanSelected:function(){
+            var exist=0;
+            if(localStorage.getItem('plan-user-selected') != null || localStorage.setItem('plan-user-selected') != ''){
+                exist = 1;
+            }
+            return exist;
         }
-    }
+
+}

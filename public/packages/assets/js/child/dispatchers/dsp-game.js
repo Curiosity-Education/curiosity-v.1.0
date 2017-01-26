@@ -1,5 +1,5 @@
 $(function(){
-   
+
   //example of how use to ranking curiosity
   var ranking  = new Ranking(); //create instance for ranking class
   var pdfs,videos;//variables for save data json of videos and pdfs
@@ -11,6 +11,12 @@ $(function(){
     videos  = response.data.videos;
     createElsementsVideos();//create element width video
     createElementsPdfs();//create element width pdf
+    if(pdfs.length==0){
+      $("#gst-materialPdf").prop("disabled",true);
+    }
+    if(videos.length==0){
+      $("#gst-materialVideo").prop("disabled",true);
+    }
   });
   ranking.setEventClick(function(event){//add event click to ranking
     var starAverage = $(this).index();// get value for set to ranking in data stars

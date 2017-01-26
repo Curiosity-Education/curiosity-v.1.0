@@ -11,21 +11,35 @@
 @section('content')
 <div id="hm-init" class="">
 	<div class="carousel hm-carousel animated fadeInDown">
-	   @for($i = 0; $i < 5; $i++)
-	   <a href="javascript:void(0)" class="carousel-item hm-carousel-item">
-		  <div class="itemCarousel">
-			 <img src="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" >
-			 <h6 class="h6-responsive text-xs-center">Nombre del hijo</h6>
-		  </div>
-	   </a>
-	   @endfor
 	</div>
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
 	   <center><div id="prntHome-contentInfo-arrow"></div></center>
 	   <h5>Nombre del hijo</h5>
-	   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, odio. Quis assumenda ipsa, non et autem tempore cum! Dolore harum tempore commodi rerum neque eligendi, ea illo nihil? Atque voluptatem, a id reprehenderit perferendis officiis repellat laudantium consequatur culpa cumque labore voluptas nihil molestiae perspiciatis, ut, doloribus provident dolores eaque nulla asperiores quos pariatur ex animi! Vero repellat tempora a pariatur sunt, sit inventore ex ut officia quam eum qui aspernatur tenetur, alias distinctio porro. Ratione excepturi, numquam dolores dolorum distinctio consequuntur sit consectetur nesciunt incidunt neque repellat expedita facilis fugit est error. Quia, officiis enim dolorem esse doloremque!
-	   <button type="button" class="btn" id="hm-btn-HelpSon">Ayudar a mi Hijo</button>
+	   <div class="row">
+	       <div class="col-md-8">
+
+                <form class="form-inline" id="materias" style="display:none;">
+
+                </form>
+               <div class="row">
+                   <img src="/packages/assets/media/images/parents/aviso_papa.png" style="display:none; margin-left:25%;" id="dadNotice" alt="Invita a jugar a tu hijo" class="col-md-7 col-md-offset-3">
+               </div>
+               <canvas id="myChart" width="200" height="200"></canvas>
+           </div>
+           <div class="col-md-4 col-md-offset-1">
+                <h3>Progreso de tu hijo</h3>
+                <p>
+                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
+                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
+                </p>
+                <p>
+                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
+                    Dando click en el botón de abajo podrás llegar a esta sección.
+                </p>
+                <button type="button" class="btn" id="hm-btn-HelpSon" disabled>Ayudar a mi Hijo</button>
+           </div>
+	   </div>
 	</div>
 </div>
 
@@ -163,6 +177,11 @@
 @stop
 
 @section('js')
-<script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>
+    <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+    <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
+    <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>
 @stop
