@@ -1,7 +1,7 @@
 @extends('templates.user-master')
 
 @section('css')
-{{ HTML::style('packages/assets/css/child/main.css') }}
+<link rel="stylesheet" href="/packages/assets/css/child/main.css?{{rand();}}">
 @yield('css-plus')
 @stop
 
@@ -64,16 +64,16 @@
 @stop
 
 @section('js')
-<script src="/packages/assets/js/administer/models/Avatar.js"></script>
-<script src="/packages/assets/js/administer/models/ItemGroup.js"></script>
-<script src="/packages/assets/js/administer/models/Item.js"></script>
-<script src="/packages/assets/js/administer/models/Secuence.js"></script>
-<script src="/packages/assets/js/administer/models/Sprite.js"></script>
-<script src="/packages/assets/js/administer/models/Level.js"></script>
-<script src="/packages/assets/js/administer/models/Intelligence.js"></script>
-<script src="/packages/assets/js/administer/models/Block.js"></script>
-<script src="/packages/assets/js/administer/models/Topic.js"></script>
-<script src="/packages/assets/js/administer/controllers/SpriteAnimator.js"></script>
-<script src="/packages/assets/js/child/dispatchers/dsp-child.js"></script>
+<script src="/packages/assets/js/administer/models/Avatar.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/ItemGroup.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Item.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Secuence.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Sprite.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Level.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Block.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/controllers/SpriteAnimator.js?{{rand();}}"></script>
+<script src="/packages/assets/js/child/dispatchers/dsp-child.js?{{rand();}}"></script>
 @yield('js-plus')
 @stop

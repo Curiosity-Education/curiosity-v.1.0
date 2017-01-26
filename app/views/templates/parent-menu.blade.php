@@ -1,7 +1,7 @@
 @extends('templates.user-master')
 
 @section('css')
-<link rel="stylesheet" href="/packages/assets/css/parent/main.css">
+<link rel="stylesheet" href="/packages/assets/css/parent/main.css?{{rand();}}">
 @yield('css-plus')
 @stop
 
@@ -79,6 +79,6 @@
 @yield('content-parent')
 @stop
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/parent/parent.js"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/parent.js?{{rand();}}"></script>
 @yield('js-plus')
 @stop
