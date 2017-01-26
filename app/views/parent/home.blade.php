@@ -11,7 +11,6 @@
 @section('content')
 <div id="hm-init" class="">
 	<div class="carousel hm-carousel animated fadeInDown">
-	    <!-- Carousel Javascript items sons -->
 	</div>
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
