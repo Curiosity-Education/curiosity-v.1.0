@@ -6,7 +6,7 @@
 class landingController extends BaseController
 {
 
-  function landingpage(){
+  function landingpage(){    
      if(Auth::check()){
         $routeView = loginController::getAccess();
         return Redirect::to($routeView);
