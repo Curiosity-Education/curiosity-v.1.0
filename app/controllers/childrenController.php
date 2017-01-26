@@ -92,7 +92,7 @@ class childrenController extends BaseController{
 	             'coins'        => 0
 	         ));
 				$tyPh = 2;
-				if ($person->sexo == "m"){ $tyPh = 2; }
+				if ($person->sexo == "m"){ $tyPh = 1; }
 				$photo = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
 	             'accesorio_id' => $tyPh
