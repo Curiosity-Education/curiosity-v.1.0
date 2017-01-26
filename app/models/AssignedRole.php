@@ -3,7 +3,7 @@
 
 class AssignedRole extends Eloquent
 {
-	protected $table="assigned_role";
+	protected $table="assigned_roles";
 
 	public function User(){
 		return $this->belongsTo('User');
