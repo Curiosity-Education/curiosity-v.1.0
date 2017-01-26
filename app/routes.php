@@ -449,6 +449,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('remote-email','parentsController@remoteEmail');
    Route::post('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
+   Route::post('get-sons','parentsController@getSons');
 });
 
 
