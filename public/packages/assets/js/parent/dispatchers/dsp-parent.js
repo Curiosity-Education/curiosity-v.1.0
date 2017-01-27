@@ -1,10 +1,11 @@
 $(function(){
     var prefix = "parent";
 
-    if(parentController.validPlanSelected())
+    if(parentController.validPlanSelected() == 1)
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
     else
         parentController.getSons();
+
 
     $("#pay-button").click(function(){
         if(parentController.validPlanSelected()){

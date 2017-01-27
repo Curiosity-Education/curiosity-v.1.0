@@ -47,7 +47,7 @@
 						<div class="col-md-12">
 							<div class="col-md-5">
 								<center>
-									<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" alt="..." class="rounded-circle">
+									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
 								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Brindar equidad educativa de una manera divertida.</p>

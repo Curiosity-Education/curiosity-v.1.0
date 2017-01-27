@@ -220,7 +220,9 @@ var parentController = {
 
        },
        getSons:function(){
+
            Parent.any({},Curiosity.methodSend.POST,function(response){
+               console.log("response");
                 parentController.createCarousel(response);
            },'get-sons');
            Intelligence.all(Curiosity.methodSend.POST,function(response){
@@ -237,7 +239,8 @@ var parentController = {
        },
        getPlan:function(id){
            return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
-               $("#pay-button").text("Pagar plan "+response.name);
+               if(response != null && response != '')
+                    $("#pay-button").text("Pagar plan "+response.name);
            },'/plans','get');
        },
        save : function(){
@@ -340,6 +343,7 @@ var parentController = {
             $("#pay-button").prop("disabled",false);
             switch(response.status){
                 case 200:
+                    localStorage.setItem('plan-user-selected',null);
                     Curiosity.noty.success("Se ha realizado el cobró con exito.");
                     window.location = '/view-parent.registry_firstchild';
                     break;
@@ -350,7 +354,7 @@ var parentController = {
 
         validPlanSelected:function(){
             var exist=0;
-            if(localStorage.getItem('plan-user-selected') != null || localStorage.getItem('plan-user-selected') != ''){
+            if(localStorage.getItem('plan-user-selected') != null && localStorage.getItem('plan-user-selected') != "null" ){
                 exist = 1;
             }
             return exist;
