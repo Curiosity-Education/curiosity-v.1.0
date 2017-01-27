@@ -20,8 +20,8 @@ class News extends CORM{
 	}
 
 	update(id,method,success){
-		this.news.id = id;
-		super.update(this.news,method,success);
+		this.new.append('id',id);
+		super.update(this.new,method,success);
 	}
 
 	static delete(id,method,success){

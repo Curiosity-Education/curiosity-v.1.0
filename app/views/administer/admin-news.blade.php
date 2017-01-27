@@ -11,9 +11,9 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-5 adNews-borderRight z-depth-1" id="adNews-form">
-			<h4 class="h4-responsive text-xs-left"><i class="fa fa-file-text"></i>&nbsp; Novedad - <small id="adNews-actionForm">Agregar</small></h4>
+			<h4 class="h4-responsive text-xs-left"><i class="fa fa-file-text"></i>&nbsp; Novedad - <small id="adNews-actionForm">Agregar</small><a class="btn-floating btn-small float-xs-right nw-disabled" id="nw-btnback" title="Agregar Novedad"><i class="fa fa-plus"></i></a></h4>
 			<hr>
-			<form action="" id="nw-formAdd">
+			<form action="" id="nw-formAdd" class="animated">
 				<div class="md-form">
 					<i class="fa fa-envelope prefix"></i>
 					<input type="text" id="title_new" name="title_new" class="form-control">
@@ -63,8 +63,8 @@
 						<div class="card">
 							<div class="card-header adNews-colorDefault white-text">
 								<i class="fa fa-file-pdf-o"></i>&nbsp; {{$new -> titulo}}
-								<a href="" class="float-xs-right adNews-option adNews-edit" id="adNews-edit" data-id="{{$new -> id}}" data-title="{{$new -> titulo}}" data-pdf="{{$new -> pdf}}"><i class="fa fa-edit"></i></a>
-								<a href="" class="float-xs-right adNews-option adNews-delete" id="adNews-delete" data-id="{{$new -> id}}"><i class="fa fa-trash"></i></a>
+								<a title="Editar Novedad" href="" class="float-xs-right adNews-option adNews-edit" id="adNews-edit" data-id="{{$new -> id}}" data-title="{{$new -> titulo}}" data-pdf="{{$new -> pdf}}"><i class="fa fa-edit"></i></a>
+								<a title="Borrar Novedad" href="" class="float-xs-right adNews-option adNews-delete" id="adNews-delete" data-id="{{$new -> id}}"><i class="fa fa-trash"></i></a>
 							</div>
 							<div class="card-block">
 								<a target="_blank" href="/packages/assets/pdf/{{$new -> pdf}}"><h6 class="card-title">{{$new -> pdf}}</h6></a>

@@ -40,7 +40,7 @@ class dadNewsController extends BaseController{
 		);
 
 		$messages = ["mimes" => "el archivo debe ser extensión PDF"];
-		$validation = Validator::make(Input::all(),$rules);
+		$validation = Validator::make($data,$rules,$messages);
 
 		if($validation -> fails()){
 			return Response::json(array("status" => "CU-104",
@@ -58,34 +58,35 @@ class dadNewsController extends BaseController{
 
 			return Response::json(array("status" => 200,
 									   	'statusMessage' => "success",
-									   	"data" => $new));
+									   	"message" => 'Novedad Agregada'));
 		}
 
 	}
 
-	function update($id){
+	function update(){
 		$data = Input::all();
 
-		$id_admin = DB::table('users')
+		$id_admin = DB::table('administrativos')
 			->select('administrativos.id')
-			->join('personas','personas.user_id', '=', 'users.id')
-			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->join('users','administrativos.user_id', '=', 'users.id')
 			->where('users.id', '=', Auth::user()->id)
 			->first()->id;
 
 		$rules = array(
-			'title_newEdit'  => 'required',
-			'nw-pdfEdit'	 => 'mimes:pdf'
+			'title_newEdit'  => 'required|max:20'
 		);
 
-		$validation = Validator::make(Input::all(),$rules);
+		$messages = ["required" => "El titulo es requerido"];
+		$validation = Validator::make(Input::all(),$rules,$messages);
 
 		if($validation -> fails()){
-			return $validation -> messages();
+			return Response::json(array("status" => "CU-104",
+										'statusMessage' => "Validation Error",
+										"data" => $validation -> messages()));
 		}else{
-			$new = ParentNew::find($id);
+			$new = ParentNew::find($data['id']);
 			$new -> titulo = $data['title_newEdit'];
-				if(Input::hasFile('pdf_edit')){
+				if(Input::hasFile('nw_pdfEdit')){
 
 					$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 					$quantity = 5;
@@ -99,9 +100,9 @@ class dadNewsController extends BaseController{
 
 					$nameRandom = $nameRandom.".";
 
-					$data['pdf_edit']->move(public_path()."/packages/assets/pdf", $nameRandom.$data['pdf_edit'] -> getClientOriginalExtension());
+					$data['nw_pdfEdit']->move(public_path()."/packages/assets/pdf", $nameRandom.$data['nw_pdfEdit'] -> getClientOriginalExtension());
 
-					$new -> pdf = $nameRandom.$data['pdf_edit'] -> getClientOriginalExtension();
+					$new -> pdf = $nameRandom.$data['nw_pdfEdit'] -> getClientOriginalExtension();
 
 				}
 
@@ -112,24 +113,22 @@ class dadNewsController extends BaseController{
 				return Response::json(array(
 				   'status'        =>  200,
 				   'statusMessage' => 'success',
-				   'message'       => 'Exito, novedad editada'
-			));
+				   'message'       => 'Novedad editada'));
 
 		}
 
 	}
 
-	function delete($id){
-
-		$new = ParentNew::find($id);
-		$new -> status(0);
+	function delete(){
+		$id = Input::all();
+		$new = ParentNew::find($id['id']);
+		$new -> status = (0);
 		$new -> save();
-		sleep(1);
 
 		return Response::json(array(
 			'status'        =>  200,
 			'statusMessage' => 'success',
-			'message'       => 'Exito, novedad eliminada'
+			'message'       => 'Novedad eliminada'
 		));
 	}
 
