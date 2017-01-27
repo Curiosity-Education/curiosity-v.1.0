@@ -237,7 +237,7 @@ var parentController = {
        },
        getPlan:function(id){
            return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
-               if(response != null || response != '')
+               if(response != null && response != '')
                     $("#pay-button").text("Pagar plan "+response.name);
            },'/plans','get');
        },
