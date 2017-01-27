@@ -55,7 +55,7 @@
 @stop
 
 @section('under-menu')
-<!-- 
+<!--
 <div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
