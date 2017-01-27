@@ -238,9 +238,10 @@ var parentController = {
            parentController.autoSelectedUser();
        },
        getPlan:function(id){
-           return CORM.any({id:id},Curiosity.methodSend.POST,function(response){
+           CORM.any({id:id},Curiosity.methodSend.POST,function(response){
                if(response != null && response != '')
                     $("#pay-button").text("Pagar plan "+response.name);
+                    return response;
            },'/plans','get');
        },
        save : function(){
@@ -274,6 +275,7 @@ var parentController = {
                     console.log(response);
                     switch (response.status) {
                        case 200:
+                          Curiosity.noty.success("Bien echo!!, Regiostro exitoso.");
                           window.location.href = response.data;
                           break;
                        case "CU-105":
@@ -341,6 +343,7 @@ var parentController = {
 
         paymentSuccess:function(response){
             $("#pay-button").prop("disabled",false);
+            console.log(response);
             switch(response.status){
                 case 200:
                     localStorage.setItem('plan-user-selected',null);

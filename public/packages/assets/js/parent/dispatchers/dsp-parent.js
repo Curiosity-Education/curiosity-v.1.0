@@ -6,7 +6,6 @@ $(function(){
     else
         parentController.getSons();
 
-
     $("#pay-button").click(function(){
         if(parentController.validPlanSelected()){
             $("#pay-button").prop("disabled",true);
@@ -25,7 +24,7 @@ $(function(){
     });
 
 
-   $("#"+prefix+"-save").click(function(){ eval(prefix+"Controller").save(); });
+   $("#"+prefix+"-save").click(function(ev){ eval(prefix+"Controller").save(); });
 
    $("body").on("click", "."+prefix+"-btnConf", function(){
       eval(prefix+"Controller").setId(
