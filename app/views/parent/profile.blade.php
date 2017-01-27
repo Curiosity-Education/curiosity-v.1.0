@@ -247,8 +247,8 @@ Mi Perfil
 <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-<script type="text/javascript" src="/packages/assets/js/parent/models/Parent.js"></script>
-<script type="text/javascript" src="/packages/assets/js/parent/controllers/parentController.js"></script>
-<script type="text/javascript" src="/packages/assets/js/parent/profile.js"></script>
-<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dsp-parent-profile.js"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/profile.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dsp-parent-profile.js?{{rand();}}"></script>
 @stop

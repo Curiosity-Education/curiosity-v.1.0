@@ -78,8 +78,8 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/aintController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-aint.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/aintController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-aint.js?{{rand();}}" charset="utf-8"></script>
 @stop

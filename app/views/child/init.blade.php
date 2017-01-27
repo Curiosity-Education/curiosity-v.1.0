@@ -1,6 +1,6 @@
 @extends('templates.child-menu')
     @section('css')
-    <link rel="stylesheet" type="text/css" href="packages/assets/css/child/main.css">
+    <link rel="stylesheet" type="text/css" href="packages/assets/css/child/main.css?{{rand();}}">
     @stop
 
     @section('title')INICIO @stop
@@ -184,9 +184,9 @@
     @stop
 
 @section('js-plus')
-  <script type="text/javascript" type="text/javascript" src="packages/assets/js/ranking-curiosity.js"></script>
-  <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js"></script>
-  <script type="text/javascript" src="/packages/assets/js/child/models/activity.js"></script>
-  <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js"></script>
-  <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-child-home.js"></script>
+  <script type="text/javascript" type="text/javascript" src="packages/assets/js/ranking-curiosity.js?{{rand();}}"></script>
+  <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js?{{rand();}}"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/models/activity.js?{{rand();}}"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js?{{rand();}}"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-child-home.js?{{rand();}}"></script>
 @stop

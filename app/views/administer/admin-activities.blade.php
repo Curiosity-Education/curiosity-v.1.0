@@ -140,12 +140,12 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Block.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Topic.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Activity.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Game.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/actiController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-acti.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Block.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Activity.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/Game.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-acti.js?{{rand();}}" charset="utf-8"></script>
 @stop

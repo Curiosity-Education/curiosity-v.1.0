@@ -77,6 +77,8 @@
 
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
+			<input type='hidden' id='current_page' />
+			<input type='hidden' id='show_per_page' />
 
     </div><br>
 
@@ -137,7 +139,7 @@
 	</script>
 
 	{{ HTML::script('/packages/assets/js/parent/library_pdfs.js') }}
-	<script type="text/javascript" src="/packages/assets/js/parent/models/library-pdfs.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/parent/controllers/library-pdfsCrtrl.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dp-library-pdfs.js"></script>
+	<script type="text/javascript" src="/packages/assets/js/parent/models/library-pdfs.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/parent/controllers/library-pdfsCrtrl.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dp-library-pdfs.js?{{rand();}}"></script>
 @stop
