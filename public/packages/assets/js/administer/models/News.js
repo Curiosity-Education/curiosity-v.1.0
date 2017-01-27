@@ -2,14 +2,21 @@ class News extends CORM{
 
 	constructor(formdata){
 		super();
-		this.news = {
-			data: formdata
-		}
+		this.new = formdata
 		super.setPrefix('/news');
 	}
 
 	save(method,success){
-		super.save(this.news,method,success);
+		$.ajax({
+			url: '/news/save',
+			type: 'POST',
+			data: this.new,
+			cache: false,
+			contentType: false,
+			processData: false
+		}).done(function(response){
+			success(response);
+		});
 	}
 
 	update(id,method,success){

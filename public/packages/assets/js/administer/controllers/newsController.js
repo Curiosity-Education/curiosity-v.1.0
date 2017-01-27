@@ -1,21 +1,24 @@
 var newsCtrl = {
 
-	formADD : $("#nw-formADD"),
-	pdf : $("#nw-pdf"),
-	formEDIT : $("#nw-formEDIT"),
-	pdf_edit : $("#nw-pdf_edit"),
+	formADD : $("#nw-formAdd"),
+	pdf : $("#nw_pdf"),
+	formEDIT : $("#nw-formEdit"),
+	pdf_edit : $("#nw_pdfEdit"),
 
 	fileWeight : function($input){
 		var exts = new Array(".pdf");
-		  var $file = $input;
-		  var maxMegas = 2;
-		  if ($file.val() != ""){
-			 if(Curiosity.file.validExtension($file.val(), exts)){
+		var $file = $input;
+		var maxMegas = 2;
+		if ($file.val() != ""){
+			if(Curiosity.file.validExtension($file.val(), exts)){
 				var files = Curiosity.file.validSize($file.attr("id"), maxMegas);
 				if (files != null){
-				   $file.val(files.name);
+				   $("#nw-pdfName").val(files.name);
+				   $("#nw-pdfEditname").val(files.name);
 				}
 				else{
+				   $("#nw-pdfName").val("");
+				   $("#nw-pdfEditname").val("");
 				   $file.val("");
 				   Curiosity.noty.warning("El archivo excede los "+maxMegas+" MB máximos permitidos", "Demasiado grande");
 				}
@@ -27,7 +30,7 @@ var newsCtrl = {
 		  }
 	},
 
-	save : function(success){
+	save : function(){
 		this.formADD.validate({
 			rules:{
 				title_new:{
@@ -42,18 +45,22 @@ var newsCtrl = {
 						} // c-data
 					} // c-remote
 				}, // c-title
-				link:{required:true}
+				nw_pdf:{required:true}
 			}, // c-rules
 			messages:{
 				title_new:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
-				link:{required:'Ingresa el link'}
+				nw_pdf:{required:'Ingresa el link'}
 			} // c-messages
 		}); // c-validate
 
 		if(this.formADD.valid()){
-			var formData = new FormData(this.formADD[0]);
-
+			var formData = new FormData((this.formADD)[0]);
+			formData.append("title",$("#title_new").val());
+			var newDad = new News(formData);
+			Curiosity.toastLoading.show();
+			newDad.save("POST", this.alert);
 		}
+		//console.log("llego al controlador");
 	},
 
 	update : function(id,success){
@@ -70,6 +77,27 @@ var newsCtrl = {
 
 	title: function(success){
 		News.title(success);
+	},
+
+	alert : function(response){
+		Curiosity.toastLoading.hide();
+		switch (response.status){
+
+			case 200:
+				Curiosity.noty.success("Novedad Guardada","Exitoso");
+				break;
+			case "CU-103":
+				Curiosity.noty.warning("Esta novedad ya existe","Atención");
+				break;
+			case "CU-104":
+				$.each(response.data, function(index, value){
+					Curiosity.noty.warning(message,"Algo va mal");
+				});
+				break;
+			default:
+				Curiosity.noty.error("Consulta con el administrador","Error desconocido");
+				break;
+		} // c-switch
 	}
 
 };
