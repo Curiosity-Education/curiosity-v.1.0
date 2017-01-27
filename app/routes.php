@@ -220,6 +220,12 @@ Route::group(array('before' => 'auth'), function(){
 		Route::group(array('prefix' =>  'photo'),function(){
 			Route::post('update', 'activitiesController@changeImage');
 		});
+		Route::group(array('prefix' =>  'game'),function(){
+			Route::post('save','activitiesController@saveGame');
+			Route::post('update','activitiesController@updateGame');
+			Route::post('delete','activitiesController@deleteGame');
+		});
+
     });
 
     // Plans
@@ -238,11 +244,6 @@ Route::group(array('before' => 'auth'), function(){
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
-		Route::group(array('prefix' =>  'game'),function(){
-			Route::post('save','activitiesController@saveGame');
-			Route::post('update','activitiesController@updateGame');
-			Route::post('delete','activitiesController@deleteGame');
-		});
 
 /*
 * -----------------------------------------------------------------------------
@@ -445,6 +446,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('remote-email','parentsController@remoteEmail');
    Route::post('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
+   Route::post('get-sons','parentsController@getSons');
 });
 
 

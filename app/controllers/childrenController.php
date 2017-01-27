@@ -92,7 +92,7 @@ class childrenController extends BaseController{
 	             'coins'        => 0
 	         ));
 				$tyPh = 2;
-				if ($person->sexo == "m"){ $tyPh = 2; }
+				if ($person->sexo == "m"){ $tyPh = 1; }
 				$photo = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
 	             'accesorio_id' => $tyPh
@@ -105,6 +105,11 @@ class childrenController extends BaseController{
 	             'hijo_id'      => $son->id,
 	             'accesorio_id' => 4
 	         ));
+				$planRel = new MembershipPlan();
+				$planRel->hijo_id = $son->id;
+				$planRel->membresia_id = Membership::where("padre_id", "=", $id_dad)->pluck("id");
+				$planRel->plan_id = Plan::where("reference", "=", $subscription->plan_id)->first()["id"];
+				$planRel->save();
 	         //this reponse message data is for user
 	         return Response::json(array(
 	             "status"        => 200,

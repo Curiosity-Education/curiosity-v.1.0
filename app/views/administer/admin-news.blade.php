@@ -82,7 +82,7 @@
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/News.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/controllers/newsController.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-news.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/News.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/newsController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-news.js?{{rand();}}" charset="utf-8"></script>
 @stop

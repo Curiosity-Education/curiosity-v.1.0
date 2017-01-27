@@ -47,7 +47,7 @@
 						<div class="col-md-12">
 							<div class="col-md-5">
 								<center>
-									<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" alt="..." class="rounded-circle">
+									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
 								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Brindar equidad educativa de una manera divertida.</p>
@@ -86,7 +86,7 @@
 			<ul class="animated rubberBand"><br>
 				<li class="container-fluid">
 					<div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
-						<img src="/packages/assets/media/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
+						<img src="/packages/assets/media/images/landing/nuevo_log.png?{{rand();}}" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
 					</div>
 				</li>
 				<li class="container-fluid">

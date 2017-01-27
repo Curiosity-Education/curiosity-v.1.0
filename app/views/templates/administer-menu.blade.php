@@ -3,7 +3,7 @@
 @extends('templates.user-master')
 
 @section('css')
-<link rel="stylesheet" href="/packages/assets/css/admins/main.css">
+<link rel="stylesheet" href="/packages/assets/css/admins/main.css?{{rand();}}">
 @yield('css-plus')
 @stop
 
@@ -130,10 +130,7 @@
 @stop
 
 @section('js')
-   <script src="/packages/libs/validation/jquery.validate.min.js" charset="utf-8"></script>
-   <script src="/packages/libs/validation/localization/messages_es.min.js" charset="utf-8"></script>
-   <!-- <script src="/packages/assets/js/config/request/request.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/config/db/database.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/config/db/corm.js" charset="utf-8"></script> -->
+   <script src="/packages/libs/validation/jquery.validate.min.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/libs/validation/localization/messages_es.min.js?{{rand();}}" charset="utf-8"></script>
 @yield('js-plus')
 @stop

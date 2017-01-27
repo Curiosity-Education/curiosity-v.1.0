@@ -15,11 +15,9 @@ class parentsController extends BaseController{
     if(Auth::user()){
       $data = User::join('personas','personas.user_id','=','users.id')
                   ->join('padres','padres.persona_id','=','personas.id')
-                  ->where('users.id','=',Auth::user()->id ) 
+                  ->where('users.id','=',Auth::user()->id )
                   ->first();
       return $data;
-    }else{
-      return "no estas logeado";
     }
   }
   public function save(){
@@ -68,6 +66,8 @@ class parentsController extends BaseController{
                         $dad->email = $data['email'];
                         $dad->persona_id = $person->id;
                         $dad->telefono = $data['telefono'];
+                        if ($person->sexo == "m"){ $dad->foto_perfil = "dad-def.png"; }
+                        else { $dad->foto_perfil = "mom-def.png"; }
                         $dad->save();
                     }
                     catch (PDOException $pdoException){
@@ -141,7 +141,7 @@ class parentsController extends BaseController{
                     $subscription = $customer->createSubscription(array(
                       "plan_id"=> $plan->reference
                     ));
-                    if ($subscription->status == 'active') {
+                    if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
                             $membresia_plan = new MembershipPlan();
                             $membresia = new Membership(array(
                                 "token_card" => $customer->id,
@@ -156,10 +156,6 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'past_due') {
                      //la suscripción falló a inicializarse
-                      return Response::json(array(0=>'error'));
-                    }
-                    elseif ($subscription->status == 'in_trial'){
-                       //la suscripción falló a inicializarse
                       return Response::json(array(0=>'error'));
                     }
                 }
@@ -182,13 +178,84 @@ class parentsController extends BaseController{
         }
     }
     public function getSons(){
-        $idDad = Auth::user()->Person()->first()->Parent()->first()->id;
-        return DB::select("Select users.username, hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
-         from padres inner join hijos on hijos.padre_id = padres.id
-        inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
-        inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
-        inner join personas on hijos.persona_id = personas.id
-        inner join users on users.id = personas.user_id where padres.id = '2'");
+        $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
+        $sons = DB::select("SELECT
+            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo'
+            FROM padres
+            INNER JOIN
+            hijos hjs
+            ON hjs.padre_id = padres.id
+            INNER JOIN personas prsn
+            ON prsn.id = hjs.persona_id
+            WHERE padres.id = '$idDad'
+            GROUP BY hjs.id");
+        $pActivitiesGeneral = DB::select("SELECT
+            tms.id,tms.nombre,(sum(hra.promedio)/count(hra.promedio)) as Promedio
+            FROM hijo_realiza_actividades hra
+            INNER JOIN actividades act
+            ON hra.actividad_id = act.id
+            INNER JOIN temas tms
+            ON act.tema_id = tms.id
+            INNER JOIN bloques blqs
+            ON tms.bloque_id = blqs.id
+            INNER JOIN inteligencias i
+            ON blqs.inteligencia_id = i.id
+            INNER JOIN hijos hj
+            ON hj.id = hra.hijo_id
+            INNER JOIN personas prsn
+            ON prsn.id = hj.persona_id
+            INNER JOIN padres prnt
+            ON prnt.id = hj.padre_id
+            group by tms.id,tms.nombre");
+        $temasLow = DB::select("SELECT
+                hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio
+                FROM hijo_realiza_actividades hra
+                INNER JOIN actividades act
+                ON hra.actividad_id = act.id
+                INNER JOIN temas tms
+                ON act.tema_id = tms.id
+                INNER JOIN bloques blqs
+                ON tms.bloque_id = blqs.id
+                INNER JOIN inteligencias i
+                ON blqs.inteligencia_id = i.id
+                INNER JOIN hijos hj
+                ON hj.id = hra.hijo_id
+                INNER JOIN personas prsn
+                ON prsn.id = hj.persona_id
+                INNER JOIN padres prnt
+                ON prnt.id = hj.padre_id
+                INNER JOIN biblioteca_pdfs bp
+                ON tms.id = bp.tema_id
+                WHERE prnt.id = $idDad and
+                 PROMEDIO <= 70
+                group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
+            ");
+        $sonMakeActivities = DB::select("SELECT
+                hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio
+                FROM hijo_realiza_actividades hra
+                INNER JOIN actividades act
+                ON hra.actividad_id = act.id
+                INNER JOIN temas tms
+                ON act.tema_id = tms.id
+                INNER JOIN bloques blqs
+                ON tms.bloque_id = blqs.id
+                INNER JOIN inteligencias i
+                ON blqs.inteligencia_id = i.id
+                INNER JOIN hijos hj
+                ON hj.id = hra.hijo_id
+                INNER JOIN personas prsn
+                ON prsn.id = hj.persona_id
+                INNER JOIN padres prnt
+                ON prnt.id = hj.padre_id
+                WHERE prnt.id = '$idDad'
+                group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre");
+        return [
+            'sons' => $sons,
+            'pActivitiesGeneral'    =>  $pActivitiesGeneral,
+            'sonMakeActivities'     =>  $sonMakeActivities,
+            'temasLow'      =>  $temasLow
+        ];
+
     }
     public function sendMensaje(){
         try{
@@ -284,12 +351,12 @@ class parentsController extends BaseController{
                "integer"     =>  "Solo puedes ingresar numeros enteros",
                "same"        =>  "Las contraseñas son diferentes",
         ];
-        
+
         $valid = Validator::make($data,$rules,$messages);
         if($valid->fails()){
             return Response::json(array('status'        => 'CU-104',
                                         "statusMessage" => "Data corrupted",
-                                        "message"       => "Los datos no cumplen con el formato establecido en el sistema"
+                                        "message"       => "Algunos datos ingresados son incorrectos, verifica la información ingresada e intenta nuevamente"
                                   ));
         }else{
             $editPass = false;
@@ -298,11 +365,16 @@ class parentsController extends BaseController{
                 if(Hash::check($data["old_password"],Auth::user()->password)){
                   //update password in this case
                   $user = Auth::user();
-                  $user->password = Hash::make($data["new_password"]); 
+                  $user->password = Hash::make($data["new_password"]);
                   $user->save();
                   $editPass = true;
+                }else{
+                  return Response::json(array('status'     => 'CU-104',
+                                        "statusMessage"    => "Data corrupted",
+                                        "message"          => "La contraseña que haz ingresado es incorrecta, verifica e intenta nuevamente"
+                                  ));
                 }
-                
+
               }
             }
             //$data["password"]=Hash::make($data["new_password"]);
@@ -320,7 +392,7 @@ class parentsController extends BaseController{
                 $dad = Auth::user()->Person->Dad;
                 $dad->update($data);
             }
-            $response = array('status'        => 200, 
+            $response = array('status'        => 200,
                               'statusMessage' => "success",
                               'message'       =>'Bien echo haz editado tus datos y cambiado tu contraseña correctamente');
             if(!$editPass){

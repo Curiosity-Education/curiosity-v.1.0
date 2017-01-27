@@ -118,8 +118,8 @@
                       <div class="md-form upch-select">
                           <select class="mdb-select" id="upch-gender" name="gender">
                               <option value="" disabled selected>Sexo</option>
-                              <option value="M" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
-                              <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
+                              <option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" class="rounded-circle">Masculino</option>
+                              <option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefF.png" class="rounded-circle">Femenino</option>
                           </select>
                       </div>
                       <div class="md-form">
@@ -179,8 +179,8 @@
 <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
 <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/models/child.js"></script>
-<script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js"></script>
+<script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
-<script src="/packages/assets/js/parent/child-registration.js" charset="utf-8"></script>
+<script src="/packages/assets/js/parent/child-registration.js?{{rand();}}" charset="utf-8"></script>
 @stop
