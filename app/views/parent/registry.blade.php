@@ -143,7 +143,7 @@
 													</fieldset>
 												</div>
 												<div>
-													<button class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
+													<button type="button" class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>
 												</div>
 											</div>
 										</div>
