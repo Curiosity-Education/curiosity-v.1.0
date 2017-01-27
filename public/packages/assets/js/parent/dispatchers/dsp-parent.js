@@ -3,8 +3,8 @@ $(function(){
 
     if(parentController.validPlanSelected())
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
-
-    parentController.getSons();
+    else
+        parentController.getSons();
 
     $("#pay-button").click(function(){
         if(parentController.validPlanSelected()){
