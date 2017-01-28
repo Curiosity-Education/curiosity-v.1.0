@@ -98,6 +98,21 @@ Route::get('novedades-admin', function(){
 
 Route::get('1', 'activitiesVideosController@save');
 
+/* rutas de novedades
+Route::group(array('prefix' => 'news'),function(){
+	Route::post('save', 'dadNewsController@save');
+	Route::post('update', 'dadNewsController@update');
+	Route::post('delete', 'dadNewsController@delete');
+	Route::get('news-admin', 'dadNewsController@get');
+	Route::post('title', 'dadNewsController@titleExists');
+});
+*/
+
+// rutas del perfil del niño
+Route::group(array('prefix' => '/profile-child'), function(){
+	Route::get('get-graph', 'childrenController@graphDailyGoal');
+	Route::get('get-cards', 'childrenController@cardsScore');
+});
 
 
 /*

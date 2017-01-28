@@ -2,7 +2,7 @@ class News extends CORM{
 
 	constructor(formdata){
 		super();
-		this.new = formdata
+		this.new = formdata;
 		super.setPrefix('/news');
 	}
 
