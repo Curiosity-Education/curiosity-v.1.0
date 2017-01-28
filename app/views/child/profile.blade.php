@@ -12,7 +12,7 @@
 		<!-- Banner -->
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="pf-banner">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-user"></i>&nbsp; Mi Perfil "USERNAME"</h4>
+			 <h4 class="h4-responsive white-text"><i class="fa fa-user"></i>&nbsp; Mi Perfil | {{ Auth::user()->username; }} |</h4>
 		  </div>
 		</div>
 
@@ -106,5 +106,8 @@
 
 @section('js-plus')
 	{{ HTML::script('/packages/libs/chart/Chart.min.js') }}
-	<link rel="stylesheet" href="/packages/assets/js/child/profile.js?{{rand();}}">
+	<script src="/packages/assets/js/administer/models/Profile.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/profileCtrl.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/dispatchers/dsp-profile.js?{{rand();}}" charset="utf-8"></script>
+@stop
 @stop

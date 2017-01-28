@@ -167,5 +167,15 @@ class childrenController extends BaseController{
             as t_sum_juegos";
             return DB::select($query);
     }
+
+	function cardsScore(){
+
+		return View::make('child.profile')->with('data',$data);
+	}
+
+	function graphDailyGoal(){
+
+
+	}
 }
 ?>
