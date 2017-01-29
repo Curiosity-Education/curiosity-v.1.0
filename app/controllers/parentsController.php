@@ -180,7 +180,7 @@ class parentsController extends BaseController{
     public function getSons(){
         $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
         $sons = DB::select("SELECT
-            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo'), hjs.nivel_id
+            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
             FROM padres
             INNER JOIN
             hijos hjs
