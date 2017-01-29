@@ -84,7 +84,7 @@ var parentController = {
                     labels: [],
                     datasets: []
                 };
-                $.eaach(data,function(i,activity){
+                $.each(data,function(i,activity){
                     numRand = Math.random()*(Curiosity.colors.length-1);
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
