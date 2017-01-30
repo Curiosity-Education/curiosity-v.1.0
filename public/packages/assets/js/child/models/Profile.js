@@ -10,8 +10,8 @@ class Profile extends CORM{
 		super.any(null,"GET",success,"/profile-child","get-graph")
 	}
 
-	static getCardsData(){
-		super.any(null,"GET",null,"/profile-child","get-cards")
+	static getCardsData(success){
+		super.any(null,"GET",success,"/profile-child","get-cards")
 	}
 
 

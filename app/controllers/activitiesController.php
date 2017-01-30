@@ -6,7 +6,7 @@ class activitiesController extends BaseController{
         try{
             if(Request::method() == Method::POST){
                 $id = Input::get('data.id');
-                $activity = Activity::where('id', '=', $id)->get();
+                $activity = Activity::where('id', '=', $id)->orderBy('id', 'asc')->get();
                 return $activity;
             }
         }

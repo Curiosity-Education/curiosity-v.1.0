@@ -208,12 +208,20 @@ class parentsController extends BaseController{
             ON prnt.id = hj.padre_id
             group by tms.id,tms.nombre");
         $temasLow = DB::select("SELECT
-                hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio
+                hj.id,i.id as idMateria,i.nombre as Materia
+                ,tms.id as temaID,tms.nombre as nombre_tema,
+                (sum(hra.promedio)/count(hra.promedio)) as Promedio,
+                bpdfs.nombre_real as nrPDF, bpdfs.nombre as nPDF,
+                bvid.embed as eVideo, bvid.poster pVid
                 FROM hijo_realiza_actividades hra
                 INNER JOIN actividades act
                 ON hra.actividad_id = act.id
                 INNER JOIN temas tms
                 ON act.tema_id = tms.id
+                INNER JOIN biblioteca_pdfs bpdfs
+                ON bpdfs.tema_id = tms.id
+                INNER JOIN biblioteca_videos bvid
+                ON bvid.tema_id = tms.id
                 INNER JOIN bloques blqs
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i
@@ -227,7 +235,7 @@ class parentsController extends BaseController{
                 INNER JOIN biblioteca_pdfs bp
                 ON tms.id = bp.tema_id
                 WHERE prnt.id = $idDad and
-                 PROMEDIO <= 70
+                 PROMEDIO <= 60
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
         $sonMakeActivities = DB::select("SELECT
@@ -241,6 +249,8 @@ class parentsController extends BaseController{
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i
                 ON blqs.inteligencia_id = i.id
+                INNER JOIN niveles nvls
+                ON nvls.id = i.nivel_id
                 INNER JOIN hijos hj
                 ON hj.id = hra.hijo_id
                 INNER JOIN personas prsn
@@ -248,6 +258,7 @@ class parentsController extends BaseController{
                 INNER JOIN padres prnt
                 ON prnt.id = hj.padre_id
                 WHERE prnt.id = '$idDad'
+                and nvls.id = hj.nivel_id
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre");
         return [
             'sons' => $sons,
