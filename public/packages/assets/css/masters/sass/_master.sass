@@ -135,3 +135,106 @@ body
 /* ==============================================
 //end to style f ranking
 /*===============================================
+/*==============================================*/
+// Visaulizador de pdf and video
+#gst-modal-pdf-video,#gst-modal-instruction
+   #gst-iframe-content
+      border: none
+      border-left-top-radius: $border-rad
+      border-left-bottom-radius: $border-rad
+   background-color: rgba(0,0,0,.9) !important
+   .modal-body
+      padding: 0 !important
+   .modal-content
+      border-radius: $border-rad !important
+   .close
+      position: absolute
+      right: .2rem
+      top: 0
+      cursor: pointer
+      z-index: 1000
+      color: $color-white
+   .gst-information
+      padding-top: 0
+      padding-left: 0
+      padding-right: 0
+      margin-bottom: 0
+      max-width: 100%
+      .gst-information-footer
+         background-color: #ebeff1
+         color: $color-gray-dark
+         padding-top: .5rem
+         padding-bottom: .5rem
+         padding-right: .5rem
+         position: relative
+         bottom: 0
+
+   .gst-col
+      padding: 0 !important
+   .row
+      margin-right: 0
+      margin-left: 0
+   .gst-hr-top
+      margin-top: 0
+   .gst-hr-bottom
+      margin-bottom: 0
+   .gst-information-list
+      max-height: 54%
+      overflow: auto
+      .media
+         padding: .5rem
+         cursor: pointer
+         &:hover
+            background-color: #ebeff1
+         &.active
+            background-color: #ebeff1
+   .gst-informataion-header
+      padding-top: 1rem
+      padding-bottom: 1rem
+      background-color: $color-primary
+      color: $color-white
+      border-top-right-radius: $border-rad
+   p
+      margin-bottom: 0
+   .gst-name-content
+      font-size: .9rem
+   .gst-title-conten
+      margin-top: 1rem
+   .gst-name-content-list,.gst-views-content-list
+      font-size: .7rem
+.gst-bg-gray
+   background-color: #e9ebee !important
+#gst-video-pdf
+   border: none
+
+#gst-materialPdf
+   border-color: $color-secondary
+   color: $color-secondary !important
+#gst-materialVideo
+   border-color: $color-danger
+   color: $color-danger !important
+#gst-dataGame
+   margin-bottom: 1rem
+
++mediaQuerie(576px,776px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 750px
++mediaQuerieMin(780px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 1000px
+
++mediaQuerie(576px,776px)
+   #gst-modal-pdf-video,#gst-modal-instruction
+      .modal-dialog
+         min-width: 750px
+
+#gst-img-instruction
+   cursor: pointer
+   width: 100%
+   min-height: 46vh
+   max-height: 62vh
+
+
+/*===============================================*/
