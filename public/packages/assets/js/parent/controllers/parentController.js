@@ -237,8 +237,8 @@ var parentController = {
                 parentController.createCarousel(response);
                 if(response.length != null){
                     var intelligences = [];
-                    $.each(response,function(i,intelligence){
-                        intelligences.push({id:intelligence.idMateria,nombre:intelligence.Materia});
+                    $.each(response.sonMakeActivities,function(i,object){
+                        intelligences.push({id:object.idMateria,nombre:object.Materia});
                     });
                     localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
                 }
