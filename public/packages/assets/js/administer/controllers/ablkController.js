@@ -76,9 +76,17 @@ var ablkController = {
                }
             });
             if (this.formulary.valid()){
-               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
-               Curiosity.toastLoading.show();
-               block.save("POST", this.addSuccess);
+               if ($("#ablk_logo").val() != ""){
+                  var formData = new FormData($("#ablk-formLogo")[0]);
+                  formData.append('nombre', this.inputName.val());
+                  formData.append('inteligencia', $("#ablk_intSel").val());
+                  var block = new Block(formData);
+                  Curiosity.toastLoading.show();
+                  block.save("POST", this.addSuccess);
+               }
+               else{
+                  Curiosity.noty.info("Por favor selecciona una imagen para este bloque", "Atención");
+               }
             }
             break;
          case "update":
@@ -88,7 +96,10 @@ var ablkController = {
                }
             });
             if (this.formulary.valid()){
-               var block = new Block(this.inputName.val(), $("#ablk_intSel").val());
+               var formData = new FormData($("#ablk-formLogo")[0]);
+               formData.append('nombre', this.inputName.val());
+               formData.append('inteligencia', $("#ablk_intSel").val());
+               var block = new Block(formData);
                Curiosity.toastLoading.show();
                block.update(this.id, "POST", this.updSuccess);
             }
@@ -181,6 +192,29 @@ var ablkController = {
 
    clearInputs : function(){
       $(".ablkInp").val("");
+   },
+
+   selectFile : function($input){
+      var exts = new Array(".png", ".jpg", "jpeg", ".PNG", ".JPG", ".JPEG");
+      var $file = $input;
+      var maxMegas = 2;
+      if ($file.val() != ""){
+         if(Curiosity.file.validExtension($file.val(), exts)){
+            var files = Curiosity.file.validSize($file.attr("id"), maxMegas);
+            if (files != null){
+               $("#ablk_logoName").val(files.name);
+            }
+            else{
+               $("#ablk_logoName").val("");
+               $file.val("");
+               Curiosity.noty.warning("El archivo excede los "+maxMegas+" MB máximos permitidos", "Demasiado grande");
+            }
+         }
+         else{
+            $file.val("");
+            Curiosity.noty.info("Selecciona un archivo de imagen PNG, JPG, JPEG", "Formato invalido");
+         }
+      }
    }
 
 }
