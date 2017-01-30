@@ -30,8 +30,8 @@
            <div class="col-md-4 col-md-offset-1">
                 <h3>Progreso de tu hijo</h3>
                 <p>
-                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
-                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
+                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma. <br>
+                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo. <br>
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
@@ -118,7 +118,7 @@
 @stop
 
 @section('js')
-    <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+    <script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
     <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
     <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>

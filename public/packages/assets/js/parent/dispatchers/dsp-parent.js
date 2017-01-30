@@ -18,6 +18,9 @@ $(function(){
 
     $(".hm-carousel").on('click','.carousel-item',function(){
 
+        $("#materias").data('id',$(this).data('id'));
+        $("#materias").data('nivelId',$(this).data('nivelId'));
+        $("#materias").data('infoActivities',$(this).data('infoActivities'));
         parentController.createChartActivities($(this).data('id'),$(this).data('nivelId'),$(this).data('infoActivities'));
         $("#hm-btn-HelpSon").data('topicLow',$(this).data('topicLow'));
         $("#name_low_son").empty();
