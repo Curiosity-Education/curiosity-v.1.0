@@ -79,7 +79,7 @@ var parentController = {
                         "<div class='card hoverable chp-topics chp-cardTopic chp-active'>"+
                             "<div class='card-block chp-topic-card' data-id-topic='"+idTopic+"'>"+
                               "<div class='card-left'>"+
-                                "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1'>"+
+                                "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg' class='chp-imgWeak z-depth-1'>"+
                               "</div>"+
                               "<div class='card-right'>"+
                                 "<div class='chp-topicDesc'>"+
