@@ -92,20 +92,20 @@ var parentController = {
        },
        createArrayTopic:function(datas){
            var dataClear = [];
-           if(data.length > 0){
+           if(datas.length > 0){
                $.each(datas,function(i,object){
                    if(dataClear.length > 0){
                        var exist = 0;
                        $.each(dataClear,function(i,itemArray){
-                           if(object.Materia == itemArray){
+                           if(object.nombre_tema == itemArray){
                                exist++;
                            }
                        });
                        if(exist == 0)
-                           dataClear.push(object.Materia);
+                           dataClear.push(object.nombre_tema);
                    }
                    else{
-                       dataClear.push(object.Materia);
+                       dataClear.push(object.nombre_tema);
                    }
                });
            }
