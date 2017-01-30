@@ -55,5 +55,10 @@ $(function(){
    });
 
 
+    $("#itemsRecommend").on('click','img[src$=video.png],img[src$=pdfs.png]',function(){
+        console.log($(this));
+    });
+
+
 
 });
