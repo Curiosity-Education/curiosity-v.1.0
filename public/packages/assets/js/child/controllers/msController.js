@@ -56,7 +56,7 @@ var msConstroller = {
    					"</a>"+
    				"</div>"+
    				"<div class='card-block text-center'>"+
-   					"<h5 class='card-title'>"+obj.activityName+"</h5>"+
+   					"<h5 class='card-title'>"+obj.topicName+"</h5>"+
    					"<a class='btn ms-btn-info btn-rounded ms-btnAccess' data-name='"+type+"' data-obj='"+JSON.stringify(obj)+"'>Jugar</a>"+
    				"</div>"+
    			"</div>"+
