@@ -9,7 +9,7 @@ $(function(){
         var info = $(this).data('topicLow');
         var arrayTopic = parentController.createArrayTopic(info);
         $.each(arrayTopic,function(i,item){
-            parentController.itemTopic(item.id,item.nombre,info);
+            $("#chp-contentTopics").append(parentController.itemTopic(item.id,item.nombre,info));
         });
 	}); // show HELP MY SON
 
