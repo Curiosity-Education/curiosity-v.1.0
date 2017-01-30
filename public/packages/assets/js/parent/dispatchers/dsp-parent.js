@@ -23,8 +23,8 @@ $(function(){
 
     });
 
-    $(".chp-cardTopic").on('click','.chp-cardTopic',function(){
-        parentController.createItemsRecommend($(this).parent().data('idTopic'),$(this).parent().data('info'));
+    $("#chp-contentTopics").on('click','.chp-cardTopic',function(){
+        parentController.createItemsRecommend($(this).data('idTopic'),$(this).data('info'));
     });
 
 
