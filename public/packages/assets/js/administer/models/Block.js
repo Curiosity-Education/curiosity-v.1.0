@@ -1,17 +1,14 @@
 class Block extends CORM {
-    constructor(name, intelligence){
+    constructor(formData){
         super();
-        this.block = {
-           nombre : name,
-           inteligencia : intelligence
-        }
+        this.block = formData;
         super.setPrefix('/blocks');
     }
     save(method,success){
         super.save(this.block,method,success);
     }
     update(id,method,success){
-        this.block.id = id;
+        this.block.append('id', id);
         super.update(this.block,method,success);
     }
     static delete(id,method,success){
