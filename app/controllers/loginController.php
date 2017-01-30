@@ -36,7 +36,7 @@ class loginController extends BaseController{
                         'avance'    => 0,
                         'fecha'     => $today,
                         'avance_id' => $goal
-         	         ));
+                     ));
                   }
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
                }
@@ -94,6 +94,19 @@ class loginController extends BaseController{
             return "/";
          }else{
             if($membershipPlan->active == 1){
+               $date = Carbon::now();
+               $today = $date->toDateString();
+               $advance = DB::table("avances_metas")
+               ->where("fecha", "=", $today)
+               ->first();
+               if (!$advance){
+                  $goal = DB::table("hijos_metas_diarias")->where("hijo_id", "=", $idSon)->pluck("id");
+                  DB::table('avances_metas')->insert(array(
+                     'avance'    => 0,
+                     'fecha'     => $today,
+                     'avance_id' => $goal
+                  ));
+               }
                return "view-child.init";
             }
             else{
@@ -413,10 +426,6 @@ class loginController extends BaseController{
     }
     return $folio;
   }
-
-   private function makeFirstChildAdvance(){
-
-   }
 
 }
 ?>
