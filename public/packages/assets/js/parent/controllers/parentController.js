@@ -112,6 +112,7 @@ var parentController = {
            return dataClear;
        },
        createItemsRecommend:function(temaID,dataset){
+           $("#itemsRecommend").empty();
            $.each(dataset,function(i,o){
               if(o.temaID == temaID){
                    $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
