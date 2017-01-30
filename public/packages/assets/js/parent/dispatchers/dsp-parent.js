@@ -20,6 +20,10 @@ $(function(){
 
         parentController.createChartActivities($(this).data('id'),$(this).data('nivelId'),$(this).data('infoActivities'));
         $("#hm-btn-HelpSon").data('topicLow',$(this).data('topicLow'));
+        $("#name_low_son").empty();
+        $("#name_low_son").append($(this).data('name'));
+        $("#name_son_selected").empty();
+        $("#name_son_selected").append($(this).data('name'));
 
     });
 
@@ -53,6 +57,11 @@ $(function(){
    $("#"+prefix+"-cancel").click(function(){
       eval(prefix+"Controller").clearInputs();
    });
+
+
+    $("#itemsRecommend").on('click','img[src$=video.png],img[src$=pdfs.png]',function(){
+        console.log($(this));
+    });
 
 
 
