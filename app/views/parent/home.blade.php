@@ -32,6 +32,7 @@
                 <p>
                     Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
                     Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
+                    NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
                     Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
@@ -73,7 +74,7 @@
 					<div class="col-sm-6 col-md-8 chp-panels">
 						<div class="card chp-cards" id="chp-contentMaterial">
 							<div class="card-header chp-backColor white-text">
-						  		<i class="fa fa-cube"></i>&nbsp; Material para Fracciones
+						  		<i class="fa fa-cube"></i>&nbsp; Material para <span id="topic_name_help"></span>
 							</div>
 						<div class="card-block" id="itemsRecommend">
 

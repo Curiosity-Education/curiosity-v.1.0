@@ -113,11 +113,14 @@ var parentController = {
        },
        createItemsRecommend:function(temaID,dataset){
            $("#itemsRecommend").empty();
-           $.each(dataset,function(i,o){
-              if(o.temaID == temaID){
-                   $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
-               }
-           });
+           if(dataset.length > 0){
+               $("#topic_name_help").append(dataset[0].nombre_tema);
+               $.each(dataset,function(i,o){
+                  if(o.temaID == temaID){
+                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
+                   }
+               });
+           }
        },
        itemRecommend:function(nombre,embed){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
@@ -250,6 +253,7 @@ var parentController = {
             }
        },
        autoSelectedUser:function(){
+            console.log($(".hm-carousel"));
              $(".hm-carousel").children('.carousel-item').each(function(i,item){
                 if(i == 0){
                     $(this).trigger('click');
@@ -263,6 +267,7 @@ var parentController = {
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
                     $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                    $("#name_low_son").append(son.nombre_completo);
                 });
                 $(".carousel").carousel();
             }
@@ -312,6 +317,7 @@ var parentController = {
                 }
 
            },'get-sons');
+           console.log();
            parentController.autoSelectedUser();
        },
        getPlan:function(id){
