@@ -62,8 +62,23 @@ $(function(){
    });
 
 
-    $("#itemsRecommend").on('click','img[src$=video.png],img[src$=pdfs.png]',function(){
+    $("#itemsRecommend").on('click','img',function(){
         console.log($(this));
+        $(".gst-tema-content").empty();
+        $(".gst-tema-content").append($(this).data('nombreTema'));
+        switch($(this).data('type')){
+            case 'pdf':
+                $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
+                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/pdfs.png");
+                $("#type_mdl").append("PDF");
+                break;
+            case 'video':
+                $("#gst-iframe-content").attr('src',$(this).data('embed'));
+                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/video.png");
+                $("#type_mdl").append("Videos");
+                break;
+        }
+        $("#gst-modal-pdf-video").modal("show");
     });
 
 
