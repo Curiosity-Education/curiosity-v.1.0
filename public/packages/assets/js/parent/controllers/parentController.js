@@ -67,12 +67,71 @@ var parentController = {
        },
        id : null,
        itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low="+topicLow+" data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
               "</div>"+
            "</a>";
+       },
+       itemTopic:function(idTopic,name_topic){
+           return "<li>"+
+                        "<div class='card hoverable chp-topics chp-cardTopic chp-active'>"+
+                            "<div class='card-block chp-topic-card' data-id-topic='"+idTopic+"'>"+
+                              "<div class='card-left'>"+
+                                "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1'>"+
+                              "</div>"+
+                              "<div class='card-right'>"+
+                                "<div class='chp-topicDesc'>"+
+                                  "<p>"+name_topic+"</p>"+
+                                "</div>"+
+                              "</div>"+
+                            "</div>"+
+                      "</div>"+
+                    "</li>";
+       },
+       createArrayTopic:function(datas){
+           var dataClear = [];
+           if(data.length > 0){
+               $.each(datas,function(i,object){
+                   if(dataClear.length > 0){
+                       var exist = 0;
+                       $.each(dataClear,function(i,itemArray){
+                           if(object.Materia == itemArray){
+                               exist++;
+                           }
+                       });
+                       if(exist == 0)
+                           dataClear.push(object.Materia);
+                   }
+                   else{
+                       dataClear.push(object.Materia);
+                   }
+               });
+           }
+           return dataClear;
+       },
+       itemRecommend:function(nombre,embed){
+           return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
+						  		"<div class='chp-btn-mat'>"+
+									"<center>"+
+										"<p>Click para ver la guía explicativa</p>"+
+										"<a href='#'>"+
+											"<img src='packages/assets/media/images/parents/pdfs.png' alt='' class='chp-pdfImg' data-name='"+nombre+"'>"+
+										"</a>"+
+									"</center>"+
+						  		"</div><br>"+
+							"</div>"+
+							"<div class='col-sm-12 col-md-6 col-xs-12 chp-border chp-border-left'>"+
+								"<div class='text-xs-center'>"+
+									"<center>"+
+										"<p>Click para ver el video explicativo</p>"+
+										"<a href='#'>"+
+											"<img src='packages/assets/media/images/parents/video.png' alt='' class='chp-videoImg' data-embed='"+embed+"'>"+
+										"</a>"+
+									"</center>"+
+								"</div>"+
+							"</div>";
        },
        createChartActivities:function(id,nivelId,dataset){
             if(dataset.length != 0){
@@ -236,6 +295,7 @@ var parentController = {
 
            Parent.any({},Curiosity.methodSend.POST,function(response){
                 parentController.createCarousel(response);
+                console.log(parentController.createArrayTopic(response.temasLow));
                 if(response.sonMakeActivities.length != null){
                     var intelligences = [];
                     $.each(response.sonMakeActivities,function(i,object){
