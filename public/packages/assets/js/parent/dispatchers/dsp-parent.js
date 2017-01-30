@@ -23,6 +23,10 @@ $(function(){
 
     });
 
+    $("#itemsRecommend").on('click','.chp-cardTopic',function(){
+        parentController.createItemsRecommend($(this).data('idTopic'),$(this).data('info'));
+    });
+
 
    $("#"+prefix+"-save").click(function(ev){ eval(prefix+"Controller").save(); });
 
