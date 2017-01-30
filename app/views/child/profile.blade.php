@@ -17,7 +17,7 @@
 		</div>
 
 		<!-- Cards of scores -->
-		<div class="col-md-4 col-sm-4 col-xs-12"><br>
+		<div class="col-md-4 col-sm-4 col-xs-12 animated fadeInUpBig"><br>
 			<div class="row">
 				<div class="z-depth-1 col-md-12 col-sm-12 col-xs-12" id="pf-content-cards">
 					<div class="pf-indicators text-xs-center">
@@ -30,16 +30,16 @@
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up pf-warning">
+							<div class="card-up pf-default" id="pf-bg-experience">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/emoji-warning.png" class="rounded-circle img-responsive">
+							<div class="avatar"><img id="pf-img-CardExperience" src="" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Experiencia: <span class="tag pf-warning pf-tag">10000 pts</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Experiencia: <span class="tag pf-default pf-tag" id="pf-text-CardExperience"></span></h6>
 								<hr>
 							</div>
 
@@ -49,16 +49,16 @@
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up pf-good">
+							<div class="card-up pf-default" id="pf-bg-coins">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/emoji-good.png" class="rounded-circle img-responsive">
+							<div class="avatar"><img id="pf-img-CardCoins" src="" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Curiosity Coins: <span class="tag pf-good pf-tag">1000 cc</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Curiosity Coins: <span class="tag pf-default pf-tag" id="pf-text-CardCoins"></span></h6>
 								<hr>
 							</div>
 
@@ -68,16 +68,16 @@
 						<div class="card testimonial-card pf-card">
 
 							<!--Bacground color-->
-							<div class="card-up pf-perfect">
+							<div class="card-up pf-default-goalDialy">
 							</div>
 
 							<!--Avatar-->
-							<div class="avatar"><img src="packages/assets/media/images/child/objective-excited.png" class="rounded-circle img-responsive">
+							<div class="avatar"><img id="pf-img-CardGoalDialy" src="" class="rounded-circle img-responsive">
 							</div>
 
 							<div class="card-block">
 								<!--Name-->
-								<h6 class="h6-responsive card-title font-weight-bold">Meta Diaria: <span class="tag pf-perfect pf-tag">Emocionado</span></h6>
+								<h6 class="h6-responsive card-title font-weight-bold">Meta Diaria: <span class="tag pf-default-goalDialy pf-tag" id="pf-text-CardGoalDialy"></span></h6>
 								<hr>
 							</div>
 
@@ -89,12 +89,12 @@
 		</div>
 
 	   	<!-- Graph of games of the day -->
-	   	<div class="col-md-8 col-sm-8 col-xs-12"><br>
+	   	<div class="col-md-8 col-sm-8 col-xs-12 animated zoomIn"><br>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="pf-content-graph">
 					<h2 class="h2-responsive text-xs-center">Juegos del Día <small>(meta diaria)</small></h2><hr class="pf-hr">
 					<div class="text-xs-center pf-divGraph">
-						<canvas id="pf-makeGraph" width="100%" height="60%"></canvas>
+						<canvas id="pf-Graph" width="100%" height="60%"></canvas>
 					</div>
 				</div>
 			</div>
@@ -105,9 +105,9 @@
 @stop
 
 @section('js-plus')
-	{{ HTML::script('/packages/libs/chart/Chart.min.js') }}
-	<script src="/packages/assets/js/administer/models/Profile.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/controllers/profileCtrl.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/dispatchers/dsp-profile.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/models/Profile.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/controllers/profileCtrl.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/dispatchers/dsp-profile.js?{{rand();}}" charset="utf-8"></script>
 @stop
 @stop
