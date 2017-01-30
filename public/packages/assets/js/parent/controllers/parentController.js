@@ -112,9 +112,11 @@ var parentController = {
            return dataClear;
        },
        createItemsRecommend:function(temaID,dataset){
-           if(dataset.temaID == temaID){
-               $("#itemsRecommend").append(parentController.itemRecommend(dataset.nPDF,dataset.eVideo));
-           }
+           $.each(dataset,function(i,o){
+              if(o.temaID == temaID){
+                   $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
+               }
+           });
        },
        itemRecommend:function(nombre,embed){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
