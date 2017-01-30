@@ -75,27 +75,8 @@
 							<div class="card-header chp-backColor white-text">
 						  		<i class="fa fa-cube"></i>&nbsp; Material para Fracciones
 							</div>
-						<div class="card-block">
-							<div class="col-sm-12 col-md-6 col-xs-12">
-						  		<div class="chp-btn-mat">
-									<center>
-										<p>Click para ver la guía explicativa</p>
-										<a href="#">
-											<img src="packages/assets/media/images/parents/pdfs.png" alt="" class="chp-pdfImg">
-										</a>
-									</center>
-						  		</div><br>
-							</div>
-							<div class="col-sm-12 col-md-6 col-xs-12 chp-border chp-border-left">
-								<div class="text-xs-center">
-									<center>
-										<p>Click para ver el video explicativo</p>
-										<a href="#">
-											<img src="packages/assets/media/images/parents/video.png" alt="" class="chp-videoImg">
-										</a>
-									</center>
-								</div>
-							</div>
+						<div class="card-block" id="itemsRecommend">
+
 						</div>
 					</div>
 					</div>

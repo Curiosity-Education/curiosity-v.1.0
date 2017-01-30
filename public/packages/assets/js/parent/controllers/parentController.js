@@ -74,9 +74,9 @@ var parentController = {
               "</div>"+
            "</a>";
        },
-       itemTopic:function(idTopic,name_topic){
+       itemTopic:function(idTopic,name_topic,info){
            return "<li>"+
-                        "<div class='card hoverable chp-topics chp-cardTopic chp-active'>"+
+                        "<div class='card hoverable chp-topics chp-cardTopic chp-active' data-info='"+info+"'>"+
                             "<div class='card-block chp-topic-card' data-id-topic='"+idTopic+"'>"+
                               "<div class='card-left'>"+
                                 "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg' class='chp-imgWeak z-depth-1'>"+
@@ -97,19 +97,24 @@ var parentController = {
                    if(dataClear.length > 0){
                        var exist = 0;
                        $.each(dataClear,function(i,itemArray){
-                           if(object.nombre_tema == itemArray){
+                           if(object.nombre_tema == itemArray.nombre){
                                exist++;
                            }
                        });
                        if(exist == 0)
-                           dataClear.push(object.nombre_tema);
+                           dataClear.push({id:object.temaID,nombre:object.nombre_tema});
                    }
                    else{
-                       dataClear.push(object.nombre_tema);
+                       dataClear.push({id:object.temaID,nombre:object.nombre_tema});
                    }
                });
            }
            return dataClear;
+       },
+       createItemsRecommend:function(temaID,dataset){
+           if(dataset.temaID == temaID){
+               $("#itemsRecommend").append(parentController.itemRecommend(dataset.nPDF,dataset.eVideo));
+           }
        },
        itemRecommend:function(nombre,embed){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
@@ -295,7 +300,6 @@ var parentController = {
 
            Parent.any({},Curiosity.methodSend.POST,function(response){
                 parentController.createCarousel(response);
-                console.log(parentController.createArrayTopic(response.temasLow));
                 if(response.sonMakeActivities.length != null){
                     var intelligences = [];
                     $.each(response.sonMakeActivities,function(i,object){
