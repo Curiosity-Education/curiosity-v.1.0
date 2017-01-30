@@ -8,7 +8,8 @@ Mi Perfil
 @stop
 @section('content-parent')
    <div class="container-fluid main" id="p-container-main">
-      <div class="row" id="p-row-main">
+      <div class="row">
+      	<div class="row" id="p-row-main">
          <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
              <!--Form about novedades-->
             <div class="card card-border-standard animated fadeInUpBig p-card-new-parent" data-wow-delay="1s" id="card-news">
@@ -106,11 +107,11 @@ Mi Perfil
                             <select class="mdb-select" id="sexo" name="sexo">
                                 <option value="" disabled>Sexo</option>
                                 @if($sexo == "M" || $sexo== "m")
-                                <option value="M" selected data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
-                                <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
+                                <option value="M" selected data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                                <option value="F" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                                 @elseif($sexo == "F" || $sexo == "m")
-                                <option value="M" selected data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
-                                <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
+                                <option value="M" selected data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                                <option value="F" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                                 @endif
                             </select>
                         </div>
@@ -201,6 +202,7 @@ Mi Perfil
         </div>
       </div>
       <!--//.. end view pdf -->
+      </div>
    </div>
 @stop
 
