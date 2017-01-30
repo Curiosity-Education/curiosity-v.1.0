@@ -77,7 +77,7 @@ var parentController = {
        createChartActivities:function(id,nivelId,data){
             if(data.length != 0){
                 var iSstorage = localStorage.getItem('intelligencesSon');
-                var intelligences = (iSstorage != null) ? null : JSON.parse(iSstorage);
+                var intelligences = (iSstorage == null) ? null : JSON.parse(iSstorage);
                 $.each(intelligences,function(i,intelligence){
                     if(i == 0){
                         $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
@@ -85,7 +85,7 @@ var parentController = {
                     else{
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
-               });
+                });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,chartActivity;
