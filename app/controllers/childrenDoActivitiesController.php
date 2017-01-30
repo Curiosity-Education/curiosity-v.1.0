@@ -42,7 +42,7 @@ class childrenDoActivitiesController extends BaseController{
 				return Response::json(array(
 					'status' 		=>  200,
 					'statusMessage' => 'success',
-					'message'		=> 'Actividad finalizado, Bien echo!!'
+					'message'		=> 'Actividad finalizado, Bien hecho!!'
 		    	));
 			}
 		}else{
