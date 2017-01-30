@@ -152,11 +152,13 @@ var Curiosity = {
            "</div>"+
          "</div>";
          $("body").append(mdl);
-         $("body").find("#mdlpgrss").modal("show");
+            $("body").find("#mdlpgrss").modal("show");
+
       },
       hide : function(){
-         $("body").find("#mdlpgrss").modal("hide");
-         $("body").find(".modal-backdrop").remove();
+            $("body").find("#mdlpgrss").modal("hide");
+
+            $("body").find(".modal-backdrop").remove();
       }
    },
    select:{

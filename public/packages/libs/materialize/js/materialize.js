@@ -794,8 +794,8 @@ if (jQuery) {
     _lastID++;
     return 'materialize-modal-overlay-' + _lastID;
   };
-
-  var methods = {
+ /*Documente funciones del modal*/
+  /*var methods = {
     init : function(options) {
       var defaults = {
         opacity: 0.5,
@@ -958,9 +958,9 @@ if (jQuery) {
     close : function() {
       $(this).trigger('closeModal');
     }
-  };
+  };*/
 
-  $.fn.modal = function(methodOrOptions) {
+  /*$.fn.modal = function(methodOrOptions) {
     if ( methods[methodOrOptions] ) {
       return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
@@ -969,7 +969,7 @@ if (jQuery) {
     } else {
       $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.modal' );
     }
-  };
+  };*/
 })(jQuery);
 ;(function ($) {
 
