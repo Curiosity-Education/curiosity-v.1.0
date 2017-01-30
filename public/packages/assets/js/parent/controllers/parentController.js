@@ -79,7 +79,7 @@ var parentController = {
                 var iSstorage = localStorage.getItem('intelligencesSon');
                 var intelligences = (iSstorage != null) ? null : JSON.parse(iSstorage);
                 $.each(intelligences,function(i,intelligence){
-                    if(intelligence.id == id){
+                    if(intelligence.id == nivelId){
                         if(i == 0){
                             $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                         }
