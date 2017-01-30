@@ -62,6 +62,18 @@
                  <label for="ablk-name" class="msad-mdl-label">Nombre</label>
                  <input type="text" class="form-control ablkInp" id="ablk_name" name="ablk_name">
                </div>
+               <div class='form-group'>
+                  <div class='input-group'>
+                    <span class='input-group-addon' id='ablk-open'>
+                       <span class='fa fa-folder-open'></span>&nbsp;
+                       Examinar logotipo
+                    </span>
+                    <input type='text' class='form-control ablkInp' id='ablk_logoName' name='ablk_logoName' readonly>
+                  </div>
+               </div>
+            </form>
+            <form class='form form-horizontal' id='ablk-formLogo'>
+               <input type='file' name='ablk_logo' id='ablk_logo' class='ablkInp' hidden>
             </form>
          </div>
          <div class="modal-footer">

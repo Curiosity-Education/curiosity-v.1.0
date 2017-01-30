@@ -15,7 +15,7 @@
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
 	   <center><div id="prntHome-contentInfo-arrow"></div></center>
-	   <h5 id="name_son_selected">Nombre del hijo</h5>
+	   <h5 id="name_son_selected">Espere...</h5>
 	   <div class="row">
 	       <div class="col-md-8">
 
@@ -30,8 +30,8 @@
            <div class="col-md-4 col-md-offset-1">
                 <h3>Progreso de tu hijo</h3>
                 <p>
-                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
-                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
+                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma. <br>
+                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo. <br>
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
@@ -116,9 +116,27 @@
 		</div>
 	</div>
 @stop
+    @section('modal-left')
+      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+    @stop
+    @section('modal-header')
+      @section('modal-header-image')
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
+      @stop
+      @section('modal-header-information')
+        <h5 class="gst-tema-content text-left">...</h5>
+      @stop
+      @section('modal-title')
+        <h4 class="text-center gst-title-content">Biblioteca de <span id="type_mdl"></span></h4>
+      @stop
+      @section('modal-list')
+      @stop
+    @stop
+    @stop
+  @stop
 
 @section('js')
-    <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+    <script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
     <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
     <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
