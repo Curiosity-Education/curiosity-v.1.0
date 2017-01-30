@@ -2,7 +2,7 @@ $(function(){
 
 	/* Create graph of Daily goal ----------------------------------- */
 
-	var container = document.getElementById("pf-makeGraph");
+	var container = $('#pg-Graph');
 
 	var chart = new Chart(container,{
 		type : 'doughnut',
