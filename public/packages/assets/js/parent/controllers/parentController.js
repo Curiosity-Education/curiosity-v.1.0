@@ -66,16 +66,27 @@ var parentController = {
             }
        },
        id : null,
-       itemSon:function(id,name,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-id="+id+" data-topic-low="+topicLow+" data-info-activities="+infoActivities+" class='carousel-item hm-carousel-item'>"+
+       itemSon:function(id,name,nivel_id,infoActivities,topicLow){
+           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low="+topicLow+" data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
               "</div>"+
            "</a>";
        },
-       createChartActivities:function(id,data){
-            if(data.length != 0){
+       createChartActivities:function(id,nivelId,dataset){
+            if(dataset.length != 0){
+                var iSstorage = localStorage.getItem('intelligencesSon');
+                var intelligences = (iSstorage == null) ? null : JSON.parse(iSstorage);
+                $("#materias").empty();
+                $.each(intelligences,function(i,intelligence){
+                    if(i == 0){
+                        $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                    }
+                    else{
+                        $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                    }
+                });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,chartActivity;
@@ -84,57 +95,59 @@ var parentController = {
                     labels: [],
                     datasets: []
                 };
-                $.each(data,function(i,activity){
-                    numRand = Math.random()*(Curiosity.colors.length-1);
+                $.each(dataset,function(i,activity){
+                    numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
-                            dataValues.push(activity.promedio);
+                            dataValues.push(activity.Promedio);
+                            if(activity.Promedio < 60){
+                                $("#hm-btn-HelpSon").prop('disabled',false);
+                            }
                         }
                     }
                     materia = activity.Materia;
                 });
             }
-
-            if(data.length == 0){
+            if(dataset.length == 0){
                 $("#dadNotice").show();
-            }else if(data.length < 5){
+            }else if(dataset.length < 5){
                 $("#materias").show();
                 data.datasets.push({
                             label: materia,
                             fill: false,
                             lineTension: 0.1,
-                           backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
+                            backgroundColor: [
                                 'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
                                 'rgba(255, 206, 86, 0.2)',
                                 'rgba(75, 192, 192, 0.2)',
                                 'rgba(153, 102, 255, 0.2)',
                                 'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
+                             ],
+                             borderColor: [
                                 'rgba(54, 162, 235, 1)',
+                                'rgba(255,99,132,1)',
                                 'rgba(255, 206, 86, 1)',
                                 'rgba(75, 192, 192, 1)',
                                 'rgba(153, 102, 255, 1)',
                                 'rgba(255, 159, 64, 1)'
-                            ],
-                            borderCapStyle: 'butt',
-                            borderDash: [],
-                            borderDashOffset: 0.0,
-                            borderJoinStyle: 'miter',
-                            pointBorderColor: "rgba(75,192,192,1)",
-                            pointBackgroundColor: "#fff",
-                            pointBorderWidth: 1,
-                            pointHoverRadius: 5,
-                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                            pointHoverBorderColor: "rgba(220,220,220,1)",
-                            pointHoverBorderWidth: 2,
-                            pointRadius: 1,
-                            pointHitRadius: 10,
-                            data: dataValues,
-                            spanGaps: false,
+                             ],
+                             borderCapStyle: 'butt',
+                             borderDash: [],
+                             borderDashOffset: 0.0,
+                             borderJoinStyle: 'miter',
+                             pointBorderColor: "rgba(75,192,192,1)",
+                             pointBackgroundColor: "#fff",
+                             pointBorderWidth: 1,
+                             pointHoverRadius: 5,
+                             pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                             pointHoverBorderColor: "rgba(220,220,220,1)",
+                             pointHoverBorderWidth: 2,
+                             pointRadius: 1,
+                             pointHitRadius: 10,
+                             data: dataValues,
+                             spanGaps: false,
                 });
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
@@ -182,7 +195,7 @@ var parentController = {
                 $.each(response.sons,function(id,son){
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
-                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
                 });
                 $(".carousel").carousel();
             }
@@ -222,19 +235,16 @@ var parentController = {
        getSons:function(){
 
            Parent.any({},Curiosity.methodSend.POST,function(response){
-               console.log("response");
                 parentController.createCarousel(response);
+                if(response.sonMakeActivities.length != null){
+                    var intelligences = [];
+                    $.each(response.sonMakeActivities,function(i,object){
+                        intelligences.push({id:object.idMateria,nombre:object.Materia});
+                    });
+                    localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
+                }
+
            },'get-sons');
-           Intelligence.all(Curiosity.methodSend.POST,function(response){
-               $.each(response,function(i,intelligence){
-
-                   if(i == 0)
-                        $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-                   else
-                        $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-
-               });
-           });
            parentController.autoSelectedUser();
        },
        getPlan:function(id){
