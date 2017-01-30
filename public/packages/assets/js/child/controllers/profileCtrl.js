@@ -24,27 +24,33 @@ var profileController = {
 
 		missing = m - a;
 
-		var container = $("#pf-Graph");
+		console.log(response['data']);
 
-		var chart = new Chart(container,{
-			type : 'doughnut',
-			 data : {
-			 labels : ["Juegos Terminados", "Faltantes"],
-				 datasets : [{
-					data : [a, missing],
-					backgroundColor : ["#3cb54a", "rgba(255, 255, 255, 1)"],
-					hoverBackgroundColor : ["#007E33", "rgba(195, 228, 199, 1)"],
-					borderColor : ["#3cb54a", "rgba(195, 228, 199, 1)"],
-					borderWidth : [1, 1]
-				 }]
-			 },
-			 animation : {
-					animateScale : true
-			 },
-			 options : {
-					responsive : true
-			 }
-		});
+		if(response['data'].length == 0){
+			$('#pf-text-missing').text('¡ Vamos, te invitamos a comenzar tu meta !');
+		}else{
+			var container = $("#pf-Graph");
+
+			var chart = new Chart(container,{
+				type : 'doughnut',
+				 data : {
+				 labels : ["Juegos Terminados", "Faltantes"],
+					 datasets : [{
+						data : [a, missing],
+						backgroundColor : ["#3cb54a", "rgba(255, 255, 255, 1)"],
+						hoverBackgroundColor : ["#007E33", "rgba(195, 228, 199, 1)"],
+						borderColor : ["#3cb54a", "rgba(195, 228, 199, 1)"],
+						borderWidth : [1, 1]
+					 }]
+				 },
+				 animation : {
+						animateScale : true
+				 },
+				 options : {
+						responsive : true
+				 }
+			});
+		}
 	},
 
 	makeCards : function(response){
