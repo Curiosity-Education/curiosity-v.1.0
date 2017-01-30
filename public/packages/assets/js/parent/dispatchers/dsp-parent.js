@@ -18,9 +18,13 @@ $(function(){
 
     $(".hm-carousel").on('click','.carousel-item',function(){
 
-        parentController.createChartActivities($(this).data('id'),$(this).data('infoActivities'));
-        $("#hm-btn-HelpSon").data($(this).data('topicLow'));
+        parentController.createChartActivities($(this).data('id'),$(this).data('nivelId'),$(this).data('infoActivities'));
+        $("#hm-btn-HelpSon").data('topicLow',$(this).data('topicLow'));
 
+    });
+
+    $("#chp-contentTopics").on('click','.chp-cardTopic',function(){
+        parentController.createItemsRecommend($(this).data('idTopic'),$(this).data('info'));
     });
 
 
