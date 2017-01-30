@@ -124,12 +124,10 @@
         <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
       @stop
       @section('modal-header-information')
-        <h5 class="gst-tema-content text-left">Nombre profe</h5>
-        <p class="gst-name-content text-left">Video nombre</p>
-        <p class="gst-views-content">Escuela nombre</p>
+        <h5 class="gst-tema-content text-left">...</h5>
       @stop
       @section('modal-title')
-        <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
+        <h4 class="text-center gst-title-content">Biblioteca de <span id="type_mdl"></span></h4>
       @stop
       @section('modal-list')
       @stop
