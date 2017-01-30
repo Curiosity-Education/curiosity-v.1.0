@@ -231,12 +231,16 @@ class parentsController extends BaseController{
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
         $sonMakeActivities = DB::select("SELECT
-                hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio
+                hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio, bpdfs.nombre_real as nrPDF, bpdfs.nombre as nPDF,bvid.nombre_real as nrVideo, bvid.nombre as nVideo
                 FROM hijo_realiza_actividades hra
                 INNER JOIN actividades act
                 ON hra.actividad_id = act.id
                 INNER JOIN temas tms
                 ON act.tema_id = tms.id
+                INNER JOIN biblioteca_pdfs bpdfs
+                ON bpdfs.tema_id = tms.tema_id
+                INNER JOIN biblioteca_videos bvid
+                ON bvid.tema_id = tms.tema_id
                 INNER JOIN bloques blqs
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i
@@ -250,6 +254,7 @@ class parentsController extends BaseController{
                 INNER JOIN padres prnt
                 ON prnt.id = hj.padre_id
                 WHERE prnt.id = '$idDad'
+                and Promedio >=60
                 and nvls.id = hj.nivel_id
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre");
         return [
