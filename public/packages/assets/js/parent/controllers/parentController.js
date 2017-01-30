@@ -66,16 +66,28 @@ var parentController = {
             }
        },
        id : null,
-       itemSon:function(id,name,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-id="+id+" data-topic-low="+topicLow+" data-info-activities="+infoActivities+" class='carousel-item hm-carousel-item'>"+
+       itemSon:function(id,name,nivel_id,infoActivities,topicLow){
+           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low="+topicLow+" data-info-activities="+infoActivities+" class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
               "</div>"+
            "</a>";
        },
-       createChartActivities:function(id,data){
+       createChartActivities:function(id,nivelId,data){
             if(data.length != 0){
+                var iSstorage = localStorage.getItem('intelligencesSon');
+                var intelligences = (iSstorage != null) ? null : JSON.parse(iSstorage);
+                $.each(intelligences,function(i,intelligence){
+                    if(intelligence.id == id){
+                        if(i == 0){
+                            $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                        }
+                        else{
+                            $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                        }
+                    }
+               });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,chartActivity;
@@ -182,7 +194,7 @@ var parentController = {
                 $.each(response.sons,function(id,son){
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
-                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
                 });
                 $(".carousel").carousel();
             }
@@ -222,19 +234,16 @@ var parentController = {
        getSons:function(){
 
            Parent.any({},Curiosity.methodSend.POST,function(response){
-               console.log("response");
                 parentController.createCarousel(response);
+                if(response.length != null){
+                    var intelligences = [];
+                    $.each(response,function(i,intelligence){
+                        intelligences.push({id:intelligence.idMateria,nombre:intelligence.Materia});
+                    });
+                    localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
+                }
+
            },'get-sons');
-           Intelligence.all(Curiosity.methodSend.POST,function(response){
-               $.each(response,function(i,intelligence){
-
-                   if(i == 0)
-                        $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-                   else
-                        $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-
-               });
-           });
            parentController.autoSelectedUser();
        },
        getPlan:function(id){

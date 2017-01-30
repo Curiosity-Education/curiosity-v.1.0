@@ -18,7 +18,7 @@ $(function(){
 
     $(".hm-carousel").on('click','.carousel-item',function(){
 
-        parentController.createChartActivities($(this).data('id'),$(this).data('infoActivities'));
+        parentController.createChartActivities($(this).data('id'),$(this).data('nivelId'),$(this).data('infoActivities'));
         $("#hm-btn-HelpSon").data($(this).data('topicLow'));
 
     });
