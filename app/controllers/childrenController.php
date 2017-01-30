@@ -212,5 +212,18 @@ class childrenController extends BaseController{
 			'data'			=> $data
 		));
 	}
+
+	public static function getInfoToConfig(){
+		$user		= Auth::user();
+		$person 	= Person::where("user_id", "=", $user["id"])->first();
+		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+		$data 	= [
+			"metas"	=> goalController::all(),
+			"miMeta"	=> goalController::getGoalSon(),
+			"person"	=> $person,
+			"child"	=> $child
+		];
+		return $data;
+	}
 }
 ?>
