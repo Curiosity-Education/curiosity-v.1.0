@@ -18,75 +18,36 @@ Mi Perfil
                         <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>¡ Quizas te interese!</h3>
                     </div>
                      <ul class="p-list-news">
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
+                      @foreach(DB::table('novedades_papa')
+                                      ->select('*')
+                                      ->where('status','=','1')
+                                      ->limit(8)
+                                      ->orderBy('id','DESC')
+                                      ->get() as $new)
+                          <li class="p-item-new">
+                            <div class="card hoverable card-border-standard p-card-new">
+                              <div class="card-block">
+                                <div class="card-left border-right">
+                                  <div class="p-img-new">
+                                    <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Suceciones Númericas</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 3 minutos</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
-                                </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Resolución de problemas</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 3 minutos</p>
+                                <div class="card-right">
+                                  <div class="p-card-title text-xs-left">
+                                    <h5>{{$new->titulo}}</h5>
+                                  </div>
+                                  <div class="p-card-description text-xs-left">
+                                    <p>{{$new->descripcion}}</p>
+                                  </div>
+                                  <hr>
+                                  <div class="p-footer-card text-right">
+                                    <p>{{$new->created_at}}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
-                                </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Grafica de barras</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 17 minutos</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
+                          </li>
+                        @endforeach
                      </ul>
                 </div>
                 <div class="hidden-sm-up" id="p-content-novelty">
