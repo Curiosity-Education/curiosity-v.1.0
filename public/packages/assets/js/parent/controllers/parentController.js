@@ -67,7 +67,7 @@ var parentController = {
        },
        id : null,
        itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+           return "<a href='javascript:void(0)' data-name="+name+" data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
@@ -113,11 +113,14 @@ var parentController = {
        },
        createItemsRecommend:function(temaID,dataset){
            $("#itemsRecommend").empty();
-           $.each(dataset,function(i,o){
-              if(o.temaID == temaID){
-                   $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
-               }
-           });
+           if(dataset.length > 0){
+               $("#topic_name_help").append(dataset[0].nombre_tema);
+               $.each(dataset,function(i,o){
+                  if(o.temaID == temaID){
+                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
+                   }
+               });
+           }
        },
        itemRecommend:function(nombre,embed){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
@@ -253,7 +256,6 @@ var parentController = {
              $(".hm-carousel").children('.carousel-item').each(function(i,item){
                 if(i == 0){
                     $(this).trigger('click');
-                    console.log($(this));
                 }
              });
        },
@@ -265,6 +267,7 @@ var parentController = {
                     $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
                 });
                 $(".carousel").carousel();
+                parentController.autoSelectedUser();
             }
        },
        createArrayDataSon:function(id,activities){
@@ -312,7 +315,6 @@ var parentController = {
                 }
 
            },'get-sons');
-           parentController.autoSelectedUser();
        },
        getPlan:function(id){
            CORM.any({id:id},Curiosity.methodSend.POST,function(response){
