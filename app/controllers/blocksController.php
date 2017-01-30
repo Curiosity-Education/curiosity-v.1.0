@@ -28,7 +28,9 @@ class blocksController extends BaseController{
 		->where('niveles.active', '=', 1)
 		->where('actividades.estatus', '=', 'eneabled')
 		->distinct()
-		->select('bloques.*')->get();
+		->select('bloques.*')
+		->orderBy('bloques.id', 'asc')
+		->get();
 		return $blocks;
 	}
 
