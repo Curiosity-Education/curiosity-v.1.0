@@ -101,6 +101,9 @@ var parentController = {
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
                             dataValues.push(activity.Promedio);
+                            if(activity.Promedio < 60){
+                                $("#hm-btn-HelpSon").prop('disabled',false);
+                            }
                         }
                     }
                     materia = activity.Materia;
