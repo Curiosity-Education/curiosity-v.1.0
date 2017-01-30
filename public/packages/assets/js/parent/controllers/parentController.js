@@ -303,7 +303,7 @@ var parentController = {
 
        },
        getSons:function(){
-
+           Curiosity.toastLoading.show();
            Parent.any({},Curiosity.methodSend.POST,function(response){
                 parentController.createCarousel(response);
                 if(response.sonMakeActivities.length != null){
@@ -313,6 +313,7 @@ var parentController = {
                     });
                     localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
                 }
+               Curiosity.toastLoading.hide();
 
            },'get-sons');
        },
