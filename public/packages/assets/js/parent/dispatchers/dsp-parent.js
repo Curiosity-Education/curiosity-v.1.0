@@ -62,7 +62,7 @@ $(function(){
    });
 
 
-    $("#itemsRecommend").on('click','img[src$=video.png],img[src$=pdfs.png]',function(){
+    $("#itemsRecommend").on('click','img',function(){
         console.log($(this));
     });
 
