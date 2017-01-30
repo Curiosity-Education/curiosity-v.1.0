@@ -136,128 +136,27 @@
        </div>
      </div>
    </div>
-    <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-body">
-            <div class="row">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <div class="col-md-8 col-sm-12 col-xs-12 gst-col">
-                <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
-              </div>
-              <div class="col-md-4 col-sm-12 col-xs-12 gst-col">
-                <div class="gst-information">
-                 <div class="gst-informataion-header">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
-                    </div>
-                    <div class="col-md-9">
-                      <h5 class="gst-tema-content text-left">Nombre profe</h5>
-                      <p class="gst-name-content text-left">Video nombre</p>
-                      <p class="gst-views-content">Escuela nombre</p>
-                    </div>
-                  </div>
-                 </div>
-                 <hr class="gst-hr-top">
-                 <div class="row">
-                    <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
-                 </div>
-                 <hr class="gst-hr-bottom">
-                 <div class="gst-information-list">
-                  <div class="col-md-12 gst-col">
-                    <!--First review-->
-                    <div class="media hoverable active">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="content ico">
-                        </a>
-                        <h5 class="media-heading">Nathan Casie</h5>
-                        <div class="media-body">
-                            <p class="gst-views-content">Vistos: 3</p>
-                            <p class="gst-name-content-list">pdf nombre</p>
-                        </div>
-                    </div>
-
-                    <!--Second review-->
-                    <div class="media hoverable">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Nathan Casie</h5>
-                            <div class="media-body">
-                                <p class="gst-views-content">Vistos: 3</p>
-                                <p class="gst-name-content-list">pdf nombre</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Second review-->
-                    <div class="media hoverable">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Dave Snow</h5>
-                            <div class="media-body">
-                                <p class="gst-views-content">Vistos: 3</p>
-                                <p class="gst-name-content-list">pdf nombre</p>
-                            </div>
-                        </div>
-                    </div>
-                   <!--Second review-->
-                    <div class="media hoverable">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Dave Snow</h5>
-                            <div class="media-body">
-                                <p class="gst-views-content">Vistos: 3</p>
-                                <p class="gst-name-content-list">pdf nombre</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Second review-->
-                    <div class="media hoverable">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Dave Snow</h5>
-                            <div class="media-body">
-                                <p class="gst-views-content">Vistos: 3</p>
-                                <p class="gst-name-content-list">pdf nombre</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Second review-->
-                    <div class="media hoverable">
-                        <a class="media-left waves-light col-md-4">
-                            <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Dave Snow</h5>
-                            <div class="media-body">
-                                <p class="gst-views-content">Vistos: 3</p>
-                                <p class="gst-name-content-list">pdf nombre</p>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                 </div>
-                 <div class="gst-information-footer">
-                  <p class="text-right">Curiosity-Educación</p>
-                 </div>
-                </div>
-              </div>
-            </div>
-         </div>
-       </div>
-     </div>
-   </div>
+  @section('modal-pdfs-videos')
+    @section('modal-left')
+      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+    @stop
+    @section('modal-header')
+      @section('modal-header-image')
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%"> 
+      @stop
+      @section('modal-header-information')
+        <h5 class="gst-tema-content text-left">Nombre profe</h5>
+        <p class="gst-name-content text-left">Video nombre</p>
+        <p class="gst-views-content">Escuela nombre</p>
+      @stop
+      @section('modal-title')
+        <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
+      @stop
+      @section('modal-list')
+      @stop
+    @stop
+    @stop
+  @stop
 @stop
 
 @section('js-plus')

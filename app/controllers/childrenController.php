@@ -193,6 +193,7 @@ class childrenController extends BaseController{
 	function graphDailyGoal(){
 
 		$id = Auth::user()->Person()->first()->id;
+		$date = date('Y-m-d');
 
 		$data = DB::table('avances_metas')
 			->select('meta','avance')
@@ -201,6 +202,7 @@ class childrenController extends BaseController{
 			->join('hijos','hijos_metas_diarias.hijo_id','=','hijos.id')
 			->join('personas','hijos.persona_id','=','personas.id')
 			->where('personas.id','=',$id)
+			->where('avances_metas.fecha','=',$date)
 			->get();
 
 		return Response::json(array(
