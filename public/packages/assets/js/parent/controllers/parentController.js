@@ -67,7 +67,7 @@ var parentController = {
        },
        id : null,
        itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+           return "<a href='javascript:void(0)' data-name="+name+" data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
@@ -253,11 +253,9 @@ var parentController = {
             }
        },
        autoSelectedUser:function(){
-            console.log($(".hm-carousel"));
              $(".hm-carousel").children('.carousel-item').each(function(i,item){
                 if(i == 0){
                     $(this).trigger('click');
-                    console.log($(this));
                 }
              });
        },
@@ -267,9 +265,9 @@ var parentController = {
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
                     $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
-                    $("#name_low_son").append(son.nombre_completo);
                 });
                 $(".carousel").carousel();
+                parentController.autoSelectedUser();
             }
        },
        createArrayDataSon:function(id,activities){
@@ -317,8 +315,6 @@ var parentController = {
                 }
 
            },'get-sons');
-           console.log();
-           parentController.autoSelectedUser();
        },
        getPlan:function(id){
            CORM.any({id:id},Curiosity.methodSend.POST,function(response){
