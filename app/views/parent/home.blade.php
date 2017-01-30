@@ -48,7 +48,7 @@
 
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="chp-banner">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-heart hidden-xs-down"></i>&nbsp; Ayuda para Mi Hijo &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
+			 <h4 class="h4-responsive white-text"><i class="fa fa-heart hidden-xs-down"></i>&nbsp; ¿Cómo ayudo a mi hijo? &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
 		  </div>
 			 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down hm-close"><i class="fa fa-times"></i></a>
 		</div>
@@ -60,52 +60,11 @@
 						<!--Panel-->
 						<div class="card chp-cards chp-Weak-card">
 							<div class="card-header chp-backColor white-text text-left">
-								<i class="fa fa-eye"></i>&nbsp; Temas débiles de Juan
+								<i class="fa fa-eye"></i>&nbsp; Temas débiles de <b id="name_low_son"></b>
 							</div>
 							<div class="card-block chp-" id="chp-contentTopics">
 							<ul>
-								<li>
-									<div class="card hoverable chp-topics chp-cardTopic chp-active">
-										<div class="card-block chp-topic-card">
-										  <div class="card-left">
-											<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-										  </div>
-										  <div class="card-right">
-											<div class="chp-topicDesc">
-											  <p>Fracciones</p>
-											</div>
-										  </div>
-										</div>
-								  </div>
-								</li>
-								<li>
-								<div class="card hoverable chp-topics chp-cardTopic">
-									<div class="card-block chp-topic-card">
-									  <div class="card-left">
-										<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-									  </div>
-									  <div class="card-right">
-										<div class="chp-topicDesc">
-										  <p>Sumas</p>
-										</div>
-									  </div>
-									</div>
-								 </div>
-								</li>
-								<li>
-									<div class="card hoverable chp-topics chp-cardTopic">
-										<div class="card-block chp-topic-card">
-										  <div class="card-left">
-											<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-										  </div>
-										  <div class="card-right">
-											<div class="chp-topicDesc">
-											  <p>Multiplicaciones</p>
-											</div>
-										  </div>
-										</div>
-									 </div>
-								</li>
+
 							</ul>
 							</div>
 						</div>
