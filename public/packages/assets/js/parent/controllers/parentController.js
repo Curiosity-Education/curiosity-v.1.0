@@ -76,7 +76,7 @@ var parentController = {
        },
        itemTopic:function(idTopic,name_topic,info){
            return "<li>"+
-                        "<div class='card hoverable chp-topics chp-cardTopic chp-active'  data-id-topic='"+idTopic+"' data-info='"+JSON.stringify(info)+"'>"+
+                        "<div class='card hoverable chp-topics chp-cardTopic chp-active'  data-id-topic="+idTopic+" data-info='"+JSON.stringify(info)+"' >"+
                             "<div class='card-block chp-topic-card'>"+
                               "<div class='card-left'>"+
                                 "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg' class='chp-imgWeak z-depth-1'>"+
