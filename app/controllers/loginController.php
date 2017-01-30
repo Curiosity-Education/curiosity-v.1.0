@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class loginController extends BaseController{
 
    public function logIn(){
@@ -24,6 +25,19 @@ class loginController extends BaseController{
                $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
                $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
                if($membershipPlan->active == 1){
+                  $date = Carbon::now();
+                  $today = $date->toDateString();
+                  $advance = DB::table("avances_metas")
+                  ->where("fecha", "=", $today)
+                  ->first();
+                  if (!$advance){
+                     $goal = DB::table("hijos_metas_diarias")->where("hijo_id", "=", $idSon)->pluck("id");
+                     DB::table('avances_metas')->insert(array(
+                        'avance'    => 0,
+                        'fecha'     => $today,
+                        'avance_id' => $goal
+         	         ));
+                  }
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
                }
                else{
@@ -399,6 +413,10 @@ class loginController extends BaseController{
     }
     return $folio;
   }
+
+   private function makeFirstChildAdvance(){
+
+   }
 
 }
 ?>
