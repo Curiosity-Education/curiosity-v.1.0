@@ -77,17 +77,15 @@ var parentController = {
        createChartActivities:function(id,nivelId,data){
             if(data.length != 0){
                 var iSstorage = localStorage.getItem('intelligencesSon');
-                var intelligences = (iSstorage != null) ? null : JSON.parse(iSstorage);
+                var intelligences = (iSstorage == null) ? null : JSON.parse(iSstorage);
                 $.each(intelligences,function(i,intelligence){
-                    if(intelligence.id == nivelId){
-                        if(i == 0){
-                            $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-                        }
-                        else{
-                            $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
-                        }
+                    if(i == 0){
+                        $("#materias").append("<fieldset class='form-group'><input value="+intelligence.id+" name='materia' type='radio'  checked='checked'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
-               });
+                    else{
+                        $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
+                    }
+                });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,chartActivity;
@@ -235,7 +233,7 @@ var parentController = {
 
            Parent.any({},Curiosity.methodSend.POST,function(response){
                 parentController.createCarousel(response);
-                if(response.length != null){
+                if(response.sonMakeActivities.length != null){
                     var intelligences = [];
                     $.each(response.sonMakeActivities,function(i,object){
                         intelligences.push({id:object.idMateria,nombre:object.Materia});
