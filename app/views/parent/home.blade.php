@@ -116,6 +116,26 @@
 		</div>
 	</div>
 @stop
+    @section('modal-left')
+      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+    @stop
+    @section('modal-header')
+      @section('modal-header-image')
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
+      @stop
+      @section('modal-header-information')
+        <h5 class="gst-tema-content text-left">Nombre profe</h5>
+        <p class="gst-name-content text-left">Video nombre</p>
+        <p class="gst-views-content">Escuela nombre</p>
+      @stop
+      @section('modal-title')
+        <h4 class="text-center gst-title-content">Biblioteca de Videos</h4>
+      @stop
+      @section('modal-list')
+      @stop
+    @stop
+    @stop
+  @stop
 
 @section('js')
     <script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
