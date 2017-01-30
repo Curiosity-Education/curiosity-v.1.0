@@ -94,7 +94,7 @@
 				<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="pf-content-graph">
 					<h2 class="h2-responsive text-xs-center">Juegos del Día <small>(meta diaria)</small></h2><hr class="pf-hr">
 					<div class="text-xs-center pf-divGraph">
-						<h4 class="h4-responsive" id="pf-text-missing"></h4>
+						<h5 class="h4-responsive" id="pf-text-missing"></h5>
 						<canvas id="pf-Graph" width="100%" height="60%"></canvas>
 					</div>
 				</div>
