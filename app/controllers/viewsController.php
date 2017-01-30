@@ -19,6 +19,7 @@ class viewsController extends BaseController{
       "child.profile"                   => "child_actions",
       "child.library_videos"            => "child_actions",
       "child.store"                     => "child_actions",
+      "child.configuration_account"     => "child_actions",
       "parent.profile"                  => "parent_actions",
       "parent.pay-suscription"          => "parent_actions",
       "parent.registry_firstchild"      => "parent_actions",
