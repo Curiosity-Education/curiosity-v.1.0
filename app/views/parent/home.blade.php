@@ -15,7 +15,7 @@
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
 	   <center><div id="prntHome-contentInfo-arrow"></div></center>
-	   <h5 id="name_son_selected">Nombre del hijo</h5>
+	   <h5 id="name_son_selected">Espere...</h5>
 	   <div class="row">
 	       <div class="col-md-8">
 
