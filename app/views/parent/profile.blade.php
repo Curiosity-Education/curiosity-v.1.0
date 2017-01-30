@@ -25,7 +25,7 @@ Mi Perfil
                                       ->limit(8)
                                       ->orderBy('id','DESC')
                                       ->get() as $new)
-                          <li class="p-item-new">
+                          <li class="p-item-new" data-pdf="{{$new->pdf}}">
                             <div class="card hoverable card-border-standard p-card-new">
                               <div class="card-block">
                                 <div class="card-left border-right">
@@ -52,15 +52,15 @@ Mi Perfil
                      </ul>
                 </div>
                 <div class="hidden-sm-up" id="p-content-novelty">
-					<div class="list-group">
-					  <a href="#" class="list-group-item active">
-						¡ Quizas te interese !
-					  </a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Gráfica de barras</a>
-					</div>
-                </div>
+        					<div class="list-group">
+        					  <a href="#" class="list-group-item active">
+        						¡ Quizas te interese !
+        					  </a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Gráfica de barras</a>
+        					</div>
+                        </div>
             </div>
             <!--/Form about novedades-->
              <!--Form for refresh perfil-->
@@ -162,7 +162,7 @@ Mi Perfil
                 </div>
 
                 <!--Avatar-->
-                <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="rounded-circle img-responsive">
+                <div class="avatar"><img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" class="rounded-circle img-responsive">
                 </div>
 
                 <div class="card-block">
