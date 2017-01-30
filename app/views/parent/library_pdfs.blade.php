@@ -77,13 +77,10 @@
 
     <!-- Container of the pdfs -->
     <div class="row hidden-xs-down" id="lp-row-contPdf">
-			<input type='hidden' id='current_page' />
-
-			<input type='hidden' id='show_per_page' />  
 
 
     </div><br>
-
+		<div class="perro"></div>
     <!-- Carousel of cards with the pdfs only smartphones -->
     <div id="carrousel-pdfs">
 
