@@ -118,8 +118,8 @@
                       <div class="md-form upch-select">
                           <select class="mdb-select" id="upch-gender" name="gender">
                               <option value="" disabled selected>Sexo</option>
-                              <option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" class="rounded-circle">Masculino</option>
-                              <option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefF.png" class="rounded-circle">Femenino</option>
+                              <option value="m" data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                              <option value="f" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                           </select>
                       </div>
                       <div class="md-form">
