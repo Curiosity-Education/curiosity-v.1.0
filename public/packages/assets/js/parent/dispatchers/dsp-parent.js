@@ -64,6 +64,19 @@ $(function(){
 
     $("#itemsRecommend").on('click','img',function(){
         console.log($(this));
+        switch($(this).data('type')){
+            case 'pdf':
+                $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
+                $("#gst-tema-content").append($(this).data('nombreTema'));
+                $("#type_mdl").append("PDF");
+                break;
+            case 'video':
+                $("#gst-iframe-content").attr('src',$(this).data('embed'));
+                $("#gst-tema-content").append($(this).data('nombreTema'));
+                $("#type_mdl").append("Videos");
+                break;
+        }
+        $("#gst-modal-pdf-video").modal("show");
     });
 
 
