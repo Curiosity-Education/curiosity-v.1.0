@@ -28,7 +28,9 @@ class blocksController extends BaseController{
 		->where('niveles.active', '=', 1)
 		->where('actividades.estatus', '=', 'eneabled')
 		->distinct()
-		->select('bloques.*')->get();
+		->select('bloques.*')
+		->orderBy('bloques.id', 'asc')
+		->get();
 		return $blocks;
 	}
 
@@ -36,7 +38,8 @@ class blocksController extends BaseController{
 		$data = Input::all();
 		$rules = array(
 			'nombre' => 'required',
-			'inteligencia' => 'required'
+			'inteligencia' => 'required',
+			'ablk_logo' => 'required'
 		);
 		$msjs = Curiosity::getValidationMessages();
 		$validation = Validator::make($data, $rules, $msjs);
@@ -48,9 +51,14 @@ class blocksController extends BaseController{
 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
 			}
 			else{
+				$file = $data['ablk_logo'];
+				$destinationPath = public_path()."/packages/assets/media/images/system/blocks/";
+				$phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+				$file->move($destinationPath, $phName);
 				$block = new Block($data);
 				$block->active = 1;
 				$block->inteligencia_id = $data['inteligencia'];
+				$block->imagen = $phName;
 				$block->save();
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $block));
 			}
@@ -59,6 +67,7 @@ class blocksController extends BaseController{
 
 	function update(){
 		$data = Input::all();
+		$file = $data['ablk_logo'];
 		$rules = array(
 			'nombre' => 'required',
 			'inteligencia' => 'required'
@@ -77,8 +86,16 @@ class blocksController extends BaseController{
 				}
 			}
 			if ($namePass){
-				Block::where('id', '=', $data['id'])->update(array( 'nombre' => $data['nombre'] ));
 				$block = Block::where('id', '=', $data['id'])->first();
+				if ($file != null){
+					$destinationPath = public_path()."/packages/assets/media/images/system/blocks/";
+					$phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+					$file->move($destinationPath, $phName);
+					unlink($destinationPath.$block->imagen);
+					$block->imagen = $phName;
+				}
+				$block->nombre = $data['nombre'];
+				$block->save();
 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $block));
 			}
 			else{

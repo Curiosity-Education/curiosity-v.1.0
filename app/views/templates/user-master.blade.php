@@ -70,6 +70,67 @@
                </div>
                <div class="col-lg-9 text-justify">
                   @yield('content')
+
+                  <!-- Visualisator pdf and video -->
+                  @yield('modal-pdfs-videos')   
+                     <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <div class="modal-body">
+                              <div class="row">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hiddenW="true">&times;</span>
+                                </button>
+                                <div class="col-md-8 col-sm-12 col-xs-12 gst-col">
+                                  @yield('modal-left')
+                                </div>
+                                <div class="col-md-4 col-sm-12 col-xs-12 gst-col">
+                                  <div class="gst-information">
+                                   <div class="gst-informataion-header">
+                                    <div class="row">
+                                      @yield('modal-header')
+                                      <div class="col-md-3">
+                                        @yield('modal-header-image')
+                                      </div>
+                                      <div class="col-md-9">
+                                        @yield('modal-header-information')
+                                      </div>
+                                    </div>
+                                   </div>
+                                   <hr class="gst-hr-top">
+                                   <div class="row">
+                                      @yield('modal-title')
+                                   </div>
+                                   <hr class="gst-hr-bottom">
+                                   <div class="gst-information-list">
+                                    <div class="col-md-12 gst-col">
+                                      @yield('modal-list')
+                                      <!--Second review-->
+                                     <!-- Example of element list 
+                                      <div class="media hoverable">
+                                          <a class="media-left waves-light col-md-4">
+                                              <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">
+                                          </a>
+                                          <div class="media-body">
+                                              <h5 class="media-heading">Nathan Casie</h5>
+                                              <div class="media-body">
+                                                  <p class="gst-views-content">Vistos: 3</p>
+                                                  <p class="gst-name-content-list">pdf nombre</p>
+                                              </div>
+                                          </div>
+                                      </div>-->
+                                    </div>
+                                   </div>
+                                   <div class="gst-information-footer">
+                                    <p class="text-right">Curiosity-Educación</p>
+                                   </div>
+                                  </div>
+                                </div>
+                              </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
                </div>
             </div>
          </div>

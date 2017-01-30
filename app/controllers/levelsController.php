@@ -20,7 +20,9 @@ class levelsController extends BaseController{
 		->where('niveles.active', '=', 1)
 		->where('actividades.estatus', '=', 'eneabled')
 		->distinct()
-		->select('niveles.*')->get();
+		->select('niveles.*')
+		->orderBy('niveles.id', 'asc')
+		->get();
 		return $levels;
 	}
 

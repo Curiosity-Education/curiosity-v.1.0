@@ -45,7 +45,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4 col-md-3">
+			<div class="col-sm-4 col-md-3 offset-md-1">
 				    <!--Card-->
 					<div class="card card-cascade narrower reg-rounded animated fadeInLeft">
 
@@ -78,7 +78,7 @@
 					</div>
 					<!--/.Card-->
 			</div>
-			<div class="col-sm-8 col-md-9" id="reg-registry">
+			<div class="col-sm-8 col-md-7" id="reg-registry">
 
 				<!--Form with header-->
 				<div class="card reg-rounded">
@@ -137,10 +137,12 @@
 											<hr>
 											<div class="row">
 												<div class="col-md-6">
-													<fieldset class="form-group" id="reg-field">
-														<input type="checkbox" id="accept_conditions" name="accept_conditions">
-														<label for="accept_conditions">Acepto los <a href="/terminos">Términos y Condiciones</a></label>
-													</fieldset>
+
+														<fieldset class="form-group float-xs-right" id="reg-field">
+															<input type="checkbox" id="accept_conditions" name="accept_conditions" class="float-xs-right">
+															<label for="accept_conditions" class="">Acepto los <a href="/terminos">Términos y Condiciones</a></label>
+														</fieldset>
+
 												</div>
 												<div>
 													<button type="button" class="btn reg-btnRegister reg-rounded" id="parent-save">Registrarme</button>

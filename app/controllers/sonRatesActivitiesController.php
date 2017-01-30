@@ -22,7 +22,7 @@ class sonRatesActivitiesController extends BaseController{
         $activityId = Session::get('idActivity');
         //comparate if this child has qualified this activity
         $sonRateActivity = SonRatesActivity::where("hijo_id","=","$idHijo")
-                          ->where("actividad_id","=","$activityId")
+                          ->where("actividad_id","=",$activityId)
                           ->first();
         if($sonRateActivity){
           $sonRateActivity->calificacion = $data["qualification"];

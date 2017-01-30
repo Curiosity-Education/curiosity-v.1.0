@@ -50,7 +50,11 @@ var newsCtrl = {
 						} // c-data
 					} // c-remote
 				}, // c-title
-				nw_pdf:{required:true}
+				nw_pdf:{required:true},
+				description_new:{
+					required: true,
+					maxlength: 250
+				}
 			}, // c-rules
 			messages:{
 				title_new:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
@@ -73,7 +77,11 @@ var newsCtrl = {
 			rules:{
 				title_newEdit:{
 					required:true
-				} // c-title
+				}, // c-title
+				description_newEdit:{
+					required: true,
+					maxlength: 250
+				}
 			}, // c-rules
 			messages:{
 				title_newEdit:{required:'Ingresa un titulo'}

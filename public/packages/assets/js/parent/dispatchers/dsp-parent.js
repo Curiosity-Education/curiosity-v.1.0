@@ -18,9 +18,20 @@ $(function(){
 
     $(".hm-carousel").on('click','.carousel-item',function(){
 
-        parentController.createChartActivities($(this).data('id'),$(this).data('infoActivities'));
-        $("#hm-btn-HelpSon").data($(this).data('topicLow'));
+        $("#materias").data('id',$(this).data('id'));
+        $("#materias").data('nivelId',$(this).data('nivelId'));
+        $("#materias").data('infoActivities',$(this).data('infoActivities'));
+        parentController.createChartActivities($(this).data('id'),$(this).data('nivelId'),$(this).data('infoActivities'));
+        $("#hm-btn-HelpSon").data('topicLow',$(this).data('topicLow'));
+        $("#name_low_son").empty();
+        $("#name_low_son").append($(this).data('name'));
+        $("#name_son_selected").empty();
+        $("#name_son_selected").append($(this).data('name'));
 
+    });
+
+    $("#chp-contentTopics").on('click','.chp-cardTopic',function(){
+        parentController.createItemsRecommend($(this).data('idTopic'),$(this).data('info'));
     });
 
 
@@ -49,6 +60,26 @@ $(function(){
    $("#"+prefix+"-cancel").click(function(){
       eval(prefix+"Controller").clearInputs();
    });
+
+
+    $("#itemsRecommend").on('click','img',function(){
+        console.log($(this));
+        $(".gst-tema-content").empty();
+        $(".gst-tema-content").append($(this).data('nombreTema'));
+        switch($(this).data('type')){
+            case 'pdf':
+                $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
+                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/pdfs.png");
+                $("#type_mdl").append("PDF");
+                break;
+            case 'video':
+                $("#gst-iframe-content").attr('src',$(this).data('embed'));
+                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/video.png");
+                $("#type_mdl").append("Videos");
+                break;
+        }
+        $("#gst-modal-pdf-video").modal("show");
+    });
 
 
 

@@ -35,14 +35,14 @@ class childrenDoActivitiesController extends BaseController{
 				$childDoActivity->aciertos     = $data["hits"];
 				$childDoActivity->incorrectos  = $data["mistakes"];
 				$childDoActivity->promedio     = $data["average"];
-				$childDoActivity->hijo_id      = $activityId;
-				$childDoActivity->actividad_id = $idHijo;
+				$childDoActivity->hijo_id      = $idHijo;
+				$childDoActivity->actividad_id = $activityId;
 				$childDoActivity->save();
 				//this format message is for user
 				return Response::json(array(
 					'status' 		=>  200,
 					'statusMessage' => 'success',
-					'message'		=> 'Actividad finalizado, Bien echo!!'
+					'message'		=> 'Actividad finalizado, Bien hecho!!'
 		    	));
 			}
 		}else{

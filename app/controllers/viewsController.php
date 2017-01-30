@@ -19,6 +19,7 @@ class viewsController extends BaseController{
       "child.profile"                   => "child_actions",
       "child.library_videos"            => "child_actions",
       "child.store"                     => "child_actions",
+      "child.configuration_account"     => "child_actions",
       "parent.profile"                  => "parent_actions",
       "parent.pay-suscription"          => "parent_actions",
       "parent.registry_firstchild"      => "parent_actions",
@@ -28,14 +29,18 @@ class viewsController extends BaseController{
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
-      if($controller != '' || $method != ''){
-         $callback = $controller."Controller@".$method;
-         $data = ExternalCall::execute($callback);
+      $permission = $this->getPermissionView($viewName);
+      if ($permission != null){
+         if($controller != '' || $method != ''){
+            $callback = $controller."Controller@".$method;
+            $data = ExternalCall::execute($callback);
+         }
+         else{
+            $data = [];
+         }
+         return View::make($viewName,$data);
       }
-      else{
-         $data = [];
-      }
-      return View::make($viewName,$data);
+      return View::make('errors.404');
    }
    public function getViewWithOutData($viewName){
       $permission = $this->getPermissionView($viewName);

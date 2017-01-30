@@ -15,7 +15,7 @@
 
 	<div id="prntHome-contentInfo" class="z-depth-1 animated fadeInUp">
 	   <center><div id="prntHome-contentInfo-arrow"></div></center>
-	   <h5>Nombre del hijo</h5>
+	   <h5 id="name_son_selected">Espere...</h5>
 	   <div class="row">
 	       <div class="col-md-8">
 
@@ -30,8 +30,9 @@
            <div class="col-md-4 col-md-offset-1">
                 <h3>Progreso de tu hijo</h3>
                 <p>
-                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma.
-                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo.
+                    Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma. <br>
+                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo. <br>
+                    NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
                     Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
@@ -48,7 +49,7 @@
 
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="chp-banner">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-heart hidden-xs-down"></i>&nbsp; Ayuda para Mi Hijo &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
+			 <h4 class="h4-responsive white-text"><i class="fa fa-heart hidden-xs-down"></i>&nbsp; ¿Cómo ayudo a mi hijo? &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up lp-close"></i></h4>
 		  </div>
 			 <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down hm-close"><i class="fa fa-times"></i></a>
 		</div>
@@ -60,52 +61,11 @@
 						<!--Panel-->
 						<div class="card chp-cards chp-Weak-card">
 							<div class="card-header chp-backColor white-text text-left">
-								<i class="fa fa-eye"></i>&nbsp; Temas débiles de Juan
+								<i class="fa fa-eye"></i>&nbsp; Temas débiles de <b id="name_low_son"></b>
 							</div>
 							<div class="card-block chp-" id="chp-contentTopics">
 							<ul>
-								<li>
-									<div class="card hoverable chp-topics chp-cardTopic chp-active">
-										<div class="card-block chp-topic-card">
-										  <div class="card-left">
-											<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-										  </div>
-										  <div class="card-right">
-											<div class="chp-topicDesc">
-											  <p>Fracciones</p>
-											</div>
-										  </div>
-										</div>
-								  </div>
-								</li>
-								<li>
-								<div class="card hoverable chp-topics chp-cardTopic">
-									<div class="card-block chp-topic-card">
-									  <div class="card-left">
-										<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-									  </div>
-									  <div class="card-right">
-										<div class="chp-topicDesc">
-										  <p>Sumas</p>
-										</div>
-									  </div>
-									</div>
-								 </div>
-								</li>
-								<li>
-									<div class="card hoverable chp-topics chp-cardTopic">
-										<div class="card-block chp-topic-card">
-										  <div class="card-left">
-											<img src="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="chp-imgWeak z-depth-1">
-										  </div>
-										  <div class="card-right">
-											<div class="chp-topicDesc">
-											  <p>Multiplicaciones</p>
-											</div>
-										  </div>
-										</div>
-									 </div>
-								</li>
+
 							</ul>
 							</div>
 						</div>
@@ -114,29 +74,10 @@
 					<div class="col-sm-6 col-md-8 chp-panels">
 						<div class="card chp-cards" id="chp-contentMaterial">
 							<div class="card-header chp-backColor white-text">
-						  		<i class="fa fa-cube"></i>&nbsp; Material para Fracciones
+						  		<i class="fa fa-cube"></i>&nbsp; Material para <span id="topic_name_help"></span>
 							</div>
-						<div class="card-block">
-							<div class="col-sm-12 col-md-6 col-xs-12">
-						  		<div class="chp-btn-mat">
-									<center>
-										<p>Click para ver la guía explicativa</p>
-										<a href="#">
-											<img src="packages/assets/media/images/parents/pdfs.png" alt="" class="chp-pdfImg">
-										</a>
-									</center>
-						  		</div><br>
-							</div>
-							<div class="col-sm-12 col-md-6 col-xs-12 chp-border chp-border-left">
-								<div class="text-xs-center">
-									<center>
-										<p>Click para ver el video explicativo</p>
-										<a href="#">
-											<img src="packages/assets/media/images/parents/video.png" alt="" class="chp-videoImg">
-										</a>
-									</center>
-								</div>
-							</div>
+						<div class="card-block" id="itemsRecommend">
+
 						</div>
 					</div>
 					</div>
@@ -175,9 +116,27 @@
 		</div>
 	</div>
 @stop
+    @section('modal-left')
+      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+    @stop
+    @section('modal-header')
+      @section('modal-header-image')
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
+      @stop
+      @section('modal-header-information')
+        <h5 class="gst-tema-content text-left">...</h5>
+      @stop
+      @section('modal-title')
+        <h4 class="text-center gst-title-content">Biblioteca de <span id="type_mdl"></span></h4>
+      @stop
+      @section('modal-list')
+      @stop
+    @stop
+    @stop
+  @stop
 
 @section('js')
-    <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+    <script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
     <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
     <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>

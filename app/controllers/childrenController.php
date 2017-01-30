@@ -167,5 +167,50 @@ class childrenController extends BaseController{
             as t_sum_juegos";
             return DB::select($query);
     }
+
+	function cardsScore(){
+
+		$id = Auth::user()->Person()->first()->id;
+
+		$data = DB::table('hijo_experiencia')
+			->select('cantidad_exp', 'coins', 'metas_diarias.nombre', 'emoji')
+			->join('hijos_metas_diarias','hijo_experiencia.hijo_id','=','hijos_metas_diarias.hijo_id')
+			->join('metas_diarias','hijos_metas_diarias.meta_diaria_id','=','metas_diarias.id')
+			->join('hijos','hijo_experiencia.hijo_id','=','hijos.id')
+			->join('personas','hijos.persona_id','=','personas.id')
+			->where('personas.id','=',$id)
+			->get();
+
+
+		return Response::json(array(
+			'status' 	    => 200,
+			'statusMessage' => 'success',
+			'message'		=> 'puntajes obtenidos',
+			'data'			=> $data
+		));
+	}
+
+	function graphDailyGoal(){
+
+		$id = Auth::user()->Person()->first()->id;
+		$date = date('Y-m-d');
+
+		$data = DB::table('avances_metas')
+			->select('meta','avance')
+			->join('hijos_metas_diarias','avances_metas.avance_id','=','hijos_metas_diarias.id')
+			->join('metas_diarias','hijos_metas_diarias.meta_diaria_id','=','metas_diarias.id')
+			->join('hijos','hijos_metas_diarias.hijo_id','=','hijos.id')
+			->join('personas','hijos.persona_id','=','personas.id')
+			->where('personas.id','=',$id)
+			->where('avances_metas.fecha','=',$date)
+			->get();
+
+		return Response::json(array(
+			'status' 	    => 200,
+			'statusMessage' => 'success',
+			'message'		=> 'información obtenida',
+			'data'			=> $data
+		));
+	}
 }
 ?>
