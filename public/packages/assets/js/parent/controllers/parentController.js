@@ -117,18 +117,18 @@ var parentController = {
                $("#topic_name_help").append(dataset[0].nombre_tema);
                $.each(dataset,function(i,o){
                   if(o.temaID == temaID){
-                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.eVideo));
+                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.nrPDF,o.eVideo,o.nombre_tema));
                    }
                });
            }
        },
-       itemRecommend:function(nombre,embed){
+       itemRecommend:function(nombre,nombre_real,embed,nombre_tema){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
 						  		"<div class='chp-btn-mat'>"+
 									"<center>"+
 										"<p>Click para ver la guía explicativa</p>"+
 										"<a href='#'>"+
-											"<img src='packages/assets/media/images/parents/pdfs.png' alt='' class='chp-pdfImg' data-name='"+nombre+"'>"+
+											"<img src='packages/assets/media/images/parents/pdfs.png' alt='' class='chp-pdfImg' data-type='pdf' data-name='"+nombre+"' data-nombre-real="+nombre_real+" data-nombre-tema="+nombre_tema+">"+
 										"</a>"+
 									"</center>"+
 						  		"</div><br>"+
@@ -138,7 +138,7 @@ var parentController = {
 									"<center>"+
 										"<p>Click para ver el video explicativo</p>"+
 										"<a href='#'>"+
-											"<img src='packages/assets/media/images/parents/video.png' alt='' class='chp-videoImg' data-embed='"+embed+"'>"+
+											"<img src='packages/assets/media/images/parents/video.png' alt='' class='chp-videoImg' data-type='video' data-embed='"+embed+"' data-nombre-tema="+nombre_tema+">"+
 										"</a>"+
 									"</center>"+
 								"</div>"+
@@ -303,7 +303,7 @@ var parentController = {
 
        },
        getSons:function(){
-
+           Curiosity.toastLoading.show();
            Parent.any({},Curiosity.methodSend.POST,function(response){
                 parentController.createCarousel(response);
                 if(response.sonMakeActivities.length != null){
@@ -313,6 +313,7 @@ var parentController = {
                     });
                     localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
                 }
+               Curiosity.toastLoading.hide();
 
            },'get-sons');
        },
