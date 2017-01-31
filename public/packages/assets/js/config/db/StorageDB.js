@@ -34,10 +34,6 @@ var StorageDB = {
          return object;
       },
 
-   },
-
-   clearAll : function(){
-      localStorage.clear();
    }
 
 }

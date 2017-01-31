@@ -154,8 +154,10 @@ $(function(){
 
       for (var i = 0; i < contador2; i++) {
         $(
-          "<li class='page-item active'><a class='page-link' id='l" + (i + 1) + "' href='#lp-container-pdf" + (i+1) + "'>" + (i + 1) + "</a></li>"
+          "<li class='page-item '><a class='page-link' id='l" + (i + 1) + "' href='#lp-container-pdf" + (i+1) + "'>" + (i + 1) + "</a></li>"
         ).insertBefore( ".before" );
+        // if (i == 0)
+        //   $('.page-item:second').addClass('active');
        }
 
        $("#carrousel-pdfs").append($(
@@ -261,5 +263,10 @@ $(function(){
 	}); // close PDF with "esc"
 
 	/* ------------------------------------------------------------- */
+
+  $("body").on('click','.page-item',function(){
+    $('.page-item').removeClass('active');
+    $(this),addClass('active');
+  });
 
 });
