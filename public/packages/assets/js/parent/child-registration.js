@@ -1,15 +1,6 @@
 $(function(){
 	var $formChild = $(".upch-frm-child");
-    //Initializing carousel´s children
-    $(".carousel").carousel();
-    /*
-    |--------------------------------------------------------------------------
-    | managent of steps for registrate the children
-    |--------------------------------------------------------------------------
-    | in this section of code, we manage the steps for register the children
-    | show and hide steps
-    |
-    */
+  
 
 
     $(".btn-upload-child").click(function(ev){

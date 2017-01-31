@@ -1,6 +1,6 @@
 <?php
 class parentsController extends BaseController{
-
+ 
 
   public function remoteEmail(){
     if(padre::where("email","=",Input::get("email"))->first())
