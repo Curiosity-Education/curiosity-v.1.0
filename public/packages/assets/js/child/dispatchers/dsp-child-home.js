@@ -14,23 +14,24 @@ $(function(){
 	});
 
 	$(".btn-show-information").click(function(event){//click in card
+		console.log(StorageDB.table.getData("ac_ranks"));
 		var type = this.getAttribute("data-type");
 		switch(type){
 			case "ranks":
 				// object.fillContetnFromDataRanks(ac_ranks);
-				object.fillContetnFromDataRanks(StorageDB.table.getData(ac_ranks));
+				object.fillContetnFromDataRanks(StorageDB.table.getData("ac_ranks"));
 			break;
 			case "recents":
 				// object.fillContetnFromData(ac_recents);
-				object.fillContetnFromData(StorageDB.table.getData(ac_recents));
+				object.fillContetnFromData(StorageDB.table.getData("ac_recents"));
 			break;
 			case "recomended":
 				// object.fillContetnFromData(ac_recomended);
-				object.fillContetnFromData(StorageDB.table.getData(ac_recomended));
+				object.fillContetnFromData(StorageDB.table.getData("ac_recomended"));
 			break;
 			case "populars":
 				// object.fillContetnFromData(ac_populars);
-				object.fillContetnFromData(StorageDB.table.getData(ac_populars));
+				object.fillContetnFromData(StorageDB.table.getData("ac_populars"));
 			break;
 		}
 	});
@@ -47,6 +48,7 @@ $(function(){
 	object  = {//object for set function used in this view
 		fillContetnFromData: function(data){//function for fill activities container, of data
 			$("#in-content-activity").empty();
+			console.log(data);
 			var conetentHTML;
 			conetentHTML = "<div class='row'>";
 			for(var i=0;i<data.length;i++){
