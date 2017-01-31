@@ -1,6 +1,6 @@
 <?php
 class parentsController extends BaseController{
-
+ 
 
   public function remoteEmail(){
     if(padre::where("email","=",Input::get("email"))->first())
@@ -212,7 +212,9 @@ class parentsController extends BaseController{
                 ,tms.id as temaID,tms.nombre as nombre_tema,
                 (sum(hra.promedio)/count(hra.promedio)) as Promedio,
                 bpdfs.nombre_real as nrPDF, bpdfs.nombre as nPDF,
-                bvid.embed as eVideo, bvid.poster pVid
+                bvid.embed as eVideo, bvid.poster pVid,
+                concat(pa.nombre,' ',pa.apellidos) as ncpVid,
+                pa.foto as fpVid
                 FROM hijo_realiza_actividades hra
                 INNER JOIN actividades act
                 ON hra.actividad_id = act.id
@@ -222,6 +224,8 @@ class parentsController extends BaseController{
                 ON bpdfs.tema_id = tms.id
                 INNER JOIN biblioteca_videos bvid
                 ON bvid.tema_id = tms.id
+                INNER JOIN profesores_apoyo pa
+                ON bvid.profesor_apoyo_id = pa.id
                 INNER JOIN bloques blqs
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i

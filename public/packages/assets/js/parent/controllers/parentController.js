@@ -117,12 +117,12 @@ var parentController = {
                $("#topic_name_help").append(dataset[0].nombre_tema);
                $.each(dataset,function(i,o){
                   if(o.temaID == temaID){
-                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.nrPDF,o.eVideo,o.nombre_tema));
+                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.nrPDF,o.eVideo,o.nombre_tema,{nombre:o.ncpVid,foto:o.fpVid}));
                    }
                });
            }
        },
-       itemRecommend:function(nombre,nombre_real,embed,nombre_tema){
+       itemRecommend:function(nombre,nombre_real,embed,nombre_tema,infoProf){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
 						  		"<div class='chp-btn-mat'>"+
 									"<center>"+
@@ -138,7 +138,7 @@ var parentController = {
 									"<center>"+
 										"<p>Click para ver el video explicativo</p>"+
 										"<a href='#'>"+
-											"<img src='packages/assets/media/images/parents/video.png' alt='' class='chp-videoImg' data-type='video' data-embed='"+embed+"' data-nombre-tema="+nombre_tema+">"+
+											"<img src='packages/assets/media/images/parents/video.png' alt='' class='chp-videoImg' data-info-prof='"+JSON.stringify(infoProf)+"' data-type='video' data-embed='"+embed+"' data-nombre-tema="+nombre_tema+">"+
 										"</a>"+
 									"</center>"+
 								"</div>"+

@@ -65,16 +65,22 @@ $(function(){
     $("#itemsRecommend").on('click','img',function(){
         console.log($(this));
         $(".gst-tema-content").empty();
+         $("#type_mdl").empty();
         $(".gst-tema-content").append($(this).data('nombreTema'));
         switch($(this).data('type')){
             case 'pdf':
+                $(".gst-prof-content").hide();
                 $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
                 $(".gst-img-content").attr('src',"packages/assets/media/images/parents/pdfs.png");
                 $("#type_mdl").append("PDF");
                 break;
             case 'video':
+                var infoProf = $(this).data('infoProf');
                 $("#gst-iframe-content").attr('src',$(this).data('embed'));
-                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/video.png");
+                $(".gst-img-content").attr('src',"/packages/assets/media/images/teachersAsc/"+infoProf.foto);
+                $(".gst-prof-content").empty();
+                $(".gst-prof-content").append(infoProf.nombre);
+                $(".gst-prof-content").show();
                 $("#type_mdl").append("Videos");
                 break;
         }
