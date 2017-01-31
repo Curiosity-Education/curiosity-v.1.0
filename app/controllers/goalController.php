@@ -1,7 +1,7 @@
 <?php
 
 class goalController extends BaseController{
-    public function all(){
+    public static function all(){
         return DB::table('metas_diarias')->get();
     }
     /*
@@ -11,7 +11,7 @@ class goalController extends BaseController{
     *   estado de PENDIENTES en cuanto a la actualización
     *
     */
-    public function getGoalSon(){
+    public static function getGoalSon(){
         $idSon = Auth::User()->Person()->first()->Son()->pluck('id');
         $myGoal = DB::table('metas_diarias')
         ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
