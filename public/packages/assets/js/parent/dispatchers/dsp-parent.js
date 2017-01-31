@@ -65,6 +65,7 @@ $(function(){
     $("#itemsRecommend").on('click','img',function(){
         console.log($(this));
         $(".gst-tema-content").empty();
+         $("#type_mdl").empty();
         $(".gst-tema-content").append($(this).data('nombreTema'));
         switch($(this).data('type')){
             case 'pdf':
