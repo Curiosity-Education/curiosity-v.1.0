@@ -15,7 +15,6 @@ class dadNewsController extends BaseController{
 
 	function save(){
 		$data = Input::all();
-
 		$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 		$quantity = 5;
 		$nameRandom = "";
@@ -43,22 +42,23 @@ class dadNewsController extends BaseController{
 		$validation = Validator::make($data,$rules,$messages);
 
 		if($validation -> fails()){
-			return Response::json(array("status" => "CU-104",
-										'statusMessage' => "Validation Error",
-										"data" => $validation -> messages()));
+			return Response::json(array("status"          => "CU-104",
+										'statusMessage'   => "Validation Error",
+										"data"            => $validation -> messages()));
 		}else{
 			$new = new ParentNew($data);
-			$new -> titulo = $data['title_new'];
-			$new -> pdf = $nameRandom.$data['nw_pdf'] -> getClientOriginalExtension();
-			$new -> status = (1);
+			$new -> titulo 			  = $data['title_new'];
+			$new -> pdf    			  = $nameRandom.$data['nw_pdf'] -> getClientOriginalExtension();
+			$new -> status 		      = (1);
 			$new -> administrativo_id = $id_admin;
+			$new -> descripcion       = $data['description_new'];
 			$new -> save();
 
 			$data['nw_pdf']->move(public_path()."/packages/assets/pdf/", $nameRandom.$data['nw_pdf'] -> getClientOriginalExtension());
 
-			return Response::json(array("status" => 200,
+			return Response::json(array("status"        => 200,
 									   	'statusMessage' => "success",
-									   	"message" => 'Novedad Agregada'));
+									   	"message"       => 'Novedad Agregada'));
 		}
 
 	}
@@ -85,7 +85,8 @@ class dadNewsController extends BaseController{
 										"data" => $validation -> messages()));
 		}else{
 			$new = ParentNew::find($data['id']);
-			$new -> titulo = $data['title_newEdit'];
+			$new -> titulo      = $data['title_newEdit'];
+			$new -> descripcion = $data['description_newEdit'];
 				if(Input::hasFile('nw_pdfEdit')){
 
 					$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";

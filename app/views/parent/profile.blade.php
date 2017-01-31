@@ -8,7 +8,8 @@ Mi Perfil
 @stop
 @section('content-parent')
    <div class="container-fluid main" id="p-container-main">
-      <div class="row" id="p-row-main">
+      <div class="row">
+      	<div class="row" id="p-row-main">
          <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8">
              <!--Form about novedades-->
             <div class="card card-border-standard animated fadeInUpBig p-card-new-parent" data-wow-delay="1s" id="card-news">
@@ -18,87 +19,48 @@ Mi Perfil
                         <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>¡ Quizas te interese!</h3>
                     </div>
                      <ul class="p-list-news">
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
+                      @foreach(DB::table('novedades_papa')
+                                      ->select('*')
+                                      ->where('status','=','1')
+                                      ->limit(8)
+                                      ->orderBy('id','DESC')
+                                      ->get() as $new)
+                          <li class="p-item-new" data-pdf="{{$new->pdf}}">
+                            <div class="card hoverable card-border-standard p-card-new">
+                              <div class="card-block">
+                                <div class="card-left border-right">
+                                  <div class="p-img-new">
+                                    <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Suceciones Númericas</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 3 minutos</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
-                                </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Resolución de problemas</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 3 minutos</p>
+                                <div class="card-right">
+                                  <div class="p-card-title text-xs-left">
+                                    <h5>{{$new->titulo}}</h5>
+                                  </div>
+                                  <div class="p-card-description text-xs-left">
+                                    <p>{{$new->descripcion}}</p>
+                                  </div>
+                                  <hr>
+                                  <div class="p-footer-card text-right">
+                                    <p>{{$new->created_at}}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
-                        <li class="p-item-new">
-                          <div class="card hoverable card-border-standard p-card-new">
-                            <div class="card-block">
-                              <div class="card-left border-right">
-                                <div class="p-img-new">
-                                  <img src="/packages/assets/media/images/parents/profile/pdf.ico" class="img-thumbnail">
-                                </div>
-                              </div>
-                              <div class="card-right">
-                                <div class="p-card-title text-xs-left">
-                                  <h5>Grafica de barras</h5>
-                                </div>
-                                <div class="p-card-description text-xs-left">
-                                  <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ...</p>
-                                </div>
-                                <hr>
-                                <div class="p-footer-card text-right">
-                                  <p>Hace 17 minutos</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
+                          </li>
+                        @endforeach
                      </ul>
                 </div>
                 <div class="hidden-sm-up" id="p-content-novelty">
-					<div class="list-group">
-					  <a href="#" class="list-group-item active">
-						¡ Quizas te interese !
-					  </a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
-					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Gráfica de barras</a>
-					</div>
-                </div>
+        					<div class="list-group">
+        					  <a href="#" class="list-group-item active">
+        						¡ Quizas te interese !
+        					  </a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
+        					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Gráfica de barras</a>
+        					</div>
+                        </div>
             </div>
             <!--/Form about novedades-->
              <!--Form for refresh perfil-->
@@ -145,11 +107,11 @@ Mi Perfil
                             <select class="mdb-select" id="sexo" name="sexo">
                                 <option value="" disabled>Sexo</option>
                                 @if($sexo == "M" || $sexo== "m")
-                                <option value="M" selected data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
-                                <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
+                                <option value="M" selected data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                                <option value="F" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                                 @elseif($sexo == "F" || $sexo == "m")
-                                <option value="M" selected data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">Masculino</option>
-                                <option value="F" data-icon="http://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">Femenino</option>
+                                <option value="M" selected data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                                <option value="F" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                                 @endif
                             </select>
                         </div>
@@ -200,7 +162,7 @@ Mi Perfil
                 </div>
 
                 <!--Avatar-->
-                <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="rounded-circle img-responsive">
+                <div class="avatar"><img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" class="rounded-circle img-responsive">
                 </div>
 
                 <div class="card-block">
@@ -240,6 +202,7 @@ Mi Perfil
         </div>
       </div>
       <!--//.. end view pdf -->
+      </div>
    </div>
 @stop
 

@@ -16,36 +16,7 @@
    <div class="col-md-7 col-lg-7 upch-col-children">
       <div class="row">
 			<div class="carousel">
-			 <a href="javascript:void(0)" class="carousel-item">
-				<div class="itemCarousel">
-				   <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-				   <h6 class="h6-responsive text-xs-center">Odaliz Ramirez</h6>
-				</div>
-			 </a>
-			 <a href="javascript:void(0)" class="carousel-item">
-				<div class="itemCarousel">
-				   <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-				   <h6 class="h6-responsive text-xs-center">Odaliz Ramirez</h6>
-				</div>
-			 </a>
-			 <a href="javascript:void(0)" class="carousel-item">
-				<div class="itemCarousel">
-				   <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-				   <h6 class="h6-responsive text-xs-center">Odaliz Ramirez</h6>
-				</div>
-			 </a>
-			 <a href="javascript:void(0)" class="carousel-item">
-				<div class="itemCarousel">
-				   <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-				   <h6 class="h6-responsive text-xs-center">Odaliz Ramirez</h6>
-				</div>
-			 </a>
-			 <a href="javascript:void(0)" class="carousel-item">
-				<div class="itemCarousel">
-				   <img src="/packages/assets/media/images/parents/profile/mom-def.png" >
-				   <h6 class="h6-responsive text-xs-center">Odaliz Ramirez</h6>
-				</div>
-			 </a>
+
 		  </div>
 
 		  <div id="upch-contentInfo" class="text-center upch-carouse-content z-depth-1">
@@ -118,8 +89,8 @@
                       <div class="md-form upch-select">
                           <select class="mdb-select" id="upch-gender" name="gender">
                               <option value="" disabled selected>Sexo</option>
-                              <option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png" class="rounded-circle">Masculino</option>
-                              <option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefF.png" class="rounded-circle">Femenino</option>
+                              <option value="m" data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
+                              <option value="f" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
                           </select>
                       </div>
                       <div class="md-form">
@@ -183,4 +154,8 @@
 <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
 <script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
 <script src="/packages/assets/js/parent/child-registration.js?{{rand();}}" charset="utf-8"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/models/child-registration.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/controllers/child-registrationCrtrl.js?{{rand();}}"></script>
+<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dp-child-registration.js?{{rand();}}"></script>
+@stop
 @stop

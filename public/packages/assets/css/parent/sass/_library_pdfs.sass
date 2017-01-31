@@ -4,6 +4,12 @@
 
 $btnColor-active: $color-default
 
+div[id*="lp-container-pdf"]
+	&:target
+		display: block
+div[id*="lp-container-pdf"]
+	display: none
+
 .lp-btn-degrees
 	border-radius: $border-rad
 	background-color: $color-info-light
@@ -89,11 +95,6 @@ $btnColor-active: $color-default
 		margin-bottom: 3.5rem !important
 		.controls-top
 			margin-bottom: 0
-[id*="lp-container-pdf"]
-	&:target
-		display: block
-[id*="lp-container-pdf"]
-	display: none
 #lp-row-slidePdfs
 	margin-top: -1.5rem !important
 	@media (min-width: $smartphone-size-landscape) and (max-width: $tablet-size-portrait)

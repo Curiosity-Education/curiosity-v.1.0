@@ -71,8 +71,10 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 		}
 	}
 	$(".p-item-new").click(function(){
+		var pdf = $(this).data("pdf");
 		$("#p-row-main").hide();
 		$("#p-row-pdf").show();
+		$("#p-pdf").attr("src","/packages/assets/pdf/"+pdf);
 		$("#container-baner").hide();
 	});
 

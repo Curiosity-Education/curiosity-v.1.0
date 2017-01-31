@@ -40,4 +40,12 @@ $(function(){
       ablkController.clearInputs();
    });
 
+   $("#ablk-open").click(function() {
+      $("#ablk_logo").trigger('click');
+   });
+
+   $("#ablk_logo").change(function() {
+      ablkController.selectFile($(this));
+   });
+
 });

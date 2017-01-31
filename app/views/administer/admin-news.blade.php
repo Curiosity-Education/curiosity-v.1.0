@@ -19,6 +19,11 @@
 					<input type="text" id="title_new" name="title_new" class="form-control">
 					<label for="title_new" id="title_new-label">Titulo de la novedad</label>
 				</div>
+				<div class="md-form">
+					<i class="fa fa-envelope prefix"></i>
+					<textarea type="text" id="description_new" name="description_new" class="md-textarea"></textarea>
+					<label for="description_newEdit" class="nw-labelEdit">Descripción de la novedad</label>
+				</div>
 				<div class="file-field">
 					<div class="btn btn-primary btn-sm">
 						<span>elige el PDF</span>
@@ -37,6 +42,11 @@
 					<i class="fa fa-envelope prefix"></i>
 					<input type="text" id="title_newEdit" name="title_newEdit" class="form-control">
 					<label for="title_newEdit" class="nw-labelEdit">Titulo de la novedad</label>
+				</div>
+				<div class="md-form">
+					<i class="fa fa-envelope prefix"></i>
+					<textarea type="text" id="description_newEdit" name="description_newEdit" class="md-textarea"></textarea>
+					<label for="description_newEdit" class="nw-labelEdit">Descripción de la novedad</label>
 				</div>
 				<div class="file-field">
 					<div class="btn btn-primary btn-sm">
