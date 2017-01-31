@@ -225,5 +225,9 @@ class childrenController extends BaseController{
 		];
 		return $data;
 	}
+
+	function updateConf(){
+
+	}
 }
 ?>

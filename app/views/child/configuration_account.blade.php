@@ -51,33 +51,37 @@
 									<!--Content-->
 									<div class="content">
 
-										<h4 class="card-title text-xs-center">Mis Datos <i class="fa fa-close"></i></h4>
+										<h4 class="card-title text-xs-center" id="ca-titileConf"> Mis Datos <i class="fa fa-close"></i></h4>
 										<hr>
-
 											<!-- Form -->
 											<div class="card-block ca-formData">
 												<div class="md-form">
 													<i class="fa fa-user prefix"></i>
-													<input type="text" id="form2" class="form-control" value="{{Auth::user()->username}}">
-													<label for="form2">Dato</label>
+													<input type="text" id="ca-userName" class="form-control" value="{{Auth::user()->username}}">
+													<label for="ca-userName">Nombre de usuario</label>
 												</div>
 												<div class="md-form">
 													<i class="fa fa-user prefix"></i>
-													<input type="text" id="form2" class="form-control">
-													<label for="form2">Dato</label>
+													<input type="password" id="ca-pass" class="form-control">
+													<label for="ca-pass">Contraseña actual</label>
 												</div>
 												<div class="md-form">
 													<i class="fa fa-user prefix"></i>
-													<input type="text" id="form2" class="form-control">
-													<label for="form2">Dato</label>
+													<input type="password" id="ca-npass" class="form-control">
+													<label for="ca-npass">Nueva contraseña</label>
+												</div>
+												<div class="md-form">
+													<i class="fa fa-user prefix"></i>
+													<input type="password" id="ca-cpass" class="form-control">
+													<label for="ca-cpass">Confirmar nueva contraseña</label>
 												</div>
 											</div>
 										<hr>
 
 										<!--buttons of options-->
-										<ul class="inline-ul text-xs-center">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel">Cancelar</a></li>
-											<li><a class="btn btn-rounded ca-next">Siguiente</a></li>
+										<ul class="inline-ul text-xs-center" id="ca-buttonsConf">
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelConf">Cancelar</a></li>
+											<li><a class="btn btn-rounded ca-save" id="ca-saveConf">Guardar</a></li>
 										</ul>
 
 									</div>
@@ -161,5 +165,7 @@
 @stop
 
 @section('js-plus')
-	<link rel="stylesheet" href="/packages/assets/js/child/configuration_account.js?{{rand();}}">
+	<script src="/packages/assets/js/child/models/child.js?{{rand();}}" charset="utf-8"></script>
+	<script src="/packages/assets/js/child/controllers/confController.js?{{rand();}}" charset="utf-8"></script>
+	<script src="/packages/assets/js/child/dispatchers/dsp-confupdt.js?{{rand();}}" charset="utf-8"></script>
 @stop

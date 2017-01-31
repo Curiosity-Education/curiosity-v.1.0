@@ -18,7 +18,6 @@ $(function(){
    loginController.formLogin = $("#formLogin");
 
    $("#logOut-btn, .logOutBtn").click(function() {
-      localStorage.clear();
       loginController.logOut();
    });
 });
