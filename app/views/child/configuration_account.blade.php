@@ -40,7 +40,7 @@
 								<!--Card content-->
 								<div class="card-block">
 									<!--Title-->
-									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp; USERNAME</h4>
+									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp; {{Auth::user()->username}}</h4>
 									<hr>
 									<a class="activator btn btn-rounded ca-btnConf">Editar mis datos</a>
 								</div>
@@ -58,7 +58,7 @@
 											<div class="card-block ca-formData">
 												<div class="md-form">
 													<i class="fa fa-user prefix"></i>
-													<input type="text" id="form2" class="form-control">
+													<input type="text" id="form2" class="form-control" value="{{Auth::user()->username}}">
 													<label for="form2">Dato</label>
 												</div>
 												<div class="md-form">
@@ -96,35 +96,14 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="row">
 							<!--Card-->
-							<div class="card ovf-hidden ca-card">
-
-								<!--Card image-->
-								<div class="view hm-orange-light">
-									<img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid" alt="">
-									<a>
-										<div class="mask"></div>
-									</a>
-								</div>
-								<!--/.Card image-->
-
-								<!--Social shares button-->
-								<a class="activator"><i class="fa fa-share-alt"></i></a>
-
-								<!--Card content-->
-								<div class="card-block">
-									<!--Title-->
-									<h4 class="card-title text-xs-left"><i class="fa fa-flag-checkered"></i>&nbsp; Meta diaria</h4>
-									<hr>
-									<a class="activator btn btn-rounded ca-btnConf">cambiar mi meta</a>
-								</div>
-								<!--/.Card content-->
+							<div class="card" id="ca-cardGoalSelect">
 
 								<!--Card reveal-->
-								<div class="card-reveal">
+								<div>
 									<!--Content-->
 									<div class="content text-xs-center">
 
-										<h4 class="card-title text-xs-center">Meta Diaria Actual <i class="fa fa-close"></i></h4>
+										<h4 class="card-title text-xs-center" id="ca-titleGoal">Meta Diaria Actual</h4>
 										<hr>
 
 										<!--Social Icons-->
@@ -133,8 +112,8 @@
 												<div class="container-fluid">
 													<div class="row">
 														<!-- image of Daily goal -->
-														<div class="">
-															<center><img src="packages/assets/media/images/child/objective-excited.png" class="img-fluid" alt="" id="ca-img-goal"></center>
+														<div id="ca-goalSelected">
+															<center><img src="/packages/assets/media/images/child/{{$miMeta->emoji}}" class="img-fluid" id="ca-img-goal"></center>
 														</div>
 														<!-- name of Daily goal -->
 														<div class="text-xs-center">
@@ -148,30 +127,21 @@
 										<div class="container-fluid">
 											<div class="col-md-12">
 												<div class="row">
+													@foreach($metas as $meta)
 													<a href="#">
-														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="packages/assets/media/images/child/objective-relax.png" class="img-fluid ca-goals-img" alt=""></center>
-															<h6 class="h6-responsive black-text"><span class="tag blue">Relajado</span><br><br>3 juegos</h6>
+														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center ca-box" data-data="{{$meta->id}}">
+															<center><img src="/packages/assets/media/images/child/{{$meta->emoji}}" class="img-fluid ca-goals-img"></center>
+															<h6 class="h6-responsive black-text"><span class="tag blue">{{$meta->nombre}}</span><br><br>
+															{{$meta->meta}} juegos</h6>
 														</div>
 													</a>
-													<a href="#">
-														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="packages/assets/media/images/child/objective-normal.png" class="img-fluid ca-goals-img" alt=""></center>
-															<h6 class="h6-responsive black-text"><span class="tag blue">Normal</span><br><br>5 juegos</h6>
-														</div>
-													</a>
-													<a href="#">
-														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center">
-															<center><img src="packages/assets/media/images/child/objective-excited.png" class="img-fluid ca-goals-img" alt=""></center>
-															<h6 class="h6-responsive black-text"><span class="tag blue">Emocionado</span><br><br>8 juegos</h6>
-														</div>
-													</a>
+													@endforeach
 												</div>
 											</div>
 										</div>
 										<hr>
 										<!--buttons of options-->
-										<ul class="inline-ul text-xs-center">
+										<ul class="inline-ul text-xs-center" id="ca-ullibtns">
 											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel">Cancelar</a></li>
 											<li><a class="btn btn-rounded ca-save">Guardar</a></li>
 										</ul>
