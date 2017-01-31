@@ -39,212 +39,199 @@ $(function(){
   });
 
   $("body").on('click','.lp-btn-degrees',function(){
+
     level = $(this).data("id-grade");
     if (!$(this).hasClass("lp-btn-active")) {
-
+      $('#lp-btn-topics').empty();
       $(this).addClass("lp-btn-active");
 
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
             "<button type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
-          ));
-       }
+           ));
+         }
       });
-     }
+    }
   });
 
- $("body").on('click','.lp-btnTopic',function(){
-   level = $(this).data("id-grade");
-   $(this).addClass("lp-btn-active");
+  $("body").on('click','.lp-btnTopic',function(){
+    if (!$(this).hasClass("lp-topic-active")) {
+      $('#lp-row-contPdf').empty();
+      $('.pag').empty();
+      $('#carrousel-pdfs').empty();
 
-   $.each(tempIntelligences,function(i){
-     if (level == tempIntelligences[i].nivel_id) {
+      $(this).addClass("lp-topic-active");
+      intelligencesId = $(this).data("intelligence-id");
 
-       $("#lp-btn-topics").append($(
-         "<button type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
-        ));
-      }
-   });
-
-
- });
-
- $("body").on('click','.lp-btnTopic',function(){
-   if (!$(this).hasClass("lp-topic-active")) {
-     $(this).addClass("lp-topic-active");
-     intelligencesId = $(this).data("intelligence-id");
-
-     $.each(tempBlocks,function(i){
-       if (tempBlocks[i].inteligencia_id == intelligencesId) {
-          blockId[i] = tempBlocks[i].id;
-       }
-     });
-
-     $.each(tempTopics,function(i){
-       if (blockId == tempTopics[i].bloque_id) {
-         topicId[i] = tempTopics[i].id;
-       }
-     });
-
-     $.each(topicId,function(i){
-       $.each(tempPdfs,function(j){
-         if (tempPdfs[j].tema_id == topicId[i]) {
-           finalPdfs[cc] = tempPdfs[j];
-           cc += 1;
-         }
-       });
-     });
-
-     $("#lp-row-contPdf").append($(
-       "<div class='col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1'>" +
-
-       "</div>"
-     ));
-
-
-     $.each(finalPdfs,function(i){
-
-        if (contador < show_per_page) {
-
-          if (contador == 1) {
-            contador2 += 1;
-            $(".lp-container-pdf").append($(
-              "<div id='lp-container-pdf" + contador2 + "'></div>"
-            ));
-          }
-
-          $("#lp-container-pdf" + contador2).append($(
-
-               "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
-                 "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-                   "<div class='lp-bg-card' title='click para ver'>" +
-                     "<div class='card-overlay lp-card-pdf'>" +
-
-                       "<div class='white-text text-xs-center'>" +
-                         "<div class='card-block'>" +
-                           "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
-                           "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
-
-                         "</div>" +
-                       "</div>" +
-                     "</div>" +
-                   "</div>" +
-                 "</div>" +
-               "</a>"
-
-          ));
-
-          contador += 1;
-
-          if (contador == 8) {
-            contador = 0;
-          }
+      $.each(tempBlocks,function(i){
+        if (tempBlocks[i].inteligencia_id == intelligencesId) {
+           blockId[i] = tempBlocks[i].id;
         }
-     });
+      });
 
-     $(".perro").append($(
-      " <nav>" +
-        "<ul class='pagination pg-blue'>" +
+      $.each(tempTopics,function(i){
+        if (blockId == tempTopics[i].bloque_id) {
+          topicId[i] = tempTopics[i].id;
+        }
+      });
 
-            "<li class='page-item'>" +
-                "<a class='page-link' aria-label='Previous'>" +
-                    "<span aria-hidden='true'>&laquo;</span>" +
-                    "<span class='sr-only'>Previous</span>" +
-                "</a>" +
-            "</li>" +
+      $.each(topicId,function(i){
+        $.each(tempPdfs,function(j){
+          if (tempPdfs[j].tema_id == topicId[i]) {
+            finalPdfs[cc] = tempPdfs[j];
+            cc += 1;
+          }
+        });
+      });
 
-            "<li class='page-item l'>" +
-                "<a class='page-link' aria-label='Next'>" +
-                    "<span aria-hidden='true'>&raquo;</span>" +
-                    "<span class='sr-only'>Next</span>" +
-                "</a>" +
-            "</li>" +
-        "</ul>" +
-    "</nav>"
-
-     ));
-
-     for (var i = 0; i < contador2; i++) {
-       $(
-         "<li class='page-item' onload='myFunction()'><a class='page-link' id='l" + (i + 1) + "' href='#lp-container-pdf" + (i+1) + "'>" + (i + 1) + "</a></li>"
-       ).insertBefore( ".l" );
-      }
-
-
-      $("#carrousel-pdfs").append($(
-
-        "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
-          "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
-
-
-            "<div class='controls-top'>" +
-              "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
-              "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
-            "</div>" +
-
-
-            "<ol class='carousel-indicators'>" +
-              "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
-              "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
-            "</ol>" +
-
-
-
-            "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
-
-
-            "</div>" +
-
-          "</div>" +
-
+      $("#lp-row-contPdf").append($(
+        "<div class='col-md-12 col-sm-12 col-xs-12 lp-container-pdf z-depth-1'>" +
         "</div>"
-
       ));
 
       $.each(finalPdfs,function(i){
 
-        if (i % 2 === 0) {
+         if (contador < show_per_page) {
 
-          countSlide += 1;
-          $(".pdfs-carrousel-container").append($(
-            "<div class='carousel-item text-xs-center pair-pdfs"+ countSlide +"'>" +
-            "</div>"
-          ));
-        }
-          if (i <= 1) {
-            $(".pair-pdfs"+ countSlide).addClass("active");
-          }
+           if (contador == 1) {
+             contador2 += 1;
+             $(".lp-container-pdf").append($(
+               "<div id='lp-container-pdf" + contador2 + "'></div>"
+             ));
+           }
 
-          $(".pair-pdfs"+countSlide).append($(
+           $("#lp-container-pdf" + contador2).append($(
+
+                "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
+                  "<div class='col-md-3 col-sm-3 col-xs-4'>" +
+                    "<div class='lp-bg-card' title='click para ver'>" +
+                      "<div class='card-overlay lp-card-pdf'>" +
+
+                        "<div class='white-text text-xs-center'>" +
+                          "<div class='card-block'>" +
+                            "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
+                            "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
+
+                          "</div>" +
+                        "</div>" +
+                      "</div>" +
+                    "</div>" +
+                  "</div>" +
+                "</a>"
+
+           ));
+
+           contador += 1;
+
+           if (contador == 8) {
+             contador = 0;
+           }
+         }
+      });
+
+      $(".pag").append($(
+       " <nav>" +
+         "<ul class='pagination pg-blue'>" +
+
+             "<li class='page-item'>" +
+                 "<a class='page-link' aria-label='Previous'>" +
+                     "<span aria-hidden='true'>&laquo;</span>" +
+                     "<span class='sr-only'>Previous</span>" +
+                 "</a>" +
+             "</li>" +
+
+             "<li class='page-item before'>" +
+                 "<a class='page-link' aria-label='Next'>" +
+                     "<span aria-hidden='true'>&raquo;</span>" +
+                     "<span class='sr-only'>Next</span>" +
+                 "</a>" +
+             "</li>" +
+         "</ul>" +
+     "</nav>"
+
+      ));
+
+      for (var i = 0; i < contador2; i++) {
+        $(
+          "<li class='page-item active'><a class='page-link' id='l" + (i + 1) + "' href='#lp-container-pdf" + (i+1) + "'>" + (i + 1) + "</a></li>"
+        ).insertBefore( ".before" );
+       }
+
+       $("#carrousel-pdfs").append($(
+
+         "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
+           "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
+
+
+             "<div class='controls-top'>" +
+               "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
+               "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
+             "</div>" +
+
+
+
+             "<ol class='carousel-indicators'>" +
+               "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
+               "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
+             "</ol>" +
+
+
+
+             "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
+
+
+             "</div>" +
+
+           "</div>" +
+
+         "</div>"
+
+       ));
+
+       $.each(finalPdfs,function(i){
+         if (i % 2 === 0) {
+
+           countSlide += 1;
+           $(".pdfs-carrousel-container").append($(
+
+             "<div class='carousel-item text-xs-center pair-pdfs"+ countSlide +"'>" +
+             "</div>"
+           ));
+         }
+           if (i <= 1) {
+             $(".pair-pdfs"+ countSlide).addClass("active");
+           }
+
+           $(".pair-pdfs"+countSlide).append($(
 
             "<div class='col-xs-12'>" +
-             "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + " href='#'>" +
-               "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
-                 "<div class='card-overlay lp-card-pdf'>" +
+              "<a class='lp-PDFselect' href='#'>" +
+                "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
+                  "<div class='card-overlay lp-card-pdf'>" +
 
-                   "<div class='white-text text-xs-center'>" +
-                     "<div class='card-block'>" +
-                       "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i> GUIA PDF</h5><hr class='lp-hr'>" +
-                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
+                    "<div class='white-text text-xs-center'>" +
+                      "<div class='card-block'>" +
+                        "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i> GUIA PDF</h5><hr class='lp-hr'>" +
+                        "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
 
-                     "</div>" +
-                   "</div>" +
-                 "</div>" +
-               "</div>" +
-             "</a>" +
-           "</div>"
+                      "</div>" +
+                    "</div>" +
+                  "</div>" +
+                "</div>" +
+              "</a>" +
+            "</div>"
 
-          ));
-       });
-       $(".pagination").children('li').each(function(i){
-         if (i == 1) {
-           $("#l1").trigger( "click" );
-         }
-       });
-   }
+           ));
+        });
 
-  });
+        $(".pagination").children('li').each(function(i){
+          $(".pagination>li>a").trigger( "click" );
+      });
+    }
+
+   });
+
 
   /* Transitions of the View ------------------------------------ */
 
