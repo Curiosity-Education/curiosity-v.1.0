@@ -9,7 +9,7 @@
           <!-- sección de slide principal-->
           <div class="row row-slide-main">
             <div class="col-md-12 col-sm-12 col-xs-12">
-              <img src="packages/assets/media/images/child/nav1.png" class="img-fluid img-responsive card img-nav">
+              <img src="packages/assets/media/images/child/nav1.png?{{rand();}}" class="img-fluid img-responsive card img-nav">
             </div>
           </div>
           <!--// find de sección del slide principal -->
@@ -18,7 +18,7 @@
             <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-12 animated zoomInDown">
                 <!--Card-->
-                <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/game_news.png')">
+                <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/game_news.png?{{rand();}}')">
                     <!--Content-->
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
@@ -35,7 +35,7 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-12 animated zoomInDown">
                  <!--Card-->
-                <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/mejorcalificados.png')">
+                <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/mejorcalificados.png?{{rand();}}')">
                     <!--Content-->
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
@@ -53,7 +53,7 @@
              <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-12 standard-bordered animated zoomInUp">
                  <!--Card-->
-                <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/game_popular.png')">
+                <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/game_popular.png?{{rand();}}')">
                     <!--Content-->
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
@@ -68,7 +68,7 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-12 standard-bordered animated zoomInUp">
                  <!--Card-->
-                <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/gamesrecoments.png')">
+                <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/gamesrecoments.png?{{rand();}}')">
                     <!--Content-->
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
