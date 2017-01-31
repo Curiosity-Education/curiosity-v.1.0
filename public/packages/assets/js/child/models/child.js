@@ -16,4 +16,14 @@ class Child extends CORM {
     save(method,success){
         super.save(this.child,method,success);
     }
+
+    static updateConf(data,method,success){
+      this.child = {
+          username  :data.username,
+          pass      :data.pass,
+          npass     :data.npass,
+          cpass     :data.cpass
+      }
+      super.update(this.child,method,success);
+   }
 }
