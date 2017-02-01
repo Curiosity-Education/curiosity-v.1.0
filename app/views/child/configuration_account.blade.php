@@ -40,7 +40,9 @@
 								<!--Card content-->
 								<div class="card-block">
 									<!--Title-->
-									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp; {{Auth::user()->username}}</h4>
+									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp;
+										<label class="masterUserName">{{Auth::user()->username}}</label>
+									</h4>
 									<hr>
 									<a class="activator btn btn-rounded ca-btnConf">Editar mis datos</a>
 								</div>
@@ -80,8 +82,8 @@
 
 										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center" id="ca-buttonsConf">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelConf">Cancelar</a></li>
-											<li><a class="btn btn-rounded ca-save" id="ca-saveConf">Guardar</a></li>
+											<li><button class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelConf">Cancelar</button></li>
+											<li><button class="btn btn-rounded ca-save" id="ca-saveConf" data-data="{{Auth::user()->id}}">Guardar</button></li>
 										</ul>
 
 									</div>
@@ -121,7 +123,7 @@
 														</div>
 														<!-- name of Daily goal -->
 														<div class="text-xs-center">
-															<h4 class="h4-responsive"><span class="tag red">Emocionado</span></h4>
+															<h4 class="h4-responsive"><span class="tag red" id="ca-tit-goal">{{$miMeta->nombre}}</span></h4>
 														</div>
 													</div>
 												</div>
@@ -132,7 +134,7 @@
 											<div class="col-md-12">
 												<div class="row">
 													@foreach($metas as $meta)
-													<a href="#">
+													<a href="#" id="ca-ca">
 														<div class="col-md-4 col-sm-6 col-xs-6 text-xs-center ca-box" data-data="{{$meta->id}}">
 															<center><img src="/packages/assets/media/images/child/{{$meta->emoji}}" class="img-fluid ca-goals-img"></center>
 															<h6 class="h6-responsive black-text"><span class="tag blue">{{$meta->nombre}}</span><br><br>
@@ -146,8 +148,8 @@
 										<hr>
 										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center" id="ca-ullibtns">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel">Cancelar</a></li>
-											<li><a class="btn btn-rounded ca-save">Guardar</a></li>
+											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelGoal">Cancelar</a></li>
+											<li><a class="btn btn-rounded ca-save" id="ca-saveGoal">Guardar</a></li>
 										</ul>
 
 									</div>
@@ -166,6 +168,7 @@
 
 @section('js-plus')
 	<script src="/packages/assets/js/child/models/child.js?{{rand();}}" charset="utf-8"></script>
+	<script src="/packages/assets/js/child/models/DailyGoal.js?{{rand();}}" charset="utf-8"></script>
 	<script src="/packages/assets/js/child/controllers/confController.js?{{rand();}}" charset="utf-8"></script>
 	<script src="/packages/assets/js/child/dispatchers/dsp-confupdt.js?{{rand();}}" charset="utf-8"></script>
 @stop

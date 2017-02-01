@@ -44,4 +44,5 @@ class goalController extends BaseController{
         }
         return true;
     }
+
 }

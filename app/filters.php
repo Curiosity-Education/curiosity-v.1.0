@@ -119,3 +119,9 @@ Route::filter('manage_employees',function(){
        return View::make('errors.404');
    }
 });
+
+Route::filter('child_actions',function(){
+   if(!Entrust::can('child_actions')){
+       return View::make('errors.404');
+   }
+});
