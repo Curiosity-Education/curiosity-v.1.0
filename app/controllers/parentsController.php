@@ -99,10 +99,7 @@ class parentsController extends BaseController{
             //      return "OK";
             //  } catch (Exception $e) {
             //      $user->delete();
-            //      // $direccion->delete();
-            //      // $membresia->delete();
-            //      $code = $e->getCode();
-            //      return $code;
+            //      return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
             //  }
             $dataset = [
                 'username'  =>  $data['username'],
