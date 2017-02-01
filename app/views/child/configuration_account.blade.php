@@ -148,8 +148,8 @@
 										<hr>
 										<!--buttons of options-->
 										<ul class="inline-ul text-xs-center" id="ca-ullibtns">
-											<li><a class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelGoal">Cancelar</a></li>
-											<li><a class="btn btn-rounded ca-save" id="ca-saveGoal">Guardar</a></li>
+											<li><button class="btn btn-outline-warning btn-rounded waves-effect ca-btn ca-cancel" id="ca-cancelGoal">Cancelar</button></li>
+											<li><button class="btn btn-rounded ca-save" id="ca-saveGoal">Guardar</button></li>
 										</ul>
 
 									</div>
