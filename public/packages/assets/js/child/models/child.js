@@ -19,11 +19,11 @@ class Child extends CORM {
 
     static updateConf(data,method,success){
       this.child = {
-          username  :data.username,
-          pass      :data.pass,
-          npass     :data.npass,
-          cpass     :data.cpass
+          username  : data.username,
+          pass      : data.pass,
+          npass     : data.npass,
+          cpass     : data.cpass
       }
-      super.update(this.child,method,success);
+      super.any(this.child,method,success,'/admin-child','updateConf');
    }
 }

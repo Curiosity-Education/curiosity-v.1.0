@@ -67,6 +67,7 @@ class childrenController extends BaseController{
 	         $user->password  = Hash::make($data["password"]);
 	         $user->token     = sha1($data["username"]);
 	         $user->active    = 1;
+				$user->flag      = 0;
 	         $user->save();
 				$myRole = Role::where("name", "=", "child")->pluck("id");
 	         $user->attachRole($myRole);
@@ -227,7 +228,29 @@ class childrenController extends BaseController{
 	}
 
 	function updateConf(){
-
+		$data = Input::all();
+		$user = Auth::user();		
+		$user->username = $data["username"];
+		if ($data["npass"] != null){
+			if(!Hash::check($data["pass"], $user->password)){
+				return Response::json(array(
+					'status'        => 'CU-104',
+               'statusMessage' => 'Inconsistency format data',
+					'message'       => 'Inconsistency format data',
+					'data'			 => null
+            ));
+			}
+			else{
+				$user->password = Hash::make($data["npass"]);
+			}
+		}
+		$user->save();
+		return Response::json(array(
+			 "status"        => 200,
+			 'statusMessage' => "success",
+			 'message'       => "Felicidades haz actualizado tu información",
+			 'data'			  => $user
+		));
 	}
 }
 ?>

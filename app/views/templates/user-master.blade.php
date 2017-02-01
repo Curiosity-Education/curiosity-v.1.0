@@ -29,7 +29,7 @@
                   <a class="navbar-brand" style="font-size:0.85rem;">
                      <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
                      &nbsp;Curiosity Educación |
-                     {{ Auth::user()->username; }}
+                     <label class="masterUserName">{{ Auth::user()->username; }}</label>
                   </a>
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
