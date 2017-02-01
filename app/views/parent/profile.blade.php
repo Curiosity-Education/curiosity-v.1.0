@@ -41,7 +41,7 @@ Mi Perfil
                                   </div>
                                   <hr>
                                   <div class="p-footer-card text-right">
-                                    <p>{{$new->created_at}}</p>
+                                    <p class="date-time">{{$new->created_at}}</p>
                                   </div>
                                 </div>
                               </div>
