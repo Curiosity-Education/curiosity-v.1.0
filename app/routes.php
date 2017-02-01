@@ -383,27 +383,6 @@ Route::group(array('prefix' =>  'avatar'),function(){
 
 /*
 * -----------------------------------------------------------------------------
-* Routes to item groups (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'itemGroup'),function(){
-	Route::post('all', 'itemGroupsController@all');
-	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
-});
-
-/*
-* -----------------------------------------------------------------------------
-* Routes to items (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'item'),function(){
-	Route::post('all', 'itemController@all');
-});
-
-/*
-* -----------------------------------------------------------------------------
 * Routes to sprites (avatar)
 * all without special permision
 * -----------------------------------------------------------------------------
