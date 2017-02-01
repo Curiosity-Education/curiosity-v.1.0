@@ -221,7 +221,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
 		});
-
+	});
+	// child actions when he is logued
+	Route::group(array('before' => 'child_actions'),function(){
+		Route::group(array('prefix' => '/child-goal'), function(){
+			Route::post('updateConf', 'childrenHasGoal@update');
+		});
 	});
 });
 
@@ -601,6 +606,7 @@ Route::group(array('before' => 'auth'), function(){
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
+					 Route::post("/updateConf","childrenController@updateConf");
             });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');

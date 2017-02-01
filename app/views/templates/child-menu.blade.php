@@ -10,7 +10,7 @@
 @stop
 
 @section('menu-photo')
-<div id="childMenu-avatarContainer"><div id="childMenu-avatarContainerDiv"></div></div>
+<div id="childMenu-avatarContainer" style="background-image:url(/packages/assets/media/images/avatar/backgrounds/menDefSkBlue098754.png?{{rand();}});"><div id="childMenu-avatarContainerDiv"></div></div>
 @stop
 
 @section('menu-links')
@@ -34,6 +34,10 @@
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
 </div>
+<div data-url="/view-children/getInfoToConfig/view-child.configuration_account" class="linkMenu waves-effect">
+   <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
+   Configuración
+</div>
 @stop
 
 @section('menu-links-aside')
@@ -56,6 +60,10 @@
 <div data-url="/tienda" class="linkMenu linkMenuAside waves-effect" style="display:none !important;">
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
    Tienda curiosity
+</div>
+<div data-url="/view-child.configuration_account" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
+   Configuración
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right childMenu-icon-exit" id="childMenu-icon-exit"></span>&nbsp;

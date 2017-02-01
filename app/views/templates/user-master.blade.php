@@ -29,7 +29,7 @@
                   <a class="navbar-brand" style="font-size:0.85rem;">
                      <img src="/packages/assets/media/images/system/icon.png" class="img-responsive">
                      &nbsp;Curiosity Educación |
-                     {{ Auth::user()->username; }}
+                     <label class="masterUserName">{{ Auth::user()->username; }}</label>
                   </a>
                   <ul class="nav navbar-nav float-xs-right">
                      <li class="nav-item">
@@ -72,7 +72,7 @@
                   @yield('content')
 
                   <!-- Visualisator pdf and video -->
-                  @yield('modal-pdfs-videos')   
+                  @yield('modal-pdfs-videos')
                      <div class="modal fade" id="gst-modal-pdf-video" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                        <div class="modal-dialog">
                          <div class="modal-content">
@@ -106,7 +106,7 @@
                                     <div class="col-md-12 gst-col">
                                       @yield('modal-list')
                                       <!--Second review-->
-                                     <!-- Example of element list 
+                                     <!-- Example of element list
                                       <div class="media hoverable">
                                           <a class="media-left waves-light col-md-4">
                                               <img class="img-fluid" src="/packages/assets/media/images/games/posters/default.png" alt="pdf ico">

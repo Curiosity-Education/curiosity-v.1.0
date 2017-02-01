@@ -125,6 +125,7 @@
       @stop
       @section('modal-header-information')
         <h5 class="gst-tema-content text-left">...</h5>
+        <h5 class="gst-prof-content text-left" style="display:none;"></h5>
       @stop
       @section('modal-title')
         <h4 class="text-center gst-title-content">Biblioteca de <span id="type_mdl"></span></h4>
