@@ -92,6 +92,12 @@ class childrenDoActivitiesController extends BaseController{
 				$data["qualification"] = 0;
 			}
 			Session::put("idActivity",$activityId);
+			$activity  = Activity::find($activityId);
+			if($activity){
+				$vistos           = (integer)$activity->vistos;
+				$activity->vistos = $vistos + 1;
+				$activity->save();
+			}
 			return View::make('child.game-start')->with("game",$data);
 		}else{
 			//this format error is for developers
