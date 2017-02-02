@@ -80,7 +80,7 @@
 
 
     </div><br>
-		<div class="pag hidden-sm-down"></div>
+		<div id='pag' class="hidden-sm-down"></div>
     <!-- Carousel of cards with the pdfs only smartphones -->
     <div id="carrousel-pdfs">
 

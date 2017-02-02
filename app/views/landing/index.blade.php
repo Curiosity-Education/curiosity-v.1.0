@@ -326,51 +326,108 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
-                <section class="section">
-                   <?php $contador_plns=0; $long = count($planes); $control=0;?>
-                        @foreach($planes as $plan)
-                            @if($contador_plns == 0)
-                                <div class="row">
-                            @endif
-                            <div class="col-lg-4 col-md-12 mb-r">
-                                <!--Card-->
-                                <div class="card">
-
-                                    <!--Content-->
-                                    <div class="text-xs-center">
-                                        <div class="card-block" style="background-color:#2d96ba;color:#fff;border-radius:.23rem;">
-                                            <center><h5 style="background: #1d657d;
-																				   margin: -1.2rem;
-																				   padding: 1rem;
-																				   margin-bottom: .5rem;
-																				   border-top-left-radius: .23rem;
-																				   border-top-right-radius: .23rem;
-																					box-shadow: 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);">{{$plan->name}}</h5></center>
-                                            <div class="flex-center" style="height:30%;">
-                                                <div class="card-circle">
-                                                    <i class="fa fa-credit-card-alt" style="color:#fff !important;"></i>
-                                                </div>
-                                            </div>
-
-                                            <!--Price-->
-                                            <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
-                                            <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
-                                            <center><button disabled class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Próximamente</button></center>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--/.Card-->
-                            </div>
-                            <?php $contador_plns+=1; $control+=1;?>
-                            @if($contador_plns == 3 || $control == $long)
-                                </div>
-                                <?php $contador_plns=0;?>
-                            @endif
-                        @endforeach
 
 
-                </section>
+<!--Section: Pricing v.3-->
+<section class="section">
+
+    <!--First row-->
+    <div class="row">
+
+        <!--First column-->
+        <div class="col-lg-4 col-md-12 mb-r">
+            <!--Card-->
+            <div class="card">
+
+                <!--Content-->
+                <div class="text-center">
+                    <div class="card-block">
+                        <h4 class="text-xs-center">Basic plan</h4>
+                        <div class="">
+                            <center>
+                            	<div class="card-circle z-depth-1">
+                                	<i class="fa fa-home blue-text"></i>
+                            	</div>
+                            </center>
+                        </div>
+
+                        <!--Price-->
+                        <h2 class="text-xs-center"><strong>59$</strong></h2>
+                        <p class="text-xs-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa pariatur id nobis accusamus deleniti cumque hic laborum.</p>
+                        <center><a class="btn btn-primary btn-rounded">Buy now</a></center>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/First column-->
+
+        <!--Second column-->
+        <div class="col-lg-4 col-md-12 mb-r">
+            <!--Card-->
+            <div class="card teal z-depth-4">
+
+                <!--Content-->
+                <div class="text-center white-text">
+                    <div class="card-block">
+                        <h4 class="text-xs-center">Premium plan</h4>
+                        <div class="">
+                            <center>
+                            	<div class="card-circle  z-depth-1">
+                                	<i class="fa fa-group white-text"></i>
+                            	</div>
+                            </center>
+                        </div>
+
+                        <!--Price-->
+                        <h2 class="text-xs-center"><strong>79$</strong></h2>
+                        <p class="text-xs-center">Esse corporis saepe laudantium velit adipisci cumque iste ratione facere non distinctio cupiditate sequi atque.</p>
+                        <center><a class="btn btn-outline-white btn-rounded">Buy now</a></center>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/Second column-->
+
+        <!--Third column-->
+        <div class="col-lg-4 col-md-12 mb-r">
+            <!--Card-->
+            <div class="card">
+
+                <!--Content-->
+                <div class="text-center">
+                    <div class="card-block">
+                        <h4 class="text-xs-center">Advanced plan</h4>
+                        <div class="">
+                            <center>
+                            	<div class="card-circle z-depth-1">
+                                	<i class="fa fa-bar-chart blue-text"></i>
+                            	</div>
+                            </center>
+                        </div>
+
+                        <!--Price-->
+                        <h2 class="text-xs-center"><strong>99$</strong></h2>
+                        <p class="text-xs-center">At ab ea a molestiae corrupti numquam quo beatae minima ratione magni accusantium repellat eveniet quia vitae.</p>
+                        <center><a class="btn btn-primary btn-rounded">Buy now</a></center>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/Third column-->
+
+    </div>
+    <!--/First row-->
+
+</section>
+<!--/Section: Pricing v.3-->
+
+
 			</div> <!-- Cierre de contenedor -->
 		</div>
 	</section>
@@ -406,7 +463,7 @@
 	<!-- Fin Sección con el Apoyo -->
 
 	<!-- Sección de Noticias -->
-	<!-- <section id="noticias">
+	<section id="noticias" hidden="hidden">
 		<div class="bg-noticias">
 			<div class="flex-center container">
 				<ul class="animated ">
@@ -414,12 +471,12 @@
 						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
 					</li>
 					<li class="container-fluid hidden-xs-down">
-						<h4 class="h4-responsive" style="color:white;">Estemos en contacto y hagamos juntos de la educación una experiencia divertida.</h4>
+						<h4 class="h4-responsive" style="color:white;">Síguenos en Facebook, y .</h4>
 					</li>
 					<li class="container-fluid">
 						<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
 					</li>
-					<div class="col-md-8 offset-md-2">
+					<div class="col-md-8 offset-md-2" hidden="hidden">
 						<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
 						 style="padding-top:20px; padding-left:20px; border:1px solid #fff;">
 						<div class="md-form form-group">
@@ -435,7 +492,7 @@
 				</ul>
 			</div>
 		</div>
-	</section> -->
+	</section>
 	<!-- Fin Sección de Noticias -->
 @stop
 
@@ -476,8 +533,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 					<ul>
-						<li> > &nbsp;(871) 255 89 65 "RRHH"</li>
-						<li> > &nbsp;hola@curiosity.com.mx</li>
+						<li> - &nbsp;(871) 255 89 65 "RRHH"</li>
+						<li> - &nbsp;hola@curiosity.com.mx</li>
 					</ul>
 				</div>
 				<!--/.Fourth column-->

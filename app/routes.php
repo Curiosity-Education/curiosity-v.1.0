@@ -586,6 +586,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
                 Route::get("/find-all","activitiesController@getAll");
+                Route::post("/updateViews","activitiesController@updateViews");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
