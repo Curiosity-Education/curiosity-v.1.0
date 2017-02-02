@@ -302,7 +302,9 @@ class activitiesController extends BaseController{
             $uploadFile = Curiosity::extractZip(Input::file('game'),$packRoutes,'yes');
             $fileGame = new File();
             $fileGame->carpeta = $uploadFile["folder"];
-            //$fileGame->administrativo_id =Auth::user()->id;
+				$idUser = Auth::user()->id;
+				$admin = DB::table("administrativos")->where("user_id", "=", $idUser)->first();
+            $fileGame->administrativo_id = $admin->id;
             $fileGame->active = 1;
             $fileGame->actividad_id = Input::get('activity_id');
             $fileGame->save();
