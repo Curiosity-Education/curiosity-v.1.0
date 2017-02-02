@@ -84,6 +84,7 @@
     <div class="row hidden-xs-down" id="lp-row-contPdf">
 
     </div><br>
+		<div id='pag' class="hidden-sm-down"></div>
 
     <!-- Carousel of cards with the pdfs only smartphones -->
     <div id="carrousel-videos">
@@ -164,7 +165,7 @@
 		});
 
 	</script>
-	{{ HTML::script('/packages/assets/js/child/library_videos.js') }}
+	<!-- {{ HTML::script('/packages/assets/js/child/library_videos.js') }} -->
 	<script type="text/javascript" src="/packages/assets/js/child/models/library-videos.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/child/controllers/library-videosCrtrl.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dp-library-videos.js?{{rand();}}"></script>
