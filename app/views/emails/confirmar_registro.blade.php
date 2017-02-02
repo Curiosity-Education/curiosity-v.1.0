@@ -139,7 +139,7 @@
           <hr>
           <br><br>
           <center>
-            <a href="http://www.curiosity.com.mx/confirmar/{{$token}}"
+            <a href="http://www.curiosity.com.mx/parent/confirm/{{$token}}"
                style="background:#2262ae;padding:20px;border-radius:10px;color:#ffffff;text-decoration:none;font-size:1.2em;letter-spacing:1px;">
               Clíck aquí para completar tu registro
             </a>
