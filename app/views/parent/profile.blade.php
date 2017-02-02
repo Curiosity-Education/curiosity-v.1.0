@@ -42,7 +42,7 @@ Mi Perfil
                                   </div>
                                   <hr>
                                   <div class="p-footer-card text-right">
-                                    <p>{{$new->created_at}}</p>
+                                    <p class="date-time">{{$new->created_at}}</p>
                                   </div>
                                 </div>
                               </div>
@@ -171,9 +171,9 @@ Mi Perfil
                     <hr>
                     <!-- data list-->
                     <ul class="list text-justify hidden-md-down p-cardInfo" >
-                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
-                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-name">Jinestas garcía</span></li>
-						<li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-name">+52 8711010214</span></li>
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">{{Auth::user()->Person->nombre}}</span></li>
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-surnames">{{Auth::user()->Person->apellidos}}</span></li>
+						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
                     </ul>
                     <hr class="hidden-md-down p-cardInfo">
                     <!--//.. end data list -->

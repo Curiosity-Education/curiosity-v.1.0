@@ -117,9 +117,12 @@ $(function(){
         new_password  : document.getElementById("new_password").value,
         cnew_password : document.getElementById("cnew_password").value
 			};
-			parentController.update(id,data,function(response){
+			parentController.update(data.id,data,function(response){
         if(response.status == 200){
           Curiosity.noty.success(response.message);
+          $("#span-name").text(data.nombre);
+          $("#span-surnames").text(data.apellidos);
+          $("#span-telephone").text(data.telefono)
           $("#btn-toggle-cards").trigger("click");
         }else if(response.status == 500){
           Curiosity.noty.error("Surgió algun problema al acutualizar la información, verifica la información e intenta nuevamente sí el problema persiste consulta con el administrador",'Alerta');
