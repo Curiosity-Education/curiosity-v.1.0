@@ -78,7 +78,7 @@ $(function(){
     $pdfs = $("<div/>");
     $.each(pdfs,function(index,pdf){
       $pdfs.append($(
-        '<div class="media hoverable" data-name="'+pdf.nombre+'">'+
+        '<div class="media hoverable" data-id="'+pdf.id+'" data-name="'+pdf.nombre+'">'+
               '<a class="media-left waves-light col-md-3">'+
                   '<img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">'+
               '</a>'+
@@ -97,7 +97,7 @@ $(function(){
     //all code here
     $videos = $("<div/>");
     $.each(videos,function(index,video){
-           $videos.append('<div class="media hoverable" data-name="'+video.embed+'">'+
+           $videos.append('<div class="media hoverable" data-id="'+pdf.id+'" data-name="'+video.embed+'">'+
               '<a class="media-left waves-light col-md-4">'+
                   '<img class="img-fluid" src="/packages/assets/media/images/posters/'+video.poster+'" alt="pdf ico">'+
               '</a>'+
@@ -109,6 +109,15 @@ $(function(){
                   '</div>'+
               '</div>'+
           '</div>');
+    });
+  }
+  function addView(id,data){
+    $.each(data,function(index,object){
+      if(object.id == id){
+        var vistos = parseInt(object.vistos);
+        vistos +=1;
+        object.vistos = vistos;
+      }
     });
   }
 });
