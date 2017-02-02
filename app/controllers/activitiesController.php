@@ -334,5 +334,84 @@ class activitiesController extends BaseController{
             return  Response::json(array('status' => 500,'statusMessage' => 'Server Error','data' => null));
         }
     }
+    public function updateViews(){
+      $data   = Input::all();
+      $pdfs   = ($data["pdfs"]);
+      $videos = ($data["videos"]);
+      $rules = [
+         "pdfs"   => "required",
+         "videos" => "required"
+      ];
+
+      $validation = Validator::make($data,$rules);
+      if($validation->fails()){
+         //this format error is for developers
+         return Response::json(array(
+            'status'       => 'CU-104',
+            'statusMessage' => 'Inconsistency format data',
+            'message'      => 'this activity hasn´t finish, the data recived dont have a format data set in database',
+            "messages"     => $validation->messages()
+         ));
+      }else{
+        $activityId = Session::get("idActivity");
+        $dataPdfs = DB::table('biblioteca_pdfs')
+                ->join('actividades_pdfs','actividades_pdfs.biblioteca_archivo_id','=','biblioteca_pdfs.id')
+                ->join('actividades','actividades.id','=','actividades_pdfs.actividad_id')
+                ->join('temas','temas.id','=','biblioteca_pdfs.tema_id')
+                ->where('actividades.id','=',$activityId)
+                ->where('actividades.active','=','1')
+                ->select('biblioteca_pdfs.id','biblioteca_pdfs.nombre','biblioteca_pdfs.nombre_real','biblioteca_pdfs.vistos','temas.nombre as tema')
+                ->orderBy('biblioteca_pdfs.vistos','desc')
+                ->get();
+        $dataVideos   = DB::select("select bv.id,bv.embed,bv.poster,bv.vistos,t.nombre,pa.nombre profesor,ea.nombre escuela from actividades a
+				join actividades_videos av on a.id = av.actividad_id
+				join biblioteca_videos bv on av.biblioteca_video_id = bv.id
+				join profesores_apoyo pa on pa.id = bv.profesor_apoyo_id
+				join escuelas_apoyo ea on pa.escuela_id = ea.id
+				join temas t on bv.tema_id = t.id
+				where a.active = 1 and a.id = $activityId;");
+        $numberUpdate = 0;
+        if(count($pdfs) == count($dataPdfs)){//check the data was same
+            for($i = 0; $i<count($pdfs); $i++){
+               $view_1 = (integer)$pdfs[$i]["vistos"];
+               $view_2 = (integer)$dataPdfs[$i]->vistos;
+               if($view_1 != $view_2){//in this case update vistos en database
+                  $pdf = LibraryPdfs::find($dataPdfs[$i]->id); 
+                  if($pdf){
+                     $pdf->vistos = $pdfs[$i]["vistos"];
+                     $pdf->save();
+                  }
+               }
+            }
+            $numberUpdate++;
+        }
+        if(count($videos) == count($dataVideos)){
+        	for($i = 0; $i<count($videos); $i++){
+        	    $view_1 = (integer)$videos[$i]["vistos"];
+                $view_2 = (integer)$dataVideos[$i]->vistos;
+                if($view_1 != $view_2){//in this case update vistos en database
+                    $video = LibraryVideos::find($dataVideos[$i]->id); 
+                    if($video){
+                       $video->vistos = $videos[$i]["vistos"];
+                       $video->save();
+                    }
+                }
+        	}
+        	$numberUpdate++;
+        }
+        if($numberUpdate>0){
+			//this format message is for user
+		    return Response::json(array(
+		       'status'       =>  200,
+		       'statusMessage' => 'success',
+		       'message'      =>  'Datos actualizados correctamente,Bien hecho!!'
+		    ));
+        }
+        return Response::json(array(
+            'status'       => 'CU-104',
+            'statusMessage' => 'Inconsistency format data',
+            'message'      => 'the data don´t hava correct format'
+        ));
+      }
+   }
 }
-?>
