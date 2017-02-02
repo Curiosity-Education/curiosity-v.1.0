@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/testdoor', 'landingController@landingpage');
+Route::get('/', 'landingController@landingpage');
 
-Route::get('/', function(){
-	return View::make("errors.webOff");
-});
+// Route::get('/', function(){
+// 	return View::make("errors.webOff");
+// });
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
