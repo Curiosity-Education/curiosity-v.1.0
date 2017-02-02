@@ -24,7 +24,8 @@
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
 	<li class="nav-item">
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		{{--<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
 	</li>
 @stop
 
@@ -95,9 +96,8 @@
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
 					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
-					<!-- <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a> -->
-					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
-					<!-- <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="#membresia">Registrarse</a> -->
+					{{--<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -204,7 +204,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-					<a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
+					<!-- <a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a> -->
+					<a href="javascript:void(0)" type="button" class="btn btn-secondary btn-rounded waves-effect">Próximamente</a>
 				</h2>
 			</center>
 		</div>
@@ -308,7 +309,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
+					<!-- <a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a> -->
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próimamente</a>
 				</h2>
 			</center>
 	  	</div>
@@ -353,7 +355,7 @@
                                             <!--Price-->
                                             <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
                                             <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
-                                            <center><a class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Suscribirme</a></center>
+                                            <center><button disabled class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Próximamente</button></center>
                                         </div>
                                     </div>
 
@@ -488,7 +490,8 @@
 			<ul>
 				<li>
 					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-				<li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li>
+				<!-- <li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li> -->
+				<li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li>
 			</ul>
 		</div>
 		<!--/.Call to action-->

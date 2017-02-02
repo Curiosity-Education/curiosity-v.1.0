@@ -188,12 +188,12 @@ var parentController = {
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: [
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
+                                'rgba(54, 162, 235, 0.4)',
+                                'rgba(255, 99, 132, 0.4)',
+                                'rgba(255, 206, 86, 0.4)',
+                                'rgba(75, 192, 192, 0.4)',
+                                'rgba(153, 102, 255, 0.4)',
+                                'rgba(255, 159, 64, 0.4)'
                              ],
                              borderColor: [
                                 'rgba(54, 162, 235, 1)',
@@ -205,7 +205,7 @@ var parentController = {
                              ],
                              borderCapStyle: 'butt',
                              borderDash: [],
-                             borderDashOffset: 0.0,
+                             borderDashOffset: 0.1,
                              borderJoinStyle: 'miter',
                              pointBorderColor: "rgba(75,192,192,1)",
                              pointBackgroundColor: "#fff",

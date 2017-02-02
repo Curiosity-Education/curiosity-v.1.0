@@ -13,6 +13,10 @@
 
 Route::get('/', 'landingController@landingpage');
 
+// Route::get('/', function(){
+// 	return View::make("errors.webOff");
+// });
+
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
 });
@@ -379,27 +383,6 @@ Route::group(array('prefix' =>  'video'),function(){
 Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('all', 'avatarController@all');
 	Route::post('getForChild', 'avatarController@getForChild');
-});
-
-/*
-* -----------------------------------------------------------------------------
-* Routes to item groups (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'itemGroup'),function(){
-	Route::post('all', 'itemGroupsController@all');
-	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
-});
-
-/*
-* -----------------------------------------------------------------------------
-* Routes to items (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'item'),function(){
-	Route::post('all', 'itemController@all');
 });
 
 /*
