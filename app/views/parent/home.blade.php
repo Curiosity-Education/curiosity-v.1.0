@@ -10,6 +10,12 @@
 
 @section('content')
 <div id="hm-init" class="">
+    @if(Auth::user()->active == 0)
+        <div class="alert alert-info alert-dismissible fade in" role=alert>
+            <button type=button class=close data-dismiss=alert aria-label=Close><span aria-hidden=true>&times;</span></button> <strong>Por favor, confirma tu correo electronico.</strong> <br>
+            Un correo de confirmación ha sido enviado a  {{Auth::user()->Person()->first()->Dad()->first()->email}} para completar tu suscripción.
+        </div>
+    @endif
 	<div class="carousel hm-carousel animated fadeInDown">
 	</div>
 
