@@ -20,6 +20,8 @@ class loginController extends BaseController{
          );
          if(Auth::attempt($auth)){
             $user = Auth::user();
+            if ($user->flag == 0){ $user->flag = 1;}
+            $user->save();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
                $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
@@ -85,6 +87,8 @@ class loginController extends BaseController{
 
    public static function getAccess(){
       $user = Auth::user();
+      if ($user->flag == 0){ $user->flag = 1;}
+      $user->save();
       if (Auth::user()->hasRole('child')){
          $person = Person::where("user_id", "=", $user["id"])->first();
          $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];

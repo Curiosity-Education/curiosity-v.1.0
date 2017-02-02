@@ -1,6 +1,6 @@
 <?php
 class parentsController extends BaseController{
- 
+
 
   public function remoteEmail(){
     if(padre::where("email","=",Input::get("email"))->first())
@@ -51,6 +51,7 @@ class parentsController extends BaseController{
                         $user->password=Hash::make($data["password"]);
                         $user->username = $data['username'];
                         $user->token=sha1($data['email']);
+                        $user->flag = 0;
                         $user->save();
                         $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
                         $user->attachRole($myRole);
@@ -170,7 +171,7 @@ class parentsController extends BaseController{
         if($user){
             $user->active=1;
             $user->save();
-            return Redirect::to("/");
+            return Redirect::to("view-parent.home");
         }else{
           return Redirect::to("/");
         }
