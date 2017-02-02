@@ -141,6 +141,7 @@
       <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
       <script src="/packages/libs/mdb/js/mdb.min.js"></script>
       <script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
+      <script type="text/javascript" src="/packages/libs/moment/moment.js"></script>
       <script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
       <script src="/packages/assets/js/landing/controllers/loginController.js?{{rand();}}"></script>
       <script src="/packages/assets/js/app-master.js?{{rand();}}"></script>

@@ -20,4 +20,22 @@ $(function(){
    $("#logOut-btn, .logOutBtn").click(function() {
       loginController.logOut();
    });
+   //date moement
+   moment().calendar('es', {
+             sameDay: '[Hoy]',
+             nextDay: '[Mañana]',
+             nextWeek: 'dddd',
+             lastDay: '[Ayer]',
+             lastWeek: '[Last] dddd',
+             sameElse: 'DD/MM/YYYY'
+   });
+   (function calcularTiempo(){
+      var horas = $('.date-time');
+      $.each(horas,function(i,object){
+         var horaSinFormato = $(object).text();
+         // console.log(horaSinFormato);
+         var horaConFormato = moment(horaSinFormato,"YYYYMMDD , h:mm:ss a").fromNow();
+            $(object).text(' '+horaConFormato);
+      });
+   }());
 });
