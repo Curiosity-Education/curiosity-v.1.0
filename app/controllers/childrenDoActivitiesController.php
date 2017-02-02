@@ -39,6 +39,25 @@ class childrenDoActivitiesController extends BaseController{
 				$childDoActivity->actividad_id = $activityId;
 				$childDoActivity->save();
 				//this format message is for user
+				$today 			= date("Y-m-d");
+				$progressGoal = SonDailyGoal::join("avances_metas",'avances_metas.avance_id','=','hijos_metas_diarias.id')
+									   ->where("hijos_metas_diarias.hijo_id",'=',Auth::user()->Person->Son->id)
+									   ->where("avances_metas.fecha",'=',$today)
+									   ->first();
+				$idMeta         =  SonDailyGoal::where("hijo_id",'=',Auth::user()->Person->Son->id)->pluck("id");
+			    if($progressGoal){// if son has a activity done them update your advances
+			    	$progressDaily 		   = ProgressGoal::find($progressGoal->id);
+			    	$avance        		   = (integer)$progressDaily->avance;
+			    	$progressDaily->avance = $avance +1;
+			    	$progressDaily->save();
+			    }else{
+			    	//get Hijo Avence id2HGD1|34
+			    	$progressDaily  = new ProgressGoal();
+			    	$progressDaily->avance     = 1;
+			    	$progressDaily->fecha      = $today;
+			    	$progressDaily->avance_id  = $idMeta;
+			    	$progressDaily->save();
+			    }
 				return Response::json(array(
 					'status' 		=>  200,
 					'statusMessage' => 'success',
@@ -93,8 +112,8 @@ class childrenDoActivitiesController extends BaseController{
 			}
 			Session::put("idActivity",$activityId);
 			$activity  = Activity::find($activityId);
-			if($activity){
-				$vistos           = (integer)$activity->vistos;
+			if($activity){// if object is found in this activity
+				$vistos           = (integer)$activity->vistos;//parse to int views
 				$activity->vistos = $vistos + 1;
 				$activity->save();
 			}

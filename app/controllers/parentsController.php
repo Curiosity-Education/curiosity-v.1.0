@@ -343,8 +343,8 @@ class parentsController extends BaseController{
             "username"                  =>"required|user_check|max:50",
             "new_password"              =>"min:8|max:100",
             "cnew_password"             =>"same:new_password",
-            "nombre"                    =>"required|letter|max:50",
-            "apellidos"                 =>"required|letter|max:60",
+            "nombre"                    =>"required|max:50",
+            "apellidos"                 =>"required|max:60",
             "sexo"                      =>"required|string|size:1",
             "telefono"                  =>"required"
         ];
