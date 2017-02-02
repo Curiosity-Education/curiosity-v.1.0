@@ -50,4 +50,7 @@ class Activity extends CORM{
     static findAll(method,success){
         super.any(null,method,success,"activity","find-all");
     }
+    static updateViews(data,success){
+        return super.any(data,"POST",success,"/activity","updateViews");
+    }
 }
