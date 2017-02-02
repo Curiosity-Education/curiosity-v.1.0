@@ -228,10 +228,10 @@ class Curiosity{
       $enzipado = new ZipArchive();
       // Open the file
       $enzipado->open($routeZIP);
-      if(!file_exists(public_path()."/packages/games/")){
-         $Zipdescompress = mkdir(public_path()."/packages/games/");
+      if(!file_exists(public_path()."/packages/assets/iframes/games/unity/".$log."/")){
+         $Zipdescompress = mkdir(public_path()."/packages/assets/iframes/games/unity/".$log."/");
       }
-      $route = public_path()."/packages/games/";
+      $route = public_path()."/packages/assets/iframes/games/unity/".$log."/";
       // Extract the ZipFile in the route
       $extract = $enzipado->extractTo($route);
       // the file will be closed
@@ -239,6 +239,7 @@ class Curiosity{
       unlink($routeZIP);
       // Run the route to validate the files
       $saved = $curiosity->searchJsonGame($route.$log);
+      $data = null;
       if(count($saved) > 0)
             $data = JSON::get($saved[0]);
       return [
