@@ -17,4 +17,7 @@ var activityCtrl = {
 	getAll: function(success){
 		Activity.findAll("GET",success);
 	},
+	updateViews: function(data,success){
+		Activity.updateViews(data,success);	
+	} 
 };
