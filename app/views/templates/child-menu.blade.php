@@ -10,7 +10,9 @@
 @stop
 
 @section('menu-photo')
-<div id="childMenu-avatarContainer" style="background-image:url(/packages/assets/media/images/avatar/backgrounds/menDefSkBlue098754.png?{{rand();}});"><div id="childMenu-avatarContainerDiv"></div></div>
+<div id="childMenu-avatarContainer" style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
+   <div id="childMenu-avatarContainerDiv"></div>
+</div>
 @stop
 
 @section('menu-links')
