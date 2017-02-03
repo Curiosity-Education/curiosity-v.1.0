@@ -317,18 +317,18 @@
 	</div>
 
 	<!-- Sección de Membresías -->
-{{--	<section id="membresia" class="" style="max-height:100px;">
+	<section id="membresia" class="" style="max-height:100px;">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
-			<h2 class="section-header h2-responsive">
+			<!-- <h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
 				Membresía
-			</h2>
+			</h2> -->
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 
 
-<!--Section: Pricing v.3-->
+{{--<!--Section: Pricing v.3-->
 <section class="section">
 
     <!--First row-->
@@ -424,13 +424,13 @@
     </div>
     <!--/First row-->
 
-</section>
+</section>--}}
 <!--/Section: Pricing v.3-->
 
 
 			</div> <!-- Cierre de contenedor -->
 		</div>
-	</section>--}}
+	</section>
 	<!-- Fin Sección de Membresías -->
 
 	<!-- Sección con el Apoyo -->
