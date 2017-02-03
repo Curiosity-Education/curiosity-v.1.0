@@ -310,7 +310,7 @@
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
 					<!-- <a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a> -->
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próimamente</a>
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próximamente</a>
 				</h2>
 			</center>
 	  	</div>
@@ -328,7 +328,7 @@
 			<div class="col-md-12" id="content-elemento">
 
 
-<!--Section: Pricing v.3-->
+{{--<!--Section: Pricing v.3-->
 <section class="section">
 
     <!--First row-->
@@ -424,7 +424,7 @@
     </div>
     <!--/First row-->
 
-</section>
+</section>--}}
 <!--/Section: Pricing v.3-->
 
 
@@ -546,7 +546,7 @@
 		<div class="call-to-action">
 			<ul>
 				<li>
-					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
+					<h5>¡Vamos! ¿Qué esperas para formar parte de la familia Curiosity?</h5></li>
 				<!-- <li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li> -->
 				<li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li>
 			</ul>
