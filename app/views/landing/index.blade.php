@@ -424,13 +424,13 @@
     </div>
     <!--/First row-->
 
-</section>--}}
+</section>
 <!--/Section: Pricing v.3-->
 
 
 			</div> <!-- Cierre de contenedor -->
 		</div>
-	</section>
+	</section>--}}
 	<!-- Fin Sección de Membresías -->
 
 	<!-- Sección con el Apoyo -->
