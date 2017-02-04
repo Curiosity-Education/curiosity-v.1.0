@@ -118,11 +118,13 @@ class parentsController extends BaseController{
     }
     public function payment_suscription(){
         $padreRole = Auth::user()->roles[0]->name;
-            /*
-                Configuración con Conekta
-
-            */
-            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            /* Configuración con Conekta */
+            /******************************************************
+            * Llave de pruebas
+            * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            *******************************************************/
+            // llave en modo de produccion
+            Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
             Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
