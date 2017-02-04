@@ -93,7 +93,7 @@
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
-         <div class="modal-body">
+         <div class="modal-body"  style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
             <div id="gst-avCel"></div>
             <h1 id="gst-score">200 puntos</h1>
             <div class="row">
