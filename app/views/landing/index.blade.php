@@ -51,7 +51,7 @@
 									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
-								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Brindar equidad educativa de una manera divertida.</p>
+								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>
 							</div>
 							<div class="col-md-7" id="form-content">
 								<div class="row">
@@ -328,104 +328,108 @@
 			<div class="col-md-12" id="content-elemento">
 
 
-{{--<!--Section: Pricing v.3-->
-<section class="section">
+				<!--Section: Pricing v.3-->
+				<section class="section">
 
-    <!--First row-->
-    <div class="row">
+					<!--First row-->
+					<div class="row">
 
-        <!--First column-->
-        <div class="col-lg-4 col-md-12 mb-r">
-            <!--Card-->
-            <div class="card">
+					@foreach($planes as $plan)
+						@if($plan->num_card === 1)
+						<!--First column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card hoverable">
 
-                <!--Content-->
-                <div class="text-center">
-                    <div class="card-block">
-                        <h4 class="text-xs-center">Basic plan</h4>
-                        <div class="">
-                            <center>
-                            	<div class="card-circle z-depth-1">
-                                	<i class="fa fa-home blue-text"></i>
-                            	</div>
-                            </center>
-                        </div>
+								<!--Content-->
+								<div class="text-center">
+									<div class="card-block">
+										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<div class="">
+											<center>
+												<div class="card-circle z-depth-1">
+													<i class="fa fa-user iconcard"></i>
+												</div>
+											</center>
+										</div>
 
-                        <!--Price-->
-                        <h2 class="text-xs-center"><strong>59$</strong></h2>
-                        <p class="text-xs-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa pariatur id nobis accusamus deleniti cumque hic laborum.</p>
-                        <center><a class="btn btn-primary btn-rounded">Buy now</a></center>
-                    </div>
-                </div>
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
+										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<center><a class="btn bluecard btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
 
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--/First column-->
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/First column-->
+						@elseif($plan->num_card === 2)
+						<!--Second column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card planImportant z-depth-4 hoverable">
 
-        <!--Second column-->
-        <div class="col-lg-4 col-md-12 mb-r">
-            <!--Card-->
-            <div class="card teal z-depth-4">
+								<!--Content-->
+								<div class="text-center white-text">
+									<div class="card-block">
+										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<div class="">
+											<center>
+												<div class="card-circle  z-depth-1">
+													<i class="fa fa-group white-text"></i>
+												</div>
+											</center>
+										</div>
 
-                <!--Content-->
-                <div class="text-center white-text">
-                    <div class="card-block">
-                        <h4 class="text-xs-center">Premium plan</h4>
-                        <div class="">
-                            <center>
-                            	<div class="card-circle  z-depth-1">
-                                	<i class="fa fa-group white-text"></i>
-                            	</div>
-                            </center>
-                        </div>
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
+										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<center><a class="btn btn-outline-white btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
 
-                        <!--Price-->
-                        <h2 class="text-xs-center"><strong>79$</strong></h2>
-                        <p class="text-xs-center">Esse corporis saepe laudantium velit adipisci cumque iste ratione facere non distinctio cupiditate sequi atque.</p>
-                        <center><a class="btn btn-outline-white btn-rounded">Buy now</a></center>
-                    </div>
-                </div>
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/Second column-->
+						@else
+						<!--Third column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card hoverable">
 
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--/Second column-->
+								<!--Content-->
+								<div class="text-center">
+									<div class="card-block">
+										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<div class="">
+											<center>
+												<div class="card-circle z-depth-1">
+													<i class="fa fa-graduation-cap iconcard"></i>
+												</div>
+											</center>
+										</div>
 
-        <!--Third column-->
-        <div class="col-lg-4 col-md-12 mb-r">
-            <!--Card-->
-            <div class="card">
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
+										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<center><a class="btn bluecard btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
 
-                <!--Content-->
-                <div class="text-center">
-                    <div class="card-block">
-                        <h4 class="text-xs-center">Advanced plan</h4>
-                        <div class="">
-                            <center>
-                            	<div class="card-circle z-depth-1">
-                                	<i class="fa fa-bar-chart blue-text"></i>
-                            	</div>
-                            </center>
-                        </div>
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/Third column-->
+						@endif
+					@endforeach
 
-                        <!--Price-->
-                        <h2 class="text-xs-center"><strong>99$</strong></h2>
-                        <p class="text-xs-center">At ab ea a molestiae corrupti numquam quo beatae minima ratione magni accusantium repellat eveniet quia vitae.</p>
-                        <center><a class="btn btn-primary btn-rounded">Buy now</a></center>
-                    </div>
-                </div>
+					</div>
+					<!--/First row-->
 
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--/Third column-->
-
-    </div>
-    <!--/First row-->
-
-</section>--}}
-<!--/Section: Pricing v.3-->
+				</section>
+				<!--/Section: Pricing v.3-->
 
 
 			</div> <!-- Cierre de contenedor -->
@@ -463,7 +467,7 @@
 	<!-- Fin Sección con el Apoyo -->
 
 	<!-- Sección de Noticias -->
-	<section id="noticias" hidden="hidden">
+	<section id="noticias">
 		<div class="bg-noticias">
 			<div class="flex-center container">
 				<ul class="animated ">
@@ -471,10 +475,10 @@
 						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
 					</li>
 					<li class="container-fluid hidden-xs-down">
-						<h4 class="h4-responsive" style="color:white;">Síguenos en Facebook, y .</h4>
+						<h4 class="h4-responsive" style="color:white;">¡ Síguenos en Facebook !</h4>
 					</li>
 					<li class="container-fluid">
-						<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
+						<h4 class="h4-responsive" style="color:white;">Regálanos tu like y forma parte de la familia Curiosity.</h4>
 					</li>
 					<div class="col-md-8 offset-md-2" hidden="hidden">
 						<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"

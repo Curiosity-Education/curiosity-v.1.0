@@ -44,12 +44,13 @@ $(function(){
 
   $.each(tempLevels,function(i){
     $(".lp-container-degrees").append($(
-      "<button type='button' data-id-grade='" + tempLevels[i].id + "' class='btn btn-info lp-btn-degrees'>" + tempLevels[i].nombre.split(" ", 1) + "°</button>"
+      "<button id='" + (i + 1) + "grado" + "' type='button' data-id-grade='" + tempLevels[i].id + "' class='btn btn-info lp-btn-degrees'>" + tempLevels[i].nombre.split(" ", 1) + "</button>"
     ));
   });
 
-  $("body").on('click','.lp-btn-degrees',function(){
 
+
+  $("body").on('click','.lp-btn-degrees',function(){
     level = $(this).data("id-grade");
     if (!$(this).hasClass("lp-btn-active")) {
       $("#lp-btn-topics").empty();
@@ -59,12 +60,15 @@ $(function(){
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
-            "<button type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
+            "<button id='" + (i + 1) + "inteligence" + "' type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
            ));
          }
       });
     }
   });
+
+  $("#1grado").trigger('click');
+
 
   $("body").on('click','.lp-btnTopic',function(){
     if (!$(this).hasClass("lp-topic-active")) {
@@ -72,7 +76,7 @@ $(function(){
       intelligencesId = $(this).data("intelligence-id");
       $("#lp-row-contPdf").html("");
       $("#pag").empty();
-      $("#carrousel-pdfs").empty();
+      $("#carrousel-videos").empty();
       $(this).addClass("lp-topic-active");
 
       $.each(tempBlocks,function(i){
@@ -112,12 +116,12 @@ $(function(){
             count_sections += 1;
             if (count_sections == 1) {
               $(".lp-container-video").append(
-                "<div id='lp-section" + count_sections + "' class='perro l'>" +
+                "<div id='lp-section" + count_sections + "' class='lp-show l'>" +
                 "</div>"
               );
             } else {
               $(".lp-container-video").append(
-                "<div id='lp-section" + count_sections + "' class='gato l'>" +
+                "<div id='lp-section" + count_sections + "' class='lp-hide l'>" +
                 "</div>"
               );
             }
@@ -193,7 +197,9 @@ $(function(){
         "</div>"
       ));
 
+
       $.each(finalVids,function(i){
+
         if (i % 2 === 0) {
            countSlide += 1;
           $(".pdfs-carrousel-container").append($(
@@ -205,29 +211,31 @@ $(function(){
           $(".pair-pdfs"+ countSlide).addClass("active");
 
         $(".pair-pdfs" + countSlide).append($(
-          "<a class='lp-PDFselect' href='#'>" +
-              "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
-                "<div class='card-overlay lp-card-pdf'>" +
 
-                  "<div class='white-text text-xs-center'>" +
-                    "<div class='card-block'>" +
-                      "<h5 class='h5-responsive lp-text-card'><i class='fa fa-play'></i> GUIA VIDEOS</h5><hr class='lp-hr'>" +
-                      "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
+          "<div class='col-xs-12'>" +
+            "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-video-id='" + finalVids[i].id + "' data-link-video='" + finalVids[i].embed + "'>" +
+              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
+                "<div class='lp-bg-card' title='click para ver'>" +
+                  "<div class='card-overlay lp-card-pdf'>" +
 
+                    "<div class='white-text text-xs-center'>" +
+                      "<div class='card-block'>" +
+                        "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;VIDEOS</h5><hr class='lp-hr'>" +
+                        "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
+
+                      "</div>" +
                     "</div>" +
                   "</div>" +
                 "</div>" +
               "</div>" +
             "</a>" +
           "</div>"
-
         ))
       });
-      count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
 
+      count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
     }
   });
-
 
   /* Transitions of the View ------------------------------------ */
 
@@ -242,10 +250,14 @@ $(function(){
     var school = StorageDB.table.getByAttr("localSchools","id",teacher[0].escuela_id);
     var recommended = StorageDB.table.getByAttr("localVideos","tema_id",video[0].tema_id);
     var perro = StorageDB.table.getByAttr("localTopics","id",video[0].tema_id);
+    $("#prof-img").empty();
     $("#video-info").append($(
       "<h5 class='gst-tema-content text-left'>" + teacher[0].nombre + " " + teacher[0].apellidos + "</h5>" +
       "<p class='gst-name-content text-left'>" + perro[0].nombre + "</p>" +
       "<p class='gst-views-content'>" + school[0].nombre + "</p>"
+    ));
+    $("#prof-img").append($(
+      "<img src='/packages/assets/media/images/teachersAsc/" + teacher[0].foto + "' class='gst-img-content img-fluid' id='prof-img'>"
     ));
 
 
@@ -256,7 +268,7 @@ $(function(){
       $(".recommended-videos").append($(
         "<div class='media hoverable last' data-recommended-id='" + recommended[i].id + "'>" +
             "<a class='media-left waves-light col-md-4'>" +
-                "<img class='img-fluid' src='/packages/assets/media/images/games/posters/" + tempTeacher[0].foto + "' alt=content ico'>" +
+                "<img class='img-fluid' src='/packages/assets/media/images/posters/" + recommended[0].poster + "' alt=content ico'>" +
             "</a>" +
             "<h5 class='media-heading'>" + tempTeacher[0].nombre + " " + tempTeacher[0].apellidos + "</h5>" +
             "<div class='media-body'>" +
@@ -295,5 +307,6 @@ $(function(){
   }); // close PDF
 
   /* ------------------------------------------------------------- */
-
+  $("#1inteligence").trigger('click');
+  $(".page-link1").trigger('click');
 });
