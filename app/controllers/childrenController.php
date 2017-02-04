@@ -56,7 +56,7 @@ class childrenController extends BaseController{
 			$sons = Son::where("padre_id", "=", $id_dad)->get();
 			$conutSons = count($sons);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
-			Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
 			$customer = Conekta_Customer::find($tokenCard);
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
