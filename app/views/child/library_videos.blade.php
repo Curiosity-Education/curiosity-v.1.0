@@ -106,8 +106,8 @@
 								<div class="gst-information">
 								 <div class="gst-informataion-header">
 									<div class="row">
-										<div class="col-md-3">
-											
+										<div class="col-md-3" id="prof-img">
+
 										</div>
 										<div class="col-md-9" id="video-info">
 
