@@ -113,17 +113,17 @@ $(function(){
               );
             }
           }
-
+        var nameTopic = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
           $("#lp-section" + count_sections).append($(
             "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
                "<div class='lp-bg-card' title='click para ver'>" +
-                 "<div class='card-overlay lp-card-pdf'>" +
+                 "<div class='card-overlay lp-card-pdf p'>" +
 
-                   "<div class='white-text text-xs-center'>" +
+                   "<div class='white-text'>" +
                      "<div class='card-block'>" +
                        "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
-                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
+                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre_real + "</h4>" +
 
                      "</div>" +
                    "</div>" +
@@ -149,7 +149,7 @@ $(function(){
 
       for (var i = 0; i < count_sections; i++) {
           $(".pagination").append($(
-            "<li class='page-item' data-section-id='" + (i + 1) + "'><a class='page-link'>" + (i + 1) + "</a></li>"
+            "<li id='pagination" + (i+1) + "' class='page-item' data-section-id='" + (i + 1) + "'><a class='page-link'>" + (i + 1) + "</a></li>"
           ));
       }
 
@@ -202,7 +202,7 @@ $(function(){
                     "<div class='white-text text-xs-center'>" +
                       "<div class='card-block'>" +
                         "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i> GUIA PDF</h5><hr class='lp-hr'>" +
-                        "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
+                        "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre_real + "</h4>" +
 
                       "</div>" +
                     "</div>" +
@@ -257,5 +257,5 @@ $(function(){
     $(this).addClass('active');
   });
   $("#1inteligence").trigger('click');
-  $(".page-link1").trigger('click');
+  $("#pagination1").trigger('click');
 });
