@@ -117,7 +117,7 @@ $(function(){
           $("#lp-section" + count_sections).append($(
             "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-               "<div class='lp-bg-card' title='click para ver'>" +
+               "<div class='lp-bg-card lp-bg' title='click para ver'>" +
                  "<div class='card-overlay lp-card-pdf lp-change'>" +
 
                    "<div class='white-text'>" +
