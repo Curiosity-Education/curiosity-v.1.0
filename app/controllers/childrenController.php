@@ -111,7 +111,7 @@ class childrenController extends BaseController{
 				/ OTHER AVATAR IS NOT EXIST
 				/**************************************************************/
 				$avatar = DB::table('hijos_has_estilos_avatar')->insert(array(
-	             'hijo_id'      => $son->id,
+	             'hijos_id'      => $son->id,
 	             'estilo_avatar_id' => 1,
 					 'is_using' => 1
 	         ));
