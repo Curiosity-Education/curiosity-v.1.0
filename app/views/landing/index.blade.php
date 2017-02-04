@@ -319,10 +319,10 @@
 	<!-- Sección de Membresías -->
 	<section id="membresia" class="" style="max-height:100px;">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
-			<h2 class="section-header h2-responsive">
+			<!-- <h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
 				Membresía
-			</h2>
+			</h2> -->
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
@@ -537,7 +537,7 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 					<ul>
-						<li> - &nbsp;(871) 255 89 65 "RRHH"</li>
+						<li> - &nbsp;(871) 255 89 65</li>
 						<li> - &nbsp;hola@curiosity.com.mx</li>
 					</ul>
 				</div>
@@ -550,7 +550,7 @@
 		<div class="call-to-action">
 			<ul>
 				<li>
-					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
+					<h5>¡Vamos! ¿Qué esperas para formar parte de la familia Curiosity?</h5></li>
 				<!-- <li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li> -->
 				<li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li>
 			</ul>

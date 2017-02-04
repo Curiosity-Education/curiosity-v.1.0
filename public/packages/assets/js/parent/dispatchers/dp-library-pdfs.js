@@ -2,8 +2,8 @@ $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
   var level, intelligencesId, blockId = [], topicId = [], finalPdfs = [];
-  var cc = 0, countSlide = 0, nameTopic;
-  var show_per_page = 8, num_container = 1,contador = 0, contador2 = 0;
+  var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
+  var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
   libraryPdfs.getLevels(function(levels){
     localStorage.localLevels = JSON.stringify(levels);
@@ -42,7 +42,8 @@ $(function(){
 
     level = $(this).data("id-grade");
     if (!$(this).hasClass("lp-btn-active")) {
-      $('#lp-btn-topics').empty();
+      $("#lp-btn-topics").empty();
+      $(".lp-btn-degrees").removeClass("lp-btn-active");
       $(this).addClass("lp-btn-active");
 
       $.each(tempIntelligences,function(i){
@@ -54,15 +55,15 @@ $(function(){
       });
     }
   });
-
+// StorageDB.table.getByAttr("localTopics","id",finalVids[i].tema_id);
   $("body").on('click','.lp-btnTopic',function(){
     if (!$(this).hasClass("lp-topic-active")) {
-      $('#lp-row-contPdf').empty();
-      $('.pag').empty();
-      $('#carrousel-pdfs').empty();
 
-      $(this).addClass("lp-topic-active");
       intelligencesId = $(this).data("intelligence-id");
+      $("#lp-row-contPdf").empty();
+      $("#pag").empty();
+      $("#carrousel-pdfs").empty();
+      $(this).addClass("lp-topic-active");
 
       $.each(tempBlocks,function(i){
         if (tempBlocks[i].inteligencia_id == intelligencesId) {
@@ -70,10 +71,13 @@ $(function(){
         }
       });
 
-      $.each(tempTopics,function(i){
-        if (blockId == tempTopics[i].bloque_id) {
-          topicId[i] = tempTopics[i].id;
-        }
+      $.each(blockId,function(i){
+        $.each(tempTopics,function(j){
+          if (blockId[i] == tempTopics[j].bloque_id) {
+            topicId[cc2] = tempTopics[j].id;
+            cc2 += 1;
+          }
+        })
       });
 
       $.each(topicId,function(i){
@@ -91,123 +95,104 @@ $(function(){
       ));
 
       $.each(finalPdfs,function(i){
+        if (count_elements < show_per_page) {
 
-         if (contador < show_per_page) {
+          if (count_elements == 0) {
+            count_sections += 1;
+            if (count_sections == 1) {
+              $(".lp-container-pdf").append(
+                "<div id='lp-section" + count_sections + "' class='perro l'>" +
+                "</div>"
+              );
+            } else {
+              $(".lp-container-pdf").append(
+                "<div id='lp-section" + count_sections + "' class='gato l'>" +
+                "</div>"
+              );
+            }
+          }
 
-           if (contador == 1) {
-             contador2 += 1;
-             $(".lp-container-pdf").append($(
-               "<div id='lp-container-pdf" + contador2 + "'></div>"
-             ));
-           }
+          $("#lp-section" + count_sections).append($(
+            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
+             "<div class='col-md-3 col-sm-3 col-xs-4'>" +
+               "<div class='lp-bg-card' title='click para ver'>" +
+                 "<div class='card-overlay lp-card-pdf'>" +
 
-           $("#lp-container-pdf" + contador2).append($(
+                   "<div class='white-text text-xs-center'>" +
+                     "<div class='card-block'>" +
+                       "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
+                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
 
-                "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
-                  "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-                    "<div class='lp-bg-card' title='click para ver'>" +
-                      "<div class='card-overlay lp-card-pdf'>" +
-
-                        "<div class='white-text text-xs-center'>" +
-                          "<div class='card-block'>" +
-                            "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
-                            "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre + "</h4>" +
-
-                          "</div>" +
-                        "</div>" +
-                      "</div>" +
-                    "</div>" +
-                  "</div>" +
-                "</a>"
-
-           ));
-
-           contador += 1;
-
-           if (contador == 8) {
-             contador = 0;
-           }
-         }
+                     "</div>" +
+                   "</div>" +
+                 "</div>" +
+               "</div>" +
+             "</div>" +
+            "</a>"
+          ));
+          count_elements += 1;
+        }
+        if (count_elements == 8) {
+          count_elements = 0;
+        }
       });
 
-      $(".pag").append($(
-       " <nav>" +
-         "<ul class='pagination pg-blue'>" +
+      $("#pag").append($(
+      " <nav>" +
+          "<ul class='pagination pg-blue'>" +
 
-             "<li class='page-item'>" +
-                 "<a class='page-link' aria-label='Previous'>" +
-                     "<span aria-hidden='true'>&laquo;</span>" +
-                     "<span class='sr-only'>Previous</span>" +
-                 "</a>" +
-             "</li>" +
-
-             "<li class='page-item before'>" +
-                 "<a class='page-link' aria-label='Next'>" +
-                     "<span aria-hidden='true'>&raquo;</span>" +
-                     "<span class='sr-only'>Next</span>" +
-                 "</a>" +
-             "</li>" +
-         "</ul>" +
-     "</nav>"
-
+          "</ul>" +
+        "</nav>"
       ));
 
-      for (var i = 0; i < contador2; i++) {
-        $(
-          "<li class='page-item '><a class='page-link' id='l" + (i + 1) + "' href='#lp-container-pdf" + (i+1) + "'>" + (i + 1) + "</a></li>"
-        ).insertBefore( ".before" );
-        // if (i == 0)
-        //   $('.page-item:second').addClass('active');
-       }
+      for (var i = 0; i < count_sections; i++) {
+          $(".pagination").append($(
+            "<li class='page-item' data-section-id='" + (i + 1) + "'><a class='page-link'>" + (i + 1) + "</a></li>"
+          ));
+      }
 
-       $("#carrousel-pdfs").append($(
+      $("#carrousel-pdfs").append($(
 
-         "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
-           "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
+        "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
+          "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
 
 
-             "<div class='controls-top'>" +
-               "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
-               "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
-             "</div>" +
+            "<div class='controls-top'>" +
+              "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='prev'><i class='fa fa-chevron-left'></i></a>" +
+              "<a class='btn-floating btn-small' href='#lp-slide-cardPdf' data-slide='next'><i class='fa fa-chevron-right'></i></a>" +
+            "</div>" +
 
 
 
-             "<ol class='carousel-indicators'>" +
-               "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
-               "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
-             "</ol>" +
+            "<ol class='carousel-indicators'>" +
+              "<li data-target='#lp-slide-cardPdf' data-slide-to='0' class='active'></li>" +
+              "<li data-target='#lp-slide-cardPdf' data-slide-to='1'></li>" +
+            "</ol>" +
 
 
 
-             "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
+            "<div class='carousel-inner pdfs-carrousel-container' role='listbox'>" +
 
+            "</div>" +
 
-             "</div>" +
+          "</div>" +
 
-           "</div>" +
+        "</div>"
+      ));
 
-         "</div>"
-
-       ));
-
-       $.each(finalPdfs,function(i){
-         if (i % 2 === 0) {
-
+      $.each(finalPdfs,function(i){
+        if (i % 2 === 0) {
            countSlide += 1;
-           $(".pdfs-carrousel-container").append($(
-
+          $(".pdfs-carrousel-container").append($(
              "<div class='carousel-item text-xs-center pair-pdfs"+ countSlide +"'>" +
              "</div>"
-           ));
-         }
-           if (i <= 1) {
-             $(".pair-pdfs"+ countSlide).addClass("active");
-           }
+          ));
+        }
+        if(i == 0)
+          $(".pair-pdfs"+ countSlide).addClass("active");
 
-           $(".pair-pdfs"+countSlide).append($(
-
-            "<div class='col-xs-12'>" +
+        $(".pair-pdfs" + countSlide).append($(
+          "<div class='col-xs-12'>" +
               "<a class='lp-PDFselect' href='#'>" +
                 "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
                   "<div class='card-overlay lp-card-pdf'>" +
@@ -223,16 +208,12 @@ $(function(){
                 "</div>" +
               "</a>" +
             "</div>"
-
-           ));
-        });
-
-        $(".pagination").children('li').each(function(i){
-          $(".pagination>li>a").trigger( "click" );
+        ))
       });
-    }
+      count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
 
-   });
+    }
+  });
 
 
   /* Transitions of the View ------------------------------------ */
@@ -265,8 +246,13 @@ $(function(){
 	/* ------------------------------------------------------------- */
 
   $("body").on('click','.page-item',function(){
+    var section = $(this).data('section-id');
+    $(".l").addClass("gato");
+    $("#lp-section" + section).removeClass("gato");
+    $("#lp-section" + section).addClass("perro");
+    $("#lp-section" + section).addClass("fadeInUp");
     $('.page-item').removeClass('active');
-    $(this),addClass('active');
+    $(this).addClass('active');
   });
 
 });

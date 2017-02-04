@@ -28,8 +28,4 @@ var libraryCtrl = {
 		libraryVideos.getSchools(success)
 	}
 
-	getPdfs:function(success){
-		libraryVideos.getPdfs(success)
-	}
-
 };
