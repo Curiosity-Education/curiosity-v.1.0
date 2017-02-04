@@ -43,7 +43,7 @@
                             <h3>Mejor calificados</h3>
                             <p></p>
 
-                             <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recents"> Ver juegos</a>
+                             <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="ranks"> Ver juegos</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
                             <h3> Populares</h3>
                             <p></p>
-                           <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recents"> Ver juegos</a>
+                           <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="populars"> Ver juegos</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
                             <h3>Recomendados</h3>
                             <p></p>
-                             <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recents"> Ver juegos</a>
+                             <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recomended"> Ver juegos</a>
                         </div>
                     </div>
                 </div>

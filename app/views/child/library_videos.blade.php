@@ -107,7 +107,7 @@
 								 <div class="gst-informataion-header">
 									<div class="row">
 										<div class="col-md-3">
-											<img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
+											
 										</div>
 										<div class="col-md-9" id="video-info">
 
