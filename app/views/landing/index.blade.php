@@ -319,10 +319,10 @@
 	<!-- Sección de Membresías -->
 	<section id="membresia" class="" style="max-height:100px;">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
-			<!-- <h2 class="section-header h2-responsive">
+			<h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
 				Membresía
-			</h2> -->
+			</h2>
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
@@ -344,7 +344,7 @@
 								<!--Content-->
 								<div class="text-center">
 									<div class="card-block">
-										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
 										<div class="">
 											<center>
 												<div class="card-circle z-depth-1">
@@ -354,8 +354,9 @@
 										</div>
 
 										<!--Price-->
-										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
-										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Muy Bien !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -373,7 +374,7 @@
 								<!--Content-->
 								<div class="text-center white-text">
 									<div class="card-block">
-										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
 										<div class="">
 											<center>
 												<div class="card-circle  z-depth-1">
@@ -383,8 +384,9 @@
 										</div>
 
 										<!--Price-->
-										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
-										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Excelente !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
 										<center><a class="btn btn-outline-white btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -402,7 +404,7 @@
 								<!--Content-->
 								<div class="text-center">
 									<div class="card-block">
-										<h4 class="text-xs-center">{{$plan->name}}</h4>
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
 										<div class="">
 											<center>
 												<div class="card-circle z-depth-1">
@@ -412,8 +414,9 @@
 										</div>
 
 										<!--Price-->
-										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00</strong></h2>
-										<p class="text-xs-center">Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}} pesos</p>
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Genial !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuentas para tus hijos para comenzar este aprendizaje de forma divertida.</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
