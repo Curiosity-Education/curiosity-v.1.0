@@ -133,9 +133,9 @@ $(function(){
             "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-video-id='" + finalVids[i].id + "' data-link-video='" + finalVids[i].embed + "'>" +
             "<div class='col-md-3 col-sm-3 col-xs-4'>" +
               "<div class='lp-bg-card' title='click para ver'>" +
-                "<div class='card-overlay lp-card-pdf'>" +
+                "<div class='card-overlay lp-card-pdf lp-change'>" +
 
-                  "<div class='white-text text-xs-center'>" +
+                  "<div class='white-text'>" +
                     "<div class='card-block'>" +
                       "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;VIDEOS</h5><hr class='lp-hr'>" +
                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
@@ -214,8 +214,7 @@ $(function(){
 
           "<div class='col-xs-12'>" +
             "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-video-id='" + finalVids[i].id + "' data-link-video='" + finalVids[i].embed + "'>" +
-              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-                "<div class='lp-bg-card' title='click para ver'>" +
+                "<div class='lp-bg-card lp-bg' title='click para ver'>" +
                   "<div class='card-overlay lp-card-pdf'>" +
 
                     "<div class='white-text text-xs-center'>" +
