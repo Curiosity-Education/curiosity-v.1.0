@@ -48,7 +48,7 @@
             <h1>{{$game["name"]}}</h1>
 
             <hr class="gst-hr">
-            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
 
@@ -93,7 +93,7 @@
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
-         <div class="modal-body">
+         <div class="modal-body"  style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
             <div id="gst-avCel"></div>
             <h1 id="gst-score">200 puntos</h1>
             <div class="row">
@@ -128,7 +128,7 @@
               </button>
               <div class="col-md-12 gst-col">
                 <div class="flex-center">
-                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
+                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1">
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@
     @stop
     @section('modal-header')
       @section('modal-header-image')
-        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%"> 
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
       @stop
       @section('modal-header-information')
         <h5 class="gst-tema-content text-left">Nombre profe</h5>

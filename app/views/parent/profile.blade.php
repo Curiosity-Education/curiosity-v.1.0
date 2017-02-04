@@ -16,7 +16,7 @@ Mi Perfil
                 <div class="card-block hidden-xs-down">
                     <!--Header-->
                     <div class="form-header p-novedades bg-blue darken-4">
-                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>¡ Quizas te interese!</h3>
+                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>Quizás te interese...</h3>
                     </div>
                      <ul class="p-list-news">
                       @foreach(DB::table('novedades_papa')
@@ -42,7 +42,7 @@ Mi Perfil
                                   </div>
                                   <hr>
                                   <div class="p-footer-card text-right">
-                                    <p>{{$new->created_at}}</p>
+                                    <p class="date-time">{{$new->created_at}}</p>
                                   </div>
                                 </div>
                               </div>
@@ -54,7 +54,7 @@ Mi Perfil
                 <div class="hidden-sm-up" id="p-content-novelty">
         					<div class="list-group">
         					  <a href="#" class="list-group-item active">
-        						¡ Quizas te interese !
+        						Quizás te interese...
         					  </a>
         					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
         					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>
@@ -171,9 +171,9 @@ Mi Perfil
                     <hr>
                     <!-- data list-->
                     <ul class="list text-justify hidden-md-down p-cardInfo" >
-                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">Rogelio Rafael</span></li>
-                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-name">Jinestas garcía</span></li>
-						<li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-name">+52 8711010214</span></li>
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">{{Auth::user()->Person->nombre}}</span></li>
+                      <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-surnames">{{Auth::user()->Person->apellidos}}</span></li>
+						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
                     </ul>
                     <hr class="hidden-md-down p-cardInfo">
                     <!--//.. end data list -->

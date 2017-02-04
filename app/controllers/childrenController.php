@@ -56,7 +56,7 @@ class childrenController extends BaseController{
 			$sons = Son::where("padre_id", "=", $id_dad)->get();
 			$conutSons = count($sons);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
-			Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
 			$customer = Conekta_Customer::find($tokenCard);
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
@@ -67,6 +67,7 @@ class childrenController extends BaseController{
 	         $user->password  = Hash::make($data["password"]);
 	         $user->token     = sha1($data["username"]);
 	         $user->active    = 1;
+				$user->flag      = 0;
 	         $user->save();
 				$myRole = Role::where("name", "=", "child")->pluck("id");
 	         $user->attachRole($myRole);
@@ -105,6 +106,16 @@ class childrenController extends BaseController{
 	             'hijo_id'      => $son->id,
 	             'accesorio_id' => 4
 	         ));
+				/**************************************************************
+				/ THE AVATAR IS REGISTRED MANUAL FOR A TEMPORALY TIME WHILE
+				/ OTHER AVATAR IS NOT EXIST
+				/**************************************************************/
+				$avatar = DB::table('hijos_has_estilos_avatar')->insert(array(
+	             'hijos_id'      => $son->id,
+	             'estilo_avatar_id' => 1,
+					 'is_using' => 1
+	         ));
+				/**************************************************************/
 				$planRel = new MembershipPlan();
 				$planRel->hijo_id = $son->id;
 				$planRel->membresia_id = Membership::where("padre_id", "=", $id_dad)->pluck("id");
@@ -210,6 +221,45 @@ class childrenController extends BaseController{
 			'statusMessage' => 'success',
 			'message'		=> 'información obtenida',
 			'data'			=> $data
+		));
+	}
+
+	public static function getInfoToConfig(){
+		$user		= Auth::user();
+		$person 	= Person::where("user_id", "=", $user["id"])->first();
+		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+		$data 	= [
+			"metas"	=> goalController::all(),
+			"miMeta"	=> goalController::getGoalSon(),
+			"person"	=> $person,
+			"child"	=> $child
+		];
+		return $data;
+	}
+
+	function updateConf(){
+		$data = Input::all();
+		$user = Auth::user();
+		$user->username = $data["username"];
+		if ($data["npass"] != null){
+			if(!Hash::check($data["pass"], $user->password)){
+				return Response::json(array(
+					'status'        => 'CU-104',
+               'statusMessage' => 'Inconsistency format data',
+					'message'       => 'Inconsistency format data',
+					'data'			 => null
+            ));
+			}
+			else{
+				$user->password = Hash::make($data["npass"]);
+			}
+		}
+		$user->save();
+		return Response::json(array(
+			 "status"        => 200,
+			 'statusMessage' => "success",
+			 'message'       => "Felicidades haz actualizado tu información",
+			 'data'			  => $user
 		));
 	}
 }

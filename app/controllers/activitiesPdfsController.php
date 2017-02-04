@@ -68,5 +68,4 @@ class activitiesPdfsController extends BaseController{
          }
       }
    }
-
 }

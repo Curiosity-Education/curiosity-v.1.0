@@ -10,6 +10,12 @@
 
 @section('content')
 <div id="hm-init" class="">
+    @if(Auth::user()->active == 0)
+        <div class="alert alert-info alert-dismissible fade in" role=alert>
+            <button type=button class=close data-dismiss=alert aria-label=Close><span aria-hidden=true>&times;</span></button> <strong>Por favor, confirma tu correo electronico.</strong> <br>
+            Un correo de confirmación ha sido enviado a  {{Auth::user()->Person()->first()->Dad()->first()->email}} para completar tu suscripción.
+        </div>
+    @endif
 	<div class="carousel hm-carousel animated fadeInDown">
 	</div>
 
@@ -31,11 +37,11 @@
                 <h3>Progreso de tu hijo</h3>
                 <p>
                     Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma. <br>
-                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo. <br>
+                    Tú puedes seleccionar la materia y ver su calificación dividida en los temas vistos por tu hijo. <br>
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
-                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
+                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
                     Dando click en el botón de abajo podrás llegar a esta sección.
                 </p>
                 <button type="button" class="btn" id="hm-btn-HelpSon" disabled>Ayudar a mi Hijo</button>
@@ -125,6 +131,7 @@
       @stop
       @section('modal-header-information')
         <h5 class="gst-tema-content text-left">...</h5>
+        <h5 class="gst-prof-content text-left" style="display:none;"></h5>
       @stop
       @section('modal-title')
         <h4 class="text-center gst-title-content">Biblioteca de <span id="type_mdl"></span></h4>

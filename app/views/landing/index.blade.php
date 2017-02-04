@@ -24,7 +24,8 @@
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
 	<li class="nav-item">
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		{{--<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
 	</li>
 @stop
 
@@ -50,7 +51,7 @@
 									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
-								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Brindar equidad educativa de una manera divertida.</p>
+								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>
 							</div>
 							<div class="col-md-7" id="form-content">
 								<div class="row">
@@ -95,9 +96,8 @@
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
 					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
-					<!-- <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a> -->
-					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
-					<!-- <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="#membresia">Registrarse</a> -->
+					{{--<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -204,7 +204,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-					<a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
+					<!-- <a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a> -->
+					<a href="javascript:void(0)" type="button" class="btn btn-secondary btn-rounded waves-effect">Próximamente</a>
 				</h2>
 			</center>
 		</div>
@@ -308,7 +309,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
+					<!-- <a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a> -->
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próximamente</a>
 				</h2>
 			</center>
 	  	</div>
@@ -324,51 +326,115 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
-                <section class="section">
-                   <?php $contador_plns=0; $long = count($planes); $control=0;?>
-                        @foreach($planes as $plan)
-                            @if($contador_plns == 0)
-                                <div class="row">
-                            @endif
-                            <div class="col-lg-4 col-md-12 mb-r">
-                                <!--Card-->
-                                <div class="card">
-
-                                    <!--Content-->
-                                    <div class="text-xs-center">
-                                        <div class="card-block" style="background-color:#2d96ba;color:#fff;border-radius:.23rem;">
-                                            <center><h5 style="background: #1d657d;
-																				   margin: -1.2rem;
-																				   padding: 1rem;
-																				   margin-bottom: .5rem;
-																				   border-top-left-radius: .23rem;
-																				   border-top-right-radius: .23rem;
-																					box-shadow: 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);">{{$plan->name}}</h5></center>
-                                            <div class="flex-center" style="height:30%;">
-                                                <div class="card-circle">
-                                                    <i class="fa fa-credit-card-alt" style="color:#fff !important;"></i>
-                                                </div>
-                                            </div>
-
-                                            <!--Price-->
-                                            <center><h2><strong>$ {{$plan->amount}}</strong></h2></center>
-                                            <p><center>Este plan te permite registrar a {{$plan->limit}} de tus hijos, con un pago por {{$trans[$plan->interval]}} de ${{$plan->amount}}</center></p>
-                                            <center><a class="btn btn-primary btn-rounded btn-outline-default suscriptionBtn" data-id-plan="{{$plan->id}}" style="background:#fff!important;border-color:#2262ae!important;color:#2262ae !important;">Suscribirme</a></center>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--/.Card-->
-                            </div>
-                            <?php $contador_plns+=1; $control+=1;?>
-                            @if($contador_plns == 3 || $control == $long)
-                                </div>
-                                <?php $contador_plns=0;?>
-                            @endif
-                        @endforeach
 
 
-                </section>
+				<!--Section: Pricing v.3-->
+				<section class="section">
+
+					<!--First row-->
+					<div class="row">
+
+					@foreach($planes as $plan)
+						@if($plan->num_card === 1)
+						<!--First column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card hoverable">
+
+								<!--Content-->
+								<div class="text-center">
+									<div class="card-block">
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
+										<div class="">
+											<center>
+												<div class="card-circle z-depth-1">
+													<i class="fa fa-user iconcard"></i>
+												</div>
+											</center>
+										</div>
+
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Muy Bien !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
+
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/First column-->
+						@elseif($plan->num_card === 2)
+						<!--Second column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card planImportant z-depth-4 hoverable">
+
+								<!--Content-->
+								<div class="text-center white-text">
+									<div class="card-block">
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
+										<div class="">
+											<center>
+												<div class="card-circle  z-depth-1">
+													<i class="fa fa-group white-text"></i>
+												</div>
+											</center>
+										</div>
+
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Excelente !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<center><a class="btn btn-outline-white btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
+
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/Second column-->
+						@else
+						<!--Third column-->
+						<div class="col-lg-4 col-md-12 mb-r">
+							<!--Card-->
+							<div class="card hoverable">
+
+								<!--Content-->
+								<div class="text-center">
+									<div class="card-block">
+										<h3 class="text-xs-center">{{$plan->name}}</h3>
+										<div class="">
+											<center>
+												<div class="card-circle z-depth-1">
+													<i class="fa fa-graduation-cap iconcard"></i>
+												</div>
+											</center>
+										</div>
+
+										<!--Price-->
+										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
+										<p class="text-xs-center">¡ Genial !</p>
+										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuentas para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+									</div>
+								</div>
+
+							</div>
+							<!--/.Card-->
+						</div>
+						<!--/Third column-->
+						@endif
+					@endforeach
+
+					</div>
+					<!--/First row-->
+
+				</section>
+				<!--/Section: Pricing v.3-->
+
+
 			</div> <!-- Cierre de contenedor -->
 		</div>
 	</section>
@@ -404,7 +470,7 @@
 	<!-- Fin Sección con el Apoyo -->
 
 	<!-- Sección de Noticias -->
-	<!-- <section id="noticias">
+	<section id="noticias">
 		<div class="bg-noticias">
 			<div class="flex-center container">
 				<ul class="animated ">
@@ -412,12 +478,12 @@
 						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
 					</li>
 					<li class="container-fluid hidden-xs-down">
-						<h4 class="h4-responsive" style="color:white;">Estemos en contacto y hagamos juntos de la educación una experiencia divertida.</h4>
+						<h4 class="h4-responsive" style="color:white;">¡ Síguenos en Facebook !</h4>
 					</li>
 					<li class="container-fluid">
-						<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
+						<h4 class="h4-responsive" style="color:white;">Regálanos tu like y forma parte de la familia Curiosity.</h4>
 					</li>
-					<div class="col-md-8 offset-md-2">
+					<div class="col-md-8 offset-md-2" hidden="hidden">
 						<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
 						 style="padding-top:20px; padding-left:20px; border:1px solid #fff;">
 						<div class="md-form form-group">
@@ -433,7 +499,7 @@
 				</ul>
 			</div>
 		</div>
-	</section> -->
+	</section>
 	<!-- Fin Sección de Noticias -->
 @stop
 
@@ -474,8 +540,8 @@
 				<div class="col-md-2">
 					<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 					<ul>
-						<li> > &nbsp;(871) 255 89 65 "RRHH"</li>
-						<li> > &nbsp;hola@curiosity.com.mx</li>
+						<li> - &nbsp;(871) 255 89 65</li>
+						<li> - &nbsp;hola@curiosity.com.mx</li>
 					</ul>
 				</div>
 				<!--/.Fourth column-->
@@ -487,8 +553,9 @@
 		<div class="call-to-action">
 			<ul>
 				<li>
-					<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-				<li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li>
+					<h5>¡Vamos! ¿Qué esperas para formar parte de la familia Curiosity?</h5></li>
+				<!-- <li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li> -->
+				<li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li>
 			</ul>
 		</div>
 		<!--/.Call to action-->

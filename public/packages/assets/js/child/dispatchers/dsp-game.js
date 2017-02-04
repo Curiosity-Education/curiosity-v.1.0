@@ -37,6 +37,8 @@ $(function(){
       $(".gst-information-list").append($pdfs);
       //set information in modal
       $(".gst-information-list>div").children().first().addClass('active');
+      var id = $(".gst-information-list>div>.media.active").data("id");
+      addView(id,pdfs);
       $("#gst-modal-pdf-video").removeClass('gst-video-active');
       $("#gst-modal-pdf-video").addClass("gst-pdf-active");
       setInformationModal();
@@ -48,6 +50,8 @@ $(function(){
       $(".gst-information-list").append($videos);
       //set information in modal
       $(".gst-information-list>div").children().first().addClass('active');
+      var id = $(".gst-information-list>div>.media.active").data("id");
+      addView(id,videos);
       $("#gst-modal-pdf-video").removeClass("gst-pdf-active");
       $("#gst-modal-pdf-video").addClass('gst-video-active');
       setInformationModal();
@@ -67,18 +71,36 @@ $(function(){
     $(".gst-views-content").text($active.find("p.gst-views-content-list").text());
   }
   $("#gst-modal-pdf-video").on("click",".media",function(event){//event click en item elemene of library pdf
-    $("#gst-modal-pdf-video .media").removeClass('active');
-    $(this).addClass('active');
-    setInformationModal();
+    if(!$(this).hasClass("active")){
+      $("#gst-modal-pdf-video .media").removeClass('active');
+      if($("#gst-modal-pdf-video").hasClass("gst-video-active")){
+         var id = $(this).data("id");
+         addView(id,videos);
+      }else{
+         var id = $(this).data("id");
+         addView(id,pdfs);
+      }
+      $(this).addClass('active');
+      setInformationModal();
+      }
   });
   $("#gst-back").click(function(event){
     window.history.back();//return to preview page
+  });
+  $('#gst-modal-pdf-video').on('hidden.bs.modal', function () {
+    var data = {
+      videos : videos,
+      pdfs   : pdfs
+    }
+    activityCtrl.updateViews(data,function(response){
+      console.log(response);
+    });
   });
   function createElementsPdfs(){// function for create elements with pdf information and add in dom element
     $pdfs = $("<div/>");
     $.each(pdfs,function(index,pdf){
       $pdfs.append($(
-        '<div class="media hoverable" data-name="'+pdf.nombre+'">'+
+        '<div class="media hoverable" data-id="'+pdf.id+'" data-name="'+pdf.nombre+'">'+
               '<a class="media-left waves-light col-md-3">'+
                   '<img class="rounded-circle img-fluid" src="/packages/assets/media/images/system/pdf.ico" alt="pdf ico">'+
               '</a>'+
@@ -97,7 +119,7 @@ $(function(){
     //all code here
     $videos = $("<div/>");
     $.each(videos,function(index,video){
-           $videos.append('<div class="media hoverable" data-name="'+video.embed+'">'+
+           $videos.append('<div class="media hoverable" data-id="'+video.id+'" data-name="'+video.embed+'">'+
               '<a class="media-left waves-light col-md-4">'+
                   '<img class="img-fluid" src="/packages/assets/media/images/posters/'+video.poster+'" alt="pdf ico">'+
               '</a>'+
@@ -111,4 +133,21 @@ $(function(){
           '</div>');
     });
   }
+  function addView(id,data){
+    $.each(data,function(index,object){
+      if(object.id == id){
+        var vistos = parseInt(object.vistos);
+        vistos +=1;
+        object.vistos = vistos;
+      }
+    });
+  }
+
+
+  // animation
+  var secuenceHp1 = StorageDB.table.getByAttr("secuences", "nombre", "festejo 1");
+  var happy1 = StorageDB.table.getByAttr("spritesChild", "secuencia_id", secuenceHp1[0].id);
+  var animation = new SpriteAnimator('gst-avCel', happy1[0].widthFrame, happy1[0].heightFrame, happy1[0].framesX, happy1[0].framesY, happy1[0].fps);
+  animation.spreetsheet = "/packages/assets/media/images/avatar/sprites"+happy1[0].folder+happy1[0].imagen;
+  setInterval(function(){ animation.play(); }, animation.speed);
 });

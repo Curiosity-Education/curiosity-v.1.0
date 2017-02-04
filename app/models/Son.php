@@ -31,4 +31,8 @@ class Son extends Eloquent{
     public function Parents(){
         return $this->belongsTo('padre');
     }
+
+    public function SonDailyGoal(){
+      return $this->hasMany("SonDailyGoal",'hijo_id');
+    }
 }

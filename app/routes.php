@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'landingController@landingpage');
+Route::get('/backdoor', 'landingController@landingpage');
+
+Route::get('/', function(){
+	return View::make("errors.webOff");
+});
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -221,7 +225,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'salersCodeController@update');
 			Route::post('delete', 'salersCodeController@delete');
 		});
-
+	});
+	// child actions when he is logued
+	Route::group(array('before' => 'child_actions'),function(){
+		Route::group(array('prefix' => '/child-goal'), function(){
+			Route::post('updateConf', 'childrenHasGoal@update');
+		});
 	});
 });
 
@@ -374,27 +383,6 @@ Route::group(array('prefix' =>  'video'),function(){
 Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('all', 'avatarController@all');
 	Route::post('getForChild', 'avatarController@getForChild');
-});
-
-/*
-* -----------------------------------------------------------------------------
-* Routes to item groups (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'itemGroup'),function(){
-	Route::post('all', 'itemGroupsController@all');
-	Route::post('getByAvatarForChild', 'itemGroupsController@getByAvatarForChild');
-});
-
-/*
-* -----------------------------------------------------------------------------
-* Routes to items (avatar)
-* all without special permision
-* -----------------------------------------------------------------------------
-*/
-Route::group(array('prefix' =>  'item'),function(){
-	Route::post('all', 'itemController@all');
 });
 
 /*
@@ -598,9 +586,11 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-rank","activitiesController@getMaxRank");
                 Route::get("/find-recomended","activitiesController@getRecomended");
                 Route::get("/find-all","activitiesController@getAll");
+                Route::post("/updateViews","activitiesController@updateViews");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
+					 Route::post("/updateConf","childrenController@updateConf");
             });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');

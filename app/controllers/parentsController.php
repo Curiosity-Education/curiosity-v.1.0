@@ -51,6 +51,7 @@ class parentsController extends BaseController{
                         $user->password=Hash::make($data["password"]);
                         $user->username = $data['username'];
                         $user->token=sha1($data['email']);
+                        $user->flag = 0;
                         $user->save();
                         $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
                         $user->attachRole($myRole);
@@ -78,13 +79,13 @@ class parentsController extends BaseController{
                     }
 
                 //}, 5);
-
+            $sentEmail = 0;
 
             /* Uncomment for production */
             //  $dataSend = [
             //      "name"     =>       "Equipo Curiosity",
-            //      "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
-            //      "email"    =>       $padre->email,
+            //      "client"   =>       $person->nombre." ".$person->apellidos,
+            //      "email"    =>       $dad->email,
             //      "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
             //      "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
             //      "token"    =>       $user->token
@@ -96,13 +97,10 @@ class parentsController extends BaseController{
             //      Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
             //          $message->to($toEmail,$toName)->subject($subject);
             //      });
-            //      return "OK";
+            //      $sentEmail = 1;
             //  } catch (Exception $e) {
             //      $user->delete();
-            //      // $direccion->delete();
-            //      // $membresia->delete();
-            //      $code = $e->getCode();
-            //      return $code;
+            //      return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
             //  }
             $dataset = [
                 'username'  =>  $data['username'],
@@ -111,7 +109,8 @@ class parentsController extends BaseController{
             return Response::json(array(
                 'status'    =>  200,
                 'statusMessage' =>  'success',
-                'data'  => $dataset
+                'data'  => $dataset,
+                'sentEmail' => $sentEmail
             ));
 
         }
@@ -119,11 +118,13 @@ class parentsController extends BaseController{
     }
     public function payment_suscription(){
         $padreRole = Auth::user()->roles[0]->name;
-            /*
-                Configuración con Conekta
-
-            */
-            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            /* Configuración con Conekta */
+            /******************************************************
+            * Llave de pruebas
+            * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            *******************************************************/
+            // llave en modo de produccion
+            Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
             Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
@@ -172,7 +173,7 @@ class parentsController extends BaseController{
         if($user){
             $user->active=1;
             $user->save();
-            return Redirect::to("/");
+            return Redirect::to("view-parent.home");
         }else{
           return Redirect::to("/");
         }
@@ -212,7 +213,9 @@ class parentsController extends BaseController{
                 ,tms.id as temaID,tms.nombre as nombre_tema,
                 (sum(hra.promedio)/count(hra.promedio)) as Promedio,
                 bpdfs.nombre_real as nrPDF, bpdfs.nombre as nPDF,
-                bvid.embed as eVideo, bvid.poster pVid
+                bvid.embed as eVideo, bvid.poster pVid,
+                concat(pa.nombre,' ',pa.apellidos) as ncpVid,
+                pa.foto as fpVid
                 FROM hijo_realiza_actividades hra
                 INNER JOIN actividades act
                 ON hra.actividad_id = act.id
@@ -222,6 +225,8 @@ class parentsController extends BaseController{
                 ON bpdfs.tema_id = tms.id
                 INNER JOIN biblioteca_videos bvid
                 ON bvid.tema_id = tms.id
+                INNER JOIN profesores_apoyo pa
+                ON bvid.profesor_apoyo_id = pa.id
                 INNER JOIN bloques blqs
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i
@@ -339,8 +344,8 @@ class parentsController extends BaseController{
             "username"                  =>"required|user_check|max:50",
             "new_password"              =>"min:8|max:100",
             "cnew_password"             =>"same:new_password",
-            "nombre"                    =>"required|letter|max:50",
-            "apellidos"                 =>"required|letter|max:60",
+            "nombre"                    =>"required|max:50",
+            "apellidos"                 =>"required|max:60",
             "sexo"                      =>"required|string|size:1",
             "telefono"                  =>"required"
         ];
