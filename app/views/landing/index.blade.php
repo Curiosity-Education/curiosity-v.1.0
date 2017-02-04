@@ -417,7 +417,7 @@
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
 										<p class="text-xs-center">¡ Genial !</p>
 										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuentas para tus hijos para comenzar este aprendizaje de forma divertida.</p>
-										<center><a class="btn bluecard btn-rounded z-depth-2 space" data-id-plan="{{$plan->id}}">Adquirir</a></center>
+										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
 
