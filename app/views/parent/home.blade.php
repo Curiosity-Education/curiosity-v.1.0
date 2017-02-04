@@ -37,11 +37,11 @@
                 <h3>Progreso de tu hijo</h3>
                 <p>
                     Esta sección te mostrará la calificación que tu hijo obtiene jugando en la plataforma. <br>
-                    Tu puedes seleccionar la matería y ver su calificación dividida en los temas vistos por tu hijo. <br>
+                    Tú puedes seleccionar la materia y ver su calificación dividida en los temas vistos por tu hijo. <br>
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
-                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tu puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
+                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
                     Dando click en el botón de abajo podrás llegar a esta sección.
                 </p>
                 <button type="button" class="btn" id="hm-btn-HelpSon" disabled>Ayudar a mi Hijo</button>
