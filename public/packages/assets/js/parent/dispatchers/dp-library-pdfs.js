@@ -117,12 +117,12 @@ $(function(){
           $("#lp-section" + count_sections).append($(
             "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-               "<div class='lp-bg-card' title='click para ver'>" +
-                 "<div class='card-overlay lp-card-pdf p'>" +
+               "<div class='lp-bg-card lp-bg' title='click para ver'>" +
+                 "<div class='card-overlay lp-card-pdf lp-change'>" +
 
                    "<div class='white-text'>" +
                      "<div class='card-block'>" +
-                       "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>GUIA PDF</h5><hr class='lp-hr'>" +
+                       "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;GUIA PDF</h5><hr class='lp-hr'>" +
                        "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre_real + "</h4>" +
 
                      "</div>" +
