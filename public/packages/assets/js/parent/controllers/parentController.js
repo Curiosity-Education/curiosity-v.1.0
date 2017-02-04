@@ -392,7 +392,7 @@ var parentController = {
        },
 
        payment:function($data){
-           Conekta.setPublicKey("key_CmADz585Gq19Aqt1xpLWppg");
+           Conekta.setPublicKey("key_WXkrivJAijWK8DKqt1BXbmg");
             var tokenParams = {
               "card": {
                 "number": document.getElementById('card_number').value,
