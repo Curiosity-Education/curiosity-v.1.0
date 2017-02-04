@@ -34,7 +34,7 @@ $(function(){
 
   $.each(tempLevels,function(i){
     $(".lp-container-degrees").append($(
-      "<button type='button' data-id-grade='" + tempLevels[i].id + "' class='btn btn-info lp-btn-degrees'>" + tempLevels[i].nombre.split(" ", 1) + "°</button>"
+      "<button id='" + (i + 1) + "grado" + "' type='button' data-id-grade='" + tempLevels[i].id + "' class='btn btn-info lp-btn-degrees'>" + tempLevels[i].nombre.split(" ", 1) + "°</button>"
     ));
   });
 
@@ -49,13 +49,15 @@ $(function(){
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
-            "<button type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
+            "<button id='" + (i + 1) + "inteligence" + "' type='button' data-intelligence-id='" + tempIntelligences[i].id + "' class='btn btn-primary btn-lg lp-btnTopic'>" + tempIntelligences[i].nombre + "</button>"
            ));
          }
       });
     }
   });
-// StorageDB.table.getByAttr("localTopics","id",finalVids[i].tema_id);
+
+  $("#1grado").trigger('click');
+
   $("body").on('click','.lp-btnTopic',function(){
     if (!$(this).hasClass("lp-topic-active")) {
 
@@ -254,5 +256,6 @@ $(function(){
     $('.page-item').removeClass('active');
     $(this).addClass('active');
   });
-
+  $("#1inteligence").trigger('click');
+  $(".page-link1").trigger('click');
 });

@@ -139,3 +139,7 @@ ul.ul-content li a:hover{color:#f68e55;}
 button.close{color: #fff;} button.close:hover{color: #fff;}
 button.btn-primaryCur{background-color: #2d96ba; color: #fff;}
 div.card-block hr{background-color: #2262ae !important;}
+.bluecard{background-color: #2262ae !important;}
+.iconcard{color: #2262ae !important;}
+.space{letter-spacing: 1px;}
+.planImportant{background-color: #ed6922;}
