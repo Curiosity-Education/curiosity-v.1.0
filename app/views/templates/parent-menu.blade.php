@@ -22,7 +22,11 @@
 </div>
 <div data-url="/view-parent.library_pdfs" class="linkMenu waves-effect">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
-   Biblioteca de archivos
+   Biblioteca de PDF'S
+</div>
+<div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+   <span class="fa fa-cogs"></span>&nbsp;
+   Gestión de Mis Hijos
 </div>
 @stop
 
@@ -37,12 +41,12 @@
 </div>
 <div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
-   Biblioteca de archivos
+   Biblioteca de PDF'S
 </div>
-<!-- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
-   <span class="fa fa-plus-circle"></span>&nbsp;
-   Registrar Hijo
-</div> -->
+ <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+   <span class="fa fa-cogs"></span>&nbsp;
+   Gestión de Mis Hijos
+</div>
 <div data-url="#" class="linkMenu linkMenuAside logOutBtn">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir

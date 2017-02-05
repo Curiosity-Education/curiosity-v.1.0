@@ -6,8 +6,12 @@
    <link rel="stylesheet" href="/packages/libs/bootstrap-table/bootstrap-table.min.css">
 @stop
 
+@section('title')
+Códigos de vendedor
+@stop
+
 @section('baner-tittle')
-   Códigos de venta (Embajadores Curiosity)
+   Códigos de vendedor
 @stop
 
 @section('content-administer')

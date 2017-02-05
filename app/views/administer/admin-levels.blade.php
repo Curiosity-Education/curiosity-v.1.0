@@ -5,8 +5,12 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Niveles (Grados)
+@stop
+
 @section('baner-tittle')
-   Nivels (Grados Escolares)
+   Niveles (Grados)
 @stop
 
 @section('content-administer')
