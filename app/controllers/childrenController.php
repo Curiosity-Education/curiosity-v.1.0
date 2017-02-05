@@ -56,7 +56,7 @@ class childrenController extends BaseController{
 			$sons = Son::where("padre_id", "=", $id_dad)->get();
 			$conutSons = count($sons);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
-			Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
 			$customer = Conekta_Customer::find($tokenCard);
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
@@ -106,6 +106,16 @@ class childrenController extends BaseController{
 	             'hijo_id'      => $son->id,
 	             'accesorio_id' => 4
 	         ));
+				/**************************************************************
+				/ THE AVATAR IS REGISTRED MANUAL FOR A TEMPORALY TIME WHILE
+				/ OTHER AVATAR IS NOT EXIST
+				/**************************************************************/
+				$avatar = DB::table('hijos_has_estilos_avatar')->insert(array(
+	             'hijos_id'      => $son->id,
+	             'estilo_avatar_id' => 1,
+					 'is_using' => 1
+	         ));
+				/**************************************************************/
 				$planRel = new MembershipPlan();
 				$planRel->hijo_id = $son->id;
 				$planRel->membresia_id = Membership::where("padre_id", "=", $id_dad)->pluck("id");
@@ -229,7 +239,7 @@ class childrenController extends BaseController{
 
 	function updateConf(){
 		$data = Input::all();
-		$user = Auth::user();		
+		$user = Auth::user();
 		$user->username = $data["username"];
 		if ($data["npass"] != null){
 			if(!Hash::check($data["pass"], $user->password)){

@@ -16,7 +16,7 @@ Mi Perfil
                 <div class="card-block hidden-xs-down">
                     <!--Header-->
                     <div class="form-header p-novedades bg-blue darken-4">
-                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>¡ Quizas te interese!</h3>
+                        <h3 class="h3-responsive"><i class="fa fa-matk-question"></i>Quizás te interese...</h3>
                     </div>
                      <ul class="p-list-news">
                       @foreach(DB::table('novedades_papa')
@@ -54,7 +54,7 @@ Mi Perfil
                 <div class="hidden-sm-up" id="p-content-novelty">
         					<div class="list-group">
         					  <a href="#" class="list-group-item active">
-        						¡ Quizas te interese !
+        						Quizás te interese...
         					  </a>
         					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Sucesiones Númericas</a>
         					  <a href="#" class="list-group-item text-xs-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Resolución de problemas</a>

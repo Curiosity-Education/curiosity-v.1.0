@@ -4,11 +4,14 @@
 
 $btnColor-active: $color-default
 
-div[id*="lp-container-pdf"]
-	&:target
-		display: block
-div[id*="lp-container-pdf"]
+.perro
+	display: block
+
+.gato
 	display: none
+
+.lp-change
+	height: 13rem !important
 
 .lp-btn-degrees
 	border-radius: $border-rad
@@ -70,18 +73,16 @@ div[id*="lp-container-pdf"]
 	background-color: rgba($color-black,.6)
 
 .lp-bg
-	background: url(/packages/assets/media/images/child/pdf.png) repeat center center
+	background: url(/packages/assets/media/images/system/pdf1.png) repeat center center
 	background-size: cover
 	border-radius: $border-rad
 
 .lp-bg-card
 	@extend .lp-bg
 
-.lp-name-pdf
-	word-wrap: break-word !important
-
 .lp-text-card
 	color: $color-white
+	text-align: center !important
 
 .lp-hr
 	border: .1rem solid #fff
@@ -138,3 +139,7 @@ div[id*="lp-container-pdf"]
 
 #lp-container-all
 	margin-top: 1rem
+
+.lp-name-pdf
+	font-size: 1.3rem
+	text-align: left !important

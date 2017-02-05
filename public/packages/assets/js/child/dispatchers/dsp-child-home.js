@@ -1,12 +1,6 @@
 $(function(){
 	var ac_recents,ac_populars,ac_ranks,ac_recomended,videos;// variables for save all information handled in this view;
 	activityCtrl.getAll(function(response){//get all information
-		console.log(response);
-		// ac_recents    = response.data.recents;//activities recentes
-		// ac_populars   = response.data.populars;//Activities populars
-		// ac_ranks      = response.data.ranks;//Activities ranks
-		// ac_recomended = response.data.recomended;//Activities recomendeds
-		// videos        = null;//videos
 		StorageDB.table.create("ac_recents", response.data.recents);
 		StorageDB.table.create("ac_populars", response.data.populars);
 		StorageDB.table.create("ac_ranks", response.data.ranks);
@@ -14,23 +8,18 @@ $(function(){
 	});
 
 	$(".btn-show-information").click(function(event){//click in card
-		console.log(StorageDB.table.getData("ac_ranks"));
 		var type = this.getAttribute("data-type");
 		switch(type){
-			case "ranks":
-				// object.fillContetnFromDataRanks(ac_ranks);
+			case "ranks":				
 				object.fillContetnFromDataRanks(StorageDB.table.getData("ac_ranks"));
 			break;
 			case "recents":
-				// object.fillContetnFromData(ac_recents);
 				object.fillContetnFromData(StorageDB.table.getData("ac_recents"));
 			break;
 			case "recomended":
-				// object.fillContetnFromData(ac_recomended);
 				object.fillContetnFromData(StorageDB.table.getData("ac_recomended"));
 			break;
 			case "populars":
-				// object.fillContetnFromData(ac_populars);
 				object.fillContetnFromData(StorageDB.table.getData("ac_populars"));
 			break;
 		}
@@ -42,13 +31,11 @@ $(function(){
 			var location = "/childDoActivities/game-"+activityId;
 			document.location = location;
 		}
-		console.log(activityId);
 	});
 
 	object  = {//object for set function used in this view
 		fillContetnFromData: function(data){//function for fill activities container, of data
 			$("#in-content-activity").empty();
-			console.log(data);
 			var conetentHTML;
 			conetentHTML = "<div class='row'>";
 			for(var i=0;i<data.length;i++){

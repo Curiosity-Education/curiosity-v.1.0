@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Biblioteca de Pdfs
+@stop
+
 @section('baner-tittle')
    Biblioteca de Pdfs
 @stop

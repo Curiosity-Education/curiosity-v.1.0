@@ -118,11 +118,13 @@ class parentsController extends BaseController{
     }
     public function payment_suscription(){
         $padreRole = Auth::user()->roles[0]->name;
-            /*
-                Configuración con Conekta
-
-            */
-            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            /* Configuración con Conekta */
+            /******************************************************
+            * Llave de pruebas
+            * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            *******************************************************/
+            // llave en modo de produccion
+            Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
             Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
@@ -414,5 +416,25 @@ class parentsController extends BaseController{
             }
             return Response::json($response);
         }
+    }
+
+    public function getSonsInfo(){
+        $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
+        $sons = DB::select("SELECT
+            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
+            FROM padres
+            INNER JOIN
+            hijos hjs
+            ON hjs.padre_id = padres.id
+            INNER JOIN personas prsn
+            ON prsn.id = hjs.persona_id
+            WHERE padres.id = '$idDad'
+            GROUP BY hjs.id");
+
+
+        return [
+            'sons' => $sons,
+        ];
+
     }
 }

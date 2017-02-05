@@ -7,6 +7,11 @@
 @section('css-plus')
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
+
+@section('title')
+Gestión de Mis Hijos
+@stop
+
 @section('title-baner')
  <i class="fa fa-child" id="upch-iconChild"></i>&nbsp; Gestión de Mis Hijos
 @stop
@@ -88,9 +93,9 @@
                     <div class="tab-2 animated fadeIn upch-tab2">
                       <div class="md-form upch-select">
                           <select class="mdb-select" id="upch-gender" name="gender">
-                              <option value="" disabled selected>Sexo</option>
-                              <option value="m" data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
-                              <option value="f" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
+                              <option value="" disabled selected>Genero</option>
+                              <option value="m" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefMale.png" class="rounded-circle">Niño</option>
+                              <option value="f" data-icon="/packages/assets/media/images/child/store/ProfilePhotos/profDefFemale.png" class="rounded-circle">Niña</option>
                           </select>
                       </div>
                       <div class="md-form">

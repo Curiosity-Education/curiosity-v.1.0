@@ -4,6 +4,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Juego | {{$game["name"]}}
+@stop
+
 @section('content')
    <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">
@@ -93,7 +97,7 @@
    <div class="modal fade" id="gst-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
      <div class="modal-dialog">
        <div class="modal-content">
-         <div class="modal-body">
+         <div class="modal-body"  style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
             <div id="gst-avCel"></div>
             <h1 id="gst-score">200 puntos</h1>
             <div class="row">
@@ -142,7 +146,7 @@
     @stop
     @section('modal-header')
       @section('modal-header-image')
-        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%"> 
+        <img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid" style="width:100%">
       @stop
       @section('modal-header-information')
         <h5 class="gst-tema-content text-left">Nombre profe</h5>
