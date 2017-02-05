@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Empleados
+@stop
+
 @section('baner-tittle')
    Empleados
 @stop

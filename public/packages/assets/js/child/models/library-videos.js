@@ -31,8 +31,5 @@ class libraryVideos extends CORM{
     static getSchools(success){
       super.any(null,"POST",success,"/schoolasc","all");
     }
-    static getPdfs(success){
-      super.any(null,"POST",success,"/pdfs","all");
-    }
 
 }

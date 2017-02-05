@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 		  <div class="mask flex-center">
-			 <h4 class="h4-responsive white-text"><i class="fa fa-youtube-play"></i>&nbsp; Biblioteca de Videos</h4>
+			 <h4 class="h4-responsive white-text"><i class="fa fa-youtube-play"></i>&nbsp; Rincón de Videos</h4>
 		  </div>
 		</div>
    	</div><br>
@@ -84,6 +84,7 @@
     <div class="row hidden-xs-down" id="lp-row-contPdf">
 
     </div><br>
+		<div id='pag' class="hidden-sm-down"></div>
 
     <!-- Carousel of cards with the pdfs only smartphones -->
     <div id="carrousel-videos">
@@ -105,8 +106,8 @@
 								<div class="gst-information">
 								 <div class="gst-informataion-header">
 									<div class="row">
-										<div class="col-md-3">
-											<img src="/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png" class="gst-img-content img-fluid">
+										<div class="col-md-3" id="prof-img">
+
 										</div>
 										<div class="col-md-9" id="video-info">
 
@@ -164,7 +165,7 @@
 		});
 
 	</script>
-	{{ HTML::script('/packages/assets/js/child/library_videos.js') }}
+	<!-- {{ HTML::script('/packages/assets/js/child/library_videos.js') }} -->
 	<script type="text/javascript" src="/packages/assets/js/child/models/library-videos.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/child/controllers/library-videosCrtrl.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/child/dispatchers/dp-library-videos.js?{{rand();}}"></script>

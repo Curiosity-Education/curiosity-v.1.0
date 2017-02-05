@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Biblioteca de Videos
+@stop
+
 @section('baner-tittle')
    Biblioteca de Videos
 @stop

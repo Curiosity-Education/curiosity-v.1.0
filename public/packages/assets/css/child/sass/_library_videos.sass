@@ -4,6 +4,12 @@
 
 $btnColor-active: $color-default
 
+.lp-show
+	display: block
+
+.lp-hide
+	display: none
+
 #lp-banner
 	height: $height-banner
 	border-radius: $border-rad
@@ -57,6 +63,10 @@ $btnColor-active: $color-default
 #lp-row-degrees
 	margin-top: 1rem
 
+.lp-change
+	height: 13rem !important
+
+
 .lp-container-pdf
 	background-color: #fff
 	padding: .1rem .8rem .8rem .8rem
@@ -69,7 +79,7 @@ $btnColor-active: $color-default
 	background-color: rgba($color-black,.6)
 
 .lp-bg
-	background: url(/packages/assets/media/images/child/videosnews.jpg) repeat center center
+	background: url(/packages/assets/media/images/system/pdf2.png) repeat center center
 	background-size: cover
 	border-radius: $border-rad
 
@@ -77,7 +87,8 @@ $btnColor-active: $color-default
 	@extend .lp-bg
 
 .lp-name-pdf
-	word-wrap: break-word !important
+	font-size: 0.9rem
+	text-align: left !important
 
 .lp-text-card
 	color: $color-white

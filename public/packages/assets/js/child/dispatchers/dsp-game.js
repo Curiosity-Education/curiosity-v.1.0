@@ -142,4 +142,12 @@ $(function(){
       }
     });
   }
+
+
+  // animation
+  var secuenceHp1 = StorageDB.table.getByAttr("secuences", "nombre", "festejo 1");
+  var happy1 = StorageDB.table.getByAttr("spritesChild", "secuencia_id", secuenceHp1[0].id);
+  var animation = new SpriteAnimator('gst-avCel', happy1[0].widthFrame, happy1[0].heightFrame, happy1[0].framesX, happy1[0].framesY, happy1[0].fps);
+  animation.spreetsheet = "/packages/assets/media/images/avatar/sprites"+happy1[0].folder+happy1[0].imagen;
+  setInterval(function(){ animation.play(); }, animation.speed);
 });
