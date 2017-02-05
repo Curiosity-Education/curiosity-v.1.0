@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Temas
+@stop
+
 @section('baner-tittle')
    Temas
 @stop

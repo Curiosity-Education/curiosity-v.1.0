@@ -4,6 +4,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Juego | {{$game["name"]}}
+@stop
+
 @section('content')
    <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">

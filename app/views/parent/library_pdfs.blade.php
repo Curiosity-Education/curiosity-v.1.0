@@ -1,7 +1,7 @@
 @extends('templates.parent-menu')
 
 @section('title')
-	 Bibliotca de PDF'S
+	 Biblioteca de PDF'S
 @stop
 
 @section('title-baner')

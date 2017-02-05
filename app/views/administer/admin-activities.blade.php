@@ -5,8 +5,12 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Actividades (Juegos)
+@stop
+
 @section('baner-tittle')
-   Panel de Actividades
+   Actividades (Juegos)
 @stop
 
 @section('content-administer')

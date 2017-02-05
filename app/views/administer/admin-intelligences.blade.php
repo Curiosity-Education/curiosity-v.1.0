@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Inteligencias (Materias)
+@stop
+
 @section('baner-tittle')
    Inteligencias (Materias)
 @stop
