@@ -22,23 +22,23 @@
 </div>
 <div data-url="/view-child.menu-studio" class="linkMenu waves-effect">
    <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
-   Menú de estudio
+   Rincón de Juegos
 </div>
 <div data-url="/view-child.profile" class="linkMenu waves-effect">
    <span class="fa fa-user-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Perfil
+   Mi Perfil
 </div>
 <div data-url="/view-child.library_videos" class="linkMenu waves-effect">
    <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+   Rincón de Videos
 </div>
 <div data-url="/view-child.store" class="linkMenu waves-effect" id="linkCh-store" style="display:none !important;">
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
-   Tienda curiosity
+   Tienda Curiosity
 </div>
 <div data-url="/view-children/getInfoToConfig/view-child.configuration_account" class="linkMenu waves-effect">
    <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Configuración
+   Configuración de Mi cuenta
 </div>
 @stop
 
@@ -49,23 +49,23 @@
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
-   Menú de estudio
+   Rincón de Juegos
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-user-circle childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Perfil
+   Mi Perfil
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-youtube-play childMenu-icon-menu" id="childMenu-icon-videos"></span>&nbsp;
-   Biblioteca de videos
+   Rincón de Videos
 </div>
 <div data-url="/tienda" class="linkMenu linkMenuAside waves-effect" style="display:none !important;">
    <span class="fa fa-shopping-cart childMenu-icon-menu" id="childMenu-icon-store"></span>&nbsp;
-   Tienda curiosity
+   Tienda Curiosity
 </div>
 <div data-url="/view-child.configuration_account" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Configuración
+   Configuración de Mi cuenta
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right childMenu-icon-exit" id="childMenu-icon-exit"></span>&nbsp;

@@ -5,8 +5,12 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Escuelas de apoyo
+@stop
+
 @section('baner-tittle')
-   Escuelas Asociadas
+   Escuelas de apoyo
 @stop
 
 @section('content-administer')

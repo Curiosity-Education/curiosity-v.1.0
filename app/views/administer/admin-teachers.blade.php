@@ -6,8 +6,12 @@
    <link rel="stylesheet" href="/packages/libs/bootstrap-table/bootstrap-table.min.css">
 @stop
 
+@section('title')
+Profesores de apoyo
+@stop
+
 @section('baner-tittle')
-   Profesores Asociados
+   Profesores de apoyo
 @stop
 
 @section('content-administer')

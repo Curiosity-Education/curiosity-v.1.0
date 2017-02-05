@@ -7,6 +7,11 @@
 @section('css-plus')
 <link rel="stylesheet" href="/packages/libs/materialize/css/carousel.css">
 @stop
+
+@section('title')
+Gestión de Mis Hijos
+@stop
+
 @section('title-baner')
  <i class="fa fa-child" id="upch-iconChild"></i>&nbsp; Gestión de Mis Hijos
 @stop

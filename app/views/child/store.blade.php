@@ -5,6 +5,10 @@
    <link rel="stylesheet" href="/packages/libs/OwlCarousel2-2.2.0/dist/assets/owl.theme.default.min.css">
 @stop
 
+@section('title')
+	 Tienda Curiosity
+@stop
+
 @section('content')
    <div class="view hm-black-strong z-depth-1 col-xs-12" id="cst-banner">
       <div class="mask flex-center">
