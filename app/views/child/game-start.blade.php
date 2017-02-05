@@ -48,7 +48,7 @@
             <h1>{{$game["name"]}}</h1>
 
             <hr class="gst-hr">
-            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
 
@@ -128,7 +128,7 @@
               </button>
               <div class="col-md-12 gst-col">
                 <div class="flex-center">
-                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
+                  <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
                 </div>
               </div>
             </div>
