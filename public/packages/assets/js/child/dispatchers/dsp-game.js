@@ -35,6 +35,7 @@ $(function(){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($pdfs);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,pdfs);
@@ -49,6 +50,7 @@ $(function(){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($videos);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,videos);
