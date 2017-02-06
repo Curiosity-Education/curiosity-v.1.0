@@ -355,7 +355,7 @@ var parentController = {
                     console.log(response);
                     switch (response.status) {
                        case 200:
-                          Curiosity.noty.success("Bien echo!!, Regiostro exitoso.");
+                          Curiosity.noty.success("Bien echo!, registro exitoso.");
                           window.location.href = response.data;
                           break;
                        case "CU-105":
@@ -429,6 +429,10 @@ var parentController = {
                     localStorage.setItem('plan-user-selected',null);
                     Curiosity.noty.success("Se ha realizado el cobró con exito.");
                     window.location = '/view-parent.registry_firstchild';
+                    break;
+                case 105:
+                    Curiosity.noty.warning(response.message);
+                    console.info(response.data);
                     break;
                 default:
                     Curiosity.noty.error("Ups algo ha salido mal reportelo con el administrador.");

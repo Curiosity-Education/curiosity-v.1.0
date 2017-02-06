@@ -157,14 +157,14 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'past_due') {
                      //la suscripción falló a inicializarse
-                      return Response::json(array(0=>'error'));
+                      return Response::json(array('status'=>105,'statusMessage'='PAST_DUE','data'=>$subscription,'message'=>'El pago no fue realizado con éxito.'));
                     }
                 }
                 else{
                     return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
                 }
             }catch (Conekta_Error $e){
-              return Response::json(["message"=>$e->getMessage()]);
+              return Response::json(["message"=>$e->message_to_purchaser]);
              //el cliente no pudo ser creado
             }
     }
