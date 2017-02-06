@@ -92,6 +92,7 @@ $(function(){
     window.history.back();//return to preview page
   });
   $('#gst-modal-pdf-video').on('hidden.bs.modal', function () {
+    $("#gst-iframe-content").attr("src","");
     var data = {
       videos : videos,
       pdfs   : pdfs
