@@ -39,12 +39,11 @@ $(function(){
 
   $("body").on('click','.lp-btn-degrees',function(){
 
-    $(".lp-btn-degrees").removeClass(".lp-btn-active");
-    $(this).addClass(".lp-btn-active");
+    $(".lp-btn-degrees").removeClass("lp-btn-active");
     $("#lp-btn-topics").empty();
-    if ($(this).hasClass(".lp-btn-active")) {
+    $(this).addClass("lp-btn-active");
+    if ($(this).hasClass("lp-btn-active")) {
       var level = $(this).data("id-grade");
-
 
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
@@ -60,13 +59,12 @@ $(function(){
 
   $("body").on('click','.lp-btnTopic',function(){
 
-    $(".lp-btnTopic").removeClass(".lp-topic-active");
-    $(this).addClass(".lp-topic-active");
+    $(".lp-btnTopic").removeClass("lp-topic-active");
     $("#lp-row-contPdf").empty();
     $("#pag").empty();
     $("#carrousel-pdfs").empty();
-
-    if ($(this).hasClass(".lp-topic-active")) {
+    $(this).addClass("lp-topic-active");
+    if ($(this).hasClass("lp-topic-active")) {
        var intelligencesId = $(this).data("intelligence-id");
        var blockId = [], topicId = [], finalPdfs = [];
 
