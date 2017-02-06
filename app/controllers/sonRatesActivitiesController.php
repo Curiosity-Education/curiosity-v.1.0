@@ -65,7 +65,7 @@ class sonRatesActivitiesController extends BaseController{
                                       ->select('puntaje','aciertos')
                                       ->first();
       //get video information
-      $dataVideos   = DB::select("select bv.id,bv.embed,bv.poster,bv.vistos,t.nombre,pa.nombre profesor,ea.nombre escuela from actividades a
+      $dataVideos   = DB::select("select bv.id,bv.embed,bv.poster,bv.vistos,t.nombre,pa.foto,pa.nombre profesor,ea.nombre escuela from actividades a
 join actividades_videos av on a.id = av.actividad_id
 join biblioteca_videos bv on av.biblioteca_video_id = bv.id
 join profesores_apoyo pa on pa.id = bv.profesor_apoyo_id
