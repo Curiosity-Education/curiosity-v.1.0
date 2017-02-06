@@ -24,30 +24,30 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
-<div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+<div data-url="/view-parent.child_registration" class="linkMenu waves-effect" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
 @stop
 
 @section('menu-links-aside')
-<div data-url="/view-parents/getDataPerfil/view-parent.profile/" class="linkMenu linkMenuAside linkMenu">
+<div data-url="/view-parents/getDataPerfil/view-parent.profile/" class="linkMenu linkMenuAside waves-effec">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
 </div>
- <div data-url="/view-parent.profile" class="linkMenu linkMenuAside linkMenu">
+ <div data-url="/view-parent.profile" class="linkMenu linkMenuAside waves-effec">
    <span class="fa fa-user" id="parentMenu-addChild-aside"></span>&nbsp;
    Mi Perfil
 </div>
-<div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside">
+<div data-url="/view-parent.library_pdfs" class="linkMenu linkMenuAside waves-effec">
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside" id="parentMenu-addChild-aside">
+ <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
-<div data-url="#" class="linkMenu linkMenuAside logOutBtn">
+<div data-url="#" class="linkMenu linkMenuAside logOutBtn waves-effec">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir
 </div>
