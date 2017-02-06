@@ -68,7 +68,7 @@
 										</div>
 									</form>
 									<div class="text-xs-center">
-										<button class="btn btn-primaryCur btn-lg borderRounded" id="btnLogin">Iniciar</button>
+										<button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnLogin">Iniciar</button>
 									</div>
 								</div>
 							</div>
