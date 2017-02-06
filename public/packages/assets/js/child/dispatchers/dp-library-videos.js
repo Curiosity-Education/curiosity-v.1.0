@@ -67,6 +67,7 @@ $(function(){
          }
       });
     }
+      $("#lp-btn-topics button").first().trigger('click');
   });
 
 $("body").on('click','.lp-btnTopic',function(){
