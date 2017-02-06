@@ -86,7 +86,7 @@
 						<img src="/packages/assets/media/images/landing/equipo-mentores/willy-min.jpg" class="img-fluid img-rounded" alt="wilvardo ramirez colunga">
 						<a>
 							<div class="mask flex-center">
-								<p class="white-text text-xs-center" style="margin:5px 15px;">"Si no haces más de lo que hoy haces, nunca serás más de lo que hoy eres"</p>
+								<p class="white-text text-xs-center" style="margin:5px 15px;">"Si no intentas hacer más de lo que hoy sabes hacer, nunca serás más de lo que hoy eres"</p>
 							</div>
 						</a>
 					</div>
