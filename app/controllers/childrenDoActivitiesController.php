@@ -58,8 +58,8 @@ class childrenDoActivitiesController extends BaseController{
 			    	$progressDaily->avance_id  = $idMeta;
 			    	$progressDaily->save();
 			    }
-				 $addedExp = $this->incrementExp($idHij, $data["efficiency"]);
-				 $addedCoins = $this->incrementCoins($idHij, $addedExp);
+				 $addedExp = $this->incrementExp($idHijo, $data["efficiency"]);
+				 $addedCoins = $this->incrementCoins($idHijo, $addedExp);
 				return Response::json(array(
 					'status' 		=>  200,
 					'statusMessage' => 'success',
