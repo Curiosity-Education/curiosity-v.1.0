@@ -43,7 +43,7 @@ $(function(){
     $(this).addClass(".lp-btn-active");
     $("#lp-btn-topics").empty();
     if ($(this).hasClass(".lp-btn-active")) {
-       var level = $(this).data("id-grade");
+      var level = $(this).data("id-grade");
 
 
       $.each(tempIntelligences,function(i){
@@ -68,6 +68,7 @@ $(function(){
     if ($(this).hasClass(".lp-topic-active")) {
        var intelligencesId = $(this).data("intelligence-id");
        var blockId = [], topicId = [], finalPdfs = [];
+
       $.each(tempBlocks,function(i){
         if (tempBlocks[i].inteligencia_id == intelligencesId) {
            blockId[i] = tempBlocks[i].id;
@@ -115,8 +116,9 @@ $(function(){
             }
           }
         var nameTopic = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
+        console.log(nameTopic);
           $("#lp-section" + count_sections).append($(
-            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
+            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre_real + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
                "<div class='lp-bg-card lp-bg' title='click para ver'>" +
                  "<div class='card-overlay lp-card-pdf lp-change'>" +
@@ -124,7 +126,7 @@ $(function(){
                    "<div class='white-text'>" +
                      "<div class='card-block'>" +
                        "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;GUIA PDF</h5><hr class='lp-hr'>" +
-                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre_real + "</h4>" +
+                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
 
                      "</div>" +
                    "</div>" +
@@ -193,10 +195,10 @@ $(function(){
         }
         if(i == 0)
           $(".pair-pdfs"+ countSlide).addClass("active");
-
+        var nameTopic2 = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
         $(".pair-pdfs" + countSlide).append($(
           "<div class='col-xs-12'>" +
-              "<a class='lp-PDFselect' href='#'>" +
+              "<a class='lp-PDFselect' data-name-pdf='" + nameTopic2[0].nombre + "' href='#'>" +
                 "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
                   "<div class='card-overlay lp-card-pdf'>" +
 
