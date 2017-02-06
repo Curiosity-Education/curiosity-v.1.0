@@ -1,7 +1,7 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var level, intelligencesId, blockId = [], topicId = [], finalVids = [];
+  var  intelligencesId, blockId = [], topicId = [], finalVids = [];
   var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
   var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
@@ -51,7 +51,7 @@ $(function(){
 
 
   $("body").on('click','.lp-btn-degrees',function(){
-    level = $(this).data("id-grade");
+    var level = $(this).data("id-grade");
     if (!$(this).hasClass("lp-btn-active")) {
       $("#lp-btn-topics").empty();
       $(".lp-btn-degrees").removeClass("lp-btn-active");
@@ -73,7 +73,7 @@ $(function(){
   $("body").on('click','.lp-btnTopic',function(){
     if (!$(this).hasClass("lp-topic-active")) {
 
-      intelligencesId = $(this).data("intelligence-id");
+      var intelligencesId = $(this).data("intelligence-id");
       $("#lp-row-contPdf").html("");
       $("#pag").empty();
       $("#carrousel-videos").empty();
