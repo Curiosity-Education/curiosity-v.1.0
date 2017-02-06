@@ -35,28 +35,30 @@ $(function(){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($pdfs);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,pdfs);
       $("#gst-modal-pdf-video").removeClass('gst-video-active');
       $("#gst-modal-pdf-video").addClass("gst-pdf-active");
       $(".gst-img-content").attr("src","/packages/assets/media/images/system/pdf-file.png");
-      setInformationModal();
     }
+    setInformationModal();
   });
   $("#gst-materialVideo").click(function(event){
     if(!$("#gst-modal-pdf-video").hasClass('gst-video-active')){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($videos);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,videos);
       $("#gst-modal-pdf-video").removeClass("gst-pdf-active");
       $("#gst-modal-pdf-video").addClass('gst-video-active');
       $(".gst-img-content").attr("src","/packages/assets/media/images/teachersAsc/"+$(".gst-information-list>div>.media.active").data("foto"));
-      setInformationModal();
     }
+    setInformationModal();
   });
 
   function setInformationModal(){//fumction for set information of item active in modal
@@ -90,6 +92,7 @@ $(function(){
     window.history.back();//return to preview page
   });
   $('#gst-modal-pdf-video').on('hidden.bs.modal', function () {
+    $("#gst-iframe-content").attr("src","");
     var data = {
       videos : videos,
       pdfs   : pdfs
