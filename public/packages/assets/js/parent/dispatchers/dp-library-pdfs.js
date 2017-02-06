@@ -54,6 +54,7 @@ $(function(){
          }
       });
     }
+    $("#lp-btn-topics button").first().trigger('click');
   });
 
 
@@ -116,9 +117,9 @@ $(function(){
             }
           }
         var nameTopic = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
-        console.log(nameTopic);
+
           $("#lp-section" + count_sections).append($(
-            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre_real + "' href='#'>" +
+            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre_real + "' data-link-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
                "<div class='lp-bg-card lp-bg' title='click para ver'>" +
                  "<div class='card-overlay lp-card-pdf lp-change'>" +
@@ -198,7 +199,7 @@ $(function(){
         var nameTopic2 = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
         $(".pair-pdfs" + countSlide).append($(
           "<div class='col-xs-12'>" +
-              "<a class='lp-PDFselect' data-name-pdf='" + nameTopic2[0].nombre + "' href='#'>" +
+              "<a class='lp-PDFselect' data-name-pdf='" + nameTopic2[0].nombre + "' data-link-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
                 "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
                   "<div class='card-overlay lp-card-pdf'>" +
 
@@ -232,7 +233,7 @@ $(function(){
 		$('#lp-container-all').addClass("lp-content-disabled");
 		$('#row-banner').addClass("lp-content-disabled");
     $('.lp-content-pdf').append($(
-      "<embed src='packages/assets/pdf/" + $(this).data('name-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
+      "<embed src='packages/assets/pdf/" + $(this).data('link-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
     ));
     $("#topic-name").text($(this).data('name-pdf'));
 
@@ -263,7 +264,8 @@ $(function(){
     $('.page-item').removeClass('active');
     $(this).addClass('active');
   });
+
   $("#1grado").trigger('click');
-  $("#1inteligence").trigger('click');
+  // $("#1inteligence").trigger('click');
   $("#pagination1").trigger('click');
 });
