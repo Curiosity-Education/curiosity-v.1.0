@@ -57,8 +57,8 @@ $(function(){
       $("#gst-modal-pdf-video").removeClass("gst-pdf-active");
       $("#gst-modal-pdf-video").addClass('gst-video-active');
       $(".gst-img-content").attr("src","/packages/assets/media/images/teachersAsc/"+$(".gst-information-list>div>.media.active").data("foto"));
-      setInformationModal();
     }
+    setInformationModal();
   });
 
   function setInformationModal(){//fumction for set information of item active in modal
