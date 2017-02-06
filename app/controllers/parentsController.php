@@ -90,7 +90,7 @@ class parentsController extends BaseController{
                   "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
                   "token"    =>       $user->token
               ];
-              $toEmail=$padre->email;
+              $toEmail=$dad->email;
               $toName=$dataSend["email"];
               $subject =$dataSend["subject"];
               try {

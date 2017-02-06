@@ -403,7 +403,7 @@ $(document).ready(function () {
         }
         
         consecutivos=0;
-        $juego.game.setError(50);
+        parent.$juego.game.setError(50);
     });
     
     $("body").on("click",".opcc",function () {
@@ -441,7 +441,7 @@ $(document).ready(function () {
             _gameOver();
         }
         consecutivos++;
-        $juego.game.setCorrecto();
+        parent.$juego.game.setCorrecto();
     });
     $("body").on("pausar",function(){
         pausa = true;
