@@ -9,17 +9,23 @@ $(function(){
 	// });
 
 	function goSection(ancla){
-            $('html,body').animate({scrollTop:$(ancla).offset().top-95},1000);
+            $('html,body').animate({scrollTop:$(ancla).offset().top-95},800);
     }
     function shareSocialNetwork(sn,r,an,al){
         var posicion_x=(screen.width/2)-(an/2);
         var posicion_y=(screen.height/2)-(al/2);
         window.open(sn+r, '_blank', "width="+an+",height="+al+",menubar=0,toolbar=0,directories=0,scrollbars=no,resizable=no,left="+posicion_x+",top="+posicion_y+""); return false;
     }
-    $('.nav-item').on({
+    $('.nav-item1').on({
         click:function(e){
             e.preventDefault();
             goSection($(this).children('a').attr('href'));
+        }
+    });
+	 $('.nav-item2').on({
+        click:function(e){
+            e.preventDefault();
+				$('html,body').animate({scrollTop:$($(this).children('a').attr('href')).offset().top+100},800);
         }
     });
     $('#shareFB').on({
