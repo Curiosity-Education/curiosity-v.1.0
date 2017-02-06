@@ -40,7 +40,7 @@ class childrenDoActivitiesController extends BaseController{
 				$childDoActivity->save();
 				//this format message is for user
 				$today 			= date("Y-m-d");
-				$progressGoal = SonDailyGoal::join("avances_metas",'avances_metas.avance_id','=','hijos_metas_diarias.id')
+				$progressGoal  = SonDailyGoal::join("avances_metas",'avances_metas.avance_id','=','hijos_metas_diarias.id')
 									   ->where("hijos_metas_diarias.hijo_id",'=',Auth::user()->Person->Son->id)
 									   ->where("avances_metas.fecha",'=',$today)
 									   ->first();
@@ -58,10 +58,12 @@ class childrenDoActivitiesController extends BaseController{
 			    	$progressDaily->avance_id  = $idMeta;
 			    	$progressDaily->save();
 			    }
+				 $addedExp = $this->incrementExp($idHij, $data["efficiency"]);
+				 $addedCoins = $this->incrementCoins($idHij, $addedExp);
 				return Response::json(array(
 					'status' 		=>  200,
 					'statusMessage' => 'success',
-					'message'		=> 'Actividad finalizado, Bien hecho!!'
+					'message'		=> 'Actividad finalizada. ¡Bien hecho!'
 		    	));
 			}
 		}else{
@@ -127,4 +129,25 @@ class childrenDoActivitiesController extends BaseController{
 	    	));
 		}
 	}
+
+	private function incrementExp($id, $porc){
+      $cant_exp = Son::join('hijos_metas_diarias', 'hijos_metas_diarias.hijo_id', '=', 'hijos.id')
+      ->join('metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
+      ->where('hijos.id', '=', $id)
+      ->select('metas_diarias.cant_exp')
+      ->get();
+      $exp = round($porc * $cant_exp[0]['cant_exp'] / 100);
+      DB::table('hijo_experiencia')
+      ->where('hijo_id', '=', $id)
+      ->increment('cantidad_exp', $exp);
+      return $exp;
+    }
+
+    private function incrementCoins($id, $experiencia){
+      $coins = round($experiencia * 1.5);
+      DB::table('hijo_experiencia')
+      ->where('hijo_id', '=', $id)
+      ->increment('coins', $coins);
+      return $coins;
+    }
 }
