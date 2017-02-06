@@ -356,7 +356,9 @@
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
 										<p class="text-xs-center">¡ Muy Bien !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">
+											Facturación Recurrente <br><br><br>
+										</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -385,8 +387,12 @@
 
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
-										<p class="text-xs-center">¡ Excelente !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">¡ La más popular !</p>
+										<p class="text-xs-center">
+											Equivalente a
+											${{ number_format($plan->amount / 12, 2) }} / Mes <br><br>
+											Facturación Recurrente.
+										</p>
 										<center><a class="btn btn-outline-white btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -416,7 +422,12 @@
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
 										<p class="text-xs-center">¡ Genial !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuentas para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">
+											Equivalente a
+											${{ number_format(($plan->amount / 12) / $plan->limit, 2) }} / Mes por hijo<br>
+											Registra hasta {{ $plan->limit }} hijos <br>
+											Facturación Recurrente
+										</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
