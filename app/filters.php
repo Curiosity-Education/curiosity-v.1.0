@@ -13,7 +13,15 @@
 
 App::before(function($request)
 {
-	//
+    /**************************
+    *
+    * Descommeneted on producction
+    *
+    **************************/
+	/*if( ! Request::secure())
+    {
+        return Redirect::secure(Request::path());
+    }*/
 });
 
 
@@ -124,4 +132,12 @@ Route::filter('child_actions',function(){
    if(!Entrust::can('child_actions')){
        return View::make('errors.404');
    }
+});
+Route::filter('force.ssl', function()
+{
+    if( ! Request::secure())
+    {
+        return Redirect::secure(Request::path());
+    }
+
 });
