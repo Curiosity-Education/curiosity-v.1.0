@@ -1,7 +1,7 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var level, intelligencesId, blockId = [], topicId = [], finalVids = [];
+  var  intelligencesId, blockId = [], topicId = [], finalVids = [];
   var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
   var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
@@ -51,11 +51,13 @@ $(function(){
 
 
   $("body").on('click','.lp-btn-degrees',function(){
-    level = $(this).data("id-grade");
-    if (!$(this).hasClass("lp-btn-active")) {
-      $("#lp-btn-topics").empty();
-      $(".lp-btn-degrees").removeClass("lp-btn-active");
-      $(this).addClass("lp-btn-active");
+
+    $(".lp-btn-degrees").removeClass(".lp-btn-active");
+    $(this).addClass(".lp-btn-active");
+    $("#lp-btn-topics").empty();
+    if ($(this).hasClass(".lp-btn-active")) {
+      var level = $(this).data("id-grade");
+
 
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
@@ -65,110 +67,111 @@ $(function(){
          }
       });
     }
+      $("#lp-btn-topics button").first().trigger('click');
   });
 
-  $("#1grado").trigger('click');
+$("body").on('click','.lp-btnTopic',function(){
 
+  $(".lp-btnTopic").removeClass(".lp-topic-active");
+  $(this).addClass(".lp-topic-active");
+  $("#lp-row-contPdf").empty();
+  $("#pag").empty();
+  $("#carrousel-pdfs").empty();
 
-  $("body").on('click','.lp-btnTopic',function(){
-    if (!$(this).hasClass("lp-topic-active")) {
+  if ($(this).hasClass(".lp-topic-active")) {
+    var intelligencesId = $(this).data("intelligence-id");
+    var blockId = [], topicId = [], finalVids = [];
 
-      intelligencesId = $(this).data("intelligence-id");
-      $("#lp-row-contPdf").html("");
-      $("#pag").empty();
-      $("#carrousel-videos").empty();
-      $(this).addClass("lp-topic-active");
+   $.each(tempBlocks,function(i){
+     if (tempBlocks[i].inteligencia_id == intelligencesId) {
+        blockId[i] = tempBlocks[i].id;
+     }
+   });
 
-      $.each(tempBlocks,function(i){
-        if (tempBlocks[i].inteligencia_id == intelligencesId) {
-           blockId[i] = tempBlocks[i].id;
-        }
-      });
+   $.each(blockId,function(i){
+     $.each(tempTopics,function(j){
+       if (blockId[i] == tempTopics[j].bloque_id) {
+         topicId[cc2] = tempTopics[j].id;
+         cc2 += 1;
+       }
+     })
+   });
 
-      $.each(blockId,function(i){
-        $.each(tempTopics,function(j){
-          if (blockId[i] == tempTopics[j].bloque_id) {
-            topicId[cc2] = tempTopics[j].id;
-            cc2 += 1;
-          }
-        })
-      });
+   $.each(topicId,function(i){
+     $.each(tempVideos,function(j){
+       if (tempVideos[j].tema_id == topicId[i]) {
+         finalVids[cc] = tempVideos[j];
+         cc += 1;
+       }
+     });
+   });
 
-      $.each(topicId,function(i){
-        $.each(tempVideos,function(j){
-          if (tempVideos[j].tema_id == topicId[i]) {
-            finalVids[cc] = tempVideos[j];
-            cc += 1;
-          }
-        });
-      });
-
-      $("#lp-row-contPdf").append($(
+   $("#lp-row-contPdf").append($(
         "<div class='col-md-12 col-sm-12 col-xs-12 lp-container-video z-depth-1'>" +
         "</div>"
       ));
 
 
-      $.each(finalVids,function(i){
-        if (count_elements < show_per_page) {
+    $.each(finalVids,function(i){
+      if (count_elements < show_per_page) {
 
-          if (count_elements == 0) {
-            count_sections += 1;
-            if (count_sections == 1) {
-              $(".lp-container-video").append(
-                "<div id='lp-section" + count_sections + "' class='lp-show l'>" +
-                "</div>"
-              );
-            } else {
-              $(".lp-container-video").append(
-                "<div id='lp-section" + count_sections + "' class='lp-hide l'>" +
-                "</div>"
-              );
-            }
+        if (count_elements == 0) {
+          count_sections += 1;
+          if (count_sections == 1) {
+            $(".lp-container-video").append(
+              "<div id='lp-section" + count_sections + "' class='lp-show l'>" +
+              "</div>"
+            );
+          } else {
+            $(".lp-container-video").append(
+              "<div id='lp-section" + count_sections + "' class='lp-hide l'>" +
+              "</div>"
+            );
           }
+        }
 
-          nameTopic = StorageDB.table.getByAttr("localTopics","id",finalVids[i].tema_id);
-          $("#lp-section" + count_sections).append($(
+        nameTopic = StorageDB.table.getByAttr("localTopics","id",finalVids[i].tema_id);
+        $("#lp-section" + count_sections).append($(
 
-            "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-video-id='" + finalVids[i].id + "' data-link-video='" + finalVids[i].embed + "'>" +
-            "<div class='col-md-3 col-sm-3 col-xs-4'>" +
-              "<div class='lp-bg-card' title='click para ver'>" +
-                "<div class='card-overlay lp-card-pdf lp-change'>" +
+          "<a class='lp-PDFselect' data-target='#gst-modal-pdf-video' data-toggle='modal'data-video-id='" + finalVids[i].id + "' data-link-video='" + finalVids[i].embed + "'>" +
+          "<div class='col-md-3 col-sm-3 col-xs-4'>" +
+            "<div class='lp-bg-card' title='click para ver'>" +
+              "<div class='card-overlay lp-card-pdf lp-change'>" +
 
-                  "<div class='white-text'>" +
-                    "<div class='card-block'>" +
-                      "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;VIDEOS</h5><hr class='lp-hr'>" +
-                      "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
+                "<div class='white-text'>" +
+                  "<div class='card-block'>" +
+                    "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;VIDEOS</h5><hr class='lp-hr'>" +
+                    "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
 
-                    "</div>" +
-                "</div>" +
+                  "</div>" +
               "</div>" +
             "</div>" +
           "</div>" +
-        "</a>"
-          ));
-          count_elements += 1;
-        }
-        if (count_elements == 8) {
-          count_elements = 0;
-        }
-      });
-
-      $("#pag").append($(
-      " <nav>" +
-          "<ul class='pagination pg-blue'>" +
-
-          "</ul>" +
-        "</nav>"
+        "</div>" +
+      "</a>"
       ));
-
-      for (var i = 0; i < count_sections; i++) {
-          $(".pagination").append($(
-            "<li class='page-item' data-section-id='" + (i + 1) + "'><a class='page-link'>" + (i + 1) + "</a></li>"
-          ));
+        count_elements += 1;
       }
+      if (count_elements == 8) {
+        count_elements = 0;
+      }
+    });
 
-      $("#carrousel-videos").append($(
+    $("#pag").append($(
+     "<nav>" +
+       "<ul class='pagination pg-blue'>" +
+
+       "</ul>" +
+      "</nav>"
+   ));
+
+   for (var i = 0; i < count_sections; i++) {
+       $(".pagination").append($(
+         "<li class='page-item' data-section-id='" + (i + 1) + "'><a class='page-link'>" + (i + 1) + "</a></li>"
+       ));
+   }
+
+   $("#carrousel-videos").append($(
 
         "<div class='row z-depth-1 hidden-sm-up lp-row-slide' id='lp-row-slidePdfs'>" +
           "<div id='lp-slide-cardPdf' class='carousel slide carousel-multi-item' data-ride='carousel'>" +
@@ -233,8 +236,9 @@ $(function(){
       });
 
       count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
-    }
-  });
+  }
+});
+
 
   /* Transitions of the View ------------------------------------ */
 
@@ -306,6 +310,8 @@ $(function(){
   }); // close PDF
 
   /* ------------------------------------------------------------- */
+
+  $("#1grado").trigger('click');
   $("#1inteligence").trigger('click');
   $(".page-link1").trigger('click');
 });

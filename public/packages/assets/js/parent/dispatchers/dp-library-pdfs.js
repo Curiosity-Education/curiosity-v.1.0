@@ -1,7 +1,6 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var level, intelligencesId, blockId = [], topicId = [], finalPdfs = [];
   var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
   var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
@@ -40,11 +39,12 @@ $(function(){
 
   $("body").on('click','.lp-btn-degrees',function(){
 
-    level = $(this).data("id-grade");
-    if (!$(this).hasClass("lp-btn-active")) {
-      $("#lp-btn-topics").empty();
-      $(".lp-btn-degrees").removeClass("lp-btn-active");
-      $(this).addClass("lp-btn-active");
+    $(".lp-btn-degrees").removeClass(".lp-btn-active");
+    $(this).addClass(".lp-btn-active");
+    $("#lp-btn-topics").empty();
+    if ($(this).hasClass(".lp-btn-active")) {
+      var level = $(this).data("id-grade");
+
 
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
@@ -54,18 +54,21 @@ $(function(){
          }
       });
     }
+    $("#lp-btn-topics button").first().trigger('click');
   });
 
-  $("#1grado").trigger('click');
 
   $("body").on('click','.lp-btnTopic',function(){
-    if (!$(this).hasClass("lp-topic-active")) {
 
-      intelligencesId = $(this).data("intelligence-id");
-      $("#lp-row-contPdf").empty();
-      $("#pag").empty();
-      $("#carrousel-pdfs").empty();
-      $(this).addClass("lp-topic-active");
+    $(".lp-btnTopic").removeClass(".lp-topic-active");
+    $(this).addClass(".lp-topic-active");
+    $("#lp-row-contPdf").empty();
+    $("#pag").empty();
+    $("#carrousel-pdfs").empty();
+
+    if ($(this).hasClass(".lp-topic-active")) {
+       var intelligencesId = $(this).data("intelligence-id");
+       var blockId = [], topicId = [], finalPdfs = [];
 
       $.each(tempBlocks,function(i){
         if (tempBlocks[i].inteligencia_id == intelligencesId) {
@@ -114,8 +117,9 @@ $(function(){
             }
           }
         var nameTopic = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
+
           $("#lp-section" + count_sections).append($(
-            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
+            "<a class='lp-PDFselect' data-name-pdf='" + finalPdfs[i].nombre_real + "' data-link-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
              "<div class='col-md-3 col-sm-3 col-xs-4'>" +
                "<div class='lp-bg-card lp-bg' title='click para ver'>" +
                  "<div class='card-overlay lp-card-pdf lp-change'>" +
@@ -123,7 +127,7 @@ $(function(){
                    "<div class='white-text'>" +
                      "<div class='card-block'>" +
                        "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;GUIA PDF</h5><hr class='lp-hr'>" +
-                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + finalPdfs[i].nombre_real + "</h4>" +
+                       "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
 
                      "</div>" +
                    "</div>" +
@@ -192,10 +196,10 @@ $(function(){
         }
         if(i == 0)
           $(".pair-pdfs"+ countSlide).addClass("active");
-
+        var nameTopic2 = StorageDB.table.getByAttr("localTopics","id",finalPdfs[i].tema_id);
         $(".pair-pdfs" + countSlide).append($(
           "<div class='col-xs-12'>" +
-              "<a class='lp-PDFselect' href='#'>" +
+              "<a class='lp-PDFselect' data-name-pdf='" + nameTopic2[0].nombre + "' data-link-pdf='" + finalPdfs[i].nombre + "' href='#'>" +
                 "<div class='lp-bg-card' data-toggle='tooltip' data-placement='top' title='click para ver'>" +
                   "<div class='card-overlay lp-card-pdf'>" +
 
@@ -214,6 +218,10 @@ $(function(){
       });
       count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
 
+    }else {
+      $("#lp-row-contPdf").empty();
+      $("#pag").empty();
+      $("#carrousel-pdfs").empty();
     }
   });
 
@@ -225,7 +233,7 @@ $(function(){
 		$('#lp-container-all').addClass("lp-content-disabled");
 		$('#row-banner').addClass("lp-content-disabled");
     $('.lp-content-pdf').append($(
-      "<embed src='packages/assets/pdf/" + $(this).data('name-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
+      "<embed src='packages/assets/pdf/" + $(this).data('link-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
     ));
     $("#topic-name").text($(this).data('name-pdf'));
 
@@ -256,6 +264,8 @@ $(function(){
     $('.page-item').removeClass('active');
     $(this).addClass('active');
   });
-  $("#1inteligence").trigger('click');
+
+  $("#1grado").trigger('click');
+  // $("#1inteligence").trigger('click');
   $("#pagination1").trigger('click');
 });

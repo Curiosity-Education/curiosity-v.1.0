@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/packages/libs/mdb/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
 	<link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css">
+	<link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css?{{rand();}}">
  	@yield('css')
 
 	<title>@yield('title')</title>

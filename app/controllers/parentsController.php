@@ -90,7 +90,7 @@ class parentsController extends BaseController{
             //      "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
             //      "token"    =>       $user->token
             //  ];
-            //  $toEmail=$padre->email;
+            //  $toEmail=$dad->email;
             //  $toName=$dataSend["email"];
             //  $subject =$dataSend["subject"];
             //  try {
@@ -157,7 +157,11 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'past_due') {
                      //la suscripción falló a inicializarse
-                      return Response::json(array('status'=>105,'statusMessage'='PAST_DUE','data'=>$subscription,'message'=>'El pago no fue realizado con éxito.'));
+                      return Response::json(array(
+                        'status'=>105,
+                        'statusMessage'=>'PAST_DUE',
+                        'data'=>$subscription,
+                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago'));
                     }
                 }
                 else{
