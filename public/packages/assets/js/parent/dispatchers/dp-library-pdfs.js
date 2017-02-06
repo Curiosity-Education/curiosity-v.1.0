@@ -1,7 +1,6 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var level, intelligencesId, blockId = [], topicId = [], finalPdfs = [];
   var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
   var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
@@ -40,11 +39,12 @@ $(function(){
 
   $("body").on('click','.lp-btn-degrees',function(){
 
-    level = $(this).data("id-grade");
-    if (!$(this).hasClass("lp-btn-active")) {
-      $("#lp-btn-topics").empty();
-      $(".lp-btn-degrees").removeClass("lp-btn-active");
-      $(this).addClass("lp-btn-active");
+    $(".lp-btn-degrees").removeClass(".lp-btn-active");
+    $(this).addClass(".lp-btn-active");
+    $("#lp-btn-topics").empty();
+    if ($(this).hasClass(".lp-btn-active")) {
+       var level = $(this).data("id-grade");
+
 
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
@@ -56,17 +56,18 @@ $(function(){
     }
   });
 
-  $("#1grado").trigger('click');
 
   $("body").on('click','.lp-btnTopic',function(){
-    if (!$(this).hasClass("lp-topic-active")) {
 
-      intelligencesId = $(this).data("intelligence-id");
-      $("#lp-row-contPdf").empty();
-      $("#pag").empty();
-      $("#carrousel-pdfs").empty();
-      $(this).addClass("lp-topic-active");
+    $(".lp-btnTopic").removeClass(".lp-topic-active");
+    $(this).addClass(".lp-topic-active");
+    $("#lp-row-contPdf").empty();
+    $("#pag").empty();
+    $("#carrousel-pdfs").empty();
 
+    if ($(this).hasClass(".lp-topic-active")) {
+       var intelligencesId = $(this).data("intelligence-id");
+       var blockId = [], topicId = [], finalPdfs = [];
       $.each(tempBlocks,function(i){
         if (tempBlocks[i].inteligencia_id == intelligencesId) {
            blockId[i] = tempBlocks[i].id;
@@ -214,6 +215,10 @@ $(function(){
       });
       count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
 
+    }else {
+      $("#lp-row-contPdf").empty();
+      $("#pag").empty();
+      $("#carrousel-pdfs").empty();
     }
   });
 
@@ -256,6 +261,7 @@ $(function(){
     $('.page-item').removeClass('active');
     $(this).addClass('active');
   });
+  $("#1grado").trigger('click');
   $("#1inteligence").trigger('click');
   $("#pagination1").trigger('click');
 });
