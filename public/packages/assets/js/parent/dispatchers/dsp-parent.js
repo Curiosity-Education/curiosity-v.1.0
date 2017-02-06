@@ -9,7 +9,7 @@ $(function(){
     $("#pay-button").click(function(){
         if(parentController.validPlanSelected()){
             $("#pay-button").prop("disabled",true);
-            $("#pay-button").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando...");
+            $("#pay-button").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando");
             parentController.payment();
         }else{
             Curiosity.noty.info("Aun no haz seleccionado un plan, no puedes realizar esta acción");
