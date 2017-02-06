@@ -4,7 +4,6 @@ $(function(){
 
   childRegistration.getSons(function(sons){
     localStorage.localSons = JSON.stringify(sons);
-    console.log(sons);
   });
 
   tempSons = JSON.parse(localStorage.localSons);
