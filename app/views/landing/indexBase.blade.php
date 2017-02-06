@@ -67,9 +67,9 @@
 	<script src="/packages/libs/mdb/js/tether.min.js"></script>
 	<script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
 	<script src="/packages/libs/mdb/js/mdb.min.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/landing/controllers/loginController.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/landing/dispatchers/login.js"></script>
+	<script type="text/javascript" src="/packages/assets/js/landing/app-index.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/landing/controllers/loginController.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/landing/dispatchers/login.js?{{rand();}}"></script>
   @yield('js')
 </body>
 </html>
