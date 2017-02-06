@@ -4,6 +4,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Juego | {{$game["name"]}}
+@stop
+
 @section('content')
    <div class="row" id="gst-row-information-game">
       <div class="col-sm-4">
@@ -48,7 +52,7 @@
             <h1>{{$game["name"]}}</h1>
 
             <hr class="gst-hr">
-            <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
 
@@ -128,7 +132,7 @@
               </button>
               <div class="col-md-12 gst-col">
                 <div class="flex-center">
-                  <img src="/packages/assets/iframes/games/unity/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1">
+                  <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg" class="img-fluid z-depth-1">
                 </div>
               </div>
             </div>

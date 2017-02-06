@@ -2,14 +2,14 @@
     @section('css')
     <link rel='stylesheet' type='text/css' href='packages/assets/css/child/main.css?{{rand();}}'>
     @stop
-    @section('title')Biblioteca de Juegos @stop
+    @section('title')Rincón de Juegos @stop
     @section('content')
       <div class='container-fluid' id='container-menu-studio-child'>
          <!-- Banner -->
          <div class='row'>
             <div class='view hm-black-strong z-depth-1 col-xs-12' id='lp-banner'>
                <div class='mask flex-center'>
-                  <h4 class='h4-responsive white-text'><i class='fa fa-gamepad'></i>&nbsp; Biblioteca de Juegos</h4>
+                  <h4 class='h4-responsive white-text'><i class='fa fa-gamepad'></i>&nbsp; Rincón de Juegos</h4>
                </div>
             </div>
          </div>

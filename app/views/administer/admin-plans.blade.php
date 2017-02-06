@@ -5,6 +5,10 @@
 @section('css-plus')
 @stop
 
+@section('title')
+Planes
+@stop
+
 @section('baner-tittle')
    Planes
 @stop

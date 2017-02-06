@@ -1,7 +1,7 @@
 @extends('templates.child-menu')
 
 @section('title')
-	 Configuración de cuenta
+	 Configuración de Mi cuenta
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 			<!-- Banner -->
 			<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
 			  <div class="mask flex-center">
-				 <h4 class="h4-responsive white-text text-xs-center"><i class="fa fa-cogs"></i>&nbsp; Configuración de mi cuenta</h4>
+				 <h4 class="h4-responsive white-text text-xs-center"><i class="fa fa-cogs"></i>&nbsp; Configuración de Mi cuenta</h4>
 			  </div>
 			</div>
 
