@@ -42,8 +42,8 @@ $(function(){
       $("#gst-modal-pdf-video").removeClass('gst-video-active');
       $("#gst-modal-pdf-video").addClass("gst-pdf-active");
       $(".gst-img-content").attr("src","/packages/assets/media/images/system/pdf-file.png");
-      setInformationModal();
     }
+    setInformationModal();
   });
   $("#gst-materialVideo").click(function(event){
     if(!$("#gst-modal-pdf-video").hasClass('gst-video-active')){
