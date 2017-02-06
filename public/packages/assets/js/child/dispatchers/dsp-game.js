@@ -35,11 +35,13 @@ $(function(){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($pdfs);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,pdfs);
       $("#gst-modal-pdf-video").removeClass('gst-video-active');
       $("#gst-modal-pdf-video").addClass("gst-pdf-active");
+      $(".gst-img-content").attr("src","/packages/assets/media/images/system/pdf-file.png");
       setInformationModal();
     }
   });
@@ -48,11 +50,13 @@ $(function(){
       $(".gst-information-list").empty();
       $(".gst-information-list").append($videos);
       //set information in modal
+      $(".gst-information-list>div").children().removeClass("active");
       $(".gst-information-list>div").children().first().addClass('active');
       var id = $(".gst-information-list>div>.media.active").data("id");
       addView(id,videos);
       $("#gst-modal-pdf-video").removeClass("gst-pdf-active");
       $("#gst-modal-pdf-video").addClass('gst-video-active');
+      $(".gst-img-content").attr("src","/packages/assets/media/images/teachersAsc/"+$(".gst-information-list>div>.media.active").data("foto"));
       setInformationModal();
     }
   });
@@ -64,6 +68,7 @@ $(function(){
       $("#gst-iframe-content").attr("src","/packages/assets/pdf/"+$active.data("name"));//set src of pdf in embed element
     }else{
       $("#gst-iframe-content").attr("src",$active.data("name"));//set src of pdf in embed element
+      $(".gst-img-content").attr("src","/packages/assets/media/images/teachersAsc/"+$active.data("foto"));
     }
     $(".gst-tema-content").text($active.find(".media-heading").text());
     $(".gst-name-content").text($active.find("p.gst-name-content-list").text());
@@ -117,8 +122,9 @@ $(function(){
   function createElsementsVideos(){
     //all code here
     $videos = $("<div/>");
+    console.log(videos);
     $.each(videos,function(index,video){
-           $videos.append('<div class="media hoverable" data-id="'+video.id+'" data-name="'+video.embed+'">'+
+           $videos.append('<div class="media hoverable" data-id="'+video.id+'" data-foto="'+video.foto+'" data-name="'+video.embed+'">'+
               '<a class="media-left waves-light col-md-4">'+
                   '<img class="img-fluid" src="/packages/assets/media/images/posters/'+video.poster+'" alt="pdf ico">'+
               '</a>'+
