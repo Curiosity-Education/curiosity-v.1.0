@@ -39,10 +39,7 @@ $(function(){
 
   $("body").on('click','.lp-btn-degrees',function(){
 
-    $.each($(".lp-btn-degrees"), function(index, el) {
-      $(this).removeClass(".lp-btn-active");
-    });
-   //  $(".lp-btn-degrees").removeClass(".lp-btn-active");
+    $(".lp-btn-degrees").removeClass(".lp-btn-active");
     $(this).addClass(".lp-btn-active");
     $("#lp-btn-topics").empty();
     $(this).addClass("lp-btn-active");
