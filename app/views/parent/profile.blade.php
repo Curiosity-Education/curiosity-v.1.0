@@ -25,7 +25,7 @@ Mi Perfil
                                       ->limit(8)
                                       ->orderBy('id','DESC')
                                       ->get() as $new)
-                          <li class="p-item-new" data-pdf="{{$new->pdf}}">
+                          <li class="p-item-new" data-pdf="{{$new->pdf}}" data-namepdf="{{$new->titulo}}">
                             <div class="card hoverable card-border-standard p-card-new">
                               <div class="card-block">
                                 <div class="card-left border-right">
@@ -117,7 +117,7 @@ Mi Perfil
                         </div>
                         <div class="md-form">
                             <i class="fa fa-phone prefix"></i>
-                            <input type="text" id="telefono" name="telefono" class="form-control" length="10" placeholder="Telefono" value="{{$telefono}}">
+                            <input type="text" id="telefono" name="telefono" class="form-control" length="10" placeholder="Teléfono" value="{{$telefono}}">
                         </div>
                     </div>
                     <div class="text-xs-center p-content-buttons animated fadeIn">
@@ -173,7 +173,7 @@ Mi Perfil
                     <ul class="list text-justify hidden-md-down p-cardInfo" >
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">{{Auth::user()->Person->nombre}}</span></li>
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-surnames">{{Auth::user()->Person->apellidos}}</span></li>
-						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
+						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; teléfono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
                     </ul>
                     <hr class="hidden-md-down p-cardInfo">
                     <!--//.. end data list -->
@@ -190,12 +190,12 @@ Mi Perfil
             <div class="card card-border-standard" id="p-card-pdf">
               <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
                 <div class="mask border-standard flex-center">
-                 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
+                 <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; <span id="p-t"></span> &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
                 </div>
                  <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
               </div>
               <div class="card-block">
-                <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="p-pdf">
+                <embed src="" type="application/pdf" width="100%" height="100%" id="p-pdf">
                 <h1 class="h1-responsive text-xs-center" id="p-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
               </div>
             </div>
