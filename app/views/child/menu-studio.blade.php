@@ -15,7 +15,7 @@
          </div>
 
          <div class='row'>
-            <div class='z-depth-1' id='ms-conteiner-all'>
+            <div class='z-depth-1' id='ms-conteiner-all' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
                <div class='row'></div>
             </div>
          </div>
