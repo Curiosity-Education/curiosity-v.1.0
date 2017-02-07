@@ -14,6 +14,7 @@ class viewsController extends BaseController{
       "administer.asociateSchool"       => "manage_school_aliance",
       "administer.admin-employees"      => "manage_administrative",
       "administer.admin-salescode"      => "manage_administrative",
+      "administer.admin-news"           => "manage_news",
       "child.init"                      => "child_actions",
       "child.menu-studio"               => "child_actions",
       "child.profile"                   => "child_actions",
@@ -31,14 +32,16 @@ class viewsController extends BaseController{
    public function getViewWithData($controller = '',$method = '',$viewName){
       $permission = $this->getPermissionView($viewName);
       if ($permission != null){
-         if($controller != '' || $method != ''){
-            $callback = $controller."Controller@".$method;
-            $data = ExternalCall::execute($callback);
+         if (Entrust::can($permission)){
+            if($controller != '' || $method != ''){
+               $callback = $controller."Controller@".$method;
+               $data = ExternalCall::execute($callback);
+            }
+            else{
+               $data = [];
+            }
+            return View::make($viewName,$data);
          }
-         else{
-            $data = [];
-         }
-         return View::make($viewName,$data);
       }
       return View::make('errors.404');
    }
