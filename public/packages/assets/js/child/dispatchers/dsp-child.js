@@ -1,6 +1,7 @@
 $(function(){
    Sprite.any(null, "POST", function(r){ StorageDB.table.create("spritesChild", r); }, "getByAvatarForChild");
    Secuence.all("POST", function(r){ StorageDB.table.create("secuences", r); });
+   DailyGoal.getChildSelected(function(response){ StorageDB.table.create("childgoal", response["data"]); });
 
    var sprites = StorageDB.table.getData("spritesChild");
    var secuences = StorageDB.table.getData("secuences");

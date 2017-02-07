@@ -230,6 +230,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::group(array('before' => 'child_actions'),function(){
 		Route::group(array('prefix' => '/child-goal'), function(){
 			Route::post('updateConf', 'childrenHasGoal@update');
+			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
 });
