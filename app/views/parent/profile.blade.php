@@ -117,7 +117,7 @@ Mi Perfil
                         </div>
                         <div class="md-form">
                             <i class="fa fa-phone prefix"></i>
-                            <input type="text" id="telefono" name="telefono" class="form-control" length="10" placeholder="Telefono" value="{{$telefono}}">
+                            <input type="text" id="telefono" name="telefono" class="form-control" length="10" placeholder="Teléfono" value="{{$telefono}}">
                         </div>
                     </div>
                     <div class="text-xs-center p-content-buttons animated fadeIn">
@@ -173,7 +173,7 @@ Mi Perfil
                     <ul class="list text-justify hidden-md-down p-cardInfo" >
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Nombre(s): <span id="span-name">{{Auth::user()->Person->nombre}}</span></li>
                       <li class="list-item"><i class="fa fa-user"></i>&nbsp; Apellido(s): <span id="span-surnames">{{Auth::user()->Person->apellidos}}</span></li>
-						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; telefono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
+						          <li class="list-item"><i class="fa fa-phone"></i>&nbsp; teléfono: <span id="span-telephone">+52 {{Auth::user()->Person->Dad->telefono}}</span></li>
                     </ul>
                     <hr class="hidden-md-down p-cardInfo">
                     <!--//.. end data list -->
