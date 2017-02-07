@@ -125,6 +125,8 @@ var $juego = {
                 average = 0;
             }else{
                 average = (($juego.game.hits*100)/$juego.game.attempts);
+                /* Si es menor a 50 se deja el 50 */
+                average = (average < 50) ? 50 : average;
             }
             data={
                 score      : $juego.game.scoreCurrent,
