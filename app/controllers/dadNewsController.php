@@ -8,8 +8,8 @@ class dadNewsController extends BaseController{
 			->limit(8)
 			->orderBy('id','DESC')
 			->get();
-
-		return View::make('administer.admin-news')->with('news',$news);
+		return array('news' => $news);
+		// return View::make('administer.admin-news')->with('news',$news);
 
 	}
 

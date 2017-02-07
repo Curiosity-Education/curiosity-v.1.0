@@ -38,7 +38,7 @@
 </div>
 <div data-url="/view-children/getInfoToConfig/view-child.configuration_account" class="linkMenu waves-effect">
    <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Configuración de Mi cuenta
+   Configuración
 </div>
 @stop
 
@@ -65,7 +65,7 @@
 </div>
 <div data-url="/view-children/getInfoToConfig/view-child.configuration_account" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-gear childMenu-icon-menu" id="childMenu-icon-profile"></span>&nbsp;
-   Configuración de Mi cuenta
+   Configuración
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right childMenu-icon-exit" id="childMenu-icon-exit"></span>&nbsp;
