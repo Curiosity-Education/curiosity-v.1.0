@@ -78,6 +78,7 @@ var confController = {
          $("#ca-cancelGoal").prop('disabled', true);
          $("#ca-saveGoal").html("<span class='fa fa-spinner fa-pulse'></span>");
          DailyGoal.updateConf($(".ca-boxActive").data('data'), "POST", this.successGoal);
+         DailyGoal.getChildSelected(function(response){ StorageDB.table.create("childgoal", response["data"]); });
       }
       else {
          Curiosity.noty.info("Para cambiar de meta diaria primero selecciona la que desees", "Información");
