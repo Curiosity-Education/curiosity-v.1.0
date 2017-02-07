@@ -87,7 +87,7 @@
           <!-- Carta donde se mostrará el contenido de los juegos(juegos recomendaods..etc) -->
           <div class="row" id="card-container-games">
             <div class="col-md-12 col-sm-12">
-              <div class="card-game">
+              <div class="card-game" id="card-game-bigBox" style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
                 <div class="card-header-game text-center init-titleGame">
                   <h4 class="card-title flex-center"> <i class="fa fa-gamepad"></i> Juegos Nuevos</h4>
                   <a class="dismiss-card btn-floating btn-small float-xs-right init-btnClose hidden-xs-down" data-dismiss-target="#card-container-games"><i class="fa fa-times"></i></a>
