@@ -118,7 +118,7 @@
    <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
    Códigos de vendedor
 </div>
-<div data-url="view-administer.admin-news" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-dadNews/get/view-administer.admin-news" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
 </div>
