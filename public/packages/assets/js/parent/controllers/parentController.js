@@ -438,6 +438,7 @@ var parentController = {
             };
 
             var errorResponseHandler = function(error) {
+               parentController.getPlan(localStorage.getItem('plan-user-selected'));
               $("#pay-button").prop("disabled",false);
               return Curiosity.noty.warning(error.message_to_purchaser);
 
@@ -446,6 +447,7 @@ var parentController = {
        },
 
         paymentSuccess:function(response){
+            parentController.getPlan(localStorage.getItem('plan-user-selected'));
             $("#pay-button").prop("disabled",false);
             console.log(response);
             switch(response.status){

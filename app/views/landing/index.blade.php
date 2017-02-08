@@ -5,27 +5,27 @@
 @stop
 
 @section('menu')
-	<li class="nav-item anc">
+	<li class="nav-item nav-item1 anc">
 		<a class="nav-link" href="#inicio">{{Lang::get('landingPage.menu.home')}} <span class="sr-only">(current)</span></a>
 	</li>
-	<li class="nav-item anc">
+	<li class="nav-item nav-item1 anc">
 		<a class="nav-link" href="#nosotros">{{Lang::get('landingPage.menu.whatIs')}}</a>
 	</li>
-	<li class="nav-item anc">
+	<li class="nav-item nav-item1 anc">
 		<a class="nav-link" href="#funcionamiento">{{Lang::get('landingPage.menu.howfunction')}}</a>
 	</li>
-	 <li class="nav-item anc">
+	 <li class="nav-item nav-item2 anc">
 		<a class="nav-link" href="#video">{{Lang::get('landingPage.menu.video')}}</a>
 	</li>
-	<li class="nav-item anc">
+	<li class="nav-item nav-item2 anc">
 		<a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
 	</li>
-	<li class="nav-item">
+	<li class="nav-item nav-item2">
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
 	</li>
-	<li class="nav-item">
-		{{--<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
-		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
+	<li class="nav-item nav-item2">
+		<a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+		<!-- <a class="btn btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a> -->
 	</li>
 @stop
 
@@ -68,7 +68,7 @@
 										</div>
 									</form>
 									<div class="text-xs-center">
-										<button class="btn btn-primaryCur btn-lg borderRounded" id="btnLogin">Iniciar</button>
+										<button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnLogin">Iniciar</button>
 									</div>
 								</div>
 							</div>
@@ -96,8 +96,8 @@
 				<div class="col-xs-1 col-md-2"></div>
 				<div class="button-sm-access col-xs-10 col-md-8">
 					<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-block btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
-					{{--<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>--}}
-					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a>
+					<a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="#membresia">{{Lang::get('landingPage.menu.createAccount')}}</a>
+					<!-- <a class="btn btn-block btn-warning btn-rounded pull-right btn-action" style="color:#fff; margin-left:10px;" href="javascript:void(0)">Próximamente</a> -->
 				</div>
 				<div class="col-xs-1 col-md-2"></div>
 				<br>
@@ -204,8 +204,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-					<!-- <a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a> -->
-					<a href="javascript:void(0)" type="button" class="btn btn-secondary btn-rounded waves-effect">Próximamente</a>
+					<!-- <a href="javascript:void(0)" type="button" class="btn btn-secondary btn-rounded waves-effect">Próximamente</a> -->
+					<a href="#membresia" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
 				</h2>
 			</center>
 		</div>
@@ -309,8 +309,8 @@
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-					<!-- <a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a> -->
-					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próximamente</a>
+					<a type="button" class="btn btn-warning btn-rounded waves-effect" href="#membresia">Comenzar</a>
+					<!-- <a type="button" class="btn btn-warning btn-rounded waves-effect" href="javascript:void(0)">Próximamente</a> -->
 				</h2>
 			</center>
 	  	</div>
@@ -356,7 +356,9 @@
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
 										<p class="text-xs-center">¡ Muy Bien !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">
+											Facturación Recurrente <br><br><br>
+										</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -385,8 +387,12 @@
 
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
-										<p class="text-xs-center">¡ Excelente !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuenta para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">¡ La más popular !</p>
+										<p class="text-xs-center">
+											Equivalente a
+											${{ number_format($plan->amount / 12, 2) }} / Mes <br><br>
+											Facturación Recurrente.
+										</p>
 										<center><a class="btn btn-outline-white btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -416,7 +422,12 @@
 										<!--Price-->
 										<h2 class="text-xs-center"><strong>${{$plan->amount}}.00 {{$plan->currency}}</strong></h2>
 										<p class="text-xs-center">¡ Genial !</p>
-										<p class="text-xs-center">Te ofrece {{$plan->limit}} cuentas para tus hijos para comenzar este aprendizaje de forma divertida.</p>
+										<p class="text-xs-center">
+											Equivalente a
+											${{ number_format(($plan->amount / 12) / $plan->limit, 2) }} / Mes por hijo<br>
+											Registra hasta {{ $plan->limit }} hijos <br>
+											Facturación Recurrente
+										</p>
 										<center><a class="btn bluecard btn-rounded z-depth-2 space suscriptionBtn" data-id-plan="{{$plan->id}}">Adquirir</a></center>
 									</div>
 								</div>
@@ -554,8 +565,8 @@
 			<ul>
 				<li>
 					<h5>¡Vamos! ¿Qué esperas para formar parte de la familia Curiosity?</h5></li>
-				<!-- <li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li> -->
-				<li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li>
+				<li><a class="btn btn-danger" href="#membresia">¡Únete!</a></li>
+				<!-- <li><a class="btn btn-danger" href="javascript:void(0)">Próximamente!</a></li> -->
 			</ul>
 		</div>
 		<!--/.Call to action-->

@@ -51,27 +51,27 @@ var $juego = {
             //reiniciar puntuaje
             // Verificamos si el puntaje obtenido es mayor que el puntaje mayor actual
             if($juego.game.attempts > 0){
-              $juego.game.efficiency = Math.round(($juego.game.hits * 100) / $juego.game.hits);
+              $juego.game.efficiency = Math.round(($juego.game.hits * 100) / $juego.game.attempts);
             }
             else{
               $juego.game.efficiency = 0;
             }
             if($juego.game.scoreCurrent > $juego.game.scoreMax){
-            // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-            $juego.game.scoreMax = $juego.game.scoreCurrent;
-            // Cambiamos el puntaje maximo en pantalla
-            $("#gst-score-max").html($juego.game.scoreMax + " puntos");
+                // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
+                $juego.game.scoreMax = $juego.game.scoreCurrent;
+                // Cambiamos el puntaje maximo en pantalla
+                 $("#gst-score-max").text($juego.game.scoreMax +" puntos");
+                $("#gst-score-max").data("score",$juego.game.scoreMax);
+                $("#gst-hits-max").text($juego.game.hits);
             }
+            var goal = StorageDB.table.getData("childgoal");
+            var expPlus = Math.round($juego.game.efficiency * parseInt(goal["cant_exp"]) / 100);
+            var ccPlus = Math.round(expPlus * 1.5);
             $("#gst-row-game").hide();//desaparecer zona juego
             $("#gst-row-information-game").show();//aparecer zona del objetivo
             $juego.game.save();
-            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
-            $juego.game.scoreCurrent=0;
-            $juego.game.attempts = 0;
-            $juego.game.mistakes = 0;
-            $juego.game.hits=0;
-            $juego.game.combo=0;//reiniciar continuos
-            $juego.cronometro.stop();
+            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits, expPlus, ccPlus);
+            $juego.game.restart();
             $("#game").trigger("finish");
         },
         finish_game_unity:function(){
@@ -85,7 +85,6 @@ var $juego = {
             else{
               $juego.game.efficiency = 0;
             }
-            console.log($juego.game.scoreCurrent+" "+$juego.game.scoreMax);
             if($juego.game.scoreCurrent > $juego.game.scoreMax){
                 // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
                 $juego.game.scoreMax = $juego.game.scoreCurrent;
@@ -95,8 +94,11 @@ var $juego = {
                 $("#gst-hits-max").text($juego.game.hits);
 
             }
+            var goal = StorageDB.table.getData("childgoal");
+            var expPlus = Math.round($juego.game.efficiency * parseInt(goal["cant_exp"]) / 100);
+            var ccPlus = Math.round(expPlus * 1.5);
             $juego.game.save();
-            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
+            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits, expPlus, ccPlus);
             $juego.game.restart_game_unity();
             $juego.game.unity.salir();
         },
@@ -108,8 +110,6 @@ var $juego = {
             $("#gst-row-game").hide();//desaparecer zona juego
             $("#gst-row-information-game").show();//aparecer zona del objetivo
             $juego.game.scoreCurrent=0;
-            $juego.cronometro.stop();
-            $("#gst-btnPlay").trigger("click");
             $("#game").trigger('restart');
         },
         restart_game_unity:function(){
@@ -162,7 +162,6 @@ var $juego = {
             $juego.game.hits++;
             $juego.game.attempts++;
             $juego.game.calcCombo();
-
         },
         setError:function(scoreMenius){
             // regresamos la cantidad de aciertos continuos a cero
@@ -203,9 +202,11 @@ var $juego = {
     },
     modal : {
         score : {
-            show : function(score,hits){
+            show : function(score,hits,exp,cc){
                 $("#gst-score").text(score+" Puntos");
                 $("#gst-hits").text(hits);
+                $("#gst-expplus").text("+"+exp+" Puntos");
+                $("#gst-ccplus").text("+"+cc+" CC");
                 $("#gst-modal").modal('show');
             }
         }
@@ -227,4 +228,3 @@ document.getElementById("gst-btnPlay").addEventListener("click",function(){
   $juego.game.unity.start();
   $juego.game.scoreMax = $("#gst-score-max").data("score");
 },false);
-

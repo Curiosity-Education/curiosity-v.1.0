@@ -81,10 +81,10 @@ Juego | {{$game["name"]}}
       <div class="col-md-12">
           <div class="card card-border-standard" id="gst-card-pdf">
             <div class="view hm-black-strong z-depth-1 col-xs-12" id="p-banner-showPDF">
-              <div class="mask border-standard flex-center">
+               <div class="mask border-standard flex-center">
                <h4 class="h4-responsive white-text"><i class="fa fa-file-pdf-o hidden-xs-down"></i>&nbsp; Sucesión Númerica &nbsp;&nbsp;<i class="float-xs-right fa fa-times-circle hidden-sm-up dismiss-card" data-toggle="tooltip" data-placement="bottom" title="Cerrar PDF"></i></h4>
               </div>
-               <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
+              <a class="btn-floating btn-small primary-color-dark float-xs-right hidden-xs-down dismiss-card" data-dismiss-card="#p-row-pdf" data-toggle="tooltip" data-placement="left" title="Cerrar PDF"><i class="fa fa-times"></i></a>
             </div>
             <div class="card-block">
               <embed src="/packages/assets/pdf/guia.pdf" type="application/pdf" width="100%" height="100%" id="gst-pdf">
@@ -107,11 +107,11 @@ Juego | {{$game["name"]}}
               </div>
               <div class="col-sm-4">
                  <h4>Experiencia</h4>
-                 <h5>+100 Puntos</h5>
+                 <h5 id="gst-expplus">+100 Puntos</h5>
               </div>
               <div class="col-sm-4">
                  <h4>Curiosity Coins</h4>
-                 <h5>+175 CC</h5>
+                 <h5 id="gst-ccplus">+175 CC</h5>
               </div>
             </div>
             <button type="button" class="btn btn-rounded btn-block" data-dismiss="modal">
@@ -142,7 +142,7 @@ Juego | {{$game["name"]}}
    </div>
   @section('modal-pdfs-videos')
     @section('modal-left')
-      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+      <iframe src="" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
     @stop
     @section('modal-header')
       @section('modal-header-image')

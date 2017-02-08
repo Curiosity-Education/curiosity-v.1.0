@@ -72,9 +72,11 @@ $(function(){ // this function is ejecuted when document is ready for use for us
 	}
 	$(".p-item-new").click(function(){
 		var pdf = $(this).data("pdf");
+		var tit = $(this).data("namepdf");
+		$("#p-pdf").attr("src","/packages/assets/pdf/"+pdf);
+		$("#p-t").text(tit);
 		$("#p-row-main").hide();
 		$("#p-row-pdf").show();
-		$("#p-pdf").attr("src","/packages/assets/pdf/"+pdf);
 		$("#container-baner").hide();
 	});
 

@@ -157,7 +157,11 @@ class parentsController extends BaseController{
                     }
                     elseif ($subscription->status == 'past_due') {
                      //la suscripción falló a inicializarse
-                      return Response::json(array('status'=>105,'statusMessage'=>'PAST_DUE','data'=>$subscription,'message'=>'El pago no fue realizado con éxito.'));
+                      return Response::json(array(
+                        'status'=>105,
+                        'statusMessage'=>'PAST_DUE',
+                        'data'=>$subscription,
+                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago'));
                     }
                 }
                 else{

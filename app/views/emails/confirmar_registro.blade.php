@@ -108,7 +108,7 @@
       <table class="table-col" align="left" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
         <table class="header-row" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 5px; padding-top: 5px;" valign="top" align="left">
         <center>
-          <img src="{{asset('packages/images/msj.png') }}" style="width: 150px;">
+          <img src="{{asset('/packages/assets/media/images/system/logoDef.png') }}" style="width: 150px;">
         </center>
         <br>
         <center style="font-size:1.5em;">
@@ -124,7 +124,7 @@
             Recuerda que tu usuario de <b>Curiosity</b> lo definiste al momento de tu registro y lo necesitarás para acceder junto con tu contraseña.<br><br>
             Juntos, estamos luchando por generar equidad educativa de una manera divertida y permitirte estar más cerca de tu hijo/a.<br><br>
             Si tienes alguna pregunta o comentario, házelo saber a nuestro equipo de atención al cliente por correo a :
-            <i>servicio@curiosity.com.mx</i> <br><br>
+            <i>hola@curiosity.com.mx</i> <br><br>
             Gracias por registrarte y nos vemos pronto.
           </p>
           <br>
