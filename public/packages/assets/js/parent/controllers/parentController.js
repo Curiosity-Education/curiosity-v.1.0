@@ -62,7 +62,8 @@ var parentController = {
                 'password':$("#password").val(),
                 'telefono':$("#telefono").val(),
                 'username':$("#username").val(),
-                'cpassword':$("#cpassword").val()
+                'cpassword':$("#cpassword").val(),
+                '_token':$("#csrf").val()
             }
        },
        id : null,
