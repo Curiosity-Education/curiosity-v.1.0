@@ -230,6 +230,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::group(array('before' => 'child_actions'),function(){
 		Route::group(array('prefix' => '/child-goal'), function(){
 			Route::post('updateConf', 'childrenHasGoal@update');
+			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
 });
@@ -443,12 +444,17 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 *   Register for users
 */
 Route::group(array('prefix' => 'parent'),function(){
-   Route::post('save','parentsController@save');
+   Route::post('save',array('before' => 'csrf', function()
+    {
+        $response = ['status' => 'CU-107','statusMessage' => 'Missing CSRF'];
+        return Response::json($response);
+    }),'parentsController@save');
    Route::post('update','parentsController@update');
    Route::post('remote-email','parentsController@remoteEmail');
    Route::post('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
    Route::post('get-sons','parentsController@getSons');
+	 Route::post('get-sonsInfo','parentsController@getSonsInfo');
 });
 
 
@@ -590,7 +596,8 @@ Route::group(array('before' => 'auth'), function(){
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
-					 Route::post("/updateConf","childrenController@updateConf");
+					 			Route::post("/updateConf","childrenController@updateConf");
+								Route::post("delete","childrenController@delete");
             });
             /*Route::group(array('prefix' => ''),function(){
 	 			Route::match(array('GET', 'POST'), '/', 'actividadController@viewPage');

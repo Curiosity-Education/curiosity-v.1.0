@@ -15,7 +15,7 @@ var msConstroller = {
    makeCard : function($obj, type, _class, objRef, typeRef){
       $("#ms-conteiner-all > div").html("");
       if (type != "level"){
-         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a Grados </div></div>";
+         var code = "<div class='row'><div class='container-fluid'><div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a Grados </div></div></div></div>";
          $("#ms-conteiner-all > div").append(code);
       }
       $.each($obj, function(index, obj) {

@@ -83,6 +83,7 @@
 <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
 <script src="/packages/assets/js/administer/models/Block.js?{{rand();}}"></script>
 <script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}"></script>
+<script src="/packages/assets/js/child/models/DailyGoal.js?{{rand();}}"></script>
 <script src="/packages/assets/js/administer/controllers/SpriteAnimator.js?{{rand();}}"></script>
 <script src="/packages/assets/js/child/dispatchers/dsp-child.js?{{rand();}}"></script>
 @yield('js-plus')

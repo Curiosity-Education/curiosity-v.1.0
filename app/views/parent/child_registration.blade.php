@@ -31,8 +31,9 @@ Gestión de Mis Hijos
 			 	<span class="tag upch-tag-info">Información: </span> Desplaza a los lados las imagenes.
 			 </div>
 			 <div class="upch-footer-card">
-				<a class="rotate-btn btn btn-block btn-border-curiosity" id="upch-btnEdit"><i class="fa fa-pencil"></i>&nbsp; Modificar</a>
-				<button type="button" class="rotate-btn btn btn-block btn-outline-warning waves-effect waves-light btn-border-curiosity" id="upch-btnDelete"><i class="fa fa-trash"></i>&nbsp; Dar de Baja</button>
+
+				<!-- <a class="rotate-btn btn btn-block btn-border-curiosity" id="upch-btnEdit"><i class="fa fa-pencil"></i>&nbsp; Modificar</a> -->
+				<button type="button" class="rotate-btn btn btn-block btn-outline-warning waves-effect waves-light btn-border-curiosity" id="upch-btnDelete"><i class="fa fa-trash"></i>&nbsp; Dar de Baja</button><br><br>
 			 </div>
 		  </div>
       </div>
@@ -46,7 +47,7 @@ Gestión de Mis Hijos
               <div class="face front">
                   <!-- Image-->
                   <div class="card-up">
-                      <img src="packages/assets/media/images/parents/children/ninos.jpg" class="img-fluid">
+                      <img src="/packages/assets/media/images/parents/children/ninos.jpg?{{rand();}}" class="img-fluid">
                   </div>
                   <!--Avatar-->
                   <div class="avatar"><img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" alt="papa-curiosity" class="rounded-circle img-responsive">

@@ -66,10 +66,10 @@ var parentController = {
             }
        },
        id : null,
-       itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-name="+name+" data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+       itemSon:function(id,name,nivel_id,photoProfile,infoActivities,topicLow){
+           return "<a href='javascript:void(0)' data-name='"+name+"' data-id='"+id+"' data-nivel-id='"+nivel_id+"' data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
-                 "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
+                 "<img src='"+photoProfile+"'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
               "</div>"+
            "</a>";
@@ -157,20 +157,31 @@ var parentController = {
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
                 });
-                var ctx = document.getElementById("myChart").getContext("2d");
+                var cnvs = document.getElementById("myChart");
+                var ctx = cnvs.getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,chartActivity;
-                var dataValues=[];
+                var materia,numRand,numRand2,chartActivity;
+                var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
-                    datasets: []
+                    datasets: [],
+                    options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
                 };
+
                 $.each(dataset,function(i,activity){
-                    numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
-                            dataValues.push(activity.Promedio);
+                            dataValues.push(activity.Promedio.toFixed(2));
+                            dataValuesCompare.push(activity.promedioGeneral.toFixed(2));
                             if(activity.Promedio < 60){
                                 $("#hm-btn-HelpSon").prop('disabled',false);
                             }
@@ -180,45 +191,58 @@ var parentController = {
                 });
             }
             if(dataset.length == 0){
-                $("#dadNotice").show();
-            }else if(dataset.length < 5){
+                $("#dadNotice").show('slow');
+                $("#myChart").hide('slow');
+            }else if(dataset.length < 10){
+                $("#dadNotice").hide('slow');
+                $("#myChart").show('slow');
                 $("#materias").show();
+                numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
+                numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
                 data.datasets.push({
-                            label: materia,
-                            fill: false,
-                            lineTension: 0.1,
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 0.4)',
-                                'rgba(255, 99, 132, 0.4)',
-                                'rgba(255, 206, 86, 0.4)',
-                                'rgba(75, 192, 192, 0.4)',
-                                'rgba(153, 102, 255, 0.4)',
-                                'rgba(255, 159, 64, 0.4)'
-                             ],
-                             borderColor: [
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255,99,132,1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                             ],
+                             label: materia,
+                             fill: false,
+                             lineTension: 0.1,
+                             backgroundColor: Curiosity.colorsTransparent(.4)[numRand],
+                             borderColor: Curiosity.colors()[numRand],
                              borderCapStyle: 'butt',
                              borderDash: [],
                              borderDashOffset: 0.1,
                              borderJoinStyle: 'miter',
-                             pointBorderColor: "rgba(75,192,192,1)",
+                             pointBorderColor: Curiosity.colors()[numRand],
                              pointBackgroundColor: "#fff",
                              pointBorderWidth: 1,
                              pointHoverRadius: 5,
-                             pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                             pointHoverBorderColor: "rgba(220,220,220,1)",
+                             pointHoverBackgroundColor: Curiosity.colors()[numRand],
+                             pointHoverBorderColor: Curiosity.colors()[numRand],
                              pointHoverBorderWidth: 2,
                              pointRadius: 1,
                              pointHitRadius: 10,
                              data: dataValues,
                              spanGaps: false,
+                },{
+                            label: "General " + materia,
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: Curiosity.colorsTransparent(.4)[numRand2],
+                            borderColor: Curiosity.colors()[numRand2],
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.1,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: Curiosity.colors()[numRand2],
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: Curiosity.colors()[numRand2],
+                            pointHoverBorderColor: Curiosity.colors()[numRand2],
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: dataValuesCompare,
+                            spanGaps: false,
                 });
+                ctx.clearRect(0, 0, cnvs.width, cnvs.height);
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
                     data: data
@@ -226,6 +250,8 @@ var parentController = {
 
 
             }else{
+                $("#dadNotice").hide('slow');
+                $("#myChart").show('slow');
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
@@ -264,7 +290,7 @@ var parentController = {
                 $.each(response.sons,function(id,son){
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
-                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,son.photoProfile,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
                 });
                 $(".carousel").carousel();
                 parentController.autoSelectedUser();
@@ -275,7 +301,7 @@ var parentController = {
             if($.isArray(activities)){
                 if(activities.length > 0){
                     $.each(activities,function(i,activity){
-                        if(activity.id = id){
+                        if(activity.id == id){
                             dataset.push(activity);
                         }
                     });
@@ -291,7 +317,7 @@ var parentController = {
             if($.isArray(topics)){
                 if(topics.length > 0){
                     $.each(topics,function(i,topic){
-                        if(topics.id = id){
+                        if(topics.id == id){
                             dataset.push(topic);
                         }
                     });
@@ -309,7 +335,14 @@ var parentController = {
                 if(response.sonMakeActivities.length != null){
                     var intelligences = [];
                     $.each(response.sonMakeActivities,function(i,object){
-                        intelligences.push({id:object.idMateria,nombre:object.Materia});
+                        var duplicate = 0;
+                        $.each(intelligences,function(i,o){
+                            if(o.id == object.idMateria){
+                                duplicate++;
+                            }
+                        });
+                        if(duplicate == 0)
+                            intelligences.push({id:object.idMateria,nombre:object.Materia});
                     });
                     localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
                 }

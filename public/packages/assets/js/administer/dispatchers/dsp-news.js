@@ -50,7 +50,7 @@ $(function(){
 		newsCtrl.setId($(this).data('id'));
 		newsCtrl.deleteConfirm();
 	});
-
+ 
 	// back to add form
 	$("#nw-btnback").click(function(){
 		$("#nw-formEdit").addClass('nw-disabled');
