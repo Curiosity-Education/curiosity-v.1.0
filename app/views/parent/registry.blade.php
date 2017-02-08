@@ -60,16 +60,15 @@
 
 						<!--Card content-->
 						<div class="card-block">
-							<h5 class="blue-text">Curiosity Educación</h5>
 							<!--Title-->
-							<h4 class="card-title">Hola !</h4>
+							<h4 class="card-title blue-text">¡Bienvenido!</h4>
 							<!--Text-->
-							<p class="card-text">Te invitamos a registrarte y formar parte de curiosity, disfruta de esta gran plataforma. Porque aprender también es divertido.</p>
+							<p class="card-text">Te invitamos a registrarte y formar parte de la familia Curiosity. Disfruta de esta gran plataforma y descubre como tu hijo aprende de una manera divertida.</p>
 							<hr>
 							<center>
 								<div class="options">
+									<p>¿Ya tienes cuenta?<br>¡Inicia sesión ahora!</p>
 									<a href="/" class="btn reg-rounded reg-btnSesion">Iniciar Sesión</a>
-									<p>¿Ya tienes cuenta?<br>¡ Inicia sesión ahora !</p>
 								</div>
 							</center>
 						</div>
@@ -94,6 +93,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
+									    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix reg-icon-bl"></i>

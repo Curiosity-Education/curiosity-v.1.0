@@ -47,10 +47,10 @@ Gestión de Mis Hijos
               <div class="face front">
                   <!-- Image-->
                   <div class="card-up">
-                      <img src="packages/assets/media/images/parents/children/ninos.jpg" class="img-fluid">
+                      <img src="/packages/assets/media/images/parents/children/ninos.jpg?{{rand();}}" class="img-fluid">
                   </div>
                   <!--Avatar-->
-                  <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg" alt="papa-curiosity" class="rounded-circle img-responsive">
+                  <div class="avatar"><img src="/packages/assets/media/images/parents/profile/{{Auth::user()->Person->Dad->foto_perfil}}" alt="papa-curiosity" class="rounded-circle img-responsive">
                   </div>
                   <!--Content-->
                   <div class="card-block">

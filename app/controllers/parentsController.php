@@ -161,7 +161,7 @@ class parentsController extends BaseController{
                         'status'=>105,
                         'statusMessage'=>'PAST_DUE',
                         'data'=>$subscription,
-                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago'));
+                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
                     }
                 }
                 else{
@@ -185,33 +185,23 @@ class parentsController extends BaseController{
     public function getSons(){
         $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
         $sons = DB::select("SELECT
-            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
+            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id,
+            concat (ta.ruta,acs.archivo) as photoProfile
             FROM padres
             INNER JOIN
             hijos hjs
             ON hjs.padre_id = padres.id
             INNER JOIN personas prsn
             ON prsn.id = hjs.persona_id
+            INNER JOIN hijos_has_accesorios hha
+            ON hha.hijo_id = hjs.id
+            INNER JOIN accesorios acs
+            ON acs.id = hha.accesorio_id
+            INNER JOIN tipos_accesorios ta
+            ON ta.id = acs.tipo_accesorio_id
             WHERE padres.id = '$idDad'
-            GROUP BY hjs.id");
-        $pActivitiesGeneral = DB::select("SELECT
-            tms.id,tms.nombre,(sum(hra.promedio)/count(hra.promedio)) as Promedio
-            FROM hijo_realiza_actividades hra
-            INNER JOIN actividades act
-            ON hra.actividad_id = act.id
-            INNER JOIN temas tms
-            ON act.tema_id = tms.id
-            INNER JOIN bloques blqs
-            ON tms.bloque_id = blqs.id
-            INNER JOIN inteligencias i
-            ON blqs.inteligencia_id = i.id
-            INNER JOIN hijos hj
-            ON hj.id = hra.hijo_id
-            INNER JOIN personas prsn
-            ON prsn.id = hj.persona_id
-            INNER JOIN padres prnt
-            ON prnt.id = hj.padre_id
-            group by tms.id,tms.nombre");
+            and ta.nombre = 'Imagen de Perfil'
+            GROUP BY hjs.id,photoProfile");
         $temasLow = DB::select("SELECT
                 hj.id,i.id as idMateria,i.nombre as Materia
                 ,tms.id as temaID,tms.nombre as nombre_tema,
@@ -247,7 +237,7 @@ class parentsController extends BaseController{
                  PROMEDIO <= 60
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
-        $sonMakeActivities = DB::select("SELECT
+        $sonMakeActivities = DB::select("SELECT activitiesSon.*,activitiesGeneral.promedioGeneral FROM (SELECT
                 hj.id,prsn.nombre as nombreHijo,i.id as idMateria,i.nombre as Materia,blqs.nombre as Bloque,tms.id as temaID,tms.nombre as nombre_tema,(sum(hra.promedio)/count(hra.promedio)) as Promedio
                 FROM hijo_realiza_actividades hra
                 INNER JOIN actividades act
@@ -268,10 +258,29 @@ class parentsController extends BaseController{
                 ON prnt.id = hj.padre_id
                 WHERE prnt.id = '$idDad'
                 and nvls.id = hj.nivel_id
-                group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre");
+                group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre) as activitiesSon
+                INNER JOIN (SELECT
+					tms.id,tms.nombre,(sum(hra.promedio)/count(hra.promedio)) as promedioGeneral
+					FROM hijo_realiza_actividades hra
+					INNER JOIN actividades act
+					ON hra.actividad_id = act.id
+					INNER JOIN temas tms
+					ON act.tema_id = tms.id
+					INNER JOIN bloques blqs
+					ON tms.bloque_id = blqs.id
+					INNER JOIN inteligencias i
+					ON blqs.inteligencia_id = i.id
+					INNER JOIN hijos hj
+					ON hj.id = hra.hijo_id
+					INNER JOIN personas prsn
+					ON prsn.id = hj.persona_id
+					INNER JOIN padres prnt
+					ON prnt.id = hj.padre_id
+					group by tms.id,tms.nombre)
+				as activitiesGeneral
+                on activitiesGeneral.id = activitiesSon.temaID");
         return [
             'sons' => $sons,
-            'pActivitiesGeneral'    =>  $pActivitiesGeneral,
             'sonMakeActivities'     =>  $sonMakeActivities,
             'temasLow'      =>  $temasLow
         ];

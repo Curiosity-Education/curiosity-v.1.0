@@ -64,10 +64,13 @@ var $juego = {
                 $("#gst-score-max").data("score",$juego.game.scoreMax);
                 $("#gst-hits-max").text($juego.game.hits);
             }
+            var goal = StorageDB.table.getData("childgoal");
+            var expPlus = Math.round($juego.game.efficiency * parseInt(goal["cant_exp"]) / 100);
+            var ccPlus = Math.round(expPlus * 1.5);
             $("#gst-row-game").hide();//desaparecer zona juego
             $("#gst-row-information-game").show();//aparecer zona del objetivo
             $juego.game.save();
-            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
+            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits, expPlus, ccPlus);
             $juego.game.restart();
             $("#game").trigger("finish");
         },
@@ -91,8 +94,11 @@ var $juego = {
                 $("#gst-hits-max").text($juego.game.hits);
 
             }
+            var goal = StorageDB.table.getData("childgoal");
+            var expPlus = Math.round($juego.game.efficiency * parseInt(goal["cant_exp"]) / 100);
+            var ccPlus = Math.round(expPlus * 1.5);
             $juego.game.save();
-            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits);
+            $juego.modal.score.show($juego.game.scoreCurrent,$juego.game.hits, expPlus, ccPlus);
             $juego.game.restart_game_unity();
             $juego.game.unity.salir();
         },
@@ -119,6 +125,8 @@ var $juego = {
                 average = 0;
             }else{
                 average = (($juego.game.hits*100)/$juego.game.attempts);
+                /* Si es menor a 50 se deja el 50 */
+                average = (average < 50) ? 50 : average;
             }
             data={
                 score      : $juego.game.scoreCurrent,
@@ -194,9 +202,11 @@ var $juego = {
     },
     modal : {
         score : {
-            show : function(score,hits){
+            show : function(score,hits,exp,cc){
                 $("#gst-score").text(score+" Puntos");
                 $("#gst-hits").text(hits);
+                $("#gst-expplus").text("+"+exp+" Puntos");
+                $("#gst-ccplus").text("+"+cc+" CC");
                 $("#gst-modal").modal('show');
             }
         }
@@ -218,4 +228,3 @@ document.getElementById("gst-btnPlay").addEventListener("click",function(){
   $juego.game.unity.start();
   $juego.game.scoreMax = $("#gst-score-max").data("score");
 },false);
-
