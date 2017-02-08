@@ -157,7 +157,8 @@ var parentController = {
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
                 });
-                var ctx = document.getElementById("myChart").getContext("2d");
+                var cnvs = document.getElementById("myChart");
+                var ctx = cnvs.getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,numRand2,chartActivity;
                 var dataValues=[],dataValuesCompare=[];
@@ -241,6 +242,7 @@ var parentController = {
                             data: dataValuesCompare,
                             spanGaps: false,
                 });
+                cnvs.width = cnvs.width;
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
                     data: data
