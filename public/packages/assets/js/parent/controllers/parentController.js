@@ -163,14 +163,25 @@ var parentController = {
                 var dataValues=[];
                 var data = {
                     labels: [],
-                    datasets: []
+                    datasets: [],
+                    options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
                 };
                 $.each(dataset,function(i,activity){
                     numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
+                            data.labels.push("General de " + activity.nombre_tema);
                             dataValues.push(activity.Promedio);
+                            dataValues.push(activity.promedioGeneral);
                             if(activity.Promedio < 60){
                                 $("#hm-btn-HelpSon").prop('disabled',false);
                             }
