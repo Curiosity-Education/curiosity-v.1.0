@@ -88,6 +88,7 @@ where a.active = 1 and a.id = $activityId;");/*table('biblioteca_videos')
                       ->join('temas','temas.id','=','biblioteca_pdfs.tema_id')
                       ->where('actividades.id','=',$activityId)
                       ->where('actividades.active','=','1')
+                      ->where('biblioteca_pdfs.active','=','1')
                       ->select('biblioteca_pdfs.id','biblioteca_pdfs.nombre','biblioteca_pdfs.nombre_real','biblioteca_pdfs.vistos','temas.nombre as tema')
                       ->orderBy('biblioteca_pdfs.vistos','desc')
                       ->get();
