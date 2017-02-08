@@ -443,7 +443,11 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 *   Register for users
 */
 Route::group(array('prefix' => 'parent'),function(){
-   Route::post('save','parentsController@save');
+   Route::post('save',array('before' => 'csrf', function()
+    {
+        $response = ['status' => 'CU-107','statusMessage' => 'Missing CSRF'];
+        return Response::json($response);
+    }),'parentsController@save');
    Route::post('update','parentsController@update');
    Route::post('remote-email','parentsController@remoteEmail');
    Route::post('confirm/{token}','parentsController@confirm');

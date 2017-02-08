@@ -94,6 +94,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
+									    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix reg-icon-bl"></i>
