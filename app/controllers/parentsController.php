@@ -185,15 +185,23 @@ class parentsController extends BaseController{
     public function getSons(){
         $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
         $sons = DB::select("SELECT
-            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
+            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id,
+            concat (ta.ruta,acs.archivo) as photoProfile
             FROM padres
             INNER JOIN
             hijos hjs
             ON hjs.padre_id = padres.id
             INNER JOIN personas prsn
             ON prsn.id = hjs.persona_id
+            INNER JOIN hijos_has_accesorios hha
+            ON hha.hijo_id = hjs.id
+            INNER JOIN accesorios acs
+            ON acs.id = hha.accesorio_id
+            INNER JOIN tipos_accesorios ta
+            ON ta.id = acs.tipo_accesorio_id
             WHERE padres.id = '$idDad'
-            GROUP BY hjs.id");
+            and ta.nombre = 'Imagen de Perfil'
+            GROUP BY hjs.id,photoProfile");
         $temasLow = DB::select("SELECT
                 hj.id,i.id as idMateria,i.nombre as Materia
                 ,tms.id as temaID,tms.nombre as nombre_tema,
@@ -270,7 +278,7 @@ class parentsController extends BaseController{
 					ON prnt.id = hj.padre_id
 					group by tms.id,tms.nombre)
 				as activitiesGeneral
-                on activitiesGeneral.id = activitiesSon.temaID;");
+                on activitiesGeneral.id = activitiesSon.temaID");
         return [
             'sons' => $sons,
             'sonMakeActivities'     =>  $sonMakeActivities,
