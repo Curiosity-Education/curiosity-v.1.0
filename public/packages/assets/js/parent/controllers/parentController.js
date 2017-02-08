@@ -67,7 +67,7 @@ var parentController = {
        },
        id : null,
        itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-name="+name+" data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+           return "<a href='javascript:void(0)' data-name='"+name+"' data-id='"+id+"' data-nivel-id='"+nivel_id+"' data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
@@ -292,7 +292,7 @@ var parentController = {
             if($.isArray(activities)){
                 if(activities.length > 0){
                     $.each(activities,function(i,activity){
-                        if(activity.id = id){
+                        if(activity.id == id){
                             dataset.push(activity);
                         }
                     });
@@ -308,7 +308,7 @@ var parentController = {
             if($.isArray(topics)){
                 if(topics.length > 0){
                     $.each(topics,function(i,topic){
-                        if(topics.id = id){
+                        if(topics.id == id){
                             dataset.push(topic);
                         }
                     });
