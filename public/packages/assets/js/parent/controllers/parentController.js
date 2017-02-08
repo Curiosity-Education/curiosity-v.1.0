@@ -66,10 +66,10 @@ var parentController = {
             }
        },
        id : null,
-       itemSon:function(id,name,nivel_id,infoActivities,topicLow){
+       itemSon:function(id,name,nivel_id,photoProfile,infoActivities,topicLow){
            return "<a href='javascript:void(0)' data-name='"+name+"' data-id='"+id+"' data-nivel-id='"+nivel_id+"' data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
-                 "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
+                 "<img src='"+photoProfile+"'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
               "</div>"+
            "</a>";
@@ -281,7 +281,7 @@ var parentController = {
                 $.each(response.sons,function(id,son){
                     var dataActivitiesSon = parentController.createArrayDataSon(son.id,response.sonMakeActivities);
                     var dataTopicLow = parentController.createArrayDataTopicLowSon(son.id,response.temasLow);
-                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
+                    $(".hm-carousel").append(parentController.itemSon(son.id,son.nombre_completo,son.nivel_id,son.photoProfile,JSON.stringify(dataActivitiesSon),JSON.stringify(dataTopicLow)));
                 });
                 $(".carousel").carousel();
                 parentController.autoSelectedUser();
@@ -326,7 +326,14 @@ var parentController = {
                 if(response.sonMakeActivities.length != null){
                     var intelligences = [];
                     $.each(response.sonMakeActivities,function(i,object){
-                        intelligences.push({id:object.idMateria,nombre:object.Materia});
+                        var duplicate = 0;
+                        $.each(intelligences,function(i,o){
+                            if(o.id == object.idMateria){
+                                duplicate++;
+                            }
+                        });
+                        if(duplicate == 0)
+                            intelligences.push({id:object.idMateria,nombre:object.Materia});
                     });
                     localStorage.setItem('intelligencesSon',JSON.stringify(intelligences));
                 }
