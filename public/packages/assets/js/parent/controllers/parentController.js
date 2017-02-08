@@ -174,7 +174,7 @@ var parentController = {
                             }
                         }
                 };
-                numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
+
                 $.each(dataset,function(i,activity){
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
@@ -193,6 +193,8 @@ var parentController = {
                 $("#dadNotice").show();
             }else if(dataset.length < 10){
                 $("#materias").show();
+                numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
+                var numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
                 data.datasets.push({
                              label: materia,
                              fill: false,
@@ -218,18 +220,18 @@ var parentController = {
                             label: "General " + materia,
                             fill: false,
                             lineTension: 0.1,
-                            backgroundColor: Curiosity.colorsTransparent(.4)[numRand],
-                            borderColor: Curiosity.colors()[numRand],
+                            backgroundColor: Curiosity.colorsTransparent(.4)[numRand2],
+                            borderColor: Curiosity.colors()[numRand2],
                             borderCapStyle: 'butt',
                             borderDash: [],
                             borderDashOffset: 0.1,
                             borderJoinStyle: 'miter',
-                            pointBorderColor: Curiosity.colors()[numRand],
+                            pointBorderColor: Curiosity.colors()[numRand2],
                             pointBackgroundColor: "#fff",
                             pointBorderWidth: 1,
                             pointHoverRadius: 5,
-                            pointHoverBackgroundColor: Curiosity.colors()[numRand],
-                            pointHoverBorderColor: Curiosity.colors()[numRand],
+                            pointHoverBackgroundColor: Curiosity.colors()[numRand2],
+                            pointHoverBorderColor: Curiosity.colors()[numRand2],
                             pointHoverBorderWidth: 2,
                             pointRadius: 1,
                             pointHitRadius: 10,
