@@ -140,8 +140,13 @@ class childrenController extends BaseController{
 	function update(){
 
 	}
-	function delete(){
 
+
+	function delete(){
+		$id = Input::all();
+		$new = MembershipPlan::where("hijo_id", "=", $id) ->first();
+		$new->active = 0;
+		$new->save();
 	}
 
     /*Esta función no recuerdo mucho su funcionamiento pendiente para actualización*/

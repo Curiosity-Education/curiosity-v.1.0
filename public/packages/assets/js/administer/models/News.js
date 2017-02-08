@@ -18,7 +18,7 @@ class News extends CORM{
 			success(response);
 		});
 	}
-
+ 
 	update(id,method,success){
 		this.new.append('id',id);
 		super.update(this.new,method,success);
