@@ -31,8 +31,9 @@ Gestión de Mis Hijos
 			 	<span class="tag upch-tag-info">Información: </span> Desplaza a los lados las imagenes.
 			 </div>
 			 <div class="upch-footer-card">
-				<a class="rotate-btn btn btn-block btn-border-curiosity" id="upch-btnEdit"><i class="fa fa-pencil"></i>&nbsp; Modificar</a>
-				<button type="button" class="rotate-btn btn btn-block btn-outline-warning waves-effect waves-light btn-border-curiosity" id="upch-btnDelete"><i class="fa fa-trash"></i>&nbsp; Dar de Baja</button>
+
+				<!-- <a class="rotate-btn btn btn-block btn-border-curiosity" id="upch-btnEdit"><i class="fa fa-pencil"></i>&nbsp; Modificar</a> -->
+				<button type="button" class="rotate-btn btn btn-block btn-outline-warning waves-effect waves-light btn-border-curiosity" id="upch-btnDelete"><i class="fa fa-trash"></i>&nbsp; Dar de Baja</button><br><br>
 			 </div>
 		  </div>
       </div>

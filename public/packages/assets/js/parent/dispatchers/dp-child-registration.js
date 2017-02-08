@@ -1,22 +1,24 @@
 $(function(){
 
-  var tempSons;
+  var tempSons, tempId;
 
-  childRegistration.getSons(function(sons){
+  childRegistrationCrtrl.getSonsInfo(function(sons){
     localStorage.localSons = JSON.stringify(sons);
   });
 
   tempSons = JSON.parse(localStorage.localSons);
 
-  $.each(tempSons.sons,function(i){
-    $(".carousel").append($(
-      "<a href='javascript:void(0)' class='carousel-item'>" +
-       "<div class='itemCarousel'>" +
-          "<img src='/packages/assets/media/images/parents/profile/mom-def.png'>" +
-          "<h6 class='h6-responsive text-xs-center'>" + tempSons.sons[i].nombre_completo + "</h6>" +
-      "</div>" +
-      "</a>"
-    ));
+  $.each(tempSons,function(i,o){
+    $.each(o,function(j,obj){
+      $(".carousel").append($(
+        "<a href='javascript:void(0)' class='carousel-item' data-id='" + obj.id + "'>" +
+         "<div class='itemCarousel'>" +
+            "<img src='/packages/assets/media/images/parents/profile/mom-def.png'>" +
+            "<h6 class='h6-responsive text-xs-center'>" + obj.nombre_completo + "</h6>" +
+        "</div>" +
+        "</a>"
+      ));
+    });
   });
 
   //Initializing carousel´s children
@@ -29,5 +31,13 @@ $(function(){
   | show and hide steps
   |
   */
+
+  $(".carousel-item").on('click',function(){
+    tempId = $(this).data('id');
+  });
+
+  $("#upch-btnDelete").on('click',function(){
+		childRegistrationCrtrl.delete(tempId);
+	});
 
 });
