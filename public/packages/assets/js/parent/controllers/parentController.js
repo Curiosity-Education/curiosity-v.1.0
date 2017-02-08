@@ -242,7 +242,7 @@ var parentController = {
                             data: dataValuesCompare,
                             spanGaps: false,
                 });
-                cnvs.width = cnvs.width;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
                     data: data
