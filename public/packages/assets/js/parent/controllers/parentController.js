@@ -67,7 +67,7 @@ var parentController = {
        },
        id : null,
        itemSon:function(id,name,nivel_id,infoActivities,topicLow){
-           return "<a href='javascript:void(0)' data-name="+name+" data-id="+id+" data-nivel-id="+nivel_id+" data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
+           return "<a href='javascript:void(0)' data-name='"+name+"' data-id='"+id+"' data-nivel-id='"+nivel_id+"' data-topic-low='"+topicLow+"' data-info-activities='"+infoActivities+"' class='carousel-item hm-carousel-item'>"+
               "<div class=itemCarousel>"+
                  "<img src='/packages/assets/media/images/child/store/ProfilePhotos/profDefM.png'>"+
                  "<h6 class='h6-responsive text-xs-center'>"+name+"</h6>"
@@ -194,35 +194,21 @@ var parentController = {
             }else if(dataset.length < 10){
                 $("#materias").show();
                 data.datasets.push({
-                            label: materia,
-                            fill: false,
-                            lineTension: 0.1,
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 0.4)',
-                                'rgba(255, 99, 132, 0.4)',
-                                'rgba(255, 206, 86, 0.4)',
-                                'rgba(75, 192, 192, 0.4)',
-                                'rgba(153, 102, 255, 0.4)',
-                                'rgba(255, 159, 64, 0.4)'
-                             ],
-                             borderColor: [
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255,99,132,1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                             ],
+                             label: materia,
+                             fill: false,
+                             lineTension: 0.1,
+                             backgroundColor: Curiosity.colorsTransparent(.4)[numRand],
+                             borderColor: Curiosity.colors()[numRand],
                              borderCapStyle: 'butt',
                              borderDash: [],
                              borderDashOffset: 0.1,
                              borderJoinStyle: 'miter',
-                             pointBorderColor: "rgba(75,192,192,1)",
+                             pointBorderColor: Curiosity.colors()[numRand],
                              pointBackgroundColor: "#fff",
                              pointBorderWidth: 1,
                              pointHoverRadius: 5,
-                             pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                             pointHoverBorderColor: "rgba(220,220,220,1)",
+                             pointHoverBackgroundColor: Curiosity.colors()[numRand],
+                             pointHoverBorderColor: Curiosity.colors()[numRand],
                              pointHoverBorderWidth: 2,
                              pointRadius: 1,
                              pointHitRadius: 10,
@@ -238,12 +224,12 @@ var parentController = {
                             borderDash: [],
                             borderDashOffset: 0.1,
                             borderJoinStyle: 'miter',
-                            pointBorderColor: "rgba(75,192,192,1)",
+                            pointBorderColor: Curiosity.colors()[numRand],
                             pointBackgroundColor: "#fff",
                             pointBorderWidth: 1,
                             pointHoverRadius: 5,
-                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBackgroundColor: Curiosity.colors()[numRand],
+                            pointHoverBorderColor: Curiosity.colors()[numRand],
                             pointHoverBorderWidth: 2,
                             pointRadius: 1,
                             pointHitRadius: 10,
@@ -306,7 +292,7 @@ var parentController = {
             if($.isArray(activities)){
                 if(activities.length > 0){
                     $.each(activities,function(i,activity){
-                        if(activity.id = id){
+                        if(activity.id == id){
                             dataset.push(activity);
                         }
                     });
@@ -322,7 +308,7 @@ var parentController = {
             if($.isArray(topics)){
                 if(topics.length > 0){
                     $.each(topics,function(i,topic){
-                        if(topics.id = id){
+                        if(topics.id == id){
                             dataset.push(topic);
                         }
                     });
