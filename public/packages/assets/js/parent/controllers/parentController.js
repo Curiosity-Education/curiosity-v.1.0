@@ -229,7 +229,7 @@ var parentController = {
                              data: dataValues,
                              spanGaps: false,
                 },{
-                            label: materia,
+                            label: "General " + materia,
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: Curiosity.colorsTransparent(.4)[numRand],
