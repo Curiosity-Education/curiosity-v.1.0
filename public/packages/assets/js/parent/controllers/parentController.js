@@ -157,9 +157,10 @@ var parentController = {
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
                 });
-                var ctx = document.getElementById("myChart").getContext("2d");
+                var cnvs = document.getElementById("myChart");
+                var ctx = cnvs.getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,chartActivity;
+                var materia,numRand,numRand2,chartActivity;
                 var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
@@ -190,11 +191,14 @@ var parentController = {
                 });
             }
             if(dataset.length == 0){
-                $("#dadNotice").show();
+                $("#dadNotice").show('slow');
+                $("#myChart").hide('slow');
             }else if(dataset.length < 10){
+                $("#dadNotice").hide('slow');
+                $("#myChart").show('slow');
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
-                var numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
+                numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
                 data.datasets.push({
                              label: materia,
                              fill: false,
@@ -238,6 +242,7 @@ var parentController = {
                             data: dataValuesCompare,
                             spanGaps: false,
                 });
+                ctx.clearRect(0, 0, cnvs.width, cnvs.height);
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
                     data: data
@@ -245,6 +250,8 @@ var parentController = {
 
 
             }else{
+                $("#dadNotice").hide('slow');
+                $("#myChart").show('slow');
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
