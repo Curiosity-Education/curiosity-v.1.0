@@ -161,7 +161,7 @@ class parentsController extends BaseController{
                         'status'=>105,
                         'statusMessage'=>'PAST_DUE',
                         'data'=>$subscription,
-                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago'));
+                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
                     }
                 }
                 else{
