@@ -1,7 +1,11 @@
-var childRegistration = {
+var childRegistrationCrtrl = {
 
-	getSons:function(success){
-		childRegistration.getSons(succes);
-	}
+	delete:function(id){
+		childRegistration.delete(id,"POST",this.alert);
+	},
+
+	getSonsInfo:function(success){
+		childRegistration.getSonsInfo(success);
+  }
 
 };

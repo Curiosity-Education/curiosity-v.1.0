@@ -12,7 +12,7 @@ class dadNewsController extends BaseController{
 		return View::make('administer.admin-news')->with('news',$news);
 
 	}
-
+ 
 	function save(){
 		$data = Input::all();
 		$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
