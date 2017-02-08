@@ -191,7 +191,10 @@ var parentController = {
             }
             if(dataset.length == 0){
                 $("#dadNotice").show();
+                $("#myChart").hide();
             }else if(dataset.length < 10){
+                $("#dadNotice").hide();
+                $("#myChart").show();
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                 numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
@@ -245,6 +248,8 @@ var parentController = {
 
 
             }else{
+                $("#dadNotice").hide();
+                $("#myChart").show();
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
