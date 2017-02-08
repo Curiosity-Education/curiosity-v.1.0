@@ -180,8 +180,8 @@ var parentController = {
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
                             data.labels.push("General de " + activity.nombre_tema);
-                            dataValues.push(activity.Promedio);
-                            dataValues.push(activity.promedioGeneral);
+                            dataValues.push(activity.Promedio.toFixed(2));
+                            dataValues.push(activity.promedioGeneral.toFixed(2));
                             if(activity.Promedio < 60){
                                 $("#hm-btn-HelpSon").prop('disabled',false);
                             }
