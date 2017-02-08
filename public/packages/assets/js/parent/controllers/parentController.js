@@ -160,7 +160,7 @@ var parentController = {
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,chartActivity;
-                var dataValues=[];
+                var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
                     datasets: [],
@@ -174,14 +174,13 @@ var parentController = {
                             }
                         }
                 };
+                numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                 $.each(dataset,function(i,activity){
-                    numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                     if(activity.idMateria == materiaID){
                         if(activity.id == id){
                             data.labels.push(activity.nombre_tema);
-                            data.labels.push("General de " + activity.nombre_tema);
-                            dataValues.push(activity.Promedio);
-                            dataValues.push(activity.promedioGeneral);
+                            dataValues.push(activity.Promedio.toFixed(2));
+                            dataValuesCompare.push(activity.promedioGeneral.toFixed(2));
                             if(activity.Promedio < 60){
                                 $("#hm-btn-HelpSon").prop('disabled',false);
                             }
@@ -229,6 +228,11 @@ var parentController = {
                              pointHitRadius: 10,
                              data: dataValues,
                              spanGaps: false,
+                });
+                data.datasets.push({
+                    type: 'line',
+                    label: 'Calif. general ' + materia,
+                    data: dataValuesCompare,
                 });
                 chartActivity = new Chart(ctx, {
                     type: 'bar',
