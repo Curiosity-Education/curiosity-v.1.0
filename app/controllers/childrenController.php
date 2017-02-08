@@ -53,8 +53,8 @@ class childrenController extends BaseController{
             ));
 		}else{
 			$id_dad = Auth::user()->Person->Dad->id;
-			$sons = Son::where("padre_id", "=", $id_dad)->get();
-			$conutSons = count($sons);
+			$sons = parentsController::getSonsInfo();
+			$conutSons = count($sons['sons']);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
 			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
 			$customer = Conekta_Customer::find($tokenCard);

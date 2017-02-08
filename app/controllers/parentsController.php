@@ -431,23 +431,18 @@ class parentsController extends BaseController{
         }
     }
 
-    public function getSonsInfo(){
-        $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
-        $sons = DB::select("SELECT
-            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
-            FROM padres
-            INNER JOIN
-            hijos hjs
-            ON hjs.padre_id = padres.id
-            INNER JOIN personas prsn
-            ON prsn.id = hjs.persona_id
-            WHERE padres.id = '$idDad'
-            GROUP BY hjs.id");
-
-
-        return [
-            'sons' => $sons,
-        ];
-
+    public static function getSonsInfo(){
+      $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
+      $sons = DB::select(
+         "SELECT hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo',
+         hjs.nivel_id
+         FROM padres INNER JOIN hijos hjs ON hjs.padre_id = padres.id
+         INNER JOIN personas prsn ON prsn.id = hjs.persona_id
+         INNER JOIN membresias_planes mp ON hjs.id = mp.hijo_id
+         WHERE padres.id = '$idDad' AND mp.active = 1
+         GROUP BY hjs.id"
+      );
+      return [ 'sons' => $sons ];
     }
+
 }
