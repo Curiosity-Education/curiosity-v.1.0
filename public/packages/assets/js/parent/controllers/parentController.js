@@ -192,7 +192,7 @@ var parentController = {
             }
             if(dataset.length == 0){
                 $("#dadNotice").show();
-            }else if(dataset.length < 5){
+            }else if(dataset.length < 10){
                 $("#materias").show();
                 data.datasets.push({
                             label: materia,

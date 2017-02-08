@@ -273,7 +273,6 @@ class parentsController extends BaseController{
                 on activitiesGeneral.id = activitiesSon.temaID;");
         return [
             'sons' => $sons,
-            'pActivitiesGeneral'    =>  $pActivitiesGeneral,
             'sonMakeActivities'     =>  $sonMakeActivities,
             'temasLow'      =>  $temasLow
         ];
