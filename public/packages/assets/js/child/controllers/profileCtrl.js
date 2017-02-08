@@ -52,6 +52,8 @@ var profileController = {
 				 }
 			});
 		}else{
+			$('#pf-text-missing').addClass('pf-hidde');
+			$('#pf-text-normal').removeClass('pf-hidde');
 			var container = $("#pf-Graph");
 
 			var chart = new Chart(container,{
