@@ -159,7 +159,7 @@ var parentController = {
                 });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,chartActivity;
+                var materia,numRand,numRand2,chartActivity;
                 var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
@@ -194,7 +194,7 @@ var parentController = {
             }else if(dataset.length < 10){
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
-                var numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
+                numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
                 data.datasets.push({
                              label: materia,
                              fill: false,
