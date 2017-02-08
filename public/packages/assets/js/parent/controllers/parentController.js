@@ -159,7 +159,7 @@ var parentController = {
                 });
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,chartActivity;
+                var materia,numRand,numRand2,chartActivity;
                 var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
@@ -191,10 +191,13 @@ var parentController = {
             }
             if(dataset.length == 0){
                 $("#dadNotice").show();
+                $("#myChart").hide();
             }else if(dataset.length < 10){
+                $("#dadNotice").hide();
+                $("#myChart").show();
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
-                var numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
+                numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
                 data.datasets.push({
                              label: materia,
                              fill: false,
@@ -245,6 +248,8 @@ var parentController = {
 
 
             }else{
+                $("#dadNotice").hide();
+                $("#myChart").show();
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
