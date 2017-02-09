@@ -24,10 +24,10 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
-<div data-url="/view-parent.child_registration" class="linkMenu waves-effect" id="parentMenu-addChild-aside">
+<!-- <div data-url="/view-parent.child_registration" class="linkMenu waves-effect" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
-</div>
+</div> -->
 @stop
 
 @section('menu-links-aside')
@@ -43,10 +43,10 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
+ <!-- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
-</div>
+</div> -->
 <div data-url="#" class="linkMenu linkMenuAside logOutBtn waves-effec">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir
@@ -54,10 +54,10 @@
 @stop
 
 @section('under-menu')
-<div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
+<!-- <div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
-</div>
+</div> -->
 @stop
 @section('content')
 <div class="container-fluid" id="container-baner">
