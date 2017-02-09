@@ -24,10 +24,8 @@ $(function(){
     $("#upch-btnDelete").on('click',function(){
   		childRegistrationCrtrl.delete(tempId);
       $(".carousel").empty();
-      $(".carousel").on('load',function(){
-        sonsInfo(sons);
-        $(".carousel").carousel();
-      })
+      sonsInfo(sons);
+      $(".carousel").carousel();
   	});
 
   });
