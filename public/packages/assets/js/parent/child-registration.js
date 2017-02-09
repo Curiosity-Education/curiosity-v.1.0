@@ -1,29 +1,31 @@
 $(function(){
 	var $formChild = $(".upch-frm-child");
-  
+
 
 
     $(".btn-upload-child").click(function(ev){
     	if($formChild.valid()){
 			data = {
-				username : document.getElementById("upch-username").value,
-				name     : document.getElementById("upch-name").value,
-				surnames : document.getElementById("upch-surnames").value,
-				password : document.getElementById("upch-pass").value,
-				cpassword: document.getElementById("upch-cpass").value,
-				gender   : document.getElementById("upch-gender").value,
-				average  : document.getElementById("upch-average").value,
-				level    : document.getElementById("upch-level").value
+				usuario 		: document.getElementById("upch-username").value,
+				nombre     	: document.getElementById("upch-name").value,
+				apellidos 	: document.getElementById("upch-surnames").value,
+				password 	: document.getElementById("upch-pass").value,
+				cpassword	: document.getElementById("upch-cpass").value,
+				genero   	: document.getElementById("upch-gender").value,
+				promedio  	: document.getElementById("upch-average").value,
+				grado    	: document.getElementById("upch-level").value
 			};
-			console.log(data);
 			$(this).prop("disabled",true);
 			var text = $(this).text()
 			var these = this;
 			$(this).html(text +' <i class="fa fa-spinner"></i>');
 			childrenCtrl.save(data,function(response){
-				console.log(response);
 				if(response.status!=200){
-					toastr.warning(response.message);
+					$.each(response.data, function(index, value){
+	              $.each(value, function(i, message){
+	                  Curiosity.noty.warning(message, "Algo va mal");
+	              });
+	            });
 				}else{
 					$(".btn-cancel").trigger("click");
 					$(".btn-return").trigger("click");

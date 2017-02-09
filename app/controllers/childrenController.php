@@ -20,14 +20,14 @@ class childrenController extends BaseController{
 	function save(){
 		$data = Input::all();
 		$rules=[
-			"username"    =>"required|unique:users,username|max:50",
+			   "usuario"     =>"required|unique:users,username|max:50",
             "password"    =>"required|min:8|max:100",
             "cpassword"   =>"required|same:password",
-            "name"        =>"required|letter|max:50",
-            "surnames"    =>"required|letter|max:30",
-            "gender"      =>"required|string|size:1",
-            "average"	  =>"required",
-            "level"       =>"required|exists:niveles,id",
+            "nombre"      =>"required|letter|max:50",
+            "apellidos"   =>"required|letter|max:30",
+            "genero"      =>"required|string|size:1",
+            "promedio"	  =>"required",
+            "grado"       =>"required|exists:niveles,id",
 		];
 		$messages = [
             "required"    =>  "El campo :attribute es requerido",
