@@ -51,7 +51,7 @@
 									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
-								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>
+								<p class="text-xs-center"><i class="fa fa-quote-left"></i>&nbsp; Inicia tu experiencia Curiosity &nbsp;<i class="fa fa-quote-right"></i></p>
 							</div>
 							<div class="col-md-7" id="form-content">
 								<div class="row">
@@ -317,7 +317,7 @@
 	</div>
 
 	<!-- Sección de Membresías -->
-	<section id="membresia" class="" style="max-height:100px;">
+	<section id="membresia" class="">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
@@ -337,7 +337,7 @@
 					@foreach($planes as $plan)
 						@if($plan->num_card === 1)
 						<!--First column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card hoverable">
 
@@ -369,7 +369,7 @@
 						<!--/First column-->
 						@elseif($plan->num_card === 2)
 						<!--Second column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card planImportant z-depth-4 hoverable">
 
@@ -380,7 +380,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle  z-depth-1">
-													<i class="fa fa-group white-text"></i>
+													<i class="fa fa-user white-text"></i>
 												</div>
 											</center>
 										</div>
@@ -403,7 +403,7 @@
 						<!--/Second column-->
 						@else
 						<!--Third column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card hoverable">
 
@@ -414,7 +414,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle z-depth-1">
-													<i class="fa fa-graduation-cap iconcard"></i>
+													<i class="fa fa-group iconcard"></i>
 												</div>
 											</center>
 										</div>
@@ -488,7 +488,7 @@
 					<li class="container-fluid">
 						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
 					</li>
-					<li class="container-fluid hidden-xs-down">
+					<li class="container-fluid">
 						<h4 class="h4-responsive" style="color:white;">¡ Síguenos en Facebook !</h4>
 					</li>
 					<li class="container-fluid">
