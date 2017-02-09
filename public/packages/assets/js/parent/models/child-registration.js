@@ -1,7 +1,7 @@
 class childRegistration extends CORM{
 
-    static getSonsInfo(success){
-      super.any(null,"POST",success,"/parent","get-sonsInfo");
+    static getSons(success){
+      super.any(null,"POST",success,"/parent","get-sons");
     }
 
     static delete(id,method,success){
