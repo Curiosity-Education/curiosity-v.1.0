@@ -162,18 +162,17 @@ var parentController = {
                 var materiaID = $("input[name='materia']:checked").val();
                 var materia,numRand,numRand2;
                 var dataValues=[],dataValuesCompare=[];
+                var notations = {
+                                	  50:"Bajo desempeño",
+                                    60:"Necesita practicar",
+                                    70:"Regular",
+                                    80:"Bien",
+                                    90:"Muy bien",
+                                    100:"Excelente"
+                                }
                 var data = {
                     labels: [],
-                    datasets: [],
-                    options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        }
+                    datasets: []
                 };
 
                 $.each(dataset,function(i,activity){
@@ -258,7 +257,19 @@ var parentController = {
                 }
                 parentController.chartActivity = new Chart(ctx, {
                     type: 'bar',
-                    data: data
+                    data: data,
+                    options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true,
+                                        userCallback: function (value, index, values) {
+                                            return notations[value];
+                                        }
+                                    }
+                                }]
+                            }
+                        }
                 });
 
 
