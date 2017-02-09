@@ -163,7 +163,7 @@ var parentController = {
                 var materia,numRand,numRand2;
                 var dataValues=[],dataValuesCompare=[];
                 var notations = {
-                                	  50:"Bajo desempeño",
+                                    50:"Bajo desempeño",
                                     60:"Necesita practicar",
                                     70:"Regular",
                                     80:"Bien",
@@ -181,8 +181,8 @@ var parentController = {
                             data.labels.push(activity.nombre_tema);
                             dataValues.push(activity.Promedio.toFixed(2));
                             dataValuesCompare.push(activity.promedioGeneral.toFixed(2));
-                            if(activity.Promedio < 60){
-                                $("#hm-btn-HelpSon").prop('disabled',false);
+                            if(activity.Promedio <= 70){
+                                $("#hm-btn-HelpSon").prop('hidden',false);
                             }
                         }
                     }
