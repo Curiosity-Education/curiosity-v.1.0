@@ -96,15 +96,18 @@ class childrenController extends BaseController{
 				if ($person->sexo == "m"){ $tyPh = 1; }
 				$photo = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => $tyPh
+	             'accesorio_id' => $tyPh,
+					 'is_using' => 1
 	         ));
 				$skin = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 3
+	             'accesorio_id' => 3,
+					 'is_using' => 1
 	         ));
 				$menuBg = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 4
+	             'accesorio_id' => 4,
+					 'is_using' => 1
 	         ));
 				/**************************************************************
 				/ THE AVATAR IS REGISTRED MANUAL FOR A TEMPORALY TIME WHILE
