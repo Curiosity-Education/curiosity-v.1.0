@@ -80,7 +80,7 @@ var parentController = {
                         "<div class='card hoverable chp-topics chp-cardTopic chp-active'  data-id-topic="+idTopic+" data-info='"+JSON.stringify(info)+"' >"+
                             "<div class='card-block chp-topic-card'>"+
                               "<div class='card-left'>"+
-                                "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg' class='chp-imgWeak z-depth-1'>"+
+                                "<img src='/packages/assets/media/images/landing/attachment.png' class='chp-imgWeak z-depth-1'>"+
                               "</div>"+
                               "<div class='card-right'>"+
                                 "<div class='chp-topicDesc'>"+
