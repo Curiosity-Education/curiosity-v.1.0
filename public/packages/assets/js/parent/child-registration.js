@@ -1,6 +1,6 @@
 $(function(){
 	var $formChild = $(".upch-frm-child");
-  
+
 
 
     $(".btn-upload-child").click(function(ev){
@@ -15,7 +15,6 @@ $(function(){
 				average  : document.getElementById("upch-average").value,
 				level    : document.getElementById("upch-level").value
 			};
-			console.log(data);
 			$(this).prop("disabled",true);
 			var text = $(this).text()
 			var these = this;
@@ -23,7 +22,11 @@ $(function(){
 			childrenCtrl.save(data,function(response){
 				console.log(response);
 				if(response.status!=200){
-					toastr.warning(response.message);
+					$.each(response.data, function(index, value){
+	              $.each(value, function(i, message){
+	                  Curiosity.noty.warning(message, "Algo va mal");
+	              });
+	            });
 				}else{
 					$(".btn-cancel").trigger("click");
 					$(".btn-return").trigger("click");
