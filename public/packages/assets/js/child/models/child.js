@@ -2,14 +2,14 @@ class Child extends CORM {
     constructor(data){
         super();
         this.child = {
-            username  :data.username,
-            name      :data.name,
-            surnames  :data.surnames,
-            password  :data.password,
-            cpassword :data.cpassword,
-            gender    :data.gender,
-            average   :data.average,
-            level     :data.level
+            usuario     :data.usuario,
+            nombre      :data.nombre,
+            apellidos   :data.apellidos,
+            password    :data.password,
+            cpassword   :data.cpassword,
+            genero      :data.genero,
+            promedio    :data.promedio,
+            grado       :data.grado
         }
         super.setPrefix('/admin-child');
     }
