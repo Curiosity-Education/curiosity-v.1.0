@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -51,7 +51,7 @@
 
 						<!--Card image-->
 						<div class="view overlay hm-white-slight reg-rounded">
-							<img src="http://mdbootstrap.com/images/regular/city/img%20(11).jpg" class="img-fluid" alt="">
+							<img src="/packages/assets/media/images/system/registry.png?{{rand();}}" class="img-fluid" alt="">
 							<a>
 								<div class="mask"></div>
 							</a>
@@ -61,9 +61,9 @@
 						<!--Card content-->
 						<div class="card-block">
 							<!--Title-->
-							<h4 class="card-title blue-text">¡Bienvenido!</h4>
+							<h4 class="card-title blue-text" id="reg-msjTit">¡Bienvenido!</h4>
 							<!--Text-->
-							<p class="card-text">Te invitamos a registrarte y formar parte de la familia Curiosity. Disfruta de esta gran plataforma y descubre como tu hijo aprende de una manera divertida.</p>
+							<p class="card-text" id="reg-msj">Te invitamos a registrarte y formar parte de la familia Curiosity. Disfruta de esta gran plataforma y descubre como tu hijo aprende de una manera divertida.</p>
 							<hr>
 							<center>
 								<div class="options">
@@ -93,7 +93,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
-									    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+									    <input type="hidden" name="_token" id="csrf" value="<?php echo csrf_token(); ?>">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-envelope prefix reg-icon-bl"></i>

@@ -81,8 +81,8 @@ Actividades (Juegos)
                <div class="form-group">
                  <label for="acti-status" class="msad-mdl-label">Estatus</label>
                  <select class="form-control msad-select" name="acti_estatus" id="acti_estatus">
-                    <option value="eneabled">Bloqueado</option>
-                    <option value="disabled">Desbloqueado</option>
+                    <option value="disabled">Bloqueado</option>
+                    <option value="eneabled">Desbloqueado</option>
                  </select>
                </div>
                <div class="form-group">

@@ -29,8 +29,8 @@
 							<div class="card ovf-hidden ca-card">
 
 								<!--Card image-->
-								<div class="view hm-orange-light">
-									<img src="http://mdbootstrap.com/images/reg/reg%20(60).jpg" class="img-fluid" alt="">
+								<div class="view">
+									<img src="/packages/assets/media/images/system/confAccount.png?{{rand();}}" class="img-fluid" alt="">
 									<a>
 										<div class="mask"></div>
 									</a>
@@ -40,9 +40,9 @@
 								<!--Card content-->
 								<div class="card-block">
 									<!--Title-->
-									<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp;
+									{{--<h4 class="card-title text-xs-left"><i class="fa fa-user"></i>&nbsp;
 										<label class="masterUserName">{{Auth::user()->username}}</label>
-									</h4>
+									</h4>--}}
 									<hr>
 									<a class="activator btn btn-rounded ca-btnConf">Editar mis datos</a>
 								</div>
