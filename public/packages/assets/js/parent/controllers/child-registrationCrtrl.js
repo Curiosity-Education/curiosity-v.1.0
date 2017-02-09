@@ -1,7 +1,6 @@
 var childRegistrationCrtrl = {
 
 	delete:function(id){
-		id = this.id;
 
 		if (id != null || id != "") {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
