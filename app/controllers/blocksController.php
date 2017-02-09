@@ -91,7 +91,9 @@ class blocksController extends BaseController{
 					$destinationPath = public_path()."/packages/assets/media/images/system/blocks/";
 					$phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
 					$file->move($destinationPath, $phName);
-					unlink($destinationPath.$block->imagen);
+					if ($block->imagen != null || $block->imagen != ""){
+						unlink($destinationPath.$block->imagen);
+					}
 					$block->imagen = $phName;
 				}
 				$block->nombre = $data['nombre'];

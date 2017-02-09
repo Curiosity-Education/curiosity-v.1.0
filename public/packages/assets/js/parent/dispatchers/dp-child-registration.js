@@ -16,7 +16,7 @@ $(function(){
     */
   });
 
-  $(".carousel-item").on('click',function(){
+  $("body").on('click', ".carousel-item", function(){
     tempId = $(this).data('id');
   });
 
