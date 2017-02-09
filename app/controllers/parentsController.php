@@ -30,7 +30,7 @@ class parentsController extends BaseController{
             "password"          =>"required|min:8|max:100",
             "cpassword"         =>"required|same:password",
             "nombre"            =>"required|letter|max:50",
-            "apellidos"  =>"required|letter|max:50",
+            "apellidos"         =>"required|letter|max:50",
             "sexo"              =>"required|string|size:1",
             "email"             =>"required|email|unique:padres,email",
             "username"          =>"required|unique:users,username",
@@ -46,72 +46,80 @@ class parentsController extends BaseController{
         }
         else {
                 //DB::transaction(function () {
-                    try {
-                        $user = new User($data);
-                        $user->password=Hash::make($data["password"]);
-                        $user->username = $data['username'];
-                        $user->token=sha1($data['email']);
-                        $user->flag = 0;
-                        $user->save();
-                        $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
-                        $user->attachRole($myRole);
-                        $person = new Person($data);
-                        $person->user_id=$user->id;
-                        $person->save();
-                        $dad = new Dad();
-                        /*-------------------------------
-                            Get LADA of country selected
-                        --------------------------------*/
-                        //$lada = LadaCountry::where("name","=",$data["pais"])->select("phone_code")->get()[0];
-                        /*------------------------------*/
-                        $dad->email = $data['email'];
-                        $dad->persona_id = $person->id;
-                        $dad->telefono = $data['telefono'];
-                        if ($person->sexo == "m"){ $dad->foto_perfil = "dad-def.png"; }
-                        else { $dad->foto_perfil = "mom-def.png"; }
-                        $dad->save();
-                    }
-                    catch (PDOException $pdoException){
-                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $pdoException->getMessage()));
-                    }
-                    catch (Exception $e){
-                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
-                    }
+                    if ($data['_token'] != null || $data['_token'] != ""){
+                       try {
+                           $user = new User($data);
+                           $user->password=Hash::make($data["password"]);
+                           $user->username = $data['username'];
+                           $user->token=sha1($data['email']);
+                           $user->flag = 0;
+                           $user->save();
+                           $myRole = DB::table('roles')->where('name', '=', 'parent')->pluck('id');
+                           $user->attachRole($myRole);
+                           $person = new Person($data);
+                           $person->user_id=$user->id;
+                           $person->save();
+                           $dad = new Dad();
+                           /*-------------------------------
+                               Get LADA of country selected
+                           --------------------------------*/
+                           //$lada = LadaCountry::where("name","=",$data["pais"])->select("phone_code")->get()[0];
+                           /*------------------------------*/
+                           $dad->email = $data['email'];
+                           $dad->persona_id = $person->id;
+                           $dad->telefono = $data['telefono'];
+                           if ($person->sexo == "m"){ $dad->foto_perfil = "dad-def.png"; }
+                           else { $dad->foto_perfil = "mom-def.png"; }
+                           $dad->save();
+                       }
+                       catch (PDOException $pdoException){
+                           return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $pdoException->getMessage()));
+                       }
+                       catch (Exception $e){
+                           return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
+                       }
 
-                //}, 5);
-            $sentEmail = 0;
+                            //}, 5);
+                        $sentEmail = 0;
 
-            /* Uncomment for production */
-            //  $dataSend = [
-            //      "name"     =>       "Equipo Curiosity",
-            //      "client"   =>       $person->nombre." ".$person->apellidos,
-            //      "email"    =>       $dad->email,
-            //      "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
-            //      "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
-            //      "token"    =>       $user->token
-            //  ];
-            //  $toEmail=$dad->email;
-            //  $toName=$dataSend["email"];
-            //  $subject =$dataSend["subject"];
-            //  try {
-            //      Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
-            //          $message->to($toEmail,$toName)->subject($subject);
-            //      });
-            //      $sentEmail = 1;
-            //  } catch (Exception $e) {
-            //      $user->delete();
-            //      return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
-            //  }
-            $dataset = [
-                'username'  =>  $data['username'],
-                'password'  =>  $data['password']
-            ];
-            return Response::json(array(
-                'status'    =>  200,
-                'statusMessage' =>  'success',
-                'data'  => $dataset,
-                'sentEmail' => $sentEmail
-            ));
+                        /* Uncomment for production */
+                        //  $dataSend = [
+                        //      "name"     =>       "Equipo Curiosity",
+                        //      "client"   =>       $person->nombre." ".$person->apellidos,
+                        //      "email"    =>       $dad->email,
+                        //      "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
+                        //      "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
+                        //      "token"    =>       $user->token
+                        //  ];
+                        //  $toEmail=$dad->email;
+                        //  $toName=$dataSend["email"];
+                        //  $subject =$dataSend["subject"];
+                        //  try {
+                        //      Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
+                        //          $message->to($toEmail,$toName)->subject($subject);
+                        //      });
+                        //      $sentEmail = 1;
+                        //  } catch (Exception $e) {
+                        //      $user->delete();
+                        //      return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
+                        //  }
+                        $dataset = [
+                            'username'  =>  $data['username'],
+                            'password'  =>  $data['password']
+                        ];
+                        return Response::json(array(
+                            'status'    =>  200,
+                            'statusMessage' =>  'success',
+                            'data'  => $dataset,
+                            'sentEmail' => $sentEmail
+                        ));
+                    }
+                    else {
+                       return Response::json(array(
+                           'status'    =>  'CU-107',
+                           'statusMessage' =>  'Missing CSRF'
+                       ));
+                    }
 
         }
 
@@ -199,7 +207,8 @@ class parentsController extends BaseController{
             ON acs.id = hha.accesorio_id
             INNER JOIN tipos_accesorios ta
             ON ta.id = acs.tipo_accesorio_id
-            WHERE padres.id = '$idDad'
+            INNER JOIN membresias_planes mp ON hjs.id = mp.hijo_id
+            WHERE padres.id = '$idDad' AND mp.active = 1
             and ta.nombre = 'Imagen de Perfil'
             GROUP BY hjs.id,photoProfile");
         $temasLow = DB::select("SELECT
@@ -431,23 +440,18 @@ class parentsController extends BaseController{
         }
     }
 
-    public function getSonsInfo(){
-        $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
-        $sons = DB::select("SELECT
-            hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo', hjs.nivel_id
-            FROM padres
-            INNER JOIN
-            hijos hjs
-            ON hjs.padre_id = padres.id
-            INNER JOIN personas prsn
-            ON prsn.id = hjs.persona_id
-            WHERE padres.id = '$idDad'
-            GROUP BY hjs.id");
-
-
-        return [
-            'sons' => $sons,
-        ];
-
+    public static function getSonsInfo(){
+      $idDad = Auth::user()->Person()->first()->Dad()->first()->id;
+      $sons = DB::select(
+         "SELECT hjs.id,concat(prsn.nombre,' ',prsn.apellidos) as 'nombre_completo',
+         hjs.nivel_id
+         FROM padres INNER JOIN hijos hjs ON hjs.padre_id = padres.id
+         INNER JOIN personas prsn ON prsn.id = hjs.persona_id
+         INNER JOIN membresias_planes mp ON hjs.id = mp.hijo_id
+         WHERE padres.id = '$idDad' AND mp.active = 1
+         GROUP BY hjs.id"
+      );
+      return [ 'sons' => $sons ];
     }
+
 }
