@@ -61,7 +61,7 @@
 						<!--Card content-->
 						<div class="card-block">
 							<!--Title-->
-							<h4 class="card-title blue-text">¡Bienvenido!</h4>
+							<h4 class="card-title blue-text" id="reg-msjTit">¡Bienvenido!</h4>
 							<!--Text-->
 							<p class="card-text" id="reg-msj">Te invitamos a registrarte y formar parte de la familia Curiosity. Disfruta de esta gran plataforma y descubre como tu hijo aprende de una manera divertida.</p>
 							<hr>
