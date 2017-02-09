@@ -21,7 +21,7 @@ var msConstroller = {
       $.each($obj, function(index, obj) {
    		var code = "<div class='col-md-4 col-sm-4'>"+
    			"<div class='card card-game hm-black-light ms-card animated zoomIn'"+
-               "style='background-image: url(/packages/assets/media/images/child/"+_class+".png);background-position: center;background-repeat: no-repeat;background-size: cover;'>"+
+               "style='background-image: url(/packages/assets/media/images/system/menu/"+obj["imagen"]+");background-position: center;background-repeat: no-repeat;background-size: cover;'>"+
    				"<div class='view mask'>"+
    					"<div class='ms-bannerWhitOut'></div>"+
    					"<a href='#'>"+
