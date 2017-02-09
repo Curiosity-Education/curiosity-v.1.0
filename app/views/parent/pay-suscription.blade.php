@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="sctn-row container">
-                                <button class="btn btn-rounded pull-right" id="pay-button">Pagar</button>
+                                <button type="bitton" class="btn btn-rounded pull-right" id="pay-button">Pagar</button>
                         </div>
                     </div>
                     </form>
