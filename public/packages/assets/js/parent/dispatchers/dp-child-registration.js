@@ -3,9 +3,7 @@ $(function(){
   var tempSons, tempId;
 
   childRegistrationCrtrl.getSons(function(sons){
-
     sonsInfo(sons);
-
     //Initializing carousel´s children
     $(".carousel").carousel();
     /*
@@ -16,19 +14,21 @@ $(function(){
     | show and hide steps
     |
     */
+  });
 
-    $(".carousel-item").on('click',function(){
-      tempId = $(this).data('id');
-    });
+  $(".carousel-item").on('click',function(){
+    tempId = $(this).data('id');
+  });
 
-    $("#upch-btnDelete").on('click',function(){
-  		childRegistrationCrtrl.delete(tempId);
-      $(".carousel").empty();
+  $("#upch-btnDelete").on('click',function(){
+		childRegistrationCrtrl.delete(tempId);
+    $(".carousel").empty();
+    $(".carousel").removeClass("initialized");
+    childRegistrationCrtrl.getSons(function(sons){
       sonsInfo(sons);
       $(".carousel").carousel();
-  	});
-
-  });
+    });
+	});
 
 });
 
