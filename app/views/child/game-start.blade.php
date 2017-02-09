@@ -107,11 +107,11 @@ Juego | {{$game["name"]}}
               </div>
               <div class="col-sm-4">
                  <h4>Experiencia</h4>
-                 <h5>+100 Puntos</h5>
+                 <h5 id="gst-expplus">+100 Puntos</h5>
               </div>
               <div class="col-sm-4">
                  <h4>Curiosity Coins</h4>
-                 <h5>+175 CC</h5>
+                 <h5 id="gst-ccplus">+175 CC</h5>
               </div>
             </div>
             <button type="button" class="btn btn-rounded btn-block" data-dismiss="modal">
@@ -142,7 +142,7 @@ Juego | {{$game["name"]}}
    </div>
   @section('modal-pdfs-videos')
     @section('modal-left')
-      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+      <iframe src="" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
     @stop
     @section('modal-header')
       @section('modal-header-image')

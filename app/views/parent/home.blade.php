@@ -150,4 +150,9 @@
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>
+    <script>
+        if(localStorage.getItem('plan-user-selected') != null && localStorage.getItem('plan-user-selected') != "null" ){
+            localStorage.setItem('plan-user-selected',null);
+        }
+    </script>
 @stop
