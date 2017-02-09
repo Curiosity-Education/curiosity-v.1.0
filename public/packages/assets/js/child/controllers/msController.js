@@ -25,11 +25,10 @@ var msConstroller = {
    				"<div class='view mask'>"+
    					"<div class='ms-bannerWhitOut'></div>"+
    					"<a href='#'>"+
-   						"<div class='mask'></div>"+
+   						"<div class='mask'><h5 class='card-title ms-tit'>"+obj.nombre+"</h5></div>"+
    					"</a>"+
    				"</div>"+
    				"<div class='card-block text-center'>"+
-   					"<h5 class='card-title'>"+obj.nombre+"</h5>"+
    					"<a class='btn ms-btn-info btn-rounded ms-btnAccess' data-name='"+type+"' data-obj='"+JSON.stringify(obj)+"'>Entrar</a>"+
    				"</div>"+
    			"</div>"+
