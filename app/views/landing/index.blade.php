@@ -380,7 +380,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle  z-depth-1">
-													<i class="fa fa-group white-text"></i>
+													<i class="fa fa-user white-text"></i>
 												</div>
 											</center>
 										</div>
@@ -414,7 +414,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle z-depth-1">
-													<i class="fa fa-graduation-cap iconcard"></i>
+													<i class="fa fa-group iconcard"></i>
 												</div>
 											</center>
 										</div>
