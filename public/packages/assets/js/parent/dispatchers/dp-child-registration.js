@@ -25,6 +25,7 @@ $(function(){
   		childRegistrationCrtrl.delete(tempId);
       $(".carousel").empty();
       $(".carousel").on('load',function(){
+        sonsInfo(sons);
         $(".carousel").carousel();
       })
   	});
