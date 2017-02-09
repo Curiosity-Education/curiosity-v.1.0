@@ -1,5 +1,5 @@
 var parentController = {
-
+       chartActivity:null,
        update: function(id,data,success){
             new Parent(data).update(id,"POST",success);
        },
@@ -62,7 +62,8 @@ var parentController = {
                 'password':$("#password").val(),
                 'telefono':$("#telefono").val(),
                 'username':$("#username").val(),
-                'cpassword':$("#cpassword").val()
+                'cpassword':$("#cpassword").val(),
+                '_token':$("#csrf").val()
             }
        },
        id : null,
@@ -157,10 +158,9 @@ var parentController = {
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
                 });
-                var cnvs = document.getElementById("myChart");
-                var ctx = cnvs.getContext("2d");
+                var ctx = $("body #myChart");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,numRand2,chartActivity;
+                var materia,numRand,numRand2;
                 var dataValues=[],dataValuesCompare=[];
                 var data = {
                     labels: [],
@@ -192,10 +192,10 @@ var parentController = {
             }
             if(dataset.length == 0){
                 $("#dadNotice").show('slow');
-                $("#myChart").hide('slow');
+                $("body #myChart").hide('slow');
             }else if(dataset.length < 10){
                 $("#dadNotice").hide('slow');
-                $("#myChart").show('slow');
+                $("body #myChart").show('slow');
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                 numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
@@ -242,16 +242,30 @@ var parentController = {
                             data: dataValuesCompare,
                             spanGaps: false,
                 });
-                ctx.clearRect(0, 0, cnvs.width, cnvs.height);
-                chartActivity = new Chart(ctx, {
+                if(parentController.chartActivity != null)
+                {
+                   var $parentChart = $("body #myChart").parent();
+                   var $newChart = $("<canvas/>").attr({
+                      "width" : 200,
+                      "height" : 200,
+                      "id" : "myChart"
+                   });
+
+                   $("body #myChart").remove();
+                   $("body .chartjs-hidden-iframe").remove();
+                   $("#prntHome-contentInfo .row > div").append($newChart);
+                   ctx = $("#prntHome-contentInfo .row > div #myChart");
+                }
+                parentController.chartActivity = new Chart(ctx, {
                     type: 'bar',
                     data: data
                 });
 
 
+
             }else{
                 $("#dadNotice").hide('slow');
-                $("#myChart").show('slow');
+                $("body #myChart").show('slow');
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
@@ -271,7 +285,7 @@ var parentController = {
                             }
                         }
                 }
-                chartActivity = new Chart(ctx, {
+                parentController.chartActivity = new Chart(ctx, {
                     type: 'radar',
                     data: data,
                     options: options
