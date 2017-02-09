@@ -61,7 +61,7 @@ var actiController = {
                rightBtn:"<span class='fa fa-trash-o'></span> Eliminar",
                rightBtnColor:"#ec2726",
                rightBtnFn:function(dissmiss){
-                   if(dissmiss != "esc"){
+                   if(dissmiss != "esc"){ 
                         Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
                            if(input == "ELIMINAR" || input == "eliminar"){
                                var currentActivity = JSON.parse(localStorage.getItem('currentActivity'));
