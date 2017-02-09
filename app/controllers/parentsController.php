@@ -242,7 +242,7 @@ class parentsController extends BaseController{
                 INNER JOIN biblioteca_pdfs bp
                 ON tms.id = bp.tema_id
                 WHERE prnt.id = $idDad and
-                 PROMEDIO <= 60
+                 PROMEDIO <= 70
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
         $sonMakeActivities = DB::select("SELECT activitiesSon.*,activitiesGeneral.promedioGeneral FROM (SELECT
