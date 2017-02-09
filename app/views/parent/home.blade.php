@@ -41,8 +41,8 @@
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
-                    Si observas algún tema en el que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
-                    Si tu hijo tiene un bajo desempeño se te mostrará un boton en la parte inferior que te llevará a esta sección.
+                    Si observas algún tema en el que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?". <br>
+                    La plataforma lo detectará y se mostrará un botón en la parte inferior de este mensaje que te llevará a dicha sección
                 </p>
                 <button type="button" class="btn" id="hm-btn-HelpSon" hidden>Ayudar a mi Hijo</button>
            </div>
