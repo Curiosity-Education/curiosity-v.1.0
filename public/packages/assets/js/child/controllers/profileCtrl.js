@@ -24,11 +24,8 @@ var profileController = {
 
 		missing = m - a;
 
-		console.log();
-
 		if(a == 0){
 			$('#pf-text-missing').removeClass('pf-hidde');
-			$('#pf-text-normal').addClass('pf-hidde');
 
 			var container = $("#pf-Graph");
 
