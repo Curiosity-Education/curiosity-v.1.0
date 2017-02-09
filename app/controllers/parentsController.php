@@ -209,7 +209,7 @@ class parentsController extends BaseController{
             ON ta.id = acs.tipo_accesorio_id
             WHERE padres.id = '$idDad'
             and ta.nombre = 'Imagen de Perfil'
-            GROUP BY hjs.id,photoProfile");
+            GROUP BY hjs.id,photoProfile"); 
         $temasLow = DB::select("SELECT
                 hj.id,i.id as idMateria,i.nombre as Materia
                 ,tms.id as temaID,tms.nombre as nombre_tema,
@@ -242,7 +242,7 @@ class parentsController extends BaseController{
                 INNER JOIN biblioteca_pdfs bp
                 ON tms.id = bp.tema_id
                 WHERE prnt.id = $idDad and
-                 PROMEDIO <= 60
+                 PROMEDIO <= 70
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
         $sonMakeActivities = DB::select("SELECT activitiesSon.*,activitiesGeneral.promedioGeneral FROM (SELECT

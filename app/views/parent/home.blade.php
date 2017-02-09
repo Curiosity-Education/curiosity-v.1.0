@@ -41,10 +41,10 @@
                     NOTA: Esta gráfica muestra las actividades de su grado actual.
                 </p>
                 <p>
-                    Si observas algún tema en la que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?".
-                    Dando click en el botón de abajo podrás llegar a esta sección.
+                    Si observas algún tema en el que tu hijo tiene un bajo desempeño, tú puedes ayudarlo entrando en la sección de "¿Cómo ayudo a mi hijo?". <br>
+                    Curiosity lo detectará y se mostrará un botón en la parte inferior de este mensaje que te llevará a dicha sección
                 </p>
-                <button type="button" class="btn" id="hm-btn-HelpSon" disabled>Ayudar a mi Hijo</button>
+                <button type="button" class="btn" id="hm-btn-HelpSon" hidden>Ayudar a mi Hijo</button>
            </div>
 	   </div>
 	</div>

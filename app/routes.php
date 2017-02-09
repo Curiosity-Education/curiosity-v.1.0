@@ -230,7 +230,6 @@ Route::group(array('before' => 'auth'), function(){
 	Route::group(array('before' => 'child_actions'),function(){
 		Route::group(array('prefix' => '/child-goal'), function(){
 			Route::post('updateConf', 'childrenHasGoal@update');
-			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
 });
@@ -444,7 +443,7 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 *   Register for users
 */
 Route::group(array('prefix' => 'parent'),function(){
-   Route::post('save', 'parentsController@save');
+   Route::post('save','parentsController@save');
    Route::post('update','parentsController@update');
    Route::post('remote-email','parentsController@remoteEmail');
    Route::get('confirm/{token}','parentsController@confirm');
