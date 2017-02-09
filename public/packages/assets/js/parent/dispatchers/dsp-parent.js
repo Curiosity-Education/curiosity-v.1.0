@@ -1,6 +1,10 @@
 $(function(){
     var prefix = "parent";
 
+    $("#payment-form").submit(function(e) {
+       e.prevetDefault();
+    });
+
     if(parentController.validPlanSelected() == 1)
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
     else
