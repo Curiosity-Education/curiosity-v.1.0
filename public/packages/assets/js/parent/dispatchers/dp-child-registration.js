@@ -24,6 +24,7 @@ $(function(){
 		childRegistrationCrtrl.delete(tempId);
     $(".carousel").empty();
     $(".carousel").removeClass("initialized");
+    
     childRegistrationCrtrl.getSons(function(sons){
       sonsInfo(sons);
       $(".carousel").carousel();
