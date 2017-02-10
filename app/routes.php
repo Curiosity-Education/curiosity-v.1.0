@@ -101,7 +101,7 @@ Route::get('novedades-admin', function(){
 });
 
 // // ---./ Webhooks para saber quien ha pagado y quien no
-Route::post('/webhook/check-suscription','userController@webhook_check_pay');
+Route::match(['GET','POST'],'/webhook/check-suscription','userController@webhook_check_pay');
 
 Route::get('1', 'activitiesVideosController@save');
 
