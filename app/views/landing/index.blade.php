@@ -48,7 +48,7 @@
 						<div class="col-md-12">
 							<div class="col-md-5">
 								<center>
-									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
+									<img src="/packages/assets/media/images/system/logiin.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 								</center>
 								<hr>
 								<p class="text-xs-center"><i class="fa fa-quote-left"></i>&nbsp; Inicia tu experiencia Curiosity &nbsp;<i class="fa fa-quote-right"></i></p>
@@ -455,25 +455,25 @@
 	<section id="apoyo" class="margen-dispositivo">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/assets/media/images/landing/compass.png" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
 				Con el Apoyo:
 			</h2>
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/assets/media/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/SUM.png?{{rand();}}" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/incubadora_laguna.png?{{rand();}}" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/assets/media/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logoFunBanorte.png?{{rand();}}" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/Work_St.jpg?{{rand();}}" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/penoles.png" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/penoles.png?{{rand();}}" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/logo-fs.jpg" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logo-fs.jpg?{{rand();}}" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 			</div>
 		</div>
