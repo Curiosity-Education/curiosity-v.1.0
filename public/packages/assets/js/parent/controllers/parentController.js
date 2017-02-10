@@ -342,7 +342,7 @@ var parentController = {
             if($.isArray(topics)){
                 if(topics.length > 0){
                     $.each(topics,function(i,topic){
-                        if(topics.id == id){
+                        if(topic.id == id){
                             dataset.push(topic);
                         }
                     });
