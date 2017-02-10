@@ -45,7 +45,7 @@ $(function(){
     $(this).addClass("lp-btn-active");
     if ($(this).hasClass("lp-btn-active")) {
       var level = $(this).data("id-grade");
-
+      
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
