@@ -3,17 +3,26 @@ $(function(){
   var tempSons, tempId;
 
   childRegistrationCrtrl.getSons(function(sons){
-    sonsInfo(sons);
-    //Initializing carousel´s children
-    $(".carousel").carousel();
-    /*
-    |--------------------------------------------------------------------------
-    | managent of steps for registrate the children
-    |--------------------------------------------------------------------------
-    | in this section of code, we manage the steps for register the children
-    | show and hide steps
-    |
-    */
+    if (sons != null || sons != "") {
+      sonsInfo(sons);
+      //Initializing carousel´s children
+      $(".carousel").carousel();
+      /*
+      |--------------------------------------------------------------------------
+      | managent of steps for registrate the children
+      |--------------------------------------------------------------------------
+      | in this section of code, we manage the steps for register the children
+      | show and hide steps
+      |
+      */
+      $(".carousel a").first().trigger('click');
+    } else {
+      $("#upch-contentInfo").hide();
+      $(".carousel").append($(
+        "<h4 class='h5-responsive'>Por favor, registra a tu hijo y forma parte de la familia Curiosity.</h4>"
+      ));
+    }
+
   });
 
   $("body").on('click', ".carousel-item", function(){
