@@ -224,26 +224,27 @@ class parentsController extends BaseController{
                 ON hra.actividad_id = act.id
                 INNER JOIN temas tms
                 ON act.tema_id = tms.id
-                INNER JOIN biblioteca_pdfs bpdfs
-                ON bpdfs.tema_id = tms.id
-                INNER JOIN biblioteca_videos bvid
-                ON bvid.tema_id = tms.id
-                INNER JOIN profesores_apoyo pa
-                ON bvid.profesor_apoyo_id = pa.id
                 INNER JOIN bloques blqs
                 ON tms.bloque_id = blqs.id
                 INNER JOIN inteligencias i
                 ON blqs.inteligencia_id = i.id
+                INNER JOIN niveles nvls
+                ON nvls.id = i.nivel_id
                 INNER JOIN hijos hj
                 ON hj.id = hra.hijo_id
                 INNER JOIN personas prsn
                 ON prsn.id = hj.persona_id
                 INNER JOIN padres prnt
                 ON prnt.id = hj.padre_id
-                INNER JOIN biblioteca_pdfs bp
-                ON tms.id = bp.tema_id
-                WHERE prnt.id = $idDad and
+                LEFT JOIN biblioteca_pdfs bpdfs
+                ON bpdfs.tema_id = tms.id
+                LEFT JOIN biblioteca_videos bvid
+                ON bvid.tema_id = tms.id
+                LEFT JOIN profesores_apoyo pa
+                ON bvid.profesor_apoyo_id = pa.id
+                WHERE prnt.id = '$idDad' and
                  PROMEDIO <= 70
+                 and  nvls.id = hj.nivel_id
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre
             ");
         $sonMakeActivities = DB::select("SELECT activitiesSon.*,activitiesGeneral.promedioGeneral FROM (SELECT
