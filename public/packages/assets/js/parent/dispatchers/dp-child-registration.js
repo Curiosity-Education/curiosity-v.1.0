@@ -3,9 +3,9 @@ $(function(){
   var tempSons, tempId;
 
   childRegistrationCrtrl.getSons(function(sons){
-    console.log(sons);
+    
     if (sons != null || sons != "") {
-      sonsInfo(sons);
+      sonsInfo(sons["sons"]);
       //Initializing carousel´s children
       $(".carousel").carousel();
       /*
