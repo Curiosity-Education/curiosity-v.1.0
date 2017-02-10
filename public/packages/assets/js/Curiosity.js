@@ -83,6 +83,15 @@ var Curiosity = {
       });
    },
 
+   notyBackground:function($title,$pathBackground){
+          swal({
+              title: $title,
+              width: 600,
+              padding: 100,
+              background: '#fff url('+$pathBackground+')'
+            });
+   },
+
    notyExtend : function($title, $text, $type,$options){
       swal({
          title: $title,
