@@ -100,6 +100,9 @@ Route::get('novedades-admin', function(){
     return View::make('administer.admin-news');
 });
 
+// // ---./ Webhooks para saber quien ha pagado y quien no
+Route::post('/webhook/check-suscription','userController@webhook_check_pay');
+
 Route::get('1', 'activitiesVideosController@save');
 
 /* rutas de novedades
@@ -815,8 +818,7 @@ Route::group(array('before' => 'auth'), function(){
 //
 //
 //
-// // ---./ Webhooks para saber quien ha pagado y quien no
-// Route::post('/webhook/check-suscription','userController@webhook_check_pay');
+
 // Route::get('/', 'principalController@verPagina');
 // Route::get('/nosotros', 'principalController@verNosotros');
 // Route::get('/proximamente',function(){
