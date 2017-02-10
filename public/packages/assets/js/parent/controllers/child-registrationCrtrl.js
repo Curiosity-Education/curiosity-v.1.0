@@ -6,8 +6,7 @@ var childRegistrationCrtrl = {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
 				 if(input == "ELIMINAR" || input == "eliminar"){
 					 	  Curiosity.toastLoading.show();
-						  childRegistration.delete(id,"POST",function(){
-							Curiosity.toastLoading.hide();
+						  childRegistration.delete(id,"POST",function(){							
 							window.location.reload();
 					  });
 				 }else {

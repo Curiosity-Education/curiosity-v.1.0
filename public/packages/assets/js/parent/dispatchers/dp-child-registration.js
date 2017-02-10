@@ -15,7 +15,7 @@ $(function(){
       | show and hide steps
       |
       */
-      $(".carousel a").first().trigger('click');
+      $(".carousel a").last().trigger('click');
     } else {
       $("#upch-contentInfo").hide();
       $(".carousel").append($(
@@ -35,8 +35,25 @@ $(function(){
     $(".carousel").removeClass("initialized");
 
     childRegistrationCrtrl.getSons(function(sons){
-      sonsInfo(sons);
-      $(".carousel").carousel();
+      if (sons != null || sons != "") {
+        sonsInfo(sons);
+        //Initializing carousel´s children
+        $(".carousel").carousel();
+        /*
+        |--------------------------------------------------------------------------
+        | managent of steps for registrate the children
+        |--------------------------------------------------------------------------
+        | in this section of code, we manage the steps for register the children
+        | show and hide steps
+        |
+        */
+        $(".carousel a").last().trigger('click');
+      } else {
+        $("#upch-contentInfo").hide();
+        $(".carousel").append($(
+          "<h4 class='h5-responsive'>Por favor, registra a tu hijo y forma parte de la familia Curiosity.</h4>"
+        ));
+      }
     });
 	});
 
