@@ -3,6 +3,7 @@ $(function(){
   var tempSons, tempId;
 
   childRegistrationCrtrl.getSons(function(sons){
+    console.log(sons);
     if (sons != null || sons != "") {
       sonsInfo(sons);
       //Initializing carousel´s children
@@ -36,7 +37,7 @@ $(function(){
 
     childRegistrationCrtrl.getSons(function(sons){
       if (sons != null || sons != "") {
-        sonsInfo(sons);
+        sonsInfo(sons["sons"]);
         //Initializing carousel´s children
         $(".carousel").carousel();
         /*
@@ -61,15 +62,13 @@ $(function(){
 
 function sonsInfo(object){
   $.each(object,function(i,o){
-    $.each(o,function(j,obj){
-      $(".carousel").append($(
-        "<a href='javascript:void(0)' class='carousel-item' data-id='" + obj.id + "'>" +
-         "<div class='itemCarousel'>" +
-            "<img src='" + obj.photoProfile + "'>" +
-            "<h6 class='h6-responsive text-xs-center'>" + obj.nombre_completo + "</h6>" +
-        "</div>" +
-        "</a>"
-      ));
-    });
+    $(".carousel").append($(
+      "<a href='javascript:void(0)' class='carousel-item' data-id='" + o.id + "'>" +
+       "<div class='itemCarousel'>" +
+          "<img src='" + o.photoProfile + "'>" +
+          "<h6 class='h6-responsive text-xs-center'>" + o.nombre_completo + "</h6>" +
+      "</div>" +
+      "</a>"
+    ));
   });
 }
