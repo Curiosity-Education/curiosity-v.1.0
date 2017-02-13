@@ -25,7 +25,7 @@ var msConstroller = {
    				"<div class='view mask'>"+
    					"<div class='ms-bannerWhitOut'></div>"+
    					"<a href='#'>"+
-   						"<div class='mask'><h5 class='card-title ms-tit'>"+obj.nombre+"</h5></div>"+
+   						"<div class='mask'><h5 class='card-title ms-tit flex-center'>"+obj.nombre+"</h5></div>"+
    					"</a>"+
    				"</div>"+
    				"<div class='card-block text-center'>"+
