@@ -11,6 +11,11 @@ class parentSuscriptionController extends BaseController{
         return $subscription;
     }
 
+    public static function enabledMembership($active){
+        $idDad = Auth::user()->Person->Dad->id;
+        Membership::where("padre_id", "=", $idDad)->update(array('active' => $active));
+    }
+
     public static function status(){
         try{
             return self::SUCCESS_RESPONSE("Current_suscription_status",self::get()->status);
@@ -27,6 +32,7 @@ class parentSuscriptionController extends BaseController{
     public static function pause(){
         try{
             self::get()->pause();
+            self::enabledMembership(0);
             return self::SUCCESS_RESPONSE("Suscripción pausada con éxito.",null);
         }
         catch(Conekta_Error $con_err){
@@ -40,6 +46,7 @@ class parentSuscriptionController extends BaseController{
     public static function resume(){
         try{
             self::get()->resume();
+            self::enabledMembership(1);
             return self::SUCCESS_RESPONSE("Suscripción reanudada con éxito.",self::get());
         }
         catch(Conekta_Error $con_err){
@@ -53,6 +60,7 @@ class parentSuscriptionController extends BaseController{
     public static function cancel(){
         try{
             self::get()->cancel();
+            self::enabledMembership(0);
             return self::SUCCESS_RESPONSE("Suscripción cancelada con éxito.",null);
         }
         catch(Conekta_Error $con_err){
