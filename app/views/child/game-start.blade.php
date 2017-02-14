@@ -35,7 +35,7 @@ Juego | {{$game["name"]}}
             </div>
          </div>
          <div class="gst-card z-depth-1 animated bounceInUp" id="gst-material">
-            <h6>Material para tí</h6>
+            <h6>Material para ti</h6>
             <hr class="gst-hr">
             <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                 <span class="fa fa-file-pdf-o"></span>&nbsp;
