@@ -62,7 +62,7 @@ var loginController = {
          $("#btn-recovery").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Enviando");
          $("#btn-recovery").prop("disabled",true);
          $.ajax({
-            url: 'recoveryPass',
+            url: '/recoveryPass',
             type: 'POST',
             data: {
                email  : recoveryUsername

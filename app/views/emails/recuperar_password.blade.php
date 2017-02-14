@@ -108,7 +108,7 @@
   <table class="table-col" align="left" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
     <table class="header-row" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 5px; padding-top: 5px;" valign="top" align="left">
     <center>
-      <img src="{{asset('packages/images/msj.png') }}" style="width: 150px;">
+      <img src="{{asset('packages/assets/media/images/landing/logo.png') }}" style="width: 150px;">
     </center>
     <br>
     <center style="font-size:1.5em;">
@@ -120,9 +120,9 @@
       <b style="">Estimado Cliente: </b> {{$client}}
       <br>
       <p style="text-align: justify;">
-        Al parecer haz solicitado un cambio de contraseña, para realizar el cambio da <b>click</b> en el botón que se encuentra en la parte inferior de este mensaje. <br>
+        Al parecer haz solicitado un restauración de contraseña, para realizar el cambio da <b>click</b> en el botón que se encuentra en la parte inferior de este mensaje. <br>
 
-        NOTA: Si tu no haz solicitado el cambio, haz caso omiso a este correo.
+        NOTA: Si tu no haz solicitado la restauración de la contraseña, haz caso omiso a este correo.
       </p>
       <br>
       <center><b style="font-size:1.1em;">¡Que tu curiosidad no tenga límites!</b></center>
@@ -136,7 +136,7 @@
       <hr>
       <br><br>
       <center>
-        <a href="http://www.curiosity.com.mx/olvide-mi-contrasena/{{$token}}"
+        <a href="http://www.curiosity.com.mx/recoveryPass{{$token}}"
            style="background:#2262ae;padding:20px;border-radius:10px;color:#ffffff;text-decoration:none;font-size:1.2em;letter-spacing:1px;">
           Clíck aquí para cambio de contraseña
         </a>
