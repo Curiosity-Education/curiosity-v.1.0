@@ -20,14 +20,14 @@ class childrenController extends BaseController{
 	function save(){
 		$data = Input::all();
 		$rules=[
-			"username"    =>"required|unique:users,username|max:50",
+			"usuario"    =>"required|unique:users,username|max:50",
             "password"    =>"required|min:8|max:100",
             "cpassword"   =>"required|same:password",
-            "name"        =>"required|letter|max:50",
-            "surnames"    =>"required|letter|max:30",
-            "gender"      =>"required|string|size:1",
-            "average"	  =>"required",
-            "level"       =>"required|exists:niveles,id",
+            "nombre"        =>"required|letter|max:50",
+            "apellidos"    =>"required|letter|max:30",
+            "genero"      =>"required|string|size:1",
+            "promedio"	  =>"required",
+            "nivel"       =>"required|exists:niveles,id",
 		];
 		$messages = [
             "required"    =>  "El campo :attribute es requerido",
@@ -63,25 +63,25 @@ class childrenController extends BaseController{
 			if ($conutSons < $limit){
 				$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
 	         $user            = new User();
-	         $user->username  = $data["username"];
+	         $user->username  = $data["usuario"];
 	         $user->password  = Hash::make($data["password"]);
-	         $user->token     = sha1($data["username"]);
+	         $user->token     = sha1($data["usuario"]);
 	         $user->active    = 1;
 				$user->flag      = 0;
 	         $user->save();
 				$myRole = Role::where("name", "=", "child")->pluck("id");
 	         $user->attachRole($myRole);
 	         $person                = new Person($data);
-	         $person->nombre        = $data["name"];
-	         $person->apellidos     = $data["surnames"];
-	         $person->sexo          = $data["gender"];
+	         $person->nombre        = $data["nombre"];
+	         $person->apellidos     = $data["apellidos"];
+	         $person->sexo          = $data["genero"];
 	         $person->user_id       = $user->id;
 	         $person->save();
 	         $son                   = new Son();
-				$son->promedio_inicial = $data["average"];
+				$son->promedio_inicial = $data["promedio"];
 	         $son->persona_id       = $person->id;
 	         $son->padre_id         = $id_dad;
-	         $son->nivel_id         = $data["level"];
+	         $son->nivel_id         = $data["grado"];
 	         $son->save();
 				$advance = DB::table('hijos_metas_diarias')->insert(array(
 	             'hijo_id'        => $son->id,
