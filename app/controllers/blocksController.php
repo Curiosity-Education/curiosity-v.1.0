@@ -88,10 +88,12 @@ class blocksController extends BaseController{
 			if ($namePass){
 				$block = Block::where('id', '=', $data['id'])->first();
 				if ($file != null){
-					$destinationPath = public_path()."/packages/assets/media/images/system/blocks/";
+					$destinationPath = public_path()."/packages/assets/media/images/system/menu/";
 					$phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
 					$file->move($destinationPath, $phName);
-					unlink($destinationPath.$block->imagen);
+					if ($block->imagen != null || $block->imagen != ""){
+						unlink($destinationPath.$block->imagen);
+					}
 					$block->imagen = $phName;
 				}
 				$block->nombre = $data['nombre'];

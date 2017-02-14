@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/backdoor', 'landingController@landingpage');
-
-Route::get('/', function(){
-	return View::make("errors.webOff");
-});
+Route::get('/', 'landingController@landingpage');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -233,6 +229,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::group(array('before' => 'child_actions'),function(){
 		Route::group(array('prefix' => '/child-goal'), function(){
 			Route::post('updateConf', 'childrenHasGoal@update');
+			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
 });

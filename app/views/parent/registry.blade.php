@@ -118,7 +118,7 @@
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
 												<i class="fa fa-user prefix reg-icon-bl"></i>
-												<input type="text" id="username" name="username" placeholder="Username" class="form-control validate" length="20">
+												<input type="text" id="username" name="username" placeholder="Nombre de usuario" class="form-control validate" length="20">
 											</div>
 											<div class="md-form form-group">
 												<i class="fa fa-unlock-alt prefix reg-icon-bl"></i>
