@@ -33,16 +33,24 @@ $(function(){
 			var these = this;
 			$(this).html(text +' <i class="fa fa-spinner"></i>');
 			childrenCtrl.save(data,function(response){
-				if(response.status!=200){
-					$.each(response.data, function(index, value){
-	              $.each(value, function(i, message){
-	                  Curiosity.noty.warning(message, "Algo va mal");
-	              });
-	            });
-				}else{
-					toastr.success(response.message);
-					document.location = "/padre-inicio";
-				}
+
+				console.log(response);
+				switch(response.status){
+            case 200:
+                   Curiosity.noty.success(response.message);
+                   document.location = "/padre-inicio";
+                break;
+            case "CUE-304":
+                    Curiosity.noty.info(response.message);
+                break;
+            default:
+                    $.each(response.data, function(index, value){
+                      $.each(value, function(i, message){
+                          Curiosity.noty.warning(message, "Algo va mal");
+                      });
+                    });
+              break;
+        }
 				$(these).prop("disabled",false);
 				$(these).html(text);
 			});
