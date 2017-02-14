@@ -61,31 +61,31 @@ class childrenController extends BaseController{
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
 			if ($conutSons < $limit){
-				$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
-	         $user            = new User();
-	         $user->username  = $data["usuario"];
-	         $user->password  = Hash::make($data["password"]);
-	         $user->token     = sha1($data["usuario"]);
-	         $user->active    = 1;
-				$user->flag      = 0;
-	         $user->save();
-				$myRole = Role::where("name", "=", "child")->pluck("id");
-	         $user->attachRole($myRole);
-	         $person                = new Person($data);
-	         $person->nombre        = $data["nombre"];
-	         $person->apellidos     = $data["apellidos"];
-	         $person->sexo          = $data["genero"];
-	         $person->user_id       = $user->id;
-	         $person->save();
-	         $son                   = new Son();
-				$son->promedio_inicial = $data["promedio"];
-	         $son->persona_id       = $person->id;
-	         $son->padre_id         = $id_dad;
-	         $son->nivel_id         = $data["grado"];
-	         $son->save();
-				$advance = DB::table('hijos_metas_diarias')->insert(array(
-	             'hijo_id'        => $son->id,
-	             'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
+				 $roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
+                 $user            = new User();
+                 $user->username  = $data["usuario"];
+                 $user->password  = Hash::make($data["password"]);
+                 $user->token     = sha1($data["usuario"]);
+                 $user->active    = 1;
+                    $user->flag      = 0;
+                 $user->save();
+                    $myRole = Role::where("name", "=", "child")->pluck("id");
+                 $user->attachRole($myRole);
+                 $person                = new Person($data);
+                 $person->nombre        = $data["nombre"];
+                 $person->apellidos     = $data["apellidos"];
+                 $person->sexo          = $data["genero"];
+                 $person->user_id       = $user->id;
+                 $person->save();
+                 $son                   = new Son();
+                    $son->promedio_inicial = $data["promedio"];
+                 $son->persona_id       = $person->id;
+                 $son->padre_id         = $id_dad;
+                 $son->nivel_id         = $data["grado"];
+                 $son->save();
+				 $advance = DB::table('hijos_metas_diarias')->insert(array(
+	              'hijo_id'        => $son->id,
+	              'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
 	         ));
 				$exp = DB::table('hijo_experiencia')->insert(array(
 	             'hijo_id'      => $son->id,
