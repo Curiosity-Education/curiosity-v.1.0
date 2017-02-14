@@ -130,6 +130,7 @@
     <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
     <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/registry_firstchild.js?{{rand();}}"></script>
