@@ -20,14 +20,14 @@ class childrenController extends BaseController{
 	function save(){
 		$data = Input::all();
 		$rules=[
-			"username"    =>"required|unique:users,username|max:50",
+			   "usuario"     =>"required|unique:users,username|max:50",
             "password"    =>"required|min:8|max:100",
             "cpassword"   =>"required|same:password",
-            "name"        =>"required|letter|max:50",
-            "surnames"    =>"required|letter|max:30",
-            "gender"      =>"required|string|size:1",
-            "average"	  =>"required",
-            "level"       =>"required|exists:niveles,id",
+            "nombre"      =>"required|letter|max:50",
+            "apellidos"   =>"required|letter|max:30",
+            "genero"      =>"required|string|size:1",
+            "promedio"	  =>"required",
+            "grado"       =>"required|exists:niveles,id"
 		];
 		$messages = [
             "required"    =>  "El campo :attribute es requerido",
@@ -53,39 +53,39 @@ class childrenController extends BaseController{
             ));
 		}else{
 			$id_dad = Auth::user()->Person->Dad->id;
-			$sons = Son::where("padre_id", "=", $id_dad)->get();
-			$conutSons = count($sons);
+			$sons = parentsController::getSonsInfo();
+			$conutSons = count($sons['sons']);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
 			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
 			$customer = Conekta_Customer::find($tokenCard);
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
 			if ($conutSons < $limit){
-				$roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
-	         $user            = new User();
-	         $user->username  = $data["username"];
-	         $user->password  = Hash::make($data["password"]);
-	         $user->token     = sha1($data["username"]);
-	         $user->active    = 1;
-				$user->flag      = 0;
-	         $user->save();
-				$myRole = Role::where("name", "=", "child")->pluck("id");
-	         $user->attachRole($myRole);
-	         $person                = new Person($data);
-	         $person->nombre        = $data["name"];
-	         $person->apellidos     = $data["surnames"];
-	         $person->sexo          = $data["gender"];
-	         $person->user_id       = $user->id;
-	         $person->save();
-	         $son                   = new Son();
-				$son->promedio_inicial = $data["average"];
-	         $son->persona_id       = $person->id;
-	         $son->padre_id         = $id_dad;
-	         $son->nivel_id         = $data["level"];
-	         $son->save();
-				$advance = DB::table('hijos_metas_diarias')->insert(array(
-	             'hijo_id'        => $son->id,
-	             'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
+				 $roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
+                 $user            = new User();
+                 $user->username  = $data["usuario"];
+                 $user->password  = Hash::make($data["password"]);
+                 $user->token     = sha1($data["usuario"]);
+                 $user->active    = 1;
+                    $user->flag      = 0;
+                 $user->save();
+                    $myRole = Role::where("name", "=", "child")->pluck("id");
+                 $user->attachRole($myRole);
+                 $person                = new Person($data);
+                 $person->nombre        = $data["nombre"];
+                 $person->apellidos     = $data["apellidos"];
+                 $person->sexo          = $data["genero"];
+                 $person->user_id       = $user->id;
+                 $person->save();
+                 $son                   = new Son();
+                    $son->promedio_inicial = $data["promedio"];
+                 $son->persona_id       = $person->id;
+                 $son->padre_id         = $id_dad;
+                 $son->nivel_id         = $data["grado"];
+                 $son->save();
+				 $advance = DB::table('hijos_metas_diarias')->insert(array(
+	              'hijo_id'        => $son->id,
+	              'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
 	         ));
 				$exp = DB::table('hijo_experiencia')->insert(array(
 	             'hijo_id'      => $son->id,
@@ -96,15 +96,18 @@ class childrenController extends BaseController{
 				if ($person->sexo == "m"){ $tyPh = 1; }
 				$photo = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => $tyPh
+	             'accesorio_id' => $tyPh,
+					 'is_using' => 1
 	         ));
 				$skin = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 3
+	             'accesorio_id' => 3,
+					 'is_using' => 1
 	         ));
 				$menuBg = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 4
+	             'accesorio_id' => 4,
+					 'is_using' => 1
 	         ));
 				/**************************************************************
 				/ THE AVATAR IS REGISTRED MANUAL FOR A TEMPORALY TIME WHILE

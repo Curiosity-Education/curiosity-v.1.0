@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/backdoor', 'landingController@landingpage');
-
-Route::get('/', function(){
-	return View::make("errors.webOff");
-});
+Route::get('/', 'landingController@landingpage');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -41,54 +37,6 @@ Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
 
-Route::get('my-account', function(){
-	return View::make('child.configuration_account');
-});
-
-Route::get('profile-child', function(){
-	return View::make('child.profile');
-});
-
-Route::get('library-pdfs', function(){
-	return View::make('parent.library_pdfs');
-});
-
-Route::get('library-videos', function(){
-	return View::make('child.library_videos');
-});
-
-
-
-
-Route::get('hijo-inicio', function()
-{
-	return View::make('child.init');
-});
-
-Route::get('menu-studio',function(){
-	return View::make('child.menu-studio');
-});
-
-Route::get("child-registration",function(){
-    return View::make("parent.child_registration");
-});
-
-Route::get('padre-inicio', function(){
-	return View::make('parent.home');
-});
-
-Route::get('tienda', function(){
-    return View::make('child.store');
-});
-
-Route::get('juego', function(){
-    return View::make('child.game-start');
-});
-
-Route::get('administer', function(){
-    return View::make('administer.asociateSchool');
-});
-
 Route::get('parent-register', function(){
     return View::make('parent.registry');
 });
@@ -96,21 +44,8 @@ Route::group(array('prefix' => 'plans'),function(){
    Route::post('get','plansController@get');
 });
 
-Route::get('novedades-admin', function(){
-    return View::make('administer.admin-news');
-});
-
-Route::get('1', 'activitiesVideosController@save');
-
-/* rutas de novedades
-Route::group(array('prefix' => 'news'),function(){
-	Route::post('save', 'dadNewsController@save');
-	Route::post('update', 'dadNewsController@update');
-	Route::post('delete', 'dadNewsController@delete');
-	Route::get('news-admin', 'dadNewsController@get');
-	Route::post('title', 'dadNewsController@titleExists');
-});
-*/
+// // ---./ Webhooks para saber quien ha pagado y quien no
+Route::match(['GET','POST'],'/webhook/check-suscription','userSuscriptionController@webhook_check_pay');
 
 // rutas del perfil del niño
 Route::group(array('prefix' => '/profile-child'), function(){
@@ -444,17 +379,20 @@ Route::group(array('prefix' =>  'salerCode'),function(){
 *   Register for users
 */
 Route::group(array('prefix' => 'parent'),function(){
-   Route::post('save',array('before' => 'csrf', function()
-    {
-        $response = ['status' => 'CU-107','statusMessage' => 'Missing CSRF'];
-        return Response::json($response);
-    }),'parentsController@save');
+   Route::post('save','parentsController@save');
    Route::post('update','parentsController@update');
    Route::post('remote-email','parentsController@remoteEmail');
-   Route::post('confirm/{token}','parentsController@confirm');
+   Route::get('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
    Route::post('get-sons','parentsController@getSons');
-	 Route::post('get-sonsInfo','parentsController@getSonsInfo');
+   Route::post('get-sonsInfo','parentsController@getSonsInfo');
+
+   Route::group(array('prefix' => 'suscription'),function(){
+       Route::post('pause','parentSuscriptionController@pause');
+       Route::post('resume','parentSuscriptionController@resume');
+       Route::post('cancel','parentSuscriptionController@cancel');
+       Route::post('status','parentSuscriptionController@status');
+   });
 });
 
 
@@ -820,8 +758,7 @@ Route::group(array('before' => 'auth'), function(){
 //
 //
 //
-// // ---./ Webhooks para saber quien ha pagado y quien no
-// Route::post('/webhook/check-suscription','userController@webhook_check_pay');
+
 // Route::get('/', 'principalController@verPagina');
 // Route::get('/nosotros', 'principalController@verNosotros');
 // Route::get('/proximamente',function(){

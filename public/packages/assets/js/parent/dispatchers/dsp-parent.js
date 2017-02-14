@@ -1,6 +1,10 @@
 $(function(){
     var prefix = "parent";
 
+    $("#payment-form").submit(function(e) {
+       e.prevetDefault();
+    });
+
     if(parentController.validPlanSelected() == 1)
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
     else
@@ -64,28 +68,42 @@ $(function(){
 
 
     $("#itemsRecommend").on('click','img',function(){
-        console.log($(this));
         $(".gst-tema-content").empty();
          $("#type_mdl").empty();
         $(".gst-tema-content").append($(this).data('nombreTema'));
+        var can_show = 0;
         switch($(this).data('type')){
             case 'pdf':
-                $(".gst-prof-content").hide();
-                $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
-                $(".gst-img-content").attr('src',"packages/assets/media/images/parents/pdfs.png");
-                $("#type_mdl").append("PDF");
+                console.log($(this).data('name'));
+                if($(this).data('name') == null){
+                     Curiosity.noty.warning("El contenido que desea ver no se encuentra disponible.","¡Ups!");
+                }
+                else{
+                    $(".gst-prof-content").hide();
+                    $("#gst-iframe-content").attr('src','/packages/assets/pdf/'+$(this).data('name'));
+                    $(".gst-img-content").attr('src',"packages/assets/media/images/parents/pdfs.png");
+                    $("#type_mdl").append("PDF");
+                    can_show = 1;
+                }
                 break;
             case 'video':
-                var infoProf = $(this).data('infoProf');
-                $("#gst-iframe-content").attr('src',$(this).data('embed'));
-                $(".gst-img-content").attr('src',"/packages/assets/media/images/teachersAsc/"+infoProf.foto);
-                $(".gst-prof-content").empty();
-                $(".gst-prof-content").append(infoProf.nombre);
-                $(".gst-prof-content").show();
-                $("#type_mdl").append("Videos");
+                if($(this).data('embed') == null){
+                     Curiosity.noty.warning("El contenido que desea ver no se encuentra disponible.","¡Ups!");
+                }
+                else{
+                    var infoProf = $(this).data('infoProf');
+                    $("#gst-iframe-content").attr('src',$(this).data('embed'));
+                    $(".gst-img-content").attr('src',"/packages/assets/media/images/teachersAsc/"+infoProf.foto);
+                    $(".gst-prof-content").empty();
+                    $(".gst-prof-content").append(infoProf.nombre);
+                    $(".gst-prof-content").show();
+                    $("#type_mdl").append("Videos");
+                    can_show = 1;
+                }
                 break;
         }
-        $("#gst-modal-pdf-video").modal("show");
+        if(can_show == 1)
+            $("#gst-modal-pdf-video").modal("show");
     });
 
 

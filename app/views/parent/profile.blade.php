@@ -76,7 +76,7 @@ Mi Perfil
                     <div class="tab-1 active animated fadeIn p-tab">
                         <div class="md-form">
                             <i class="fa fa-user prefix"></i>
-                            <input type="text" id="username" name="username" class="form-control" value="{{$username}}" length="40" placeholder="username">
+                            <input type="text" id="username" name="username" class="form-control" value="{{$username}}" length="40" placeholder="Usuario">
                         </div>
                         <div class="md-form">
                             <i class="fa fa-user prefix"></i>
@@ -167,7 +167,7 @@ Mi Perfil
 
                 <div class="card-block">
                     <!--Name-->
-                    <h4 class="card-title">Username´s parent</h4>
+                    <h4 class="card-title">Padre Curiosity</h4>
                     <hr>
                     <!-- data list-->
                     <ul class="list text-justify hidden-md-down p-cardInfo" >

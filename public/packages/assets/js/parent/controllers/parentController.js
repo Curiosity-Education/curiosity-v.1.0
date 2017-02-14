@@ -1,5 +1,5 @@
 var parentController = {
-
+       chartActivity:null,
        update: function(id,data,success){
             new Parent(data).update(id,"POST",success);
        },
@@ -62,7 +62,8 @@ var parentController = {
                 'password':$("#password").val(),
                 'telefono':$("#telefono").val(),
                 'username':$("#username").val(),
-                'cpassword':$("#cpassword").val()
+                'cpassword':$("#cpassword").val(),
+                '_token':$("#csrf").val()
             }
        },
        id : null,
@@ -79,7 +80,7 @@ var parentController = {
                         "<div class='card hoverable chp-topics chp-cardTopic chp-active'  data-id-topic="+idTopic+" data-info='"+JSON.stringify(info)+"' >"+
                             "<div class='card-block chp-topic-card'>"+
                               "<div class='card-left'>"+
-                                "<img src='http://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg' class='chp-imgWeak z-depth-1'>"+
+                                "<img src='/packages/assets/media/images/landing/attachment.png' class='chp-imgWeak z-depth-1'>"+
                               "</div>"+
                               "<div class='card-right'>"+
                                 "<div class='chp-topicDesc'>"+
@@ -157,23 +158,21 @@ var parentController = {
                         $("#materias").append("<fieldset class='form-group'><input val='"+intelligence.id+"' name='materia' type='radio'><label for='radio11'>"+intelligence.nombre+"</label></fieldset>");
                     }
                 });
-                var cnvs = document.getElementById("myChart");
-                var ctx = cnvs.getContext("2d");
+                var ctx = $("body #myChart");
                 var materiaID = $("input[name='materia']:checked").val();
-                var materia,numRand,numRand2,chartActivity;
+                var materia,numRand,numRand2;
                 var dataValues=[],dataValuesCompare=[];
+                var notations = {
+                                    50:"Bajo desempeño",
+                                    60:"Necesita practicar",
+                                    70:"Regular",
+                                    80:"Bien",
+                                    90:"Muy bien",
+                                    100:"Excelente"
+                                }
                 var data = {
                     labels: [],
-                    datasets: [],
-                    options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        }
+                    datasets: []
                 };
 
                 $.each(dataset,function(i,activity){
@@ -182,8 +181,8 @@ var parentController = {
                             data.labels.push(activity.nombre_tema);
                             dataValues.push(activity.Promedio.toFixed(2));
                             dataValuesCompare.push(activity.promedioGeneral.toFixed(2));
-                            if(activity.Promedio < 60){
-                                $("#hm-btn-HelpSon").prop('disabled',false);
+                            if(activity.Promedio <= 70){
+                                $("#hm-btn-HelpSon").prop('hidden',false);
                             }
                         }
                     }
@@ -192,10 +191,10 @@ var parentController = {
             }
             if(dataset.length == 0){
                 $("#dadNotice").show('slow');
-                $("#myChart").hide('slow');
+                $("body #myChart").hide('slow');
             }else if(dataset.length < 10){
                 $("#dadNotice").hide('slow');
-                $("#myChart").show('slow');
+                $("body #myChart").show('slow');
                 $("#materias").show();
                 numRand = Math.round(Math.random()*(Curiosity.colors().length-1));
                 numRand2 = Math.round(Math.random()*(Curiosity.colors().length-1));
@@ -242,16 +241,42 @@ var parentController = {
                             data: dataValuesCompare,
                             spanGaps: false,
                 });
-                ctx.clearRect(0, 0, cnvs.width, cnvs.height);
-                chartActivity = new Chart(ctx, {
+                if(parentController.chartActivity != null)
+                {
+                   var $parentChart = $("body #myChart").parent();
+                   var $newChart = $("<canvas/>").attr({
+                      "width" : 200,
+                      "height" : 200,
+                      "id" : "myChart"
+                   });
+
+                   $("body #myChart").remove();
+                   $("body .chartjs-hidden-iframe").remove();
+                   $("#prntHome-contentInfo .row > div").append($newChart);
+                   ctx = $("#prntHome-contentInfo .row > div #myChart");
+                }
+                parentController.chartActivity = new Chart(ctx, {
                     type: 'bar',
-                    data: data
+                    data: data,
+                    options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true,
+                                        userCallback: function (value, index, values) {
+                                            return notations[value];
+                                        }
+                                    }
+                                }]
+                            }
+                        }
                 });
+
 
 
             }else{
                 $("#dadNotice").hide('slow');
-                $("#myChart").show('slow');
+                $("body #myChart").show('slow');
                 $("#materias").show();
                 data.datasets.push({
                     label:materia,
@@ -271,7 +296,7 @@ var parentController = {
                             }
                         }
                 }
-                chartActivity = new Chart(ctx, {
+                parentController.chartActivity = new Chart(ctx, {
                     type: 'radar',
                     data: data,
                     options: options
@@ -317,7 +342,7 @@ var parentController = {
             if($.isArray(topics)){
                 if(topics.length > 0){
                     $.each(topics,function(i,topic){
-                        if(topics.id == id){
+                        if(topic.id == id){
                             dataset.push(topic);
                         }
                     });

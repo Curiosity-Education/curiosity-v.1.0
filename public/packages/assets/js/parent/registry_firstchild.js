@@ -19,28 +19,38 @@ $(function(){
 	$("#rfc-btn-finish").click(function(event){
 		if($formChild.valid()){
 			data = {
-				username : document.getElementById("rfc-username").value,
-				name     : document.getElementById("rfc-name").value,
-				surnames : document.getElementById("rfc-surnames").value,
-				password : document.getElementById("rfc-password").value,
-				cpassword: document.getElementById("rfc-cpassword").value,
-				gender   : document.getElementById("rfc-gender").value,
-				average  : document.getElementById("rfc-average").value,
-				level    : document.getElementById("rfc-level").value
+				usuario 		: document.getElementById("rfc-username").value,
+				nombre     	: document.getElementById("rfc-name").value,
+				apellidos 	: document.getElementById("rfc-surnames").value,
+				password 	: document.getElementById("rfc-password").value,
+				cpassword	: document.getElementById("rfc-cpassword").value,
+				genero   	: document.getElementById("rfc-gender").value,
+				promedio  	: document.getElementById("rfc-average").value,
+				grado    	: document.getElementById("rfc-level").value
 			};
-			console.log(data);
 			$(this).prop("disabled",true);
 			var text  = $(this).text()
 			var these = this;
 			$(this).html(text +' <i class="fa fa-spinner"></i>');
 			childrenCtrl.save(data,function(response){
+
 				console.log(response);
-				if(response.status!=200){
-					toastr.warning(response.message);
-				}else{
-					toastr.success(response.message);
-					document.location = "/padre-inicio";
-				}
+				switch(response.status){
+            case 200:
+                   Curiosity.noty.success(response.message);
+                   document.location = "/padre-inicio";
+                break;
+            case "CUE-304":
+                    Curiosity.noty.info(response.message);
+                break;
+            default:
+                    $.each(response.data, function(index, value){
+                      $.each(value, function(i, message){
+                          Curiosity.noty.warning(message, "Algo va mal");
+                      });
+                    });
+              break;
+        }
 				$(these).prop("disabled",false);
 				$(these).html(text);
 			});

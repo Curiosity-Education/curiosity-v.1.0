@@ -349,7 +349,7 @@
 	</div>
 
 	<!-- Sección de Membresías -->
-	<section id="membresia" class="" style="max-height:100px;">
+	<section id="membresia" class="">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
 				<img src="/packages/assets/media/images/landing/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
@@ -369,7 +369,7 @@
 					@foreach($planes as $plan)
 						@if($plan->num_card === 1)
 						<!--First column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card hoverable">
 
@@ -401,7 +401,7 @@
 						<!--/First column-->
 						@elseif($plan->num_card === 2)
 						<!--Second column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card planImportant z-depth-4 hoverable">
 
@@ -412,7 +412,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle  z-depth-1">
-													<i class="fa fa-group white-text"></i>
+													<i class="fa fa-user white-text"></i>
 												</div>
 											</center>
 										</div>
@@ -435,7 +435,7 @@
 						<!--/Second column-->
 						@else
 						<!--Third column-->
-						<div class="col-lg-4 col-md-12 mb-r">
+						<div class="col-lg-4 col-md-4 col-xs-12 mb-r">
 							<!--Card-->
 							<div class="card hoverable">
 
@@ -446,7 +446,7 @@
 										<div class="">
 											<center>
 												<div class="card-circle z-depth-1">
-													<i class="fa fa-graduation-cap iconcard"></i>
+													<i class="fa fa-group iconcard"></i>
 												</div>
 											</center>
 										</div>
@@ -487,25 +487,25 @@
 	<section id="apoyo" class="margen-dispositivo">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/assets/media/images/landing/compass.png" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
+				<img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
 				Con el Apoyo:
 			</h2>
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/assets/media/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/SUM.png?{{rand();}}" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/incubadora_laguna.png?{{rand();}}" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
-					<img src="/packages/assets/media/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logoFunBanorte.png?{{rand();}}" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/assets/media/images/landing/Work_St.jpg?{{rand();}}" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/penoles.png" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/penoles.png?{{rand();}}" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/assets/media/images/landing/logo-fs.jpg" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/assets/media/images/landing/logo-fs.jpg?{{rand();}}" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 			</div>
 		</div>
@@ -520,7 +520,7 @@
 					<li class="container-fluid">
 						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
 					</li>
-					<li class="container-fluid hidden-xs-down">
+					<li class="container-fluid">
 						<h4 class="h4-responsive" style="color:white;">¡ Síguenos en Facebook !</h4>
 					</li>
 					<li class="container-fluid">
