@@ -103,6 +103,7 @@
 								<div class="row fadeIn" id="row-confirmation" style="display:none">
 									<h5>Confirmación de correo enviado</h5>
 									<p>Se ha enviado un correo de confirmación a tu correo electronico, da click en el link que encontrarás en el correo enviado para recuperar tu contraseña</p>
+									<div class="col-md-6"><button type="button" class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btn-recovery-complete">Aceptar</button>  </div>
 								</div>
 						</div>
 					</div>
