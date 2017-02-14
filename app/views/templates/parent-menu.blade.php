@@ -28,6 +28,10 @@
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
+<div data-action='pause' data-url="#" class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
+   <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
+   <span class="gst-susc-p">Pausar</span> suscripción
+ </div>
 @stop
 
 @section('menu-links-aside')
@@ -47,7 +51,7 @@
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
  </div>
- <div data-action='pause' class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
+ <div data-action='pause' data-url="#" class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
    <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
    <span class="gst-susc-p">Pausar</span> suscripción
  </div>
