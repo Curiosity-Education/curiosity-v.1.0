@@ -35,12 +35,19 @@ $(function(){
 			$(this).html(text +' <i class="fa fa-spinner"></i>');
 			childrenCtrl.save(data,function(response){
 				console.log(response);
-				if(response.status!=200){
-					toastr.warning(response.message);
-				}else{
-					toastr.success(response.message);
-					document.location = "/padre-inicio";
-				}
+				switch(response.status){
+                    case 200:
+                           Curiosity.noty.success(response.message);
+					       document.location = "/padre-inicio";
+                        break;
+                    case "CUE-304":
+                            Curiosity.noty.success(response.message);
+                        break;
+                    default:
+                            toastr.warning(response.message);
+                        break;
+                }
+
 				$(these).prop("disabled",false);
 				$(these).html(text);
 			});
