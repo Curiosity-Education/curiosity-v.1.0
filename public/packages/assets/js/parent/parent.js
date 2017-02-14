@@ -13,7 +13,8 @@ $(function(){ //when document is ready this functions will be ejecuted
 	});
 
 	$("body").on("click", "#parentMenu-addChild", function(){
-		Curiosity.goToUrl($(this).data("url"));
+        if($(this).data("url") != '#' && $(this).data("url") != undefined)
+		  Curiosity.goToUrl($(this).data("url"));
 	});
 
     $(".suscription_gst").click(function(){
