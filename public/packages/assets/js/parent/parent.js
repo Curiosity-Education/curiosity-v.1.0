@@ -16,4 +16,15 @@ $(function(){ //when document is ready this functions will be ejecuted
 		Curiosity.goToUrl($(this).data("url"));
 	});
 
+    $(".suscription_gst").click(function(){
+        switch($(".suscription_gst").data('action')){
+            case 'pause':
+                parentGlobalController.pause();
+                break;
+            case 'resume':
+                parentGlobalController.resume();
+                break;
+        }
+    });
+
 });
