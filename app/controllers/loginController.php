@@ -400,7 +400,7 @@ class loginController extends BaseController{
                           $code = $e->getCode();
                           return $e;
                       }
-                    return Response::json(array('status'=>'200','message'=>"Se ha enviado un link de recuperación a su correo",'data'=>$user));
+                    return Response::json(array('status'=>200,'message'=>"Se ha enviado un link de recuperación a su correo",'data'=>$user));
                 }
                 else{
                     return Response::json(array('status'=>'CU-106','message'=>"El correo electrónico o nombre de usario que haz ingresado, no existe, ingresa un nombre de usario o correo electrónico valido, si crees que este es un problema del sistema, contacta con el administrador del sistema."));
