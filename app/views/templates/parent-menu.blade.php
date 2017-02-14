@@ -46,7 +46,11 @@
  <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
-</div>
+ </div>
+ <div data-action='pause' class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
+   <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
+   <span class="gst-susc-p">Pausar</span> suscripción
+ </div>
 <div data-url="#" class="linkMenu linkMenuAside logOutBtn waves-effec">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir
