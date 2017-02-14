@@ -72,7 +72,7 @@ var loginController = {
             switch (response.status) {
                case 200:
                   //window.location.href = response.data;
-                  console.log(response.message);
+                  Curiosity.noty.success(response.message);
                   break;
                case "CU-105":
                   Curiosity.noty.info("Lo sentimos tu cuenta a expirado. Renueva cuanto antes y sigue disfrutando de nuestro contenido.");
