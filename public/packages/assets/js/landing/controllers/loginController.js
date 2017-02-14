@@ -73,7 +73,11 @@ var loginController = {
                case 200:
                   //window.location.href = response.data;
                   Curiosity.noty.success(response.message);
-                  break;
+                  $("#row-login").hide();
+                  $("#row-recovery-password").hide();
+                  $("#row-recovery-password").hide();
+                  $("#row-confirmation").show();
+               break;
                case "CU-105":
                   Curiosity.noty.info("Lo sentimos tu cuenta a expirado. Renueva cuanto antes y sigue disfrutando de nuestro contenido.");
                   break;
