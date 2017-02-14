@@ -40,38 +40,70 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h3><i class="fa fa-user-circle"></i> Iniciar Sesión</h3>
+					<h3 id="title-header"><i class="fa fa-user-circle"></i> Iniciar Sesión</h3>
 				</div>
 				<!--Body-->
 				<div class="modal-body">
 					<div class="container-fluid">
 						<div class="col-md-12">
-							<div class="col-md-5">
-								<center>
-									<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
-								</center>
-								<hr>
-								<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>
-							</div>
-							<div class="col-md-7" id="form-content">
-								<div class="row">
-									<form id="formLogin">
-										<div class="md-form">
-											<i class="fa fa-user prefix"></i>
-											<input type="text" id="username" class="form-control" name="username">
-											<label for="form2">Usuario</label>
+							<div class="row fadeIn animated" id="row-login">
+								<div class="col-md-5">
+									<center>
+										<img src="packages/assets/media/images/system/login.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
+									</center>
+									<hr>
+									<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>
+								</div>
+								<div class="col-md-7" id="form-content">
+									<div class="row">
+										<form id="formLogin">
+											<div class="md-form">
+												<i class="fa fa-user prefix"></i>
+												<input type="text" id="username" class="form-control" name="username">
+												<label for="username">Usuario</label>
+											</div>
+											<div class="md-form">
+												<i class="fa fa-lock prefix"></i>
+												<input type="password" id="password" class="form-control" name="password">
+												<label for="password">Contraseña</label>
+											</div>
+										</form>
+										<div class="text-xs-center">
+											<button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnLogin">Iniciar</button>
 										</div>
-										<div class="md-form">
-											<i class="fa fa-lock prefix"></i>
-											<input type="password" id="password" class="form-control" name="password">
-											<label for="form3">Contraseña</label>
-										</div>
-									</form>
-									<div class="text-xs-center">
-										<button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnLogin">Iniciar</button>
+										<a id="recovery-password" style="color:blue;"><i class="fa fa-info-circle"></i> Olvide mi contraseña</a>
 									</div>
 								</div>
 							</div>
+							<div class="row fadeIn animated" id="row-recovery-password" style="display:none">
+									<div class="row">
+										<div class="col-md-12">
+											<p class="text-center" style="text-align:center">
+												Ingresa tu nombre de usuario o correo con el que te haz registrado.
+												Se te enviará un correo electronico en el que podrás recuperar tu contraseña.
+											</p>
+										</div>
+									</div>
+									<form id="frm-recovery-pass">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="md-form">
+													<i class="fa fa-key prefix"></i>
+													<input type="text" id="username-recovery" class="form-control" name="username-recovery">
+													<label for="username-recovery">Correo o nombre de usuario</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6"><button type="sumbit" class="btn btn-success btn-lg btn-block borderRounded" id="btn-recovery">Continuar</button> </div>
+											<div class="col-md-6"><button type="reset" class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btn-return-login">Regresar al login</button>  </div>
+										</div>
+									</form>
+								</div>
+								<div class="row fadeIn" id="row-confirmation" style="display:none">
+									<h5>Confirmación de correo enviado</h5>
+									<p>Se ha enviado un correo de confirmación a tu correo electronico, da click en el link que encontrarás en el correo enviado para recuperar tu contraseña</p>
+								</div>
 						</div>
 					</div>
 				</div>

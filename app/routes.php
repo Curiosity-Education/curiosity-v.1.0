@@ -143,7 +143,7 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::post('logIn', 'loginController@logIn');
 Route::get('logout', 'loginController@logOut');
-
+Route::match(["POST","GET"],'/recoveryPass','loginController@recoverCont');
 /*
 * -----------------------------------------------------------------------------
 * Routes to manage the content.
