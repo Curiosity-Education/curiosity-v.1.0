@@ -47,7 +47,7 @@
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
  </div>
- <div data-action='pause' class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
+ <div data-action='pause' class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
    <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
    <span class="gst-susc-p">Pausar</span> suscripción
  </div>
@@ -78,6 +78,7 @@
 @yield('content-parent')
 @stop
 @section('js')
+<script type="text/javascript" src="/packages/assets/js/parent/controllers/parentGlobalController.js?{{rand();}}"></script>
 <script type="text/javascript" src="/packages/assets/js/parent/parent.js?{{rand();}}"></script>
 @yield('js-plus')
 @stop
