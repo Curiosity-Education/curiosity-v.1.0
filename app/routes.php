@@ -385,7 +385,14 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::get('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
    Route::post('get-sons','parentsController@getSons');
-	 Route::post('get-sonsInfo','parentsController@getSonsInfo');
+   Route::post('get-sonsInfo','parentsController@getSonsInfo');
+
+   Route::group(array('prefix' => 'suscription'),function(){
+       Route::post('pause','parentSuscriptionController@pause');
+       Route::post('resume','parentSuscriptionController@resume');
+       Route::post('cancel','parentSuscriptionController@cancel');
+       Route::post('status','parentSuscriptionController@status');
+   });
 });
 
 
