@@ -210,7 +210,7 @@ class parentsController extends BaseController{
             INNER JOIN membresias_planes mp ON hjs.id = mp.hijo_id
             WHERE padres.id = '$idDad' AND mp.active = 1
             and ta.nombre = 'Imagen de Perfil'
-            GROUP BY hjs.id,photoProfile");
+            GROUP BY hjs.id,photoProfile"); 
         $temasLow = DB::select("SELECT
                 hj.id,i.id as idMateria,i.nombre as Materia
                 ,tms.id as temaID,tms.nombre as nombre_tema,

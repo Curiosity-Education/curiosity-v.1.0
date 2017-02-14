@@ -158,7 +158,7 @@ Gestión de Mis Hijos
 <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
 <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
-<script src="/packages/libs/materialize/js/materialize.min.js" charset="utf-8"></script>
+<script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
 <script src="/packages/assets/js/parent/child-registration.js?{{rand();}}" charset="utf-8"></script>
 <script type="text/javascript" src="/packages/assets/js/parent/models/child-registration.js?{{rand();}}"></script>
 <script type="text/javascript" src="/packages/assets/js/parent/controllers/child-registrationCrtrl.js?{{rand();}}"></script>

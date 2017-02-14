@@ -25,7 +25,7 @@ var msConstroller = {
    				"<div class='view mask'>"+
    					"<div class='ms-bannerWhitOut'></div>"+
    					"<a href='#'>"+
-   						"<div class='mask'><h5 class='card-title ms-tit'>"+obj.nombre+"</h5></div>"+
+   						"<div class='mask'><h5 class='card-title ms-tit flex-center'>"+obj.nombre+"</h5></div>"+
    					"</a>"+
    				"</div>"+
    				"<div class='card-block text-center'>"+
@@ -55,7 +55,7 @@ var msConstroller = {
    					"</a>"+
    				"</div>"+
    				"<div class='card-block text-center'>"+
-   					"<h5 class='card-title'>"+obj.topicName+"</h5>"+
+   					"<h5 class='card-title'>"+obj.topicName+"</h5><hr>"+
    					"<a class='btn ms-btn-info btn-rounded ms-btnAccess' data-name='"+type+"' data-obj='"+JSON.stringify(obj)+"'>Jugar</a>"+
    				"</div>"+
    			"</div>"+
