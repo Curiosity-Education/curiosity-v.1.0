@@ -79,4 +79,13 @@ class parentSuscriptionController extends BaseController{
     public static function SERVER_ERROR_RESPONSE($error){
         return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $error));
     }
+
+    public static function infoClient(){
+        $idDad = Auth::user()->Person->Dad->id;
+        $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
+        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $tokenCard));
+        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+        $customer = Conekta_Customer::find($tokenCard);
+        return $customer;
+    }
 }
