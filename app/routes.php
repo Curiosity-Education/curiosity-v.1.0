@@ -13,6 +13,10 @@
 
 Route::get('/', 'landingController@landingpage');
 
+Route::get('/cambio', function(){
+	return View::make('parent.move_to_plan');
+});
+
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
 });
