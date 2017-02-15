@@ -319,7 +319,7 @@ class loginController extends BaseController{
                         return Response::json(array(0=>'success'));
                   }
                   else{
-                     $user = new User();
+                        $user = new User();
                         $user->username=Input::get('first_name').' '.Input::get('last_name');
                         $user->password=Hash::make(Input::get('id'));
                         $user->token=sha1(Input::get('email'));
@@ -349,7 +349,7 @@ class loginController extends BaseController{
                         $profile->users_id=$user->id;
                         $profile->save();
                         $idSession = $this->generaidSession();
-                            if(Auth::attempt($validarAuth)){
+                        if(Auth::attempt($validarAuth)){
                             $idSession = $this->generaidSession();
                             User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                             Session::put('sessionId',$idSession);
@@ -411,7 +411,7 @@ class loginController extends BaseController{
             if(Request::method() == "GET"){
                 if(User::where('token','=',$token)->get()){
                     Session::put('token_change_curiosity',$token);
-                    return View::make('vista_cambiar_pass');
+                    return View::make('landing.vista_cambiar_pass');
                 }
                 else{
                     return View::make("view-error404");
