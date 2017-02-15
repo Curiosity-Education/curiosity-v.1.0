@@ -26,7 +26,8 @@ class viewsController extends BaseController{
       "parent.registry_firstchild"      => "parent_actions",
       "parent.home"                     => "parent_actions",
       "parent.library_pdfs"             => "parent_actions",
-      "parent.child_registration"       => "parent_actions"
+      "parent.child_registration"       => "parent_actions",
+      "parent.move_to_plan"             => "parent_actions"
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
