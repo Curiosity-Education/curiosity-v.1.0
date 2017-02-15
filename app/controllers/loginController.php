@@ -376,7 +376,8 @@ class loginController extends BaseController{
                             left join padres pr on pr.persona_id = p.id
                             where r.name = 'parent' or r.name = 'child'
                           ) as tb_users)
-                          where tb_users.username = '".$email."' or tb_users.email ='".Input::get('email')."';");
+                          where tb_users.username = '".$email."' or tb_users.email ='".Input::get('email')."'
+                          order by id;");
                 if(!empty($user[0])){
                     $token = md5($user[0]->email);
                     $userFind = User::find($user[0]->id);
