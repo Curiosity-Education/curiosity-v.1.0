@@ -11,6 +11,16 @@ class parentSuscriptionController extends BaseController{
         return $subscription;
     }
 
+    public static function getObj(){
+        $idDad = Auth::user()->Person->Dad->id;
+        $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
+        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+        $customer = Conekta_Customer::find($tokenCard);
+        $subscription = $customer->subscription;
+        $data = "$subscription";
+        return json_decode($data);
+    }
+
     public static function enabledMembership($active){
         $idDad = Auth::user()->Person->Dad->id;
         Membership::where("padre_id", "=", $idDad)->update(array('active' => $active));
@@ -18,7 +28,7 @@ class parentSuscriptionController extends BaseController{
 
     public static function status(){
         try{
-            return self::SUCCESS_RESPONSE("Current_suscription_status",self::get()->status);
+            return self::SUCCESS_RESPONSE("Current_suscription_status",self::getObj()->status);
         }
         catch(Conekta_Error $con_err){
             return self::ERROR_CONEKTA_RESPONSE($con_err);
@@ -84,7 +94,7 @@ class parentSuscriptionController extends BaseController{
         $idDad = Auth::user()->Person->Dad->id;
         $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
         Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-        $customer = Conekta_Customer::find("cus_2fzDadiBLcEu2J4Se");
+        $customer = Conekta_Customer::find($tokenCard);
         return [ "client" => json_decode($customer) ];
     }
 }
