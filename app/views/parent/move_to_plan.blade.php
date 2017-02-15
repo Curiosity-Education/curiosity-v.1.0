@@ -10,9 +10,9 @@
 
 @section('content-parent')
    <div class='container-fluid z-depth-1' id='mvp-plans'>
-      <div class="row">
-         <div class="col-xs-12">
-            <div id="mvp-desc1">
+      <div class='row'>
+         <div class='col-xs-12'>
+            <div id='mvp-desc1'>
                <h4>¡Cambiate de plan y aumenta tus beneficios!</h4>
                <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo sint similique tempora laborum eveniet saepe maxime odit labore. Fuga ea fugit eum reprehenderit eaque, quisquam minus laborum itaque ullam facere!
@@ -64,38 +64,41 @@
       <div class='row'>
          <div class='col-md-6'>
             <div>
-               <div class="form-group">
-                 <label class="mvp-label">Nombre de cliente</label>
-                 <input type="text" class="form-control" id="" value="Wilvardo Ramirez C." readonly>
+               <div class='form-group'>
+                 <label class='mvp-label'>Nombre de cliente</label>
+                 <input type='text' class='form-control' id='' value='Wilvardo Ramirez C.' readonly>
                </div>
-               <div class="form-group">
-                 <label class="mvp-label">Tarjeta terminación</label>
-                 <input type="text" class="form-control" id="" value="************4242" readonly>
+               <div class='form-group'>
+                 <label class='mvp-label'>Tarjeta terminación</label>
+                 <input type='text' class='form-control' id='' value='************4242' readonly>
                </div>
-               <div class="form-group">
-                 <label class="mvp-label">Tipo de tarjeta</label>
+               <div class='form-group'>
+                 <label class='mvp-label'>Tipo de tarjeta</label>
+                 <input type='text' class='form-control' id='' value='Visa-MasterCard' readonly>
                </div>
             </div>
          </div>
          <div class='col-md-6'>
             <div>
-               <div class="form-group">
-                 <label class="mvp-label">Inicio de suscripción</label><br>
-                 <input type="text" class="form-control" id="" value="14/febrero/2017 10:30:15" readonly>
+               <div class='form-group'>
+                 <label class='mvp-label'>Inicio de suscripción</label><br>
+                 <input type='text' class='form-control' id='' value='14/febrero/2017 10:30:15' readonly>
                </div>
-               <div class="form-group">
-                 <label class="mvp-label">Fecha de modificación</label><br>
-                 <input type="text" class="form-control" id="" value="14/febrero/2017 10:30:15" readonly>
+               <div class='form-group'>
+                 <label class='mvp-label'>Fecha de modificación</label><br>
+                 <input type='text' class='form-control' id='' value='14/febrero/2017 10:30:15' readonly>
                </div>
-               <button type='button' class='btn btn-rounded mvp-btnSelect float-xs-right'>
-                  <span class="fa fa-pause"></span>&nbsp;
-                  Pausar suscripción
+               <button data-action='pause' type='button' class='btn btn-rounded mvp-btnpause float-xs-right suscription_gst'>
+                  <span class='fa fa-pause'></span>&nbsp;
+                  <span class='gst-susc-p'>Pausar</span> suscripción
                </button>
             </div>
          </div>
       </div>
-   </div>
+   </div>   
 @stop
 
 @section('js-plus')
+<script src='/packages/assets/js/parent/controllers/parentGlobalController.js?{{rand();}}'></script>
+<script src='/packages/assets/js/parent/dispatchers/dsp-confSuscript.js?{{rand();}}'></script>
 @stop

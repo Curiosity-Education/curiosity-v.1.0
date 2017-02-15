@@ -1,15 +1,17 @@
 var parentGlobalController = {
     suscription:{
         status:function(){
+            Curiosity.toastLoading.show();
             CORM.any(null,Curiosity.methodSend.POST,function(response){
                if(response != 'active' && response != 'in_trial'){
                     parentGlobalController.changeIcon({
                         text:'Reanudar',
                         action:'resume',
-                        before:'fa-pause-circle-o',
-                        after:'fa-play-circle-o'
+                        before:'fa-pause',
+                        after:'fa-play'
                     });
                }
+               Curiosity.toastLoading.hide();
             },'/parent/suscription','status');
         },
         pause:function(){
@@ -19,8 +21,8 @@ var parentGlobalController = {
                             parentGlobalController.changeIcon({
                                 text:'Reanudar',
                                 action:'resume',
-                                before:'fa-pause-circle-o',
-                                after:'fa-play-circle-o'
+                                before:'fa-pause',
+                                after:'fa-play'
                             });
                             Curiosity.noty.success(response.message,"Bien hecho.");
                         break;
@@ -38,8 +40,8 @@ var parentGlobalController = {
                             parentGlobalController.changeIcon({
                                 text:'Pausar',
                                 action:'pause',
-                                before:'fa-play-circle-o',
-                                after:'fa-pause-circle-o'
+                                before:'fa-play',
+                                after:'fa-pause'
                             });
                             Curiosity.noty.success(response.message,"Bien hecho.");
                         break;

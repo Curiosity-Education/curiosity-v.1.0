@@ -25,13 +25,13 @@
    Biblioteca de PDF'S
 </div>
 <div data-url="/view-parent.child_registration" class="linkMenu waves-effect" id="parentMenu-addChild-aside">
-   <span class="fa fa-cogs"></span>&nbsp;
+   <span class="fa fa-users"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
-<div data-action='pause' data-url="#" class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
-   <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
-   <span class="gst-susc-p">Pausar</span> suscripción
- </div>
+<div data-url="/view-parent.move_to_plan" class="linkMenu waves-effect parentMenu-confsusc">
+   <span class="fa fa-cog"></span>&nbsp;
+   Gestión de suscripción
+</div>
 @stop
 
 @section('menu-links-aside')
@@ -50,10 +50,6 @@
  <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
- </div>
- <div data-action='pause' data-url="#" class="linkMenu linkMenuAside waves-effec suscription_gst" id="parentMenu-addChild-aside">
-   <span class="fa fa-pause-circle-o light-blue-text"></span>&nbsp;
-   <span class="gst-susc-p">Pausar</span> suscripción
  </div>
 <div data-url="#" class="linkMenu linkMenuAside logOutBtn waves-effec">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
@@ -82,7 +78,6 @@
 @yield('content-parent')
 @stop
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/parent/controllers/parentGlobalController.js?{{rand();}}"></script>
 <script type="text/javascript" src="/packages/assets/js/parent/parent.js?{{rand();}}"></script>
 @yield('js-plus')
 @stop
