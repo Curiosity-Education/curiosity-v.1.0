@@ -47,7 +47,8 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
+ <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-
+   effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
  </div>
