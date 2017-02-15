@@ -60,5 +60,5 @@ var parentGlobalController = {
         parent.data('action',data.action);
         parent.children('span').eq(0).removeClass(data.before);
         parent.children('span').eq(0).addClass(data.after);
-    }
+    }    
 };
