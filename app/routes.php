@@ -78,6 +78,9 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::post('logIn', 'loginController@logIn');
 Route::get('logout', 'loginController@logOut');
+Route::get("recuperar",function(){
+	return View::make('landing.vista_cambiar_pass');
+});
 Route::match(["POST","GET"],'/recoveryPass{token?}','loginController@recoverCont');
 /*
 * -----------------------------------------------------------------------------

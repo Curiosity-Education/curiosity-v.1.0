@@ -422,7 +422,7 @@ class loginController extends BaseController{
                    try{
                        $user = User::where('token','=',Session::get('token_change_curiosity'))->get();
                        User::find($user[0]->id)->update(array('password'=>Hash::make(Input::get('newPass'))));
-                       return Response::json(array('status'=>'200','message'=>'La contraseña ha sido cambiada'));
+                       return Response::json(array('status'=>200,'message'=>'La contraseña ha sido cambiada exitosamente'));
                    }
                    catch(Exception $e){
                        return Response::json(array('status'=>$e->getCode(),'message'=>Response::json($e)));
