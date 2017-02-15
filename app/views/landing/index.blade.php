@@ -71,7 +71,9 @@
 										<div class="text-xs-center">
 											<button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnLogin">Iniciar</button>
 										</div>
-										<a id="recovery-password" style="color:blue;"><i class="fa fa-info-circle"></i> Olvide mi contraseña</a>
+										<div style="margin-top:.7rem;text-align:center">
+											<a id="recovery-password" style="color:blue;font-weight:300;font-size:1rem;"><i class="fa fa-info-circle"></i> Olvide mi contraseña</a>
+										</div>
 									</div>
 								</div>
 							</div>
