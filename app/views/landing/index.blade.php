@@ -105,7 +105,7 @@
 								<div class="row fadeIn" id="row-confirmation" style="display:none">
 									<h5 style="text-align:center">Confirmación de correo enviado</h5>
 									<p style="text-align:center">Se ha enviado un correo de confirmación a tu correo electronico, da click en el link que encontrarás en el correo enviado para recuperar tu contraseña</p>
-									<div class="col-md-6"><center style="text-align:center"><button type="button" class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btn-recovery-complete">Aceptar</button></center></div>
+									<div class="col-md-12"><center style="text-align:center"><button type="button" class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btn-recovery-complete">Aceptar</button></center></div>
 								</div>
 						</div>
 					</div>
