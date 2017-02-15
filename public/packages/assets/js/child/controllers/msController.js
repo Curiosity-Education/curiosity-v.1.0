@@ -28,7 +28,7 @@ var msConstroller = {
    						"<div class='mask'><h5 class='card-title ms-tit flex-center'>"+obj.nombre+"</h5></div>"+
    					"</a>"+
    				"</div>"+
-   				"<div class='card-block text-center'>"+
+   				"<div class='card-block text-center content-btnAccess'>"+
    					"<a class='btn ms-btn-info btn-rounded ms-btnAccess' data-name='"+type+"' data-obj='"+JSON.stringify(obj)+"'>Entrar</a>"+
    				"</div>"+
    			"</div>"+
