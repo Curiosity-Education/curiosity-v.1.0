@@ -362,17 +362,29 @@ class loginController extends BaseController{
             if(Request::method() == "GET")
                 return View::make("vista_recuperacion_de_contrasena");
             else{
-                $user = User::join('personas','personas.user_id','=','users.id')
-                        ->join('padres','padres.persona_id','=','personas.id')
-                        ->where('email','=',Input::get('email'))->select(DB::raw("personas.nombre,personas.apellido_paterno,users.id as 'id', padres.email as 'email'"))->get();
+                $email  = Input::get('email');
+                $user   =
+                DB::select("select * from((
+                            select p.nombre,
+                              p.apellidos,
+                              u.id,u.username,
+                              if(r.name='child',(select prs.email from hijos hj join padres prs on prs.id = hj.padre_id where hj.id = h.id),pr.email) as email from users u 
+                            join assigned_roles ar on ar.user_id = u.id
+                            join roles r on r.id = ar.role_id
+                            join personas p on p.user_id = u.id
+                              left join hijos h on h.persona_id = p.id
+                            left join padres pr on pr.persona_id = p.id
+                            where r.name = 'parent' or r.name = 'child'
+                          ) as tb_users)
+                          where tb_users.username = '".$email."' or tb_users.email ='".Input::get('email')."';");
                 if(!empty($user[0])){
                     $token = md5($user[0]->email);
-                    $user = User::find($user[0]->id);
-                    $user->token = $token;
-                    $user->save();
+                    $userFind = User::find($user[0]->id);
+                    $userFind->token = $token;
+                    $userFind->save();
                       $dataSend = [
                           "name"     =>       "Equipo Curiosity",
-                          "client"   =>       $user[0]->nombre." ".$user[0]->apellido_paterno,
+                          "client"   =>       $user[0]->nombre." ".$user[0]->apellidos,
                           "email"    =>       $user[0]->email,
                           "subject"  =>       "Recuperar Contraseña",
                           "token"    =>       $token
@@ -388,10 +400,10 @@ class loginController extends BaseController{
                           $code = $e->getCode();
                           return $e;
                       }
-                    return Response::json(array('status'=>'200','message'=>"Se ha enviado un link de recuperación a su correo",'data'=>$user));
+                    return Response::json(array('status'=>200,'message'=>"Se te ha enviado un correo electrónico a el correo: ".$user[0]->email,'data'=>$user));
                 }
                 else{
-                    return Response::json(array('status'=>'404','message'=>"El correo nunca se ha utilzado para una cuenta Curiosity. Porfavor ingresa el correo con el que te registraste"));
+                    return Response::json(array('status'=>'CU-106','message'=>"El correo electrónico o nombre de usario que haz ingresado, no existe, ingresa un nombre de usario o correo electrónico valido, si crees que este es un problema del sistema, contacta con el administrador del sistema."));
                 }
             }
         }
@@ -420,15 +432,15 @@ class loginController extends BaseController{
         }
     }
     private function generateidSession(){
-    $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    $lengthCadena=strlen($cadena);
-    $folio = "";
-    $lengthFolio=10;
-    for($i=1 ; $i<=$longitudFolio ; $i++){
-      $pos=rand(0,$longitudCadena-1);
-      $folio .= substr($cadena,$pos,1);
-    }
-    return $folio;
+      $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+      $lengthCadena=strlen($cadena);
+      $folio = "";
+      $lengthFolio=10;
+      for($i=1 ; $i<=$longitudFolio ; $i++){
+        $pos=rand(0,$longitudCadena-1);
+        $folio .= substr($cadena,$pos,1);
+      }
+      return $folio;
   }
 
 }
