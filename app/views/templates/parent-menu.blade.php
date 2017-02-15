@@ -28,7 +28,7 @@
    <span class="fa fa-users"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
-<!-- <div data-url="/view-parent.move_to_plan" class="linkMenu waves-effect parentMenu-confsusc">
+<!-- <div data-url="/view-parentSuscription/infoClient/view-parent.move_to_plan/" class="linkMenu waves-effect parentMenu-confsusc">
    <span class="fa fa-cog"></span>&nbsp;
    Gestión de suscripción
 </div> -->
