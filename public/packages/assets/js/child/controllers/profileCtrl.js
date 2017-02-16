@@ -198,7 +198,7 @@ var profileController = {
 
 					}else{
 						// card coins
-						$('#pf-bg-coin').addClass('pf-perfect');
+						$('#pf-bg-coins').addClass('pf-perfect');
 						$('#pf-text-CardCoins').addClass('pf-perfect');
 						$('#pf-img-CardCoins').attr('src',"packages/assets/media/images/child/emoji-perfect.png");
 

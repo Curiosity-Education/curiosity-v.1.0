@@ -49,7 +49,7 @@
 							<div class="row fadeIn animated" id="row-login">
 								<div class="col-md-5">
 									<center>
-										<img src="packages/assets/media/images/system/logiin.PNG?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
+										<img src="packages/assets/media/images/system/logiin.jpg?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 									</center>
 									<hr>
 									<p class="text-xs-center"><i class="fa fa-quote-left"></i> Inicia tu experiencia Curiosity</p>

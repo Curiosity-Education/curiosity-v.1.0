@@ -10,7 +10,7 @@
 
 	<div class="row">
 		<!-- Banner -->
-		<div class="view hm-black-strong z-depth-1 col-xs-12" id="pf-banner">
+		<div class="view hm-black-light z-depth-1 col-xs-12" id="pf-banner">
 		  <div class="mask flex-center">
 			 <h4 class="h4-responsive white-text"><i class="fa fa-user"></i>&nbsp; Mi Perfil | {{ Auth::user()->username; }} |</h4>
 		  </div>
@@ -93,7 +93,7 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="pf-content-graph">
 					<h2 id="pf-text-normal" class="pf-hidde h2-responsive text-xs-center">Juegos del Día <small>(meta diaria)</small></h2>
-					<h2 id="pf-text-missing" class="pf-hidde h2-responsive text-xs-center">Te invitamos a comenzar tu meta diaria</h2>
+					<h4 id="pf-text-missing" class="pf-hidde h4-responsive text-xs-center">Te invitamos a comenzar tu meta diaria</h4>
 					<hr class="pf-hr">
 					<div class="text-xs-center pf-divGraph">
 						<canvas id="pf-Graph" width="100%" height="60%"></canvas>
