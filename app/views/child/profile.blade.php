@@ -10,7 +10,7 @@
 
 	<div class="row">
 		<!-- Banner -->
-		<div class="view hm-black-light z-depth-1 col-xs-12" id="pf-banner">
+		<div class="view hm-black-light z-depth-1 col-xs-12" id="pf-banner" style="background-image:url({{accesoriesController::getChildBanner()['ruta']}}{{accesoriesController::getChildBanner()['archivo']}}?{{rand();}});">
 		  <div class="mask flex-center">
 			 <h4 class="h4-responsive white-text"><i class="fa fa-user"></i>&nbsp; Mi Perfil | {{ Auth::user()->username; }} |</h4>
 		  </div>
