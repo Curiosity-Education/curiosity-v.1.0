@@ -66,27 +66,27 @@
             <div>
                <div class='form-group'>
                  <label class='mvp-label'>Nombre de cliente</label>
-                 <input type='text' class='form-control' id='' value='Wilvardo Ramirez C.' readonly>
+                 <input type='text' class='form-control' id='' value='{{$client->cards[0]->name}}' readonly>
                </div>
                <div class='form-group'>
                  <label class='mvp-label'>Tarjeta terminación</label>
-                 <input type='text' class='form-control' id='' value='************4242' readonly>
+                 <input type='text' class='form-control' id='' value='************{{$client->cards[0]->last4}}' readonly>
                </div>
                <div class='form-group'>
                  <label class='mvp-label'>Tipo de tarjeta</label>
-                 <input type='text' class='form-control' id='' value='Visa-MasterCard' readonly>
+                 <input type='text' class='form-control' id='' value="{{$client->cards[0]->brand}}" readonly>
                </div>
             </div>
          </div>
          <div class='col-md-6'>
             <div>
                <div class='form-group'>
-                 <label class='mvp-label'>Inicio de suscripción</label><br>
-                 <input type='text' class='form-control' id='' value='14/febrero/2017 10:30:15' readonly>
+                 <label class='mvp-label'>Fecha de inicio</label><br>
+                 <input type='text' class='form-control' id='' value="{{date('d/m/Y H:i:s',$client->subscription->billing_cycle_start)}}" readonly>
                </div>
                <div class='form-group'>
-                 <label class='mvp-label'>Fecha de modificación</label><br>
-                 <input type='text' class='form-control' id='' value='14/febrero/2017 10:30:15' readonly>
+                 <label class='mvp-label'>Próximo cargo</label><br>
+                 <input type='text' class='form-control' id='' value="{{date('d/m/Y H:i:s',$client->subscription->billing_cycle_end)}}" readonly>
                </div>
                <button data-action='pause' type='button' class='btn btn-rounded mvp-btnpause float-xs-right suscription_gst'>
                   <span class='fa fa-pause'></span>&nbsp;
@@ -95,7 +95,7 @@
             </div>
          </div>
       </div>
-   </div>   
+   </div>
 @stop
 
 @section('js-plus')

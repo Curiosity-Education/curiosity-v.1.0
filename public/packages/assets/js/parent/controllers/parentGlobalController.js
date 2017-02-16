@@ -3,7 +3,7 @@ var parentGlobalController = {
         status:function(){
             Curiosity.toastLoading.show();
             CORM.any(null,Curiosity.methodSend.POST,function(response){
-               if(response != 'active' && response != 'in_trial'){
+               if(response.data != 'active' && response.data != 'in_trial'){
                     parentGlobalController.changeIcon({
                         text:'Reanudar',
                         action:'resume',
@@ -60,5 +60,5 @@ var parentGlobalController = {
         parent.data('action',data.action);
         parent.children('span').eq(0).removeClass(data.before);
         parent.children('span').eq(0).addClass(data.after);
-    }    
+    }
 };
