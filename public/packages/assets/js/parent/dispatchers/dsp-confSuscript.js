@@ -33,9 +33,6 @@ $(function(){
    });
 
    $("body").on('click', '#mvp-continue', function() {
-      $(this).prop('disabled', true);
-      $(this).html("<i class='fa fa-spinner'></i>");
-      $("body").find('#mvp-cancelchange').prop('disabled', true);
       switch($(".suscription_gst").data('action')){
          case 'pause':
          parentGlobalController.suscription.pause();
@@ -44,9 +41,6 @@ $(function(){
          parentGlobalController.suscription.resume();
          break;
       }
-      $(this).html("Continuar");
-      $(this).prop('disabled', false);
-      $("body").find('#mvp-cancelchange').prop('disabled', false);
    });;
 
 });
