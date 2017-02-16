@@ -13,7 +13,7 @@
 
 Route::get('/', 'landingController@landingpage');
 
-Route::get('/cambio', 'parentSuscriptionController@get');
+Route::get('/cambio', 'parentSuscriptionController@infoClient');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');

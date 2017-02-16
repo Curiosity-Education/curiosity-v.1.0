@@ -15,6 +15,9 @@ var parentGlobalController = {
             },'/parent/suscription','status');
         },
         pause:function(){
+           $("body").find('#mvp-continue').html("<i class='fa fa-spinner'></i>");
+           $("body").find('#mvp-continue').prop('disabled', true);
+           $("body").find('#mvp-cancelchange').prop('disabled', true);
             CORM.any(null,Curiosity.methodSend.POST,function(response){
                 switch(response.status){
                     case 200:
@@ -31,9 +34,15 @@ var parentGlobalController = {
                             Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Comuniquese con el administrador","Error");
                         break;
                 }
+                $("body").find('#mvp-continue').html("Continuar");
+                $("body").find('#mvp-continue').prop('disabled', false);
+                $("body").find('#mvp-cancelchange').prop('disabled', false);
             },'/parent/suscription','pause');
         },
         resume:function(){
+           $("body").find('#mvp-continue').html("<i class='fa fa-spinner'></i>");
+           $("body").find('#mvp-continue').prop('disabled', true);
+           $("body").find('#mvp-cancelchange').prop('disabled', true);
             CORM.any(null,Curiosity.methodSend.POST,function(response){
                 switch(response.status){
                     case 200:
@@ -50,6 +59,9 @@ var parentGlobalController = {
                             Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Comuniquese con el administrador","Error");
                         break;
                 }
+                $("body").find('#mvp-continue').html("Continuar");
+                $("body").find('#mvp-continue').prop('disabled', false);
+                $("body").find('#mvp-cancelchange').prop('disabled', false);
             },'/parent/suscription','resume');
         }
 
