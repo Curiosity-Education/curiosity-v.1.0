@@ -140,8 +140,8 @@ $("body").on('click','.lp-btnTopic',function(){
 
                 "<div class='white-text'>" +
                   "<div class='card-block'>" +
-                    "<h5 class='h5-responsive lp-text-card'><i class='fa fa-file-pdf-o'></i>&nbsp;VIDEOS</h5><hr class='lp-hr'>" +
-                    "<h4 class='h5-responsive lp-name-pdf' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
+                    "<h5 class='h5-responsive lp-text-card text-xs-center'><i class='fa fa-play'></i>&nbsp;VIDEO</h5><hr class='lp-hr'>" +
+                    "<h4 class='h5-responsive lp-name-pdf text-xs-center' id='lp-namePDF'>" + nameTopic[0].nombre + "</h4>" +
 
                   "</div>" +
               "</div>" +
