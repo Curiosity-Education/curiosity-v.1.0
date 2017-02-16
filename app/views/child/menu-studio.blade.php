@@ -7,7 +7,7 @@
       <div class='container-fluid' id='container-menu-studio-child'>
          <!-- Banner -->
          <div class='row'>
-            <div class='view hm-black-light z-depth-1 col-xs-12' id='lp-banner'>
+            <div class='view hm-black-light z-depth-1 col-xs-12' id='lp-banner' style="background-image:url({{accesoriesController::getChildBanner()['ruta']}}{{accesoriesController::getChildBanner()['archivo']}}?{{rand();}});">
                <div class='mask flex-center'>
                   <h4 class='h4-responsive white-text'><i class='fa fa-gamepad'></i>&nbsp; Rincón de Juegos</h4>
                </div>
