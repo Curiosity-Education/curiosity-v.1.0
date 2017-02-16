@@ -17,7 +17,7 @@
 
 			<!-- Buttons with the degrees -->
 		<div class="row" id="lp-row-degrees">
-			<div class="col-md-10 col-sm-12 col-lg-10 lp-container-degrees z-depth-1">
+			<div class="col-md-11 col-sm-12 col-lg-11 lp-container-degrees z-depth-1">
 				<div class="col-md-2 col-sm-3 lp-text-degrees text-xs-center ">
 					<h6 class="font-weight-bold lp-text">Grados</h6>
 				</div>
