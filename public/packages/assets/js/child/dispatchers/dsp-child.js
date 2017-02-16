@@ -11,6 +11,7 @@ $(function(){
    animation.spreetsheet = "/packages/assets/media/images/avatar/sprites"+saludo[0].folder+saludo[0].imagen;
    animation.mvx = 125;
    animation.mvy = 130;
+   animation.scale = 0.7;
    setInterval(function(){ animation.play(); }, animation.speed);
 
    Level.any(null, "POST", function(r){ StorageDB.table.create("levels", r);}, "getWithActivities");
