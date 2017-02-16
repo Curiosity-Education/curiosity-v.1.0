@@ -51,7 +51,7 @@
 
 						<!--Card image-->
 						<div class="view overlay hm-white-slight reg-rounded">
-							<img src="/packages/assets/media/images/system/registry.png?{{rand();}}" class="img-fluid" alt="">
+							<img src="/packages/assets/media/images/system/registry.jpg?{{rand();}}" class="img-fluid" alt="">
 							<a>
 								<div class="mask"></div>
 							</a>
