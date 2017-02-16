@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
 	<div class="row">
-		<div class="view hm-black-light z-depth-1 col-xs-12" id="lp-banner">
+		<div class="view hm-black-light z-depth-1 col-xs-12" id="lp-banner" style="background-image:url({{accesoriesController::getChildBanner()['ruta']}}{{accesoriesController::getChildBanner()['archivo']}}?{{rand();}});">
 		  <div class="mask flex-center">
 			 <h4 class="h4-responsive white-text"><i class="fa fa-youtube-play"></i>&nbsp; Rincón de Videos</h4>
 		  </div>

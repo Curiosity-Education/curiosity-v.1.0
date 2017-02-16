@@ -9,7 +9,7 @@
 
 		<div class="row">
 			<!-- Banner -->
-			<div class="view hm-black-light z-depth-1 col-xs-12" id="lp-banner">
+			<div class="view hm-black-light z-depth-1 col-xs-12" id="lp-banner" style="background-image:url({{accesoriesController::getChildBanner()['ruta']}}{{accesoriesController::getChildBanner()['archivo']}}?{{rand();}});">
 			  <div class="mask flex-center">
 				 <h4 class="h4-responsive white-text text-xs-center"><i class="fa fa-cogs"></i>&nbsp; Configuración de Mi cuenta</h4>
 			  </div>

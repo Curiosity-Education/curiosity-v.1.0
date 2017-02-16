@@ -109,6 +109,11 @@ class childrenController extends BaseController{
 	             'accesorio_id' => 4,
 					 'is_using' => 1
 	         ));
+				$banner = DB::table('hijos_has_accesorios')->insert(array(
+	             'hijo_id'      => $son->id,
+	             'accesorio_id' => 5,
+					 'is_using' => 1
+	         ));
 				/**************************************************************
 				/ THE AVATAR IS REGISTRED MANUAL FOR A TEMPORALY TIME WHILE
 				/ OTHER AVATAR IS NOT EXIST
