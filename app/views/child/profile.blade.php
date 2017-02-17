@@ -17,7 +17,7 @@
 		</div>
 
 		<!-- Cards of scores -->
-		<div class="col-md-4 col-sm-4 col-xs-12 animated fadeInUpBig"><br>
+		<div class="col-md-4 col-sm-12 col-xs-12 animated fadeInUpBig"><br>
 			<div class="row">
 				<div class="z-depth-1 col-md-12 col-sm-12 col-xs-12" id="pf-content-cards">
 					<div class="pf-indicators text-xs-center">
@@ -89,7 +89,7 @@
 		</div>
 
 	   	<!-- Graph of games of the day -->
-	   	<div class="col-md-8 col-sm-8 col-xs-12 animated zoomIn"><br>
+	   	<div class="col-md-8 col-sm-12 col-xs-12 animated zoomIn"><br>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="pf-content-graph">
 					<h2 id="pf-text-normal" class="pf-hidde h2-responsive text-xs-center">Juegos del Día <small>(meta diaria)</small></h2>
