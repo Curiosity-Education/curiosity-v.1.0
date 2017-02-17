@@ -15,11 +15,6 @@
 			  </div>
 			</div>
 
-			<!-- Message for smartphone landscape -->
-			<div class="col-md-12 z-depth-1" id="ca-text-info">
-				<h1 class="text-xs-center h1-responsive">Para mejor interacción gira tu dispositivo en forma vertical</h1>
-			</div>
-
 			<!-- Card configuration of data -->
 			<div class="col-md-6 col-sm-6 col-xs-12" id="ca-cardData">
 				<div class="row">
