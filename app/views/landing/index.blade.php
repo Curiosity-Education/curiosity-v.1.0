@@ -52,7 +52,7 @@
 										<img src="packages/assets/media/images/system/logiin.jpg?{{rand();}}" alt="..." class="rounded-circle img-fluid" style="width:70%;">
 									</center>
 									<hr>
-									<p class="text-xs-center"><i class="fa fa-quote-left"></i>&nbsp; Inicia tu experiencia Curiosity</p> &nbsp;<i class="fa fa-quote-left"></i>
+									<p class="text-xs-center"><i class="fa fa-quote-left"></i>&nbsp; Inicia tu experiencia Curiosity &nbsp;<i class="fa fa-quote-right"></i></p>
 								</div>
 								<div class="col-md-7" id="form-content">
 									<div class="row">
