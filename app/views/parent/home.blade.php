@@ -123,7 +123,7 @@
 	</div>
 @stop
     @section('modal-left')
-      <iframe src="https://www.youtube.com/embed/SNrAqVZ6BxE" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
+      <iframe src="" type="application/pdf"  width="100%" height="90%" name="iframeContent" id="gst-iframe-content"></iframe>
     @stop
     @section('modal-header')
       @section('modal-header-image')
