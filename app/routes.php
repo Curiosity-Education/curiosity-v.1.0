@@ -15,7 +15,7 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/cambio', 'parentSuscriptionController@infoClient');
+Route::get('/cambio', 'membershipsPlansController@pauseMembershipToChildren');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
