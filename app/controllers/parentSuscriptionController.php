@@ -43,6 +43,7 @@ class parentSuscriptionController extends BaseController{
         try{
             self::get()->pause();
             self::enabledMembership(0);
+            membershipsPlansController::pauseMembershipToChildren(self::getObj()->customer_id);
             return self::SUCCESS_RESPONSE("Suscripción pausada con éxito.",null);
         }
         catch(Conekta_Error $con_err){
