@@ -97,4 +97,23 @@ class parentSuscriptionController extends BaseController{
         $customer = Conekta_Customer::find($tokenCard);
         return [ "client" => json_decode($customer) ];
     }
+
+    public static function changePlan(){
+        try{
+             $idDad = Auth::user()->Person->Dad->id;
+             $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
+             Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+             $customer = Conekta_Customer::find($tokenCard);
+             $subscription = $customer->subscription;
+             $plan = "mensual_individual";
+             $customerUpd = $subscription->update( array( 'plan_id'  => $plan ) );
+             return self::SUCCESS_RESPONSE("Plan cambiado con éxito.", json_decode($customerUpd));
+        }
+        catch(Conekta_Error $con_err){
+             return self::ERROR_CONEKTA_RESPONSE($con_err);
+        }
+        catch(Exception $e){
+             return self::SERVER_ERROR_RESPONSE($e);
+        }
+    }
 }
