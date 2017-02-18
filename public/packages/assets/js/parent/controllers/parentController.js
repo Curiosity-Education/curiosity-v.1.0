@@ -113,15 +113,15 @@ var parentController = {
            return dataClear;
        },
        createItemsRecommend:function(temaID,dataset){
-           $("#itemsRecommend").empty();
-           if(dataset.length > 0){
-               $("#topic_name_help").append(dataset[0].nombre_tema);
-               $.each(dataset,function(i,o){
-                  if(o.temaID == temaID){
-                       $("#itemsRecommend").append(parentController.itemRecommend(o.nPDF,o.nrPDF,o.eVideo,o.nombre_tema,{nombre:o.ncpVid,foto:o.fpVid}));
-                   }
-               });
-           }
+          $("#itemsRecommend").empty();
+          if(dataset != null || dataset != ""){
+             $("#topic_name_help").empty();
+             $("#topic_name_help").append(dataset.nombre_tema);
+             var o = dataset;
+             $("#itemsRecommend").append(
+                parentController.itemRecommend(o.nPDF,o.nrPDF,o.eVideo,o.nombre_tema,{nombre:o.ncpVid,foto:o.fpVid})
+             );
+          }
        },
        itemRecommend:function(nombre,nombre_real,embed,nombre_tema,infoProf){
            return "<div class='col-sm-12 col-md-6 col-xs-12'>"+
