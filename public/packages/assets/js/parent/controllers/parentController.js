@@ -77,7 +77,7 @@ var parentController = {
        },
        itemTopic:function(idTopic,name_topic,info){
            return "<li>"+
-                        "<div class='card hoverable chp-topics chp-cardTopic chp-active'  data-id-topic="+idTopic+" data-info='"+JSON.stringify(info)+"' >"+
+                        "<div style='cursor:pointer!important;' class='card hoverable chp-topics chp-cardTopic chp-active' data-id-topic="+idTopic+" data-info='"+JSON.stringify(info)+"' >"+
                             "<div class='card-block chp-topic-card'>"+
                               "<div class='card-left'>"+
                                 "<img src='/packages/assets/media/images/landing/attachment.png' class='chp-imgWeak z-depth-1'>"+
