@@ -10,7 +10,7 @@ $(function(){
         var arrayTopic = parentController.createArrayTopic(info);
         $("#chp-contentTopics").children('ul').empty();
         $.each(arrayTopic,function(i,item){
-            $("#chp-contentTopics").children('ul').append(parentController.itemTopic(item.id,item.nombre,info));
+            $("#chp-contentTopics").children('ul').append(parentController.itemTopic(item.id,item.nombre,info[i]));
         });
 	}); // show HELP MY SON
 
