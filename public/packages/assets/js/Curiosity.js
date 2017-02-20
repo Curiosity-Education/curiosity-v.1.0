@@ -243,7 +243,7 @@ var Curiosity = {
    windowMessage : function(title, msjHtml){
       var msj = "<div class='modal fade' id='cu-windmssj' tabindex='-1' role='dialog' aria-hidden='true' data-backdrop='static' data-keyboard='false' style='background-color: rgba(0, 0, 0, 0.6);'> <div class='modal-dialog'> <div class='modal-content' style='border-radius:0.3rem;'> <div class='modal-header' style='background-color:#2262ae;color:#fff;border:none!important;border-top-left-radius:.2rem;border-top-right-radius:.2rem;color: #676767;'> <span class='fa fa-question-circle' style='color:#fff;font-size:1.4rem;'></span> </div> <div class='modal-body' style='padding:1.5rem!important;'> <h4 style='font-size:1rem;font-weight:bold;margin-bottom:1.5rem;margin-top:1rem;'id='cu-titmsj'></h4><div id='cu-msj'></div> </div> </div> </div> </div>";
       $("body").append(msj);
-      $("body").find("#cu-titmsj").append(title);
+      $("body").find("#cu-titmsj").html(title);
       $("body").find("#cu-msj").html(msjHtml);
       $("body").find("#cu-windmssj").modal("show");
    }
