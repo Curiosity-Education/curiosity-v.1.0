@@ -43,7 +43,7 @@ class parentSuscriptionController extends BaseController{
         try{
             self::get()->pause();
             self::enabledMembership(0);
-            membershipsPlansController::pauseMembershipToChildren(self::getObj()->customer_id);
+            membershipsPlansController::activeMembershipToChildren(self::getObj()->customer_id, 0);
             return self::SUCCESS_RESPONSE("Suscripción pausada con éxito.",null);
         }
         catch(Conekta_Error $con_err){
@@ -58,6 +58,7 @@ class parentSuscriptionController extends BaseController{
         try{
             self::get()->resume();
             self::enabledMembership(1);
+            membershipsPlansController::activeMembershipToChildren(self::getObj()->customer_id, 1);
             return self::SUCCESS_RESPONSE("Suscripción reanudada con éxito.",self::get());
         }
         catch(Conekta_Error $con_err){
