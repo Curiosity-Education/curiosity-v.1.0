@@ -7,6 +7,7 @@ class membershipsPlansController extends BaseController{
 		$memp = MembershipPlan::where("membresia_id", "=", $membership->id)->get();
 		foreach ($memp as $key => $value) {
 			$value->active = $active;
+			$value->save();
 		}
 	}
 
