@@ -32,6 +32,11 @@ var loginController = {
                   $("#btnLogin").html("Iniciar");
                   $("#btnLogin").prop('disabled', false);
                   break;
+               case "CU-108":
+                  Curiosity.noty.info("La membresía ha sido pausada, reanudala para seguir viviendo la experiencia curiosity.", "Membresía inactiva");
+                  $("#btnLogin").html("Iniciar");
+                  $("#btnLogin").prop('disabled', false);
+                  break;
                default:
                   Curiosity.noty.error("Contactate con nostros por favor", "Error desconocido");
                   $("#btnLogin").html("Iniciar");
