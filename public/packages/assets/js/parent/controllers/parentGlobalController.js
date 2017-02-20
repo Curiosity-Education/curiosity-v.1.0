@@ -31,7 +31,7 @@ var parentGlobalController = {
                         break;
                     case 500:
                             console.log(response);
-                            Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Comuniquese con el administrador","Error");
+                            Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Por favor verifique su conexión a internet","Error de conexión al servidor");
                         break;
                 }
                 $("body").find('#mvp-continue').html("Continuar");
