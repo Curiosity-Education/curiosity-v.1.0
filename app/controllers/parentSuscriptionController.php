@@ -21,7 +21,7 @@ class parentSuscriptionController extends BaseController{
         return json_decode($data);
     }
 
-    public static function enabledMembership($active){
+    private static function enabledMembership($active){
         $idDad = Auth::user()->Person->Dad->id;
         Membership::where("padre_id", "=", $idDad)->update(array('active' => $active));
     }
@@ -76,6 +76,27 @@ class parentSuscriptionController extends BaseController{
         }
         catch(Conekta_Error $con_err){
             return self::ERROR_CONEKTA_RESPONSE($con_err);
+        }
+        catch(Exception $e){
+            return self::SERVER_ERROR_RESPONSE($e);
+        }
+    }
+    public static function getUserSuscriptionPlan(){
+        try{
+            $currentPlan = Membership
+                            ::where('membresias.padre_id','=',Auth::user()->Person->Dad->id)
+                                ->join('membresias_planes','membresia_id','=','membresias.id')
+                                ->join('planes','planes.id','=','plan_id')
+                                ->select('planes.*')
+                                ->get();
+            $plans = Plan
+                    ::where('visible','=',1)
+                        ->get();
+            $dataset = [
+                'current_plan' => $currentPlan,
+                'plans' => $plans
+            ];
+            return self::SUCCESS_RESPONSE('Planes para usuario',$dataset);
         }
         catch(Exception $e){
             return self::SERVER_ERROR_RESPONSE($e);
