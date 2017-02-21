@@ -91,6 +91,7 @@ class parentSuscriptionController extends BaseController{
                                 ->get();
             $plans = Plan
                     ::where('visible','=',1)
+                        ->where('id','!=',$currentPlan[0]->id)
                         ->get();
             $dataset = [
                 'current_plan' => $currentPlan,
@@ -99,6 +100,9 @@ class parentSuscriptionController extends BaseController{
             return self::SUCCESS_RESPONSE('Planes para usuario',$dataset);
         }
         catch(Exception $e){
+            return self::SERVER_ERROR_RESPONSE($e->getMessage());
+        }
+        catch(MySqlException $e){
             return self::SERVER_ERROR_RESPONSE($e);
         }
     }
