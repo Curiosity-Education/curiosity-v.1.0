@@ -72,5 +72,27 @@ var parentGlobalController = {
         parent.data('action',data.action);
         parent.children('span').eq(0).removeClass(data.before);
         parent.children('span').eq(0).addClass(data.after);
-    }
+    },
+    changePlan : function(ref){
+      Curiosity.windowMessageClose();
+      Curiosity.toastLoading.show();
+      CORM.any({reference:ref}, Curiosity.methodSend.POST, function(response){
+         switch(response.status){
+             case 200:
+                     window.location.reload();
+                     Curiosity.noty.success(response.message,"Bien hecho.");
+                 break;
+             case 500:
+                     Curiosity.toastLoading.hide();
+                     console.log(response);
+                     Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Comuniquese con el administrador","Error");
+                 break;
+             default:
+                 Curiosity.toastLoading.hide();
+                 console.log(response);
+                 Curiosity.noty.error("Ha ocurrido un error al procesar su solicitud. Comuniquese con el administrador","Error");
+                 break;
+         }
+      }, '/parent/plan','change');
+   }
 };
