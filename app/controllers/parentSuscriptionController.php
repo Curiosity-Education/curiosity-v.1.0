@@ -140,6 +140,16 @@ class parentSuscriptionController extends BaseController{
              $subscription = $customer->subscription;
              $plan = $data["reference"];
              $customerUpd = $subscription->update( array( 'plan_id'  => $plan ) );
+             $currentPlan = Membership::where('membresias.padre_id','=',Auth::user()->Person->Dad->id)
+             ->join('membresias_planes','membresia_id','=','membresias.id')
+             ->join('planes','planes.id','=','plan_id')
+             ->select('planes.*')
+             ->first();
+             $myMembership = Membership::where("padre_id", "=", $idDad)->first();
+             $myPlan = MembershipPlan::where("membresia_id", "=", $myMembership->id)->first();
+             $plan = Plan::where("reference", "=", $data["reference"])->first();
+             $myPlan->plan_id = $plan->id;
+             $myPlan->save();
              return self::SUCCESS_RESPONSE("Plan cambiado con éxito.", json_decode($customerUpd));
         }
         catch(Conekta_Error $con_err){
