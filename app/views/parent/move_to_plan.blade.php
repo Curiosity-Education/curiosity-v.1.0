@@ -27,7 +27,11 @@
                <div class='z-depth-1'>
                   <div class='mvp-titplan mvp-titplan-current'>
                      <h6 class='z-depth-1'>{{$plan->name}}</h6>
+                     @if($plan->limit > 1)
+                     <span class='fa fa-group z-depth-1'></span>
+                     @else
                      <span class='fa fa-user z-depth-1'></span>
+                     @endif
                      <h5>${{number_format($plan->amount, 2)}} {{$plan->currency}}</h5>
                   </div>
                   <div class='mvp-desc'>
@@ -41,10 +45,6 @@
                            <span class='fa fa-caret-right'></span>&nbsp;
                            Equivalente a ${{ number_format($plan->amount / 12, 2) }} / Mes
                         </li>
-                        <li>
-                           <span class='fa fa-caret-right'></span>&nbsp;
-                           Ahorra un total de $50.00
-                        </li>
                         @endif
                         <li>
                            <span class='fa fa-caret-right'></span>&nbsp;
@@ -53,6 +53,8 @@
                      </ul>
                      @if($plan->interval == "month")
                      <br><br>
+                     @else
+                     <br>
                      @endif
                      <center><button type='button' class='btn btn-rounded mvp-btnSelect-current'>
                         En Uso
@@ -66,7 +68,11 @@
                <div class='z-depth-1'>
                   <div class='mvp-titplan'>
                      <h6 class='z-depth-1'>{{$plan->name}}</h6>
+                     @if($plan->limit > 1)
+                     <span class='fa fa-group z-depth-1'></span>
+                     @else
                      <span class='fa fa-user z-depth-1'></span>
+                     @endif
                      <h5>${{number_format($plan->amount, 2)}} {{$plan->currency}}</h5>
                   </div>
                   <div class='mvp-desc'>
