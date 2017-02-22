@@ -25,7 +25,7 @@ var $juego = {
             //hide data zone game and show game
             $("#gst-row-game").show("fast");
             $("#gst-row-information-game").hide("slow");
-            document.querySelector("iframe[name='iframe_juego']").setAttribute("src","/packages/assets/iframes/games/"+document.querySelector("iframe[name='iframe_juego']").getAttribute("data-folder")+"/index.html");
+            document.querySelector("iframe[name='iframe_juego']").setAttribute("src","/packages/assets/iframes/games/"+document.querySelector("iframe[name='iframe_juego']").getAttribute("data-folder")+"/index.html?{{rand();}}");
           }
         },
         start:function(duracion,inverso){
