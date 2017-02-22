@@ -24,3 +24,4 @@ class Block extends CORM {
       super.any(data,method,success,'/blocks',pathRoute);
    }
 }
+ 

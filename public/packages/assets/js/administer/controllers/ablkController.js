@@ -4,7 +4,7 @@ var ablkController = {
    formulary : $("#ablk-form"),
    inputName : $("#ablk_name"),
    id : null,
-
+ 
    setTypeOfSave : function(type){
       this.typeOfSave = type;
    },

@@ -1,7 +1,7 @@
 <!-- Prefix 'ablk' -->
 
 @extends('templates.administer-menu')
-
+ 
 @section('css-plus')
 @stop
 

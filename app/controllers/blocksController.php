@@ -12,7 +12,7 @@ class blocksController extends BaseController{
 		->where("inteligencia_id", "=", $data['id'])
 		->get();
 		return $blocks;
-	}
+	} 
 
 	function getWithActivities(){
 		$blocks = Activity::join('temas', 'actividades.tema_id', '=', 'temas.id')

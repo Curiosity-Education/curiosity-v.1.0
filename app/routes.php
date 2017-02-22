@@ -53,6 +53,10 @@ Route::get('library-videos', function(){
 	return View::make('child.library_videos');
 });
 
+Route::get('admin-avatar', function(){
+	return View::make('administer.admin-avatar');
+});
+
 
 
 
@@ -383,6 +387,8 @@ Route::group(array('prefix' =>  'video'),function(){
 Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('all', 'avatarController@all');
 	Route::post('getForChild', 'avatarController@getForChild');
+	Route::post('save','avatarController@save');
+	Route::post('allStylesAvatars', 'avatarController@allStylesAvatars');
 });
 
 /*

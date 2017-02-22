@@ -1,7 +1,7 @@
 $(function(){
 
    $(".ablk-btnConf").click(function(){ $("#ablk-modal").modal("show"); });
-
+ 
    ablkController.getLevels();
 
    $("#ablk_lvlSel").on("change", function(){
