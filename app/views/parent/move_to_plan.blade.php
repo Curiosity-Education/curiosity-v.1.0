@@ -45,10 +45,6 @@
                            <span class='fa fa-caret-right'></span>&nbsp;
                            Equivalente a ${{ number_format($plan->amount / 12, 2) }} / Mes
                         </li>
-                        <li>
-                           <span class='fa fa-caret-right'></span>&nbsp;
-                           Ahorra un total de $50.00
-                        </li>
                         @endif
                         <li>
                            <span class='fa fa-caret-right'></span>&nbsp;
@@ -57,6 +53,8 @@
                      </ul>
                      @if($plan->interval == "month")
                      <br><br>
+                     @else
+                     <br>
                      @endif
                      <center><button type='button' class='btn btn-rounded mvp-btnSelect-current'>
                         En Uso
