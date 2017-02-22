@@ -24,7 +24,10 @@ class loginController extends BaseController{
             $user->save();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
-               $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
+               $son = Son::where("persona_id", "=", $person["id"])->first();
+               $idSon = $son["id"];
+               $idDad = $son['padre_id'];
+               $membership = Membership::where('padre_id','=',$idDad)->first();
                $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
                if($membershipPlan->active == 1){
                   $date = Carbon::now();
@@ -41,6 +44,10 @@ class loginController extends BaseController{
                      ));
                   }
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
+               }
+               elseif($membership->active == 3){
+                   Auth::logout();
+                   return Response::json(array("status" => "CU-108", 'statusMessage' => "Paused Membership", "data" => "/"));
                }
                else{
                   Auth::logout();

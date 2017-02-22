@@ -399,6 +399,9 @@ Route::group(array('prefix' => 'parent'),function(){
        Route::post('resume','parentSuscriptionController@resume');
        Route::post('cancel','parentSuscriptionController@cancel');
        Route::post('status','parentSuscriptionController@status');
+       Route::group(array('prefix' => 'plan'),function(){
+            Route::post('all','parentSuscriptionController@getUserSuscriptionPlan');
+       });
    });
 });
 

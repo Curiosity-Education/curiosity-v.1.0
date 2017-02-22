@@ -21,7 +21,7 @@ class parentSuscriptionController extends BaseController{
         return json_decode($data);
     }
 
-    public static function enabledMembership($active){
+    private static function enabledMembership($active){
         $idDad = Auth::user()->Person->Dad->id;
         Membership::where("padre_id", "=", $idDad)->update(array('active' => $active));
     }
@@ -42,7 +42,7 @@ class parentSuscriptionController extends BaseController{
     public static function pause(){
         try{
             self::get()->pause();
-            self::enabledMembership(0);
+            self::enabledMembership(3);
             membershipsPlansController::activeMembershipToChildren(self::getObj()->customer_id, 0);
             return self::SUCCESS_RESPONSE("Suscripción pausada con éxito.",null);
         }
@@ -79,6 +79,31 @@ class parentSuscriptionController extends BaseController{
             return self::ERROR_CONEKTA_RESPONSE($con_err);
         }
         catch(Exception $e){
+            return self::SERVER_ERROR_RESPONSE($e);
+        }
+    }
+    public static function getUserSuscriptionPlan(){
+        try{
+            $currentPlan = Membership
+                            ::where('membresias.padre_id','=',Auth::user()->Person->Dad->id)
+                                ->join('membresias_planes','membresia_id','=','membresias.id')
+                                ->join('planes','planes.id','=','plan_id')
+                                ->select('planes.*')
+                                ->get();
+            $plans = Plan
+                    ::where('visible','=',1)
+                        ->where('id','!=',$currentPlan[0]->id)
+                        ->get();
+            $dataset = [
+                'current_plan' => $currentPlan,
+                'plans' => $plans
+            ];
+            return self::SUCCESS_RESPONSE('Planes para usuario',$dataset);
+        }
+        catch(Exception $e){
+            return self::SERVER_ERROR_RESPONSE($e->getMessage());
+        }
+        catch(MySqlException $e){
             return self::SERVER_ERROR_RESPONSE($e);
         }
     }
