@@ -18,7 +18,9 @@ class avatarController extends BaseController
       return $avatars;
    }
 
-
+    public function view(){
+        return View::make('child.selectAvatar');
+    }
 
 }
 
