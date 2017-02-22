@@ -27,7 +27,11 @@
                <div class='z-depth-1'>
                   <div class='mvp-titplan mvp-titplan-current'>
                      <h6 class='z-depth-1'>{{$plan->name}}</h6>
+                     @if($plan->limit > 1)
+                     <span class='fa fa-group z-depth-1'></span>
+                     @else
                      <span class='fa fa-user z-depth-1'></span>
+                     @endif
                      <h5>${{number_format($plan->amount, 2)}} {{$plan->currency}}</h5>
                   </div>
                   <div class='mvp-desc'>
@@ -66,7 +70,11 @@
                <div class='z-depth-1'>
                   <div class='mvp-titplan'>
                      <h6 class='z-depth-1'>{{$plan->name}}</h6>
+                     @if($plan->limit > 1)
+                     <span class='fa fa-group z-depth-1'></span>
+                     @else
                      <span class='fa fa-user z-depth-1'></span>
+                     @endif
                      <h5>${{number_format($plan->amount, 2)}} {{$plan->currency}}</h5>
                   </div>
                   <div class='mvp-desc'>
