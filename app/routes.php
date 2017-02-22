@@ -17,6 +17,8 @@ Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
 Route::get('/cambio', 'membershipsPlansController@activeMembershipToChildren');
 
+Route::get('/selectavatar', 'avatarController@view');
+
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
 });
