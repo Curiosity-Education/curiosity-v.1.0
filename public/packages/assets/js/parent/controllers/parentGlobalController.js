@@ -27,6 +27,7 @@ var parentGlobalController = {
                                 before:'fa-pause',
                                 after:'fa-play'
                             });
+                            Curiosity.windowMessageClose();
                             Curiosity.noty.success(response.message,"Bien hecho.");
                         break;
                     case 500:
@@ -52,6 +53,7 @@ var parentGlobalController = {
                                 before:'fa-play',
                                 after:'fa-pause'
                             });
+                            Curiosity.windowMessageClose();
                             Curiosity.noty.success(response.message,"Bien hecho.");
                         break;
                     case 500:
