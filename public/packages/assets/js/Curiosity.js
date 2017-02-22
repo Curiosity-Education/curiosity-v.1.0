@@ -246,6 +246,10 @@ var Curiosity = {
       $("body").find("#cu-titmsj").html(title);
       $("body").find("#cu-msj").html(msjHtml);
       $("body").find("#cu-windmssj").modal("show");
+   },
+
+   windowMessageClose : function(){
+      $("body").find('#cu-windmssj').modal("hide");
    }
 
 }
