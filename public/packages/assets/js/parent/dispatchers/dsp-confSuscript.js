@@ -13,7 +13,7 @@ $(function(){
    "</div>";
 
    var message2 = "<p>"+
-      "Estas a punto de renaudar<br><br>"+
+      "<b>Estas a punto de reactivar tu suscripción a Curiosity Educación.</b><br>Una vez que presiones en el botón de CONTINUAR tu suscripción a Curiosity se reactivará y el cobro a tu tarjeta se realizará en la fecha establecida, por lo cual todas las cuentas para tus hijos contarán nuevamente con acceso a la plataforma."+
    "</p>"+
    "<div class='text-right'>"+
       "<br><br>"+
