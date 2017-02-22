@@ -147,7 +147,8 @@ class parentSuscriptionController extends BaseController{
              ->first();
              $myMembership = Membership::where("padre_id", "=", $idDad)->first();
              $myPlan = MembershipPlan::where("membresia_id", "=", $myMembership->id)->first();
-             $myPlan->plan_id = $data["reference"];
+             $plan = Plan::where("reference", "=", $data["reference"])->first();
+             $myPlan->plan_id = $plan->id;
              $myPlan->save();
              return self::SUCCESS_RESPONSE("Plan cambiado con éxito.", json_decode($customerUpd));
         }
