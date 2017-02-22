@@ -4,7 +4,7 @@ $(function(){
 
    var title = "Pausar Suscripción";
    var message1 = "<p>"+
-      "Estas a punto de pausar<br><br>"+
+      "<b>Estas a punto de pausar tu suscripción a Curiosity Educación.</b><br>Una vez que presiones en el botón de CONTINUAR tu suscripción a Curiosity se pausará y el cobro a tu tarjeta no será realizado, por lo cual todas las cuentas para tus hijos no contarán con acceso a la plataforma.<br><br>Puedes reactivar tu suscripción solo iniciando sesión y dentro de esta misma sección dar clic en el botón de Reactivar.<br><br><b>Nota: </b>Al reactivar tu suscripción las cuentas de tus hijos se reactivarán automáticamente."+
    "</p>"+
    "<div class='text-right'>"+
       "<br><br>"+
