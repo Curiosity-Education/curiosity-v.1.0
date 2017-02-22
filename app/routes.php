@@ -15,7 +15,7 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/cambio', 'membershipsPlansController@activeMembershipToChildren');
+Route::get('/cambio', 'parentSuscriptionController@infoClient');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -399,10 +399,11 @@ Route::group(array('prefix' => 'parent'),function(){
        Route::post('resume','parentSuscriptionController@resume');
        Route::post('cancel','parentSuscriptionController@cancel');
        Route::post('status','parentSuscriptionController@status');
-       Route::group(array('prefix' => 'plan'),function(){
-            Route::post('all','parentSuscriptionController@getUserSuscriptionPlan');
-       });
    });
+
+	Route::group(array('prefix' => 'plan'),function(){
+		  Route::post('change','parentSuscriptionController@changePlan');
+	});
 });
 
 
