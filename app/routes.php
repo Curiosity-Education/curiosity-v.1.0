@@ -39,6 +39,10 @@ Route::get('registry', function(){
 	return View::make('parent.registry');
 });
 
+Route::get('admin-avatar', function(){
+	return View::make('administer.admin-avatar');
+});
+
 Route::get('registry-firstchild', function(){
 	return View::make('parent.registry_firstchild');
 });
@@ -328,6 +332,8 @@ Route::group(array('prefix' =>  'video'),function(){
 Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('all', 'avatarController@all');
 	Route::post('getForChild', 'avatarController@getForChild');
+	Route::post('save','avatarController@save');
+	Route::post('allStylesAvatars', 'avatarController@allStylesAvatars');
 });
 
 /*
