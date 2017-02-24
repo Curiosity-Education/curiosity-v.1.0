@@ -1,0 +1,89 @@
+// Import of the archive global of variables
+@import "../../_standardVariables.sass"
+@import "../../_mixins.sass"
+
+#row-banner
+   display: none
+
+#mvp-info
+   background-color: $color-white
+   margin-top: 1rem
+   border-radius: $border-rad
+   padding: 1rem
+
+#mvp-plans
+   @extend #mvp-info
+   margin-top: 0
+   margin-bottom: 2rem
+
+.mvp-titplan
+   text-align: center
+   background-color: $color-secondary
+   color: #fff
+   padding: 1rem
+   border-top-left-radius: $border-rad
+   border-top-right-radius: $border-rad
+   margin-top: 1.5rem
+   h6
+      background-color: $color-purple
+      border-radius: $border-rad
+      font-size: 1rem
+      margin-top: -1.5rem
+      padding: .7rem
+   span
+      font-size: 3rem
+      border: solid .2rem #fff
+      padding: 1rem
+      border-radius: 50%
+      width: 6rem
+      height: 6rem
+      margin-bottom: 1rem
+      margin-top: 1rem
+   h5
+      font-weight: bold
+
+.mvp-titplan-current
+   background-color: $color-pink-light !important
+   h6
+      background-color: $color-pink !important
+
+.mvp-desc
+   padding: 1rem
+   border-bottom-left-radius: $border-rad
+   border-bottom-right-radius: $border-rad
+   min-height: 13rem
+   max-height: 13rem
+   ul
+      li
+         font-size: .9rem
+         text-align: left
+
+.mvp-btnSelect
+   background-color: transparent !important
+   border: solid .2rem $color-purple
+   color: $color-purple !important
+
+.mvp-btnSelect-current
+   background-color: transparent !important
+   border: solid .2rem $color-pink
+   color: $color-pink !important
+   cursor: default
+   padding-left: 3.2rem
+   padding-right: 3.2rem
+
+#mvp-desc1
+   h4
+      font-size: 1.2rem
+      font-weight: bold
+      color: $color-gray-dark
+
+.mvp-label
+   font-weight: bold
+   color: #757575
+
+.mvp-btnpause
+   background-color: transparent !important
+   border: solid .2rem $color-info-dark
+   color: $color-info-dark !important
+   margin-top: 1.5rem
+   margin-bottom: 1.5rem

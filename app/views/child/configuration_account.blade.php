@@ -9,15 +9,10 @@
 
 		<div class="row">
 			<!-- Banner -->
-			<div class="view hm-black-strong z-depth-1 col-xs-12" id="lp-banner">
+			<div class="view hm-black-light z-depth-1 col-xs-12" id="lp-banner" style="background-image:url({{accesoriesController::getChildBanner()['ruta']}}{{accesoriesController::getChildBanner()['archivo']}}?{{rand();}});">
 			  <div class="mask flex-center">
 				 <h4 class="h4-responsive white-text text-xs-center"><i class="fa fa-cogs"></i>&nbsp; Configuración de Mi cuenta</h4>
 			  </div>
-			</div>
-
-			<!-- Message for smartphone landscape -->
-			<div class="col-md-12 z-depth-1" id="ca-text-info">
-				<h1 class="text-xs-center h1-responsive">Para mejor interacción gira tu dispositivo en forma vertical</h1>
 			</div>
 
 			<!-- Card configuration of data -->

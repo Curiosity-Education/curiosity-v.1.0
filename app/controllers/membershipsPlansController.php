@@ -1,16 +1,16 @@
 <?php
-class membershipsPlans extends BaseController{
-	function get(){
+class membershipsPlansController extends BaseController{
 
-	}
-	function save(){
 
+	public static function activeMembershipToChildren($idCustomer, $active){
+		$membership = Membership::where("token_card", "=", $idCustomer)->first();
+		$memp = MembershipPlan::where("membresia_id", "=", $membership->id)->get();
+		foreach ($memp as $key => $value) {
+			$value->active = $active;
+			$value->save();
+		}
 	}
-	function update(){
 
-	}
-	function delete(){
 
-	}
 }
 ?>

@@ -87,6 +87,9 @@ App::missing(function($exception){
     return Response::view('errors.404', array(), 404);
 });
 
+App::missing(function($exception){
+    return Response::view('errors.503', array(), 503);
+});
 
 //---Estea linea solo es en produccion por la estructura del servidor
 // App::bind('path.public', function() {

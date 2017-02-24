@@ -13,6 +13,12 @@
 
 Route::get('/', 'landingController@landingpage');
 
+Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
+
+Route::get('/cambio', 'parentSuscriptionController@infoClient');
+
+Route::get('/selectavatar', 'avatarController@view');
+
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
 });
@@ -31,6 +37,10 @@ Route::get('mentores', function(){
 
 Route::get('registry', function(){
 	return View::make('parent.registry');
+});
+
+Route::get('admin-avatar', function(){
+	return View::make('administer.admin-avatar');
 });
 
 Route::get('registry-firstchild', function(){
@@ -322,6 +332,8 @@ Route::group(array('prefix' =>  'video'),function(){
 Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('all', 'avatarController@all');
 	Route::post('getForChild', 'avatarController@getForChild');
+	Route::post('save','avatarController@save');
+	Route::post('allStylesAvatars', 'avatarController@allStylesAvatars');
 });
 
 /*
@@ -396,6 +408,10 @@ Route::group(array('prefix' => 'parent'),function(){
        Route::post('cancel','parentSuscriptionController@cancel');
        Route::post('status','parentSuscriptionController@status');
    });
+
+	Route::group(array('prefix' => 'plan'),function(){
+		  Route::post('change','parentSuscriptionController@changePlan');
+	});
 });
 
 
