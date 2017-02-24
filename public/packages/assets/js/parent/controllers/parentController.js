@@ -378,7 +378,7 @@ var parentController = {
        getPlan:function(id){
            CORM.any({id:id},Curiosity.methodSend.POST,function(response){
                if(response != null && response != '')
-                    $("#pay-button").text("Pagar plan "+response.name);
+                  //   $("#pay-button").text("Pagar plan "+response.name);
                     return response;
            },'/plans','get');
        },
@@ -505,6 +505,21 @@ var parentController = {
                 exist = 1;
             }
             return exist;
+        },
+
+        verifyCode : function(code){
+           var cancelbtn = $("body").find('#sctn-cancelcode');
+           var varifybtn = $("body").find('#sctn-btnVerif');
+           var inputcode = $("body").find('#sctn-codeval');
+           var bodyAlert = $("body").find('#sctn-noty');
+           var charging = "<span class='fa fa-spinner fa-pulse fa-fw'></span>";
+           cancelbtn.prop('disabled', true);
+           inputcode.prop('disabled', true);
+           varifybtn.removeClass('sctn-btnVerif');
+           varifybtn.css('cursor', 'no-drop');
+           varifybtn.html(charging);
+           var noty = "<div class='alert alert-danger alert-dismissable fade in sctn-alert'><a href='javascript:void(0)' class='close' data-dismiss='alert'aria-label='close'>&times;</a><h5>Código Invalido</h5>El código que has ingresado es inválido.<br>Verifica que los datos ingresados sean correctos.</div>";
+           bodyAlert.html(noty);
         }
 
 }

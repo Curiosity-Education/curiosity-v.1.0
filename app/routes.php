@@ -15,7 +15,9 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/cambio', 'parentSuscriptionController@infoClient');
+Route::get('/codigo', function(){
+	return View::make('parent.pay-suscription');
+});
 
 Route::get('/selectavatar', 'avatarController@view');
 

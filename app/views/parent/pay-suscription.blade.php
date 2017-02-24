@@ -66,7 +66,13 @@
                             </div>
                         </div>
                         <div class="sctn-row container">
-                                <button type="bitton" class="btn btn-rounded pull-right" id="pay-button">Pagar</button>
+									<button type="button" class="btn btn-rounded pull-right" id="pay-button">
+										Continuar&nbsp;
+										<span class="fa fa-chevron-circle-right"></span>
+									</button>
+									<button type="button" class="btn btn-rounded btn-outline-primary pull-right" id="sctn-code">
+										Canjear
+									</button>
                         </div>
                     </div>
                     </form>
@@ -75,7 +81,6 @@
          </div>
       </div>
 
-    </div>
     <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
