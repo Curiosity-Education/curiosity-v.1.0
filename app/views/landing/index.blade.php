@@ -290,18 +290,15 @@
 							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
 						</div>
 						<!--/.Controls-->
-						<?php $slide=0; $status="active"; $contador=0; $long = count($escuelas);?>
-						@foreach($escuelas as $escuela)
-							<?php $contador++; ?>
-							@if($contador == 3 || $contador == $long)
-							<!--Indicators-->
-								@if($slide == 0)
-									<ol class="carousel-indicators">
-								@endif
-								<li data-target="#multi-item-example2" data-slide-to="{{$slide}}" class="{{$status}}" style="background-color:#65499d;"></li>
-								<?php $status = ""; $slide++; $contador =0;?>
-							@endif
-						@endforeach
+						<?php $slide=0; $status="active"; $contador=0; $long = count($escuelas); $nPages = ceil($long/3);?>
+						<ol class="carousel-indicators">
+							@for($i=0;$i<$nPages;$i++)
+	                            @if($i==0)
+	                                <li data-target="#multi-item-example2" data-slide-to="{{$i}}" class="active" style="background-color:#65499d;"></li>
+	                            @else
+	                                <li data-target="#multi-item-example2" data-slide-to="{{$i}}" style="background-color:#65499d;"></li>
+	                            @endif
+	                        @endfor
 						</ol>
 						<!--/.Indicators-->
 
