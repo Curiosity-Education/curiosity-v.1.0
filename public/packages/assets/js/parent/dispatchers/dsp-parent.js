@@ -108,7 +108,7 @@ $(function(){
 
     $("#sctn-code").click(function() {
        var title = "Ingresa tu código";
-       var message = "<div id='sctn-bodycode'><div class='form-group'><div class='input-group'><input type='text' class='form-control' id='sctn-codeval'><span class='input-group-addon waves-effect sctn-btnVerif' id='sctn-btnVerif'> Verificar </span></div></div></div><div id='sctn-noty'></div><button type='button' class='btn btn-rounded btn-outline-primary' id='sctn-cancelcode'>Cancelar</button>";
+       var message = "<div id='sctn-bodycode'><div class='form-group'><div class='input-group'><input type='text' class='form-control' id='sctn-codeval'><span class='input-group-addon waves-effect sctn-btnVerif' id='sctn-btnVerif'> Verificar </span></div></div></div><div id='sctn-noty'></div><button type='button' class='btn btn-rounded' id='sctn-cancelcode'>Cancelar</button>";
        var icon = "none";
        Curiosity.windowMessage(title, message, icon);
     });
