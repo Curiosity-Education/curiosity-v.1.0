@@ -390,6 +390,7 @@ Route::group(array('prefix' =>  'employee'),function(){
 */
 Route::group(array('prefix' =>  'salerCode'),function(){
 	Route::post('all', 'salersCodeController@all');
+	Route::post('match', 'salersCodeController@verifyCodeMatch');
 });
 
 /*

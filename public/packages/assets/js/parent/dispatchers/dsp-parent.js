@@ -115,7 +115,7 @@ $(function(){
 
     $("body").on('click', '.sctn-btnVerif', function() {
       var codevalue = $("body").find('#sctn-codeval').val();
-      if (codevalue != ""){ parentController.verifyCode(); }
+      if (codevalue != ""){ parentController.verifyCode(codevalue); }
     });
 
     $("body").on('click', '#sctn-cancelcode', function() {
