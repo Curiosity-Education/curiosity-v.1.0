@@ -29,12 +29,12 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="">
        <div class="col-md-8">
 
 			<!-- Contentainer -->
 			<div class="col-md-12 z-depth-1" id="sela-container">
-				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste !</h3>
+				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste ! <i class="fa fa-hand-pointer-o"></i></h3>
 				<hr>
 				<div class="row">
 					<div class="col-md-6">
@@ -52,11 +52,13 @@
 				</div>
 			</div>
        </div>
-       <div class="col-md-4 z-depth-1" id="sela-style">
+  		<div class="col-md-4 z-depth-1" id="sela-style">
        		<div class="container">
-
+				<h4 class="h4-responsive text-xs-center">
+					Estilos de [Avantar]
+				</h4><hr>
        		</div>
-       </div>
+    	</div>
     </div>
 </div>
 
