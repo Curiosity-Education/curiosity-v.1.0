@@ -5,7 +5,7 @@ class parentSuscriptionController extends BaseController{
     public static function get(){
         $idDad = Auth::user()->Person->Dad->id;
         $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
-        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+        Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
         $customer = Conekta_Customer::find($tokenCard);
         $subscription = $customer->subscription;
         return $subscription;
@@ -14,7 +14,7 @@ class parentSuscriptionController extends BaseController{
     public static function getObj(){
         $idDad = Auth::user()->Person->Dad->id;
         $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
-        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+        Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
         $customer = Conekta_Customer::find($tokenCard);
         $subscription = $customer->subscription;
         $data = "$subscription";
@@ -121,7 +121,7 @@ class parentSuscriptionController extends BaseController{
     public static function infoClient(){
         $idDad = Auth::user()->Person->Dad->id;
         $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
-        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+        Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
         $customer = Conekta_Customer::find($tokenCard);
         $plans = self::getUserSuscriptionPlan();
         return [
@@ -135,7 +135,7 @@ class parentSuscriptionController extends BaseController{
              $data = Input::all();
              $idDad = Auth::user()->Person->Dad->id;
              $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
-             Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+             Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
              $customer = Conekta_Customer::find($tokenCard);
              $subscription = $customer->subscription;
              $plan = $data["reference"];
