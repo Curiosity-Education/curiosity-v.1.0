@@ -446,11 +446,12 @@ class loginController extends BaseController{
       $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
       $lengthCadena=strlen($cadena);
       $folio = "";
-      $lengthFolio=10;
+      $lengthFolio=7;
       for($i=1 ; $i<=$longitudFolio ; $i++){
         $pos=rand(0,$longitudCadena-1);
         $folio .= substr($cadena,$pos,1);
       }
+        $folio .= Carbon::now()->toDateString();
       return $folio;
   }
 
