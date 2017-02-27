@@ -34,34 +34,51 @@
 
 			<!-- Contentainer -->
 			<div class="col-md-12 z-depth-1" id="sela-container">
-				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste ! <i class="fa fa-hand-pointer-o"></i></h3>
+				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste ! &nbsp;<i class="fa fa-hand-pointer-o" style="color:red;"></i></h3>
 				<hr>
 				<div class="row">
-					<div class="col-md-6">
-						<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
-						<div id="sal-divTot" class="sal-divAvatar">
+					<a href="#">
+						<div class="col-md-6">
+							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
+							<div id="sal-divTot" class="sal-divAvatar">
 
+							</div>
 						</div>
-					</div>
-					<div class="col-md-6">
-						<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
-						<div id="sal-divTot" class="sal-divAvatar">
+					</a>
+					<a href="#">
+						<div class="col-md-6">
+							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
+							<div id="sal-divTot" class="sal-divAvatar">
 
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
        </div>
   		<div class="col-md-4 z-depth-1" id="sela-style">
        		<div class="container">
 				<h4 class="h4-responsive text-xs-center">
-					Estilos de [Avantar]
+					Estilos de [Avantar] &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
 				</h4><hr>
+
+      			<div id="sela-styles">
+
+      			</div>
+      			<hr>
+      			<center><a class="btn btn-avatarsel btn-rounded">Seleccionar</a></center>
        		</div>
     	</div>
     </div>
 </div>
 
+	<script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
+    <script src="/packages/libs/mdb/js/tether.min.js"></script>
+    <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
+    <script src="/packages/libs/mdb/js/mdb.min.js"></script>
 
+    <script src="/packages/assets/js/child/models/selectAvatar.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/controllers/selectAvatarCtrl.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/dispatchers/dsp-selectAvatar.js?{{rand();}}" charset="utf-8"></script>
 </body>
 </html>
