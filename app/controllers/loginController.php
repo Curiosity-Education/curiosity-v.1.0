@@ -21,6 +21,9 @@ class loginController extends BaseController{
          if(Auth::attempt($auth)){
             $user = Auth::user();
             if ($user->flag == 0){ $user->flag = 1;}
+            $idSession = $this->generateidSession();
+            User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
+            Session::put('sessionId',$idSession);
             $user->save();
             if (Auth::user()->hasRole('child')){
                $person = Person::where("user_id", "=", $user["id"])->first();
