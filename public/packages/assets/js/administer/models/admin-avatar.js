@@ -10,10 +10,21 @@ class avatar extends CORM {
     super.save(this.avatar,method,success);
   }
 
-  delete()
+  update(id,method,success){
+    this.avatar.append('id', id);
+    super.update(this.avatar,method,success);
+  }
+
+  static delete(id,method,success){
+    super.delete({id:id},method,success,'avatar');
+  }
 
   static getAvatars(success){
     super.any(null,"POST",success,"/avatar","allStylesAvatars");
   }
+
+  // static addAvatarSprite(data,method,success,pathRoute){
+  //   super.any({data:data},method,success,'/avatar',pathRoute);
+  // }
 
 }

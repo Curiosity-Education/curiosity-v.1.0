@@ -82,14 +82,53 @@ class avatarController extends BaseController
 
   function delete(){
 		$id = Input::all();
-		$new = AvatarStyle::where("hijo_id", "=", $id) ->first();
-		$new->active = 0;
-		$new->save();
-    $new = Avatar::where("hijo_id", "=", $id) ->first();
-		$new->active = 0;
-		$new->save();
+		$avatStyle = AvatarStyle::where("avatar_id", "=", $id)->first();
+		$avatStyle->active = 0;
+		$avatStyle->save();
+    $avat = Avatar::where("id", "=", $id)->first();
+		$avat->active = 0;
+		$avat->save();
 
 	}
+
+  function update(){
+    $data = Input::all();
+ 		$rules = array(
+ 			'nombre' => 'required',
+ 			'historia' => 'required',
+      'costo' => 'required',
+ 			'adAv-img' => 'required',
+      'id' => 'required'
+ 		);
+ 		$msjs = Curiosity::getValidationMessages();
+ 		$validation = Validator::make($data, $rules, $msjs);
+ 		if( $validation->fails()){
+ 			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+ 		}
+ 		else{
+
+      $file = $data['adAv-img'];
+      $id = $data["id"];
+      $avat = Avatar::where("id", "=", $id)->first();
+      $avat->nombre = $data['nombre'];
+      $avat->historia = $data['historia'];
+  		$avat->save();
+      $avatStyle = AvatarStyle::where("avatar_id", "=", $id)->first();
+      $avatStyle->costo = $data['costo'];
+  		$avatStyle->save();
+      $destinationPath = "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
+      $file->move($destinationPath, $avatarStyle->preview);
+
+			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
+
+ 		}
+  }
+
+  // function addAvatarSprite(){
+  //   $data = input::all();
+  //
+  // }
+
 }
 
 

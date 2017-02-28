@@ -3,7 +3,7 @@ $(function(){
   var tempSons, tempId;
 
   childRegistrationCrtrl.getSons(function(sons){
-    
+
     if (sons != null || sons != "") {
       sonsInfo(sons["sons"]);
       //Initializing carousel´s children
@@ -16,7 +16,7 @@ $(function(){
       | show and hide steps
       |
       */
-      $(".carousel a").last().trigger('click');
+      $(".carousel a").first().trigger('click');
     } else {
       $("#upch-contentInfo").hide();
       $(".carousel").append($(
