@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class parentsController extends BaseController{
 
 
@@ -132,12 +133,12 @@ class parentsController extends BaseController{
             * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
             *******************************************************/
             // llave en modo de produccion
-            Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-            Conekta::setLocale('es');
+            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+            \Conekta\Conekta::setLocale('es');
             try{
                 if($padreRole == "parent"){
                     $parent = Auth::user()->Person->Dad;
-                    $customer = Conekta_Customer::create(array(
+                    $customer = \Conekta\Customer::create(array(
                         "name" => Input::get('nombre'),
                         "email" => $parent->email,
                         "phone" => $parent->telefono,
@@ -155,6 +156,7 @@ class parentsController extends BaseController{
                             $membresia = new Membership(array(
                                 "token_card" => $customer->id,
                                 "fecha_registro" => Date('Y-m-d'),
+                                "payment_option" => 'card',
                                 "active"    => 1,
                                 "padre_id"  => Auth::user()->Person->Dad->id
                             ));
@@ -175,11 +177,92 @@ class parentsController extends BaseController{
                 else{
                     return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
                 }
-            }catch (Conekta_Error $e){
+            }catch (\Conekta\Error $e){
               return Response::json(["message"=>$e->message_to_purchaser]);
              //el cliente no pudo ser creado
             }
     }
+
+    public function createOrderMembership(){
+        try{
+            $parent = Auth::user()->Person->Dad;
+            $person = Person::where('id','=',$parent->persona_id)->get();
+            $plan = Plan::find(Input::get('plan_id'));
+            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+            $order = \Conekta\Order::create(
+              array(
+                "line_items" => array(
+                  array(
+                    "name" => "Membresía Curiosity",
+                    "unit_price" => 5800,
+                    "quantity" => 1
+                  )//first line_item
+                ), //line_items
+                "currency" => "MXN",
+                "customer_info" => array(
+                  "name" =>  $person->nombre.' '.$person->apellidos,
+                  "email" => $parent->email,
+                  "phone" => $parent->telefono
+                ), //customer_info
+                "shipping_contact" => array(
+                  "phone" => $parent->telefono,
+                  "receiver" => $parent->nombre.' '.$parent->apellidos,
+                  "address" => array(
+                    "street1" => "Calle 123 int 2 Col. Chida",
+                    "city" => "Cuahutemoc",
+                    "state" => "Ciudad de Mexico",
+                    "country" => "MX",
+                    "postal_code" => "06100",
+                    "residential" => true
+                  )//address
+                ), //shipping_contact
+                "charges" => array(
+                    array(
+                        "payment_method" => array(
+                                "type" => "oxxo_cash"
+                        )//payment_method
+                    ) //first charge
+                ) //charges
+              )//order
+            );
+            $membresia_plan = new MembershipPlan();
+            $current = Carbon::now();
+            $trialExpires = $current->addDays(30);
+            $membresia = new Membership(array(
+                "token_card" => $order->charges[0]->payment_method->reference,
+                "fecha_registro" => $current,
+                "fecha_corte" => $trialExpires,
+                "payment_option" => 'oxxo',
+                "active"    => 1,
+                "padre_id"  => Auth::user()->Person->Dad->id
+            ));
+            $membresia->save();
+            $dataSetCard = array(
+                'orderID' => $order->id,
+                'paymentMethod' => $order->charges[0]->payment_method->service_name,
+                'reference' => $order->charges[0]->payment_method->reference,
+                'amount' => $order->amount/100 . $order->currency,
+                'details' => $order->line_items[0]->quantity .
+                              " - ". $order->line_items[0]->name .
+                              " - $". $order->line_items[0]->unit_price/100
+            );
+            return Response::json(array('status'        => 200,
+                                            "statusMessage" => "Success",
+                                            "message"       => "Se ha generado la referencia para el pago.",
+                                            "data"      => $dataSetCard
+                                      ));
+        }
+        catch(\Conekta\Error $con_err){
+             return self::ERROR_CONEKTA_RESPONSE($con_err);
+        }
+        catch(MySqlException $e){
+            return self::SERVER_ERROR_RESPONSE($e);
+        }
+        catch(Exception $e){
+            return self::SERVER_ERROR_RESPONSE($e->getMessage());
+        }
+    }
+
     public function confirm($token){
         $user = User::where("token","=",$token)->first();
         if($user){
@@ -453,6 +536,13 @@ class parentsController extends BaseController{
          GROUP BY hjs.id"
       );
       return [ 'sons' => $sons ];
+    }
+
+    public static function ERROR_CONEKTA_RESPONSE($error){
+        return Response::json(array('statusMessage'  =>  "Conekta Error",'status' => 500,'message' => $error));
+    }
+    public static function SERVER_ERROR_RESPONSE($error){
+        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $error));
     }
 
 }
