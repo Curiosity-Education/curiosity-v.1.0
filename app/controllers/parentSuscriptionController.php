@@ -43,7 +43,7 @@ class parentSuscriptionController extends BaseController{
         try{
             self::get()->pause();
             self::enabledMembership(3);
-            membershipsPlansController::pauseMembershipToChildren(self::getObj()->customer_id);
+            membershipsPlansController::activeMembershipToChildren(self::getObj()->customer_id, 0);
             return self::SUCCESS_RESPONSE("Suscripción pausada con éxito.",null);
         }
         catch(\Conekta\Error $con_err){
@@ -58,6 +58,7 @@ class parentSuscriptionController extends BaseController{
         try{
             self::get()->resume();
             self::enabledMembership(1);
+            membershipsPlansController::activeMembershipToChildren(self::getObj()->customer_id, 1);
             return self::SUCCESS_RESPONSE("Suscripción reanudada con éxito.",self::get());
         }
         catch(\Conekta\Error $con_err){
@@ -90,14 +91,15 @@ class parentSuscriptionController extends BaseController{
                                 ->select('planes.*')
                                 ->get();
             $plans = Plan
-                    ::where('visible','=',1)
+                    ::where('visible','=', 1)
                         ->where('id','!=',$currentPlan[0]->id)
+                        ->where('active', "=", 1)
                         ->get();
             $dataset = [
                 'current_plan' => $currentPlan,
                 'plans' => $plans
             ];
-            return self::SUCCESS_RESPONSE('Planes para usuario',$dataset);
+            return $dataset;
         }
         catch(MySqlException $e){
             return self::SERVER_ERROR_RESPONSE($e);
@@ -119,20 +121,37 @@ class parentSuscriptionController extends BaseController{
     public static function infoClient(){
         $idDad = Auth::user()->Person->Dad->id;
         $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
+
         \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
         $customer = \Conekta\Customer::find($tokenCard);
-        return [ "client" => json_decode($customer) ];
+        $plans = self::getUserSuscriptionPlan();
+        return [
+           "client" => json_decode($customer),
+           "plansObj" => $plans
+        ];
+
     }
 
     public static function changePlan(){
         try{
+             $data = Input::all();
              $idDad = Auth::user()->Person->Dad->id;
              $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
              \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
              $customer = \Conekta\Customer::find($tokenCard);
              $subscription = $customer->subscription;
-             $plan = "mensual_individual";
+             $plan = $data["reference"];
              $customerUpd = $subscription->update( array( 'plan_id'  => $plan ) );
+             $currentPlan = Membership::where('membresias.padre_id','=',Auth::user()->Person->Dad->id)
+             ->join('membresias_planes','membresia_id','=','membresias.id')
+             ->join('planes','planes.id','=','plan_id')
+             ->select('planes.*')
+             ->first();
+             $myMembership = Membership::where("padre_id", "=", $idDad)->first();
+             $myPlan = MembershipPlan::where("membresia_id", "=", $myMembership->id)->first();
+             $plan = Plan::where("reference", "=", $data["reference"])->first();
+             $myPlan->plan_id = $plan->id;
+             $myPlan->save();
              return self::SUCCESS_RESPONSE("Plan cambiado con éxito.", json_decode($customerUpd));
         }
         catch(\Conekta\Error $con_err){
