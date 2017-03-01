@@ -10,25 +10,7 @@ $(function(){
 
 
   $.each(tempAvatars,function(i){
-    $("#adAv-avatars-container").append($(
-      "<div class='col-md-3 col-xs-12 col-sm-6 view adAv-preview'>" +
-       "<div class='card view overlay z-depth-1 hoverable'>" +
-          "<div class='card-block adAv-adjust'>" +
-            "<img src='/packages/assets/media/images/avatar/sprites/" + tempAvatars[i].folder + "/" + tempAvatars[i].preview + "' class='adAv-img'>" +
-            "<div class='mask flex-center'>" +
-              "<a class='btn-floating btn-large blue adAv-enter' data-id='" + tempAvatars[i].avatar_id + "'><i class='fa fa-cog'></i></a>" +
-              "<a class='btn-floating btn-large green adAv-upd' data-id='" + tempAvatars[i].avatar_id + "' data-toggle='modal' data-target='#modal-contact'>" +
-                  "<i class='fa fa-plus'></i>" +
-              "</a>" +
-              "<a class='btn-floating btn-large red adAv-delete' data-id='" + tempAvatars[i].avatar_id + "'><i class='fa fa-trash-o'></i></a>" +
-            "</div>" +
-           "</div>" +
-          "<div class='card-footer text-muted adAv-footer white-text'>" +
-           "<p class='adAv-name'>" + tempAvatars[i].nombre + "</p>" +
-          "</div>" +
-        "</div>" +
-      "</div>"
-    ));
+    cards("#adAv-avatars-container",tempAvatars[i].folder,tempAvatars[i].preview,tempAvatars[i].avatar_id,tempAvatars[i].nombre,"adAv-enter","adAv-upd","adAv-delete");
   });
   //save
   $("body").on('click', '#adAv-add-btn', function(){
@@ -44,15 +26,15 @@ $(function(){
     aAvaController.delete($(this).data("id"));
   });
 
-  // //update
-  // $("body").on('click', '.adAv-upd', function(){
-  //   modal(null,$(this).data("id"));
-  // });
-  //
-  // $("body").on('click', '.adAv-upd-btn', function(){
-  //   alert($(this).data("id"));
-  //   aAvaController.update($(this).data("id"));
-  // });
+  //update
+  $("body").on('click', '.adAv-upd', function(){
+    modal("adAv-upd-btn",$(this).data("id"));
+  });
+
+  $("body").on('click', '#adAv-upd-btn', function(){
+    alert($(this).data("id"));
+    // aAvaController.update($(this).data("id"));
+  });
 
   $("body").on('click','.adAv-enter',function(){
     $.each(tempAvatars, function(){
@@ -61,26 +43,20 @@ $(function(){
     var tempAvatarStyles = StorageDB.table.getByAttr("localAvatars","avatar_id",$(this).data('id'));
 
     $.each(tempAvatarStyles,function(i){
-      $("#adAv-avatarStyles-container").append($(
-        "<div class='col-md-3 col-xs-12 col-sm-6 view adAv-preview'>" +
-         "<div class='card view overlay z-depth-1 hoverable'>" +
-            "<div class='card-block adAv-adjust'>" +
-              "<img src='/packages/assets/media/images/avatar/sprites/" + tempAvatarStyles[i].folder + "/" + tempAvatarStyles[i].preview + "' class='adAv-img'>" +
-              "<div class='mask flex-center'>" +
-                "<a class='btn-floating btn-large blue adAv-enter' data-id='" + tempAvatarStyles[i].avatar_id + "'><i class='fa fa-cog'></i></a>" +
-                "<a class='btn-floating btn-large green adAv-upd' data-id='" + tempAvatarStyles[i].avatar_id + "' data-toggle='modal' data-target='#modal-contact'>" +
-                    "<i class='fa fa-plus'></i>" +
-                "</a>" +
-                "<a class='btn-floating btn-large red adAv-delete' data-id='" + tempAvatarStyles[i].avatar_id + "'><i class='fa fa-trash-o'></i></a>" +
-              "</div>" +
-            "</div>" +
-            "<div class='card-footer text-muted adAv-footer white-text'>" +
-             "<p class='adAv-name'>" + tempAvatarStyles[i].nombre + "</p>" +
-            "</div>" +
-          "</div>" +
-        "</div>"
-      ));
+      cards("#adAv-avatarStyles-container",tempAvatarStyles[i].folder,tempAvatarStyles[i].preview,tempAvatarStyles[i].avatar_id,tempAvatarStyles[i].nombre,"adAv-enterStyles","adAv-updStyles","adAv-deleteStyle");
     });
+  });
+  //enter a sprites
+  $("body").on('click','.adAv-enterStyles',function(){
+
+  });
+  //update style
+  $("body").on('click','.adAv-updStyles',function(){
+
+  });
+  //delete style
+  $("body").on('click','.adAv-deleteStyle',function(){
+
   });
 
   // addSprite
@@ -91,7 +67,34 @@ $(function(){
 
 });
 
-function modal(id,data){
+function cards(selector,folder,preview,id,name,btn1,btn2,btn3){
+  $(selector).append($(
+    "<div class='col-md-3 col-xs-12 col-sm-6 view adAv-preview'>" +
+     "<div class='card view overlay z-depth-1 hoverable'>" +
+        "<div class='card-block adAv-adjust'>" +
+          "<img src='/packages/assets/media/images/avatar/sprites/" + folder + "/" + preview + "' class='adAv-img'>" +
+          "<div class='mask flex-center'>" +
+            "<a class='btn-floating btn-large blue " + btn1 + "' data-id='" + id + "'><i class='fa fa-cog'></i></a>" +
+            "<a class='btn-floating btn-large green " + btn2 + "' data-id='" + id + "' data-toggle='modal' data-target='#modal-contact'>" +
+                "<i class='fa fa-plus'></i>" +
+            "</a>" +
+            "<a class='btn-floating btn-large red " + btn3 + "' data-id='" + id + "'><i class='fa fa-trash-o'></i></a>" +
+          "</div>" +
+        "</div>" +
+        "<div class='card-footer text-muted adAv-footer white-text'>" +
+         "<p class='adAv-name'>" + name + "</p>" +
+        "</div>" +
+      "</div>" +
+    "</div>"
+  ));
+}
+
+function modal($id,$data){
+  id = $id;
+  data = $data;
+  if ($("#adAv-modal").length > 0) {
+    $("#adAv-modal").empty();
+  }
   $("#adAv-modal").append($(
 
     "<div class='modal fade modal-ext' id='modal-contact' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
@@ -144,7 +147,7 @@ function modal(id,data){
 
             "<div class='modal-footer'>" +
               "<button type='button' class='btn btn-default' data-dismiss='modal' >Close</button>" +
-              "<button type='button' class='btn btn-primary adAv-upd-btn' id='" + id + "'data-id='" + data + "'>Submit</button>" +
+              "<button type='button' class='btn btn-primary' id='" + id + "'data-id='" + data + "'>Submit</button>" +
             "</div>" +
         "</div>" +
 
