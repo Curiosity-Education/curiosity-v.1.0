@@ -391,7 +391,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('remote-email','parentsController@remoteEmail');
    Route::get('confirm/{token}','parentsController@confirm');
    Route::post('payment-suscription','parentsController@payment_suscription');
-   Route::get('create-charge-oxxo','parentsController@createOrderMembership');
+   Route::post('create-charge-oxxo','parentsController@createOrderMembership');
    Route::post('get-sons','parentsController@getSons');
    Route::post('get-sonsInfo','parentsController@getSonsInfo');
 
