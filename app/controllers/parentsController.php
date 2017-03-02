@@ -193,8 +193,8 @@ class parentsController extends BaseController{
               array(
                 "line_items" => array(
                   array(
-                    "name" => "Membresía Curiosity",
-                    "unit_price" => 5800,
+                    "name" => 'Curiosity '.$plan->name,
+                    "unit_price" => $plan->amount,
                     "quantity" => 1
                   )//first line_item
                 ), //line_items
@@ -237,6 +237,14 @@ class parentsController extends BaseController{
                 "padre_id"  => Auth::user()->Person->Dad->id
             ));
             $membresia->save();
+            $dataSend = (object)[
+                    "name"     =>       "Equipo Curiosity",
+                    "client"   =>       $person->nombre.' '.$person->apellidos,
+                    "email"    =>       $parent->email,
+                    "subject"  =>       "¡Curiosity Eduación!",
+                    "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
+                ];
+            $this->sendEmail($dataSend);
             $dataSetCard = array(
                 'orderID' => $order->id,
                 'paymentMethod' => $order->charges[0]->payment_method->service_name,
@@ -260,6 +268,20 @@ class parentsController extends BaseController{
         }
         catch(Exception $e){
             return self::SERVER_ERROR_RESPONSE($e->getMessage());
+        }
+    }
+    protected function sendEmail(object $dataSend){
+        $toEmail=$dataSend->email;
+        $toName=$dataSend->email;
+        $subject =$dataSend->subject;
+        try {
+            Mail::send('emails.referencia_oxxo_pay',$dataSend,function($message) use($toEmail,$toName,$subject){
+                $message->to($toEmail,$toName)->subject($subject);
+            });
+            $sentEmail = 1;
+        } catch (Exception $e) {
+            $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+            Log::info('Send email reference OXXO: failed time: ' . $executionTime . ' | ' . implode(', ',  $e->getMessage()));
         }
     }
 
@@ -349,7 +371,6 @@ class parentsController extends BaseController{
                 ON prsn.id = hj.persona_id
                 INNER JOIN padres prnt
                 ON prnt.id = hj.padre_id
-                WHERE prnt.id = '$idDad'
                 and nvls.id = hj.nivel_id
                 group by prsn.id,i.id,i.nombre,blqs.nombre,tms.id,tms.nombre) as activitiesSon
                 INNER JOIN (SELECT
