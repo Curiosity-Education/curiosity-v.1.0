@@ -11,7 +11,7 @@ $(function(){
       //   parentController.getSons();
 
     $("#pay-button").click(function(){
-        if(parentController.validPlanSelected()){
+        if(parentController.validPlanSelected() == 1){
             $("#pay-button").prop("disabled",true);
             $("#pay-button").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando");
             parentController.payment();
