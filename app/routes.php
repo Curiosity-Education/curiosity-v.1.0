@@ -15,7 +15,9 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/cambio', 'parentSuscriptionController@infoClient');
+Route::get('/codigo', function(){
+	return View::make('parent.pay-suscription');
+});
 
 Route::get('/selectavatar', 'avatarController@view');
 
@@ -388,6 +390,7 @@ Route::group(array('prefix' =>  'employee'),function(){
 */
 Route::group(array('prefix' =>  'salerCode'),function(){
 	Route::post('all', 'salersCodeController@all');
+	Route::post('match', 'salersCodeController@verifyCodeMatch');
 });
 
 /*
