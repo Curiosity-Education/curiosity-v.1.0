@@ -9,8 +9,8 @@ class plansController extends BaseController{
     public function save(){
             if(Request::method() == 'POST'){
                     try{
-                        Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-                        $plan = Conekta_Plan::create(array(
+                        \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+                        $plan = \Conekta\Plan::create(array(
                           "id" => Input::get('reference'),
                           "name"=> Input::get('name'),
                           "amount"=> Input::get('amount').'00',
@@ -36,8 +36,8 @@ class plansController extends BaseController{
     public function update(){
             if(Request::method() == 'POST'){
                 try{
-                    Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-                    $plan = Conekta_Plan::find(Input::get('reference'));
+                    \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+                    $plan = \Conekta\Plan::find(Input::get('reference'));
                     $plan->update(array(
                       "name"=> Input::get('name'),
                       "amount"=> Input::get('amount').'00'
@@ -57,9 +57,9 @@ class plansController extends BaseController{
     public function delete(){
         if(Request::method() == 'POST'){
             try{
-                Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-                Conekta::setLocale('es');
-                $plan = Conekta_Plan::find(Input::get('id')['reference']);
+                \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+                \Conekta\Conekta::setLocale('es');
+                $plan = \Conekta\Plan::find(Input::get('id')['reference']);
                 $id = Input::get('id')['id'];
                 Plan::find($id)->delete();
                 $plan->delete();

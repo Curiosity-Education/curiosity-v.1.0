@@ -66,7 +66,13 @@
                             </div>
                         </div>
                         <div class="sctn-row container">
-                                <button type="bitton" class="btn btn-rounded pull-right" id="pay-button">Pagar</button>
+									<button type="button" class="btn btn-rounded pull-right" id="pay-button">
+										Continuar&nbsp;
+										<span class="fa fa-chevron-circle-right"></span>
+									</button>
+									<button type="button" class="btn btn-rounded btn-outline-primary pull-right" id="sctn-code" hidden>
+										Canjear
+									</button>
                         </div>
                     </div>
                     </form>
@@ -75,7 +81,6 @@
          </div>
       </div>
 
-    </div>
     <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
@@ -88,6 +93,7 @@
     <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
     <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+	 <script src="/packages/assets/js/administer/models/SalerCode.js"></script>
     <script src="/packages/assets/js/administer/models/Plan.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>

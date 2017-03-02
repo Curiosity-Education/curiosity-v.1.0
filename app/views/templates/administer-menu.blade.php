@@ -9,7 +9,7 @@
 
 @section('menu-photo')
 <div id="msad-profileContainer" class="text-center">
-   <img src="/packages/assets/media/images/administers/adminDefProfile.png" class="img-fluid" id="msad-imgProfile"
+   <img src="/packages/assets/media/images/administers/adminDefProfile.png?{{rand();}}" class="img-fluid" id="msad-imgProfile"
    style="background:white;">
 </div>
 @stop

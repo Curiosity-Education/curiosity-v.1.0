@@ -18,6 +18,14 @@ class userSuscriptionController extends BaseController{
 
                 }
             break;
+            case 'charge.paid':
+                switch($event_json->data->object->payment_method->type){
+                    case 'oxxo':
+                        $membership = Membership::where("token_card","=",$event_json->data->object->payment_method->reference);
+                        $membership->update(array('active' => "0"));
+                    break;
+                }
+            break;
         }
     }
 }

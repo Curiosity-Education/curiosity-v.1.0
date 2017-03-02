@@ -133,3 +133,16 @@ Route::filter('child_actions',function(){
        return View::make('errors.404');
    }
 });
+
+Route::filter('only_session',function(){
+    $role = Auth::user()->roles[0]->name;
+    if($role == 'child'){
+        $session_real=User::where('id','=',Auth::user()->id)->select('id_session')->get();
+        if(isset($session_real)){
+            if($session_real[0]->id_session != Session::get('sessionId') ){
+                Auth::logout();
+                return Redirect::to('/');
+            }
+        }
+    }
+});
