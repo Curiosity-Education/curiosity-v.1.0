@@ -70,7 +70,7 @@
 										Continuar&nbsp;
 										<span class="fa fa-chevron-circle-right"></span>
 									</button>
-									<button type="button" class="btn btn-rounded btn-outline-primary pull-right" id="sctn-code">
+									<button type="button" class="btn btn-rounded btn-outline-primary pull-right" id="sctn-code" hidden>
 										Canjear
 									</button>
                         </div>

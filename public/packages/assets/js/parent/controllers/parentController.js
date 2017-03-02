@@ -471,6 +471,7 @@ var parentController = {
 
             var errorResponseHandler = function(error) {
                parentController.getPlan(localStorage.getItem('plan-user-selected'));
+               $("#pay-button").html("Continuar &nbsp;<span class='fa fa-chevron-circle-right'></span>");
               $("#pay-button").prop("disabled",false);
               return Curiosity.noty.warning(error.message_to_purchaser);
 
@@ -506,10 +507,10 @@ var parentController = {
 
         verifyCode : function($code){
            var plan = localStorage.getItem("plan-user-selected");
-         //   if (plan == null || plan == "" || plan == undefined){
-         //     Curiosity.noty.warning("Lo sentimos, parece que no has seleccionado ningun plan previamente. Por favor regresa a la página principal y selecciona uno.", "No hay plan seleccionado.");
-         //   }
-         //   else {
+           if (plan == null || plan == "" || plan == undefined){
+             Curiosity.noty.warning("Lo sentimos, parece que no has seleccionado ningun plan previamente. Por favor regresa a la página principal y selecciona uno.", "No hay plan seleccionado.");
+           }
+           else {
              var cancelbtn = $("body").find('#sctn-cancelcode');
              var varifybtn = $("body").find('#sctn-btnVerif');
              var inputcode = $("body").find('#sctn-codeval');
@@ -522,10 +523,10 @@ var parentController = {
              varifybtn.css('cursor', 'no-drop');
              varifybtn.html(charging);
              SalerCode.any({'plan_id':plan,'code_val':$code}, Curiosity.methodSend.POST, function(response){
-                console.log(response);
                 switch (response.status) {
                    case 200:
                        $("#sctn-code").hide();
+                       localStorage.setItem('plan-user-selected', response.data["id"]);
                        varifybtn.html(successIcon);
                        varifybtn.css('cursor', 'default');
                        cancelbtn.html("Aceptar");
@@ -581,7 +582,7 @@ var parentController = {
                 cancelbtn.prop('disabled', false);
                 inputcode.prop('disabled', false);
              }, "match");
-         //   }
+           }
         }
 
 }

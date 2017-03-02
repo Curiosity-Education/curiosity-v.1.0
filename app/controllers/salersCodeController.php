@@ -90,7 +90,7 @@ class salersCodeController extends BaseController{
          $randomCode1 .= substr($characters1, rand(0,strlen($characters1)), 1);
          $randomCode2 .= substr($characters2, rand(0,strlen($characters2)), 1);
       }
-      return "CE".$randomCode2."-".rand(1000, 9999).$randomCode1."-".date("d").date("m").date("y");
+      return "CE".date("d").date("m").date("y").$randomCode2.rand(1000, 9999).$randomCode1;
    }
 
    function verifyCodeMatch(){
@@ -104,8 +104,7 @@ class salersCodeController extends BaseController{
             return Response::json(array("status" => "CU-110", 'statusMessage' => "Expired seller code"));
          }
          else {
-            // $plan = Plan::where("id", "=", $data["plan_id"])
-            $plan = Plan::where("id", "=", 0)
+            $plan = Plan::where("id", "=", $data["plan_id"])
             ->where("active", "=", 1)
             ->first();
             if ($plan){
@@ -114,7 +113,7 @@ class salersCodeController extends BaseController{
                    $plan->limit == $codePlan->limit &&
                    $plan->amount == $codePlan->amount
                ){
-                  return Response::json(array("status" => 200, 'statusMessage' => "success"));
+                  return Response::json(array("status" => 200, 'statusMessage' => "success", 'data' => $codePlan));
                }
                else{
                   return Response::json(array("status" => "CU-109", 'statusMessage' => "Seller code does not match"));
