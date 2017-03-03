@@ -66,7 +66,7 @@
 
       			</div>
       			<hr>
-      			<center><a class="btn btn-avatarsel btn-rounded">Seleccionar</a></center>
+      			<center><a class="btn btn-avatarsel btn-rounded">Elegir</a></center>
        		</div>
     	</div>
     </div>
