@@ -5,10 +5,12 @@ $(function(){
        e.prevetDefault();
     });
 
-    if(parentController.validPlanSelected() == 1)
+    if(parentController.validPlanSelected() == 1){
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
-    else
+    }
+    else{
       //   parentController.getSons();
+    }
 
     $("#pay-button").click(function(){
         if(parentController.validPlanSelected() == 1){
