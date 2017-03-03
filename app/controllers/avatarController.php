@@ -124,6 +124,18 @@ class avatarController extends BaseController
  		}
   }
 
+	function avatarAnimated(){
+
+	}
+
+	function avatarStyles(){
+
+	}
+
+	function selectedAvatar(){
+
+	}
+
   // function addAvatarSprite(){
   //   $data = input::all();
   //
