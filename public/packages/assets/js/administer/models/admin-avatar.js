@@ -23,8 +23,19 @@ class avatar extends CORM {
     super.any(null,"POST",success,"/avatar","allStylesAvatars");
   }
 
-  // static addAvatarSprite(data,method,success,pathRoute){
-  //   super.any({data:data},method,success,'/avatar',pathRoute);
-  // }
+  static addStyles(formData, success){
+    super.any(formData,"POST",success,"/avatar","addStyle");
+  }
 
+  static deleteStyle(id,success){
+    super.any(id,"POST",success,"/avatar","deleteStyle");
+  }
+
+  static updateStyle(data,success){
+    super.any(data,"POST",success,"/avatar","updateStyle");
+  }
+
+  static getSprites(success){
+    super.any(null,"POST",success,"/sprite","all");
+  }
 }

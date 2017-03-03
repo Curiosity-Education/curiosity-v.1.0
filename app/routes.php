@@ -336,7 +336,9 @@ Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('allStylesAvatars', 'avatarController@allStylesAvatars');
 	Route::post('delete', 'avatarController@delete');
 	Route::post('update', 'avatarController@update');
-	Route::post('addAvatarSprite', 'avatarController@addAvatarSprite');
+	Route::post('addStyle', 'avatarController@addStyle');
+	Route::post('deleteStyle','avatarController@deleteStyle');
+	Route::post('updateStyle','avatarController@updateStyle');
 });
 
 /*
