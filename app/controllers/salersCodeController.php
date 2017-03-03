@@ -81,16 +81,15 @@ class salersCodeController extends BaseController{
 	}
 
    function makeCode(){
-      $characters1 = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
-      $characters2 = "ABCDEFGHIJKLMNOPQRSTUVWXZ1234567890";
-      $mazCharacters = 3;
+      $characters1 = "abcdefghijklmnopqrstuvwxyz";
+      $characters2 = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
+      $characters3 = "1234567890";
+      $maxCharacters = 3;
       $randomCode1 = "";
-      $randomCode2 = "";
-      for($i=0; $i < $mazCharacters; $i++){
+      for($i=0; $i < $maxCharacters; $i++){
          $randomCode1 .= substr($characters1, rand(0,strlen($characters1)), 1);
-         $randomCode2 .= substr($characters2, rand(0,strlen($characters2)), 1);
       }
-      return "CE".date("d").date("m").date("y").$randomCode2.rand(1000, 9999).$randomCode1;
+      return "".$randomCode1.rand(100, 999);
    }
 
    function verifyCodeMatch(){
