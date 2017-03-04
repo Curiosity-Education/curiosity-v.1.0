@@ -378,7 +378,7 @@ var parentController = {
        getPlan:function(id){
            CORM.any({id:id},Curiosity.methodSend.POST,function(response){
                if(response != null && response != '')
-                    $("#pay-button").text("Pagar plan "+response.name);
+                  //   $("#pay-button").text("Pagar plan "+response.name);
                     return response;
            },'/plans','get');
        },
@@ -402,7 +402,6 @@ var parentController = {
           Curiosity.toastLoading.hide();
           switch (response.status) {
              case 200:
-                console.log(response);
                 $.ajax({
                     url: 'logIn',
                     type: 'POST',
@@ -410,7 +409,6 @@ var parentController = {
                     data: response.data
                  })
                  .done(function(response) {
-                    console.log(response);
                     switch (response.status) {
                        case 200:
                           Curiosity.noty.success("Bien echo!, registro exitoso.");
@@ -473,6 +471,7 @@ var parentController = {
 
             var errorResponseHandler = function(error) {
                parentController.getPlan(localStorage.getItem('plan-user-selected'));
+               $("#pay-button").html("Continuar &nbsp;<span class='fa fa-chevron-circle-right'></span>");
               $("#pay-button").prop("disabled",false);
               return Curiosity.noty.warning(error.message_to_purchaser);
 
@@ -483,7 +482,6 @@ var parentController = {
         paymentSuccess:function(response){
             parentController.getPlan(localStorage.getItem('plan-user-selected'));
             $("#pay-button").prop("disabled",false);
-            console.log(response);
             switch(response.status){
                 case 200:
                     localStorage.setItem('plan-user-selected',null);
@@ -501,10 +499,90 @@ var parentController = {
 
         validPlanSelected:function(){
             var exist=0;
-            if(localStorage.getItem('plan-user-selected') != null && localStorage.getItem('plan-user-selected') != "null" ){
+            if(localStorage.getItem('plan-user-selected') != null && localStorage.getItem('plan-user-selected') != "null" && localStorage.getItem('plan-user-selected') != ""){
                 exist = 1;
             }
             return exist;
+        },
+
+        verifyCode : function($code){
+           var plan = localStorage.getItem("plan-user-selected");
+           if (plan == null || plan == "" || plan == undefined){
+             Curiosity.noty.warning("Lo sentimos, parece que no has seleccionado ningun plan previamente. Por favor regresa a la página principal y selecciona uno.", "No hay plan seleccionado.");
+           }
+           else {
+             var cancelbtn = $("body").find('#sctn-cancelcode');
+             var varifybtn = $("body").find('#sctn-btnVerif');
+             var inputcode = $("body").find('#sctn-codeval');
+             var bodyAlert = $("body").find('#sctn-noty');
+             var charging = "<span class='fa fa-spinner fa-pulse fa-fw'></span>";
+             var successIcon = "<span class='fa fa-check'></span>";
+             cancelbtn.prop('disabled', true);
+             inputcode.prop('disabled', true);
+             varifybtn.removeClass('sctn-btnVerif');
+             varifybtn.css('cursor', 'no-drop');
+             varifybtn.html(charging);
+             SalerCode.any({'plan_id':plan,'code_val':$code}, Curiosity.methodSend.POST, function(response){
+                switch (response.status) {
+                   case 200:
+                       $("#sctn-code").hide();
+                       localStorage.setItem('plan-user-selected', response.data["id"]);
+                       varifybtn.html(successIcon);
+                       varifybtn.css('cursor', 'default');
+                       cancelbtn.html("Aceptar");
+                       cancelbtn.css('color','#3cb54a');
+                       cancelbtn.css('border-color','#3cb54a');
+                       inputcode.prop('readonly', true);
+                       var noty = "<div class='alert alert-success fade in sctn-alert'><h5>Código Aceptado.</h5>El código que has ingresado es correcto y los beneficios serán obtenidos en tu suscripción.<br><br>Para continuar, presiona el botón ACEPTAR y completa la información de registro de tu tarjeta.</div>";
+                       bodyAlert.html(noty);
+                      break;
+                   case "CU-110":
+                      varifybtn.addClass('sctn-btnVerif');
+                      varifybtn.html("Verificar");
+                      varifybtn.css('cursor', 'pointer');
+                      cancelbtn.html("Cancelar");
+                      cancelbtn.css('color','#585d66');
+                      cancelbtn.css('border-color','#585d66');
+                      var noty = "<div class='alert alert-danger alert-dismissable fade in sctn-alert'><a href='javascript:void(0)' class='close' data-dismiss='alert'aria-label='close'>&times;</a><h5>Código Expirado.</h5>El código ingresado ha caducado.</div>";
+                      bodyAlert.html(noty);
+                      break;
+                   case "CU-109":
+                      varifybtn.addClass('sctn-btnVerif');
+                      varifybtn.html("Verificar");
+                      varifybtn.css('cursor', 'pointer');
+                      cancelbtn.html("Cancelar");
+                      cancelbtn.css('color','#585d66');
+                      cancelbtn.css('border-color','#585d66');
+                      var noty = "<div class='alert alert-danger alert-dismissable fade in sctn-alert'><a href='javascript:void(0)' class='close' data-dismiss='alert'aria-label='close'>&times;</a><h5>El Código No Aplica.</h5>El código ingresado no aplica en el plan que se ha seleccionado.</div>";
+                      bodyAlert.html(noty);
+                      break;
+                   case "CU-111":
+                      varifybtn.addClass('sctn-btnVerif');
+                      varifybtn.html("Verificar");
+                      varifybtn.css('cursor', 'pointer');
+                      cancelbtn.html("Cancelar");
+                      cancelbtn.css('color','#585d66');
+                      cancelbtn.css('border-color','#585d66');
+                      var noty = "<div class='alert alert-danger alert-dismissable fade in sctn-alert'><a href='javascript:void(0)' class='close' data-dismiss='alert'aria-label='close'>&times;</a><h5>Plan No Encontrado.</h5>A ocurrido un error al momento de revisar el plan seleccionado. <br>Al parecer el plan ha expirado o se ha perdido la relación.</div>";
+                      bodyAlert.html(noty);
+                      break;
+                   case "CU-108":
+                      varifybtn.addClass('sctn-btnVerif');
+                      varifybtn.html("Verificar");
+                      varifybtn.css('cursor', 'pointer');
+                      cancelbtn.html("Cancelar");
+                      cancelbtn.css('color','#585d66');
+                      cancelbtn.css('border-color','#585d66');
+                      var noty = "<div class='alert alert-danger alert-dismissable fade in sctn-alert'><a href='javascript:void(0)' class='close' data-dismiss='alert'aria-label='close'>&times;</a><h5>Código inválido.</h5>El código que has ingresado es inválido, por favor revisa que este escrito correctamente.</div>";
+                      bodyAlert.html(noty);
+                      break;
+                   default:
+                      break;
+                }
+                cancelbtn.prop('disabled', false);
+                inputcode.prop('disabled', false);
+             }, "match");
+           }
         }
 
 }

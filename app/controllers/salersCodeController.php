@@ -81,16 +81,51 @@ class salersCodeController extends BaseController{
 	}
 
    function makeCode(){
-      $characters1 = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
-      $characters2 = "ABCDEFGHIJKLMNOPQRSTUVWXZ1234567890";
-      $mazCharacters = 3;
+      $characters1 = "abcdefghijklmnopqrstuvwxyz";
+      $characters2 = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
+      $characters3 = "1234567890";
+      $maxCharacters = 3;
       $randomCode1 = "";
-      $randomCode2 = "";
-      for($i=0; $i < $mazCharacters; $i++){
+      for($i=0; $i < $maxCharacters; $i++){
          $randomCode1 .= substr($characters1, rand(0,strlen($characters1)), 1);
-         $randomCode2 .= substr($characters2, rand(0,strlen($characters2)), 1);
       }
-      return "CE".$randomCode2."-".rand(1000, 9999).$randomCode1."-".date("d").date("m").date("y");
+      return "".$randomCode1.rand(100, 999);
+   }
+
+   function verifyCodeMatch(){
+      $data = Input::all();
+      $codePlan = SalerCode::join("planes", "plan_id", "=", "planes.id")
+      ->where("codigo", "=", $data["code_val"])
+      ->select("planes.*", "codigos_vendedores.active as cod_active")
+      ->first();
+      if ($codePlan){
+         if ($codePlan->active != 1 || $codePlan->cod_active != 1){
+            return Response::json(array("status" => "CU-110", 'statusMessage' => "Expired seller code"));
+         }
+         else {
+            $plan = Plan::where("id", "=", $data["plan_id"])
+            ->where("active", "=", 1)
+            ->first();
+            if ($plan){
+               if ($plan->currency == $codePlan->currency &&
+                   $plan->interval == $codePlan->interval &&
+                   $plan->limit == $codePlan->limit &&
+                   $plan->amount == $codePlan->amount
+               ){
+                  return Response::json(array("status" => 200, 'statusMessage' => "success", 'data' => $codePlan));
+               }
+               else{
+                  return Response::json(array("status" => "CU-109", 'statusMessage' => "Seller code does not match"));
+               }
+            }
+            else {
+               return Response::json(array("status" => "CU-111", 'statusMessage' => "Failed to get plan"));
+            }
+         }
+      }
+      else {
+         return Response::json(array("status" => "CU-108", 'statusMessage' => "Seller code does not exist"));
+      }
    }
 
 }
