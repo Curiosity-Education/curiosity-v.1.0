@@ -10,9 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/prueba',function(){
-	return View::make('parent.pay-suscription');
-});
+
 Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
