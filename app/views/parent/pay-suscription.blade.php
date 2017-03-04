@@ -126,7 +126,7 @@
                                                 </div>
 
                                                 <!--Price-->
-                                                <p style="color:black;text-align:justify;">Ahora puedes realizar tus pagos desde oxxo. para<a href="https://iiemd.com/que-es-oxxo-pay/" style="display">más información. </a> </p>
+                                                <p style="color:black;text-align:justify;">Ahora puedes realizar tus pagos desde oxxo. <a href="https://iiemd.com/que-es-oxxo-pay/" style="display">Para más información. </a> </p>
                                                 <a class="btn btn-outline-info btn-rounded btn-method-pay method-oxxo-pay">Seleccionar</a>
                                             </div>
                                         </div>
