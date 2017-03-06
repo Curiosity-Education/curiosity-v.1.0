@@ -38,7 +38,7 @@ $(function(){
 				switch(response.status){
             case 200:
                    Curiosity.noty.success(response.message);
-                   document.location = "/padre-inicio";
+                   document.location = "/view-parent.home";
                 break;
             case "CUE-304":
                     Curiosity.noty.info(response.message);
