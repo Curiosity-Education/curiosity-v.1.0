@@ -472,8 +472,8 @@ var parentController = {
             var errorResponseHandler = function(error) {
                parentController.getPlan(localStorage.getItem('plan-user-selected'));
                $("#pay-button").html("Continuar &nbsp;<span class='fa fa-chevron-circle-right'></span>");
-              $("#pay-button").prop("disabled",false);
-              return Curiosity.noty.warning(error.message_to_purchaser);
+               $("#pay-button").prop("disabled",false);
+               return Curiosity.noty.warning(error.message_to_purchaser);
 
             };
             Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
@@ -481,7 +481,6 @@ var parentController = {
 
         paymentSuccess:function(response){
             parentController.getPlan(localStorage.getItem('plan-user-selected'));
-            $("#pay-button").prop("disabled",false);
             switch(response.status){
                 case 200:
                     localStorage.setItem('plan-user-selected',null);
@@ -493,7 +492,10 @@ var parentController = {
                     console.info(response.data);
                     break;
                 default:
-                    Curiosity.noty.error("Ups algo ha salido mal reportelo con el administrador.");
+                    $("#pay-button").html("Continuar &nbsp;<span class='fa fa-chevron-circle-right'></span>");
+                    $("#pay-button").prop("disabled",false);
+                    Curiosity.noty.error("Se ha detectado un error desconocido, por favor contactanos para dar solución de inmediato.", "Ups algo ha salido muy mal.");
+                    break;
             }
         },
 
