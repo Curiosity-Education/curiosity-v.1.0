@@ -9,7 +9,7 @@ $(function(){
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
     }
     else{
-      //   parentController.getSons();
+        parentController.getSons();
     }
 
     $("#pay-button").click(function(){
