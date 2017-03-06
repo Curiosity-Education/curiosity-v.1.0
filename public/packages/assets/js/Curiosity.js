@@ -223,7 +223,7 @@ var Curiosity = {
          var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
          var match = url.match(regExp);
          if (match && match[2].length == 11) {
-            return 'https://www.youtube.com/embed/' + match[2];
+            return 'https://www.youtube.com/embed/' + match[2] + '?rel=0&amp;showinfo=0';
          }
          else {
             console.error("Error trying to make a codeEmbed");
