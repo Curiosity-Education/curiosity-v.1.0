@@ -43,6 +43,7 @@ class viewsController extends BaseController{
             }
             return View::make($viewName,$data);
          }
+         return View::make('errors.404');
       }
       return View::make('errors.404');
    }
@@ -52,6 +53,7 @@ class viewsController extends BaseController{
          if (Entrust::can($permission)){
             return View::make($viewName);
          }
+         return View::make('errors.404');
       }
       return View::make('errors.404');
    }

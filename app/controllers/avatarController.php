@@ -64,8 +64,6 @@ class avatarController extends BaseController
  	}
 
   private function NameActiveExist($name){
-		// We'll check if into database exists the same block's name and that
-		// block lives active.
 		$objs = Avatar::where('nombre', '=', $name)->select('nombre', 'active')->get();
 		$toLive = false;
 		foreach ($objs as $obj) {
@@ -88,7 +86,6 @@ class avatarController extends BaseController
     $avat = Avatar::where("id", "=", $id)->first();
 		$avat->active = 0;
 		$avat->save();
-
 	}
 
   function update(){
@@ -109,27 +106,105 @@ class avatarController extends BaseController
 
       $file = $data['adAv-img'];
       $id = $data["id"];
-      $avat = Avatar::where("id", "=", $id)->first();
+      $avat = Avatar::where("id", "=", $id) ->first();
       $avat->nombre = $data['nombre'];
       $avat->historia = $data['historia'];
   		$avat->save();
-      $avatStyle = AvatarStyle::where("avatar_id", "=", $id)->first();
+      $avatStyle = AvatarStyle::where("avatar_id", "=", $id) ->first();
       $avatStyle->costo = $data['costo'];
+      $avatStyle->nombre = $data['nombre'];
   		$avatStyle->save();
-      $destinationPath = "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
-      $file->move($destinationPath, $avatarStyle->preview);
+      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder. "/" . $avatStyle->preview;
+      unlink($deleteFile);
+      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
+      $file->move($destinationPath, $avatStyle->preview);
 
 			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
 
  		}
   }
 
-  // function addAvatarSprite(){
-  //   $data = input::all();
-  //
-  // }
+  function addStyle(){
+
+ 		$data = Input::all();
+ 		$rules = array(
+ 			'nombre' => 'required',
+      'costo' => 'required',
+ 			'adAv-img' => 'required'
+ 		);
+ 		$msjs = Curiosity::getValidationMessages();
+ 		$validation = Validator::make($data, $rules, $msjs);
+ 		if( $validation->fails()){
+ 			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+ 		}
+ 		else{
+ 			if ($this->NameActiveExist($data['nombre'])){
+ 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
+ 			}
+ 			else{
+
+        $file = $data['adAv-img'];
+        $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+        $avatarStyle = new AvatarStyle($data);
+        $avatarStyle->nombre;
+        $avatarStyle->costo = $data['costo'];
+        $avatarStyle->active = 1;
+        $avatarStyle->preview = $phName;
+        $avatarStyle->is_default = 0;
+        $avatarStyle->avatar_id = $data['id'];
+        $avatarStyle->folder = $data['folder'];
+        $avatarStyle->save();
+        $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatarStyle->folder;
+        $file->move($destinationPath,$phName);
+
+
+ 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatarStyle));
+ 			}
+ 		}
+
+  }
+
+  function deleteStyle(){
+    $id = Input::all();
+		$avatStyle = AvatarStyle::where("avatar_id", "=", $id)->first();
+		$avatStyle->active = 0;
+		$avatStyle->save();
+  }
+
+  function updateStyle(){
+    $data = Input::all();
+ 		$rules = array(
+ 			'nombre' => 'required',
+ 			'historia' => 'required',
+      'costo' => 'required',
+ 			'adAv-img' => 'required',
+      'id' => 'required'
+ 		);
+ 		$msjs = Curiosity::getValidationMessages();
+ 		$validation = Validator::make($data, $rules, $msjs);
+ 		if( $validation->fails()){
+ 			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+ 		}
+ 		else{
+
+      $file = $data['adAv-img'];
+      $avatStyle = AvatarStyle::where("avatar_id", "=", $data['id']) ->first();
+      $avatStyle->costo = $data['costo'];
+      $avatStyle->nombre = $data['nombre'];
+  		$avatStyle->save();
+      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder. "/" . $avatStyle->preview;
+      unlink($deleteFile);
+      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
+      $file->move($destinationPath, $avatStyle->preview);
+
+			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatStyle));
+
+ 		}
+  }
 
 }
+
+
 
 
  ?>

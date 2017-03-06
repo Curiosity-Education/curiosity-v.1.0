@@ -26,8 +26,8 @@ class spriteController extends BaseController
       // ->get();
 
       $user		= Auth::user();
-		$person 	= Person::where("user_id", "=", $user["id"])->first();
-		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+  		$person 	= Person::where("user_id", "=", $user["id"])->first();
+  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
 
       $obj = DB::table("hijos_has_estilos_avatar")
       ->join("estilos_avatar", "hijos_has_estilos_avatar.estilo_avatar_id", "=", "estilos_avatar.id")
@@ -39,6 +39,47 @@ class spriteController extends BaseController
 
       return $obj;
    }
+
+  function save(){
+    $data = Input::all();
+ 		$rules = array(
+ 			'adAv-img' => 'required',
+      'width' => 'required',
+      'height' => 'required',
+      'frameX' => 'required',
+      'frameY' => 'required',
+      'fps' => 'required'
+ 		);
+ 		$msjs = Curiosity::getValidationMessages();
+ 		$validation = Validator::make($data, $rules, $msjs);
+ 		if( $validation->fails()){
+ 			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+ 		}
+ 		else{
+ 			if ($this->NameActiveExist($data['nombre'])){
+ 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
+ 			}
+ 			else{
+ 				$file = $data['adAv-img'];
+ 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $data['nombre'];
+        $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+ 				$file->move($destinationPath, $phName);
+ 				$sprite = new Sprite($data);
+        $sprite->active = 1;
+        $sprite->imagen = $phName;
+        $sprite->widthFrame = $data['width'];
+        $sprite->heightFrame = $data['height'];
+        $sprite->frameY = $data['framesY'];
+        $sprite->frameX = $data['frameX'];
+        $sprite->fps = $data['fps'];
+        $sprite->estilo_avatar_id = ;
+        $sprite->secuencia_id = ;
+        $sprite->save();
+
+ 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
+ 			}
+ 		}
+  }
 
 }
 

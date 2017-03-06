@@ -59,12 +59,18 @@ Route::group(array('prefix' => 'plans'),function(){
 // // ---./ Webhooks para saber quien ha pagado y quien no
 Route::match(['GET','POST'],'/webhook/check-suscription','userSuscriptionController@webhook_check_pay');
 
-// rutas del perfil del niño
+// Routes profile child
 Route::group(array('prefix' => '/profile-child'), function(){
 	Route::get('get-graph', 'childrenController@graphDailyGoal');
 	Route::get('get-cards', 'childrenController@cardsScore');
 });
 
+// Routes selection avatar first time
+Route::group(array('prefix' => '/select-avatar'), function(){
+	Route::get('get-avatar','avatarController@avatarAnimated');
+	Route::get('get-style','avatarController@avatarStyles');
+	Route::post('select-avatar','avatarController@selectedAvatar');
+});
 
 /*
 * -----------------------------------------------------------------------------
@@ -338,7 +344,9 @@ Route::group(array('prefix' =>  'avatar'),function(){
 	Route::post('allStylesAvatars', 'avatarController@allStylesAvatars');
 	Route::post('delete', 'avatarController@delete');
 	Route::post('update', 'avatarController@update');
-	Route::post('addAvatarSprite', 'avatarController@addAvatarSprite');
+	Route::post('addStyle', 'avatarController@addStyle');
+	Route::post('deleteStyle','avatarController@deleteStyle');
+	Route::post('updateStyle','avatarController@updateStyle');
 });
 
 /*
