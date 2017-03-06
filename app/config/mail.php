@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'gerson.isaias@curiosity.com.mx', 'name' => 'Curiosity Educación'),
+	'from' => array('address' => 'no.responder@curiosity.com.mx', 'name' => 'Curiosity Educación'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'gerson.isaias@curiosity.com.mx',
+	'username' => 'no.responder@curiosity.com.mx',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '05dpr1500u',
+	'password' => 'curiosity123',
 
 	/*
 	|--------------------------------------------------------------------------
