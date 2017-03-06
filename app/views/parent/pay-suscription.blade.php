@@ -29,13 +29,13 @@
 </head>
 <body id="rfc-bg">
    <div class="container-fluid main"><br>
-      <div class="row hidden row-content" id="p-row-main">
+      <div class="row row-content" id="p-row-main">
         <div class="col-md-2"></div>
          <div class="col-md-8">
             <form action="#" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
                 <div class="pymnt-itm card active">
-                    <h2>Tarjeta de crédito o débito <span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
+                    <h2>Tarjeta de crédito o débito <span class="pull-right hidden hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
                     <div class="pymnt-cntnt col-md-12 container">
                         <div class="card-expl col-md-12" style="background-color:rgba(238, 238, 238, 0.63);padding-bottom:6.5rem;">
                             <div class="row">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-md-2"></div>
          </div>
-        <div class="row row-content" id="p-row-method-pay">
+        <div class="row hidden row-content" id="p-row-method-pay">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="pymnt-itm card active">
@@ -263,8 +263,8 @@
                 }
             });
             $(".return-method").click(function(){
-                $(".row-content").hide("fast");
-                $("#p-row-method-pay").show("slow");
+                $(".row-content").hide("slow");
+                $("#p-row-method-pay").show("fast");
             });
 		  });
 	</script>
