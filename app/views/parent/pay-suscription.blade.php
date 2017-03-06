@@ -115,7 +115,7 @@
                                 <!--/Second column-->
                                   <div class="col-lg-6 col-md-12">
                                     <!--Card-->
-                                    <div class="card hoverable" id="option-pay-oxxo" {{-- style="background-color: #38547f;" --}}> 
+                                    <div class="card hoverable" id="option-pay-oxxo" {{-- style="background-color: #38547f;" --}}>
 
                                         <!--Content-->
                                         <div class="text-center white-text">
@@ -139,7 +139,7 @@
                         </div>
                         <div class="col-md-1"></div>
                      </div>
-            
+
                     </div>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                                     <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Nombre del negocio</strong> confirmando tu pago.</div>
                                 </div>
                             </div>
-                         </div>    
+                         </div>
                     </div>
                     <div class="row col-md-12">
                         <div class="shield col-md-4 pull-letf">Tus pagos se realizan de forma segura</div>
@@ -227,7 +227,7 @@
                             </ol>
                             <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Nombre del negocio</strong> confirmando tu pago.</div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>-->
             <div class="col-md-2"></div>
