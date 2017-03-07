@@ -40,7 +40,7 @@
 					<a href="#">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
-							<div id="sal-divTot" class="sal-divAvatar">
+							<div id="sela-divTot" class="sal-divAvatar">
 
 							</div>
 						</div>
@@ -48,7 +48,7 @@
 					<a href="#">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
-							<div id="sal-divTot" class="sal-divAvatar">
+							<div id="sela-divSia" class="sal-divAvatar">
 
 							</div>
 						</div>
@@ -59,7 +59,7 @@
   		<div class="col-md-4 z-depth-1" id="sela-style">
        		<div class="container">
 				<h4 class="h4-responsive text-xs-center">
-					Estilos de [Avantar] &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
+					<span id="sela-titleStyle">Estilos de [Avantar]</span> &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
 				</h4><hr>
 
       			<div id="sela-styles">

@@ -204,6 +204,20 @@ class avatarController extends BaseController
   }
 
 
+	function childHasAvatar(){
+		$id_child = DB::table('hijos')
+			->select('hijos.id')
+			->join('personas','hijos.persona_id','=','personas.id')
+			->join('users','personas.user_id','=','users.id')
+			->where('users.id','=',Auth::user()->id)
+			->first()->id;
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> 'khegf'
+								   ));
+	}
+
 	function avatarAnimated(){
 
 	}
@@ -215,12 +229,6 @@ class avatarController extends BaseController
 	function selectedAvatar(){
 
 	}
-
-  // function addAvatarSprite(){
-  //   $data = input::all();
-  //
-  // }
-
 
 }
 
