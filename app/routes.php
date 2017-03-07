@@ -84,7 +84,7 @@ Route::group(array('before' => 'auth'), function(){
     ->where(
         array(
             'controller' => "^[a-zA-Z]*$",
-            'method' => "^[a-zA-Z]*$"
+            'method'     => "^[a-zA-Z]*$"
         )
     );
 });
