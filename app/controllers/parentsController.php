@@ -142,7 +142,10 @@ class parentsController extends BaseController{
                         "name" => Input::get('nombre'),
                         "email" => $parent->email,
                         "phone" => $parent->telefono,
-                        "cards"=> array(Input::get('conektaTokenId'))
+                        'payment_sources' => array(array(
+                        'token_id' => Input::get('conektaTokenId'),
+                        'type' => "card"
+                        ))
                     ));
                     $plan = Plan::find(Input::get('plan_id'));
                     if(!$plan){
@@ -322,7 +325,7 @@ class parentsController extends BaseController{
             INNER JOIN membresias_planes mp ON hjs.id = mp.hijo_id
             WHERE padres.id = '$idDad' AND mp.active = 1
             and ta.nombre = 'Imagen de Perfil'
-            GROUP BY hjs.id,photoProfile"); 
+            GROUP BY hjs.id,photoProfile");
         $temasLow = DB::select("SELECT
                 hj.id,i.id as idMateria,i.nombre as Materia
                 ,tms.id as temaID,tms.nombre as nombre_tema,
