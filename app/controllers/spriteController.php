@@ -44,10 +44,10 @@ class spriteController extends BaseController
     $data = Input::all();
  		$rules = array(
  			'adAv-img' => 'required',
-      'width' => 'required',
-      'height' => 'required',
-      'frameX' => 'required',
-      'frameY' => 'required',
+      'widthFrame' => 'required',
+      'heightFrame' => 'required',
+      'framesY' => 'required',
+      'framesX' => 'required',
       'fps' => 'required'
  		);
  		$msjs = Curiosity::getValidationMessages();
@@ -56,29 +56,40 @@ class spriteController extends BaseController
  			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
  		}
  		else{
- 			if ($this->NameActiveExist($data['nombre'])){
- 				return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
- 			}
- 			else{
+ 		// 	if ($this->NameActiveExist($data['nombre'])){
+ 		// 		return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
+ 		// 	}
+ 		// 	else{
+
  				$file = $data['adAv-img'];
- 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $data['nombre'];
+        $style = AvatarStyle::where("id", "=", $data['estilo_id'])->first();
+ 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $style['folder'];
         $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
  				$file->move($destinationPath, $phName);
  				$sprite = new Sprite($data);
         $sprite->active = 1;
         $sprite->imagen = $phName;
-        $sprite->widthFrame = $data['width'];
-        $sprite->heightFrame = $data['height'];
-        $sprite->frameY = $data['framesY'];
-        $sprite->frameX = $data['frameX'];
+        $sprite->widthFrame = $data['widthFrame'];
+        $sprite->heightFrame = $data['heightFrame'];
+        $sprite->framesY = $data['framesY'];
+        $sprite->framesX = $data['framesX'];
         $sprite->fps = $data['fps'];
-        $sprite->estilo_avatar_id = ;
-        $sprite->secuencia_id = ;
+        $sprite->estilo_avatar_id = $data['estilo_id'];
+        $sprite->secuencia_id = $data['secuencia'];
         $sprite->save();
+        $file->move($destinationPath,$phName);
 
  				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
- 			}
+ 		// 	}
  		}
+  }
+
+  function update(){
+
+  }
+
+  function delete(){
+    
   }
 
 }

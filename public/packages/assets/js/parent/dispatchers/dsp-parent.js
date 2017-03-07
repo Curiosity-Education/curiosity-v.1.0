@@ -5,13 +5,15 @@ $(function(){
        e.prevetDefault();
     });
 
-    if(parentController.validPlanSelected() == 1)
+    if(parentController.validPlanSelected() == 1){
         parentController.getPlan(localStorage.getItem('plan-user-selected'));
-    else
-        parentController.getSons();
+    }
+    else{
+      //   parentController.getSons();
+    }
 
     $("#pay-button").click(function(){
-        if(parentController.validPlanSelected()){
+        if(parentController.validPlanSelected() == 1){
             $("#pay-button").prop("disabled",true);
             $("#pay-button").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando");
             parentController.payment();
@@ -106,6 +108,21 @@ $(function(){
             $("#gst-modal-pdf-video").modal("show");
     });
 
+    $("#sctn-code").click(function() {
+       var title = "Ingresa tu código";
+       var message = "<div id='sctn-bodycode'><div class='form-group'><div class='input-group'><input type='text' class='form-control' id='sctn-codeval'><span class='input-group-addon waves-effect sctn-btnVerif' id='sctn-btnVerif'> Verificar </span></div></div></div><div id='sctn-noty'></div><button type='button' class='btn btn-rounded' id='sctn-cancelcode'>Cancelar</button>";
+       var icon = "none";
+       Curiosity.windowMessage(title, message, icon);
+    });
 
+    $("body").on('click', '.sctn-btnVerif', function() {
+      var codevalue = $("body").find('#sctn-codeval').val();
+      if (codevalue != ""){ parentController.verifyCode(codevalue); }
+    });
+
+    $("body").on('click', '#sctn-cancelcode', function() {
+       Curiosity.windowMessageClose();
+       $("body").find('#sctn-codeval').val("");
+    });
 
 });

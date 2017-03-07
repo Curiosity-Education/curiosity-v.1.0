@@ -7,7 +7,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "maatwebsite/excel": "~1.3",
-        "zizaco/entrust":"1.2.*@dev"
+        "zizaco/entrust":"1.2.*@dev",
+        "conekta/conekta-php": "3.1.0"
 	},
 	"autoload": {
 		"classmap": [

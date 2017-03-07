@@ -6,6 +6,22 @@ class avatar extends CORM {
     super.setPrefix('/avatar');
   }
 
+  static allSprites(success){
+    super.any(null,"POST",success,"/sprite","all");
+  }
+
+  static allSecuences(success){
+    super.any(null,"POST",success,"secuence","all");
+  }
+
+  static allAvatars(success){
+    super.any(null,"POST",success,"/avatar","all")
+  }
+
+  static allStyles(success){
+    super.any(null,"POST",success,"/avatar","allStylesAvatars");
+  }
+
   save(method,success){
     super.save(this.avatar,method,success);
   }
@@ -17,10 +33,6 @@ class avatar extends CORM {
 
   static delete(id,method,success){
     super.delete({id:id},method,success,'avatar');
-  }
-
-  static getAvatars(success){
-    super.any(null,"POST",success,"/avatar","allStylesAvatars");
   }
 
   static addStyles(formData, success){
@@ -35,7 +47,9 @@ class avatar extends CORM {
     super.any(data,"POST",success,"/avatar","updateStyle");
   }
 
-  static getSprites(success){
-    super.any(null,"POST",success,"/sprite","all");
+  static saveSprites(data,success){
+    super.any(data,"POST",success,"/sprite","save");
   }
+
+
 }
