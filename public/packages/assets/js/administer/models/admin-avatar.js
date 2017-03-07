@@ -51,5 +51,12 @@ class avatar extends CORM {
     super.any(data,"POST",success,"/sprite","save");
   }
 
+  static deleteSprite(id,success){
+    super.any(id,"POST",success,"/sprite","delete");
+  }
+
+  static updateSprite(data,success){
+    super.any(data,"POST",success,"/sprite","update");
+  }
 
 }

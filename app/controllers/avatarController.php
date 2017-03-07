@@ -203,6 +203,7 @@ class avatarController extends BaseController
  		}
   }
 
+
 	function avatarAnimated(){
 
 	}
@@ -219,6 +220,7 @@ class avatarController extends BaseController
   //   $data = input::all();
   //
   // }
+
 
 }
 

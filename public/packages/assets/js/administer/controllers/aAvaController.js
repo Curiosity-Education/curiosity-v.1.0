@@ -33,7 +33,7 @@ var aAvaController = {
     }
   },
 
-  delete:function(id){
+  delete : function(id){
 
 		if (id != null || id != "") {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){

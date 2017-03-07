@@ -4,26 +4,33 @@ $(function(){
   var tempAvatars, tempSprites, tempSecuences, tempStyles;
 
   avatar.allAvatars(function(avatars){
-    localStorage.localAvatars = JSON.stringify(avatars);
+    if ($.isPlainObject(avatar)) {
+      localStorage.localAvatars = JSON.stringify(avatars);
+      tempAvatars = JSON.parse(localStorage.localAvatars);
+    }
   });
 
   avatar.allSprites(function(sprites){
-    localStorage.localSprites = JSON.stringify(sprites);
+    if ($.isPlainObject(sprites)) {
+      localStorage.localSprites = JSON.stringify(sprites);
+      tempSprites = JSON.parse(localStorage.localSprites);
+    }
   });
 
   avatar.allSecuences(function(secuences){
-    localStorage.localSecuences = JSON.stringify(secuences);
+    if ($.isPlainObject(secuences)) {
+      localStorage.localSecuences = JSON.stringify(secuences);
+      tempSecuences = JSON.parse(localStorage.localSecuences);
+    }
   });
 
   avatar.allStyles(function(styles){
-    localStorage.localStyles = JSON.stringify(styles);
+    if ($.isPlainObject(styles)) {
+      localStorage.localStyles = JSON.stringify(styles);
+      tempStyles = JSON.parse(localStorage.localStyles);
+    }
   });
 
-  tempSecuences = JSON.parse(localStorage.localSecuences);
-  tempAvatars = JSON.parse(localStorage.localAvatars);
-  tempSprites = JSON.parse(localStorage.localSprites);
-  console.log(tempSprites);
-  tempStyles = JSON.parse(localStorage.localStyles);
 
   $.each(tempAvatars,function(i){
     var avatarStyle = StorageDB.table.getByAttr("localStyles","avatar_id",tempAvatars[i].id);

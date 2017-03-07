@@ -18,6 +18,8 @@ class childrenController extends BaseController{
         return View::make('vista_papa_misHijos')->with($data);
 	}
 	function save(){
+		\Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+		\Conekta\Conekta::setLocale('es');
 		$data = Input::all();
 		$rules=[
 			   "usuario"     =>"required|unique:users,username|max:50",
@@ -56,8 +58,8 @@ class childrenController extends BaseController{
 			$sons = parentsController::getSonsInfo();
 			$conutSons = count($sons['sons']);
 			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
-			Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-			$customer = Conekta_Customer::find($tokenCard);
+			\Conekta\Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
+			$customer = \Conekta\Customer::find($tokenCard);
 			$subscription = $customer->subscription;
 			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
 			if ($conutSons < $limit){
