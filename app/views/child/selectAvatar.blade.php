@@ -77,6 +77,11 @@
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
 
+	<script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
+
     <script src="/packages/assets/js/child/models/selectAvatar.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/child/controllers/selectAvatarCtrl.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/child/dispatchers/dsp-selectAvatar.js?{{rand();}}" charset="utf-8"></script>

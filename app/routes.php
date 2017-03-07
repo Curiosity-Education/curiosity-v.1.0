@@ -19,7 +19,7 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/selectavatar', 'avatarController@view');
+//Route::get('/selectavatar', 'avatarController@view');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -569,6 +569,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-recomended","activitiesController@getRecomended");
                 Route::get("/find-all","activitiesController@getAll");
                 Route::post("/updateViews","activitiesController@updateViews");
+                Route::get("/has-avatar","activitiesController@childHasAvatar");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");

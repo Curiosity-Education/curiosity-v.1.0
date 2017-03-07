@@ -53,4 +53,8 @@ class Activity extends CORM{
     static updateViews(data,success){
         return super.any(data,"POST",success,"/activity","updateViews");
     }
+
+	static hasAvatar(success){
+		super.any(null,"GET",success,"/activity","has-avatar")
+	}
 }
