@@ -427,7 +427,7 @@ class activitiesController extends BaseController{
 
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
-									'message'		=> 'khegf',
+									'message'		=> 'response',
 									'data'			=> $id_child
 								   ));
 	}

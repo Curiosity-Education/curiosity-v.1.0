@@ -40,16 +40,24 @@
 					<a href="#">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
-							<div id="sela-divTot" class="sal-divAvatar">
+							<div id="" class="sal-divAvatar">
+								<center>
+									<div id="sela-divTot" class="sela-contentAvatar">
 
+									</div>
+								</center>
 							</div>
 						</div>
 					</a>
 					<a href="#">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
-							<div id="sela-divSia" class="sal-divAvatar">
+							<div id="" class="sal-divAvatar">
+								<center>
+									<div id="sela-divSia" class="sela-contentAvatar">
 
+									</div>
+								</center>
 							</div>
 						</div>
 					</a>
@@ -82,8 +90,9 @@
     <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
     <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
 
+   	<script src="/packages/assets/js/administer/controllers/SpriteAnimator.js?{{rand();}}"></script>
     <script src="/packages/assets/js/child/models/selectAvatar.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/child/controllers/selectAvatarCtrl.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/child/dispatchers/dsp-selectAvatar.js?{{rand();}}" charset="utf-8"></script>
+   	<script src="/packages/assets/js/child/controllers/selectAvatarCtrl.js?{{rand();}}" charset="utf-8"></script>
+   	<script src="/packages/assets/js/child/dispatchers/dsp-selectAvatar.js?{{rand();}}" charset="utf-8"></script>
 </body>
 </html>
