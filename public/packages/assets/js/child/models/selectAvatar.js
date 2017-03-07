@@ -6,10 +6,6 @@ class selectAvatar extends CORM{
 		super.setPrefix('/select-avatar');
 	}
 
-	static flag(success){
-		super.any(null,"GET",success,"/select-avatar","has-avatar");
-	}
-
 	static getAvatars(success){
 		super.any(null,"GET",success,"/select-avatar","get-avatar");
 	}

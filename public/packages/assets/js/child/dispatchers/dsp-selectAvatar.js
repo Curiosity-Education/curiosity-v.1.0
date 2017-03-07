@@ -1,8 +1,5 @@
 $(function(){
 
-	// child has avatar ?
-	selectAvatarController.hasAvatar();
-
 	// show avatars
 	selectAvatarController.getAvatars();
 
