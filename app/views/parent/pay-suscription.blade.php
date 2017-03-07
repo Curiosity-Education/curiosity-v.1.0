@@ -29,13 +29,13 @@
 </head>
 <body id="rfc-bg">
    <div class="container-fluid main"><br>
-      <div class="row row-content" id="p-row-main">
+      <div class="row hidden row-content" id="p-row-main">
         <div class="col-md-2"></div>
          <div class="col-md-8">
             <form action="#" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
                 <div class="pymnt-itm card active">
-                    <h2>Tarjeta de crédito o débito <span class="pull-right hidden hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
+                    <h2>Tarjeta de crédito o débito <span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
                     <div class="pymnt-cntnt col-md-12 container">
                         <div class="card-expl col-md-12" style="background-color:rgba(238, 238, 238, 0.63);padding-bottom:6.5rem;">
                             <div class="row">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-md-2"></div>
          </div>
-        <div class="row hidden row-content" id="p-row-method-pay">
+        <div class="row row-content" id="p-row-method-pay">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="pymnt-itm card active">
@@ -127,7 +127,7 @@
 
                                                 <!--Price-->
                                                 <p style="color:black;text-align:justify;">Ahora puedes realizar tus pagos desde oxxo. <a href="https://iiemd.com/que-es-oxxo-pay/" style="display">Para más información. </a> </p>
-                                                <a class="btn btn-outline-info btn-rounded btn-method-pay method-oxxo-pay">Seleccionar</a>
+                                                <a class="btn btn-outline-info btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a>
                                             </div>
                                         </div>
 
@@ -161,12 +161,12 @@
                                                     <h1 style="background-color:transparent!important;color:black!important;border:none!important;">Monto a pagar</h1>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <h1>$ 0,000.00 <sup>MXN</sup></h1>
+                                                    <h1 id="h-mount">$ 0,000.00 <sup>MXN</sup></h1>
                                                     <p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
                                                 </div>
                                                 <div class="opps-reference">
                                                     <h3>Referencia</h3>
-                                                    <h1>0000-0000-0000-00</h1>
+                                                    <h1 id="h-reference">0000-0000-0000-00</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,7 +186,7 @@
                                         <li>Realiza el pago correspondiente con dinero en efectivo.</li>
                                         <li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
                                     </ol>
-                                    <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Nombre del negocio</strong> confirmando tu pago.</div>
+                                    <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Curiosity Educación</strong> confirmando tu pago.</div>
                                 </div>
                             </div>
                          </div>
@@ -253,18 +253,46 @@
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script type="text/javascript">
 		 $(document).ready(function() {
+            var hasReferent  = false;
 			$('.mdb-select').material_select();
             $(".btn-method-pay").click(function(){
-                $(".row-content").hide("fast");
                 if($(this).hasClass("method-oxxo-pay")){
-                    $("#p-row-oxxo-pay").show("slow");
+                    if(hasReferent){
+                        $(".row-content").hide("fast");
+                        $("#p-row-oxxo-pay").show("slow");
+                    }
                 }else{
+                    $(".row-content").hide("fast");
                     $("#p-row-main").show("slow")
                 }
             });
             $(".return-method").click(function(){
                 $(".row-content").hide("slow");
                 $("#p-row-method-pay").show("fast");
+            });
+            $("#btn-method-oxxo").one("click",function(){
+                var $btn =  $(this);
+                var html = $btn.html();
+                $btn.prop("disabled",true);
+                $btn.html("<i class='fa fa-spinner fa-pulse'></i>");
+                $.ajax({
+                    "url"      : "parent/create-charge-oxxo",
+                    "method"   : "POST",
+                    "dataType" : "JSON",
+                    "data"     : {"plan_id":localStorage.getItem("plan-user-selected")}
+                }).done(function(response){
+                    $(".row-content").hide("fast");
+                    $("#p-row-oxxo-pay").show("slow");
+                    $("#h-reference").text(response.data.reference);
+                    $("#h-mount").text('$ '+response.data.amount);
+                    hasReferent = true;
+                }).fail(function(error){
+                    console.error(error);
+                }).always(function(response){
+                    //always
+                    $btn.html(html);
+                    $btn.prop("disabled",false);
+                });
             });
 		  });
 	</script>
