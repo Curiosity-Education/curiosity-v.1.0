@@ -359,6 +359,9 @@ Route::group(array('prefix' =>  'avatar'),function(){
 Route::group(array('prefix' =>  'sprite'),function(){
 	Route::post('all', 'spriteController@all');
 	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+	Route::post('save', 'spriteController@save');
+	Route::post('update', 'spriteController@update');
+	Route::post('delete', 'spriteController@delete');
 });
 
 /*

@@ -1,5 +1,21 @@
 var aAvaController = {
 
+  allAvatars:function(success){
+		avatar.allAvatars(success);
+	},
+
+  allSprites : function(success){
+    avatar.allSprites(success);
+  },
+
+  allSecuences : function(success){
+    avatar.getSecuences(success);
+  },
+
+  allStyles : function(success){
+    avatar.allStyles(success)
+  },
+
   save : function(){
     if ($("#adAv-img").val() != ""){
       var formData = new FormData($("#adAv-imgForm")[0]);
@@ -17,11 +33,7 @@ var aAvaController = {
     }
   },
 
-  getAvatars:function(success){
-		avatar.getAvatars(success);
-	},
-
-  delete:function(id){
+  delete : function(id){
 
 		if (id != null || id != "") {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
@@ -97,8 +109,19 @@ var aAvaController = {
     }
   },
 
-  getSprites : function(success){
-    avatar.getSprites(success);
+  saveSprite : function(id){
+    console.log(id);
+    if($("#adAv-img").val() != ""){
+      var formData = new FormData($("#adAv-imgForm")[0]);
+      formData.append('secuencia',$('#adAv-select').val());
+      formData.append('widthFrame',$('#adAv-width').val());
+      formData.append('heightFrame',$('#adAv-height').val());
+      formData.append('framesX',$('#adAv-framesX').val());
+      formData.append('framesY',$('#adAv-frameY').val());
+      formData.append('fps',$('#adAv-fps').val());
+      formData.append('estilo_id',id);
+      avatar.saveSprites(formData,function(){alert('ya estuvo perro')});
+    }
   }
 
 }

@@ -124,6 +124,7 @@ class avatarController extends BaseController
  		}
   }
 
+
   function addStyle(){
 
  		$data = Input::all();
@@ -146,15 +147,15 @@ class avatarController extends BaseController
         $file = $data['adAv-img'];
         $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
         $avatarStyle = new AvatarStyle($data);
-        $avatarStyle->nombre;
+        $avatarStyle->nombre = $data['nombre'];
         $avatarStyle->costo = $data['costo'];
         $avatarStyle->active = 1;
         $avatarStyle->preview = $phName;
         $avatarStyle->is_default = 0;
         $avatarStyle->avatar_id = $data['id'];
-        $avatarStyle->folder = $data['folder'];
+        $avatarStyle->folder = $data['nombre'];
         $avatarStyle->save();
-        $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatarStyle->folder;
+        $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . "/" . $avatarStyle->folder;
         $file->move($destinationPath,$phName);
 
 
@@ -201,6 +202,7 @@ class avatarController extends BaseController
 
  		}
   }
+
 
 	function childHasAvatar(){
 		$id_child = DB::table('hijos')
