@@ -35,7 +35,7 @@
             <form action="#" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
                 <div class="pymnt-itm card active">
-                    <h2>Tarjeta de crédito o débito <span class="pull-right hidden hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
+                    <h2>Tarjeta de crédito o débito <span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
                     <div class="pymnt-cntnt col-md-12 container">
                         <div class="card-expl col-md-12" style="background-color:rgba(238, 238, 238, 0.63);padding-bottom:6.5rem;">
                             <div class="row">
