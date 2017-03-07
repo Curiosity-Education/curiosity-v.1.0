@@ -19,7 +19,7 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/selectavatar', 'avatarController@view');
+//Route::get('/selectavatar', 'avatarController@view');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');

@@ -206,15 +206,16 @@ class avatarController extends BaseController
 
 	function childHasAvatar(){
 		$id_child = DB::table('hijos')
-			->select('hijos.id')
+			->select('users.flag')
 			->join('personas','hijos.persona_id','=','personas.id')
 			->join('users','personas.user_id','=','users.id')
 			->where('users.id','=',Auth::user()->id)
-			->first()->id;
+			->first()->flag;
 
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
-									'message'		=> 'khegf'
+									'message'		=> 'khegf',
+									'data'			=> $id_child
 								   ));
 	}
 
