@@ -19,5 +19,15 @@ var activityCtrl = {
 	},
 	updateViews: function(data,success){
 		Activity.updateViews(data,success);	
-	} 
+	},
+	hasAvatar : function(){
+		Activity.hasAvatar(function(response){
+			if(response.data == 0){
+				location.href = "/view-child.selectAvatar";
+			}else{
+
+			}
+		});
+	}
+
 };

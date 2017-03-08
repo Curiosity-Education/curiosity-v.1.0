@@ -204,6 +204,7 @@ class avatarController extends BaseController
   }
 
 
+
 	function childHasAvatar(){
 		$id_child = DB::table('hijos')
 			->select('hijos.id')
@@ -218,15 +219,16 @@ class avatarController extends BaseController
 		   ));
 	}
 
-	function avatarAnimated(){
+
+	public function avatarAnimated(){
 
 	}
 
-	function avatarStyles(){
+	public function avatarStyles(){
 
 	}
 
-	function selectedAvatar(){
+	public function selectedAvatar(){
 
 	}
 
