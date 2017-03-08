@@ -124,6 +124,7 @@ class avatarController extends BaseController
  		}
   }
 
+
   function addStyle(){
 
  		$data = Input::all();
@@ -146,15 +147,15 @@ class avatarController extends BaseController
         $file = $data['adAv-img'];
         $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
         $avatarStyle = new AvatarStyle($data);
-        $avatarStyle->nombre;
+        $avatarStyle->nombre = $data['nombre'];
         $avatarStyle->costo = $data['costo'];
         $avatarStyle->active = 1;
         $avatarStyle->preview = $phName;
         $avatarStyle->is_default = 0;
         $avatarStyle->avatar_id = $data['id'];
-        $avatarStyle->folder = $data['folder'];
+        $avatarStyle->folder = $data['nombre'];
         $avatarStyle->save();
-        $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatarStyle->folder;
+        $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . "/" . $avatarStyle->folder;
         $file->move($destinationPath,$phName);
 
 
@@ -192,15 +193,44 @@ class avatarController extends BaseController
       $avatStyle->costo = $data['costo'];
       $avatStyle->nombre = $data['nombre'];
   		$avatStyle->save();
-      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder. "/" . $avatStyle->preview;
+      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . "/" . $avatStyle->folder. "/" . $avatStyle->preview;
       unlink($deleteFile);
-      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
+      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . $avatStyle->folder;
       $file->move($destinationPath, $avatStyle->preview);
 
 			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatStyle));
 
  		}
   }
+
+
+
+	function childHasAvatar(){
+		$id_child = DB::table('hijos')
+			->select('hijos.id')
+			->join('personas','hijos.persona_id','=','personas.id')
+			->join('users','personas.user_id','=','users.id')
+			->where('users.id','=',Auth::user()->id)
+			->first()->id;
+
+		return Response::json(array('status' 		=> 200,
+			'statusMessage' => 'success',
+			'message'		=> 'khegf'
+		   ));
+	}
+
+
+	public function avatarAnimated(){
+
+	}
+
+	public function avatarStyles(){
+
+	}
+
+	public function selectedAvatar(){
+
+	}
 
 }
 

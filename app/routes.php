@@ -19,7 +19,7 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/selectavatar', 'avatarController@view');
+//Route::get('/selectavatar', 'avatarController@view');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -67,6 +67,7 @@ Route::group(array('prefix' => '/profile-child'), function(){
 
 // Routes selection avatar first time
 Route::group(array('prefix' => '/select-avatar'), function(){
+	Route::get('has-avatar','avatarController@childHasAvatar');
 	Route::get('get-avatar','avatarController@avatarAnimated');
 	Route::get('get-style','avatarController@avatarStyles');
 	Route::post('select-avatar','avatarController@selectedAvatar');
@@ -358,6 +359,9 @@ Route::group(array('prefix' =>  'avatar'),function(){
 Route::group(array('prefix' =>  'sprite'),function(){
 	Route::post('all', 'spriteController@all');
 	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+	Route::post('save', 'spriteController@save');
+	Route::post('update', 'spriteController@update');
+	Route::post('delete', 'spriteController@delete');
 });
 
 /*
@@ -565,6 +569,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-recomended","activitiesController@getRecomended");
                 Route::get("/find-all","activitiesController@getAll");
                 Route::post("/updateViews","activitiesController@updateViews");
+                Route::get("/has-avatar","activitiesController@childHasAvatar");
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");
