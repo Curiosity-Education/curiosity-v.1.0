@@ -193,9 +193,9 @@ class avatarController extends BaseController
       $avatStyle->costo = $data['costo'];
       $avatStyle->nombre = $data['nombre'];
   		$avatStyle->save();
-      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder. "/" . $avatStyle->preview;
+      $deleteFile = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . "/" . $avatStyle->folder. "/" . $avatStyle->preview;
       unlink($deleteFile);
-      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $avatStyle->folder;
+      $destinationPath = public_path() . "/packages/assets/media/images/avatar/sprites/" . $data['folder'] . $avatStyle->folder;
       $file->move($destinationPath, $avatStyle->preview);
 
 			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatStyle));
@@ -213,9 +213,9 @@ class avatarController extends BaseController
 			->first()->id;
 
 		return Response::json(array('status' 		=> 200,
-									'statusMessage' => 'success',
-									'message'		=> 'khegf'
-								   ));
+			'statusMessage' => 'success',
+			'message'		=> 'khegf'
+		   ));
 	}
 
 	function avatarAnimated(){
