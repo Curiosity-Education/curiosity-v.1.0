@@ -105,7 +105,7 @@
                                                 </div>
                                                 <!--Price-->
                                                 <br>
-                                                <p style="text-align:center;margin-bottom:1.3rem;">Paga a través de tu tarjeta de debito.</p>
+                                                <p style="text-align:center;margin-bottom:1.3rem;">Paga a través de tu tarjeta de débito.</p>
                                                 <a class="btn btn-outline-white btn-rounded btn-method-pay">Seleccionar</a>
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="pymnt-itm card active">
-                    <h2>FICHA DIGITAL NO ES NECESARIO IMPIMIR<span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
+                    <h2>Ficha digital. (No es necesario imprimir)<span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
                     <div class="pymnt-cntnt col-md-12 container">
                          <div class="row">
                             <div class="col-md-6">
@@ -184,8 +184,8 @@
                                     <h3>Instrucciones</h3>
                                     <ol>
                                         <li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a></li>
-                                        <li>Indica en caja que quieres ralizar un pago de <strong>OXXOPay</strong>.</li>
-                                        <li>Dicta al cajero el número de referencia en esta ficha para que tecleé directamete en la pantalla de venta.</li>
+                                        <li>Indica en caja que quieres realizar un pago de <strong>OXXO Pay</strong>.</li>
+                                        <li>Dicta al cajero el número de referencia en esta ficha para que tecleé directamente en la pantalla de venta.</li>
                                         <li>Realiza el pago correspondiente con dinero en efectivo.</li>
                                         <li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
                                     </ol>
