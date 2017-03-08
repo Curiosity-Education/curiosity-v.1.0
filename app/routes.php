@@ -306,7 +306,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
-  Route::post('has-game','activitiesController@hasGame');
+  	Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
