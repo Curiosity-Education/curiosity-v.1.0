@@ -85,7 +85,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="pymnt-itm card active">
-                    <h2>Selecciona un metodo de pago</h2>
+                    <h2>Selecciona un método de pago</h2>
                     <div class="pymnt-cntnt col-md-12 container">
                      <!--Second column-->
                      <div class="row">
@@ -94,17 +94,18 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
                                     <!--Card-->
-                                    <div class="card unique-color hoverable" id="option-credit-card">
+                                    <div class="card unique-color hoverable z-depth-2" id="option-credit-card">
 
                                         <!--Content-->
                                         <div class="text-center white-text">
                                             <div class="card-block">
-                                                <h5>Tarjeta de debito</h5>
+                                                <!-- <h5>Tarjeta de debito</h5> -->
                                                 <div class="flex-center">
                                                     <img src="/packages/assets/media/images/system/credit-card.png?v={{rand()}}">
                                                 </div>
                                                 <!--Price-->
-                                                <p style="text-align:center;">Paga a través de tu tarjeta de debito.</p>
+                                                <br>
+                                                <p style="text-align:center;margin-bottom:1.3rem;">Paga a través de tu tarjeta de debito.</p>
                                                 <a class="btn btn-outline-white btn-rounded btn-method-pay">Seleccionar</a>
                                             </div>
                                         </div>
@@ -120,13 +121,15 @@
                                         <!--Content-->
                                         <div class="text-center white-text">
                                             <div class="card-block">
-                                                <h5>Oxxo Pay</h5>
+                                               <br>
+                                                <!-- <h5>Oxxo Pay</h5> -->
                                                 <div class="flex-center">
                                                     <img src="/packages/assets/media/images/system/oxxo-pay.png?v={{rand()}}">
                                                 </div>
 
                                                 <!--Price-->
-                                                <p style="color:black;text-align:justify;">Ahora puedes realizar tus pagos desde oxxo. <a href="https://iiemd.com/que-es-oxxo-pay/" style="display">Para más información. </a> </p>
+                                                <br>
+                                                <p style="color:black;text-align:center;">Ahora puedes realizar tus pagos desde OXXO. <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">Para más información. </a> </p>
                                                 <a class="btn btn-outline-info btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a>
                                             </div>
                                         </div>
