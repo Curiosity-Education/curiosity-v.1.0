@@ -63,7 +63,9 @@ class spriteController extends BaseController
 
  				$file = $data['adAv-img'];
         $style = AvatarStyle::where("id", "=", $data['estilo_id'])->first();
- 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $style['folder'];
+        $avat = Avatar::find($style->avatar_id);
+        $secuencia = Sequence::find($data['secuencia']);
+ 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $avat->nombre . "/" . $style->folder . "/" . $secuencia->nombre;
         $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
  				$file->move($destinationPath, $phName);
  				$sprite = new Sprite($data);
@@ -79,7 +81,7 @@ class spriteController extends BaseController
         $sprite->save();
         $file->move($destinationPath,$phName);
 
- 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
+ 				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $sprite));
  		// 	}
  		}
   }
@@ -105,23 +107,25 @@ class spriteController extends BaseController
  		// 	}
  		// 	else{
 
- 				$file = $data['adAv-img'];
-        $style = AvatarStyle::where("id", "=", $data['estilo_id'])->first();
- 				$destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $style['folder'];
-        $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
- 				$file->move($destinationPath, $phName);
- 				$sprite = new Sprite($data);
-        $sprite->active = 1;
-        $sprite->imagen = $phName;
-        $sprite->widthFrame = $data['widthFrame'];
-        $sprite->heightFrame = $data['heightFrame'];
-        $sprite->framesY = $data['framesY'];
-        $sprite->framesX = $data['framesX'];
-        $sprite->fps = $data['fps'];
-        $sprite->estilo_avatar_id = $data['estilo_id'];
-        $sprite->secuencia_id = $data['secuencia'];
-        $sprite->save();
-        $file->move($destinationPath,$phName);
+    file = $data['adAv-img'];
+    $style = AvatarStyle::where("id", "=", $data['estilo_id'])->first();
+    $avat = Avatar::find($style->avatar_id);
+    $secuencia = Sequence::find($data['secuencia']);
+    $destinationPath = public_path()."/packages/assets/media/images/avatar/sprites/" . $avat->nombre . "/" . $style->folder . "/" . $secuencia->nombre;
+    $phName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
+    $file->move($destinationPath, $phName);
+    $sprite = new Sprite($data);
+    $sprite->active = 1;
+    $sprite->imagen = $phName;
+    $sprite->widthFrame = $data['widthFrame'];
+    $sprite->heightFrame = $data['heightFrame'];
+    $sprite->framesY = $data['framesY'];
+    $sprite->framesX = $data['framesX'];
+    $sprite->fps = $data['fps'];
+    $sprite->estilo_avatar_id = $data['estilo_id'];
+    $sprite->secuencia_id = $data['secuencia'];
+    $sprite->save();
+    $file->move($destinationPath,$phName);
 
  				return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $avatar));
  		// 	}
