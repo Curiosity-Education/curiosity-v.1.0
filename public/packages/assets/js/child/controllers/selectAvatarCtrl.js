@@ -18,7 +18,7 @@ var selectAvatarController = {
 		selectAvatar.selected(this.selection);
 	},
 
-	avatars : function(){
+	avatars : function(response){
 
 		// TOT
 		var sprites = StorageDB.table.getData("spritesChild");
@@ -51,7 +51,7 @@ var selectAvatarController = {
 			animation2.play();
 		}, animation2.speed);
 
-
+		console.log(response);
 
 	},
 
