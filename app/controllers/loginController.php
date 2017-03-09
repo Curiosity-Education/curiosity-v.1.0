@@ -65,6 +65,9 @@ class loginController extends BaseController{
                     return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
                 }
                 else{
+                    if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){
+                       return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.account-oxxo-paused"));
+                    }
                     $id_dad = Auth::user()->Person->Dad->id;
                     $sons = Son::where("padre_id", "=", $id_dad)->get();
                     $conutSons = count($sons);
@@ -378,7 +381,7 @@ class loginController extends BaseController{
                             select p.nombre,
                               p.apellidos,
                               u.id,u.username,
-                              if(r.name='child',(select prs.email from hijos hj join padres prs on prs.id = hj.padre_id where hj.id = h.id),pr.email) as email from users u 
+                              if(r.name='child',(select prs.email from hijos hj join padres prs on prs.id = hj.padre_id where hj.id = h.id),pr.email) as email from users u
                             join assigned_roles ar on ar.user_id = u.id
                             join roles r on r.id = ar.role_id
                             join personas p on p.user_id = u.id

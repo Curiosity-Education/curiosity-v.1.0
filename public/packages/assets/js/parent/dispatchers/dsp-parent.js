@@ -125,4 +125,62 @@ $(function(){
        $("body").find('#sctn-codeval').val("");
     });
 
+   // ************************************************************
+   //  Traslading data code js from page blade to this filter
+   // ************************************************************
+   var hasReferent  = false;
+   $('.mdb-select').material_select();
+   $(".btn-method-pay").click(function(){
+      if($(this).hasClass("method-oxxo-pay")){
+           if(hasReferent){
+               $(".row-content").hide("fast");
+               $("#p-row-oxxo-pay").show("slow");
+           }
+      }else{
+           $(".row-content").hide("fast");
+           $("#p-row-main").show("slow")
+      }
+   });
+   $(".return-method").click(function(){
+      $(".row-content").hide("slow");
+      $("#p-row-method-pay").show("fast");
+   });
+   $("#btn-method-oxxo").one("click",function(){
+      var $btn =  $(this);
+      var html = $btn.html();
+      $btn.prop("disabled",true);
+      $btn.html("<i class='fa fa-spinner fa-pulse'></i>");
+      $.ajax({
+           "url"      : "parent/create-charge-oxxo",
+           "method"   : "POST",
+           "dataType" : "JSON",
+           "data"     : {"plan_id":localStorage.getItem("plan-user-selected")}
+      }).done(function(response){
+           $(".row-content").hide("fast");
+           $("#p-row-oxxo-pay").show("slow");
+           $("#h-reference").text(response.data.reference);
+           $("#h-mount").text('$ '+response.data.amount);
+           hasReferent = true;
+      }).fail(function(error){
+           console.error(error);
+      }).always(function(response){
+           //always
+           $btn.html(html);
+           $btn.prop("disabled",false);
+      });
+   });
+
+   $("#sctn-printbtn").click(function() {
+      $("#sctn-acceptbtn").hide("fast", function(){window.print();});
+      $("#sctn-printbtn").hide("fast");
+      setTimeout(function(){
+         $("#sctn-acceptbtn").show();
+         $("#sctn-printbtn").show();
+      }, 500);
+   });
+
+   $("#sctn-acceptbtn").click(function() {
+      window.location.href = "/";
+   });
+
 });

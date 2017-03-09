@@ -107,7 +107,7 @@ class spriteController extends BaseController
  		// 	}
  		// 	else{
 
-    file = $data['adAv-img'];
+    $file = $data['adAv-img'];
     $style = AvatarStyle::where("id", "=", $data['estilo_id'])->first();
     $avat = Avatar::find($style->avatar_id);
     $secuencia = Sequence::find($data['secuencia']);
