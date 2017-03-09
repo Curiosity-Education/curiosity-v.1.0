@@ -86,7 +86,7 @@
             <div class="col-md-8">
                 <div class="pymnt-itm card active">
                     <h2>Selecciona un método de pago</h2>
-                    <div class="pymnt-cntnt col-md-12 container">
+                    <div class="pymnt-cntnt col-md-12 container" style="padding-top:4em!important;padding-bottom:4rem !important;">
                      <!--Second column-->
                      <div class="row">
                         <div class="col-md-1"></div>
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
                                     <!--Card-->
-                                    <div class="card unique-color hoverable z-depth-2" id="option-credit-card">
+                                    <div class="card z-depth-2" id="option-credit-card">
 
                                         <!--Content-->
                                         <div class="text-center white-text">
@@ -105,7 +105,7 @@
                                                 </div>
                                                 <!--Price-->
                                                 <br>
-                                                <p style="text-align:center;margin-bottom:1.3rem;">Paga a través de tu tarjeta de débito.</p>
+                                                <p style="text-align:center;margin-bottom:2.25rem;">Paga a través de tu tarjeta de débito.</p>
                                                 <a class="btn btn-outline-white btn-rounded btn-method-pay">Seleccionar</a>
                                             </div>
                                         </div>
@@ -116,7 +116,7 @@
                                 <!--/Second column-->
                                   <div class="col-lg-6 col-md-12">
                                     <!--Card-->
-                                    <div class="card hoverable" id="option-pay-oxxo" {{-- style="background-color: #38547f;" --}}>
+                                    <div class="card" id="option-pay-oxxo">
 
                                         <!--Content-->
                                         <div class="text-center white-text">
@@ -130,7 +130,7 @@
                                                 <!--Price-->
                                                 <br>
                                                 <p style="color:black;text-align:center;">Ahora puedes realizar tus pagos desde OXXO. <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">Para más información. </a> </p>
-                                                <a class="btn btn-outline-info btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a>
+                                                <a class="btn btn-outline btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a>
                                             </div>
                                         </div>
 
@@ -151,8 +151,20 @@
         <div class="row hidden row-content" id="p-row-oxxo-pay">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="pymnt-itm card active">
-                    <h2>Ficha digital. (No es necesario imprimir)<span class="pull-right hoverable return-method" title="regresar a metodo de pago"><a><i class="fa fa-arrow-left"></i></a></span></h2>
+                <div class="pymnt-itm card active" style="box-shadow:none;">
+                    <h2 style="width: 75%!important;
+                               background: #fff!important;
+                               color: #737373!important;
+                               font-size: 1rem !important;
+                               border-top-left-radius: 0.23rem;
+                               padding-left: 3rem !important;
+                               padding-top: 3rem !important;
+                               padding-bottom: 2rem !important;">
+                       <span style="font-weight:600;">Curiosity Educación</span><br>
+                       <span>www.curiosity.com.mx</span><br>
+                       Fecha: {{ $dateNow = date("d-m-Y H:i:s"); }}
+                    </h2>
+                    <img src="/packages/assets/media/images/system/logoDef.png" style="width:15%;float:right;margin-top: -7rem;margin-right:3.5rem;">
                     <div class="pymnt-cntnt col-md-12 container">
                          <div class="row">
                             <div class="col-md-6">
@@ -160,79 +172,64 @@
                                     <div class="opps-info row">
                                         <div class="col-md-12" style="margin-top:.3rem;margin-bottom:.2rem;">
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <h1 style="background-color:transparent!important;color:black!important;border:none!important;">Monto a pagar</h1>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <h1 id="h-mount">$ 0,000.00 <sup>MXN</sup></h1>
-                                                    <p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
+                                                <h1 style="background-color:transparent!important;color:#737373!important;border:none!important;font-size:.9rem!important;text-align:left;margin-bottom: 10px;font-weight:600;text-transform:uppercase;">Monto a pagar</h1>
+                                                <div>
+                                                    <h1 id="h-mount" style="font-size:1.3rem!important;font-weight:600;margin-bottom:1.5rem;color:#828282!important;">$ 0,000.00 <sup style="font-size:.7rem!important;color:#737373!important;">MXN</sup></h1>
+                                                    <p><b>Nota: </b>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
+                                                    <p><b>Nota: </b>No es necesario imprimir este archivo, solo presenta el número de referencia.</p>
                                                 </div>
                                                 <div class="opps-reference">
-                                                    <h3>Referencia</h3>
-                                                    <h1 id="h-reference">0000-0000-0000-00</h1>
+                                                    <h3 style="color:#737373!important;margin-top:1.5rem;">Referencia</h3>
+                                                    <h1 id="h-reference" style="font-size:1.3rem!important;color:#828282!important;font-weight:600;">0000-0000-0000-00</h1>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <img src="/packages/assets/media/images/system/oxxo-pay.png?v={{rand()}}" alt="OXXOPay">
+                                            <img src="/packages/assets/media/images/system/oxxo-pay.png?v={{rand();}}" alt="OXXOPay" style="margin-top:1rem;">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="opps opps-right">
-                                    <h3>Instrucciones</h3>
+                                <div class="opps opps-right" style="padding-top:1.2rem;">
+                                    <h3 style="color:#737373!important;">Instrucciones</h3>
                                     <ol>
-                                        <li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a></li>
-                                        <li>Indica en caja que quieres realizar un pago de <strong>OXXO Pay</strong>.</li>
-                                        <li>Dicta al cajero el número de referencia en esta ficha para que tecleé directamente en la pantalla de venta.</li>
-                                        <li>Realiza el pago correspondiente con dinero en efectivo.</li>
-                                        <li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
+                                        <li style="color:#737373!important;">Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a></li>
+                                        <li style="color:#737373!important;">Indica en caja que quieres realizar un pago de <strong>OXXO Pay</strong>.</li>
+                                        <li style="color:#737373!important;">Dicta al cajero el número de referencia en esta ficha para que tecleé directamente en la pantalla de venta.</li>
+                                        <li style="color:#737373!important;">Realiza el pago correspondiente con dinero en efectivo.</li>
+                                        <li style="color:#737373!important;">Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
                                     </ol>
-                                    <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Curiosity Educación</strong> confirmando tu pago.</div>
                                 </div>
                             </div>
                          </div>
-                    </div>
-                    <div class="row col-md-12">
-                        <div class="shield col-md-4 pull-letf">Tus pagos se realizan de forma segura</div>
+                         <div class="row col-md-12">
+                             <div class="col-md-4 pull-letf" style="margin-top:.2rem!important;display:flex;margin-left:1.5rem;">
+                                <img src="/packages/assets/media/images/parents/payment_cards/security.png" style="margin-right:1rem;">
+                                Tus pagos se realizan de forma segura</div>
+                             <div class="col-md-3"></div>
+                             <div class="opps-footnote col-md-5" style="margin-left:10rem;margin-top:-.5rem;">Al completar estos pasos recibirás un correo de <strong>Curiosity Educación</strong> confirmando tu pago.</div>
+                         </div>
+                         <div class="container">
+                            <div class="row">
+                               <div class="col-md-12 text-right">
+                                  <div class="container-fluid">
+                                     <button type="button" class="btn btn-rounded btn-outline-primary" id="sctn-printbtn">
+                                        <span class="fa fa-print"></span>&nbsp;
+                                        Imprimir
+                                     </button>
+                                     <button type="button" class="btn btn-rounded btn-outline-primary" id="sctn-acceptbtn">
+                                        <span class="fa fa-check"></span>&nbsp;
+                								 Aceptar
+                							 </button>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>
         </div>
-            <!--<div class="col-md-8">
-                <div class="pymnt-cntnt col-md-12 container">
-
-                    <div class="opps row">
-                        <div class="opps-header opps-content" style="background-color:rgba(238, 238, 238, 0.63)">
-                            <div class="opps-reminder" style="background-color:#2262ae">Ficha digital. No es necesario imprimir.</div>
-                            <div class="opps-info">
-                                <div class="opps-brand"><img src="/packages/assets/media/images/system/oxxopay_brand.png" alt="OXXOPay"></div>
-                                <div class="opps-ammount">
-                                    <h3>Monto a pagar</h3>
-                                    <h2>$ 0,000.00 <sup>MXN</sup></h2>
-                                    <p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
-                                </div>
-                            </div>
-                            <div class="opps-reference">
-                                <h3>Referencia</h3>
-                                <h1>0000-0000-0000-00</h1>
-                            </div>
-                        </div>
-                        <div class="opps-instructions opps-content">
-                            <h3>Instrucciones</h3>
-                            <ol>
-                                <li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a>.</li>
-                                <li>Indica en caja que quieres ralizar un pago de <strong>OXXOPay</strong>.</li>
-                                <li>Dicta al cajero el número de referencia en esta ficha para que tecleé directamete en la pantalla de venta.</li>
-                                <li>Realiza el pago correspondiente con dinero en efectivo.</li>
-                                <li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
-                            </ol>
-                            <div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Nombre del negocio</strong> confirmando tu pago.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
             <div class="col-md-2"></div>
         </div>
       </div>
@@ -254,49 +251,4 @@
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
-    <script type="text/javascript">
-		 $(document).ready(function() {
-            var hasReferent  = false;
-			$('.mdb-select').material_select();
-            $(".btn-method-pay").click(function(){
-                if($(this).hasClass("method-oxxo-pay")){
-                    if(hasReferent){
-                        $(".row-content").hide("fast");
-                        $("#p-row-oxxo-pay").show("slow");
-                    }
-                }else{
-                    $(".row-content").hide("fast");
-                    $("#p-row-main").show("slow")
-                }
-            });
-            $(".return-method").click(function(){
-                $(".row-content").hide("slow");
-                $("#p-row-method-pay").show("fast");
-            });
-            $("#btn-method-oxxo").one("click",function(){
-                var $btn =  $(this);
-                var html = $btn.html();
-                $btn.prop("disabled",true);
-                $btn.html("<i class='fa fa-spinner fa-pulse'></i>");
-                $.ajax({
-                    "url"      : "parent/create-charge-oxxo",
-                    "method"   : "POST",
-                    "dataType" : "JSON",
-                    "data"     : {"plan_id":localStorage.getItem("plan-user-selected")}
-                }).done(function(response){
-                    $(".row-content").hide("fast");
-                    $("#p-row-oxxo-pay").show("slow");
-                    $("#h-reference").text(response.data.reference);
-                    $("#h-mount").text('$ '+response.data.amount);
-                    hasReferent = true;
-                }).fail(function(error){
-                    console.error(error);
-                }).always(function(response){
-                    //always
-                    $btn.html(html);
-                    $btn.prop("disabled",false);
-                });
-            });
-		  });
-	</script>
 </body>
