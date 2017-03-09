@@ -180,7 +180,7 @@ $(function(){
    });
 
    $("#sctn-acceptbtn").click(function() {
-      window.location.reload();
+      window.location.href = "/";
    });
 
 });
