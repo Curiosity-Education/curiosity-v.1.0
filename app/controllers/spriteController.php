@@ -25,8 +25,8 @@ class spriteController extends BaseController
       // ->select("sprites.*", "items.ruta")
       // ->get();
 
-      $user		= Auth::user();
-  		$person 	= Person::where("user_id", "=", $user["id"])->first();
+      	$user	= Auth::user();
+  		$person = Person::where("user_id", "=", $user["id"])->first();
   		$child 	= Son::where("persona_id", "=", $person["id"])->first();
 
       $obj = DB::table("hijos_has_estilos_avatar")
