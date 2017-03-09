@@ -109,4 +109,7 @@ $(function(){
 			r.show("#fff");
 		}
 	}
+
+	// child has avatar ?
+	activityCtrl.hasAvatar();
 });
