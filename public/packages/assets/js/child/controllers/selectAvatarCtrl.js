@@ -2,6 +2,12 @@ var selectAvatarController = {
 
 	avatar : null,
 
+	styleID : null,
+
+	setStyleID : function($id){
+		this.styleID = $id;
+	},
+
 	setAvatar : function($avatar){
 		this.avatar = $avatar;
 
@@ -16,7 +22,7 @@ var selectAvatarController = {
 	},
 
 	selected : function(){
-		selectAvatar.selected(this.selection);
+		selectAvatar.selected(this.styleID,this.selection);
 	},
 
 	avatars : function(response){
@@ -92,9 +98,10 @@ var selectAvatarController = {
 
 				if(valor == "/sia/"){
 
-					var contentSia = "<div class='col-md-6  sela-content'>"+
+					var contentSia = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
+							"<div class='col-md-6 sela-border sela-content'>"+
 								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
-							"</div>";
+							"</div></a>";
 
 					$("#sela-styles").append(contentSia);
 
@@ -110,8 +117,26 @@ var selectAvatarController = {
 
 	selection : function(response){
 
+		Curiosity.toastLoading.hide();
+		console.log(response.message);
 
+		/*
+		Curiosity.noty.success(response.message,"Exitoso");
+				setInterval(function(){
+					location.href = "/view-child.init";
+				},'2300');
+		*/
+	},
 
+	alertConfirm : function(){
+		var $title = "Elegir Tú Avatar";
+		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
+		var $type = "warning";
+		console.log(this.styleID);
+		Curiosity.notyConfirm($title,$text,$type, function(){
+			selectAvatarController.selected();
+			Curiosity.toastLoading.show();
+		});
 	}
 
 

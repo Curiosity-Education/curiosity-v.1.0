@@ -18,9 +18,8 @@ $(function(){
 
 	// avatar selected
 	$("#sela-btnOptions").click(function(){
-		console.log("click dado");
 		$("#sela-styles a.sela-divClick").on('click', function(){
-
+			selectAvatarController.setStyleID($(this).data("styleid"));
 			$('.sela-border').removeClass('sela-content-selected');
 			$('.sela-border').addClass('sela-content');
 			$(this).children('div').removeClass('sela-content');
@@ -28,6 +27,10 @@ $(function(){
 			$('#sela-btnSelection').attr("disabled",false);
 			clearInterval(interval);
 		});
+	});
+
+	$("#sela-btnSelection").click(function(){
+		selectAvatarController.alertConfirm();
 	});
 
 });
