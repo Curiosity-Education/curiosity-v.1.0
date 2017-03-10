@@ -19,6 +19,10 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
+Route::get('/oxxo', function(){
+	return View::make('parent.account-oxxo-paused');
+});
+
 //Route::get('/selectavatar', 'avatarController@view');
 
 Route::get('terminos', function(){
