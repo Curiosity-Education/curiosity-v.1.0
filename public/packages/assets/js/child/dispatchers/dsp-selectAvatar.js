@@ -8,7 +8,7 @@ $(function(){
 		var avatar = $(this).data("avatar");
 		selectAvatarController.setAvatar(avatar);
 		selectAvatarController.getStyles();
-		console.log(avatar);
+
 	});
 
 	// avatar selected

@@ -4,6 +4,7 @@ var selectAvatarController = {
 
 	setAvatar : function($avatar){
 		this.avatar = $avatar;
+
 	},
 
 	getAvatars : function(){
@@ -54,19 +55,56 @@ var selectAvatarController = {
 
 	styles : function(response){
 
-		console.log(this.avatar);
-		// hidde text
-		//$('#sela-textStyle').addClass('sela-hidden');
+		var avatarClick = selectAvatarController.avatar;
+		$('#sela-textStyle').addClass('sela-hidden');
+		$('#sela-btnSelection').attr("disabled",false);
+
+		if(avatarClick == "tot"){
+
+			$("#sela-styles").empty();
+
+			$.each(response.data,function(i,o){
+				var cadena = o.folder;
+				var valor = cadena.substring(0,5);
+
+				if(valor == "/tot/"){
+
+					var contentTot = "<div class='col-md-6 sela-content'>"+
+								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+							"</div>";
+
+					$("#sela-styles").append(contentTot);
+
+				}else{
+					// nothing
+				}
+
+			});
 
 
+		}else{
 
-		/*
+			$("#sela-styles").empty();
 
-			<div class="col-md-6 sela-content">
-							<img src="/packages/assets/media/images/avatar/sprites/sia/preview-estilos/espacial.png" class="img-fluid" alt="">
-						</div>
+			$.each(response.data,function(i,o){
+				var cadena = o.folder;
+				var valor = cadena.substring(0,5);
 
-		*/
+				if(valor == "/sia/"){
+
+					var contentSia = "<div class='col-md-6 sela-content'>"+
+								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+							"</div>";
+
+					$("#sela-styles").append(contentSia);
+
+				}else{
+					// nothing
+				}
+
+			});
+
+		}
 
 	},
 
