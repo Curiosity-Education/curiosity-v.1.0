@@ -67,7 +67,6 @@ Route::group(array('prefix' => '/profile-child'), function(){
 
 // Routes selection avatar first time
 Route::group(array('prefix' => '/select-avatar'), function(){
-	Route::get('has-avatar','avatarController@childHasAvatar');
 	Route::get('get-avatar','avatarController@avatarAnimated');
 	Route::get('get-style','avatarController@avatarStyles');
 	Route::post('select-avatar','avatarController@selectedAvatar');
@@ -306,7 +305,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
-  Route::post('has-game','activitiesController@hasGame');
+  	Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
