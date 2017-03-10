@@ -122,6 +122,13 @@ class loginController extends BaseController{
             return "/";
          }else{
             if($membershipPlan->active == 1){
+               $hasAvatar = DB::table('hijos_has_estilos_avatar')
+					   ->where('hijos_id','=',$idSon)
+					   ->get();
+
+				   if(!$hasAvatar){
+					    return "view-child.selectAvatar";
+				   }
                $date = Carbon::now();
                $today = $date->toDateString();
                $advance = DB::table("avances_metas")
