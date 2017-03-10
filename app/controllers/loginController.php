@@ -32,7 +32,18 @@ class loginController extends BaseController{
                $idDad = $son['padre_id'];
                $membership = Membership::where('padre_id','=',$idDad)->first();
                $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+
                if($membershipPlan->active == 1){
+
+				   $hasAvatar = DB::table('hijos_has_estilos_avatar')
+					   ->where('hijos_id','=',$idSon)
+					   ->get();
+
+				   if(!$hasAvatar){
+					    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.selectAvatar"));
+				   }
+
+
                   $date = Carbon::now();
                   $today = $date->toDateString();
                   $advance = DB::table("avances_metas")

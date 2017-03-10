@@ -256,7 +256,7 @@ class avatarController extends BaseController
 
 	public function selectedAvatar(){
 
-		$id_Avatar = Input::all();
+		return $id_Avatar = Input::all();
 
 		$user	= Auth::user();
   		$person = Person::where("user_id", "=", $user["id"])->first();
@@ -264,8 +264,8 @@ class avatarController extends BaseController
 
 		DB::table('hijos_has_estilos_avatar') -> insert(
 			[
-				'hijos_id' 			=> $child,
-				'estilo_avatar_id'	=> $id_Avatar['id'],
+				'hijos_id' 			=> $child->id,
+				'estilo_avatar_id'	=> $id_Avatar,
 				'is_using'			=> 1
 			]
 		);
@@ -273,6 +273,7 @@ class avatarController extends BaseController
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
 									'message'		=> '¡ Gracias por elegir a tú Avatar !'
+									//'data'			=> $id_Avatar
 		   						));
 
 	}

@@ -110,6 +110,4 @@ $(function(){
 		}
 	}
 
-	// child has avatar ?
-	activityCtrl.hasAvatar();
 });

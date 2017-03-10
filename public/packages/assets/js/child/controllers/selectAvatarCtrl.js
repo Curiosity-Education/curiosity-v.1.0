@@ -22,6 +22,7 @@ var selectAvatarController = {
 	},
 
 	selected : function(){
+		console.log(this.styleID);
 		selectAvatar.selected(this.styleID,this.selection);
 	},
 
@@ -118,7 +119,7 @@ var selectAvatarController = {
 	selection : function(response){
 
 		Curiosity.toastLoading.hide();
-		console.log(response.message);
+		//console.log(response.message);
 
 		/*
 		Curiosity.noty.success(response.message,"Exitoso");
@@ -132,7 +133,6 @@ var selectAvatarController = {
 		var $title = "Elegir Tú Avatar";
 		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
 		var $type = "warning";
-		console.log(this.styleID);
 		Curiosity.notyConfirm($title,$text,$type, function(){
 			selectAvatarController.selected();
 			Curiosity.toastLoading.show();
