@@ -160,7 +160,7 @@ class parentsController extends BaseController{
                              "token_card" => $customer->id,
                              "fecha_registro" => Date('Y-m-d'),
                              "payment_option" => 'card',
-                             "active"    => 1,
+                             "active"    => 0,
                              "padre_id"  => Auth::user()->Person->Dad->id
                          ));
                          $membresia->save();
@@ -195,6 +195,7 @@ class parentsController extends BaseController{
     }
 
     public function createOrderMembership(){
+      Session::forget("reference");
       if(Session::get("reference")){
         return Response::json(Session::get("reference")[0]);
         //return Response::json(Session::get("reference")[1]);
@@ -252,14 +253,14 @@ class parentsController extends BaseController{
                   "padre_id"  => Auth::user()->Person->Dad->id
               ));
               $membresia->save();
-              $dataSend = (object)[
-                      "name"     =>       "Equipo Curiosity",
-                      "client"   =>       $person->nombre.' '.$person->apellidos,
-                      "email"    =>       $parent->email,
-                      "subject"  =>       "¡Curiosity Eduación!",
-                      "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
-              ];
-              $this->sendEmail($dataSend);
+            //   $dataSend = (object)[
+            //           "name"     =>       "Equipo Curiosity",
+            //           "client"   =>       $person->nombre.' '.$person->apellidos,
+            //           "email"    =>       $parent->email,
+            //           "subject"  =>       "¡Curiosity Eduación!",
+            //           "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
+            //   ];
+            //   $this->sendEmail($dataSend);
               $dataSetCard = array(
                   'orderID' => $order->id,
                   'paymentMethod' => $order->charges[0]->payment_method->service_name,

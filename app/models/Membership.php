@@ -2,7 +2,7 @@
 class Membership extends Eloquent{
 
 	protected $table ='membresias';
-    protected $fillable=['token_card','fecha_registro','active','padre_id'];
+    protected $fillable=['token_card','fecha_registro','fecha_corte','payment_option','active', 'padre_id'];
   /*
   *
   ## A membership can have many renovations

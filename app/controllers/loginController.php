@@ -140,6 +140,9 @@ class loginController extends BaseController{
               return "view-parent.pay-suscription";
           }
           else{
+              if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){
+                 return "view-parent.account-oxxo-paused";
+              }
               $id_dad = Auth::user()->Person->Dad->id;
               $sons = Son::where("padre_id", "=", $id_dad)->get();
               $conutSons = count($sons);

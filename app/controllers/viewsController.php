@@ -21,14 +21,15 @@ class viewsController extends BaseController{
       "child.library_videos"            => "child_actions",
       "child.store"                     => "child_actions",
       "child.configuration_account"     => "child_actions",
-      "child.selectAvatar"     			=> "child_actions",
+      "child.selectAvatar"     		    => "child_actions",
       "parent.profile"                  => "parent_actions",
       "parent.pay-suscription"          => "parent_actions",
       "parent.registry_firstchild"      => "parent_actions",
       "parent.home"                     => "parent_actions",
       "parent.library_pdfs"             => "parent_actions",
       "parent.child_registration"       => "parent_actions",
-      "parent.move_to_plan"             => "parent_actions"
+      "parent.move_to_plan"             => "parent_actions",
+      "parent.account-oxxo-paused"      => "parent_actions"
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
