@@ -242,7 +242,10 @@ class avatarController extends BaseController
 
 	public function avatarStyles(){
 
-		$styles = AvatarStyle::all();
+		$styles = DB::table("estilos_avatar")
+			->where("estilos_avatar.costo", "=", 0)
+			->select('estilos_avatar.*')
+			->get();
 
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',

@@ -37,7 +37,7 @@
 				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste ! &nbsp;<i class="fa fa-hand-pointer-o" style="color:red;"></i></h3>
 				<hr>
 				<div class="row">
-					<a href="#">
+					<a href="#" class="sela-click" data-avatar="tot">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
 							<div id="" class="sal-divAvatar">
@@ -49,7 +49,7 @@
 							</div>
 						</div>
 					</a>
-					<a href="#">
+					<a href="#" class="sela-click" data-avatar="sia">
 						<div class="col-md-6">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
 							<div id="" class="sal-divAvatar">
@@ -67,14 +67,14 @@
   		<div class="col-md-4 z-depth-1" id="sela-style">
        		<div class="container">
 				<h4 class="h4-responsive text-xs-center">
-					<span id="sela-titleStyle">Estilos de [Avantar]</span> &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
+					<span id="sela-titleStyle">Estilos</span> &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
 				</h4><hr>
 
       			<div id="sela-styles">
-
+					<h4 id="sela-textStyle" class="h4-responsive text-xs-center flex-center">Selecciona un avatar para ver sus estilos disponibles</h4>
       			</div>
       			<hr>
-      			<center><a class="btn btn-avatarsel btn-rounded">Elegir</a></center>
+      			<center><button type="button" id="sela-btnSelection" class="btn btn-avatarsel btn-rounded">Elegir</button></center>
        		</div>
     	</div>
     </div>

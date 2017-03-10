@@ -1,9 +1,9 @@
 var selectAvatarController = {
 
-	id : null,
+	avatar : null,
 
-	setId : function($id){
-		this.id = $id;
+	setAvatar : function($avatar){
+		this.avatar = $avatar;
 	},
 
 	getAvatars : function(){
@@ -47,9 +47,26 @@ var selectAvatarController = {
 			animationSia.play();
 		}, animationSia.speed);
 
+		// button selection
+		$('#sela-btnSelection').attr("disabled",true);
+
 	},
 
 	styles : function(response){
+
+		console.log(this.avatar);
+		// hidde text
+		//$('#sela-textStyle').addClass('sela-hidden');
+
+
+
+		/*
+
+			<div class="col-md-6 sela-content">
+							<img src="/packages/assets/media/images/avatar/sprites/sia/preview-estilos/espacial.png" class="img-fluid" alt="">
+						</div>
+
+		*/
 
 	},
 
