@@ -20,38 +20,32 @@ var selectAvatarController = {
 
 	avatars : function(response){
 
-		// TOT
-		var sprites = StorageDB.table.getData("spritesChild");
-		var secuences = StorageDB.table.getData("secuences");
-		var secuenceHi = StorageDB.table.getByAttr("secuences","nombre","saludar");
-		var saludo = StorageDB.table.getByAttr("spritesChild","secuencia_id",secuenceHi[0].id);
-		var animation = new SpriteAnimator('sela-divTot', saludo[0].widthFrame, saludo[0].heightFrame, saludo[0].framesX, saludo[0].framesY, saludo[0].fps);
+		var sprites = response.dataSprite;
+		var secuences = response.dataSecuence;
+		var secuenceHi = response.dataSecuence[0].nombre;
 
-		animation.spreetsheet = "/packages/assets/media/images/avatar/sprites" + saludo[0].folder + saludo[0].imagen;
-		animation.mvx = 65;
-		animation.mvy = 130;
-		animation.scale = 0.8;
+		// TOT
+		var animationTot = new SpriteAnimator('sela-divTot', sprites[0].widthFrame, sprites[0].heightFrame, sprites[0].framesX, sprites[0].framesY, sprites[0].fps);
+
+		animationTot.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[0].folder + sprites[0].imagen;
+		animationTot.mvx = 65;
+		animationTot.mvy = 130;
+		animationTot.scale = 0.8;
 		setInterval(function(){
-			animation.play();
-		}, animation.speed);
+			animationTot.play();
+		}, animationTot.speed);
 
 
 		// SIA
-		var sprites2 = StorageDB.table.getData("spritesChild");
-		var secuences2 = StorageDB.table.getData("secuences");
-		var secuenceHi2 = StorageDB.table.getByAttr("secuences","nombre","saludar");
-		var saludo2 = StorageDB.table.getByAttr("spritesChild","secuencia_id",secuenceHi2[0].id);
-		var animation2 = new SpriteAnimator('sela-divSia', saludo2[0].widthFrame, saludo2[0].heightFrame, saludo2[0].framesX, saludo2[0].framesY, saludo2[0].fps);
+		var animationSia = new SpriteAnimator('sela-divSia', sprites[2].widthFrame, sprites[2].heightFrame, sprites[2].framesX, sprites[2].framesY, sprites[2].fps);
 
-		animation2.spreetsheet = "/packages/assets/media/images/avatar/sprites" + saludo2[0].folder + saludo2[0].imagen;
-		animation2.mvx = 65;
-		animation2.mvy = 130;
-		animation2.scale = 0.8;
+		animationSia.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[2].folder + sprites[2].imagen;
+		animationSia.mvx = 65;
+		animationSia.mvy = 110;
+		animationSia.scale = 0.7;
 		setInterval(function(){
-			animation2.play();
-		}, animation2.speed);
-
-		console.log(response);
+			animationSia.play();
+		}, animationSia.speed);
 
 	},
 
