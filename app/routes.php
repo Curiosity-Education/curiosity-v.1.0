@@ -67,7 +67,6 @@ Route::group(array('prefix' => '/profile-child'), function(){
 
 // Routes selection avatar first time
 Route::group(array('prefix' => '/select-avatar'), function(){
-	//Route::get('has-avatar','avatarController@childHasAvatar');
 	Route::get('get-avatar','avatarController@avatarAnimated');
 	Route::get('get-style','avatarController@avatarStyles');
 	Route::post('select-avatar','avatarController@selectedAvatar');

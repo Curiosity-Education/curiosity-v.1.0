@@ -222,15 +222,8 @@ class avatarController extends BaseController
 
 	public function avatarAnimated(){
 
-		$user	= Auth::user();
-  		$person = Person::where("user_id", "=", $user["id"])->first();
-  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
-
-		$sprite = DB::table("hijos_has_estilos_avatar")
-		->join("estilos_avatar", "hijos_has_estilos_avatar.estilo_avatar_id", "=", "estilos_avatar.id")
-		->join("sprites", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
-		->where("hijos_has_estilos_avatar.hijos_id", "=", $child->id)
-		//->where("hijos_has_estilos_avatar.is_using", "=", 1)
+		$sprite = DB::table("sprites")
+		->join("estilos_avatar", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
 		->select("sprites.*", "estilos_avatar.folder")
 		->get();
 
@@ -249,11 +242,41 @@ class avatarController extends BaseController
 
 	public function avatarStyles(){
 
+		$styles = DB::table("estilos_avatar")
+			->where("estilos_avatar.costo", "=", 0)
+			->select('estilos_avatar.*')
+			->get();
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> 'avatar estilos',
+									'data'			=> $styles
+		   						));
 	}
 
 	public function selectedAvatar(){
 
+		$id_Avatar = Input::all();
+
+		$user	= Auth::user();
+  		$person = Person::where("user_id", "=", $user["id"])->first();
+  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+
+		DB::table('hijos_has_estilos_avatar') -> insert(
+			[
+				'hijos_id' 			=> $child,
+				'estilo_avatar_id'	=> $id_Avatar['id'],
+				'is_using'			=> 1
+			]
+		);
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> '¡ Gracias por elegir a tú Avatar !'
+		   						));
+
 	}
+
 
 }
 
