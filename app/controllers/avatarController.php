@@ -222,12 +222,6 @@ class avatarController extends BaseController
 
 	public function avatarAnimated(){
 
-		/*
-		$user	= Auth::user();
-  		$person = Person::where("user_id", "=", $user["id"])->first();
-  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
-		*/
-
 		$sprite = DB::table("sprites")
 		->join("estilos_avatar", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
 		->select("sprites.*", "estilos_avatar.folder")
@@ -248,9 +242,22 @@ class avatarController extends BaseController
 
 	public function avatarStyles(){
 
+		$styles = AvatarStyle::all();
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> 'avatar estilos',
+									'data'			=> $styles
+		   						));
 	}
 
 	public function selectedAvatar(){
+
+		/*
+		$user	= Auth::user();
+  		$person = Person::where("user_id", "=", $user["id"])->first();
+  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+		*/
 
 	}
 
