@@ -126,64 +126,72 @@ class parentsController extends BaseController{
 
     }
     public function payment_suscription(){
-        $padreRole = Auth::user()->roles[0]->name;
-            /* Configuración con Conekta */
-            /******************************************************
-            * Llave de pruebas
-            * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
-            *******************************************************/
-            // llave en modo de produccion
-            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
-            \Conekta\Conekta::setLocale('es');
-            try{
-                if($padreRole == "parent"){
-                    $parent = Auth::user()->Person->Dad;
-                    $customer = \Conekta\Customer::create(array(
-                        "name" => Input::get('nombre'),
-                        "email" => $parent->email,
-                        "phone" => $parent->telefono,
-                        'payment_sources' => array(array(
-                        'token_id' => Input::get('conektaTokenId'),
-                        'type' => "card"
-                        ))
-                    ));
-                    $plan = Plan::find(Input::get('plan_id'));
-                    if(!$plan){
-                        return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
-                    }
-                    $subscription = $customer->createSubscription(array(
-                      "plan_id"=> $plan->reference
-                    ));
-                    if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
-                            $membresia_plan  = new MembershipPlan();
-                            $membresia       = new Membership(array(
-                                "token_card" => $customer->id,
-                                "fecha_registro" => Date('Y-m-d'),
-                                "payment_option" => 'card',
-                                "active"    => 1,
-                                "padre_id"  => Auth::user()->Person->Dad->id
-                            ));
-                            $membresia->save();
-                         //la suscripción inicializó exitosamente!
-                        return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
+     $padreRole = Auth::user()->roles[0]->name;
+         /* Configuración con Conekta */
+         /******************************************************
+         * Llave de pruebas
+         * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+         *******************************************************/
+         // llave en modo de produccion
+         \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+         \Conekta\Conekta::setLocale('es');
+         try{
+             if($padreRole == "parent"){
+                 $parent = Auth::user()->Person->Dad;
+                 $customer = \Conekta\Customer::create(array(
+                     "name" => Input::get('nombre'),
+                     "email" => $parent->email,
+                     "phone" => $parent->telefono,
+                     'payment_sources' => array(array(
+                     'token_id' => Input::get('conektaTokenId'),
+                     'type' => "card"
+                     ))
+                 ));
+                 $plan = Plan::find(Input::get('plan_id'));
+                 if(!$plan){
+                     return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
+                 }
+                 $subscription = $customer->createSubscription(array(
+                   "plan_id"=> $plan->reference
+                 ));
+                 if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
+                         $membresia_plan  = new MembershipPlan();
+                         $membresia       = new Membership(array(
+                             "token_card" => $customer->id,
+                             "fecha_registro" => Date('Y-m-d'),
+                             "payment_option" => 'card',
+                             "active"    => 1,
+                             "padre_id"  => Auth::user()->Person->Dad->id
+                         ));
+                         $membresia->save();
+                      //la suscripción inicializó exitosamente!
+                      //  Si el padre se registró utilizando código se hace la relación
+                      if (Session::has('codesellerid')){
+                         $addedCodeRel = DB::table('membresias_codigos')->insert(array(
+            	              'codigo_vendedor_id' => Session::get('codesellerid'),
+            	              'membresia_id' => $membresia->id
+            	          ));
+                         Session::forget('codesellerid');
+                      }
+                      return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
 
-                    }
-                    elseif ($subscription->status == 'past_due') {
-                     //la suscripción falló a inicializarse
-                      return Response::json(array(
-                        'status'=>105,
-                        'statusMessage'=>'PAST_DUE',
-                        'data'=>$subscription,
-                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
-                    }
-                }
-                else{
-                    return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
-                }
-            }catch (\Conekta\Error $e){
-              return Response::json(["message"=>$e->message_to_purchaser]);
-             //el cliente no pudo ser creado
-            }
+                 }
+                 elseif ($subscription->status == 'past_due') {
+                  //la suscripción falló a inicializarse
+                   return Response::json(array(
+                     'status'=>105,
+                     'statusMessage'=>'PAST_DUE',
+                     'data'=>$subscription,
+                     'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
+                 }
+             }
+             else{
+                 return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
+             }
+         }catch (\Conekta\Error $e){
+           return Response::json(["message"=>$e->message_to_purchaser]);
+          //el cliente no pudo ser creado
+         }
     }
 
     public function createOrderMembership(){
