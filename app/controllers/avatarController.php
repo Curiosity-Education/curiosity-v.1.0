@@ -264,6 +264,7 @@ class avatarController extends BaseController
 
 	}
 
+
 }
 
 

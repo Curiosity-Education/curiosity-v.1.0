@@ -74,7 +74,10 @@
 					<h4 id="sela-textStyle" class="h4-responsive text-xs-center flex-center">Selecciona un avatar para ver sus estilos disponibles</h4>
       			</div>
       			<hr>
-      			<center><button type="button" id="sela-btnSelection" class="btn btn-avatarsel btn-rounded">Elegir</button></center>
+      			<center>
+      				<button type="button" id="sela-btnSelection" class="btn btn-avatarsel btn-rounded">Elegir</button>
+      				<button hidden="hidden" type="button" id="sela-btnOptions" class="btn btn-avatarsel btn-rounded">Elegir</button>
+      			</center>
        		</div>
     	</div>
     </div>

@@ -57,7 +57,6 @@ var selectAvatarController = {
 
 		var avatarClick = selectAvatarController.avatar;
 		$('#sela-textStyle').addClass('sela-hidden');
-		$('#sela-btnSelection').attr("disabled",false);
 
 		if(avatarClick == "tot"){
 
@@ -69,9 +68,10 @@ var selectAvatarController = {
 
 				if(valor == "/tot/"){
 
-					var contentTot = "<div class='col-md-6 sela-content'>"+
-								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
-							"</div>";
+					var contentTot = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
+											"<div class='col-md-6 sela-border sela-content'>"+
+												"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+									"</div></a>";
 
 					$("#sela-styles").append(contentTot);
 
@@ -92,7 +92,7 @@ var selectAvatarController = {
 
 				if(valor == "/sia/"){
 
-					var contentSia = "<div class='col-md-6 sela-content'>"+
+					var contentSia = "<div class='col-md-6  sela-content'>"+
 								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 							"</div>";
 
@@ -109,6 +109,8 @@ var selectAvatarController = {
 	},
 
 	selection : function(response){
+
+
 
 	}
 
