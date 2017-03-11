@@ -112,6 +112,8 @@ class salersCodeController extends BaseController{
                    $plan->limit == $codePlan->limit &&
                    $plan->amount == $codePlan->amount
                ){
+                  $codeaccepted = SalerCode::where("codigo", "=", $data["code_val"])->first();
+                  Session::put("codesellerid", $codeaccepted->id);
                   return Response::json(array("status" => 200, 'statusMessage' => "success", 'data' => $codePlan));
                }
                else{

@@ -1,9 +1,16 @@
 var selectAvatarController = {
 
-	id : null,
+	avatar : null,
 
-	setId : function($id){
-		this.id = $id;
+	styleID : null,
+
+	setStyleID : function($id){
+		this.styleID = $id;
+	},
+
+	setAvatar : function($avatar){
+		this.avatar = $avatar;
+
 	},
 
 	getAvatars : function(){
@@ -15,52 +22,121 @@ var selectAvatarController = {
 	},
 
 	selected : function(){
-		selectAvatar.selected(this.selection);
+		console.log(this.styleID);
+		selectAvatar.selected(this.styleID,this.selection);
 	},
 
-	avatars : function(){
+	avatars : function(response){
+
+		var sprites = response.dataSprite;
+		var secuences = response.dataSecuence;
+		var secuenceHi = response.dataSecuence[0].nombre;
 
 		// TOT
-		var sprites = StorageDB.table.getData("spritesChild");
-		var secuences = StorageDB.table.getData("secuences");
-		var secuenceHi = StorageDB.table.getByAttr("secuences","nombre","saludar");
-		var saludo = StorageDB.table.getByAttr("spritesChild","secuencia_id",secuenceHi[0].id);
-		var animation = new SpriteAnimator('sela-divTot', saludo[0].widthFrame, saludo[0].heightFrame, saludo[0].framesX, saludo[0].framesY, saludo[0].fps);
+		var animationTot = new SpriteAnimator('sela-divTot', sprites[0].widthFrame, sprites[0].heightFrame, sprites[0].framesX, sprites[0].framesY, sprites[0].fps);
 
-		animation.spreetsheet = "/packages/assets/media/images/avatar/sprites" + saludo[0].folder + saludo[0].imagen;
-		animation.mvx = 125;
-		animation.mvy = 130;
-		animation.scale = 0.7;
+		animationTot.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[0].folder + sprites[0].imagen;
+		animationTot.mvx = 65;
+		animationTot.mvy = 130;
+		animationTot.scale = 0.8;
 		setInterval(function(){
-			animation.play();
-		}, animation.speed);
+			animationTot.play();
+		}, animationTot.speed);
 
 
 		// SIA
-		var sprites2 = StorageDB.table.getData("spritesChild");
-		var secuences2 = StorageDB.table.getData("secuences");
-		var secuenceHi2 = StorageDB.table.getByAttr("secuences","nombre","saludar");
-		var saludo2 = StorageDB.table.getByAttr("spritesChild","secuencia_id",secuenceHi2[0].id);
-		var animation2 = new SpriteAnimator('sela-divSia', saludo2[0].widthFrame, saludo2[0].heightFrame, saludo2[0].framesX, saludo2[0].framesY, saludo2[0].fps);
+		var animationSia = new SpriteAnimator('sela-divSia', sprites[2].widthFrame, sprites[2].heightFrame, sprites[2].framesX, sprites[2].framesY, sprites[2].fps);
 
-		animation2.spreetsheet = "/packages/assets/media/images/avatar/sprites" + saludo2[0].folder + saludo2[0].imagen;
-		animation2.mvx = 125;
-		animation2.mvy = 130;
-		animation2.scale = 0.7;
+		animationSia.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[2].folder + sprites[2].imagen;
+		animationSia.mvx = 65;
+		animationSia.mvy = 110;
+		animationSia.scale = 0.7;
 		setInterval(function(){
-			animation2.play();
-		}, animation2.speed);
+			animationSia.play();
+		}, animationSia.speed);
 
-
+		// button selection
+		$('#sela-btnSelection').attr("disabled",true);
 
 	},
 
 	styles : function(response){
 
+		var avatarClick = selectAvatarController.avatar;
+		$('#sela-textStyle').addClass('sela-hidden');
+
+		if(avatarClick == "tot"){
+
+			$("#sela-styles").empty();
+
+			$.each(response.data,function(i,o){
+				var cadena = o.folder;
+				var valor = cadena.substring(0,5);
+
+				if(valor == "/tot/"){
+
+					var contentTot = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
+											"<div class='col-md-6 sela-border sela-content'>"+
+												"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+									"</div></a>";
+
+					$("#sela-styles").append(contentTot);
+
+				}else{
+					// nothing
+				}
+
+			});
+
+
+		}else{
+
+			$("#sela-styles").empty();
+
+			$.each(response.data,function(i,o){
+				var cadena = o.folder;
+				var valor = cadena.substring(0,5);
+
+				if(valor == "/sia/"){
+
+					var contentSia = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
+							"<div class='col-md-6 sela-border sela-content'>"+
+								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+							"</div></a>";
+
+					$("#sela-styles").append(contentSia);
+
+				}else{
+					// nothing
+				}
+
+			});
+
+		}
+
 	},
 
 	selection : function(response){
 
+		Curiosity.toastLoading.hide();
+		//console.log(response.message);
+
+		/*
+		Curiosity.noty.success(response.message,"Exitoso");
+				setInterval(function(){
+					location.href = "/view-child.init";
+				},'2300');
+		*/
+	},
+
+	alertConfirm : function(){
+		var $title = "Elegir Tú Avatar";
+		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
+		var $type = "warning";
+		Curiosity.notyConfirm($title,$text,$type, function(){
+			selectAvatarController.selected();
+			Curiosity.toastLoading.show();
+		});
 	}
 
 

@@ -417,18 +417,4 @@ class activitiesController extends BaseController{
       }
    }
 
-	public function childHasAvatar(){
-		$id_child = DB::table('hijos')
-			->select('users.flag')
-			->join('personas','hijos.persona_id','=','personas.id')
-			->join('users','personas.user_id','=','users.id')
-			->where('users.id','=',Auth::user()->id)
-			->first()->flag;
-
-		return Response::json(array('status' 		=> 200,
-									'statusMessage' => 'success',
-									'message'		=> 'response',
-									'data'			=> $id_child
-								   ));
-	}
 }
