@@ -281,7 +281,6 @@ class avatarController extends BaseController
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
 									'message'		=> '¡ Ahora tienes a tú Avatar !'
-									//'data'			=> $id_Avatar
 		   						));
 
 	}

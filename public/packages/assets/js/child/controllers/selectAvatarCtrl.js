@@ -80,7 +80,7 @@ var selectAvatarController = {
 				if(valor == "/tot/"){
 
 					var contentTot = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
-											"<div class='col-md-6 sela-border sela-content'>"+
+											"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
 												"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 									"</div></a>";
 
@@ -104,7 +104,7 @@ var selectAvatarController = {
 				if(valor == "/sia/"){
 
 					var contentSia = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
-							"<div class='col-md-6 sela-border sela-content'>"+
+							"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
 								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 							"</div></a>";
 
