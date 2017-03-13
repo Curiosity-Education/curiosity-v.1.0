@@ -22,8 +22,12 @@ var selectAvatarController = {
 	},
 
 	selected : function(){
-		console.log(this.styleID);
-		selectAvatar.selected(this.styleID,this.selection);
+		var id_ = new FormData();
+		id_.append("id",this.styleID);
+		var avatarElegido = new selectAvatar(id_);
+		Curiosity.toastLoading.show();
+		avatarElegido.save("POST",this.selection);
+
 	},
 
 	avatars : function(response){
@@ -119,14 +123,11 @@ var selectAvatarController = {
 	selection : function(response){
 
 		Curiosity.toastLoading.hide();
-		//console.log(response.message);
-
-		/*
-		Curiosity.noty.success(response.message,"Exitoso");
+		Curiosity.noty.success(response.message,"En hora buena");
 				setInterval(function(){
 					location.href = "/view-child.init";
 				},'2300');
-		*/
+
 	},
 
 	alertConfirm : function(){
@@ -134,8 +135,7 @@ var selectAvatarController = {
 		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
 		var $type = "warning";
 		Curiosity.notyConfirm($title,$text,$type, function(){
-			console.log(selectAvatarController.styleID);
-			selectAvatar.selected(selectAvatarController.styleID,selectAvatarController.selection);
+			selectAvatarController.selected();
 			Curiosity.toastLoading.show();
 		});
 	}

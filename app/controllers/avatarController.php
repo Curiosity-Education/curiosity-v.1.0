@@ -256,25 +256,31 @@ class avatarController extends BaseController
 
 	public function selectedAvatar(){
 
-	 $id_Avatar = 1;
-
-		return $id_Avatar;
+	 $id_Avatar = Input::all();
 
 		$user	= Auth::user();
   		$person = Person::where("user_id", "=", $user["id"])->first();
   		$child 	= Son::where("persona_id", "=", $person["id"])->first();
 
+		$flag = User::find($user);
+		$flag -> flag = 1;
+		$flag -> save();
+
+		DB::table('hijos_has_estilos_avatar')
+			-> where('hijos_id','=',$child->id)
+			-> update(array('is_using' => 0));
+
 		DB::table('hijos_has_estilos_avatar') -> insert(
 			[
 				'hijos_id' 			=> $child->id,
-				'estilo_avatar_id'	=> $id_Avatar,
+				'estilo_avatar_id'	=> $id_Avatar['id'],
 				'is_using'			=> 1
 			]
 		);
 
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
-									'message'		=> '¡ Gracias por elegir a tú Avatar !'
+									'message'		=> '¡ Ahora tienes a tú Avatar !'
 									//'data'			=> $id_Avatar
 		   						));
 
