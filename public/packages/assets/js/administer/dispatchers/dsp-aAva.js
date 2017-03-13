@@ -1,54 +1,71 @@
 $(function(){
 
-
   var tempAvatars, tempSprites, tempSecuences, tempStyles;
+  var funAvatar=[], funSprite=[], funSecuences=[], funStyle=[];
+  var avatarFlag = false, spriteFlag = false, secuencesFlag = false, StyleFlag = false;
 
   avatar.allAvatars(function(avatars){
     if (avatars.length > 0){
-      localStorage.localAvatars = JSON.stringify(avatars);
-
+      funAvatar = JSON.stringify(avatars);
+      avatarFlag = true;     ;
     }
   });
 
   avatar.allSprites(function(sprites){
     if (sprites.length > 0) {
-      localStorage.localSprites = JSON.stringify(sprites);
+      funSprite = JSON.stringify(sprites);
+      spriteFlag = true;
     }
   });
 
   avatar.allSecuences(function(secuences){
     if (secuences.length > 0) {
-      localStorage.localSecuences = JSON.stringify(secuences);
+      funSecuences = JSON.stringify(secuences);
+      secuencesFlag = true;
     }
   });
 
   avatar.allStyles(function(styles){
     if (styles.length > 0) {
-      localStorage.localStyles = JSON.stringify(styles);
+      funStyle = JSON.stringify(styles);
+      StyleFlag = true;
     }
   });
 
-  if (localStorage.localAvatars != "") {
-    tempAvatars = JSON.parse(localStorage.localAvatars);
-  }
+  var intervalAvatar = setInterval(function(){
+    if (avatarFlag == true) {
+      tempAvatars = JSON.parse(funAvatar);
+      clearInterval(intervalAvatar);
 
-  if (localStorage.localStyles != "") {
-    tempStyles = JSON.parse(localStorage.localStyles);
-  }
+      $.each(tempAvatars,function(i){
+        var avatarStyle = StorageDB.table.getByAttr("localStyles","avatar_id",tempAvatars[i].id);
+        cardsAvatar("#adAv-avatars-container",avatarStyle[0].folder,avatarStyle[0].preview,avatarStyle[0].avatar_id,avatarStyle[0].nombre,"adAv-enter","adAv-upd","adAv-delete");
+      });
+    }
+  },1000);
 
-  if (localStorage.localSecuences != "") {
-    tempSecuences = JSON.parse(localStorage.localSecuences);
-  }
+  var intervalStyle = setInterval(function(){
+    if (StyleFlag == true) {
+      tempStyles = JSON.parse(funStyle);
+      clearInterval(intervalStyle);
+    }
+  },1000);
 
-  if (localStorage.localSprites != "") {
-    tempSprites = JSON.parse(localStorage.localSprites);
-  }
+  var intervalSecuences = setInterval(function(){
+    if (secuencesFlag == true) {
+      tempSecuences = JSON.parse(funSecuences);
+      clearInterval(intervalSecuences);
+    }
+  },1000);
+
+  var intervalSprite = setInterval(function () {
+    if (spriteFlag == true) {
+      tempSprites = JSON.parse(funSprite);
+      clearInterval(intervalSprite);
+    }
+  }, 1000);
 
 
-  $.each(tempAvatars,function(i){
-    var avatarStyle = StorageDB.table.getByAttr("localStyles","avatar_id",tempAvatars[i].id);
-    cardsAvatar("#adAv-avatars-container",avatarStyle[0].folder,avatarStyle[0].preview,avatarStyle[0].avatar_id,avatarStyle[0].nombre,"adAv-enter","adAv-upd","adAv-delete");
-  });
   //save
   $("body").on('click', '#adAv-add-btn', function(){
     modalAvatar("adAv-save");
@@ -74,10 +91,25 @@ $(function(){
   });
 
   $("body").on('click','.adAv-enter',function(){
+
+    $("#adAv-avatarStyles-container").empty();
+
+    if ($("#back-btn").length > 0){
+      $("#back-btn").empty();
+      $("#adAv-avatarStyles-container").removeClass('adAv-hide');
+      $("#adAv-avatars-container").removeClass('adAv-show');
+    }
+
+    $("#back-btn").append($(
+      "<div class='chip animated bounce btn second-level' id='gst-back'>" +
+         "<img src='/packages/assets/media/images/system/iconBack.png'>" +
+         "regresa" +
+      "</div>"
+    ));
+
     id = $(this).data('id');
-    $.each(tempAvatars, function(){
-      $(".adAv-preview").addClass('adAv-hide');
-    });
+    $("#adAv-avatars-container").addClass('adAv-hide');
+
     var tempAvatarStyles = StorageDB.table.getByAttr("localStyles","avatar_id",id);
 
     $.each(tempAvatarStyles,function(i){
@@ -111,18 +143,41 @@ $(function(){
 
   //enter a sprites
   $("body").on('click','.adAv-enterSprites',function(){
+
+    $("#adAv-avatarSprites-container").removeClass('adAv-hide');
+    $("#adAv-avatarStyles-container").removeClass('adAv-show');
+    $("#adAv-avatarStyles-container").addClass('adAv-hide');
+
+    $("#adAv-avatarSprites-container").empty();
+
+    if ($("#back-btn").length > 0) {
+      $("#back-btn").empty();
+    }
+
+    $("#back-btn").append($(
+      "<div class='chip animated bounce btn third-level' id='gst-back'>" +
+         "<img src='/packages/assets/media/images/system/iconBack.png'>" +
+         "regresa" +
+      "</div>"
+    ));
+
     idStyle = $(this).data('id2');
     idAvatar = $(this).data('id');
+
     $("#adAv-avatarStyles-container").addClass('adAv-hide');
+
     var tempStyles = StorageDB.table.getByAttr("localStyles","id",idStyle);
     var avatarName = StorageDB.table.getByAttr("localAvatars","id",idAvatar);
     cardAddSprite("#adAv-avatarSprites-container",tempStyles[0].folder,tempStyles[0].preview,$(this).data('id2'),tempStyles[0].nombre,"adAv-addSprite",avatarName[0].nombre);
+
     $.each(tempSprites,function(i){
+      alert('perro');
       var style = StorageDB.table.getByAttr("localStyles","id",idStyle);
       var avatar = StorageDB.table.getByAttr("localAvatars","id",style[0].avatar_id);
       var sequence = StorageDB.table.getByAttr("localSecuences","id",tempSprites[0].secuencia_id);
       cardSprite("#adAv-avatarSprites-container",style[0].folder,tempSprites[i].imagen,tempSprites[i].id,sequence[0].nombre,null,"updateSprite-btn","deleteSprite-btn",null,avatar[i].nombre,sequence[0].nombre);
     });
+
   });
   //add sprite
   $("body").on('click','.adAv-addSprite', function(){
@@ -145,6 +200,20 @@ $(function(){
   $("body").on('click','#updateSprite',function(){
     aAvaController.updateSprite($(this).data('id'));
   });
+
+
+  $("body").on('click','.second-level',function(){
+    $("#adAv-avatarStyles-container").addClass('adAv-hide');
+    $("#adAv-avatars-container").removeClass('adAv-hide');
+    $("#adAv-avatars-container").addClass('adAv-show');
+  });
+
+  $("body").on('click','.third-level',function(){
+    $("#adAv-avatarSprites-container").addClass('adAv-hide');
+    $("#adAv-avatarStyles-container").removeClass('adAv-hide');
+    $("#adAv-avatarStyles-container").addClass('adAv-show');
+  });
+
 
 });
 
