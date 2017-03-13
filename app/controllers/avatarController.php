@@ -214,23 +214,77 @@ class avatarController extends BaseController
 			->first()->id;
 
 		return Response::json(array('status' 		=> 200,
-			'statusMessage' => 'success',
-			'message'		=> 'khegf'
-		   ));
+									'statusMessage' => 'success',
+									'message'		=> 'khegf'
+		   						));
 	}
 
 
 	public function avatarAnimated(){
 
+		$sprite = DB::table("sprites")
+		->join("estilos_avatar", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
+		->select("sprites.*", "estilos_avatar.folder")
+		->get();
+
+		$secuence = Secuence::all();
+
+
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> 'avatar disponibles',
+									'dataSprite'	=> $sprite,
+									'dataSecuence'	=> $secuence
+		   						));
+
 	}
 
 	public function avatarStyles(){
 
+		$styles = DB::table("estilos_avatar")
+			->where("estilos_avatar.costo", "=", 0)
+			->select('estilos_avatar.*')
+			->get();
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> 'avatar estilos',
+									'data'			=> $styles
+		   						));
 	}
 
 	public function selectedAvatar(){
 
+	 $id_Avatar = Input::all();
+
+		$user	= Auth::user();
+  		$person = Person::where("user_id", "=", $user["id"])->first();
+  		$child 	= Son::where("persona_id", "=", $person["id"])->first();
+
+		$flag = User::find($user);
+		$flag -> flag = 1;
+		$flag -> save();
+
+		DB::table('hijos_has_estilos_avatar')
+			-> where('hijos_id','=',$child->id)
+			-> update(array('is_using' => 0));
+
+		DB::table('hijos_has_estilos_avatar') -> insert(
+			[
+				'hijos_id' 			=> $child->id,
+				'estilo_avatar_id'	=> $id_Avatar['id'],
+				'is_using'			=> 1
+			]
+		);
+
+		return Response::json(array('status' 		=> 200,
+									'statusMessage' => 'success',
+									'message'		=> '¡ Ahora tienes a tú Avatar !'
+		   						));
+
 	}
+
 
 }
 

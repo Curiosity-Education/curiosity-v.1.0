@@ -7,14 +7,25 @@ class selectAvatar extends CORM{
 	}
 
 	static getAvatars(success){
-		super.any(null,"GET",success,"/select-avatar","get-avatar");
+		super.any(null,"POST",success,"/select-avatar","get-avatar");
 	}
 
 	static getStyles(success){
-		super.any(null,"GET",success,"/select-avatar","get-style");
+		super.any(null,"POST",success,"/select-avatar","get-style");
 	}
 
-	static selected(success){
-		super.any(null,"POST",success,"/select-avatar","select-avatar");
+	save(method,success){
+
+		$.ajax({
+			url: '/select-avatar/save',
+			type: 'POST',
+			data: this.avatar,
+			cache: false,
+			contentType: false,
+			processData: false
+		}).done(function(response){
+			success(response);
+		})
+
 	}
 }

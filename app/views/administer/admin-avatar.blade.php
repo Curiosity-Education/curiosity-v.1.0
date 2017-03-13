@@ -15,11 +15,8 @@
 
 <div class="row">
   <!-- button -->
-  <div class="col-md-2 col-xs-4">
-    <div class="chip animated bounce btn" id="gst-back">
-       <img src="/packages/assets/media/images/system/iconBack.png">
-       regresa
-    </div>
+  <div class="col-md-2 col-xs-4" id="back-btn">
+
   </div>
   <div class="col-md-2 offset-md-8  col-xs-4 offset-xs-4" id="adAv-add-btn">
       <a class="btn-floating btn-large green" data-toggle="modal" data-target="#modal-contact">
