@@ -15,6 +15,9 @@ class selectAvatar extends CORM{
 	}
 
 	static selected(id_,success){
-		super.any({'id':id_},"GET",success,"/select-avatar","selected");
+
+		var ID = 1;
+
+		super.any({id:ID},"GET",success,"/select-avatar","selected");
 	}
 }

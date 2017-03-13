@@ -256,7 +256,9 @@ class avatarController extends BaseController
 
 	public function selectedAvatar(){
 
-		return $id_Avatar = Input::all();
+	 $id_Avatar = 1;
+
+		return $id_Avatar;
 
 		$user	= Auth::user();
   		$person = Person::where("user_id", "=", $user["id"])->first();

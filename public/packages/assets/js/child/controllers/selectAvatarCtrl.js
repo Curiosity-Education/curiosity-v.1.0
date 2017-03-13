@@ -134,7 +134,8 @@ var selectAvatarController = {
 		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
 		var $type = "warning";
 		Curiosity.notyConfirm($title,$text,$type, function(){
-			selectAvatarController.selected();
+			console.log(selectAvatarController.styleID);
+			selectAvatar.selected(selectAvatarController.styleID,selectAvatarController.selection);
 			Curiosity.toastLoading.show();
 		});
 	}
