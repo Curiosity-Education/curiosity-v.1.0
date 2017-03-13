@@ -67,6 +67,10 @@
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
 </div>
+<div data-url="/view-administer.admin-schools-membreship" class="linkMenu waves-effect">
+   <span class="fa fa-graduation-cap"></span>&nbsp;
+   Gestion de cuentas masivas
+</div>
 @stop
 
 @section('menu-links-aside')
@@ -121,6 +125,10 @@
 <div data-url="/view-dadNews/get/view-administer.admin-news" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
+</div>
+<div data-url="/view-administer.admin-schools-membreship" class="linkMenu waves-effect">
+   <span class="fa fa-graduation-cap"></span>&nbsp;
+   Gestion de cuentas masivas
 </div>
 <div data-url="#" class="linkMenu linkMenuAside waves-effect logOutBtn">
    <span class="fa fa-caret-right msad-icon-exit" id="msad-icon-exit"></span>&nbsp;
