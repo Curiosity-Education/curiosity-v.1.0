@@ -22,8 +22,12 @@ var selectAvatarController = {
 	},
 
 	selected : function(){
-		console.log(this.styleID);
-		selectAvatar.selected(this.styleID,this.selection);
+		var id_ = new FormData();
+		id_.append("id",this.styleID);
+		var avatarElegido = new selectAvatar(id_);
+		Curiosity.toastLoading.show();
+		avatarElegido.save("POST",this.selection);
+
 	},
 
 	avatars : function(response){
@@ -76,7 +80,7 @@ var selectAvatarController = {
 				if(valor == "/tot/"){
 
 					var contentTot = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
-											"<div class='col-md-6 sela-border sela-content'>"+
+											"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
 												"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 									"</div></a>";
 
@@ -100,7 +104,7 @@ var selectAvatarController = {
 				if(valor == "/sia/"){
 
 					var contentSia = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
-							"<div class='col-md-6 sela-border sela-content'>"+
+							"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
 								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 							"</div></a>";
 
@@ -119,14 +123,11 @@ var selectAvatarController = {
 	selection : function(response){
 
 		Curiosity.toastLoading.hide();
-		//console.log(response.message);
-
-		/*
-		Curiosity.noty.success(response.message,"Exitoso");
+		Curiosity.noty.success(response.message,"En hora buena");
 				setInterval(function(){
 					location.href = "/view-child.init";
 				},'2300');
-		*/
+
 	},
 
 	alertConfirm : function(){

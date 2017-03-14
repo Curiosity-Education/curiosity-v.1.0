@@ -160,7 +160,7 @@ class parentsController extends BaseController{
                              "token_card" => $customer->id,
                              "fecha_registro" => Date('Y-m-d'),
                              "payment_option" => 'card',
-                             "active"    => 1,
+                             "active"    => 0,
                              "padre_id"  => Auth::user()->Person->Dad->id
                          ));
                          $membresia->save();
@@ -195,6 +195,7 @@ class parentsController extends BaseController{
     }
 
     public function createOrderMembership(){
+      Session::forget("reference");
       if(Session::get("reference")){
         return Response::json(Session::get("reference")[0]);
         //return Response::json(Session::get("reference")[1]);
@@ -208,12 +209,12 @@ class parentsController extends BaseController{
                 array(
                   "line_items" => array(
                     array(
-                      "name"       => 'Curiosity '.$plan->name,
-                      "unit_price" => (integer)$plan->amount. '00',
+                      "name"       => $plan->name,
+                      "unit_price" => $plan->amount * 100,
                       "quantity"   => 1
                     )//first line_item
                   ), //line_items
-                  "currency"      => "MXN",
+                  "currency"      => $plan->currency,
                   "customer_info" => array(
                     "name" =>  $person->nombre.' '.$person->apellidos,
                     "email" => $parent->email,
@@ -223,11 +224,11 @@ class parentsController extends BaseController{
                     "phone"     => $parent->telefono,
                     "receiver"  => $person->nombre.' '.$person->apellidos,
                     "address"   => array(
-                      "street1" => "Calle 123 int 2 Col. Chida",
-                      "city"    => "Cuahutemoc",
-                      "state"   => "Ciudad de Mexico",
-                      "country" => "MX",
-                      "postal_code" => "06100",
+                      "street1" => "UNDEFINED",
+                      "city"    => "UNDEFINED",
+                      "state"   => "UNDEFINED",
+                      "country" => "UNDEFINED",
+                      "postal_code" => "00000",
                       "residential" => true
                     )//address
                   ), //shipping_contact
@@ -242,29 +243,40 @@ class parentsController extends BaseController{
               );
               $membresia_plan = new MembershipPlan();
               $current = Carbon::now();
-              $trialExpires = $current->addDays(30);
+              switch ($plan->interval) {
+                 case 'month':
+                    $trialExpires = $current->addMonth();
+                    break;
+                 case 'year':
+                    $trialExpires = $current->addYear();
+                    break;
+                 default:
+                    $trialExpires = $current->addMonth();
+                    break;
+              }
               $membresia = new Membership(array(
-                  "token_card" => $order->charges[0]->payment_method->reference,
-                  "fecha_registro" => $current,
+                  // "token_card" => $order->charges[0]->payment_method->reference,
+                  "token_card" => $order->id,
+                  "fecha_registro" => Carbon::now(),
                   "fecha_corte" => $trialExpires,
                   "payment_option" => 'oxxo',
-                  "active"    => 1,
+                  "active"    => 0,
                   "padre_id"  => Auth::user()->Person->Dad->id
               ));
               $membresia->save();
-              $dataSend = (object)[
-                      "name"     =>       "Equipo Curiosity",
-                      "client"   =>       $person->nombre.' '.$person->apellidos,
-                      "email"    =>       $parent->email,
-                      "subject"  =>       "¡Curiosity Eduación!",
-                      "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
-              ];
-              $this->sendEmail($dataSend);
+            //   $dataSend = (object)[
+            //           "name"     =>       "Equipo Curiosity",
+            //           "client"   =>       $person->nombre.' '.$person->apellidos,
+            //           "email"    =>       $parent->email,
+            //           "subject"  =>       "¡Curiosity Eduación!",
+            //           "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
+            //   ];
+            //   $this->sendEmail($dataSend);
               $dataSetCard = array(
                   'orderID' => $order->id,
                   'paymentMethod' => $order->charges[0]->payment_method->service_name,
                   'reference' => $order->charges[0]->payment_method->reference,
-                  'amount' => $order->amount/100 . $order->currency,
+                  'amount' => number_format($order->amount/100, 2) . ' ' .$order->currency,
                   'details' => $order->line_items[0]->quantity .
                                 " - ". $order->line_items[0]->name .
                                 " - $". $order->line_items[0]->unit_price/100

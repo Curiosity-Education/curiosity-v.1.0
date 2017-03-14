@@ -161,4 +161,16 @@ class parentSuscriptionController extends BaseController{
              return self::SERVER_ERROR_RESPONSE($e);
         }
     }
+
+   public static function oxxoorderinfo(){
+      $idDad = Auth::user()->Person->Dad->id;
+      $tokenCard = Membership::where("padre_id", "=", $idDad)->select("token_card")->first()["token_card"];
+      \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+      $order = \Conekta\Order::find($tokenCard);
+      return $data = [
+         "reference"    => $order->charges[0]->payment_method->reference,
+         "currency"     => $order->charges[0]->currency,
+         "amount"       => number_format($order->charges[0]->amount/100, 2)
+      ];
+   }
 }

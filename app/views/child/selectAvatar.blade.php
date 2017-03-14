@@ -31,15 +31,15 @@
 
 <div class="container-fluid">
     <div class="">
-       <div class="col-md-8">
+       <div class="col-md-8 col-sm-12 col-xs-12">
 
 			<!-- Contentainer -->
-			<div class="col-md-12 z-depth-1" id="sela-container">
+			<div class="col-md-12 col-sm-12 col-xs-12 z-depth-1" id="sela-container">
 				<h3 class="h3-responsive text-xs-center">¡ Elige el Avatar que más te guste ! &nbsp;<i class="fa fa-hand-pointer-o" style="color:red;"></i></h3>
 				<hr>
 				<div class="row">
 					<a href="#" class="sela-click" data-avatar="tot">
-						<div class="col-md-6">
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy TOT!</h5>
 							<div id="" class="sal-divAvatar">
 								<center>
@@ -51,7 +51,7 @@
 						</div>
 					</a>
 					<a href="#" class="sela-click" data-avatar="sia">
-						<div class="col-md-6">
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<h5 class="text-xs-center title-avatar h5-responsive text-white">¡Hola soy SIA!</h5>
 							<div id="" class="sal-divAvatar">
 								<center>
@@ -65,7 +65,7 @@
 				</div>
 			</div>
        </div>
-  		<div class="col-md-4 z-depth-1" id="sela-style">
+  		<div class="col-md-4 col-sm-12 col-xs-12 z-depth-1" id="sela-style">
        		<div class="container">
 				<h4 class="h4-responsive text-xs-center">
 					<span id="sela-titleStyle">Estilos</span> &nbsp;<i class="fa fa-paint-brush" style="color:red;"></i>
