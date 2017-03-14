@@ -424,7 +424,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('get-sons','parentsController@getSons');
    Route::post('get-sonsInfo','parentsController@getSonsInfo');
 
-   Route::group(array('prefix' => 'suscription'),function(){
+   Route::group(array('prefix' => '/suscription'),function(){
        Route::post('pause','parentSuscriptionController@pause');
        Route::post('resume','parentSuscriptionController@resume');
        Route::post('cancel','parentSuscriptionController@cancel');

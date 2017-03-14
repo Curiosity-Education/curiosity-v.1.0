@@ -32,18 +32,13 @@ class loginController extends BaseController{
                $idDad = $son['padre_id'];
                $membership = Membership::where('padre_id','=',$idDad)->first();
                $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-
                if($membershipPlan->active == 1){
-
 				   $hasAvatar = DB::table('hijos_has_estilos_avatar')
 					   ->where('hijos_id','=',$idSon)
 					   ->get();
-
 				   if(!$hasAvatar){
 					    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.selectAvatar"));
 				   }
-
-
                   $date = Carbon::now();
                   $today = $date->toDateString();
                   $advance = DB::table("avances_metas")
@@ -77,7 +72,9 @@ class loginController extends BaseController{
                 }
                 else{
                     if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){
-                       return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.account-oxxo-paused"));
+                       return Response::json(array("status" => 200,
+                       'statusMessage' => "success",
+                       "data" => "/view-parentSuscription/oxxoorderinfo/view-parent.account-oxxo-paused"));
                     }
                     $id_dad = Auth::user()->Person->Dad->id;
                     $sons = Son::where("padre_id", "=", $id_dad)->get();
@@ -122,6 +119,13 @@ class loginController extends BaseController{
             return "/";
          }else{
             if($membershipPlan->active == 1){
+               $hasAvatar = DB::table('hijos_has_estilos_avatar')
+					   ->where('hijos_id','=',$idSon)
+					   ->get();
+
+				   if(!$hasAvatar){
+					    return "view-child.selectAvatar";
+				   }
                $date = Carbon::now();
                $today = $date->toDateString();
                $advance = DB::table("avances_metas")
@@ -151,6 +155,9 @@ class loginController extends BaseController{
               return "view-parent.pay-suscription";
           }
           else{
+              if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){
+                 return "/view-parentSuscription/oxxoorderinfo/view-parent.account-oxxo-paused";
+              }
               $id_dad = Auth::user()->Person->Dad->id;
               $sons = Son::where("padre_id", "=", $id_dad)->get();
               $conutSons = count($sons);

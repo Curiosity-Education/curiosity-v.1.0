@@ -29,7 +29,8 @@ class viewsController extends BaseController{
       "parent.library_pdfs"                          => "parent_actions",
       "parent.child_registration"                    => "parent_actions",
       "parent.move_to_plan"                          => "parent_actions",
-      "administer.admin-schools-membreship"          => "manage_content"
+      "parent.account-oxxo-paused"                   => "parent_actions",
+      "administer.admin-schools-membreship"          => "manage_content",
    );
 
    public function getViewWithData($controller = '',$method = '',$viewName){
