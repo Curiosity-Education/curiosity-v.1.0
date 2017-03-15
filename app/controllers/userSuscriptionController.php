@@ -11,7 +11,7 @@ class userSuscriptionController extends BaseController{
         switch($event_json->type){
             case 'subscription.payment_failed':
                 try{
-                  $membership = Membership::where("token_card","=",$event_json->object->customer_id);
+                  $membership = Membership::where("token_card","=",$event_json->data->object->customer_id);
                   $membership->update(array('active' => "0"));
                 }
                 catch(Exception $e){
@@ -20,29 +20,34 @@ class userSuscriptionController extends BaseController{
             break;
             case 'subscription.paid':
                 try{
-                  $membership = Membership::where("token_card","=",$event_json->object->customer_id);
+                  $membership = Membership::where("token_card","=",$event_json->data->object->customer_id);
                   $membership->update(array('active' => "1"));
                 }
                 catch(Exception $e){
 
                 }
             break;
+            // case 'charge.paid':
+            //     try{
+            //       $membership = Membership::where("token_card","=",$event_json->object->customer_id);
+            //       $membership->update(array('active' => "1"));
+            //     }
+            //     catch(Exception $e){
+            //
+            //     }
+            // break;
             case 'charge.paid':
-                try{
-                  $membership = Membership::where("token_card","=",$event_json->object->customer_id);
-                  $membership->update(array('active' => "1"));
-                }
-                catch(Exception $e){
+                try {
+                   switch($event_json->data->object->payment_method->type){
+                       case 'oxxo':
+                           $membership = Membership::where("token_card","=",$event_json->data->object->order_id);
+                           $membership->update(array('active' => "1"));
+                       break;
+                   }
+                } catch (Exception $e) {
 
                 }
-            break;
-            case 'charge.paid':
-                switch($event_json->object->payment_method->type){
-                    case 'oxxo':
-                        $membership = Membership::where("token_card","=",$event_json->object->order_id);
-                        $membership->update(array('active' => "1"));
-                    break;
-                }
+
             break;
         }
     }
