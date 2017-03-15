@@ -19,7 +19,7 @@ Gestion de cuentas masivas
 <div class="row">
   <div class="col-md-12">
     <!-- Nav tabs -->
-  <div class="tabs-wrapper"> 
+  <div class="tabs-wrapper">
       <ul class="nav classic-tabs tabs-grey" role="tablist">
           <li class="nav-item">
               <a class="nav-link waves-light active" data-toggle="tab" href="#home" role="tab"><i class="fa fa-home fa-2x" aria-hidden="true"></i><br> Inicio</a>
@@ -165,7 +165,7 @@ Gestion de cuentas masivas
 </div>
 @stop
 
-@section('js-plus')  
+@section('js-plus')
 <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
 <!--<script src="/packages/assets/js/administer/dispatchers/dsp-acti.js?{{rand();}}" charset="utf-8"></script>-->
