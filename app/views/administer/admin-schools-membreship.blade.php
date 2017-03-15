@@ -49,7 +49,7 @@ Gestion de cuentas masivas
             <div class="pull-right">
               <img src="/packages/assets/media/images/schools/cat.jpg" class="img-fluid shme-img-institution">
             </div>
-            <div> 
+            <div>
               <h5>Nombre de institución</h5>
               <p>Dirección: bla bla bla 3</p>
               <p>Correo electronico: bla bla bla 3</p>
@@ -61,7 +61,6 @@ Gestion de cuentas masivas
     </div>
     <div id="" class="tab-pane fade">
       <br>
-      
     </div>
     <div id="shme-management" class="tab-pane fade">
       <div class="shme-header">
