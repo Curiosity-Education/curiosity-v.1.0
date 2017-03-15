@@ -27,15 +27,6 @@ class userSuscriptionController extends BaseController{
 
                 }
             break;
-            // case 'charge.paid':
-            //     try{
-            //       $membership = Membership::where("token_card","=",$event_json->object->customer_id);
-            //       $membership->update(array('active' => "1"));
-            //     }
-            //     catch(Exception $e){
-            //
-            //     }
-            // break;
             case 'charge.paid':
                 try {
                    switch($event_json->data->object->payment_method->type){
@@ -45,7 +36,14 @@ class userSuscriptionController extends BaseController{
                        break;
                    }
                 } catch (Exception $e) {
-
+                    try{
+                       $membership = Membership::where("token_card","=",$event_json->object->customer_id);
+                       $membership->update(array('active' => "1"));
+                    }
+                    catch(Exception $e){
+                        $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+                        Log::info('CheckPay-Webhook: failed time: ' . $executionTime . ' | ' . $e->getMessage());
+                    }
                 }
 
             break;

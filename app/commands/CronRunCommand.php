@@ -63,55 +63,59 @@ class CronRunCommand extends Command {
                                     ->where('membresias.active',1)
                                         ->get();
         foreach($datesPayments as $datePayment){
-            $daysBefore = Carbon::createFromFormat('Y-m-d H:i:s', $datePayment->fecha_corte, 'America/Monterrey')->subDays(3);
-            if($current->diffInDays($daysBefore) === 0 && $datePayment->payment_option === 'oxxo'){
-                \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
-                  $order = \Conekta\Order::create(
-                    array(
-                      "line_items" => array(
+            if($datePayment->fecha_corte != ''){
+                $daysBefore = Carbon::createFromFormat('Y-m-d H:i:s', $datePayment->fecha_corte, 'America/Monterrey')->subDays(3);
+                if($current->diffInDays($daysBefore) === 0 && $datePayment->payment_option === 'oxxo'){
+                    \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+                      $order = \Conekta\Order::create(
                         array(
-                          "name"       => 'Curiosity '.$datesPayments->name,
-                          "unit_price" => (integer)$datesPayments->amount. '00',
-                          "quantity"   => 1
-                        )//first line_item
-                      ), //line_items
-                      "currency"      => "MXN",
-                      "customer_info" => array(
-                        "name" =>  $datesPayments->nombre.' '.$datesPayments->apellidos,
-                        "email" => $datesPayments->email,
-                        "phone" => $datesPayments->telefono
-                      ), //customer_info
-                      "shipping_contact" => array(
-                        "phone"     => $datesPayments->telefono,
-                        "receiver"  => $datesPayments->nombre.' '.$datesPayments->apellidos,
-                        "address"   => array(
-                          "street1" => "Calle 123 int 2 Col. Chida",
-                          "city"    => "Cuahutemoc",
-                          "state"   => "Ciudad de Mexico",
-                          "country" => "MX",
-                          "postal_code" => "06100",
-                          "residential" => true
-                        )//address
-                      ), //shipping_contact
-                      "charges" => array(
-                        array(
-                          "payment_method" => array(
-                            "type" => "oxxo_cash"
-                          )//payment_method
-                        ) //first charge
-                      ) //charges
-                    )//order
-                  );
-                $dataSend = (object)[
-                    "name"     =>       "Equipo Curiosity",
-                    "client"   =>       $datePayment->nombre.' '.$datePayment->apellidos,
-                    "email"    =>       $datePayment->email,
-                    "subject"  =>       "¡Curiosity Eduación!",
-                    "msg"      =>       "No dejes de vivir la experiencia Curiosity, tienes seleccionado el método de pago por oxxo, para seguir disfrutando del contenido Curiosity, por favor dirigete a pagar la cantidad de $ {$datePayment->amount} MXN dando este numero de referencia <center><h2> {$order->$order->charges[0]->payment_method->reference} </h2></center>"
-                ];
-                $this->sendEmail($dataSend);
+                          "line_items" => array(
+                            array(
+                              "name"       => 'Curiosity '.$datesPayments->name,
+                              "unit_price" => (integer)$datesPayments->amount. '00',
+                              "quantity"   => 1
+                            )//first line_item
+                          ), //line_items
+                          "currency"      => "MXN",
+                          "customer_info" => array(
+                            "name" =>  $datesPayments->nombre.' '.$datesPayments->apellidos,
+                            "email" => $datesPayments->email,
+                            "phone" => $datesPayments->telefono
+                          ), //customer_info
+                          "shipping_contact" => array(
+                            "phone"     => $datesPayments->telefono,
+                            "receiver"  => $datesPayments->nombre.' '.$datesPayments->apellidos,
+                            "address"   => array(
+                              "street1" => "Calle 123 int 2 Col. Chida",
+                              "city"    => "Cuahutemoc",
+                              "state"   => "Ciudad de Mexico",
+                              "country" => "MX",
+                              "postal_code" => "06100",
+                              "residential" => true
+                            )//address
+                          ), //shipping_contact
+                          "charges" => array(
+                            array(
+                              "payment_method" => array(
+                                "type" => "oxxo_cash"
+                              )//payment_method
+                            ) //first charge
+                          ) //charges
+                        )//order
+                      );
+                    $dataSend = (object)[
+                        "name"     =>       "Equipo Curiosity",
+                        "client"   =>       $datePayment->nombre.' '.$datePayment->apellidos,
+                        "email"    =>       $datePayment->email,
+                        "subject"  =>       "¡Curiosity Eduación!",
+                        "msg"      =>       "No dejes de vivir la experiencia Curiosity, tienes seleccionado el método de pago por oxxo, para seguir disfrutando del contenido Curiosity, por favor dirigete a pagar la cantidad de $ {$datePayment->amount} MXN dando este numero de referencia <center><h2> {$order->$order->charges[0]->payment_method->reference} </h2></center>"
+                    ];
+                    $this->sendEmail($dataSend);
+                }
             }
         }
+        $this->messages = array("El cron job ha sido finalizado.");
+        $this->finish();
 
 	}
     protected function sendEmail(object $dataSend){
