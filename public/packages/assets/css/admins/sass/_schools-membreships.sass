@@ -43,7 +43,7 @@
 
 #shme-management
 	.shme-body
-		max-height: 20rem
+		max-height: 25rem
 		overflow-y: auto
 		overflow-x: hidden
 	.shme-footer
@@ -67,7 +67,8 @@
 .shme-btn-selected
 	padding: .3rem!important
 .shme-btn-trash
-	padding: .3rem!important
+	padding: .4rem!important
+	line-height: .9rem
 .shme-header
 	background-color: $color-black-elegant-dark
 	margin-left: -15px
@@ -82,3 +83,11 @@
 	.select-dropdown
 		color: #fff
 		margin: 0!important
+.shme-btn-toggle
+	display: block!important
+	background-color: $color-black-elegant-dark!important
+.shme-btn-group
+	.dropdown-menu
+		z-index: 99999999
+		>a
+			z-index: 999999
