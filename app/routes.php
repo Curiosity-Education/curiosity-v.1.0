@@ -10,6 +10,19 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('prueba-excel',function(){
+
+    $data = User::all();
+    Excel::create('Filename', function($excel) use($data) {
+
+        $excel->sheet('Sheetname', function($sheet) use($data) {
+
+            $sheet->fromModel($data);
+
+        });
+
+    })->export('xls');
+});
 
 Route::get('/', 'landingController@landingpage');
 
