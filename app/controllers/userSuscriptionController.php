@@ -18,13 +18,36 @@ class userSuscriptionController extends BaseController{
 
                 }
             break;
-            case 'charge.paid':
-                switch($event_json->data->object->payment_method->type){
-                    case 'oxxo':
-                        $membership = Membership::where("token_card","=",$event_json->data->object->payment_method->reference);
-                        $membership->update(array('active' => "0"));
-                    break;
+            case 'subscription.paid':
+                try{
+                  $membership = Membership::where("token_card","=",$event_json->data->object->customer_id);
+                  $membership->update(array('active' => "1"));
                 }
+                catch(Exception $e){
+
+                }
+            break;
+            // case 'charge.paid':
+            //     try{
+            //       $membership = Membership::where("token_card","=",$event_json->object->customer_id);
+            //       $membership->update(array('active' => "1"));
+            //     }
+            //     catch(Exception $e){
+            //
+            //     }
+            // break;
+            case 'charge.paid':
+                try {
+                   switch($event_json->data->object->payment_method->type){
+                       case 'oxxo':
+                           $membership = Membership::where("token_card","=",$event_json->data->object->order_id);
+                           $membership->update(array('active' => "1"));
+                       break;
+                   }
+                } catch (Exception $e) {
+
+                }
+
             break;
         }
     }

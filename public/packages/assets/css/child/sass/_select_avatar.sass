@@ -36,7 +36,7 @@
 	border-top-right-radius: $border-rad
 
 .sal-divAvatar
-	height: 15rem
+	height: auto
 	margin-top: -.5rem
 	background-image: url(/packages/assets/media/images/child/store/menu-backgrounds/bkdMenDef.png)
 	border-bottom-left-radius: $border-rad
@@ -53,4 +53,35 @@
 	background-color: $color-danger
 
 #sela-styles
-	height: 15rem
+	height: 18.2rem
+	overflow-y: scroll
+
+.sela-contentAvata
+	margin-left: 2rem !important
+
+
+::-webkit-scrollbar
+	width: 8px
+
+::-webkit-scrollbar-thumb
+	-webkit-border-radius: 10px
+	border-radius: 10px
+	background: $color-primary
+	cursor: pointer
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.5)
+
+::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)
+	-webkit-border-radius: 10px
+	border-radius: 10px
+
+.sela-hidden
+	display: none
+
+.sela-content
+	border: solid $color-primary
+	border-radius: $border-rad
+
+.sela-content-selected
+	border: solid $color-danger
+	border-radius: $border-rad

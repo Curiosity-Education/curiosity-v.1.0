@@ -32,7 +32,11 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/selectavatar', 'avatarController@view');
+Route::get('/oxxo', function(){
+	return View::make('parent.account-oxxo-paused');
+});
+
+//Route::get('/selectavatar', 'avatarController@view');
 
 Route::get('terminos', function(){
 	return View::make('landing.terms_conditions');
@@ -79,10 +83,10 @@ Route::group(array('prefix' => '/profile-child'), function(){
 });
 
 // Routes selection avatar first time
-Route::group(array('prefix' => '/select-avatar'), function(){
-	Route::get('get-avatar','avatarController@avatarAnimated');
-	Route::get('get-style','avatarController@avatarStyles');
-	Route::post('select-avatar','avatarController@selectedAvatar');
+Route::group(array('prefix' => 'select-avatar'), function(){
+	Route::post('get-avatar','avatarController@avatarAnimated');
+	Route::post('get-style','avatarController@avatarStyles');
+	Route::post('save','avatarController@selectedAvatar');
 });
 
 /*
@@ -318,7 +322,7 @@ Route::group(array('prefix' =>  'activity-admin'),function(){
 	Route::post('all', 'activitiesController@all');
 	Route::post('getByIntelligent', 'activitiesController@getByIntelligent');
 	Route::post('getByTopic', 'activitiesController@getByTopic');
-  Route::post('has-game','activitiesController@hasGame');
+  	Route::post('has-game','activitiesController@hasGame');
 });
 
 /*
@@ -371,6 +375,9 @@ Route::group(array('prefix' =>  'avatar'),function(){
 Route::group(array('prefix' =>  'sprite'),function(){
 	Route::post('all', 'spriteController@all');
 	Route::post('getByAvatarForChild', 'spriteController@getByAvatarForChild');
+	Route::post('save', 'spriteController@save');
+	Route::post('update', 'spriteController@update');
+	Route::post('delete', 'spriteController@delete');
 });
 
 /*
@@ -430,7 +437,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('get-sons','parentsController@getSons');
    Route::post('get-sonsInfo','parentsController@getSonsInfo');
 
-   Route::group(array('prefix' => 'suscription'),function(){
+   Route::group(array('prefix' => '/suscription'),function(){
        Route::post('pause','parentSuscriptionController@pause');
        Route::post('resume','parentSuscriptionController@resume');
        Route::post('cancel','parentSuscriptionController@cancel');
@@ -578,6 +585,7 @@ Route::group(array('before' => 'auth'), function(){
                 Route::get("/find-recomended","activitiesController@getRecomended");
                 Route::get("/find-all","activitiesController@getAll");
                 Route::post("/updateViews","activitiesController@updateViews");
+
             });
             Route::group(array('prefix' => "admin-child"), function(){
                 Route::post("/save","childrenController@save");

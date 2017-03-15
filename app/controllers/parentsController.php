@@ -126,67 +126,76 @@ class parentsController extends BaseController{
 
     }
     public function payment_suscription(){
-        $padreRole = Auth::user()->roles[0]->name;
-            /* Configuración con Conekta */
-            /******************************************************
-            * Llave de pruebas
-            * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
-            *******************************************************/
-            // llave en modo de produccion
-            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
-            \Conekta\Conekta::setLocale('es');
-            try{
-                if($padreRole == "parent"){
-                    $parent = Auth::user()->Person->Dad;
-                    $customer = \Conekta\Customer::create(array(
-                        "name" => Input::get('nombre'),
-                        "email" => $parent->email,
-                        "phone" => $parent->telefono,
-                        'payment_sources' => array(array(
-                        'token_id' => Input::get('conektaTokenId'),
-                        'type' => "card"
-                        ))
-                    ));
-                    $plan = Plan::find(Input::get('plan_id'));
-                    if(!$plan){
-                        return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
-                    }
-                    $subscription = $customer->createSubscription(array(
-                      "plan_id"=> $plan->reference
-                    ));
-                    if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
-                            $membresia_plan  = new MembershipPlan();
-                            $membresia       = new Membership(array(
-                                "token_card" => $customer->id,
-                                "fecha_registro" => Date('Y-m-d'),
-                                "payment_option" => 'card',
-                                "active"    => 1,
-                                "padre_id"  => Auth::user()->Person->Dad->id
-                            ));
-                            $membresia->save();
-                         //la suscripción inicializó exitosamente!
-                        return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
+     $padreRole = Auth::user()->roles[0]->name;
+         /* Configuración con Conekta */
+         /******************************************************
+         * Llave de pruebas
+         * Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+         *******************************************************/
+         // llave en modo de produccion
+         \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+         \Conekta\Conekta::setLocale('es');
+         try{
+             if($padreRole == "parent"){
+                 $parent = Auth::user()->Person->Dad;
+                 $customer = \Conekta\Customer::create(array(
+                     "name" => Input::get('nombre'),
+                     "email" => $parent->email,
+                     "phone" => $parent->telefono,
+                     'payment_sources' => array(array(
+                     'token_id' => Input::get('conektaTokenId'),
+                     'type' => "card"
+                     ))
+                 ));
+                 $plan = Plan::find(Input::get('plan_id'));
+                 if(!$plan){
+                     return Response::json(array('status'=>404,'statusMessage'=>'El plan no fue encontrado'));
+                 }
+                 $subscription = $customer->createSubscription(array(
+                   "plan_id"=> $plan->reference
+                 ));
+                 if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
+                         $membresia_plan  = new MembershipPlan();
+                         $membresia       = new Membership(array(
+                             "token_card" => $customer->id,
+                             "fecha_registro" => Date('Y-m-d'),
+                             "payment_option" => 'card',
+                             "active"    => 0,
+                             "padre_id"  => Auth::user()->Person->Dad->id
+                         ));
+                         $membresia->save();
+                      //la suscripción inicializó exitosamente!
+                      //  Si el padre se registró utilizando código se hace la relación
+                      if (Session::has('codesellerid')){
+                         $addedCodeRel = DB::table('membresias_codigos')->insert(array(
+            	              'codigo_vendedor_id' => Session::get('codesellerid'),
+            	              'membresia_id' => $membresia->id
+            	          ));
+                         Session::forget('codesellerid');
+                      }
+                      return Response::json(array('status'=>200,'statusMessage'=>'success','data'=>$subscription));
 
-                    }
-                    elseif ($subscription->status == 'past_due') {
-                     //la suscripción falló a inicializarse
-                      return Response::json(array(
-                        'status'=>105,
-                        'statusMessage'=>'PAST_DUE',
-                        'data'=>$subscription,
-                        'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
-                    }
-                }
-                else{
-                    return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
-                }
-            }catch (\Conekta\Error $e){
-              return Response::json(["message"=>$e->message_to_purchaser]);
-             //el cliente no pudo ser creado
-            }
+                 }
+                 elseif ($subscription->status == 'past_due') {
+                  //la suscripción falló a inicializarse
+                   return Response::json(array(
+                     'status'=>105,
+                     'statusMessage'=>'PAST_DUE',
+                     'data'=>$subscription,
+                     'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
+                 }
+             }
+             else{
+                 return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
+             }
+         }catch (\Conekta\Error $e){
+           return Response::json(["message"=>$e->message_to_purchaser]);
+          //el cliente no pudo ser creado
+         }
     }
 
     public function createOrderMembership(){
+      Session::forget("reference");
       if(Session::get("reference")){
         return Response::json(Session::get("reference")[0]);
         //return Response::json(Session::get("reference")[1]);
@@ -200,12 +209,12 @@ class parentsController extends BaseController{
                 array(
                   "line_items" => array(
                     array(
-                      "name"       => 'Curiosity '.$plan->name,
-                      "unit_price" => (integer)$plan->amount. '00',
+                      "name"       => $plan->name,
+                      "unit_price" => $plan->amount * 100,
                       "quantity"   => 1
                     )//first line_item
                   ), //line_items
-                  "currency"      => "MXN",
+                  "currency"      => $plan->currency,
                   "customer_info" => array(
                     "name" =>  $person->nombre.' '.$person->apellidos,
                     "email" => $parent->email,
@@ -215,11 +224,11 @@ class parentsController extends BaseController{
                     "phone"     => $parent->telefono,
                     "receiver"  => $person->nombre.' '.$person->apellidos,
                     "address"   => array(
-                      "street1" => "Calle 123 int 2 Col. Chida",
-                      "city"    => "Cuahutemoc",
-                      "state"   => "Ciudad de Mexico",
-                      "country" => "MX",
-                      "postal_code" => "06100",
+                      "street1" => "UNDEFINED",
+                      "city"    => "UNDEFINED",
+                      "state"   => "UNDEFINED",
+                      "country" => "UNDEFINED",
+                      "postal_code" => "00000",
                       "residential" => true
                     )//address
                   ), //shipping_contact
@@ -234,29 +243,40 @@ class parentsController extends BaseController{
               );
               $membresia_plan = new MembershipPlan();
               $current = Carbon::now();
-              $trialExpires = $current->addDays(30);
+              switch ($plan->interval) {
+                 case 'month':
+                    $trialExpires = $current->addMonth();
+                    break;
+                 case 'year':
+                    $trialExpires = $current->addYear();
+                    break;
+                 default:
+                    $trialExpires = $current->addMonth();
+                    break;
+              }
               $membresia = new Membership(array(
-                  "token_card" => $order->charges[0]->payment_method->reference,
-                  "fecha_registro" => $current,
+                  // "token_card" => $order->charges[0]->payment_method->reference,
+                  "token_card" => $order->id,
+                  "fecha_registro" => Carbon::now(),
                   "fecha_corte" => $trialExpires,
                   "payment_option" => 'oxxo',
-                  "active"    => 1,
+                  "active"    => 0,
                   "padre_id"  => Auth::user()->Person->Dad->id
               ));
               $membresia->save();
-              $dataSend = (object)[
-                      "name"     =>       "Equipo Curiosity",
-                      "client"   =>       $person->nombre.' '.$person->apellidos,
-                      "email"    =>       $parent->email,
-                      "subject"  =>       "¡Curiosity Eduación!",
-                      "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
-              ];
-              $this->sendEmail($dataSend);
+            //   $dataSend = (object)[
+            //           "name"     =>       "Equipo Curiosity",
+            //           "client"   =>       $person->nombre.' '.$person->apellidos,
+            //           "email"    =>       $parent->email,
+            //           "subject"  =>       "¡Curiosity Eduación!",
+            //           "msg"      =>       "Estas a punto de vivir la experiencia Curiosity,haz seleccionado el método de pago por oxxo, por favor dirigete a pagar la cantidad de $ {$plan->amount} dando este numero de referencia <center><h2> {$order->charges[0]->payment_method->reference} </h2></center>"
+            //   ];
+            //   $this->sendEmail($dataSend);
               $dataSetCard = array(
                   'orderID' => $order->id,
                   'paymentMethod' => $order->charges[0]->payment_method->service_name,
                   'reference' => $order->charges[0]->payment_method->reference,
-                  'amount' => $order->amount/100 . $order->currency,
+                  'amount' => number_format($order->amount/100, 2) . ' ' .$order->currency,
                   'details' => $order->line_items[0]->quantity .
                                 " - ". $order->line_items[0]->name .
                                 " - $". $order->line_items[0]->unit_price/100
