@@ -15,7 +15,7 @@ $(function(){
 			$("#sela-btnOptions").trigger('click');
 		},2000);
 
-		$("#sela-titleStyle").text("Estilos de "+avatar);
+		$("#sela-titleStyle").text("Estilos de "+$(this).data("name"));
     });
 
 	$('.sela-click').click(function(){
