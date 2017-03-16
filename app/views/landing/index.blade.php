@@ -1,7 +1,7 @@
 @extends('landing.indexBase')
 
 @section('title')
-	Curiosity Educación | Videojuegos educativos
+	Curiosity Educación | Juegos educativos para primaria
 @stop
 
 @section('menu')
