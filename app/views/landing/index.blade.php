@@ -512,6 +512,34 @@
 	</section>
 	<!-- Fin Sección con el Apoyo -->
 
+	<!-- Separador 3 -->
+	<div class="col-md-12 view hm-black-strong" id="separador3">
+		<div class="mask flex-center">
+			<center>
+				<h2 class="white-text h1-responsive">
+				    Educación divertida para todos con...<br>
+				    <b>Padrino Curiosity</b>
+				</h2>
+			</center>
+		</div>
+	</div>
+
+	<!-- Sección con Padrino curiosity -->
+	<section id="padrino-curiosity" class="margen-dispositivo">
+		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
+			<h2 class="section-header h2-responsive">
+				<!-- <img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class=""> -->
+				&nbsp; Padrino Curiosity &nbsp;
+			</h2>
+		</div>
+		<div class="container">
+			<div class="col-md-12" id="content-elemento">
+
+			</div>
+		</div>
+	</section>
+	<!-- Fin Sección Padrino curiosity -->
+
 	<!-- Sección de Noticias -->
 	<section id="noticias">
 		<div class="bg-noticias">
