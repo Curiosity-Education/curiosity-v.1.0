@@ -28,7 +28,7 @@ Gestion de cuentas masivas
               <a class="nav-link waves-light" data-toggle="tab" href="#shme-management" role="tab"><i class="fa fa-user fa-2x" aria-hidden="true"></i> <i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i><br> Gestion de cuentas masivas</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link waves-light" data-toggle="tab" href="#panel81" role="tab"><i class="fa fa-trash fa-2x" aria-hidden="true"></i><br> Membresias Eliminadas</a>
+              <a class="nav-link waves-light" data-toggle="tab" href="#panel81" role="tab"><i class="fa fa-ban fa-2x" aria-hidden="true"></i><br> Membresias Eliminadas</a>
           </li>
       </ul>
   </div>
@@ -63,20 +63,16 @@ Gestion de cuentas masivas
       <br>
     </div>
     <div id="shme-management" class="tab-pane fade">
-      <div class="shme-header">
+      <div class="shme-header hidden animated fadeInDown" id="shme-header-mem">
         <div class="row">
-          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <fieldset class="form-group">
+                <input type="checkbox" class="filled-in" id="checkbox2">
+                <label for="checkbox2">Seleccionar todo</label>
+            </fieldset>
+          </div>
           <div class="col-md-3">
-            <div class="btn-group">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">9 seleccionados</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </div>
+           <label class="text-white">4 seleccionados</label>
           </div>
           <div class="col-md-2"><a class="btn shme-btn-trash"><i class="fa fa-trash"></i></a></div>
           <div class="col-md-1"></div>
@@ -144,13 +140,14 @@ Gestion de cuentas masivas
       </div>
       <div class="shme-footer">
         <div class="row">
-          <div class="col-md-3"><p>Intituto cat</p></div>
+          <div class="col-md-2"><p>Intituto cat</p></div>
           <div class="col-md-3">88 membresias activas</div>
           <div class="col-md-4">
-            <input type="range" min="0" max="100" />
+            <input type="range" min="0" max="200" />
           </div>
           <div class="col-md-2">
-            <a class="btn text-black shme-btn-more"><i class="fa fa-plus"></i></a>
+            <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-plus"></i></a>
+            <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-file-excel-o"></i></a>
           </div>
         </div>
       </div>
@@ -168,12 +165,5 @@ Gestion de cuentas masivas
 @section('js-plus')
 <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
-<!--<script src="/packages/assets/js/administer/dispatchers/dsp-acti.js?{{rand();}}" charset="utf-8"></script>-->
-<script type="text/javascript">
-$(function(){
-  $(".shme-img-member").click(function(event){
-    $(this).attr("src","/packages/assets/media/images/system/membreship-selected.png");
-  });
-});
-</script>
+<script src="/packages/assets/js/administer/dispatchers/dsp-shme.js?{{rand();}}" charset="utf-8"></script>
 @stop
