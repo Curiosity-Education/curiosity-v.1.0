@@ -43,7 +43,7 @@ var selectAvatarController = {
         $.each(avatars,function(i,o){
             count = count + 1;
 
-            var createCard = "<a href='#' class='sela-click' data-avatar='"+o.nombre+"''>"+
+            var createCard = "<a href='#' class='sela-click' data-avatarId='"+o.id+"''>"+
 						          "<div class='col-md-6 col-sm-6 col-xs-12'>"+
 							         "<h5 class='text-xs-center title-avatar h5-responsive text-white'>¡Hola soy "+o.nombre+"!</h5>"+
 							             "<div id='' class='sal-divAvatar'>"+
@@ -69,6 +69,8 @@ var selectAvatarController = {
 
 		var avatarClick = selectAvatarController.avatar;
 		$('#sela-textStyle').addClass('sela-hidden');
+
+        console.log(avatarClick);
 
 		if(avatarClick == "tot"){
 
