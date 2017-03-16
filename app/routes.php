@@ -28,8 +28,8 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/codigo', function(){
-	return View::make('parent.pay-suscription');
+Route::get('/padrino', function(){
+	return View::make('administer.admin-godfather');
 });
 
 Route::get('/oxxo', function(){
