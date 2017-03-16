@@ -10,6 +10,19 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('prueba-excel',function(){
+
+    $data = User::all();
+    Excel::create('Filename', function($excel) use($data) {
+
+        $excel->sheet('Sheetname', function($sheet) use($data) {
+
+            $sheet->fromModel($data);
+
+        });
+
+    })->export('xls');
+});
 
 Route::get('/', 'landingController@landingpage');
 
@@ -71,8 +84,8 @@ Route::group(array('prefix' => '/profile-child'), function(){
 
 // Routes selection avatar first time
 Route::group(array('prefix' => 'select-avatar'), function(){
-	Route::post('get-avatar','avatarController@avatarAnimated');
-	Route::post('get-style','avatarController@avatarStyles');
+	Route::get('get-avatar','avatarController@avatarAnimated');
+	Route::get('get-style','avatarController@avatarStyles');
 	Route::post('save','avatarController@selectedAvatar');
 });
 

@@ -222,8 +222,11 @@ class avatarController extends BaseController
 
 	public function avatarAnimated(){
 
+        $avatar = Avatar::all();
+
 		$sprite = DB::table("sprites")
 		->join("estilos_avatar", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
+        ->where("sprites.secuencia_id","=",1)
 		->select("sprites.*", "estilos_avatar.folder")
 		->get();
 
@@ -234,6 +237,7 @@ class avatarController extends BaseController
 		return Response::json(array('status' 		=> 200,
 									'statusMessage' => 'success',
 									'message'		=> 'avatar disponibles',
+                                    'dataAvatar'    => $avatar,
 									'dataSprite'	=> $sprite,
 									'dataSecuence'	=> $secuence
 		   						));

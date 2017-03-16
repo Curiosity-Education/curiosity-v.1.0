@@ -73,7 +73,7 @@ Juego | {{$game["name"]}}
    </div>
    <div class="row hidden" id="gst-row-game">
     <div class="col-md-12">
-       <iframe data-folder="{{$game['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:100%;border:none" name="iframe_juego"></iframe>
+       <iframe data-folder="{{$game['folder']}}" src=""  allowfullscreen webkitallowfullscreen mozallowfullscreen style="width:100%;height:80%;border:none" name="iframe_juego"></iframe>
     </div>
    </div>
    <!-- view pdf -->

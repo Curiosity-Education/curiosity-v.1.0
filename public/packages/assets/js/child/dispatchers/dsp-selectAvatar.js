@@ -5,8 +5,10 @@ $(function(){
 
 	// show styles
 	var interval;
-	$('.sela-click').click(function(){
-		var avatar = $(this).data("avatar");
+
+    $("#sela-cardAvatar").on('click','.sela-click',function(){
+
+        var avatar = $(this).data("avatarid");
 		selectAvatarController.setAvatar(avatar);
 		selectAvatarController.getStyles();
 		interval = setInterval(function(){
@@ -14,6 +16,10 @@ $(function(){
 		},2000);
 
 		$("#sela-titleStyle").text("Estilos de "+avatar);
+    });
+
+	$('.sela-click').click(function(){
+
 	});
 
 	// avatar selected
