@@ -29,7 +29,7 @@
 			<!--Navbar Brand-->
 			<div hidden="hidden">
 				<a class="btn success-rounded-outline waves-effect pull-right">Iniciar sesión</a>
-				<a class="btn warning-rounded-outline waves-effect pull-right">Registrarse</a>
+				<a class="btn warning-rounded-outline waves-effect pull-right">Registrarme</a>
 			</div><br>
 			<a href="/" class="navbar-brand pull-left  chicle font-curiosity">
 				<span><img src="/packages/assets/media/images/landing/logo.png?{{rand();}}" alt="logo-curiosity" class="logo-current"></span>
