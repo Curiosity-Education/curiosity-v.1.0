@@ -206,7 +206,7 @@
 					<div class="view hm-zoom overlay hm-purple-strong">
 						<img src="/packages/assets/media/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
-							<h4 class="white-text">Videos explicativos</h4>
+							<h4 class="white-text">Videos Animados</h4>
 						</div>
 					</div>
 					<div class="funcionamiento-text"><p>¿Me lo explicas? <br> Desarrollamos videos animados con  explicaciones de los mejores profesores para comprender mejor cada tema. </p></div>
@@ -560,7 +560,7 @@
 				<hr class="hidden-md-up">
 				<!--Second column-->
 				<div class="col-md-2 offset-md-1">
-					<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
+					<h5 class="title"><i class="fa fa-users"></i> Nosotros</h5>
 					<ul class="ul-content">
 						<li><a href="/equipo">- Nuestro equipo</a></li>
 						<li class="separacion"><a href="/mentores">- Mentores</a></li>
@@ -570,7 +570,7 @@
 				<hr class="hidden-md-up">
 				<!--Third column-->
 				<div class="col-md-2">
-					<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
+					<h5 class="title"><i class="fa fa-info-circle"></i> Apoyo</h5>
 					<ul class="ul-content">
 						<!-- <li><a href="#">- Preguntas frecuentes</a></li> -->
 						<li class="separacion"><a href="/terminos">- Términos y Condiciones</a></li>
