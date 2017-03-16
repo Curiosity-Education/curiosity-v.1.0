@@ -8,8 +8,8 @@ $(function(){
 
     $("#sela-cardAvatar").on('click','.sela-click',function(){
 
-        var avatar = $(this).data("avatarid");
-		selectAvatarController.setAvatar(avatar);
+		selectAvatarController.setAvatar($(this).data("avatarid"));
+		selectAvatarController.setName($(this).data("name"));
 		selectAvatarController.getStyles();
 		interval = setInterval(function(){
 			$("#sela-btnOptions").trigger('click');

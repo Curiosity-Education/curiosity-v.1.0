@@ -17,7 +17,7 @@ var selectAvatarController = {
 
     setName : function($name){
         this.name = $name;
-    }
+    },
 
 	getAvatars : function(){
 		selectAvatar.getAvatars(this.avatars);
@@ -108,7 +108,7 @@ var selectAvatarController = {
 
 	alertConfirm : function(){
 		var $title = "Elegir Tú Avatar";
-		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
+		var $text = "¿Estas seguro de quedarte con "+ this.name +" y su estilo?";
 		var $type = "warning";
 		Curiosity.notyConfirm($title,$text,$type, function(){
 			selectAvatarController.selected();
