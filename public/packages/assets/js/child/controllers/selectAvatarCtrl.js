@@ -96,7 +96,6 @@ var selectAvatarController = {
 
 	selection : function(response){
 
-		Curiosity.toastLoading.hide();
 		Curiosity.noty.success(response.message,"En hora buena");
 				setInterval(function(){
 					location.href = "/view-child.init";
