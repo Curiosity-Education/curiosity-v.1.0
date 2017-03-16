@@ -534,7 +534,12 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
-
+                <p class="text-xs-center">
+                    ¿Qué es padrino curiosity? <br>
+                    Consiste en brindar la oportunidad a niños de casas hogares de tener el acceso
+                    a una cuenta para acceder a la plataforma. <br>
+                    Solo tienes que dar click al boton de abajo, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
+                </p>
 			</div>
 		</div>
 	</section>
