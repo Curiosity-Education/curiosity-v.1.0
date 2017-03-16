@@ -83,9 +83,7 @@ class childrenDoActivitiesController extends BaseController{
 	}
 	public function getGame($activityId){
 		//get child current id
-		$idHijo = Auth::User()->Person->Son->id;
-		//get Activity current id
-		//$activityId = Session::get('idActivity');
+		$idHijo =  Auth::user()->Person->Son->id;
 		$file   =  File::where('actividad_id','=',$activityId)->where('active','=',"1")->select('*')->first();
 		if($file){//if activity has game
 			$scoreAndHits   = ActivityDoneBySon::where('actividad_id','=',$activityId)

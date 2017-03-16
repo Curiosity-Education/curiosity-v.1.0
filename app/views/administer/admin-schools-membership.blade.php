@@ -19,7 +19,7 @@ Gestion de cuentas masivas
 <div class="row">
   <div class="col-md-12">
     <!-- Nav tabs -->
-  <div class="tabs-wrapper"> 
+  <div class="tabs-wrapper">
       <ul class="nav classic-tabs tabs-grey" role="tablist">
           <li class="nav-item">
               <a class="nav-link waves-light active" data-toggle="tab" href="#home" role="tab"><i class="fa fa-home fa-2x" aria-hidden="true"></i><br> Inicio</a>
@@ -49,14 +49,11 @@ Gestion de cuentas masivas
             <div class="pull-right">
               <img src="/packages/assets/media/images/schools/cat.jpg" class="img-fluid shme-img-institution">
             </div>
-            <div> 
+            <div>
               <h5>Nombre de institución</h5>
               <p>Dirección: bla bla bla 3</p>
               <p>Correo electronico: bla bla bla 3</p>
               <p>Numero telefonico: bla bla bla 3</p>
-              <div class="btn-group">
-                <button class="btn btn-primary dropdown-toggle shme-btn-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
-            </div>
             </div>
           </div>
         </div>
@@ -64,21 +61,18 @@ Gestion de cuentas masivas
     </div>
     <div id="" class="tab-pane fade">
       <br>
-      
     </div>
     <div id="shme-management" class="tab-pane fade">
       <div class="shme-header hidden animated fadeInDown" id="shme-header-mem">
         <div class="row">
           <div class="col-md-4">
+            <fieldset class="form-group">
+                <input type="checkbox" class="filled-in" id="checkbox2">
+                <label for="checkbox2">Seleccionar todo</label>
+            </fieldset>
           </div>
           <div class="col-md-3">
-            <div class="btn-group shme-btn-group">
-                <button class="btn btn-dark dropdown-dark dropdown-toggle shme-btn-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">22 seleccionados</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Seleccionar todo</a>
-                    <a class="dropdown-item" href="#">Deseleccionar todo</a>
-                </div>
-            </div>
+           <label class="text-white">4 seleccionados</label>
           </div>
           <div class="col-md-2"><a class="btn shme-btn-trash"><i class="fa fa-trash"></i></a></div>
           <div class="col-md-1"></div>
@@ -168,7 +162,7 @@ Gestion de cuentas masivas
 </div>
 @stop
 
-@section('js-plus')  
+@section('js-plus')
 <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/dispatchers/dsp-shme.js?{{rand();}}" charset="utf-8"></script>
