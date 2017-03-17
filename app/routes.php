@@ -10,6 +10,19 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('prueba-excel',function(){
+
+    $data = User::all();
+    Excel::create('Filename', function($excel) use($data) {
+
+        $excel->sheet('Sheetname', function($sheet) use($data) {
+
+            $sheet->fromModel($data);
+
+        });
+
+    })->export('xls');
+});
 
 Route::get('/', 'landingController@landingpage');
 
@@ -74,10 +87,10 @@ Route::group(array('prefix' => '/profile-child'), function(){
 });
 
 // Routes selection avatar first time
-Route::group(array('prefix' => '/select-avatar'), function(){
-	Route::get('get-avatar','avatarController@avatarAnimated');
-	Route::get('get-style','avatarController@avatarStyles');
-	Route::get('selected','avatarController@selectedAvatar');
+Route::group(array('prefix' => 'select-avatar'), function(){
+	Route::post('get-avatar','avatarController@avatarAnimated');
+	Route::post('get-style','avatarController@avatarStyles');
+	Route::post('save','avatarController@selectedAvatar');
 });
 
 /*
@@ -428,7 +441,7 @@ Route::group(array('prefix' => 'parent'),function(){
    Route::post('get-sons','parentsController@getSons');
    Route::post('get-sonsInfo','parentsController@getSonsInfo');
 
-   Route::group(array('prefix' => 'suscription'),function(){
+   Route::group(array('prefix' => '/suscription'),function(){
        Route::post('pause','parentSuscriptionController@pause');
        Route::post('resume','parentSuscriptionController@resume');
        Route::post('cancel','parentSuscriptionController@cancel');

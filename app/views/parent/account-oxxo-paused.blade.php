@@ -73,7 +73,7 @@
                           text-align: center;
                           border-radius: .23rem;
                           border: solid .1rem #d8d8d8;">
-               $00.00 MXN</h6>
+               ${{$amount}} {{$currency}}</h6>
                <h6 style="font-size: .8rem;font-weight: 600;">REFERENCIA</h6>
                <h6 style="background: #f3f3f3;
                           padding: .7rem;
@@ -81,7 +81,7 @@
                           text-align: center;
                           border-radius: .23rem;
                           border: solid .1rem #d8d8d8;">
-               0000-0000-0000-00</h6>
+               {{ $reference }}</h6>
             </div>
          </div>
          <div class="col-md-1"></div>
@@ -93,3 +93,5 @@
    <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
    <script src="/packages/libs/mdb/js/mdb.min.js"></script>
 </body>
+
+<!-- /view-parentSuscription/oxxo_order_info/view-parent.account-oxxo-paused -->
