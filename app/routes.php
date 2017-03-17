@@ -33,6 +33,10 @@ Route::get('aviso-privacidad', function(){
 	return View::make('landing.notice_privacy');
 });
 
+Route::get('adm-institution', function(){
+	return View::make('administer.adm-institutions');
+});
+
 Route::get('equipo', function(){
 	return View::make('landing.team');
 });
