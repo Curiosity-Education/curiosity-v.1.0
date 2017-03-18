@@ -46,6 +46,10 @@ Route::get('aviso-privacidad', function(){
 	return View::make('landing.notice_privacy');
 });
 
+Route::get('adm-institution', function(){
+	return View::make('administer.adm-institutions');
+});
+
 Route::get('equipo', function(){
 	return View::make('landing.team');
 });
@@ -84,8 +88,8 @@ Route::group(array('prefix' => '/profile-child'), function(){
 
 // Routes selection avatar first time
 Route::group(array('prefix' => 'select-avatar'), function(){
-	Route::get('get-avatar','avatarController@avatarAnimated');
-	Route::get('get-style','avatarController@avatarStyles');
+	Route::post('get-avatar','avatarController@avatarAnimated');
+	Route::post('get-style','avatarController@avatarStyles');
 	Route::post('save','avatarController@selectedAvatar');
 });
 

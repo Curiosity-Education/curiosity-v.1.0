@@ -39,7 +39,7 @@
 </div>
 
 <div id="adAv-modal">
-
+  
 </div>
 
 @stop
