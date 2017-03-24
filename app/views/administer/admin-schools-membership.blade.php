@@ -66,13 +66,13 @@ Gestion de cuentas masivas
       <div class="shme-header hidden animated fadeInDown" id="shme-header-mem">
         <div class="row">
           <div class="col-md-4">
-            <fieldset class="form-group">
+            <fieldset style="margin-bottom: 0rem;margin-top: 0.7rem;color:white;margin-left: .7rem;" class="form-group" id="shme-select-all">
                 <input type="checkbox" class="filled-in" id="checkbox2">
                 <label for="checkbox2">Seleccionar todo</label>
             </fieldset>
           </div>
           <div class="col-md-3">
-           <label class="text-white">4 seleccionados</label>
+           <h6 class="text-white" style="margin-top: .8rem;">4 seleccionados</h6>
           </div>
           <div class="col-md-2"><a class="btn shme-btn-trash"><i class="fa fa-trash"></i></a></div>
           <div class="col-md-1"></div>
