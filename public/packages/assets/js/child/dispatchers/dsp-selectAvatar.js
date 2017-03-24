@@ -8,15 +8,14 @@ $(function(){
 
     $("#sela-cardAvatar").on('click','.sela-click',function(){
 
-        console.log("click");
-        var avatar = $(this).data("avatar");
-		selectAvatarController.setAvatar(avatar);
+		selectAvatarController.setAvatar($(this).data("avatarid"));
+		selectAvatarController.setName($(this).data("name"));
 		selectAvatarController.getStyles();
 		interval = setInterval(function(){
 			$("#sela-btnOptions").trigger('click');
 		},2000);
 
-		$("#sela-titleStyle").text("Estilos de "+avatar);
+		$("#sela-titleStyle").text("Estilos de "+$(this).data("name"));
     });
 
 	$('.sela-click').click(function(){

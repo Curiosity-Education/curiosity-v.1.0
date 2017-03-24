@@ -7,7 +7,7 @@ class selectAvatar extends CORM{
 	}
 
 	static getAvatars(success){
-		super.any(null,"GET",success,"/select-avatar","get-avatar");
+		super.any(null,"POST",success,"/select-avatar","get-avatar");
 	}
 
 	static getStyles(success){
