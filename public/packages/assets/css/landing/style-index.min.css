@@ -145,3 +145,5 @@ div.card-block hr{background-color: #2262ae !important;}
 .planImportant{background-color: #ed6922;}
 div#separador3{height:200px;background:url("/packages/assets/media/images/landing/separador3-min.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
 seccion#padrino-curiosity{background-color:#F5F5F5;}
+div.casahogar-text{word-wrap:break-word;padding-top:15px;text-align:center;}
+a#btn-goHome{margin-top: 2rem;}
