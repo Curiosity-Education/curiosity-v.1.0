@@ -169,3 +169,4 @@ transition: all 0.5s ease;
 }
 .colorStar{color: #ffa000 !important;}
 #content-children{border-radius: 5px; background-color: #fafafa;}
+div#casasHogares{height:300px;background:url("/packages/assets/media/images/landing/separador3-alt-min.jpg") repeat center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}

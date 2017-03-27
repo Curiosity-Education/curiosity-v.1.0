@@ -13,7 +13,7 @@
     <title>Casas Hogares</title>
 </head>
 <body>
-    <div class="col-md-12 view hm-black-strong" id="equipo">
+    <div class="col-md-12 view hm-black-strong" id="casasHogares">
 		<div class="mask flex-center" id="content-titulo">
         	<ul class="animated rubberBand">
   				<li class="container-fluid">
@@ -39,7 +39,7 @@
 
 		    @foreach($casasHogares as $casaHogar)
 
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <!--Card-->
                     <div class="card">
 

@@ -22,7 +22,7 @@ var apadrinarController = {
 
             if(o.apadrinado == 1){
 
-                var cardWith = "<div class='col-md-3'>"+
+                var cardWith = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
                             "<img class='img-fluid' src='/packages/assets/media/images/instituciones/children/"+o.foto+"' alt='Card image cap'>"+
                             "<div class='card-block'>"+
@@ -38,7 +38,7 @@ var apadrinarController = {
 
                }else{
 
-                   var cardOut = "<div class='col-md-3'>"+
+                   var cardOut = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
                             "<img class='img-fluid gris' src='/packages/assets/media/images/instituciones/children/"+o.foto+"' alt='Card image cap'>"+
                             "<div class='card-block'>"+
