@@ -153,3 +153,19 @@ a#btn-goHome{margin-top: 2rem;}
 .btn-homes{background-color: #2d96ba; color: #fff;}
 .img-viewHomes{min-height: 10rem; max-height: 10rem; height: 10rem;}
 .displaynone{display: none;}
+.btn-homesChild{background-color: #ed6922; color: #fff;}
+.gris{filter: url('#grayscale'); /* Versión SVG para IE10, Chrome 17, FF3.5, Safari 5.2 and Opera 11.6 */
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%); /* Para cuando es estándar funcione en todos */
+filter: Gray(); /* IE4-8 and 9 */
+    -webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-ms-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+.colorStar{color: #ffa000 !important;}
+#content-children{border-radius: 5px; background-color: #fafafa;}

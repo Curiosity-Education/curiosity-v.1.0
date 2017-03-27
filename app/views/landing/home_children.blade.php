@@ -26,7 +26,7 @@
     	</div>
 	</div>
 	<div class="container">
-	    <div class="col-md-10 offset-md-1 animated displaynone">
+	    <div class="col-md-10 offset-md-1 animated " id="text-info">
 			<div class="introduccion">
 				<p class="text-xs-center">
 				    Te presentamos las casas hogares con las cuales hemos hecho alianza para brindar a sus niños la oportunidad de disfrutar de la plataforma y colaborar con parte de su desarrollo.
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<!-- Container of the houses-homes -->
-		<div class="col-md-12 col-sm-12 animated margin displaynone" id="content-homes">
+		<div class="col-md-12 col-sm-12 animated margin " id="content-homes">
 
 		    @foreach($casasHogares as $casaHogar)
 
@@ -66,14 +66,77 @@
 		</div>
 
 		<!-- Container of children -->
-		<div class="col-md-12 col-sm-12 animated fadeInRightBig margin" id="content-children">
-                <h3 class="text-xs-center" id="nameHome">Nombre de la casa hogar</h3>
+		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children">
+               <div class="row">
+                   <a class="btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
+               </div>
+                <h3 class="text-xs-center" id="nameHome"></h3>
                 <hr class="hr-apartado">
-
+                <br>
                 <div id="displayChildren">
+
 
                 </div>
 		</div>
+
+		<!-- Modal for apadrinar -->
+		<div class="modal fade modal-ext" id="modal-apadrinar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!--Content-->
+                <div class="modal-content borderRounded">
+                    <!--Header-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3 id="title-header"> Apadrinamiento</h3>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="col-md-12">
+                                <div class="row fadeIn animated" id="row-login">
+                                    <div class="col-md-5">
+                                        <center>
+                                            <img id="img-modalChild" src="" alt="..." class="rounded-circle img-fluid" style="width:70%;">
+                                        </center>
+                                        <hr>
+                                        <p class="text-xs-center">¿Deseas apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
+                                        <p class="text-xs-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
+                                    </div>
+                                    <div class="col-md-7" id="form-content">
+                                        <div class="row">
+                                            <form id="formLogin">
+                                                <div class="md-form">
+                                                    <i class="fa fa-user prefix"></i>
+                                                    <input type="text" id="username" class="form-control" name="username">
+                                                    <label for="username">Usuario</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <i class="fa fa-lock prefix"></i>
+                                                    <input type="password" id="password" class="form-control" name="password">
+                                                    <label for="password">Contraseña</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <i class="fa fa-lock prefix"></i>
+                                                    <input type="password" id="password" class="form-control" name="password">
+                                                    <label for="password">Contraseña</label>
+                                                </div>
+                                            </form>
+                                            <div class="text-xs-center">
+                                                <button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnConfirm">Aceptar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- /.col-md-12 -->
+                        </div>
+                    </div> <!-- /.modal-body -->
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
 	</div>
 
 
