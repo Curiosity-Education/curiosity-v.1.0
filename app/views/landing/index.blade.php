@@ -540,33 +540,32 @@
                     a una cuenta para acceder a la plataforma. <br>
                     Solo tienes que dar click al boton VER TODAS, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
                 </p><br>
-                <div class="col-md-3 col-sm-6">
-					<div class="view hm-zoom overlay z-depth-1">
-						<img src="/packages/assets/media/images/landing/fun-game.jpg" alt="Juegos" class="img-responsive img-fluid">
-					</div>
-					<div class="casahogar-text"><h5 class="font-weight-bold">Nombre de la casa</h5></div>
+
+                <?php $contador = 0 ?>
+                @foreach($casasHogares as $casaHogar)
+                   <?php $contador = $contador + 1 ?>
+                    @if($contador > 2)
+                    <div class="col-md-3 col-sm-6 hidden-xs-down">
+                        <div class="view hm-zoom overlay z-depth-1">
+                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                        </div>
+                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre }}</h5></div>
+                    </div>
+                    @else
+                    <div class="col-md-3 col-sm-6">
+                        <div class="view hm-zoom overlay z-depth-1">
+                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                        </div>
+                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre}}</h5></div>
+                    </div>
+				    @endif
+				@endforeach
+
+				<div class="col-md-12">
+				    <center>
+				        <a href="/casas-hogares" class="btn btn-info btn-rounded" id="btn-goHome">Ver todas</a>
+				    </center>
 				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="view hm-zoom overlay z-depth-1">
-						<img src="/packages/assets/media/images/landing/fun-game.jpg" alt="Juegos" class="img-responsive img-fluid">
-					</div>
-					<div class="casahogar-text"><h5 class="font-weight-bold">Nombre de la casa</h5></div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="view hm-zoom overlay z-depth-1">
-						<img src="/packages/assets/media/images/landing/fun-game.jpg" alt="Juegos" class="img-responsive img-fluid">
-					</div>
-					<div class="casahogar-text"><h5 class="font-weight-bold">Nombre de la casa</h5></div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="view hm-zoom overlay z-depth-1">
-						<img src="/packages/assets/media/images/landing/fun-game.jpg" alt="Juegos" class="img-responsive img-fluid">
-					</div>
-					<div class="casahogar-text"><h5 class="font-weight-bold">Nombre de la casa</h5></div>
-				</div>
-				<center>
-				    <a class="btn btn-info btn-rounded" id="btn-goHome">Ver todas</a>
-				</center>
 			</div>
 		</div>
 	</section>

@@ -26,4 +26,8 @@ class instituteMembershipsController extends BaseController{
         }
         return $pass;
     }
+
+    function getHomeIndex(){
+
+    }
 }
