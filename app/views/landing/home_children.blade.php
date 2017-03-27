@@ -26,7 +26,7 @@
     	</div>
 	</div>
 	<div class="container">
-	    <div class="col-md-10 offset-md-1 animated">
+	    <div class="col-md-10 offset-md-1 animated displaynone">
 			<div class="introduccion">
 				<p class="text-xs-center">
 				    Te presentamos las casas hogares con las cuales hemos hecho alianza para brindar a sus niños la oportunidad de disfrutar de la plataforma y colaborar con parte de su desarrollo.
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<!-- Container of the houses-homes -->
-		<div class="col-md-12 col-sm-12 animated margin" id="content-homes">
+		<div class="col-md-12 col-sm-12 animated margin displaynone" id="content-homes">
 
 		    @foreach($casasHogares as $casaHogar)
 
@@ -53,7 +53,7 @@
                             <!--Title-->
                             <h4 class="card-title text-xs-center">{{$casaHogar->nombre}}</h4>
 
-                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}">ver a sus niños</a></center>
+                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}" data-name="{{$casaHogar->nombre}}">ver a sus niños</a></center>
                         </div>
                         <!--/.Card content-->
 
@@ -66,8 +66,13 @@
 		</div>
 
 		<!-- Container of children -->
-		<div class="col-md-12 col-sm-12 animated fadeInRightBig margin displaynone" id="content-children">
-                <h1>sjgkhslhgjsh</h1>
+		<div class="col-md-12 col-sm-12 animated fadeInRightBig margin" id="content-children">
+                <h3 class="text-xs-center" id="nameHome">Nombre de la casa hogar</h3>
+                <hr class="hr-apartado">
+
+                <div id="displayChildren">
+
+                </div>
 		</div>
 	</div>
 

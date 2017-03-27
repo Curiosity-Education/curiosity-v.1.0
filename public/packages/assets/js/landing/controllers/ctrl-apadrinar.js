@@ -15,6 +15,8 @@ var apadrinarController = {
     },
 
     makeCardChild : function(response){
+
+
         console.log(response.data);
     }
 
