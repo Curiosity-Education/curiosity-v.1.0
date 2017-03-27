@@ -147,4 +147,9 @@ div#separador3{height:200px;background:url("/packages/assets/media/images/landin
 seccion#padrino-curiosity{background-color:#F5F5F5;}
 div.casahogar-text{word-wrap:break-word;padding-top:15px;text-align:center;}
 a#btn-goHome{margin-top: 2rem;}
-.img-casaHogar{min-height: 10rem; }
+.img-casaHogar{min-height: 10rem; max-height: 10rem}
+.margin{margin-top: 2rem;}
+.blue-text-ce{color: #2262ae;}
+.btn-homes{background-color: #2d96ba; color: #fff;}
+.img-viewHomes{min-height: 10rem; max-height: 10rem; height: 10rem;}
+card-cascade, .card-cascade-2 { display: grid !important;}

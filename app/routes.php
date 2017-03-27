@@ -54,9 +54,7 @@ Route::get('equipo', function(){
 	return View::make('landing.team');
 });
 
-Route::get('casas-hogares', function(){
-   return View::make('landing.home_children');
-});
+Route::match(['GET','POST'],'casas-hogares','instituteMembershipsController@getHomes');
 
 Route::get('mentores', function(){
 	return View::make('landing.mentors');

@@ -27,11 +27,46 @@
 	<div class="container">
 	    <div class="col-md-10 offset-md-1">
 			<div class="introduccion">
-				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primer nivel debe ser accesible para todos.
-				En <i>Curiosity Educación</i> buscamos brindar equidad educativa de una manera divertida.
+				<p class="text-xs-center">
+				    Te presentamos las casas hogares con las cuales hemos hecho alianza para brindar a sus niños la oportunidad de disfrutar de la plataforma y colaborar con parte de su desarrollo.
 				</p>
 				<hr class="hr-apartado">
 			</div>
+		</div>
+		<!-- Container of the houses-homes -->
+		<div class="col-md-12 col-sm-12 margin" id="content-homes">
+
+		    @foreach($casasHogares as $casaHogar)
+
+                <div class="col-md-4">
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card image-->
+                        <img class="img-fluid" src="/packages/assets/media/images/instituciones/{{$casaHogar->logo}}" alt="{{$casaHogar->nombre}}">
+                        <!--/.Card image-->
+
+                        <!--Card content-->
+                        <div class="card-block">
+
+                            <!--Title-->
+                            <h4 class="card-title text-xs-center">{{$casaHogar->nombre}}</h4>
+
+                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}">ver a sus niños</a></center>
+                        </div>
+                        <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+
+		    @endforeach
+
+		</div>
+
+		<!-- Container of children -->
+		<div class="col-md-12 col-sm-12 margin" id="content-children">
+
 		</div>
 	</div>
 
@@ -46,11 +81,6 @@
 			$(function () {
 				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 			});
-
-			$(".tooltipShow").tooltipster({
-				position : 'bottom',
-				touchDevices: true
-			  });
 		});
 
 		new WOW().init();
