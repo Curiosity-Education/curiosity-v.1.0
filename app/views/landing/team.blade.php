@@ -20,7 +20,7 @@
   				</li>
   				<li class="container-fluid">
   					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a>
-						<!-- | <a href="#">Preguntas frecuentes</a></h5> -->
+                    </h5>
   				</li>
   			</ul>
     	</div>
