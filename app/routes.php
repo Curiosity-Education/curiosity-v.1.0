@@ -54,7 +54,16 @@ Route::get('equipo', function(){
 	return View::make('landing.team');
 });
 
+
+/* Rutas para apadrinar -------------------------------------------------------------*/
+
 Route::match(['GET','POST'],'casas-hogares','instituteMembershipsController@getHomes');
+
+Route::group(array('prefix' => '/apadrinar'), function(){
+	Route::get('get-children', 'instituteMembershipsController@getChildren');
+});
+
+/*-----------------------------------------------------------------------------------*/
 
 Route::get('mentores', function(){
 	return View::make('landing.mentors');

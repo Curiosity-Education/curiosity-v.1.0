@@ -27,7 +27,7 @@ class instituteMembershipsController extends BaseController{
         return $pass;
     }
 
-    function getHomes(){
+    public function getHomes(){
 
          $housesHomes = DB::table('instituciones')
             ->join('direcciones','instituciones.direccion_id','=','direcciones.id')
@@ -39,6 +39,25 @@ class instituteMembershipsController extends BaseController{
         $ninos = Institute::all();
 
         return View::make('landing.home_children',array('casasHogares' => $housesHomes, 'niños' => $ninos));
+
+    }
+
+    public function getChildren(){
+
+        $idcasaHogar = 1;
+
+        $datos = DB::table('children')
+            ->where('institucion_id','=',$idcasaHogar)
+            ->select('children.*')
+            ->get();
+
+        return Response::json(array(
+
+            'status'        => 200,
+            'statusMessage' => 'success',
+            'data'          => $datos
+
+        ));
 
     }
 }
