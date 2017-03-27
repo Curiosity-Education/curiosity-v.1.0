@@ -152,4 +152,4 @@ a#btn-goHome{margin-top: 2rem;}
 .blue-text-ce{color: #2262ae;}
 .btn-homes{background-color: #2d96ba; color: #fff;}
 .img-viewHomes{min-height: 10rem; max-height: 10rem; height: 10rem;}
-card-cascade, .card-cascade-2 { display: grid !important;}
+.displaynone{display: none;}

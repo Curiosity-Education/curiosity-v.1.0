@@ -60,7 +60,7 @@ Route::get('equipo', function(){
 Route::match(['GET','POST'],'casas-hogares','instituteMembershipsController@getHomes');
 
 Route::group(array('prefix' => '/apadrinar'), function(){
-	Route::get('get-children', 'instituteMembershipsController@getChildren');
+	Route::post('get-children', 'instituteMembershipsController@getChildren');
 });
 
 /*-----------------------------------------------------------------------------------*/

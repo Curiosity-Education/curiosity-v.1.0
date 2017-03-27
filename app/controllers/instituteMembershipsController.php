@@ -44,10 +44,10 @@ class instituteMembershipsController extends BaseController{
 
     public function getChildren(){
 
-        $idcasaHogar = 1;
+        $idcasaHogar = Input::all();
 
         $datos = DB::table('children')
-            ->where('institucion_id','=',$idcasaHogar)
+            ->where('institucion_id','=',$idcasaHogar['id'])
             ->select('children.*')
             ->get();
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css">
+    <link rel="stylesheet" href="/packages/libs/sweetalert2/sweetalert2.min.css">
     <title>Casas Hogares</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
     	</div>
 	</div>
 	<div class="container">
-	    <div class="col-md-10 offset-md-1">
+	    <div class="col-md-10 offset-md-1 animated">
 			<div class="introduccion">
 				<p class="text-xs-center">
 				    Te presentamos las casas hogares con las cuales hemos hecho alianza para brindar a sus niños la oportunidad de disfrutar de la plataforma y colaborar con parte de su desarrollo.
@@ -34,7 +35,7 @@
 			</div>
 		</div>
 		<!-- Container of the houses-homes -->
-		<div class="col-md-12 col-sm-12 margin" id="content-homes">
+		<div class="col-md-12 col-sm-12 animated margin" id="content-homes">
 
 		    @foreach($casasHogares as $casaHogar)
 
@@ -65,8 +66,8 @@
 		</div>
 
 		<!-- Container of children -->
-		<div class="col-md-12 col-sm-12 margin" id="content-children">
-
+		<div class="col-md-12 col-sm-12 animated fadeInRightBig margin displaynone" id="content-children">
+                <h1>sjgkhslhgjsh</h1>
 		</div>
 	</div>
 
@@ -76,6 +77,18 @@
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
 	<script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
+
+	<script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
+	<script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
+	<script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
+
+    <script src="/packages/assets/js/landing/models/apadrinar.js?{{rand();}}" charset="utf-8"></script>
+   	<script src="/packages/assets/js/landing/controllers/ctrl-apadrinar.js?{{rand();}}" charset="utf-8"></script>
+   	<script src="/packages/assets/js/landing/dispatchers/dsp-apadrinar.js?{{rand();}}" charset="utf-8"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(function () {
