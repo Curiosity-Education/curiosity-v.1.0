@@ -15,7 +15,7 @@ class viewsController extends BaseController{
       "administer.admin-employees"                   => "manage_administrative",
       "administer.admin-salescode"                   => "manage_administrative",
       "administer.admin-news"                        => "manage_news",
-      "administer.admin-schools-membership"          => "manage_administrative",
+      "administer.admin-schools-membership"          => "manage_content",
       "child.init"                                   => "child_actions",
       "child.menu-studio"                            => "child_actions",
       "child.profile"                                => "child_actions",
