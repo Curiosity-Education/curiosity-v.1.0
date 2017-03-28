@@ -67,10 +67,6 @@
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
 </div>
-<div data-url="/view-administer.admin-schools-membreship" class="linkMenu waves-effect">
-   <span class="fa fa-graduation-cap"></span>&nbsp;
-   Gestion de cuentas masivas
-</div>
 @stop
 
 @section('menu-links-aside')
