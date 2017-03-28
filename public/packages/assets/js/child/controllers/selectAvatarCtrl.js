@@ -4,6 +4,8 @@ var selectAvatarController = {
 
 	styleID : null,
 
+    name : null,
+
 	setStyleID : function($id){
 		this.styleID = $id;
 	},
@@ -12,6 +14,10 @@ var selectAvatarController = {
 		this.avatar = $avatar;
 
 	},
+
+    setName : function($name){
+        this.name = $name;
+    },
 
 	getAvatars : function(){
 		selectAvatar.getAvatars(this.avatars);
@@ -32,35 +38,36 @@ var selectAvatarController = {
 
 	avatars : function(response){
 
+        $('#sela-btnSelection').attr("disabled",true);
+
 		var sprites = response.dataSprite;
 		var secuences = response.dataSecuence;
-		var secuenceHi = response.dataSecuence[0].nombre;
+        var avatars = response.dataAvatar;
+        var container = $('#sela-cardAvatar');
+        var count = 0;
 
-		// TOT
-		var animationTot = new SpriteAnimator('sela-divTot', sprites[0].widthFrame, sprites[0].heightFrame, sprites[0].framesX, sprites[0].framesY, sprites[0].fps);
+        $.each(avatars,function(i,o){
+            count = count + 1;
 
-		animationTot.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[0].folder + sprites[0].imagen;
-		animationTot.mvx = 65;
-		animationTot.mvy = 130;
-		animationTot.scale = 0.8;
-		setInterval(function(){
-			animationTot.play();
-		}, animationTot.speed);
+            var createCard = "<a href='#' class='sela-click' data-name='"+o.nombre+"' data-avatarId='"+o.id+"''>"+
+						          "<div class='col-md-6 col-sm-6 col-xs-12'>"+
+							         "<h5 class='text-xs-center title-avatar h5-responsive text-white'>¡Hola soy "+o.nombre+"!</h5>"+
+							             "<div id='' class='sal-divAvatar'>"+
+								            "<center>"+
+									           "<div id='sela-div"+count+"' class='sela-contentAvatar'>"+
+
+									           "</div>"+
+								            "</center>"+
+							             "</div>"+
+						          "</div>"+
+                            "</a>";
+
+            container.append(createCard);
+
+            selectAvatarController.insertAvatar(count,sprites);
 
 
-		// SIA
-		var animationSia = new SpriteAnimator('sela-divSia', sprites[2].widthFrame, sprites[2].heightFrame, sprites[2].framesX, sprites[2].framesY, sprites[2].fps);
-
-		animationSia.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[2].folder + sprites[2].imagen;
-		animationSia.mvx = 65;
-		animationSia.mvy = 110;
-		animationSia.scale = 0.7;
-		setInterval(function(){
-			animationSia.play();
-		}, animationSia.speed);
-
-		// button selection
-		$('#sela-btnSelection').attr("disabled",true);
+        });
 
 	},
 
@@ -68,61 +75,27 @@ var selectAvatarController = {
 
 		var avatarClick = selectAvatarController.avatar;
 		$('#sela-textStyle').addClass('sela-hidden');
+        $("#sela-styles").empty();
 
-		if(avatarClick == "tot"){
+        $.each(response.data, function(i,o){
+            if(o.avatar_id == avatarClick){
 
-			$("#sela-styles").empty();
+                var folder = o.folder.substring(0,5);
 
-			$.each(response.data,function(i,o){
-				var cadena = o.folder;
-				var valor = cadena.substring(0,5);
-
-				if(valor == "/tot/"){
-
-					var contentTot = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
+                var contentAvatar = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
 											"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
-												"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
+												"<img src='/packages/assets/media/images/avatar/sprites/"+folder+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
 									"</div></a>";
 
-					$("#sela-styles").append(contentTot);
+                $("#sela-styles").append(contentAvatar);
 
-				}else{
-					// nothing
-				}
-
-			});
-
-
-		}else{
-
-			$("#sela-styles").empty();
-
-			$.each(response.data,function(i,o){
-				var cadena = o.folder;
-				var valor = cadena.substring(0,5);
-
-				if(valor == "/sia/"){
-
-					var contentSia = "<a href='#' class='sela-divClick' data-styleID="+ o.id +">"+
-							"<div class='col-md-6 col-sm-6 col-xs-12 sela-border sela-content'>"+
-								"<img src='/packages/assets/media/images/avatar/sprites/"+avatarClick+"/preview-estilos/"+o.preview+"' class='img-fluid'>"+
-							"</div></a>";
-
-					$("#sela-styles").append(contentSia);
-
-				}else{
-					// nothing
-				}
-
-			});
-
-		}
+            }
+        });
 
 	},
 
 	selection : function(response){
 
-		Curiosity.toastLoading.hide();
 		Curiosity.noty.success(response.message,"En hora buena");
 				setInterval(function(){
 					location.href = "/view-child.init";
@@ -132,13 +105,35 @@ var selectAvatarController = {
 
 	alertConfirm : function(){
 		var $title = "Elegir Tú Avatar";
-		var $text = "¿Estas seguro de quedarte con "+ this.avatar +" y su estilo?";
+		var $text = "¿Estas seguro de quedarte con "+ this.name +" y su estilo?";
 		var $type = "warning";
 		Curiosity.notyConfirm($title,$text,$type, function(){
 			selectAvatarController.selected();
 			Curiosity.toastLoading.show();
 		});
-	}
+	},
+
+    insertAvatar : function(count,sprites){
+
+            var cadena = sprites[count - 1].folder;
+            var valor = cadena.substring(0,5);
+
+            var animation = new SpriteAnimator("sela-div"+count+"", sprites[count - 1].widthFrame, sprites[count - 1].heightFrame, sprites[count - 1].framesX, sprites[count - 1].framesY, sprites[count - 1].fps);
+
+            animation.spreetsheet = "/packages/assets/media/images/avatar/sprites" + sprites[count - 1].folder + sprites[count - 1].imagen;
+            animation.mvx = 65;
+
+            if(valor == "/sia/"){
+                animation.scale = 0.7;
+                animation.mvy = 111;
+            }else{
+                animation.scale = 0.8;
+                animation.mvy = 130;
+            }
+            setInterval(function(){
+                animation.play();
+            }, animation.speed);
+    }
 
 
 }
