@@ -13,31 +13,50 @@
 
 @section('content-administer')
 
-<div class="row">
-  <div class="col-md-2 offset-md-10  col-xs-4 offset-xs-4" id="adAv-add-btn">
-      <a class="btn-floating btn-large blue" data-toggle="modal" data-target="#modal-contact">
-          <i class="fa fa-plus"></i>
-      </a>
+<div class="row" id="adIn-selection">
+  <div class="col-md-12 card" id="adIn-card">
+    <div class="col-md-4">
+      <select class="mdb-select" id="type">
+        <option value="" disabled selected>Seleccione un Tipo de Institucion</option>
+        <option value="Escuela Privada" id="ll">Escuela Privada</option>
+        <option value="Escuela Publica">Escuela Publica</option>
+        <option value="Empresa">Empresa</option>
+        <option value="Casa Hogar">Casa Hogar</option>
+      </select>
+    </div>
+    <div class="col-md-2 offset-md-6  col-xs-4 offset-xs-4" id="adAv-add-btn">
+        <a class="btn-floating btn-large blue" id="add-insti"  data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
   </div>
 </div>
 
-<!-- <div class="row">
-  <div class="col-md-12 blue">
-    <div class="col-md-6">
-      <select class="mdb-select">
-        <option value="" disabled selected>Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-      <label>Example label</label>
-    </div>
-    <div class="col-md-6">
+<div class="row">
+  <div class="col-md-12">
+    <table class="table" id="adIn-table">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="text-center adInHeader">Nombre</th>
+        <th class="text-center adInHeader">Acciones</th>
+      </tr>
+    </thead>
+      <tbody>
 
-    </div>
+      </tbody>
+    </table>
   </div>
-</div> -->
+
+  <div id="modals">
+
+  </div>
+
+</div>
+
 @stop
 
 @section('js')
+<script type="text/javascript" src="/packages/assets/js/administer/models/Institution.js"></script>
+<script type="text/javascript" src="/packages/assets/js/administer/controllers/ainstiController.js"></script>
+<script type="text/javascript" src="/packages/assets/js/administer/dispatchers/dps-insti.js"></script>
 @stop

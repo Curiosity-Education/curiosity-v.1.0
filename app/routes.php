@@ -212,6 +212,23 @@ Route::group(array('before' => 'auth'), function(){
 	});
 });
 
+  //institutions
+  Route::group(array('prefix' => 'institutions'),function(){
+    Route::post('save', 'institutionsController@save');
+    Route::post('all', 'institutionsController@all');
+    Route::post('info', 'institutionsController@institutionInfo');
+  });
+
+  //state
+  Route::group(array('prefix' => 'state'),function(){
+    Route::post('all', 'statesController@all');
+  });
+
+  //cities
+  Route::group(array('prefix' => 'cities'), function(){
+    Route::post('all', 'citiesController@all');
+  });
+
 	// Activities
 	Route::group(array('prefix' =>  'activity-admin'),function(){
 		Route::post('all', 'activitiesController@all');
