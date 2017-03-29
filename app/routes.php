@@ -29,7 +29,10 @@ Route::get('/', 'landingController@landingpage');
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
 Route::get('/padrino', function(){
-	return View::make('administer.admin-godfather');
+    $homes = ["homes" => Institute::where("active", "=", 1)
+    ->where("tipo", "=", "Casa Hogar")
+    ->get()];
+	return View::make('administer.admin-godfather', $homes);
 });
 
 Route::get('/oxxo', function(){
@@ -210,6 +213,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
+    // Admin godFathers Houses - sponsored
+    Route::group(array('prefix' => '/admin-godhouses'), function(){
+        Route::post('save', 'sponsoredController@save');
+        Route::post('update', 'sponsoredController@update');
+        Route::post('delete', 'sponsoredController@delete');
+        Route::post('getChildren', 'sponsoredController@getChildren');
+    });
 });
 
 	// Activities
