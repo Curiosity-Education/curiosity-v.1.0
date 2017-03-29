@@ -96,7 +96,7 @@ Gestion de cuentas masivas
           </div>
         </div>
         @endif
-   
+
       </div>
       <div class="shme-footer">
         <div class="row">
