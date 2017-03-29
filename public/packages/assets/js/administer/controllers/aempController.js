@@ -14,7 +14,7 @@ var aempController = {
 
    makePositionsList : function(response){
       if (response.length > 0){
-         $.each(response, function(index, obj) {            
+         $.each(response, function(index, obj) {
             $("#aemp_posSel").append("<option value="+obj.id+">"+obj.nombre+"</option>");
          });
          $("#aemp_posSel").trigger('change');
