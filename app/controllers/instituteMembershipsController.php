@@ -1,8 +1,10 @@
 <?php
 class instituteMembershipsController extends BaseController{
-    
+
+
     //protected $institute = null;
     //protected $name = (is_null($this->institute)) ? 'inst' : $this->institute->nombre;
+
 
     private function createUserName($folio){
         /*
@@ -28,6 +30,42 @@ class instituteMembershipsController extends BaseController{
         }
         return $pass;
     }
+
+
+    public function getHomes(){
+
+         $housesHomes = DB::table('instituciones')
+            ->join('direcciones','instituciones.direccion_id','=','direcciones.id')
+            ->join('ciudades','direcciones.ciudad_id','=','ciudades.id')
+            ->where('instituciones.tipo','=','Casa Hogar')
+            ->select('instituciones.*')
+            ->get();
+
+        $ninos = Institute::all();
+
+        return View::make('landing.home_children',array('casasHogares' => $housesHomes, 'niños' => $ninos));
+
+    }
+
+    public function getChildren(){
+
+        $idcasaHogar = Input::all();
+
+        $datos = DB::table('children')
+            ->where('institucion_id','=',$idcasaHogar['id'])
+            ->select('children.*')
+            ->get();
+
+        return Response::json(array(
+
+            'status'        => 200,
+            'statusMessage' => 'success',
+            'data'          => $datos
+
+        ));
+
+    }
+
     public function render($id){
         //get data from institutions
         $ints = Institute::join("direcciones","direcciones.id","=","instituciones.direccion_id")
@@ -51,5 +89,6 @@ class instituteMembershipsController extends BaseController{
         }else{
             return View::make("errors.404");
         }
+
     }
 }
