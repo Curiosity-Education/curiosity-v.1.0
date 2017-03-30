@@ -18,22 +18,22 @@ $(function(){
 
   var intervalInstitutes = setInterval(function(){
     if (tempInstitutes != "") {
-      institutes = JSON.parse(tempInstitutes);
-      clearInterval(intervalInstitutes);
+        institutes = JSON.parse(tempInstitutes);
+        clearInterval(intervalInstitutes);
     }
   },1000);
 
   var intervalStates = setInterval(function(){
     if (tempStates != "") {
-      states = JSON.parse(tempStates);
-      clearInterval(intervalStates);
+        states = JSON.parse(tempStates);
+        clearInterval(intervalStates);
     }
   },1000);
 
   var intervalCities = setInterval(function(){
     if (tempCities != "") {
-      cities = JSON.parse(tempCities);
-      clearInterval(intervalCities);
+        cities = JSON.parse(tempCities);
+        clearInterval(intervalCities);
     }
   },1000);
 
@@ -43,9 +43,13 @@ $(function(){
     addInsti("#adIn-table>tbody",perro);
   });
 
+  $("body").on('change','#adIn-img',function(){
+    ainstiController.selectFile($(this));
+  });
+
   $("body").on('click','#add-insti',function(){
     if (instituteType == null) {
-      Curiosity.noty.info("Por favor selecciona un tipo de institucion", "Atención");
+        Curiosity.noty.info("Por favor selecciona un tipo de institucion", "Atención");
     }else {
       modal();
       $("#adIn-state").empty();
@@ -70,24 +74,46 @@ $(function(){
   });
 
   $("body").on('click','.adIn-upd-btn',function(){
-    Institution.infoInsti($(this).data('id'),function(info){
-      modalUpdate(info);
-    });
+    var citie = atrib(cities,"id",$(this).data('id'));
+    var stat = atrib(states,"id",citie[0].estado_id);
+    ainstiController.infoInsti($(this).data('id'));
+    $("#updAdIn-state").empty();
+    addStates(states,"#updAdIn-state");
+    $('.updAdInselect').material_select();
+  });
+
+  $("body").on('change','#updAdIn-state',function(){
+    var id = $('#updAdIn-state').val()
+    $('#updAdInCities-cont').empty();
+    $('#updAdInCities-cont').append(
+      "<select class='updAdInselect-city' id='updAdIn-city'>" +
+      "</select>"
+    );
+    addCities(cities,id,'#updAdIn-city');
+    $('.updAdInselect-city').material_select();
+  });
+
+  $("body").on('click','#updAdInfirst-register',function(){
+    console.log($(this).data('id'));
+    ainstiController.updateInstitute($(this).data('id'));
   });
 
   $("body").on('click','.adIn-delete',function(){
-    ainstiController.delete($(this).data('id'))
+    ainstiController.delete($(this).data('id'));
   });
 
 });
 
 function addInsti(selector,obj){
+  if ($(selector).length > 0) {
+    $(selector).empty();
+  }
   $.each(obj,function(i){
     $(selector).append($(
       "<tr>" +
         "<th scope='row'>" + obj[i].nombre + "</th>"  +
         "<td class='col-md-6 offset-md-3'>" +
-          "<button type='button' data-id='" + obj[i].id + "' class='adIn-upd-btn btn btn btn-primary waves-effect' data-toggle='modal' data-target='#myModalRefresh'><i class='fa fa-refresh' aria-hidden='true'></i></button>" +
+          "<button type='button' data-id='" + obj[i].id + "' class='adIn-color adIn-upd-btn btn btn btn-primary waves-effect' data-toggle='modal' data-target='#updateModals'><i class='fa fa-refresh' aria-hidden='true'></i></button>" +
           "<button type='button' data-id='" + obj[i].id + "' class='btn btn-outline-primary waves-effect'><i class='fa fa-balance-scale' aria-hidden='true'></i></button>" +
           "<button type='button' data-id='" + obj[i].id + "' class='adIn-delete btn btn-outline-danger waves-effect'><i class='fa fa-trash' aria-hidden='true'></i></button>" +
         "</td>" +
@@ -127,11 +153,11 @@ function modal(){
 
           "<div class='modal-content'>" +
 
-              "<div class='modal-header'>" +
+              "<div class='modal-header adIn-color adIn-adjust'>" +
                   "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
                       "<span aria-hidden='true'>&times;</span>" +
                   "</button>" +
-                  "<h4 class='modal-title w-100' id='myModalLabel'>Agregar Institucion</h4>" +
+                  "<h5 class='modal-title w-100 white-text text-center' id='myModalLabel'>Agregar Institucion</h5>" +
               "</div>" +
 
               "<div class='modal-body'>" +
@@ -139,15 +165,15 @@ function modal(){
                     "<div class='col-md-6'>" +
                       "<div class='card adIn'>" +
                         "<div class='card-block'>" +
-                          "<img src='/packages/assets/media/images/child/emoji-good.png' alt=''>" +
+                          "<img id='pero' src='/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png' alt=''>" +
                         "</div>" +
 
                       "</div>" +
                       "<form  id='adAv-imgForm'>" +
                         "<div class='md-form'>" +
                           "<div class='file-field'>" +
-                            "<div class='btn btn-primary btn-rounded btn-sm'>" +
-                              "<span>Choose file</span>" +
+                            "<div class='btn btn-primary  btn-sm j adIn-color'>" +
+                              "<span>Escoge un Logo</span>" +
                               "<input type='file' id='adIn-img' name='adAv-img'>" +
                             "</div>" +
                             "<div class='file-path-wrapper'>" +
@@ -198,8 +224,8 @@ function modal(){
               "</div>" +
 
               "<div class='modal-footer'>" +
-                  "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>" +
-                  "<button type='button' class='btn btn-primary' id='first-register'>Save changes</button>" +
+                  "<button type='button' class='btn btn-outline-danger waves-effect' data-dismiss='modal'><i class='fa fa-reply' aria-hidden='true'></i>&nbsp;Cancelar</button>" +
+                  "<button type='button' class='btn btn-primary adIn-color' id='first-register'><i class='fa fa-upload' aria-hidden='true'></i>&nbsp;Guardar</button>" +
               "</div>" +
           "</div>" +
 
@@ -207,103 +233,9 @@ function modal(){
   "</div>" +
 
   "</div>"
-  ))
+));
 }
 
-function modalUpdate(info){
-
-    if ($("#modals").length > 0) {
-      $("#modals").empty();
-    }
-
-    $("#modals").append($(
-      "<div class='modal fade' id='myModalRefresh' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
-          "<div class='modal-dialog' role='document'>" +
-
-              "<div class='modal-content'>" +
-
-                  "<div class='modal-header'>" +
-                      "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
-                          "<span aria-hidden='true'>&times;</span>" +
-                      "</button>" +
-                      "<h4 class='modal-title w-100' id='myModalLabel'>Agregar Institucion</h4>" +
-                  "</div>" +
-
-                  "<div class='modal-body'>" +
-
-                        "<div class='col-md-6'>" +
-                          "<div class='card adIn'>" +
-                            "<div class='card-block'>" +
-                              "<img src='/packages/assets/media/images/child/emoji-good.png' alt=''>" +
-                            "</div>" +
-
-                          "</div>" +
-                          "<form  id='adAv-imgForm'>" +
-                            "<div class='md-form'>" +
-                              "<div class='file-field'>" +
-                                "<div class='btn btn-primary btn-rounded btn-sm'>" +
-                                  "<span>Choose file</span>" +
-                                  "<input type='file' id='adAv-img' name='adAv-img'>" +
-                                "</div>" +
-                                "<div class='file-path-wrapper'>" +
-                                  // "<input class='file-path validate' type='text' placeholder='Upload your file'>" +
-                                "</div>" +
-                              "</div>" +
-                            "</div><br><br>" +
-                          "</form>" +
-                      "</div>" +
-                        "<div class='col-md-6'>" +
-
-                        "<form class='' >" +
-                          "<div class='md-form'>" +
-                            "<input type='text' id='adIn-name' class='form-control' placeholder='" + info[1].nombre + "'>" +
-                            "<label for='form1' class='active'>Nombre</label>" +
-                          "</div>" +
-
-                          "<div class='md-form'>" +
-                            "<input type='text' id='adIn-calle' class='form-control' placeholder='" + info[0].calle + "'>" +
-                            "<label for='form1' class='active'>Calle</label>" +
-                          "</div>" +
-
-                          "<div class='md-form'>" +
-                            "<input type='text' id='adIn-colonia' class='form-control' placeholder='" + info[0].colonia + "'>" +
-                            "<label for='form1' class='active'>Colonia</label>" +
-                          "</div>" +
-
-                          "<div class='md-form'>" +
-                            "<input type='text' id='adIn-number' class='form-control' placeholder='" + info[0].numero + "'>" +
-                            "<label for='form1' class='active'>Numero</label>" +
-                          "</div>" +
-
-                          "<div class='md-form'>" +
-                            "<input type='text' id='adIn-Cp' class='form-control' placeholder='" + info[0].codigo_postal + "'>" +
-                            "<label for='form1' class='active'>Codigo Postal</label>" +
-                          "</div>" +
-
-                          "<select class='select' id='adIn-state'>" +
-
-                          "</select>" +
-
-                          "<div id='cities-cont'>" +
-                          "</div>" +
-
-                        "</div>" +
-
-                      "</form>" +
-                  "</div>" +
-
-                  "<div class='modal-footer'>" +
-                      "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>" +
-                      "<button type='button' class='btn btn-primary' id='first-register'>Save changes</button>" +
-                  "</div>" +
-              "</div>" +
-
-          "</div>" +
-      "</div>" +
-
-      "</div>"
-    ))
-}
 
 function atrib(obj,attr,data){
   var response=[];

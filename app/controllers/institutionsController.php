@@ -12,8 +12,7 @@ class institutionsController extends BaseController
   }
 
   function save(){
-    $data = Input::all();
-    // return $data;
+    $data = Input::all();  
     $rules = array(
       'name' => 'required',
       'type' => 'required',
@@ -33,27 +32,29 @@ class institutionsController extends BaseController
       if ($this->NameActiveExist($data['name'])) {
         return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
       }else {
+
         $user = Auth::user();
-        $file = $data['adAv-img'];
+        $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
+        $file = $data['adIn-img'];
         $randomName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
         $address = new Address($data);
         $address->calle = $data['street'];
         $address->colonia = $data['colony'];
         $address->numero = $data['number'];
         $address->codigo_postal = $data['cp'];
-        $address->ciudad_id = $data['city'];
+        $address->ciudad = $data['city'];
         $address->save();
-        $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
-        $institution = new Institute($data);
+        $intitution = new Institute($data);
         $institution->nombre = $data['name'];
         $institution->active = 1;
-        $institution->tipo = $data['type'];
-        $institution->logo = $randomName;
-        $institution->direccion_id = $address->id;
-        $institution->admin_id = $admin->id;
-        $institution->save();
-        $destinationPath = public_path()."/packages/assets/media/images/institutions/";
+        $Institution->tipo = $data['type'];
+        $Institution->logo = $randomName;
+        $Institution->direccion_id = $address->id;
+        $Institution->admin_id = $admin->id;
+        $Institution->save();
+        $destinationPath = public_path()."/packages/assets/media/images/institutions/" . $data['nombre'];
         $file->move($destinationPath, $randomName);
+
       }
     }
   }
@@ -75,55 +76,50 @@ class institutionsController extends BaseController
     $Institution->save();
   }
 
-  // function update(){
-  //   $data = Input::all();
-  //   $rules = array(
-  //     'name' => 'required',
-  //     'type' => 'required',
-  //     'street' => 'required',
-  //     'colony' => 'required',
-  //     'number' => 'required',
-  //     'cp' => 'required',
-  //     'city' => 'required',
-  //     'state' => 'required'
-  //   );
-  //   $msjs = Curiosity::getValidationMessages();
-  //   $validation = Validator::make($data, $rules, $msjs);
-  //   if ($validation->fails()) {
-  //     return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
-  //   }else {
-  //     if ($this->NameActiveExist($data['nombre'])) {
-  //       return Response::json(array("status" => "CU-103", 'statusMessage' => "Duplicate Data", "data" => null));
-  //     }else {
-  //       $file = $data['adIn-img'];
-  //       $randomName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
-  //       $address = new Address($data);
-  //       $address->calle = $data['street'];
-  //       $address->colonia = $data['colony'];
-  //       $address->numero = $data['number'];
-  //       $address->codigo_postal = $data['cp'];
-  //       $address->ciudad = $data['city'];
-  //       $address->save();
-  //       $intitution = new Institute($data);
-  //       $institution->nombre = $data['name'];
-  //       $institution->active = 1;
-  //       $Institution->tipo = $data['type'];
-  //       $Institution->logo = $randomName;
-  //       $Institution->direccion_id = ;
-  //       $Institution->admin_id = ;
-  //       $Institution->save();
-  //       $destinationPath = public_path()."/packages/assets/media/images/institutions/" . $data['nombre'];
-  //       $file->move($destinationPath, $randomName);
-  //     }
-  //   }
-  //
-  // }
+  function update(){
+    $data = Input::all();
+    $rules = array(
+      'name' => 'required',
+      'street' => 'required',
+      'colony' => 'required',
+      'number' => 'required',
+      'cp' => 'required',
+      'city' => 'required',
+      'state' => 'required'
+    );
+    $msjs = Curiosity::getValidationMessages();
+    $validation = Validator::make($data, $rules, $msjs);
+    if ($validation->fails()) {
+      return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+    }else {
+
+      $file = $data['adAv-img'];
+      $user = Auth::user();
+      $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
+      $institution = Institute::where('id','=',$id)->first();
+      $institution->nombre = $data['name'];
+      if ($file != null) {
+        unlink(public_path()."/packages/assets/media/images/institutions/" . $institution->logo);
+        $destinationPath = public_path()."/packages/assets/media/images/institutions/";
+        $file->move($destinationPath, $institution->logo);
+      }
+      $institution->save();
+      $address = Address::where('id', '=', $institution->direccion_id)->first();
+      $address->calle = $data['street'];
+      $address->colonia = $data['colony'];
+      $address->numero = $data['number'];
+      $address->codigo_postal = $data['cp'];
+      $address->ciudad_id = $data['city'];
+    }
+
+  }
 
   function institutionInfo(){
     $id = Input::all();
-    $infoInsti = Institute::where('id', '=', $id)->first();    
-    $infoAddres = Address::where('id', '=', $infoInsti->direccion_id)->first();
-    return array($infoAddres, $infoInsti);
+    $info = Institute::join("direcciones","instituciones.direccion_id","=","direcciones.id")
+    ->where('instituciones.id', '=', $id)
+              ->first();
+    return $info;
   }
 
 }

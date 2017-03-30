@@ -30,4 +30,9 @@ class Institution extends CORM {
     super.any({id:id},"POST",success,"/institutions","info");
   }
 
+  update(id,success){
+    this.institution.append('id', id);
+    super.update(this.institution,"POST",success);
+  }
+
 }

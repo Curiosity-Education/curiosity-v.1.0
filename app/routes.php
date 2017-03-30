@@ -218,6 +218,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('save', 'institutionsController@save');
     Route::post('all', 'institutionsController@all');
     Route::post('info', 'institutionsController@institutionInfo');
+    Route::post('update', 'institutionsController@update');
   });
 
   //state

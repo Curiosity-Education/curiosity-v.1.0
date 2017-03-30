@@ -14,7 +14,7 @@ var aempController = {
 
    makePositionsList : function(response){
       if (response.length > 0){
-         $.each(response, function(index, obj) {            
+         $.each(response, function(index, obj) {
             $("#aemp_posSel").append("<option value="+obj.id+">"+obj.nombre+"</option>");
          });
          $("#aemp_posSel").trigger('change');
@@ -168,8 +168,7 @@ var aempController = {
       $(".aempInp").val("");
    },
 
-   fillInputs : function(){
-      console.log(this.data);
+   fillInputs : function(){      
       $("#aemp_name").val(this.data.nombre);
       $("#aemp_lName").val(this.data.apellidos);
       $("#aemp_email").val(this.data.correo);
