@@ -98,8 +98,30 @@ var admChHomController = {
 
     successAdded : function(r){
         if (r.status == 200){
+            console.log(r.data);
+            let folder = r.data.folder;
+            let code = "<div class='col-md-3 childCount'>"+
+                        "<div class='view overlay z-depth-1 agf-containerbox'>"+
+                            "<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+r.data.child.foto+"' class='img-fluid'>"+
+                            "<div class='mask flex-center'>"+
+                                "<center>"+
+                                    "<a class='btn-floating btn-small waves-effect waves-light agf-btnround-confChild' data-o='"+JSON.stringify(r.data.child)+"' data-f='"+folder+"'>"+
+                                        "<i class='fa fa-gears'></i>"+
+                                    "</a>"+
+                                    "<a class='btn-floating btn-small waves-effect waves-light agf-btnround-hideChild' data-c="+r.data.child.id+">"+
+                                        "<i class='fa fa-eye-slash'></i>"+
+                                    "</a>"+
+                                "</center>"+
+                            "</div>"+
+                            "<h6>"+r.data.child.nombre+" "+r.data.child.apellidos+"</h6>"+
+                        "</div>"+
+                    "</div>"
+            if (admChHomController.countChildrenInDOM() == 0) {
+                $("body").find("#agf-emptybox").remove();
+            }
+            $("#agf-row-children").append(code);
             Curiosity.noty.success("El niño ha sido registrado exitosamente", "Bien hecho");
-            $("#agf-modal").modal("hide");
+            $("#agf-cancel").trigger('click');
         }
         Curiosity.toastLoading.hide();
     },
@@ -155,3 +177,16 @@ var admChHomController = {
     }
 
 }
+
+
+/*
+
+ASPECT RATIO
+
+function gcd (a,b):
+    if b == 0:
+        return a
+    return gcd (b, a mod b)
+
+
+*/

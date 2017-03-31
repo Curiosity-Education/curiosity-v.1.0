@@ -32,7 +32,11 @@ class sponsoredController extends BaseController{
             $child = new Children($data);
 			$child->foto = $imgName;
             $child->save();
-			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $child));
+            $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
+			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
+                "child"     =>$child,
+                "folder"    =>Curiosity::clean_string($folder->nombre)
+            ]));
         }
     }
 

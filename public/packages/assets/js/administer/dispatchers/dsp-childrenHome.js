@@ -50,4 +50,8 @@ $(function(){
         admChHomController.resetImage();
     });
 
+    $("#agf-cancel").click(function(event) {
+        admChHomController.resetImage();
+    });
+
 });

@@ -18,15 +18,28 @@ Padrino Curiosity
        @foreach($homes as $home)
        <div class="col-md-3">
             <div class='view overlay z-depth-1 agf-containerbox'>
-                <img src='/packages/assets/media/images/schools/{{ $home->logo }}' class='img-fluid'>
+                @if ($home->visible == 0)
+                <h5 class="agf-colorvisible-red"><span class="fa fa-eye-slash"></span> &nbsp;No Visible</h5>
+                @endif
+                @if ($home->visible == 1)
+                <h5 class="agf-colorvisible-green"><span class="fa fa-eye"></span> &nbsp;Visible</h5>
+                @endif
+                <img src='/packages/assets/media/images/institutions/{{ $home->logo }}' class='img-fluid'>
                 <div class='mask flex-center'>
                     <center>
                         <a class='btn-floating btn-small waves-effect waves-light agf-btnround-conf' data-h="{{ $home->id }}">
                             <i class='fa fa-gears'></i>
                         </a>
-                        <a class='btn-floating btn-small waves-effect waves-light agf-btnround-hide' data-h="{{ $home->id }}">
+                        @if ($home->visible == 1)
+                        <a class='btn-floating btn-small waves-effect waves-light agf-btnvisible-red' data-h="{{ $home->id }}">
                             <i class='fa fa-eye-slash'></i>
                         </a>
+                        @endif
+                        @if ($home->visible == 0)
+                        <a class='btn-floating btn-small waves-effect waves-light agf-btnvisible-green' data-h="{{ $home->id }}">
+                            <i class='fa fa-eye'></i>
+                        </a>
+                        @endif
                     </center>
                 </div>
                 <h6>{{ $home->nombre }}</h6>
