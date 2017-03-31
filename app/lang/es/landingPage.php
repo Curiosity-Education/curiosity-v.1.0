@@ -8,7 +8,7 @@
         'paymentOption' => 'Membresía',
         'howfunction' => '¿Cómo funciona?',
         'video' => 'Video',
-        'createAccount' => 'Registrarse',
-        'logIn' => 'Iniciar Sesión'
+        'createAccount' => 'Crear cuenta',
+        'logIn' => 'Inicio de sesión'
     )
  );
