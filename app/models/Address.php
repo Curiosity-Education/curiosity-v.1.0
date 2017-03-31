@@ -21,7 +21,7 @@ class Address extends Eloquent{
   *
   ## An address has an administrative
   */
-    public function Administrative()){
+    public function Administrative(){
         return $this->hasMany('administrativo','direccion_id');
     }
   /*

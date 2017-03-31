@@ -32,7 +32,7 @@ class avatarController extends BaseController
  		);
  		$msjs = Curiosity::getValidationMessages();
  		$validation = Validator::make($data, $rules, $msjs);
- 		if( $validation->fails()){
+ 		if($validation->fails()){
  			return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
  		}
  		else{
@@ -207,26 +207,26 @@ class avatarController extends BaseController
 
 	function childHasAvatar(){
 		$id_child = DB::table('hijos')
-			->select('hijos.id')
-			->join('personas','hijos.persona_id','=','personas.id')
-			->join('users','personas.user_id','=','users.id')
-			->where('users.id','=',Auth::user()->id)
-			->first()->id;
+		->select('hijos.id')
+		->join('personas','hijos.persona_id','=','personas.id')
+		->join('users','personas.user_id','=','users.id')
+		->where('users.id','=',Auth::user()->id)
+		->first()->id;
 
 		return Response::json(array('status' 		=> 200,
-									'statusMessage' => 'success',
-									'message'		=> 'khegf'
-		   						));
+		'statusMessage' => 'success',
+		'message'		=> 'khegf'
+	 ));
 	}
 
 
 	public function avatarAnimated(){
 
-        $avatar = Avatar::all();
+    $avatar = Avatar::all();
 
 		$sprite = DB::table("sprites")
 		->join("estilos_avatar", "estilos_avatar.id", "=", "sprites.estilo_avatar_id")
-        ->where("sprites.secuencia_id","=",1)
+    ->where("sprites.secuencia_id","=",1)
 		->select("sprites.*", "estilos_avatar.folder")
 		->get();
 
@@ -235,13 +235,12 @@ class avatarController extends BaseController
 
 
 		return Response::json(array('status' 		=> 200,
-									'statusMessage' => 'success',
-									'message'		=> 'avatar disponibles',
-                                    'dataAvatar'    => $avatar,
-									'dataSprite'	=> $sprite,
-									'dataSecuence'	=> $secuence
-		   						));
-
+			'statusMessage' => 'success',
+			'message'		=> 'avatar disponibles',
+      'dataAvatar'    => $avatar,
+			'dataSprite'	=> $sprite,
+			'dataSecuence'	=> $secuence
+		));
 	}
 
 	public function avatarStyles(){
