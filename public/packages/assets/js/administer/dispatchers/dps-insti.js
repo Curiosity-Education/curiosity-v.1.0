@@ -162,7 +162,7 @@ function modal(){
 
               "<div class='modal-body'>" +
 
-                    "<div class='col-md-6'>" +
+                    "<div class='col-md-6 adIn-modal-adjust'>" +
                       "<div class='card adIn'>" +
                         "<div class='card-block'>" +
                           "<img id='pero' src='/packages/assets/media/images/teachersAsc/teacherDefProfileImage.png' alt=''>" +
