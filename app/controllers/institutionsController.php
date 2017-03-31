@@ -12,7 +12,7 @@ class institutionsController extends BaseController
   }
 
   function save(){
-    $data = Input::all();  
+    $data = Input::all();
     $rules = array(
       'name' => 'required',
       'type' => 'required',
@@ -35,7 +35,7 @@ class institutionsController extends BaseController
 
         $user = Auth::user();
         $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
-        $file = $data['adIn-img'];
+        $file = $data['adAv-img'];
         $randomName = Curiosity::makeRandomName().".".$file->getClientOriginalExtension();
         $address = new Address($data);
         $address->calle = $data['street'];
