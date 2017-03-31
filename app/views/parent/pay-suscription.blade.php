@@ -255,4 +255,15 @@
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
+    <script type="text/javascript">
+       $(function () {
+         //  function askConfirmation (evt) {
+         //    window.location.href = "/";
+         //    var msg = 'Si recarga la página perdera todos los datos ingresados.\n¿Deseas recargar la página?';
+         //    evt.returnValue = false;
+         //    return false;
+         //  }
+         //  window.addEventListener('beforeunload', askConfirmation);
+       });
+    </script>
 </body>
