@@ -75,7 +75,7 @@ var ainstiController = {
      }
   },
 
-  updateModal : function(response){
+  updateModal : function(response){    
     $("#updAdIn-name").val(response.nombre);
     $("#updAdIn-calle").val(response.calle);
     $("#updAdIn-colonia").val(response.colonia);
@@ -87,7 +87,7 @@ var ainstiController = {
 
   updateInstitute : function(id){
     var formData = new FormData($("#adAv-imgForm")[0]);
-    formData.append('name', $('#updAdIn-name').val());    
+    formData.append('name', $('#updAdIn-name').val());
     formData.append('street', $('#updAdIn-calle').val());
     formData.append('colony', $('#updAdIn-colonia').val());
     formData.append('number', $('#updAdIn-number').val());

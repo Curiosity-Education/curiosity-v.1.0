@@ -61,7 +61,7 @@
                 <h5 class='modal-title w-100 white-text text-center' id='myModalLabel'>Actializar Institucion</h5>
            </div>
 
-            "<div class='modal-body l'>
+            <div class='modal-body l'>
 
                   <div class='col-md-6 adIn-modal-adjust'>
                     <div class='card adIn'>
