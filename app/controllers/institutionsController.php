@@ -42,17 +42,17 @@ class institutionsController extends BaseController
         $address->colonia = $data['colony'];
         $address->numero = $data['number'];
         $address->codigo_postal = $data['cp'];
-        $address->ciudad = $data['city'];
+        $address->ciudad_id = $data['city'];
         $address->save();
         $intitution = new Institute($data);
-        $institution->nombre = $data['name'];
-        $institution->active = 1;
-        $Institution->tipo = $data['type'];
-        $Institution->logo = $randomName;
-        $Institution->direccion_id = $address->id;
-        $Institution->admin_id = $admin->id;
-        $Institution->save();
-        $destinationPath = public_path()."/packages/assets/media/images/institutions/" . $data['nombre'];
+        $intitution->nombre = $data['name'];
+        $intitution->active = 1;
+        $intitution->tipo = $data['type'];
+        $intitution->logo = $randomName;
+        $intitution->direccion_id = $address->id;
+        $intitution->admin_id = $admin->id;
+        $intitution->save();
+        $destinationPath = public_path()."/packages/assets/media/images/institutions/";        ;
         $file->move($destinationPath, $randomName);
 
       }
