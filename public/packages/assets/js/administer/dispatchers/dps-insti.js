@@ -40,7 +40,9 @@ $(function(){
   $("body").on('change','#type',function(){
     instituteType = $("#type").val();
     var perro  = atrib(institutes,'tipo',instituteType);
-    addInsti("#adIn-table>tbody",perro);
+
+      addInsti("#adIn-table>tbody",perro);
+
   });
 
   $("body").on('change','#adIn-img',function(){
@@ -74,8 +76,14 @@ $(function(){
   });
 
   $("body").on('click','.adIn-upd-btn',function(){
+    var city;
     var citie = atrib(cities,"id",$(this).data('id'));
-    var stat = atrib(states,"id",citie[0].estado_id);
+    for (var i = 0; i < citie.length; i++) {
+      if (citie[i] != undefined) {
+        city = citie[i];
+      }
+    }
+    var stat = atrib(states,"id",city.estado_id);    
     ainstiController.infoInsti($(this).data('id'));
     $("#updAdIn-state").empty();
     addStates(states,"#updAdIn-state");
@@ -94,7 +102,6 @@ $(function(){
   });
 
   $("body").on('click','#updAdInfirst-register',function(){
-    console.log($(this).data('id'));
     ainstiController.updateInstitute($(this).data('id'));
   });
 
@@ -109,34 +116,40 @@ function addInsti(selector,obj){
     $(selector).empty();
   }
   $.each(obj,function(i){
-    $(selector).append($(
-      "<tr>" +
-        "<th scope='row'>" + obj[i].nombre + "</th>"  +
-        "<td class='col-md-6 offset-md-3'>" +
-          "<button type='button' data-id='" + obj[i].id + "' class='adIn-color adIn-upd-btn btn btn btn-primary waves-effect' data-toggle='modal' data-target='#updateModals'><i class='fa fa-refresh' aria-hidden='true'></i></button>" +
-          "<button type='button' data-id='" + obj[i].id + "' class='btn btn-outline-primary waves-effect'><i class='fa fa-balance-scale' aria-hidden='true'></i></button>" +
-          "<button type='button' data-id='" + obj[i].id + "' class='adIn-delete btn btn-outline-danger waves-effect'><i class='fa fa-trash' aria-hidden='true'></i></button>" +
-        "</td>" +
-      "</tr>"
-    ));
+    if (obj[i] != undefined){
+      $(selector).append($(
+        "<tr>" +
+          "<th scope='row'>" + obj[i].nombre + "</th>"  +
+          "<td class='col-md-6 offset-md-3'>" +
+            "<button type='button' data-id='" + obj[i].id + "' class='adIn-color adIn-upd-btn btn btn btn-primary waves-effect' data-toggle='modal' data-target='#updateModals'><i class='fa fa-refresh' aria-hidden='true'></i></button>" +
+            "<button type='button' data-id='" + obj[i].id + "' class='btn btn-outline-primary waves-effect'><i class='fa fa-balance-scale' aria-hidden='true'></i></button>" +
+            "<button type='button' data-id='" + obj[i].id + "' class='adIn-delete btn btn-outline-danger waves-effect'><i class='fa fa-trash' aria-hidden='true'></i></button>" +
+          "</td>" +
+        "</tr>"
+      ));
+    }
   });
 }
 
 function addCities(obj,data,selector){
   $.each(obj,function(i){
-    if (obj[i].estado_id == data) {
-      $(selector).append(
-        "<option value='" + obj[i].id + "'>" + obj[i].nombre + "</option>"
-      );
+    if (obj != undefined) {
+      if (obj[i].estado_id == data) {
+        $(selector).append(
+          "<option value='" + obj[i].id + "'>" + obj[i].nombre + "</option>"
+        );
+      }
     }
   });
 }
 
 function addStates(obj,selector){
   $.each(obj,function(i){
-    $(selector).append($(
-      "<option value='" + obj[i].id + "'>" + obj[i].nombre + "</option>"
-    ));
+    if (obj[i] != undefined) {
+      $(selector).append($(
+        "<option value='" + obj[i].id + "'>" + obj[i].nombre + "</option>"
+      ));
+    }
   });
 }
 
