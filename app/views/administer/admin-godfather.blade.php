@@ -49,6 +49,20 @@ Padrino Curiosity
    </div>
 
    <div class='row' id='agf-row-children'>
+       <div id="adf-boxChildren-btns">
+           <div class="col-md-12">
+               <div class="chip animated bounce" id="agf-back">
+                   <img src="/packages/assets/media/images/system/iconBack.png">
+                   Regresar
+               </div>
+               <div class='acti-buttons float-xs-right'>
+                   <a class='btn-floating btn-small waves-effect waves-light' id='agf-btnReg'>
+                       <i class="fa fa-plus"></i>
+                   </a>
+               </div>
+           </div>
+       </div>
+       <div id="adf-boxChildren"></div>
    </div>
 
    <div class="modal fade msad-mdl" id="agf-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
@@ -58,7 +72,7 @@ Padrino Curiosity
          <div class="modal-body">
             <div class="row">
                <div class="col-sm-4">
-                  <img src="cew" class="img-fluid img-thumbnail z-depth-1" id="agf_ph">
+                  <img src="" class="img-fluid img-thumbnail z-depth-1" id="agf_ph">
                   <button type="button" class="btn btn-outline-default btn-block" id="agf-selectPhoto">
                     <span class="fa fa-folder-open"></span>&nbsp;
                     Abrir
