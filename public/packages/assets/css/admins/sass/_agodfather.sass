@@ -14,18 +14,22 @@
         font-size: .8rem
         padding: .5rem
         margin-bottom: 0
+        margin-top: -.05rem
 
 .agf-btnround-conf
     background-color: $color-primary
 
-.agf-btnround-hide
+.agf-btnvisible-red
     background-color: $color-danger
+
+.agf-btnvisible-green
+    background-color: $color-success-light
 
 .agf-btnround-confChild
     @extend .agf-btnround-conf
 
 .agf-btnround-hideChild
-    @extend .agf-btnround-hide
+    @extend .agf-btnvisible-red
 
 #agf-btnNew
     color: $color-white
@@ -120,3 +124,20 @@
     padding-right: 1rem
     border-radius: $border-rad
     background-color: $color-white
+
+.agf-colorvisible
+    padding: .3rem
+    font-size: .7rem
+    color: white
+    margin-bottom: -.05rem
+
+.agf-colorvisible-red
+    @extend .agf-colorvisible
+    background: #ff3232
+
+.agf-colorvisible-green
+    @extend .agf-colorvisible
+    background: #08954d
+
+.swal2-input
+    text-transform: uppercase !important

@@ -19,13 +19,13 @@ class plansController extends BaseController{
                           "interval"=> Input::get('interval')
                         ));
                         $newPlan = new Plan(Input::all());
-								$newPlan->visible = 0;
+						$newPlan->visible = 0;
                         $newPlan->active = 1;
                         $newPlan->save();
                         return Response::json(array('statusMessage'  =>  "success",'status' => 200,'data'=>$newPlan));
                     }
                     catch(Exception $e){
-                            return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
+                        return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e));
                     }
             }
             else{

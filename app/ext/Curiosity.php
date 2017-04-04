@@ -129,12 +129,12 @@ class Curiosity{
       return $arr;
    }
 
-   public static function clean_string($string, $anal = false) {
+   public static function clean_string($string, $separator = "-", $anal = false) {
         $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]",
                        "}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;",
                        "â€”", "â€“", ",", "<", ".", ">", "/", "?");
         $clean = trim(str_replace($strip, "", strip_tags($string)));
-        $clean = preg_replace('/\s+/', "-", $clean);
+        $clean = preg_replace('/\s+/', $separator, $clean);
         $clean = ($anal) ? preg_replace("/[^a-zA-Z0-9]/", "", $clean) : $clean ;
         $clean = strtolower($clean);
         $clean = mb_strtolower($clean,  mb_detect_encoding($string));

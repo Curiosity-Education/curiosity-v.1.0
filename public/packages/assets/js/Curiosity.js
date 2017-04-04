@@ -117,13 +117,20 @@ var Curiosity = {
           confirmButtonText: 'Aceptar',
           showLoaderOnConfirm: true,
           allowEscapeKey:false,
+          confirmButtonColor: '#ec2726',
+          cancelButtonColor: '#aaaaaa',
           preConfirm: function (input) {
             return new Promise(function (resolve, reject) {
               setTimeout(function() {
                 if (input === '') {
                   reject('La caja de texto no puede estar vacía')
                 } else {
-                  resolve()
+                    if (input !== 'ELIMINAR' && input !== 'eliminar'){
+                        reject('No has ingresado la palabra ELIMINAR correctamente')
+                    }
+                    else {
+                        resolve()
+                    }
                 }
               }, 2000)
             })
