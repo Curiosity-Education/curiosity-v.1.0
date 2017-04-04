@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/packages/libs/mdb/css/mdb.min.css">
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/packages/assets/css/landing/terms_conditions.css">
-
+	<script src="//code.tidio.co/fkqcqcm9kdpxi40osnnqerxr0wn9gpy2.js"></script>
 </head>
 <body>
 
