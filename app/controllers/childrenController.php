@@ -62,14 +62,13 @@ class childrenController extends BaseController{
 			if ($membershipInfo->payment_option == "card"){
 				$customer = \Conekta\Customer::find($membershipInfo->token_card);
 				$subscription = $customer->subscription;
-				$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
 			}
 			else if ($membershipInfo->payment_option == "oxxo"){
 			    $order = \Conekta\Order::find($membershipInfo->token_card);
 			    $planReference = $order->line_items["0"]->name;
-				$planInUse = Plan::where("reference", "=", $planReference)->first();
-				$limit = $planInUse->limit;
+				$subscription = ["plan_id" => $planReference];
 			}
+			$limit = Plan::where("reference", "=", $subscription["plan_id"])->first()["limit"];
 			if ($conutSons < $limit){
 				 $roleDad         = 'parent';
                  $user            = new User();
@@ -137,7 +136,7 @@ class childrenController extends BaseController{
 				$planRel = new MembershipPlan();
 				$planRel->hijo_id = $son->id;
 				$planRel->membresia_id = Membership::where("padre_id", "=", $id_dad)->pluck("id");
-				$planRel->plan_id = Plan::where("reference", "=", $subscription->plan_id)->first()["id"];
+				$planRel->plan_id = Plan::where("reference", "=", $subscription["plan_id"])->first()["id"];
 				$planRel->save();
 	         //this reponse message data is for user
 	         return Response::json(array(
