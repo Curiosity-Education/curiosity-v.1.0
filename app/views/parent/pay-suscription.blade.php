@@ -136,7 +136,7 @@
                                                 </p>
                                                 <!-- <a class="btn btn-outline btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a> -->
                                                 <button class="btn btn-outline btn-rounded" id="btn-method-oxxo">
-                                                   Próximamente
+                                                   Seleccionar
                                                 </button>
                                             </div>
                                         </div>
