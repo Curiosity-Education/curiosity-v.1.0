@@ -129,10 +129,13 @@
 
                                                 <!--Price-->
                                                 <br>
-                                                <p style="color:black;text-align:center;">Pronto podras realizar tus pagos desde OXXO. <br>
-                                                   <!-- <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">Para más información. </a> </p> -->
+                                                <p style="color:black;text-align:center;">Ahora puedes hacer tu pago en OXXO. <br>
+                                                   <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">
+                                                       Para más información.
+                                                   </a>
+                                                </p>
                                                 <!-- <a class="btn btn-outline btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a> -->
-                                                <button class="btn btn-outline btn-rounded" id="btn-method-oxxo" disabled>
+                                                <button class="btn btn-outline btn-rounded" id="btn-method-oxxo">
                                                    Próximamente
                                                 </button>
                                             </div>
