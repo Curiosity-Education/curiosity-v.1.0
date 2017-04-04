@@ -38,6 +38,7 @@ class instituteMembershipsController extends BaseController{
             ->join('direcciones','instituciones.direccion_id','=','direcciones.id')
             ->join('ciudades','direcciones.ciudad_id','=','ciudades.id')
             ->where('instituciones.tipo','=','Casa Hogar')
+            ->where('instituciones.visible','=',1)
             ->select('instituciones.*')
             ->get();
 

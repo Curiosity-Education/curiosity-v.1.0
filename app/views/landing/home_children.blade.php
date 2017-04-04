@@ -68,7 +68,7 @@
 		<!-- Container of children -->
 		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children">
                <div class="row">
-                   <a class="btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
+                   <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
                </div>
                 <h3 class="text-xs-center" id="nameHome"></h3>
                 <hr class="hr-apartado">

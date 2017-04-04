@@ -4,7 +4,7 @@ class Block extends CORM {
         this.block = formData;
         super.setPrefix('/blocks');
     }
-    save(id,method,success){
+    save(method,success){
       super.save(this.block,method,success);
     }
     update(id,method,success){

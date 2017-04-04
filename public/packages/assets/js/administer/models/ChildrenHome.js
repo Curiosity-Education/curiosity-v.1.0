@@ -7,12 +7,12 @@ class ChildrenHome extends CORM {
     save(success){
       super.save(this.sponsored,Curiosity.methodSend.POST,success);
     }
-    update(id,method,success){
+    update(id,success){
         this.sponsored.append('id', id);
-        super.update(this.sponsored,method,success);
+        super.update(this.sponsored,Curiosity.methodSend.POST,success);
     }
-    static delete(id,method,success){
-        super.delete({id:id},method,success,'/admin-godhouses');
+    static delete(id,success){
+        super.delete({id:id},Curiosity.methodSend.POST,success,'/admin-godhouses');
     }
     static any(data,success,pathRoute){
       super.any(data,Curiosity.methodSend.POST,success,'/admin-godhouses',pathRoute);

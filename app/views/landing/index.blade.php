@@ -513,7 +513,7 @@
 	<!-- Fin Sección con el Apoyo -->
 
 	<!-- Separador 3 -->
-	<div hidden="hidden" class="col-md-12 view hm-black-strong" id="separador3">
+	<div class="col-md-12 view hm-black-strong" id="separador3" hidden="hidden">
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">
@@ -525,7 +525,7 @@
 	</div>
 
 	<!-- Sección con Padrino curiosity -->
-	<section hidden="hidden" id="padrino-curiosity" class="margen-dispositivo">
+	<section id="padrino-curiosity" class="margen-dispositivo" hidden="hidden">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
 				<!-- <img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class=""> -->

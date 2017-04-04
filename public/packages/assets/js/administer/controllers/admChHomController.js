@@ -8,39 +8,28 @@ var admChHomController = {
     },
 
     makeChildrenList : function(r){
-        let code = '<div class="col-md-12">'+
-            '<div class="chip animated bounce" id="agf-back">'+
-                '<img src="/packages/assets/media/images/system/iconBack.png">'+
-                'Regresar'+
-            '</div>'+
-            '<div class=\'acti-buttons float-xs-right\'>'+
-                '<a class=\'btn-floating btn-small waves-effect waves-light\' id=\'agf-btnReg\'>'+
-                    '<i class="fa fa-plus"></i>'+
-                '</a>'+
-            '</div>'+
-        '</div>';
-        $("#agf-row-children").append(code);
         if (r.children.length > 0){
             let folder = r.folder;
             $.each(r.children, function(index, el) {
-                let code = "<div class='col-md-3 childCount'>"+
+                let code = "<div class='col-md-3 childCount animated zoomIn' id='agf"+el.id+"'>"+
                         	"<div class='view overlay z-depth-1 agf-containerbox'>"+
-                        		"<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+el.foto+"' class='img-fluid'>"+
+                        		"<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+el.foto+"' class='img-fluid' id='agf"+el.id+"img'>"+
                         		"<div class='mask flex-center'>"+
                         			"<center>"+
-                        				"<a class='btn-floating btn-small waves-effect waves-light agf-btnround-confChild' data-o='"+JSON.stringify(el)+"' data-f='"+folder+"'>"+
+                        				"<a class='btn-floating btn-small waves-effect waves-light agf-btnround-confChild' id='agf"+el.id+"data' data-o='"+JSON.stringify(el)+"' data-f='"+folder+"'>"+
                         					"<i class='fa fa-gears'></i>"+
                         				"</a>"+
-                        				"<a class='btn-floating btn-small waves-effect waves-light agf-btnround-hideChild' data-c="+el.id+">"+
+                        				"<a class='btn-floating btn-small waves-effect waves-light agf-btnround-hideChild' id='agf"+el.id+"position' data-c="+el.id+">"+
                         					"<i class='fa fa-eye-slash'></i>"+
                                         "</a>"+
                                     "</center>"+
                                 "</div>"+
-                                "<h6>"+el.nombre+" "+el.apellidos+"</h6>"+
+                                "<h6 id='agf"+el.id+"name'>"+el.nombre+" "+el.apellidos+"</h6>"+
                             "</div>"+
                         "</div>"
-                $("#agf-row-children").append(code);
+                $("#adf-boxChildren").prepend(code);
             });
+            Curiosity.toastLoading.hide();
         }
         else {
             let code = '<div class=\'col-md-12\'>'+
@@ -48,20 +37,20 @@ var admChHomController = {
                     '<h5>No existen niños regisrados en esta institución</h5>'+
                 '</div>'+
             '</div>';
-            $("#agf-row-children").append(code);
+            $("#adf-boxChildren").append(code);
+            Curiosity.toastLoading.hide();
         }
-        Curiosity.toastLoading.hide();
     },
 
     countChildrenInDOM : function (){
         var counter = 0;
-        $.each($("#agf-row-children > .childCount"), function(index, el) {
+        $.each($("#agf-boxChildren > .childCount"), function(index, el) {
             counter++;
         });
         return counter;
     },
 
-    saveChild : function (var_instution){
+    saveChild : function (var_instution, var_id, type){
         $('#agf-form').validate({
             rules : {
               agf_name      : {required:true, maxlength:45},
@@ -83,23 +72,99 @@ var admChHomController = {
             let child = new ChildrenHome(formData);
             if ($('#agf_photo').val() != ''){
                 if (_width == _height){
-                    child.save(this.successAdded);
+                    if (type == "registry"){
+                        child.save(this.successAdded);
+                    }
+                    if (type == "update"){
+                        child.update(var_id, this.successUpdated);
+                    }
                 }
-                else {
-                    Curiosity.noty.warning('Favor de elegir una imagen Cuadrada 4:4', 'Imagen Error');
+                else{
+                    Curiosity.noty.warning('Favor de elegir una imagen Cuadrada con relación 1:1', 'Imagen Error');
                     this.resetImage();
+                    Curiosity.toastLoading.hide();
                 }
             }
-            else {
+            else if(type == "registry") {
+                Curiosity.toastLoading.hide();
                 Curiosity.noty.info('Por favor selecciona una imagen para el niño/a', 'Seleccionar Imagen');
+            }
+            else if (type == "update"){
+                child.update(var_id, this.successUpdated);
             }
         }
     },
 
+    deleteChild : function (var_id){
+        ChildrenHome.delete(var_id, this.successDeleted);
+    },
+
+    successDeleted : function(r){
+        if(r.status == 200){
+            $("body").find("#agf"+r.data.child.id).hide('slow', function() {
+                $(this).remove();
+            });;
+            Curiosity.noty.success("Eliminado correctamente", "Bien hecho");
+            if (admChHomController.countChildrenInDOM() == 0) {
+                let code = '<div class=\'col-md-12\'>'+
+                    '<div class=\'z-depth-1\' id=\'agf-emptybox\'>'+
+                        '<h5>No existen niños regisrados en esta institución</h5>'+
+                    '</div>'+
+                '</div>';
+                $("#adf-boxChildren").append(code);
+            }
+        }
+        else {
+            Curiosity.noty.error("Error inesperado", "Error");
+        }
+        Curiosity.toastLoading.hide();
+    },
+
     successAdded : function(r){
         if (r.status == 200){
+            let folder = r.data.folder;
+            let code = "<div class='col-md-3 childCount animated zoomIn' id='agf"+r.data.child.id+"'>"+
+                        "<div class='view overlay z-depth-1 agf-containerbox'>"+
+                            "<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+r.data.child.foto+"' class='img-fluid' id='agf"+r.data.child.id+"img'>"+
+                            "<div class='mask flex-center'>"+
+                                "<center>"+
+                                    "<a class='btn-floating btn-small waves-effect waves-light agf-btnround-confChild' id='agf"+r.data.child.id+"data' data-o='"+JSON.stringify(r.data.child)+"' data-f='"+folder+"'>"+
+                                        "<i class='fa fa-gears'></i>"+
+                                    "</a>"+
+                                    "<a class='btn-floating btn-small waves-effect waves-light agf-btnround-hideChild' id='agf"+r.data.child.id+"position' data-c="+r.data.child.id+">"+
+                                        "<i class='fa fa-eye-slash'></i>"+
+                                    "</a>"+
+                                "</center>"+
+                            "</div>"+
+                            "<h6 id='agf"+r.data.child.id+"name'>"+r.data.child.nombre+" "+r.data.child.apellidos+"</h6>"+
+                        "</div>"+
+                    "</div>"
+            if (admChHomController.countChildrenInDOM() == 0) {
+                $("body").find("#agf-emptybox").remove();
+            }
+            $("#adf-boxChildren").prepend(code);
             Curiosity.noty.success("El niño ha sido registrado exitosamente", "Bien hecho");
-            $("#agf-modal").modal("hide");
+            $("#agf-cancel").trigger('click');
+        }
+        else{
+            Curiosity.noty.error("Error inesperado", "Error");
+        }
+        Curiosity.toastLoading.hide();
+    },
+
+    successUpdated : function(r){
+        console.log(r);
+        if (r.status == 200){
+            $("body").find("#agf"+r.data.child.id+"image").attr('src', "/packages/assets/media/images/padrino_curiosity/"+r.data.folder+"/"+r.data.child.foto+"?"+parseInt(Math.random() * 10000000000000000));
+            $("body").find("#agf"+r.data.child.id+"data").data('o', JSON.stringify(r.data.child));
+            $("body").find("#agf"+r.data.child.id+"data").data('f', r.data.folder);
+            $("body").find("#agf"+r.data.child.id+"position").data('c', r.data.child.id);
+            $("body").find("#agf"+r.data.child.id+"name").text(r.data.child.nombre+" "+r.data.child.apellidos);
+            $("#agf-cancel").trigger('click');
+            Curiosity.noty.success("Actualizado exitosamente", "Bien hecho");
+        }
+        else{
+            Curiosity.noty.error("Error inesperado", "Error");
         }
         Curiosity.toastLoading.hide();
     },
@@ -155,3 +220,16 @@ var admChHomController = {
     }
 
 }
+
+
+/*
+
+ASPECT RATIO
+
+function gcd (a,b):
+    if b == 0:
+        return a
+    return gcd (b, a mod b)
+
+
+*/
