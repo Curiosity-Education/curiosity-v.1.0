@@ -99,6 +99,42 @@ var admChHomController = {
         ChildrenHome.delete(var_id, this.successDeleted);
     },
 
+    hideShowHome : function(var_id){
+        ChildrenHome.any({id:var_id}, this.hideShowSuccess, "hide-show-home");
+    },
+
+    hideShowSuccess : function(r){
+        switch (r.status) {
+            case 200:
+                Curiosity.noty.success("La acción se ejecutado exitosamente", "Bien hecho");
+                if (r.data.visible == 1){
+                    $("body").find("#agf"+r.data.id+"hm1").removeClass('agf-colorvisible-red');
+                    $("body").find("#agf"+r.data.id+"hm1").addClass('agf-colorvisible-green');
+                    $("body").find("#agf"+r.data.id+"hm1").html("<span class='fa fa-eye'></span> &nbsp;Visible");
+                    $("body").find("#agf"+r.data.id+"hm2").removeClass('agf-btnvisible-green');
+                    $("body").find("#agf"+r.data.id+"hm2").addClass('agf-btnvisible-red');
+                    $("body").find("#agf"+r.data.id+"hm2").html("<i class='fa fa-eye-slash'></i>");
+                }
+                else if (r.data.visible == 0){
+                    $("body").find("#agf"+r.data.id+"hm1").removeClass('agf-colorvisible-green');
+                    $("body").find("#agf"+r.data.id+"hm1").addClass('agf-colorvisible-red');
+                    $("body").find("#agf"+r.data.id+"hm1").html("<span class='fa fa-eye-slash'></span> &nbsp;No Visible");
+                    $("body").find("#agf"+r.data.id+"hm2").removeClass('agf-btnvisible-red');
+                    $("body").find("#agf"+r.data.id+"hm2").addClass('agf-btnvisible-green');
+                    $("body").find("#agf"+r.data.id+"hm2").html("<i class='fa fa-eye'></i>");
+                }
+                else{
+                    Curiosity.noty.error("No se ha podido realizar la operación de visualización correctamente. Por favor recarga la página", "Error de visualización");
+                }
+                break;
+            default:
+                console.log(r);
+                Curiosity.noty.error("Ha ocurrido un error inesperado", "Error");
+                break;
+
+        }
+    },
+
     successDeleted : function(r){
         if(r.status == 200){
             $("body").find("#agf"+r.data.child.id).hide('slow', function() {

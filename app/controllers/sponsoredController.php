@@ -8,6 +8,19 @@ class sponsoredController extends BaseController{
         return ["children" => $children, "folder" => Curiosity::clean_string($folder->nombre)];
     }
 
+    function hide_show_home(){
+        try {
+            $data = Input::all();
+            $home = Institute::where("id", "=", $data["id"])->first();
+            if ($home->visible === 1){ $home->visible = 0; }
+            else if ($home->visible === 0){ $home->visible = 1; }
+            $home->save();
+            return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => $home));
+        } catch (Exception $e) {
+            return Response::json(array("status" => 0, 'statusMessage' => "Error", "data" => $e));
+        }
+    }
+
 
     function save(){
         $data = Input::all();

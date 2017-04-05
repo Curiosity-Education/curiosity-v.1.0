@@ -64,16 +64,20 @@ $(function(){
 
     $("body").on('click', '.agf-btnround-hideChild', function(){
         let id = $(this).data('c');
-        let messageDialog = {
-            title : "Espera un momento",
-            text: "Hemos detectado que esta actividad ya cuenta con un juego, elige la opción que deseas realizar.",
-            type: "question"
-        }
         Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
             if(input == "ELIMINAR" || input == "eliminar"){
                 admChHomController.deleteChild(id);
             }
         });
+    });
+
+    $("body").on('click', '.agf-btnvisible', function(){
+        let id = $(this).data('h');
+        Curiosity.notyInput("Escribe la palabra ACEPTAR para continuar.","text",function(input){
+            if(input == "ACEPTAR" || input == "aceptar"){
+                admChHomController.hideShowHome(id);
+            }
+        }, "ACEPTAR", "aceptar");
     });
 
 });
