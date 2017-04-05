@@ -32,8 +32,11 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/oxxo', function(){
-	return View::make('parent.account-oxxo-paused');
+Route::get('/padrino', function(){
+    $inst = ["homes" => Institute::where("tipo", "=", "Casa Hogar")
+    ->where("active", "=", 1)
+    ->get()];
+    return View::make("administer.admin-godfather", $inst);
 });
 
 //Route::get('/selectavatar', 'avatarController@view');
@@ -221,6 +224,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('updateConf', 'childrenHasGoal@update');
 			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
+	});
+	Route::group(array('prefix' => '/admin-godhouses'), function(){
+		Route::post('save', 'sponsoredController@save');
+		Route::post('update', 'sponsoredController@update');
+        Route::post('delete', 'sponsoredController@delete');
+        Route::post('getChildren', 'sponsoredController@getChildren');
+        Route::post('hide-show-home', 'sponsoredController@hide_show_home');
 	});
 });
 
