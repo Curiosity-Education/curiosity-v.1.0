@@ -28,14 +28,14 @@ class instituteMembershipsController extends BaseController{
         }
         return $pass;
     }
-    public function generateMemebers($name,$rng,$insID){
+    public function generateMemebers($name,$range,$idInstitute){
         /*
             This function recived 3 params
             * range_memberships
             * name_institute
             * institute_id
         */
-        $dst = array('range_memberships' => $rng, 'name_institute' => $name , 'institute_id' => $insID);//Input::all();
+        $dst = array('range_memberships' => $range, 'name_institute' => $name , 'institute_id' => $idInstitute);//Input::all();
         $numMembUser = $dst['range_memberships'];
         $this->name = $dst['name_institute'];
         $data = array(
