@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/packages/libs/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css">
 	<title>Nuestro Equipo</title>
+	<script src="//code.tidio.co/fkqcqcm9kdpxi40osnnqerxr0wn9gpy2.js"></script>
 </head>
 <body style="">
 	<div class="col-md-12 view hm-black-strong" id="equipo">
@@ -20,7 +21,7 @@
   				</li>
   				<li class="container-fluid">
   					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a>
-						<!-- | <a href="#">Preguntas frecuentes</a></h5> -->
+                    </h5>
   				</li>
   			</ul>
     	</div>

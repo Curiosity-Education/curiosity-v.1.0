@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css">
 	<!--Agrege un comentario-->
 	<title>Mentores</title>
+	<script src="//code.tidio.co/fkqcqcm9kdpxi40osnnqerxr0wn9gpy2.js"></script>
 </head>
 <body>
 	<div class="col-md-12 view hm-black-strong" id="colaboradores">

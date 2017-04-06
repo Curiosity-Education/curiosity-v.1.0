@@ -54,24 +54,31 @@ class childrenController extends BaseController{
                 "data"          => $validation->messages()
             ));
 		}else{
+			\Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
 			$id_dad = Auth::user()->Person->Dad->id;
 			$sons = parentsController::getSonsInfo();
 			$conutSons = count($sons['sons']);
-			$tokenCard = Membership::where("padre_id", "=", $id_dad)->select("token_card")->first()["token_card"];
-			\Conekta\Conekta::setApiKey("key_ed4TzU6bqnX9TvdqqTod4Q");
-			$customer = \Conekta\Customer::find($tokenCard);
-			$subscription = $customer->subscription;
-			$limit = Plan::where("reference", "=", $subscription->plan_id)->first()["limit"];
+			$membershipInfo = Membership::where("padre_id", "=", $id_dad)->first();
+			if ($membershipInfo->payment_option == "card"){
+				$customer = \Conekta\Customer::find($membershipInfo->token_card);
+				$subscription = $customer->subscription;
+			}
+			else if ($membershipInfo->payment_option == "oxxo"){
+			    $order = \Conekta\Order::find($membershipInfo->token_card);
+			    $planReference = $order->line_items["0"]->name;
+				$subscription = ["plan_id" => $planReference];
+			}
+			$limit = Plan::where("reference", "=", $subscription["plan_id"])->first()["limit"];
 			if ($conutSons < $limit){
-				 $roleDad         = 'parent';/*Auth::user()->roles[0]->name;*/
+				 $roleDad         = 'parent';
                  $user            = new User();
                  $user->username  = $data["usuario"];
                  $user->password  = Hash::make($data["password"]);
                  $user->token     = sha1($data["usuario"]);
                  $user->active    = 1;
-                    $user->flag      = 0;
+                 $user->flag      = 0;
                  $user->save();
-                    $myRole = Role::where("name", "=", "child")->pluck("id");
+                 $myRole = Role::where("name", "=", "child")->pluck("id");
                  $user->attachRole($myRole);
                  $person                = new Person($data);
                  $person->nombre        = $data["nombre"];
@@ -80,7 +87,7 @@ class childrenController extends BaseController{
                  $person->user_id       = $user->id;
                  $person->save();
                  $son                   = new Son();
-                    $son->promedio_inicial = $data["promedio"];
+                 $son->promedio_inicial = $data["promedio"];
                  $son->persona_id       = $person->id;
                  $son->padre_id         = $id_dad;
                  $son->nivel_id         = $data["grado"];
@@ -129,7 +136,7 @@ class childrenController extends BaseController{
 				$planRel = new MembershipPlan();
 				$planRel->hijo_id = $son->id;
 				$planRel->membresia_id = Membership::where("padre_id", "=", $id_dad)->pluck("id");
-				$planRel->plan_id = Plan::where("reference", "=", $subscription->plan_id)->first()["id"];
+				$planRel->plan_id = Plan::where("reference", "=", $subscription["plan_id"])->first()["id"];
 				$planRel->save();
 	         //this reponse message data is for user
 	         return Response::json(array(
