@@ -103,7 +103,7 @@ Gestion de cuentas masivas
           <div class="col-md-2"><p>Intituto cat</p></div>
           <div class="col-md-3">88 membresias activas</div>
           <div class="col-md-4">
-            <input type="range" min="0" max="200" />
+            <input type="range" min="0" id="range_memberships" max="200" />
           </div>
           <div class="col-md-2">
             <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-plus"></i></a>
