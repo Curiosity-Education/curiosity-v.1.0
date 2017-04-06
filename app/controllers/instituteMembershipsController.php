@@ -28,25 +28,25 @@ class instituteMembershipsController extends BaseController{
         }
         return $pass;
     }
-    public function generateMemebers(){
+    public function generateMemebers($name,$rng,$insID){
         /*
             This function recived 3 params
             * range_memberships
             * name_institute
             * institute_id
         */
-        //$dst = Input::all();
-        $numMembUser = 5;//$dst['range_memberships'];
-        $this->name = 'Cervantes';//$dst['name_institute'];
+        $dst = array('range_memberships' => $rng, 'name_institute' => $name , 'institute_id' => $insID);//Input::all();
+        $numMembUser = $dst['range_memberships'];
+        $this->name = $dst['name_institute'];
         $data = array(
                 'username' => 'root_'.$this->name,
                 'role'  => 'parent',
                 'folio' => 0,
                 'type' => 'Usuario administrativo',
-                'institute_id' => 1//$dst['institute_id']
+                'institute_id' => $dst['institute_id']
             );
         $userParent = $this->createUser($data);
-        $parent_id = $this->createParent($userParent->personID,1/*$dst['institute_id']*/);
+        $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
         $this->matchInstitute($userParent->userID,1,$data['folio']);
         for ($i = 0; $i < $numMembUser; $i++){
             $folio = $i + 1;
@@ -54,10 +54,10 @@ class instituteMembershipsController extends BaseController{
                 'username' => $this->createUserName($folio),
                 'role'  => 'child',
                 'type' => 'Usuario niño',
-                'institute_id' => 1//$dst['institute_id']
+                'institute_id' => $dst['institute_id']
             );
             $userData = $this->createUser($data);
-            $this->matchInstitute($userData->userID,1/*$dst['institute_id']*/,$folio);
+            $this->matchInstitute($userData->userID,$dst['institute_id'],$folio);
             $this->createSon($userData->personID,$parent_id);
         }
         Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
