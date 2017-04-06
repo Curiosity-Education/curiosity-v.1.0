@@ -67,18 +67,28 @@
 		</div>
 
 		<!-- Container of children -->
-		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children">
-               <div class="row">
-                   <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
-               </div>
-                <h3 class="text-xs-center" id="nameHome"></h3>
-                <hr class="hr-apartado">
-                <br>
-                <div id="displayChildren">
-
-
-                </div>
+		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children" style="margin-bottom:1rem;">
+           <div class="row">
+               <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
+           </div>
+            <h3 class="text-xs-center" id="nameHome"></h3>
+            <hr class="hr-apartado">
+            <br>
+            <div id="displayChildren"></div>
 		</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="boxPaymentChild">
+                    <div class="col-md-3">
+                        <center><img id="img-modalChild" src="" class="rounded-circle img-fluid" style="width:70%;"></center>
+                        <hr>
+                        <p class="text-xs-center">¿Quiéres apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
+                        <p class="text-xs-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 		<!-- Modal for apadrinar -->
 		<div class="modal fade modal-ext" id="modal-apadrinar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -99,36 +109,62 @@
                                 <div class="row fadeIn animated" id="row-login">
                                     <div class="col-md-5">
                                         <center>
-                                            <img id="img-modalChild" src="" alt="..." class="rounded-circle img-fluid" style="width:70%;">
+                                            <img id="img-modalChild" src="" class="rounded-circle img-fluid" style="width:70%;">
                                         </center>
                                         <hr>
-                                        <p class="text-xs-center">¿Deseas apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
+                                        <p class="text-xs-center"><span class="font-weight-bold" id="nameChild"></span></p>
                                         <p class="text-xs-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
                                     </div>
-                                    <div class="col-md-7" id="form-content">
-                                        <div class="row">
-                                            <form id="formLogin">
-                                                <div class="md-form">
-                                                    <i class="fa fa-user prefix"></i>
-                                                    <input type="text" id="username" class="form-control" name="username">
-                                                    <label for="username">Usuario</label>
+                                    <form id="formLogin">
+                                        <div class="col-md-7" id="form-content">
+                                            <div class="row">
+                                                <div class="form-group">
+                                                  <label for="">Correo Electrónico</label>
+                                                  <input type="text" class="form-control" id="">
                                                 </div>
-                                                <div class="md-form">
-                                                    <i class="fa fa-lock prefix"></i>
-                                                    <input type="password" id="password" class="form-control" name="password">
-                                                    <label for="password">Contraseña</label>
+                                                <div class="form-group">
+                                                  <label for="">Nombre Completo</label>
+                                                  <input type="text" class="form-control" id="">
                                                 </div>
-                                                <div class="md-form">
-                                                    <i class="fa fa-lock prefix"></i>
-                                                    <input type="password" id="password" class="form-control" name="password">
-                                                    <label for="password">Contraseña</label>
-                                                </div>
-                                            </form>
-                                            <div class="text-xs-center">
-                                                <button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnConfirm">Aceptar</button>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                  <label for="">Número de tarjeta</label>
+                                                  <input type="text" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                  <label for="">Mes de expiración</label>
+                                                  <input type="text" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                  <label for="">Año de expiración</label>
+                                                  <input type="text" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                  <label for="">Código de seguridad</label>
+                                                  <input type="text" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="text-xs-center">
+                                                    <button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnConfirm">Aceptar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
 
                             </div> <!-- /.col-md-12 -->
