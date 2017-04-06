@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('pruba_users','instituteMembershipsController@generateMemebers');
 Route::get('prueba-excel',function(){
 
     $data = User::all();
