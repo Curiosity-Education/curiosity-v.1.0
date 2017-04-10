@@ -21,7 +21,6 @@ class sponsoredController extends BaseController{
         }
     }
 
-
     function save(){
         $data = Input::all();
         $file = $data['agf_photo'];
@@ -97,6 +96,64 @@ class sponsoredController extends BaseController{
         $child->active = 0;
         $child->save();
         return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => ["child" => $child]));
+    }
+
+    function paySponsored(){
+        $rules = array(
+			'nombre' => 'required',
+            'email' => 'required|email'
+		);
+        $validator = Validator::make(Input::all(), $rules, Curiosity::getValidationMessages());
+        if($validator->fails()){
+            return Response::json(array(
+                "status" => "CU-104",
+                'statusMessage' => "Validation Error",
+                "data" => $validator->messages()
+            ));
+        }
+        else{
+            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+            \Conekta\Conekta::setLocale('es');
+            try{
+                $customer = \Conekta\Customer::create(array(
+                    "name" => Input::get('nombre'),
+                    "email" => Input::get('email'),
+                    'payment_sources' => array(array(
+                        'token_id' => Input::get('conektaTokenId'),
+                        'type' => "card"
+                    ))
+                ));
+                $plan = Plan::where("reference", "=", "anual_individual")->first();
+                if(!$plan){
+                    return Response::json(array(
+                        'status' => 404,
+                        'statusMessage' => 'El plan no fue encontrado'
+                    ));
+                }
+                $subscription = $customer->createSubscription(array(
+                  "plan_id" => $plan->reference
+                ));
+                if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
+                    // la suscripción inicializó exitosamente!
+                    // **** se debe de enviar un email? ****
+                    return Response::json(array(
+                        'status' => 200,
+                        'statusMessage' => 'success'
+                    ));
+                }
+                elseif ($subscription->status == 'past_due') {
+                //  la suscripción falló a inicializarse
+                  return Response::json(array(
+                    'status'=>105,
+                    'statusMessage'=>'PAST_DUE',
+                    'data' => $subscription,
+                    'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
+                }
+            }catch (\Conekta\Error $e){
+              return Response::json(["message"=>$e->message_to_purchaser]);
+             //el cliente no pudo ser creado
+            }
+        }
     }
 
 

@@ -289,6 +289,16 @@ Route::group(array('before' => 'auth'), function(){
 
 /*
 * -----------------------------------------------------------------------------
+* Routes to Sponsored.
+* all without special permision and without login
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sponsored'),function(){
+	Route::post('payForChild', 'sponsoredController@paySponsored');
+});
+
+/*
+* -----------------------------------------------------------------------------
 * Routes to levels.
 * all without special permision
 * -----------------------------------------------------------------------------
