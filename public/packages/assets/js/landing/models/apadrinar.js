@@ -19,6 +19,8 @@ class apadrinar extends CORM{
         });
     }
 
-
+    static any(data,method,success,prefix,pathRoute){
+        super.any(data,method,success,prefix,pathRoute);
+    }
 
 }

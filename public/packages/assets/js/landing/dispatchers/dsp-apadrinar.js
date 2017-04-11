@@ -1,3 +1,11 @@
+$(document).ready(function(){
+    $(function () {
+        $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+    });
+});
+
+new WOW().init();
+
 $(function(){
 
     /* seleccionamos una casa hogar y mostramos a sus niños */
@@ -17,12 +25,25 @@ $(function(){
         $('#content-children').addClass('displaynone');
     });
 
-    /* seleccionamos una casa hogar y mostramos a sus niños */
     $('body').on('click','.btn-homesChild',function(e){
         e.preventDefault();
-        var src = '/packages/assets/media/images/instituciones/children/'+$(this).data('foto');
+        StorageDB.table.create("sponsoredChild", parseInt($(this).data("childid")));
+        var src = '/packages/assets/media/images/padrino_curiosity/'+$(this).data('foto');
         $('#img-modalChild').attr('src',src);
         $('#nameChild').text($(this).data('childname'));
+        $("#content-children").hide("slow");
+        $("#paybox").show("slow");
+    });
+
+    $("#homes-backfrompay").click(function(event) {
+        $("input").val("");
+        $("#paybox").hide("slow");
+        $("#content-children").show("slow");
+    });
+
+    $("#btnConfirm").click(function(e) {
+        e.preventDefault();
+        apadrinarController.payment();
     });
 
 });
