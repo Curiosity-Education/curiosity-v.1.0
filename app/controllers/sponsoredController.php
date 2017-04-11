@@ -136,6 +136,7 @@ class sponsoredController extends BaseController{
                 if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
                     // la suscripción inicializó exitosamente!
                     try {
+                        // Cambiamos el estatus del niño que fue apadrinado
                         $childSpon = Children::where('id', '=', Input::get('child'))->first();
                         $childSpon->apadrinado = 1;
                         $childSpon->save();
