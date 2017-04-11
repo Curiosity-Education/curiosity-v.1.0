@@ -123,7 +123,7 @@ class sponsoredController extends BaseController{
                         'type' => "card"
                     ))
                 ));
-                $plan = Plan::where("reference", "=", "anual_individual")->first();
+                $plan = Plan::where("reference", "=", "prueba_padrino_cu")->first();
                 if(!$plan){
                     return Response::json(array(
                         'status' => 404,
