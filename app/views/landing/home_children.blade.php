@@ -77,7 +77,7 @@
             <div id="displayChildren"></div>
 		</div>
 
-        <div class="row" id="paybox">
+        <div class="row" id="paybox" style="margin-bottom:1rem;">
             <div class="col-md-12">
                 <div id="boxPaymentChild" class="z-depth-1">
                     <div id="boxtobtnback">

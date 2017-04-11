@@ -135,19 +135,35 @@ class sponsoredController extends BaseController{
                 ));
                 if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
                     // la suscripción inicializó exitosamente!
-                    // **** se debe de enviar un email? ****
+                    try {
+                        $childSpon = Children::where('id', '=', Input::get('child'))->first();
+                        $childSpon->apadrinado = 1;
+                        $childSpon->save();
+                    } catch (Exception $e) {
+                        $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+                        Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
+                    }
+                    try {
+                        // **** se debe de enviar un email? ****
+                    } catch (Exception $e) {
+                        $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+                        Log::info('Falló al enviar el email al padrino, una vez que pago: ' . $executionTime . ' | ' .  $e->getMessage());
+                    }
                     return Response::json(array(
                         'status' => 200,
                         'statusMessage' => 'success'
                     ));
                 }
-                elseif ($subscription->status == 'past_due') {
-                //  la suscripción falló a inicializarse
-                  return Response::json(array(
-                    'status'=>105,
-                    'statusMessage'=>'PAST_DUE',
-                    'data' => $subscription,
-                    'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'));
+                else{
+                    if ($subscription->status == 'past_due') {
+                        // la suscripción falló al inicializarse
+                        return Response::json(array(
+                            'status'=>105,
+                            'statusMessage'=>'PAST_DUE',
+                            'data' => $subscription,
+                            'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'
+                        ));
+                    }
                 }
             }catch (\Conekta\Error $e){
               return Response::json(["message"=>$e->message_to_purchaser]);

@@ -57,6 +57,7 @@ var apadrinarController = {
     },
 
     payment : function(){
+        let sponsored = StorageDB.table.getData("sponsoredChild");
         let tokenParams = {
             "card": {
                 "number": document.getElementById('card_number').value,
@@ -67,18 +68,30 @@ var apadrinarController = {
             }
         };
         let successResponseHandler = function(token) {
-            let datos={
-                nombre: document.getElementById("name").value,
-                email : document.getElementById("email").value,
-                // conektaTokenId: token.id
+            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored =< 0){
+                Curiosity.noty.warning(
+                    "No fue posible obtener al niño a apadrinar, por favor intentalo nuevamente",
+                    "Error de selección"
+                );
             }
-            return apadrinar.any(datos,Curiosity.methodSend.POST,apadrinarController.paymentSuccess,'/sponsored','payForChild');
+            else{
+                let datos={
+                    nombre: document.getElementById("name").value,
+                    email : document.getElementById("email").value,
+                    child : parseInt(sponsored)
+                    conektaTokenId: token.id
+                }
+                return apadrinar.any(datos,Curiosity.methodSend.POST,apadrinarController.paymentSuccess,'/sponsored','payForChild');
+            }
         };
         let errorResponseHandler = function(error) {
             Curiosity.toastLoading.hide();
             $("#btnConfirm").html("Confirmar Información");
             $("#btnConfirm").prop("disabled", false);
-            return Curiosity.noty.warning(error.message_to_purchaser, "Error durante el proceso");
+            return Curiosity.noty.warning(
+                error.message_to_purchaser,
+                "Error durante el proceso"
+            );
         };
         $("#formToPay").validate({
             rules : {
@@ -91,12 +104,19 @@ var apadrinarController = {
             }
         });
         if ($("#formToPay").valid()){
-            // Conekta.setPublicKey("key_WXkrivJAijWK8DKqt1BXbmg");
+            Conekta.setPublicKey("key_WXkrivJAijWK8DKqt1BXbmg");
             $("#btnConfirm").prop("disabled", true);
             $("#btnConfirm").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando");
-            Curiosity.toastLoading.show();
-            successResponseHandler();
-            // Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored =< 0){
+                Curiosity.noty.warning(
+                    "No fue posible obtener al niño a apadrinar, por favor intentalo nuevamente",
+                    "Error de selección"
+                );
+            }
+            else{
+                Curiosity.toastLoading.show();
+                Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+            }
         }
     },
 
@@ -105,6 +125,7 @@ var apadrinarController = {
         $("#btnConfirm").html("Confirmar Información");
         switch(response.status){
             case 200:
+                localStorage.removeItem("sponsoredChild");
                 let notyBody = {
                     'title': "!Felicidades! Has apadrinado a un niño Curiosity",
                     'message' :

@@ -25,9 +25,9 @@ $(function(){
         $('#content-children').addClass('displaynone');
     });
 
-    /* seleccionamos una casa hogar y mostramos a sus niños */
     $('body').on('click','.btn-homesChild',function(e){
         e.preventDefault();
+        StorageDB.table.create("sponsoredChild", parseInt($(this).data("childid")));
         var src = '/packages/assets/media/images/padrino_curiosity/'+$(this).data('foto');
         $('#img-modalChild').attr('src',src);
         $('#nameChild').text($(this).data('childname'));
