@@ -57,7 +57,6 @@ var apadrinarController = {
     },
 
     payment : function(){
-        let sponsored = StorageDB.table.getData("sponsoredChild");
         let tokenParams = {
             "card": {
                 "number": document.getElementById('card_number').value,
@@ -68,7 +67,8 @@ var apadrinarController = {
             }
         };
         let successResponseHandler = function(token) {
-            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored =< 0){
+            let sponsored = StorageDB.table.getData("sponsoredChild");
+            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored <= 0){
                 Curiosity.noty.warning(
                     "No fue posible obtener al niño a apadrinar, por favor intentalo nuevamente",
                     "Error de selección"
@@ -78,7 +78,7 @@ var apadrinarController = {
                 let datos={
                     nombre: document.getElementById("name").value,
                     email : document.getElementById("email").value,
-                    child : parseInt(sponsored)
+                    child : parseInt(sponsored),
                     conektaTokenId: token.id
                 }
                 return apadrinar.any(datos,Curiosity.methodSend.POST,apadrinarController.paymentSuccess,'/sponsored','payForChild');
@@ -104,10 +104,11 @@ var apadrinarController = {
             }
         });
         if ($("#formToPay").valid()){
+            let sponsored = StorageDB.table.getData("sponsoredChild");
             Conekta.setPublicKey("key_WXkrivJAijWK8DKqt1BXbmg");
             $("#btnConfirm").prop("disabled", true);
             $("#btnConfirm").html("<span class='fa fa-spinner fa-pulse'></span>&nbsp; Procesando");
-            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored =< 0){
+            if (sponsored == "" || sponsored == null || sponsored == undefined || sponsored <= 0){
                 Curiosity.noty.warning(
                     "No fue posible obtener al niño a apadrinar, por favor intentalo nuevamente",
                     "Error de selección"
