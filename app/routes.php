@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('get-user-for-institute/{name}/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
 Route::get('prueba-excel',function(){
 
     $data = User::all();
@@ -32,8 +33,11 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/oxxo', function(){
-	return View::make('parent.account-oxxo-paused');
+Route::get('/padrino', function(){
+    $inst = ["homes" => Institute::where("tipo", "=", "Casa Hogar")
+    ->where("active", "=", 1)
+    ->get()];
+    return View::make("administer.admin-godfather", $inst);
 });
 
 //Route::get('/selectavatar', 'avatarController@view');
@@ -222,6 +226,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
+	Route::group(array('prefix' => '/admin-godhouses'), function(){
+		Route::post('save', 'sponsoredController@save');
+		Route::post('update', 'sponsoredController@update');
+        Route::post('delete', 'sponsoredController@delete');
+        Route::post('getChildren', 'sponsoredController@getChildren');
+        Route::post('hide-show-home', 'sponsoredController@hide_show_home');
+	});
 });
 
   //institutions
@@ -275,6 +286,16 @@ Route::group(array('before' => 'auth'), function(){
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to Sponsored.
+* all without special permision and without login
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sponsored'),function(){
+	Route::post('payForChild', 'sponsoredController@paySponsored');
+});
 
 /*
 * -----------------------------------------------------------------------------

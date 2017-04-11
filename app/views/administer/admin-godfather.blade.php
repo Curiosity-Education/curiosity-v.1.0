@@ -19,10 +19,10 @@ Padrino Curiosity
        <div class="col-md-3">
             <div class='view overlay z-depth-1 agf-containerbox'>
                 @if ($home->visible == 0)
-                <h5 class="agf-colorvisible-red"><span class="fa fa-eye-slash"></span> &nbsp;No Visible</h5>
+                <h5 class="agf-colorvisible-red" id="agf{{$home->id}}hm1"><span class="fa fa-eye-slash"></span> &nbsp;No Visible</h5>
                 @endif
                 @if ($home->visible == 1)
-                <h5 class="agf-colorvisible-green"><span class="fa fa-eye"></span> &nbsp;Visible</h5>
+                <h5 class="agf-colorvisible-green" id="agf{{$home->id}}hm1"><span class="fa fa-eye"></span> &nbsp;Visible</h5>
                 @endif
                 <img src='/packages/assets/media/images/institutions/{{ $home->logo }}' class='img-fluid'>
                 <div class='mask flex-center'>
@@ -31,12 +31,12 @@ Padrino Curiosity
                             <i class='fa fa-gears'></i>
                         </a>
                         @if ($home->visible == 1)
-                        <a class='btn-floating btn-small waves-effect waves-light agf-btnvisible-red' data-h="{{ $home->id }}">
+                        <a id="agf{{$home->id}}hm2" class='btn-floating btn-small waves-effect waves-light agf-btnvisible agf-btnvisible-red' data-h="{{ $home->id }}">
                             <i class='fa fa-eye-slash'></i>
                         </a>
                         @endif
                         @if ($home->visible == 0)
-                        <a class='btn-floating btn-small waves-effect waves-light agf-btnvisible-green' data-h="{{ $home->id }}">
+                        <a id="agf{{$home->id}}hm2" class='btn-floating btn-small waves-effect waves-light agf-btnvisible agf-btnvisible-green' data-h="{{ $home->id }}">
                             <i class='fa fa-eye'></i>
                         </a>
                         @endif

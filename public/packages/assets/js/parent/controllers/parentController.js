@@ -421,7 +421,7 @@ var parentController = {
                           Curiosity.noty.warning("Los datos de accesso que ingresaste son incorrectos, intenta nuevamente", "Datos Erróneos");
                           break;
                        default:
-                          Curiosity.noty.error("Contactate con nostros por favor", "Error desconocido");
+                          Curiosity.noty.error("Contáctate con nostros por favor", "Error desconocido");
                           break;
                     }
                  })
@@ -494,7 +494,7 @@ var parentController = {
                 default:
                     $("#pay-button").html("Continuar &nbsp;<span class='fa fa-chevron-circle-right'></span>");
                     $("#pay-button").prop("disabled",false);
-                    Curiosity.noty.error("Se ha detectado un error desconocido, por favor contactanos para dar solución de inmediato.", "Ups algo ha salido muy mal.");
+                    Curiosity.noty.error("Se ha detectado un error desconocido, por favor contáctanos para dar solución de inmediato.", "Ups algo ha salido muy mal.");
                     break;
             }
         },
