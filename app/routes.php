@@ -29,8 +29,8 @@ Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/codigo', function(){
-	return View::make('parent.pay-suscription');
+Route::get('/padrino-email', function(){
+	return View::make('emails.padrinoCuriosity');
 });
 
 Route::get('/padrino', function(){
