@@ -17,8 +17,23 @@
         background-color: #e6e6e6;
         box-sizing: border-box;
     }
+    .boxportada{
+        min-height: 25rem;
+        background-image: url(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding-top: 10rem;
+        padding-left: 2rem;
+        padding-right: 1rem;
+        color: #fff;
+    }
+    .boxportada > h1{
+        padding-bottom: 2rem;
+    }
     #container-dad{
         width: 100%;
+        max-width: 1820px;
         background-color: #fff;
         margin: 0 auto;
         box-sizing: border-box;
@@ -155,14 +170,23 @@
 <body>
     <div id="container-dad">
         {{--<img src="{{asset('/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg') }}" id="imgportada">--}}
-        <img src="/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg" id="imgportada">
+        <div class="boxportada">
+            <!-- <img src="/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg" id="imgportada">
+            <h1>Hola Wilvardo Ramirez</h1> -->
+            <h1>
+                ¡Hola Wilvardo Ramirez! <br>
+                Gracias por formar parte del programa <br>
+                Padrino Curiosity. <br><br>
+                Apoyando la educación del país.
+            </h1>
+        </div>
         <div id="infoSponsored">
             <div id="childbox">
                 {{--<img src="{{asset('/packages/assets/media/images/padrino_curiosity/amor/susana-alvarez-garca.jpg') }}" id="imgSponsored">--}}
                 <img src="/packages/assets/media/images/padrino_curiosity/amor/susana-alvarez-garca.jpg" id="imgSponsored">
             </div>
             <div id="infoChildBox">
-                <h2>Lorem ipsum dolor sit amet.</h2><br>
+                <h2>Nombre del niño Apadrinado</h2><br>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perferendis delectus libero magnam excepturi hic ullam, pariatur quas veritatis quasi iure illum, inventore tempora, deserunt ad. Natus voluptatibus labore, fugiat. <br><br>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, impedit.
