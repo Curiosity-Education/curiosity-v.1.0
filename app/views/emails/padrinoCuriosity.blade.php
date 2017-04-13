@@ -174,19 +174,19 @@
             <!-- <img src="/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg" id="imgportada">
             <h1>Hola Wilvardo Ramirez</h1> -->
             <h1>
-                ¡Hola Wilvardo Ramirez! <br>
+                ¡Hola {{$client}}! <br>
                 Gracias por formar parte del programa <br>
                 Padrino Curiosity. <br><br>
-                Apoyando la educación del país.
+                Apoyando la Educación del país.
             </h1>
         </div>
         <div id="infoSponsored">
             <div id="childbox">
-                {{--<img src="{{asset('/packages/assets/media/images/padrino_curiosity/amor/susana-alvarez-garca.jpg') }}" id="imgSponsored">--}}
+                {{--<img src="{{asset($child_image)}}" id="imgSponsored">--}}
                 <img src="/packages/assets/media/images/padrino_curiosity/amor/susana-alvarez-garca.jpg" id="imgSponsored">
             </div>
             <div id="infoChildBox">
-                <h2>Nombre del niño Apadrinado</h2><br>
+                <h2>{{$child}}</h2><br>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perferendis delectus libero magnam excepturi hic ullam, pariatur quas veritatis quasi iure illum, inventore tempora, deserunt ad. Natus voluptatibus labore, fugiat. <br><br>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, impedit.
@@ -194,7 +194,9 @@
             </div>
         </div>
         <div id="infoHome">
+            {{--<img src="{{asset('/packages/assets/media/images/system/logoDef.png')}}">--}}
             <img src="/packages/assets/media/images/system/logoDef.png">
+            {{--<img src="{{asset($home_image)}}">--}}
             <img src="/packages/assets/media/images/institutions/nckWQ25258_030417.jpg">
             <center>
                 <br> <h4 id="relhome">Curiosity Educación y Casa Hogar</h4> <br>
@@ -204,8 +206,9 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus sit ex odit sint illo minima consequatur id iste, nemo, <br>ipsam porro veritatis eos quos consequuntur, magni totam libero laborum voluptatibus iusto qui quis cum! <br> Nobis eos eius tempore, deleniti quasi ea quod. Voluptas dolorem ab aut doloremque, error nobis a.
             </p>
             <br><br>
+            {{--<img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}">--}}
             <img src="/packages/assets/media/images/system/icon-mono.png" id="signTeam">
-            <h4 id="signTeamText">Equipo Curiosity</h4>
+            <h4 id="signTeamText">{{$name}}</h4>
         </div>
         <div id="separator1"></div>
         <div id="separator2"></div>
