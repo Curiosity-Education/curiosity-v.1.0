@@ -68,7 +68,10 @@ class loginController extends BaseController{
                 $parent = Dad::where("persona_id", "=", $person["id"])->first();
                 $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
                 if(!$hasPlan){
-                    if(InstituteUser::where('user_id','=',Auth::user()->id)->get())
+                    if(DB::table('institucion_usuario')
+                     ->select(DB::raw('count(id) as userCount'))
+                     ->where('user_id', '=', Auth::user()->id)
+                     ->get()['userCount'] > 0)
                         return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.home"));
                     else
                         return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
@@ -155,7 +158,10 @@ class loginController extends BaseController{
           $parent = Dad::where("persona_id", "=", $person["id"])->first();
           $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
           if(!$hasPlan){
-              if(InstituteUser::where('user_id','=',Auth::user()->id)->get())
+              if(DB::table('institucion_usuario')
+                     ->select(DB::raw('count(id) as userCount'))
+                     ->where('user_id', '=', Auth::user()->id)
+                     ->get()['userCount'] > 0)
                 return "view-parent.home";
               else
                 return "view-parent.pay-suscription";
