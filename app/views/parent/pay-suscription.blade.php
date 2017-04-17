@@ -129,11 +129,14 @@
 
                                                 <!--Price-->
                                                 <br>
-                                                <p style="color:black;text-align:center;">Pronto podras realizar tus pagos desde OXXO. <br>
-                                                   <!-- <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">Para más información. </a> </p> -->
+                                                <p style="color:black;text-align:center;">Ahora puedes hacer tu pago en OXXO. <br>
+                                                   <a href="https://www.conekta.com/es/oxxopay?ref=nav" style="display" target="_blank">
+                                                       Para más información.
+                                                   </a>
+                                                </p>
                                                 <!-- <a class="btn btn-outline btn-rounded btn-method-pay method-oxxo-pay" id="btn-method-oxxo">Seleccionar</a> -->
-                                                <button class="btn btn-outline btn-rounded" id="btn-method-oxxo" disabled>
-                                                   Próximamente
+                                                <button class="btn btn-outline btn-rounded" id="btn-method-oxxo">
+                                                   Seleccionar
                                                 </button>
                                             </div>
                                         </div>
@@ -255,4 +258,15 @@
     <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
+    <script type="text/javascript">
+       $(function () {
+         //  function askConfirmation (evt) {
+         //    window.location.href = "/";
+         //    var msg = 'Si recarga la página perdera todos los datos ingresados.\n¿Deseas recargar la página?';
+         //    evt.returnValue = false;
+         //    return false;
+         //  }
+         //  window.addEventListener('beforeunload', askConfirmation);
+       });
+    </script>
 </body>

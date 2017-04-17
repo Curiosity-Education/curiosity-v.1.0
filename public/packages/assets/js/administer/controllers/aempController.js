@@ -169,7 +169,6 @@ var aempController = {
    },
 
    fillInputs : function(){
-      console.log(this.data);
       $("#aemp_name").val(this.data.nombre);
       $("#aemp_lName").val(this.data.apellidos);
       $("#aemp_email").val(this.data.correo);

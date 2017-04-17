@@ -33,8 +33,11 @@ Route::get('/codigo', function(){
 	return View::make('parent.pay-suscription');
 });
 
-Route::get('/oxxo', function(){
-	return View::make('parent.account-oxxo-paused');
+Route::get('/padrino', function(){
+    $inst = ["homes" => Institute::where("tipo", "=", "Casa Hogar")
+    ->where("active", "=", 1)
+    ->get()];
+    return View::make("administer.admin-godfather", $inst);
 });
 
 //Route::get('/selectavatar', 'avatarController@view');
@@ -47,9 +50,24 @@ Route::get('aviso-privacidad', function(){
 	return View::make('landing.notice_privacy');
 });
 
+Route::get('adm-institution', function(){
+	return View::make('administer.adm-institutions');
+});
+
 Route::get('equipo', function(){
 	return View::make('landing.team');
 });
+
+
+/* Rutas para apadrinar -------------------------------------------------------------*/
+
+Route::match(['GET','POST'],'casas-hogares','instituteMembershipsController@getHomes');
+
+Route::group(array('prefix' => '/apadrinar'), function(){
+	Route::post('get-children', 'instituteMembershipsController@getChildren');
+});
+
+/*-----------------------------------------------------------------------------------*/
 
 Route::get('mentores', function(){
 	return View::make('landing.mentors');
@@ -114,6 +132,7 @@ Route::group(array('before' => 'auth'), function(){
 */
 Route::post('logIn', 'loginController@logIn');
 Route::get('logout', 'loginController@logOut');
+Route::get('getInstitution-{id?}','instituteMembershipsController@render');
 Route::get("recuperar",function(){
 	return View::make('landing.vista_cambiar_pass');
 });
@@ -207,7 +226,32 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
+	Route::group(array('prefix' => '/admin-godhouses'), function(){
+		Route::post('save', 'sponsoredController@save');
+		Route::post('update', 'sponsoredController@update');
+        Route::post('delete', 'sponsoredController@delete');
+        Route::post('getChildren', 'sponsoredController@getChildren');
+        Route::post('hide-show-home', 'sponsoredController@hide_show_home');
+	});
 });
+
+  //institutions
+  Route::group(array('prefix' => 'institutions'),function(){
+    Route::post('save', 'institutionsController@save');
+    Route::post('all', 'institutionsController@all');
+    Route::post('info', 'institutionsController@institutionInfo');
+    Route::post('update', 'institutionsController@update');
+  });
+
+  //state
+  Route::group(array('prefix' => 'state'),function(){
+    Route::post('all', 'statesController@all');
+  });
+
+  //cities
+  Route::group(array('prefix' => 'cities'), function(){
+    Route::post('all', 'citiesController@all');
+  });
 
 	// Activities
 	Route::group(array('prefix' =>  'activity-admin'),function(){

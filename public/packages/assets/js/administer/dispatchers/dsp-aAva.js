@@ -32,18 +32,6 @@ $(function(){
     }
   });
 
-  var intervalAvatar = setInterval(function(){
-    if (avatarFlag == true) {
-      tempAvatars = JSON.parse(funAvatar);
-      clearInterval(intervalAvatar);
-
-      $.each(tempAvatars,function(i){
-        var avatarStyle = StorageDB.table.getByAttr("localStyles","avatar_id",tempAvatars[i].id);
-        cardsAvatar("#adAv-avatars-container",avatarStyle[0].folder,avatarStyle[0].preview,avatarStyle[0].avatar_id,avatarStyle[0].nombre,"adAv-enter","adAv-upd","adAv-delete");
-      });
-    }
-  },1000);
-
   var intervalStyle = setInterval(function(){
     if (StyleFlag == true) {
       tempStyles = JSON.parse(funStyle);
@@ -64,6 +52,25 @@ $(function(){
       clearInterval(intervalSprite);
     }
   }, 1000);
+
+  var intervalAvatar = setInterval(function(){
+    if (avatarFlag == true) {
+      tempAvatars = JSON.parse(funAvatar);
+      clearInterval(intervalAvatar);
+
+      $.each(tempAvatars,function(i){
+
+        var avatarStyle = atrib(tempStyles,"avatar_id",tempAvatars[i].id);
+        var style;
+        $.each(avatarStyle,function(i){
+          if (avatarStyle[i].is_default == 1) {
+            style = avatarStyle[i];
+          }
+        });
+        cardsAvatar("#adAv-avatars-container",style.folder,style.preview,style.avatar_id,style.nombre,"adAv-enter","adAv-upd","adAv-delete");
+      });
+    }
+  },1000);
 
 
   //save
@@ -110,14 +117,14 @@ $(function(){
     id = $(this).data('id');
     $("#adAv-avatars-container").addClass('adAv-hide');
 
-    var tempAvatarStyles = StorageDB.table.getByAttr("localStyles","avatar_id",id);
+    var tempAvatarStyles = atrib(tempStyles,"avatar_id",id);
 
     $.each(tempAvatarStyles,function(i){
       if (tempAvatarStyles[i].is_default == 1) {
         cardAdd("#adAv-avatarStyles-container",tempAvatarStyles[i].folder,tempAvatarStyles[i].preview,tempAvatarStyles[i].avatar_id,tempAvatarStyles[i].nombre,"adAv-addStyle");
       }else {
-        var avatarName = StorageDB.table.getByAttr("localAvatars","id",id);
-        cards("#adAv-avatarStyles-container",tempAvatarStyles[i].folder,tempAvatarStyles[i].preview,tempAvatarStyles[i].avatar_id,tempAvatarStyles[i].nombre,"adAv-enterSprites","adAv-updStyles","adAv-deleteStyle",tempAvatarStyles[i].id,avatarName[0].nombre);
+        // var avatarName = StorageDB.table.getByAttr("localAvatars","id",id);
+        cards("#adAv-avatarStyles-container",tempAvatarStyles[i].folder,tempAvatarStyles[i].preview,tempAvatarStyles[i].avatar_id,tempAvatarStyles[i].nombre,"adAv-enterSprites","adAv-updStyles","adAv-deleteStyle",tempAvatarStyles[i].id,tempAvatarStyles[0].nombre);
       }
     });
   });
@@ -166,16 +173,16 @@ $(function(){
 
     $("#adAv-avatarStyles-container").addClass('adAv-hide');
 
-    var tempStyles = StorageDB.table.getByAttr("localStyles","id",idStyle);
-    var avatarName = StorageDB.table.getByAttr("localAvatars","id",idAvatar);
-    cardAddSprite("#adAv-avatarSprites-container",tempStyles[0].folder,tempStyles[0].preview,$(this).data('id2'),tempStyles[0].nombre,"adAv-addSprite",avatarName[0].nombre);
+    var Styles = atrib(tempStyles,"id",idStyle);
+    var avatarName = atrib(tempAvatars,"id",idAvatar);
+    cardAddSprite("#adAv-avatarSprites-container",Styles[1].folder,Styles[1].preview,$(this).data('id2'),Styles[1].nombre,"adAv-addSprite",avatarName[0].nombre);
 
     $.each(tempSprites,function(i){
-      alert('perro');
-      var style = StorageDB.table.getByAttr("localStyles","id",idStyle);
-      var avatar = StorageDB.table.getByAttr("localAvatars","id",style[0].avatar_id);
-      var sequence = StorageDB.table.getByAttr("localSecuences","id",tempSprites[0].secuencia_id);
-      cardSprite("#adAv-avatarSprites-container",style[0].folder,tempSprites[i].imagen,tempSprites[i].id,sequence[0].nombre,null,"updateSprite-btn","deleteSprite-btn",null,avatar[i].nombre,sequence[0].nombre);
+      var style = atrib(tempStyles,"id",idStyle);
+      var avatar = atrib(tempAvatars,"id",style[1].avatar_id);
+      var sequence = atrib(tempSecuences,"id",tempSprites[i].secuencia_id);
+      console.log(sequence);
+      cardSprite("#adAv-avatarSprites-container",style[1].folder,tempSprites[i].imagen,tempSprites[i].id,sequence[0].nombre,null,"updateSprite-btn","deleteSprite-btn",null,avatar[i].nombre,sequence.nombre);
     });
 
   });
@@ -543,4 +550,14 @@ function select(selector,obj){
       "<option value='" + obj[i].id + "'>" + obj[i].nombre + "</option>"
     ));
   });
+}
+
+function atrib(obj,attr,data){
+  var response=[];
+  $.each(obj,function(index,obj,i){
+    if (obj[attr] == data) {
+      response[index] = obj;
+    }
+  });
+  return response;
 }

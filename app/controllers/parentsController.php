@@ -209,7 +209,7 @@ class parentsController extends BaseController{
                 array(
                   "line_items" => array(
                     array(
-                      "name"       => $plan->name,
+                      "name"       => $plan->reference,
                       "unit_price" => $plan->amount * 100,
                       "quantity"   => 1
                     )//first line_item

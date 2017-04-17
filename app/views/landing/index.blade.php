@@ -513,7 +513,7 @@
 	<!-- Fin Sección con el Apoyo -->
 
 	<!-- Separador 3 -->
-	<div class="col-md-12 view hm-black-strong" id="separador3">
+	<div class="col-md-12 view hm-black-strong" id="separador3" hidden="hidden">
 		<div class="mask flex-center">
 			<center>
 				<h2 class="white-text h1-responsive">
@@ -525,7 +525,7 @@
 	</div>
 
 	<!-- Sección con Padrino curiosity -->
-	<section id="padrino-curiosity" class="margen-dispositivo">
+	<section id="padrino-curiosity" class="margen-dispositivo" hidden="hidden">
 		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
 				<!-- <img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class=""> -->
@@ -538,8 +538,34 @@
                     ¿Qué es padrino curiosity? <br>
                     Consiste en brindar la oportunidad a niños de casas hogares de tener el acceso
                     a una cuenta para acceder a la plataforma. <br>
-                    Solo tienes que dar click al boton de abajo, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
-                </p>
+                    Solo tienes que dar click al boton VER TODAS, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
+                </p><br>
+
+                <?php $contador = 0 ?>
+                @foreach($casasHogares as $casaHogar)
+                   <?php $contador = $contador + 1 ?>
+                    @if($contador > 2)
+                    <div class="col-md-3 col-sm-6 hidden-xs-down">
+                        <div class="view hm-zoom overlay z-depth-1">
+                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                        </div>
+                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre }}</h5></div>
+                    </div>
+                    @else
+                    <div class="col-md-3 col-sm-6">
+                        <div class="view hm-zoom overlay z-depth-1">
+                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                        </div>
+                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre}}</h5></div>
+                    </div>
+				    @endif
+				@endforeach
+
+				<div class="col-md-12">
+				    <center>
+				        <a href="/casas-hogares" class="btn btn-info btn-rounded" id="btn-goHome">Ver todas</a>
+				    </center>
+				</div>
 			</div>
 		</div>
 	</section>
