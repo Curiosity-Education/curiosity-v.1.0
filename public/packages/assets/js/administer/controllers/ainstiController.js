@@ -74,7 +74,6 @@ var ainstiController = {
         }
      }
   },
-
   updateModal : function(response){
     $("#updAdIn-name").val(response.nombre);
     $("#updAdIn-calle").val(response.calle);

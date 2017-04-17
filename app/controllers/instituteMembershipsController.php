@@ -214,11 +214,16 @@ class instituteMembershipsController extends BaseController{
             ->select('children.*')
             ->get();
 
+        $folder = DB::table('instituciones')->where('id', '=', $idcasaHogar['id'])->first();
+
         return Response::json(array(
 
             'status'        => 200,
             'statusMessage' => 'success',
-            'data'          => $datos
+            'data'          => [
+                "child" => $datos,
+                "folder" => Curiosity::clean_string($folder->nombre)
+            ]
 
         ));
 
