@@ -67,6 +67,7 @@
 		</div>
 
 		<!-- Container of children -->
+
 		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children" style="margin-bottom:1rem;">
            <div class="row">
                <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
