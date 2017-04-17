@@ -563,6 +563,7 @@
 
 				<div class="col-md-12">
 				    <center>
+
 				        <a href="/casas-hogares" class="btn btn-info btn-rounded" id="btn-goHome">IR A PADRINO CURIOSITY</a>
 				    </center>
 				</div>

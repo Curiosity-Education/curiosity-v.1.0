@@ -213,6 +213,7 @@ class instituteMembershipsController extends BaseController{
             ->where('institucion_id','=',$idcasaHogar['id'])
             ->select('children.*')
             ->get();
+
         $folder = DB::table('instituciones')->where('id', '=', $idcasaHogar['id'])->first();
 
         return Response::json(array(
