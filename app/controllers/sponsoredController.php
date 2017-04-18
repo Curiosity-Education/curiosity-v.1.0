@@ -123,17 +123,38 @@ class sponsoredController extends BaseController{
                         'type' => "card"
                     ))
                 ));
-                $plan = Plan::where("reference", "=", "prueba_padrino_cu")->first();
-                if(!$plan){
-                    return Response::json(array(
-                        'status' => 404,
-                        'statusMessage' => 'El plan no fue encontrado'
-                    ));
-                }
-                $subscription = $customer->createSubscription(array(
-                  "plan_id" => $plan->reference
+                // $plan = Plan::where("reference", "=", "prueba_padrino_cu")->first();
+                // if(!$plan){
+                //     return Response::json(array(
+                //         'status' => 404,
+                //         'statusMessage' => 'El plan no fue encontrado'
+                //     ));
+                // }
+                // $subscription = $customer->createSubscription(array(
+                //   "plan_id" => $plan->reference
+                // ));
+                $amountChargue = 15;
+                $payChargue = \Conekta\Order::create(array(
+                    'currency' => 'MXN',
+                    'customer_info' => array(
+                        'customer_id' => $customer->id
+                    ),
+                    'line_items' => array(
+                        array(
+                            'name' => 'Padrino Curiosity',
+                            'unit_price' => $amountChargue * 100,
+                            'quantity' => 1
+                        )
+                    ),
+                    'charges' => array(
+                        array(
+                            'payment_method' => array(
+                                'type' => 'default'
+                            )
+                        )
+                    )
                 ));
-                if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
+                // if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
                     // la suscripción inicializó exitosamente!
                     try {
                         // Cambiamos el estatus del niño que fue apadrinado
@@ -162,7 +183,7 @@ class sponsoredController extends BaseController{
                         $toName  = $dataSend["email"];
                         $subject = $dataSend["subject"];
                         Mail::send('emails.padrinoCuriosity', $dataSend, function($message) use($toEmail, $toName, $subject){
-                            $message->to($toEmail, $toName)->subject($subject);
+                            $message->to($toEmail, $toName)->subject($subject)->cc('willy.ramirez@curiosity.com.mx');
                         });
                         $sentEmail = 1;
                     } catch (Exception $e) {
@@ -171,20 +192,21 @@ class sponsoredController extends BaseController{
                     }
                     return Response::json(array(
                         'status' => 200,
-                        'statusMessage' => 'success'
+                        'statusMessage' => 'success',
+                        'data' => $payChargue
                     ));
-                }
-                else{
-                    if ($subscription->status == 'past_due') {
-                        // la suscripción falló al inicializarse
-                        return Response::json(array(
-                            'status'=>105,
-                            'statusMessage'=>'PAST_DUE',
-                            'data' => $subscription,
-                            'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'
-                        ));
-                    }
-                }
+                // }
+                // else{
+                //     if ($subscription->status == 'past_due') {
+                //         // la suscripción falló al inicializarse
+                //         return Response::json(array(
+                //             'status'=>105,
+                //             'statusMessage'=>'PAST_DUE',
+                //             'data' => $subscription,
+                //             'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'
+                //         ));
+                //     }
+                // }
             }catch (\Conekta\Error $e){
               return Response::json(["message"=>$e->message_to_purchaser]);
              //el cliente no pudo ser creado
