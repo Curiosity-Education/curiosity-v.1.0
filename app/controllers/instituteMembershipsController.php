@@ -96,7 +96,7 @@ class instituteMembershipsController extends BaseController{
 
             // Chain the setters
             $excel->setCreator('Curiosity Educación')
-                  ->setCompany('Curiosity Educación');
+                  ->setCompany('Curiosity Educación S.A.P.I de C.V.');
 
             // Call them separately
             $excel->setDescription('Archivo excel para informe de datos de usuarios asignados a la institución');
