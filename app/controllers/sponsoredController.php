@@ -123,7 +123,7 @@ class sponsoredController extends BaseController{
                         'type' => "card"
                     ))
                 ));
-                $plan = Plan::where("reference", "=", "anual_individual")->first();
+                $plan = Plan::where("reference", "=", "prueba_padrino_cu")->first();
                 if(!$plan){
                     return Response::json(array(
                         'status' => 404,
@@ -145,7 +145,26 @@ class sponsoredController extends BaseController{
                         Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
                     }
                     try {
-                        // **** se debe de enviar un email? ****
+                        // Uncomment for production
+                        $childSpon = Children::where('id', '=', Input::get('child'))->first();
+                        $home = Institute::where('id', '=', $childSpon->institucion_id)->first();
+                        $dataSend = [
+                            "name" => "Equipo Curiosity",
+                            "client" => Input::get('nombre'),
+                            "email" => Input::get('email'),
+                            "subject" => "Padrino Curiosity",
+                            "child" => $childSpon->nombre.' '.$childSpon->apellidos,
+                            "child_image" => '/packages/assets/media/images/padrino_curiosity/'.Curiosity::clean_string($home->nombre).'/'.$childSpon->foto,
+                            "home" => $home->nombre,
+                            "home_image" => "/packages/assets/media/images/institutions/".$home->logo
+                        ];
+                        $toEmail = $dataSend["email"];
+                        $toName  = $dataSend["email"];
+                        $subject = $dataSend["subject"];
+                        Mail::send('emails.padrinoCuriosity', $dataSend, function($message) use($toEmail, $toName, $subject){
+                            $message->to($toEmail, $toName)->subject($subject);
+                        });
+                        $sentEmail = 1;
                     } catch (Exception $e) {
                         $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
                         Log::info('Falló al enviar el email al padrino, una vez que pago: ' . $executionTime . ' | ' .  $e->getMessage());

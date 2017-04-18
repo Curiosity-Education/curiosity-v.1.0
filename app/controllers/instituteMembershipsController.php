@@ -29,13 +29,14 @@ class instituteMembershipsController extends BaseController{
         }
         return $pass;
     }
-    public function generateMemebers($name,$range,$idInstitute){
+    public function generateMemebers($range,$idInstitute){
         /*
-            This function recived 3 params
+            This function recived 2 params
             * range_memberships
-            * name_institute
             * institute_id
         */
+        $instituteObj = Institute::where('id', '=', $idInstitute)->first();
+        $name = Curiosity::clean_string($instituteObj->nombre);
         $dst = array('range_memberships' => $range, 'name_institute' => $name , 'institute_id' => $idInstitute);//Input::all();
         $numMembUser = $dst['range_memberships'];
         $this->name = $dst['name_institute'];
@@ -95,7 +96,7 @@ class instituteMembershipsController extends BaseController{
 
             // Chain the setters
             $excel->setCreator('Curiosity Educación')
-                  ->setCompany('Curiosity Educación');
+                  ->setCompany('Curiosity Educación S.A.P.I de C.V.');
 
             // Call them separately
             $excel->setDescription('Archivo excel para informe de datos de usuarios asignados a la institución');
