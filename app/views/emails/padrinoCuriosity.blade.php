@@ -174,7 +174,7 @@
             <!-- <img src="/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg" id="imgportada">
             <h1>Hola Wilvardo Ramirez</h1> -->
             <h1>
-                ¡Hola {{$client}}! <br>
+                ¡Hola {{-- $client --}}! Wilvardo Ramirez Colunga <br>
                 Gracias por formar parte del programa <br>
                 Padrino Curiosity. <br><br>
                 Apoyando la Educación del país.
@@ -186,7 +186,7 @@
                 <img src="/packages/assets/media/images/padrino_curiosity/amor/susana-alvarez-garca.jpg" id="imgSponsored">
             </div>
             <div id="infoChildBox">
-                <h2>{{$child}}</h2><br>
+                <h2>{{-- $child --}}Susana Alvarado</h2><br>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perferendis delectus libero magnam excepturi hic ullam, pariatur quas veritatis quasi iure illum, inventore tempora, deserunt ad. Natus voluptatibus labore, fugiat. <br><br>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, impedit.
@@ -199,7 +199,7 @@
             {{--<img src="{{asset($home_image)}}">--}}
             <img src="/packages/assets/media/images/institutions/nckWQ25258_030417.jpg">
             <center>
-                <br> <h4 id="relhome">Curiosity Educación y Casa Hogar</h4> <br>
+                <br> <h4 id="relhome">Curiosity Educación y {{-- $home --}} Casa Hogar</h4> <br>
             </center>
             <p style="color:#4c4c4c;">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque provident non doloribus, <br>totam ratione veniam natus nisi impedit earum, odio perferendis sint ab suscipit vitae animi molestiae nam porro, ad. <br><br>
@@ -208,7 +208,7 @@
             <br><br>
             {{--<img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}">--}}
             <img src="/packages/assets/media/images/system/icon-mono.png" id="signTeam">
-            <h4 id="signTeamText">{{$name}}</h4>
+            <h4 id="signTeamText">{{-- $name --}} Equipo Curiosity</h4>
         </div>
         <div id="separator1"></div>
         <div id="separator2"></div>
