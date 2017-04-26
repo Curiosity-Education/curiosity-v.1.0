@@ -117,7 +117,7 @@
 																										  height: 3rem;
 																										  border: 0;
 																										  border-bottom: solid 0.1rem #cccccc;">
-													<option value="" disabled selected>Genero</option>
+													<option value="" disabled selected>Género</option>
 													<option value="m" >Masculino</option>
 													<option value="f" >Femenino</option>
 												</select>
