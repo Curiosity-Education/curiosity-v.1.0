@@ -119,6 +119,9 @@ class loginController extends BaseController{
                      ){
                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-levels"));
             }
+            else{
+                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "/logout"));
+            }
          }
          else {
             return Response::json(array("status" => "CU-106", 'statusMessage' => "Access denied", "data" => null));
