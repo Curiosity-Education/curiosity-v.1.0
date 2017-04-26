@@ -71,19 +71,19 @@ var admChHomController = {
             let _height = document.getElementById('agf_ph').height;
             let child = new ChildrenHome(formData);
             if ($('#agf_photo').val() != ''){
-                if (_width == _height){
+                // if (_width == _height){
                     if (type == "registry"){
                         child.save(this.successAdded);
                     }
                     if (type == "update"){
                         child.update(var_id, this.successUpdated);
                     }
-                }
-                else{
-                    Curiosity.noty.warning('Favor de elegir una imagen Cuadrada con relación 1:1', 'Imagen Error');
-                    this.resetImage();
-                    Curiosity.toastLoading.hide();
-                }
+                // }
+                // else{
+                //     Curiosity.noty.warning('Favor de elegir una imagen Cuadrada con relación 1:1', 'Imagen Error');
+                //     this.resetImage();
+                //     Curiosity.toastLoading.hide();
+                // }
             }
             else if(type == "registry") {
                 Curiosity.toastLoading.hide();
