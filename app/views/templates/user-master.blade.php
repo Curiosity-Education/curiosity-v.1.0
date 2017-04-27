@@ -147,9 +147,9 @@
       <script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
       <script src="/packages/assets/js/landing/controllers/loginController.js?{{rand();}}"></script>
       <script src="/packages/assets/js/app-master.js?{{rand();}}"></script>
-      <script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-      <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-      <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+      <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
       <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
       @yield('js')
    </body>

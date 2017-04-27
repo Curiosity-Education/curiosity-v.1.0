@@ -68,13 +68,13 @@
 
 	<script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
 	<script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
-	<script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+	<script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
     <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
 
    	<script src="/packages/assets/js/administer/controllers/SpriteAnimator.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/child/models/selectAvatar.js?{{rand();}}" charset="utf-8"></script>
+    <script src="/packages/assets/js/child/models/dist/selectAvatar-dist.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/child/controllers/selectAvatarCtrl.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/child/dispatchers/dsp-selectAvatar.js?{{rand();}}" charset="utf-8"></script>
 </body>

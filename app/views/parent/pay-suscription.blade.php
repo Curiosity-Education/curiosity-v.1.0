@@ -246,16 +246,16 @@
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
     <script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
-	 <script src="/packages/assets/js/administer/models/SalerCode.js"></script>
-    <script src="/packages/assets/js/administer/models/Plan.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+	 <script src="/packages/assets/js/administer/models/dist/SalerCode-dist.js"></script>
+    <script src="/packages/assets/js/administer/models/dist/Plan-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/dist/Parent-dist.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script type="text/javascript">
