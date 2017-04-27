@@ -12,6 +12,10 @@
 @stop
 
 @section('menu-links')
+<?php $isDadMassive = DB::table('institucion_usuario')
+                     ->select(DB::raw('count(id) as userCount'))
+                     ->where('user_id', '=', Auth::user()->id)
+                     ->get()[0]->userCount ?>
 <div data-url="/view-parent.home" class="linkMenu waves-effect">
    <span class="fa fa-home" id="parentMenu-icon-home"></span>&nbsp;
    Inicio
@@ -24,10 +28,12 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
+@if($isDadMassive == 0)
 <div data-url="/view-parent.child_registration" class="linkMenu waves-effect" id="parentMenu-addChild-aside">
    <span class="fa fa-users"></span>&nbsp;
    Gestión de Mis Hijos
 </div>
+@endif
 <!-- <div data-url="/view-parentSuscription/infoClient/view-parent.move_to_plan/" class="linkMenu waves-effect parentMenu-confsusc">
    <span class="fa fa-cog"></span>&nbsp;
    Gestión de suscripción
@@ -47,11 +53,12 @@
    <span class="fa fa-file-pdf-o" id="parentMenu-icon-files"></span>&nbsp;
    Biblioteca de PDF'S
 </div>
- <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-
-   effec" id="parentMenu-addChild-aside">
+@if($isDadMassive == 0)
+ <div data-url="/view-parent.child_registration" class="linkMenu linkMenuAside waves-effec" id="parentMenu-addChild-aside">
    <span class="fa fa-cogs"></span>&nbsp;
    Gestión de Mis Hijos
  </div>
+@endif
 <div data-url="#" class="linkMenu linkMenuAside logOutBtn waves-effec">
    <span class="fa fa-caret-right parentMenu-icon-exit" id="parentMenu-icon-exit"></span>&nbsp;
    Salir
@@ -59,10 +66,12 @@
 @stop
 
 @section('under-menu')
+@if($isDadMassive == 0)
 <div data-url="/view-parent.child_registration" id="parentMenu-addChild" class="z-depth-1 linkMenu waves-effect">
    <span class="fa fa-plus-circle"></span>&nbsp;
    Registrar Hijo
 </div>
+@endif
 @stop
 @section('content')
 <div class="container-fluid" id="container-baner">
