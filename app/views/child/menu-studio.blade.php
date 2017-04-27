@@ -22,7 +22,7 @@
       </div>
     @stop
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Activity.js?{{rand();}}"></script>
+   <script src="/packages/assets/js/administer/models/dist/Activity-dist.js?{{rand();}}"></script>
    <script src='/packages/assets/js/child/controllers/msController.js?{{rand();}}'></script>
    <script src='/packages/assets/js/child/dispatchers/dsp-menuStudio.js?{{rand();}}'></script>
 @stop

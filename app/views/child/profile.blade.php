@@ -108,7 +108,7 @@
 
 @section('js-plus')
    <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
-   <script src="/packages/assets/js/child/models/Profile.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/child/models/dist/Profile-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/child/controllers/profileCtrl.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/child/dispatchers/dsp-profile.js?{{rand();}}" charset="utf-8"></script>
 @stop

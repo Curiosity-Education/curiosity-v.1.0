@@ -49,7 +49,7 @@ class instituteMembershipsController extends BaseController{
             );
         $userParent = $this->createUser($data);
         $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
-        $this->matchInstitute($userParent->userID,1,$data['folio']);
+        $this->matchInstitute($userParent->userID,$dst['institute_id'],$data['folio']);
         for ($i = 0; $i < $numMembUser; $i++){
             $folio = $i + 1;
             $data = array(

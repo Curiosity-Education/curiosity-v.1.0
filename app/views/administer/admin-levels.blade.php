@@ -65,7 +65,7 @@ Niveles (Grados)
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/alevController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-alev.js?{{rand();}}" charset="utf-8"></script>
 @stop

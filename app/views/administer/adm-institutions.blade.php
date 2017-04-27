@@ -138,7 +138,7 @@
 @stop
 
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/administer/models/Institution.js"></script>
+<script type="text/javascript" src="/packages/assets/js/administer/models/dist/Institution-dist.js"></script>
 <script type="text/javascript" src="/packages/assets/js/administer/controllers/ainstiController.js"></script>
 <script type="text/javascript" src="/packages/assets/js/administer/dispatchers/dps-insti.js"></script>
 @stop
