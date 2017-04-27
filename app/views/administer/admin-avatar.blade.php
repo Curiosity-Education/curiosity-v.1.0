@@ -39,13 +39,13 @@
 </div>
 
 <div id="adAv-modal">
-  
+
 </div>
 
 @stop
 
 @section('js-plus')
-<script src="/packages/assets/js/administer/models/admin-avatar.js" ></script>
+<script src="/packages/assets/js/administer/models/dist/admin-avatar-dist.js" ></script>
 <script src="/packages/assets/js/administer/controllers/aAvaController.js"></script>
 <script src="/packages/assets/js/administer/dispatchers/dsp-aAva.js"></script>
 @stop

@@ -135,13 +135,13 @@ Biblioteca de Videos
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Block.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Schoolasc.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Teacher.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Library_video.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Intelligence-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Block-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Topic-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Schoolasc-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Teacher-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Library_video-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/albvidController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-albvid.js?{{rand();}}" charset="utf-8"></script>
 @stop

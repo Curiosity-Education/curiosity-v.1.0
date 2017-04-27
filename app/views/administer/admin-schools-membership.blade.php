@@ -123,7 +123,7 @@ Gestion de cuentas masivas
 @stop
 
 @section('js-plus')
-<script src="/packages/assets/js/administer/models/Level.js?{{rand();}}" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/dispatchers/dsp-shme.js?{{rand();}}" charset="utf-8"></script>
 @stop

@@ -66,7 +66,7 @@ Escuelas de apoyo
 @stop
 
 @section('js-plus')
-   <script src='/packages/assets/js/administer/models/SchoolAsc.js?{{rand();}}' charset='utf-8'></script>
+   <script src='/packages/assets/js/administer/models/dist/SchoolAsc-dist.js?{{rand();}}' charset='utf-8'></script>
    <script src='/packages/assets/js/administer/Controllers/aschController.js?{{rand();}}' charset='utf-8'></script>
    <script src='/packages/assets/js/administer/dispatchers/dsp-asch.js?{{rand();}}' charset='utf-8'></script>
 @stop

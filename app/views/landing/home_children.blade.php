@@ -189,13 +189,13 @@
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
 	<script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
 	<script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
-	<script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+	<script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
     <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
-    <script src="/packages/assets/js/landing/models/apadrinar.js?{{rand();}}" charset="utf-8"></script>
+    <script src="/packages/assets/js/landing/models/dist/apadrinar-dist.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/landing/controllers/ctrl-apadrinar.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/landing/dispatchers/dsp-apadrinar.js?{{rand();}}" charset="utf-8"></script>
 </body>

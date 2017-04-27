@@ -124,14 +124,14 @@
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/additional-methods.min.js"></script>
     <script type="text/javascript" src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script type="text/javascript" src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
-    <script type="text/javascript" src="/packages/assets/js/child/models/child.js?{{rand();}}"></script>
+    <script type="text/javascript" src="/packages/assets/js/child/models/dist/child-dist.js?{{rand();}}"></script>
     <script type="text/javascript" src="/packages/assets/js/child/controllers/childrenCtrl.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/registry_firstchild.js?{{rand();}}"></script>
     <script type="text/javascript">

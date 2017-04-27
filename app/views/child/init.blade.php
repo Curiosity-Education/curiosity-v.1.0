@@ -95,7 +95,7 @@
 
 @section('js-plus')
   <script type="text/javascript" type="text/javascript" src="packages/assets/js/child/init.js?{{rand();}}"></script>
-  <script type="text/javascript" src="/packages/assets/js/child/models/activity.js?{{rand();}}"></script>
+  <script type="text/javascript" src="/packages/assets/js/child/models/dist/activity-dist.js?{{rand();}}"></script>
   <script type="text/javascript" src="/packages/assets/js/child/controllers/activityCtrl.js?{{rand();}}"></script>
   <script type="text/javascript" src="/packages/assets/js/child/dispatchers/dsp-child-home.js?{{rand();}}"></script>
 @stop

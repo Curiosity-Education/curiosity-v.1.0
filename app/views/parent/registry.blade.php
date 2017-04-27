@@ -177,10 +177,10 @@
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
     <script src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/dist/Parent-dist.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script type="text/javascript">

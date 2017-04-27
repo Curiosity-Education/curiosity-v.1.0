@@ -1,5 +1,7 @@
 class DailyGoal extends CORM {
-   constructor() {}
+   constructor() {
+       super()
+   }
 
    static updateConf(idGoal,method,success){
      this.goal = {

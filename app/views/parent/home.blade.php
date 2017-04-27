@@ -145,8 +145,8 @@
 @section('js')
     <script src="/packages/libs/materialize/js/materialize.js" charset="utf-8"></script>
     <script src="/packages/libs/chart/Chart.min.js" charset="utf-8"></script>
-    <script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/administer/models/dist/Intelligence-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/dist/Parent-dist.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/homeParent-main.js?{{rand();}}" charset="utf-8"></script>

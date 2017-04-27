@@ -138,7 +138,7 @@
 	</script>
 
 	{{ HTML::script('/packages/assets/js/parent/library_pdfs.js') }}
-	<script type="text/javascript" src="/packages/assets/js/parent/models/library-pdfs.js?{{rand();}}"></script>
+	<script type="text/javascript" src="/packages/assets/js/parent/models/dist/library-pdfs-dist.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/parent/controllers/library-pdfsCrtrl.js?{{rand();}}"></script>
 	<script type="text/javascript" src="/packages/assets/js/parent/dispatchers/dp-library-pdfs.js?{{rand();}}"></script>
 @stop
