@@ -122,7 +122,7 @@ class instituteMembershipsController extends BaseController{
         $person->user_id = $user->id;
         $person->save();
 
-        $this->matchInstitute($user->id,$dst['institute_id'],$folio);
+        $this->matchInstitute($user->id,$dst['institute_id'],$dst['folio']);
         $this->createSon($person->id,$parent_id);
     }
     private function matchInstitute($user_id,$institute_id,$folio){
