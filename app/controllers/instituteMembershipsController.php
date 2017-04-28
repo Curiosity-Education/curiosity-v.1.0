@@ -57,7 +57,8 @@ class instituteMembershipsController extends BaseController{
                 'role'  => 'child',
                 'type' => 'Usuario niño',
                 'institute_id' => $dst['institute_id'],
-                'folio' => $folio
+                'folio' => $folio,
+                'parent_id' => $parent_id
             );
             $this->createUser($data);
         }
@@ -123,7 +124,7 @@ class instituteMembershipsController extends BaseController{
         $person->save();
 
         $this->matchInstitute($user->id,$dst['institute_id'],$dst['folio']);
-        $this->createSon($person->id,$parent_id);
+        $this->createSon($person->id,$dst['parent_id']);
     }
     private function matchInstitute($user_id,$institute_id,$folio){
         $instituteUser = new InstituteUser();
