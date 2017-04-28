@@ -56,7 +56,8 @@ class instituteMembershipsController extends BaseController{
                 'username' => $this->createUserName($folio),
                 'role'  => 'child',
                 'type' => 'Usuario niño',
-                'institute_id' => $dst['institute_id']
+                'institute_id' => $dst['institute_id'],
+                'folio' => $folio
             );
             $this->createUser($data);
         }
