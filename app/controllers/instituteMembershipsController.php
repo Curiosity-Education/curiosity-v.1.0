@@ -58,9 +58,7 @@ class instituteMembershipsController extends BaseController{
                 'type' => 'Usuario niño',
                 'institute_id' => $dst['institute_id']
             );
-            $userData = $this->createUser($data);
-            $this->matchInstitute($userData->userID,$dst['institute_id'],$folio);
-            $this->createSon($userData->personID,$parent_id);
+            $this->createUser($data);
         }
         Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
 
@@ -117,13 +115,14 @@ class instituteMembershipsController extends BaseController{
         $user->save();
         $user->attachRole(Role::where('name','=',$dst['role'])->first()->id);
         $person = new Person();
-        $person->nombre = 'No definido';
-        $person->apellidos = 'No definido';
-        $person->sexo = 'o';
+        $person->nombre = $dst['username'];
+        $person->apellidos = '';
+        $person->sexo = 'm';
         $person->user_id = $user->id;
         $person->save();
 
-        return (object)array('userID' => $user->id,'personID' => $person->id);
+        $this->matchInstitute($user->id,$dst['institute_id'],$folio);
+        $this->createSon($person->id,$parent_id);
     }
     private function matchInstitute($user_id,$institute_id,$folio){
         $instituteUser = new InstituteUser();
@@ -140,6 +139,14 @@ class instituteMembershipsController extends BaseController{
         $parent->persona_id = $person_id;
         $parent->foto_perfil = 'dad-def.png';
         $parent->save();
+        $membresia = new Membership(array(
+                  "token_card" => md5(Person::find($person_id)->nombre),
+                  "fecha_registro" => Carbon::now(),
+                  "payment_option" => 'padrino',
+                  "active"    => 1,
+                  "padre_id"  => $parent->id
+        ));
+        $membresia->save();
         return $parent->id;
     }
     private function createSon($person_id,$parent_id){
@@ -188,6 +195,11 @@ class instituteMembershipsController extends BaseController{
 	             'estilo_avatar_id' => 1,
 					 'is_using' => 1
 	         ));
+        $planRel = new MembershipPlan();
+        $planRel->hijo_id = $son->id;
+        $planRel->membresia_id = Membership::where("padre_id", "=", $parent_id)->pluck("id");
+        $planRel->plan_id = Plan::where("reference", "=", 'padrino')->first()["id"];
+        $planRel->save();
     }
 
     public function getHomes(){
