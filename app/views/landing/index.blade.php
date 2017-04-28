@@ -686,7 +686,7 @@
 @stop
 
 @section('js')
-	<script src="/packages/assets/js/Curiosity.js" charset="utf-8"></script>
+	<script src="/packages/assets/js/Curiosity.obf.js" charset="utf-8"></script>
 	<script type="text/javascript">
         $(function(){
             $(".suscriptionBtn").click(function(e){
