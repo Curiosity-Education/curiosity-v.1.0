@@ -40,17 +40,26 @@ class instituteMembershipsController extends BaseController{
         $dst = array('range_memberships' => $range, 'name_institute' => $name , 'institute_id' => $idInstitute);//Input::all();
         $numMembUser = $dst['range_memberships'];
         $this->name = $dst['name_institute'];
-        $data = array(
+        $p_root_user = User::where('username','=','root_'.$this->name)->select(DB::raw('id,count(*) as exist'))->get()[0];
+        if($p_root_user->exist == 0){
+            $data = array(
                 'username' => 'root_'.$this->name,
                 'role'  => 'parent',
                 'folio' => 0,
                 'type' => 'Usuario administrativo',
                 'institute_id' => $dst['institute_id']
             );
-        $userParent = $this->createUser($data);
-        $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
-        $this->matchInstitute($userParent->userID,$dst['institute_id'],$data['folio']);
-        for ($i = 0; $i < $numMembUser; $i++){
+            $userParent = $this->createUser($data);
+            $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
+            $this->matchInstitute($userParent->userID,$dst['institute_id'],$data['folio']);
+            $countFolio=0;
+        }else{
+            $countFolio = InstituteUser::where('institucion_id','=',$idInstitute)->select('folio')->max('folio');
+            $numMembUser = $countFolio + $numMembUser;
+            $person_id = Person::where('user_id','=',$p_root_user->id)->select('id')->get()[0]->id;
+            $parent_id = Dad::where('persona_id','=',$person_id)->select('id')->get()[0]->id;
+        }
+        for ($i = $countFolio; $i < $numMembUser; $i++){
             $folio = $i + 1;
             $data = array(
                 'username' => $this->createUserName($folio),
@@ -122,9 +131,13 @@ class instituteMembershipsController extends BaseController{
         $person->sexo = 'm';
         $person->user_id = $user->id;
         $person->save();
-
-        $this->matchInstitute($user->id,$dst['institute_id'],$dst['folio']);
-        $this->createSon($person->id,$dst['parent_id']);
+        if($dst['type'] !== 'Usuario administrativo'){
+            $this->matchInstitute($user->id,$dst['institute_id'],$dst['folio']);
+            $this->createSon($person->id,$dst['parent_id']);
+        }
+        else{
+            return (object)array('personID'=>$person->id,'userID'=>$user->id);
+        }
     }
     private function matchInstitute($user_id,$institute_id,$folio){
         $instituteUser = new InstituteUser();
