@@ -162,8 +162,8 @@
 @stop
 
 @section('js-plus')
-	<script src="/packages/assets/js/child/models/child.js?{{rand();}}" charset="utf-8"></script>
-	<script src="/packages/assets/js/child/models/DailyGoal.js?{{rand();}}" charset="utf-8"></script>
+	<script src="/packages/assets/js/child/models/dist/child-dist.js?{{rand();}}" charset="utf-8"></script>
+	<script src="/packages/assets/js/child/models/dist/DailyGoal-dist.js?{{rand();}}" charset="utf-8"></script>
 	<script src="/packages/assets/js/child/controllers/confController.js?{{rand();}}" charset="utf-8"></script>
 	<script src="/packages/assets/js/child/dispatchers/dsp-confupdt.js?{{rand();}}" charset="utf-8"></script>
 @stop

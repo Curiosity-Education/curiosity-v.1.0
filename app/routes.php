@@ -10,30 +10,22 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('prueba-excel',function(){
+Route::get('get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
 
-    $data = User::all();
-    Excel::create('Filename', function($excel) use($data) {
-
-        $excel->sheet('Sheetname', function($sheet) use($data) {
-
-            $sheet->fromModel($data);
-
-        });
-
-    })->export('xls');
-});
 
 Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
-Route::get('/codigo', function(){
-	return View::make('parent.pay-suscription');
+Route::get('/padrino-email', function(){
+	return View::make('emails.padrinoCuriosity');
 });
 
-Route::get('/oxxo', function(){
-	return View::make('parent.account-oxxo-paused');
+Route::get('/padrino', function(){
+    $inst = ["homes" => Institute::where("tipo", "=", "Casa Hogar")
+    ->where("active", "=", 1)
+    ->get()];
+    return View::make("administer.admin-godfather", $inst);
 });
 
 //Route::get('/selectavatar', 'avatarController@view');
@@ -222,6 +214,13 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('getChildSelected', 'childrenHasGoal@getChildSelected');
 		});
 	});
+	Route::group(array('prefix' => '/admin-godhouses'), function(){
+		Route::post('save', 'sponsoredController@save');
+		Route::post('update', 'sponsoredController@update');
+        Route::post('delete', 'sponsoredController@delete');
+        Route::post('getChildren', 'sponsoredController@getChildren');
+        Route::post('hide-show-home', 'sponsoredController@hide_show_home');
+	});
 });
 
   //institutions
@@ -275,6 +274,16 @@ Route::group(array('before' => 'auth'), function(){
 		 Route::post('delete', 'schoolAscController@delete');
 	 });
 // });
+
+/*
+* -----------------------------------------------------------------------------
+* Routes to Sponsored.
+* all without special permision and without login
+* -----------------------------------------------------------------------------
+*/
+Route::group(array('prefix' =>  'sponsored'),function(){
+	Route::post('payForChild', 'sponsoredController@paySponsored');
+});
 
 /*
 * -----------------------------------------------------------------------------

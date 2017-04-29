@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/packages/assets/css/landing/style-index.min.css">
     <link rel="stylesheet" href="/packages/libs/sweetalert2/sweetalert2.min.css">
     <title>Casas Hogares</title>
+    <script src="//code.tidio.co/fkqcqcm9kdpxi40osnnqerxr0wn9gpy2.js"></script>
 </head>
 <body>
     <div class="col-md-12 view hm-black-strong" id="casasHogares">
@@ -66,75 +67,115 @@
 		</div>
 
 		<!-- Container of children -->
-		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children">
-               <div class="row">
-                   <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
-               </div>
-                <h3 class="text-xs-center" id="nameHome"></h3>
-                <hr class="hr-apartado">
-                <br>
-                <div id="displayChildren">
 
-
-                </div>
+		<div class="col-md-12 col-sm-12 animated fadeInRightBig displaynone" id="content-children" style="margin-bottom:1rem;">
+           <div class="row">
+               <a class="z-depth-2 btn-floating btn-small blue pull-right" id="close"><i class="fa fa-times"></i></a>
+           </div>
+            <h3 class="text-xs-center" id="nameHome"></h3>
+            <hr class="hr-apartado">
+            <br>
+            <div id="displayChildren"></div>
 		</div>
 
-		<!-- Modal for apadrinar -->
-		<div class="modal fade modal-ext" id="modal-apadrinar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!--Content-->
-                <div class="modal-content borderRounded">
-                    <!--Header-->
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h3 id="title-header"> Apadrinamiento</h3>
+        <div class="row" id="paybox" style="margin-bottom:1rem;">
+            <div class="col-md-12">
+                <div id="boxPaymentChild" class="z-depth-1">
+                    <div id="boxtobtnback">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="chip animated bounce" id="homes-backfrompay">
+                                   <img src="/packages/assets/media/images/system/iconBack.png">
+                                   Regresar
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div id="boxtitlepay">
+                                    <!-- <label>Tarjeta de crédito o débito</label> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!--Body-->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="col-md-12">
-                                <div class="row fadeIn animated" id="row-login">
-                                    <div class="col-md-5">
-                                        <center>
-                                            <img id="img-modalChild" src="" alt="..." class="rounded-circle img-fluid" style="width:70%;">
-                                        </center>
-                                        <hr>
-                                        <p class="text-xs-center">¿Deseas apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
-                                        <p class="text-xs-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-12">
+                                <center><img id="img-modalChild" class="rounded-circle img-fluid z-depth-1"></center>
+                                <hr>
+                            </div>
+                            <p class="text-xs-center text-sm-left text-md-center">¿Quiéres apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
+                            <p class="text-xs-center text-sm-left text-md-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
+                            <div id="secureIcon">
+                                <img src="/packages/assets/media/images/parents/payment_cards/security.png">
+                                <label>Tus pagos se realizan <br> de forma segura</label>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div id="paymentlogoshomes">
+                                <div class="row">
+                                    <div class="col-md-3" style="border-right: solid .1rem #bbbbbb;">
+                                        <h6 class="labelTypePat">Tarjetas de débito</h6>
+                                        <img src="/packages/assets/media/images/parents/payment_cards/cards1.png" class="img-fluid typePayImg">
                                     </div>
-                                    <div class="col-md-7" id="form-content">
-                                        <div class="row">
-                                            <form id="formLogin">
-                                                <div class="md-form">
-                                                    <i class="fa fa-user prefix"></i>
-                                                    <input type="text" id="username" class="form-control" name="username">
-                                                    <label for="username">Usuario</label>
-                                                </div>
-                                                <div class="md-form">
-                                                    <i class="fa fa-lock prefix"></i>
-                                                    <input type="password" id="password" class="form-control" name="password">
-                                                    <label for="password">Contraseña</label>
-                                                </div>
-                                                <div class="md-form">
-                                                    <i class="fa fa-lock prefix"></i>
-                                                    <input type="password" id="password" class="form-control" name="password">
-                                                    <label for="password">Contraseña</label>
-                                                </div>
-                                            </form>
-                                            <div class="text-xs-center">
-                                                <button class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnConfirm">Aceptar</button>
+                                    <div class="col-md-9">
+                                        <h6 class="labelTypePat">Tarjetas de crédito</h6>
+                                        <img src="/packages/assets/media/images/parents/payment_cards/cards2.png" class="img-fluid typePayImg">
+                                    </div>
+                                </div>
+                            </div>
+                            <form id="formToPay">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                          <label class="labelDataPay">Nombre Completo</label>
+                                          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre y apellidos">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                          <label class="labelDataPay">Correo Electrónico</label>
+                                          <input type="email" class="form-control" id="email" name="email" placeholder="alguien@dominio.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                          <label class="labelDataPay">Número de tarjeta</label>
+                                          <input type="text" class="form-control" id="card_number" name="card_number" placeholder="4242424242424242" maxlength="16">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                          <label class="labelDataPay">Mes de expiración</label>
+                                          <input type="text" class="form-control" id="exp_month" name="exp_month" placeholder="01" maxlength="2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                          <label class="labelDataPay">Año de expiración</label>
+                                          <input type="text" class="form-control" id="exp_year" name="exp_year" placeholder="30" maxlength="2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                              <label class="labelDataPay">Código de seguridad (CVV)</label>
+                                              <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" maxlength="3">
                                             </div>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-7"></div>
+                                        <div class="col-xs-12 col-md-5">
+                                            <button type="button" class="btn btn-primaryCur btn-lg btn-block borderRounded" id="btnConfirm">
+                                                Confirmar Información
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div> <!-- /.col-md-12 -->
+                            </form>
                         </div>
-                    </div> <!-- /.modal-body -->
+                    </div>
                 </div>
-                <!--/.Content-->
             </div>
         </div>
 	</div>
@@ -142,29 +183,20 @@
 
     <script src="/packages/libs/mdb/js/jquery-3.1.1.min.js"></script>
     <script src="/packages/libs/mdb/js/tether.min.js"></script>
+    <script src="/packages/libs/validation/jquery.validate.min.js?{{rand();}}" charset="utf-8"></script>
+    <script src="/packages/libs/validation/localization/messages_es.min.js?{{rand();}}" charset="utf-8"></script>
     <script src="/packages/libs/mdb/js/bootstrap.min.js"></script>
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
-	<script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
-
 	<script src="/packages/libs/sweetalert2/sweetalert2.min.js"></script>
 	<script src="/packages/assets/js/Curiosity.js?{{rand();}}"></script>
-	<script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
+	<script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
+    <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
     <script src="/packages/assets/js/config/db/StorageDB.js?{{rand();}}"></script>
-
-    <script src="/packages/assets/js/landing/models/apadrinar.js?{{rand();}}" charset="utf-8"></script>
+    <script type="text/javascript" src="/packages/assets/js/landing/app-index.js"></script>
+    <script src="/packages/assets/js/landing/models/dist/apadrinar-dist.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/landing/controllers/ctrl-apadrinar.js?{{rand();}}" charset="utf-8"></script>
    	<script src="/packages/assets/js/landing/dispatchers/dsp-apadrinar.js?{{rand();}}" charset="utf-8"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(function () {
-				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-			});
-		});
-
-		new WOW().init();
-	</script>
 </body>
 </html>

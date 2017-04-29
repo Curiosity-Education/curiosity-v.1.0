@@ -18,15 +18,28 @@ Padrino Curiosity
        @foreach($homes as $home)
        <div class="col-md-3">
             <div class='view overlay z-depth-1 agf-containerbox'>
-                <img src='/packages/assets/media/images/schools/{{ $home->logo }}' class='img-fluid'>
+                @if ($home->visible == 0)
+                <h5 class="agf-colorvisible-red" id="agf{{$home->id}}hm1"><span class="fa fa-eye-slash"></span> &nbsp;No Visible</h5>
+                @endif
+                @if ($home->visible == 1)
+                <h5 class="agf-colorvisible-green" id="agf{{$home->id}}hm1"><span class="fa fa-eye"></span> &nbsp;Visible</h5>
+                @endif
+                <img src='/packages/assets/media/images/institutions/{{ $home->logo }}' class='img-fluid'>
                 <div class='mask flex-center'>
                     <center>
                         <a class='btn-floating btn-small waves-effect waves-light agf-btnround-conf' data-h="{{ $home->id }}">
                             <i class='fa fa-gears'></i>
                         </a>
-                        <a class='btn-floating btn-small waves-effect waves-light agf-btnround-hide' data-h="{{ $home->id }}">
+                        @if ($home->visible == 1)
+                        <a id="agf{{$home->id}}hm2" class='btn-floating btn-small waves-effect waves-light agf-btnvisible agf-btnvisible-red' data-h="{{ $home->id }}">
                             <i class='fa fa-eye-slash'></i>
                         </a>
+                        @endif
+                        @if ($home->visible == 0)
+                        <a id="agf{{$home->id}}hm2" class='btn-floating btn-small waves-effect waves-light agf-btnvisible agf-btnvisible-green' data-h="{{ $home->id }}">
+                            <i class='fa fa-eye'></i>
+                        </a>
+                        @endif
                     </center>
                 </div>
                 <h6>{{ $home->nombre }}</h6>
@@ -36,6 +49,20 @@ Padrino Curiosity
    </div>
 
    <div class='row' id='agf-row-children'>
+       <div id="adf-boxChildren-btns">
+           <div class="col-md-12">
+               <div class="chip animated bounce" id="agf-back">
+                   <img src="/packages/assets/media/images/system/iconBack.png">
+                   Regresar
+               </div>
+               <div class='acti-buttons float-xs-right'>
+                   <a class='btn-floating btn-small waves-effect waves-light' id='agf-btnReg'>
+                       <i class="fa fa-plus"></i>
+                   </a>
+               </div>
+           </div>
+       </div>
+       <div id="adf-boxChildren"></div>
    </div>
 
    <div class="modal fade msad-mdl" id="agf-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
@@ -45,7 +72,7 @@ Padrino Curiosity
          <div class="modal-body">
             <div class="row">
                <div class="col-sm-4">
-                  <img src="cew" class="img-fluid img-thumbnail z-depth-1" id="agf_ph">
+                  <img src="" class="img-fluid img-thumbnail z-depth-1" id="agf_ph">
                   <button type="button" class="btn btn-outline-default btn-block" id="agf-selectPhoto">
                     <span class="fa fa-folder-open"></span>&nbsp;
                     Abrir
@@ -101,7 +128,7 @@ Padrino Curiosity
 @stop
 
 @section('js-plus')
-<script src="/packages/assets/js/administer/models/ChildrenHome.js" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/models/dist/ChildrenHome-dist.js" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/controllers/admChHomController.js" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/dispatchers/dsp-childrenHome.js" charset="utf-8"></script>
 @stop

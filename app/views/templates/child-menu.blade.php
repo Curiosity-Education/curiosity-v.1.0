@@ -74,16 +74,16 @@
 @stop
 
 @section('js')
-<script src="/packages/assets/js/administer/models/Avatar.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/ItemGroup.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Item.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Secuence.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Sprite.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Level.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Intelligence.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Block.js?{{rand();}}"></script>
-<script src="/packages/assets/js/administer/models/Topic.js?{{rand();}}"></script>
-<script src="/packages/assets/js/child/models/DailyGoal.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Avatar-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/ItemGroup-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Item-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Secuence-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Sprite-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Intelligence-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Block-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/administer/models/dist/Topic-dist.js?{{rand();}}"></script>
+<script src="/packages/assets/js/child/models/dist/DailyGoal-dist.js?{{rand();}}"></script>
 <script src="/packages/assets/js/administer/controllers/SpriteAnimator.js?{{rand();}}"></script>
 <script src="/packages/assets/js/child/dispatchers/dsp-child.js?{{rand();}}"></script>
 @yield('js-plus')

@@ -107,11 +107,19 @@
 												<i class="fa fa-user prefix reg-icon-bl"></i>
 												<input type="text" id="nombre" name="nombre" placeholder="¿Cuál es tu nombre?" class="form-control">
 											</div>
-											<div class="md-form form-group" id="reg-gender">
-												<select class="mdb-select" id="sexo" name="sexo">
-													<option value="" disabled selected>Genero</option>
-													<option value="m" data-icon="/packages/assets/media/images/parents/profile/dad-def.png" class="rounded-circle">Masculino</option>
-													<option value="f" data-icon="/packages/assets/media/images/parents/profile/mom-def.png" class="rounded-circle">Femenino</option>
+											<div class="form-group" id="reg-gender">
+												<select class="form-control" id="sexo" name="sexo" style="width: 100%;
+																										  outline: none;
+																										  padding-left: 0.5rem;
+																										  padding-right: 0.5rem;
+																										  border-radius: 0.28rem;
+																										  cursor: pointer;
+																										  height: 3rem;
+																										  border: 0;
+																										  border-bottom: solid 0.1rem #cccccc;">
+													<option value="" disabled selected>Género</option>
+													<option value="m" >Masculino</option>
+													<option value="f" >Femenino</option>
 												</select>
 											</div>
 										</div>
@@ -169,10 +177,10 @@
     <script src="/packages/libs/mdb/js/mdb.min.js"></script>
     <script src="/packages/libs/validation/jquery.validate.min.js"></script>
     <script src="/packages/libs/validation/localization/messages_es.min.js"></script>
-    <script src="/packages/assets/js/config/db/corm.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/db/database.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/config/request/request.js?{{rand();}}"></script>
-    <script src="/packages/assets/js/parent/models/Parent.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/corm-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/db/dist/database-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/config/request/dist/request-dist.js?{{rand();}}"></script>
+    <script src="/packages/assets/js/parent/models/dist/Parent-dist.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/controllers/parentController.js?{{rand();}}"></script>
     <script src="/packages/assets/js/parent/dispatchers/dsp-parent.js?{{rand();}}"></script>
     <script type="text/javascript">

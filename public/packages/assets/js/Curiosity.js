@@ -109,7 +109,9 @@ var Curiosity = {
         });
    },
 
-   notyInput : function($title,$type,$fn){
+   notyInput : function($title,$type,$fn,text1,text2){
+        if(text1 == undefined){ text1 = "ELIMINAR" }
+        if(text2 == undefined){ text1 = "eliminar" }
         swal({
           title: $title,
           input: $type,
@@ -117,13 +119,20 @@ var Curiosity = {
           confirmButtonText: 'Aceptar',
           showLoaderOnConfirm: true,
           allowEscapeKey:false,
+          confirmButtonColor: '#ec2726',
+          cancelButtonColor: '#aaaaaa',
           preConfirm: function (input) {
             return new Promise(function (resolve, reject) {
               setTimeout(function() {
                 if (input === '') {
                   reject('La caja de texto no puede estar vacía')
                 } else {
-                  resolve()
+                    if (input !== text1 && input !== text2){
+                        reject("No has ingresado la palabra "+text1+" correctamente")
+                    }
+                    else {
+                        resolve()
+                    }
                 }
               }, 2000)
             })

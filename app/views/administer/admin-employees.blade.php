@@ -114,8 +114,8 @@ Empleados
 @stop
 
 @section('js-plus')
-   <script src="/packages/assets/js/administer/models/Position.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/models/Employee.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Position-dist.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/models/dist/Employee-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/Controllers/aempController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-aemp.js?{{rand();}}" charset="utf-8"></script>
 @stop

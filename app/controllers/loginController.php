@@ -31,8 +31,27 @@ class loginController extends BaseController{
                $idSon = $son["id"];
                $idDad = $son['padre_id'];
                $membership = Membership::where('padre_id','=',$idDad)->first();
-               $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-               if($membershipPlan->active == 1){
+               $accountActive = null;
+               if ($membership){
+                   $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+                   $accountActive = $membershipPlan->active;
+                   $suscriptActive = $membership->active;
+               }
+               else {
+                   $hasActiveAccount = InstituteUser::join('instituciones', 'institucion_usuario.institucion_id', '=', 'instituciones.id')
+                   ->where('institucion_usuario.active', '=', 1)
+                   ->where('instituciones.active', '=', 1)
+                   ->where("institucion_usuario.user_id", "=", $user->id)
+                   ->first();
+                   if ($hasActiveAccount){
+                       $accountActive = 1;
+                       $suscriptActive = 1;
+                   }else{
+                       $accountActive = 0;
+                       $suscriptActive = 0;
+                   }
+               }
+               if($accountActive == 1){
 				   $hasAvatar = DB::table('hijos_has_estilos_avatar')
 					   ->where('hijos_id','=',$idSon)
 					   ->get();
@@ -54,7 +73,7 @@ class loginController extends BaseController{
                   }
                   return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.init"));
                }
-               elseif($membership->active == 3){
+               elseif($suscriptActive == 3){
                    Auth::logout();
                    return Response::json(array("status" => "CU-108", 'statusMessage' => "Paused Membership", "data" => "/"));
                }
@@ -68,7 +87,13 @@ class loginController extends BaseController{
                 $parent = Dad::where("persona_id", "=", $person["id"])->first();
                 $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
                 if(!$hasPlan){
-                    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
+                    if(DB::table('institucion_usuario')
+                     ->select(DB::raw('count(id) as userCount'))
+                     ->where('user_id', '=', Auth::user()->id)
+                     ->get()[0]->userCount > 0)
+                        return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.home"));
+                    else
+                        return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-parent.pay-suscription"));
                 }
                 else{
                     if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){
@@ -94,6 +119,9 @@ class loginController extends BaseController{
                      ){
                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-administer.admin-levels"));
             }
+            else{
+                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "/logout"));
+            }
          }
          else {
             return Response::json(array("status" => "CU-106", 'statusMessage' => "Access denied", "data" => null));
@@ -112,13 +140,35 @@ class loginController extends BaseController{
       $user->save();
       if (Auth::user()->hasRole('child')){
          $person = Person::where("user_id", "=", $user["id"])->first();
-         $idSon = Son::where("persona_id", "=", $person["id"])->first()["id"];
-         $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
-         if ($membershipPlan == null || count($membershipPlan) <= 0 || $membershipPlan == ""){
+         $son_ = Son::where("persona_id", "=", $person["id"])->first();
+         $idSon = $son_->id;
+         $idDad = $son_->padre_id;
+         $membership = Membership::where('padre_id', '=', $idDad)->first();
+         $accountActive = null;
+         $membershipPlan = null;
+         if ($membership){
+             $membershipPlan = MembershipPlan::where('hijo_id', '=', $idSon)->first();
+             $accountActive  = $membershipPlan->active;
+             $suscriptActive = $membership->active;
+         }
+         else {
+             $membershipPlan = InstituteUser::join('instituciones', 'institucion_usuario.institucion_id', '=', 'instituciones.id')
+             ->where('institucion_usuario.active', '=', 1)
+             ->where('instituciones.active', '=', 1)
+             ->where("institucion_usuario.user_id", "=", $user->id)
+             ->first();
+             if ($membershipPlan){
+                 $accountActive = 1;
+                 $suscriptActive = 1;
+             }else{
+                 $membershipPlan = null;
+             }
+         }
+         if ($membershipPlan == null){
             Auth::logout();
             return "/";
          }else{
-            if($membershipPlan->active == 1){
+            if($accountActive == 1){
                $hasAvatar = DB::table('hijos_has_estilos_avatar')
 					   ->where('hijos_id','=',$idSon)
 					   ->get();
@@ -141,6 +191,10 @@ class loginController extends BaseController{
                }
                return "view-child.init";
             }
+            elseif($suscriptActive == 3){
+                Auth::logout();
+                return "/";
+            }
             else{
                Auth::logout();
                return "/";
@@ -152,7 +206,13 @@ class loginController extends BaseController{
           $parent = Dad::where("persona_id", "=", $person["id"])->first();
           $hasPlan = Membership::where('padre_id', '=', $parent["id"])->first();
           if(!$hasPlan){
-              return "view-parent.pay-suscription";
+              if(DB::table('institucion_usuario')
+                     ->select(DB::raw('count(id) as userCount'))
+                     ->where('user_id', '=', Auth::user()->id)
+                     ->get()[0]->userCount > 0)
+                return "view-parent.home";
+              else
+                return "view-parent.pay-suscription";
           }
           else{
               if ($hasPlan->payment_option == "oxxo" && $hasPlan->active == 0){

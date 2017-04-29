@@ -83,6 +83,7 @@ $(function(){
         city = citie[i];
       }
     }
+
     var stat = atrib(states,"id",city.estado_id);    
     ainstiController.infoInsti($(this).data('id'));
     $("#updAdIn-state").empty();
