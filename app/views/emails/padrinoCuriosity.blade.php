@@ -25,7 +25,7 @@ margin: auto;">
         padding-left: 2rem;
         padding-right: 1rem;
         color: #fff;">
-            <h1 style="padding-bottom: 2rem; font-size:1.2rem;">
+            <h1 style="padding-bottom: 2rem; font-size:1.2rem;color:#fff !important;">
                 ¡Hola {{ $client }}!  <br>
                 Gracias por formar parte del programa <br>
                 Padrino Curiosity. <br><br>
@@ -35,22 +35,22 @@ margin: auto;">
         <div id="infoSponsored" style="background: rgb(34, 98, 173);
         color: #fff;
         padding: 1rem;
-        margin-top: -1rem;">
+        margin: -1rem 0 0 0;">
             <div id="childbox" style="width: 25%;
             float: left;
             padding: 1rem;">
                 <img src="{{asset($child_image)}}" id="imgSponsored" style="width: 85%;
                 border-radius: 50%;
-                border: solid .8rem #fff;
+                border: solid .4rem #fff;
                 background: #fff;">
             </div>
             <div id="infoChildBox" style="padding-left: 11.5rem;
             padding-right: 1rem;
             text-align: justify;
             padding-bottom: 2.5rem;
-            margin-top: 3rem;">
+            margin: 4rem 0 0 0;">
                 <h2 style="margin-bottom: -1.5rem;font-size: 1.2rem;">{{ $child }}</h2><br>
-                <p>
+                <p style="margin: -1.5rem 0 0 0;">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet, consectetur adipisicing elit.
                 </p>
             </div>
