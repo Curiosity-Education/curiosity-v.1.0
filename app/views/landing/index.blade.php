@@ -114,7 +114,7 @@
 			<!--/.Content-->
 		</div>
 	</div>
-	<!-- / Modal de login -->
+	<!-- / Modal de login  -->
 
 	<!-- Sección de imagen a pantalla completa -->
 	<div class="view-entrada hm-black-strong" id="inicio">
