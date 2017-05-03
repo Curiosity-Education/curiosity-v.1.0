@@ -18,7 +18,17 @@ Route::get('/', 'landingController@landingpage');
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
 Route::get('/padrino-email', function(){
-	return View::make('emails.padrinoCuriosity');
+	$dataSend = [
+		"name" => "Equipo Curiosity",
+		"client" => "Wilvardo Ramirez Colunga",
+		"email" => "wilvardo@gmail.com",
+		"subject" => "Padrino Curiosity",
+		"child" => "Maria Guadalupe Becerra",
+		"child_image" => '/packages/assets/media/images/padrino_curiosity/amor/aaaaa-bbbbb.jpg',
+		"home" => "Test Email Home",
+		"home_image" => "/packages/assets/media/images/institutions/deleted.png"
+	];
+	return View::make('emails.padrinoCuriosity', $dataSend);
 });
 
 Route::get('/padrino', function(){
@@ -162,7 +172,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::get('/get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
 			Route::post('/delete-user-for-institute/{idInstitute}','instituteMembershipsController@deleteUsers');
 		});
-		
+
 		// Manage PDF's Library
 		Route::group(array('prefix' =>  'pdfs'),function(){
 			Route::post('save', 'libraryPdfController@save');
