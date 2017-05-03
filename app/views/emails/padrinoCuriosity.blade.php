@@ -17,7 +17,7 @@ box-sizing: border-box;">
     margin: 0 auto;
     box-sizing: border-box;">
         <div class="boxportada" style="min-height: 25rem;
-        background-image: url(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg);
+        background-image: url({{asset(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg)}});
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -77,11 +77,11 @@ box-sizing: border-box;">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus sit ex odit sint illo minima consequatur id iste, nemo, <br>ipsam porro veritatis eos quos consequuntur, magni totam libero laborum voluptatibus iusto qui quis cum! <br> Nobis eos eius tempore, deleniti quasi ea quod. Voluptas dolorem ab aut doloremque, error nobis a.
             </p>
             <br><br>
-            <img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}">
-            <h4 id="signTeamText" style="width: 5% !important;
+            <img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}" style="width: 5% !important;
             margin-top: 4rem !important; color: #989898;
             margin-top: -1.5rem;
-            margin-bottom: 2rem;">{{ $name }}</h4>
+            margin-bottom: 2rem;">
+            <center><h4 id="signTeamText">{{ $name }}</h4></center>
         </div>
         <div id="separator1" style="height: 2rem;
         background-color: rgb(34, 98, 173);"></div>
@@ -170,6 +170,6 @@ box-sizing: border-box;">
             }
         }
     </style>
-    
+
 </body>
 </html>
