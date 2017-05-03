@@ -71,7 +71,7 @@ class instituteMembershipsController extends BaseController{
             );
             $this->createUser($data);
         }
-        Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
+        $myFile = Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
 
             $excel->sheet('Usuarios Asignados', function($sheet) use($data) {
 
@@ -110,8 +110,12 @@ class instituteMembershipsController extends BaseController{
             // Call them separately
             $excel->setDescription('Archivo excel para informe de datos de usuarios asignados a la institución');
 
-        })->export('xlsx');
-        return Redirect::back();
+        });
+        $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+        return Response::json(array(
+           'name' => "registro", //no extention needed
+           'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+        ));
 
     }
 
@@ -198,7 +202,7 @@ class instituteMembershipsController extends BaseController{
 	         ));
 				$banner = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 5,
+	             'accesorio_id' => 4,
 					 'is_using' => 1
 	         ));
 				/**************************************************************
@@ -263,7 +267,7 @@ class instituteMembershipsController extends BaseController{
                         ->join("ciudades","ciudades.id","=","direcciones.ciudad_id")
                         ->where("instituciones.active","=","1")
                         ->where("instituciones.id","=",$id)
-                        ->select("instituciones.nombre","tipo","logo","calle","colonia","numero","codigo_postal","ciudades.nombre as ciudad")
+                        ->select("instituciones.id","instituciones.nombre","tipo","logo","calle","colonia","numero","codigo_postal","ciudades.nombre as ciudad")
                         ->first();
        // $this->institute = $ints;
         if($ints){
@@ -281,5 +285,21 @@ class instituteMembershipsController extends BaseController{
             return View::make("errors.404");
         }
 
+    }
+    public function deleteUsers($idInstitute){
+        $ids = Input::get("ids");
+        if(count($ids)>0){
+            $sentence = "update users set active = 2 where id in ".$this->generateConditionIds($ids);
+            DB::select($sentence);
+            return Response::json(array("status" => 200, 'statusMessage' => "success", "message" => "Los usuarios se han desactivado exitosamente"));
+        }
+    }
+    private function generateConditionIds($ids){
+        $condition = "(";
+        for($i = 0;$i<count($ids);$i++){
+            $condition .=$ids[$i].",";
+        }
+        $condition .="0);";
+        return $condition;
     }
 }

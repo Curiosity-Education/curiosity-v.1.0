@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
+
 
 
 Route::get('/', 'landingController@landingpage');
@@ -157,6 +157,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'topicsController@update');
 			Route::post('delete', 'topicsController@delete');
 		});
+		// mange the masive users
+		Route::group(array('prefix' => '/institute-user'),function(){
+			Route::get('/get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
+			Route::post('/delete-user-for-institute/{idInstitute}','instituteMembershipsController@deleteUsers');
+		});
+		
 		// Manage PDF's Library
 		Route::group(array('prefix' =>  'pdfs'),function(){
 			Route::post('save', 'libraryPdfController@save');
