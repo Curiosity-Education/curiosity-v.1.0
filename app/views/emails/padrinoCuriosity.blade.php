@@ -1,24 +1,22 @@
 <!DOCTYPE html5>
-<html lang="es">
+<html lang="es" style="padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: calibri;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Padrino Curiosity</title>
 </head>
-<style media="screen" type="text/css">
-    *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: calibri;
-    }
-    body{
-        background-color: #e6e6e6;
-        box-sizing: border-box;
-    }
-    .boxportada{
-        min-height: 25rem;
+<body style="background-color: #e6e6e6;
+box-sizing: border-box;">
+    <div id="container-dad" style="width: 100%;
+    max-width: 1820px;
+    background-color: #fff;
+    margin: 0 auto;
+    box-sizing: border-box;">
+        <div class="boxportada" style="min-height: 25rem;
         background-image: url(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg);
         background-repeat: no-repeat;
         background-position: center;
@@ -26,174 +24,53 @@
         padding-top: 10rem;
         padding-left: 2rem;
         padding-right: 1rem;
-        color: #fff;
-    }
-    .boxportada > h1{
-        padding-bottom: 2rem;
-    }
-    #container-dad{
-        width: 100%;
-        max-width: 1820px;
-        background-color: #fff;
-        margin: 0 auto;
-        box-sizing: border-box;
-    }
-    #imgportada{
-        width: 100%;
-    }
-    #infoSponsored{
-        background-color: rgb(34, 98, 173);
-        background-color: #;
-        color: #fff;
-        padding: 1rem;
-    }
-    #infoSponsored > h1{
-        font-size: 1.5rem;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    #infoSponsored > p{
-        color: #808080;
-        text-align: justify;
-    }
-    #childbox{
-        width: 25%;
-        float: left;
-        padding: 1rem;
-    }
-    #imgSponsored{
-        width: 100%;
-        border-radius: 50%;
-        border: solid .8rem #fff;
-        background: #fff;
-    }
-    #infoChildBox{
-        padding-left: 17rem;
-        padding-right: 1rem;
-        text-align: justify;
-        padding-top: 3rem;
-        padding-bottom: 4rem;
-    }
-    #infoHome{
-        padding: 1rem;
-        text-align: center;
-    }
-    #infoHome > img{
-        width: 15%;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        margin-bottom: 2rem;
-        margin-top: 1rem;
-    }
-    #relhome{
-        font-size: 1.2rem;
-        color: #808080;
-    }
-    #signTeam{
-        width: 5% !important;
-        margin-top: 4rem !important;
-    }
-    #signTeamText{
-        color: #989898;
-        margin-top: -1.5rem;
-        margin-bottom: 2rem;
-    }
-    #separator1{
-        height: 2rem;
-        background-color: rgb(34, 98, 173);
-    }
-    #separator2{
-        height: 1rem;
-        background-color: rgba(34, 98, 173, .9);
-    }
-    #footer{
-        min-height: 4rem;
-        background-color: rgba(34, 98, 173, .8);
-        text-align: center;
-        padding: 1.5rem;
-        color: rgba(255, 255, 255, 0.8);
-    }
-    #footer > a {
-        text-decoration: none;
-        margin-left: .2rem;
-        margin-right: .2rem;
-        color: rgba(255, 255, 255, 0.8);
-        margin-top: .5rem;
-    }
-    @media (min-width : 1024px){
-        #container-dad{
-            width: 75%;
-        }
-    }
-    @media (min-width: 768px) and (max-width: 920px){
-        #childbox{
-            width: 35%;
-        }
-    }
-    @media (min-width: 1024px) and (max-width: 1240px){
-        #childbox{
-            width: 30%;
-        }
-    }
-    @media (min-width: 620px) and (max-width: 767px){
-        #childbox{
-            width: 45%;
-        }
-    }
-    @media (max-width : 619px){
-        #infoChildBox{
-            padding-left: 0;
-            padding-top: 2;
-            padding-bottom: 2rem;
-        }
-        #childbox{
-            width: 45%;
-        }
-        #imgSponsored{
-            border: solid .4rem #fff;
-        }
-        #infoHome > img{
-            width: 25%;
-            margin-left: 2rem;
-            margin-right: 2rem;
-            margin-bottom: 1rem;
-            margin-top: 0rem;
-        }
-        #signTeam{
-            width: 8% !important;
-        }
-        #signTeamText{
-            margin-top: -.8rem;
-        }
-    }
-</style>
-<body>
-    <div id="container-dad">
-        <div class="boxportada">
-            <h1>
-                ¡Hola {{ $client }}! Wilvardo Ramirez Colunga <br>
+        color: #fff;">
+            <h1 style="padding-bottom: 2rem;">
+                ¡Hola {{ $client }}!  <br>
                 Gracias por formar parte del programa <br>
                 Padrino Curiosity. <br><br>
                 Apoyando la Educación del país.
             </h1>
         </div>
-        <div id="infoSponsored">
-            <div id="childbox">
-                <img src="{{asset($child_image)}}" id="imgSponsored">
+        <div id="infoSponsored" style="background-color: rgb(34, 98, 173);
+        background-color: #;
+        color: #fff;
+        padding: 1rem;">
+            <div id="childbox" style="width: 25%;
+            float: left;
+            padding: 1rem;">
+                <img src="{{asset($child_image)}}" id="imgSponsored" style="width: 100%;
+                border-radius: 50%;
+                border: solid .8rem #fff;
+                background: #fff;">
             </div>
-            <div id="infoChildBox">
-                <h2>{{ $child }}Susana Alvarado</h2><br>
+            <div id="infoChildBox" style="padding-left: 17rem;
+            padding-right: 1rem;
+            text-align: justify;
+            padding-top: 3rem;
+            padding-bottom: 4rem;">
+                <h2>{{ $child }}</h2><br>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perferendis delectus libero magnam excepturi hic ullam, pariatur quas veritatis quasi iure illum, inventore tempora, deserunt ad. Natus voluptatibus labore, fugiat. <br><br>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, impedit.
                 </p>
             </div>
         </div>
-        <div id="infoHome">
-            <img src="{{asset('/packages/assets/media/images/system/logoDef.png')}}">
-            <img src="{{asset($home_image)}}">
+        <div id="infoHome" style="padding: 1rem;
+        text-align: center;">
+            <img src="{{asset('/packages/assets/media/images/system/logoDef.png')}}" style="width: 15%;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+            margin-top: 1rem;">
+            <img src="{{asset($home_image)}}" style="width: 15%;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+            margin-top: 1rem;">
             <center>
-                <br> <h4 id="relhome">Curiosity Educación y {{ $home }} Casa Hogar</h4> <br>
+                <br> <h4 id="relhome" style="font-size: 1.2rem;
+                color: #808080;">Curiosity Educación y {{ $home }} </h4> <br>
             </center>
             <p style="color:#4c4c4c;">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque provident non doloribus, <br>totam ratione veniam natus nisi impedit earum, odio perferendis sint ab suscipit vitae animi molestiae nam porro, ad. <br><br>
@@ -201,19 +78,98 @@
             </p>
             <br><br>
             <img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}">
-            <h4 id="signTeamText">{{ $name }} Equipo Curiosity</h4>
+            <h4 id="signTeamText" style="width: 5% !important;
+            margin-top: 4rem !important; color: #989898;
+            margin-top: -1.5rem;
+            margin-bottom: 2rem;">{{ $name }}</h4>
         </div>
-        <div id="separator1"></div>
-        <div id="separator2"></div>
-        <div id="footer">
+        <div id="separator1" style="height: 2rem;
+        background-color: rgb(34, 98, 173);"></div>
+        <div id="separator2" style="height: 1rem;
+        background-color: rgba(34, 98, 173, .9);"></div>
+        <div id="footer" style="min-height: 4rem;
+        background-color: rgba(34, 98, 173, .8);
+        text-align: center;
+        padding: 1.5rem;
+        color: rgba(255, 255, 255, 0.8);">
             <label>Sigue al pendiente en nuestras redes sociales y en nuestra web oficial</label><br>
-            | <a href="https://www.facebook.com/curiosity.mx" target="_blank">Siguenos en Facebook</a> |
-            <a href="https://www.twitter.com/@curiosity.mx" target="_blank">Siguenos en Twitter</a> |
-            <a href="https://www.curiosity.com.mx" target="_blank">www.curiosity.com.mx</a> |
-            <a href="https://www.instagram.com/@curiosity.mx" target="_blank">Siguenos en Instagram</a> |
-            <a href="https://www.curiosity.com.mx/casas-hogares" target="_blank">Padrino Curiosity</a> |
+            | <a href="https://www.facebook.com/curiosity.mx" target="_blank" style="text-decoration: none;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: .5rem;">Siguenos en Facebook</a> |
+            <a href="https://www.twitter.com/@curiosity.mx" target="_blank" style="text-decoration: none;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: .5rem;">Siguenos en Twitter</a> |
+            <a href="https://www.curiosity.com.mx" target="_blank" style="text-decoration: none;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: .5rem;">www.curiosity.com.mx</a> |
+            <a href="https://www.instagram.com/@curiosity.mx" target="_blank" style="text-decoration: none;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: .5rem;">Siguenos en Instagram</a> |
+            <a href="https://www.curiosity.com.mx/casas-hogares" target="_blank" style="text-decoration: none;
+            margin-left: .2rem;
+            margin-right: .2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: .5rem;">Padrino Curiosity</a> |
             <br><br>
         </div>
     </div>
+
+    <style media="screen" type="text/css">
+        @media (min-width : 1024px){
+            #container-dad{
+                width: 75%;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 920px){
+            #childbox{
+                width: 35%;
+            }
+        }
+        @media (min-width: 1024px) and (max-width: 1240px){
+            #childbox{
+                width: 30%;
+            }
+        }
+        @media (min-width: 620px) and (max-width: 767px){
+            #childbox{
+                width: 45%;
+            }
+        }
+        @media (max-width : 619px){
+            #infoChildBox{
+                padding-left: 0;
+                padding-top: 2;
+                padding-bottom: 2rem;
+            }
+            #childbox{
+                width: 45%;
+            }
+            #imgSponsored{
+                border: solid .4rem #fff;
+            }
+            #infoHome > img{
+                width: 25%;
+                margin-left: 2rem;
+                margin-right: 2rem;
+                margin-bottom: 1rem;
+                margin-top: 0rem;
+            }
+            #signTeam{
+                width: 8% !important;
+            }
+            #signTeamText{
+                margin-top: -.8rem;
+            }
+        }
+    </style>
+    
 </body>
 </html>
