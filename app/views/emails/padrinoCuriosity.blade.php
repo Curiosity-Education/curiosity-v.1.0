@@ -19,7 +19,7 @@ margin: auto;">
     margin: 0 auto;
     box-sizing: border-box;">
         <div class="boxportada" style="min-height: 10rem;
-        background: url(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg) no-repeat center;
+        background: url(https://www.curiosity.com.mx/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg) no-repeat center;
         background-size: cover;
         padding-top: 10rem;
         padding-left: 2rem;
