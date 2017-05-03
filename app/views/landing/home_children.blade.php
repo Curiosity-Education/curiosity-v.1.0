@@ -45,7 +45,7 @@
                     <div class="card">
 
                         <!--Card image-->
-                        <img class="img-fluid" src="/packages/assets/media/images/instituciones/{{$casaHogar->logo}}" alt="{{$casaHogar->nombre}}">
+                        <img class="img-fluid" src="/packages/assets/media/images/institutions/{{$casaHogar->logo}}" alt="{{$casaHogar->nombre}}">
                         <!--/.Card image-->
 
                         <!--Card content-->
