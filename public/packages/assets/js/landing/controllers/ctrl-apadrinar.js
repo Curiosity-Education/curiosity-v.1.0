@@ -29,7 +29,6 @@ var apadrinarController = {
                                 "<h5 class='blue-text-ce'><i class='fa fa-star colorStar'></i>&nbsp; Apadrinado</h5>"+
                                 "<h4 class='card-title text-xs-center'>"+o.nombre+"</h4>"+
                                 "<h5 class='card-title text-xs-center'>"+o.apellidos+"</h5>"+
-                                "<center><a href='#' data-foto="+o.foto+" data-childid="+o.id+" data-childname="+o.nombre+" class='btn btn-rounded btn-homesChild disabled'>Apadrinar</a></center>"+
                                 "<center><a href='javascript:void(0)' data-foto="+response.data.folder+"/"+o.foto+" data-childid="+o.id+" data-childname="+o.nombre+" "+o.apellidos+" class='btn btn-rounded btn-homesChild disabled'>Apadrinar</a></center>"+
                             "</div>"+
                         "</div>"+
@@ -47,7 +46,6 @@ var apadrinarController = {
                                 "<h5 class='blue-text-ce'><i class='fa fa-star-o colorStar'></i>&nbsp; Sin apadrinar</h5>"+
                                 "<h4 class='card-title text-xs-center'>"+o.nombre+"</h4>"+
                                 "<h5 class='card-title text-xs-center'>"+o.apellidos+"</h5>"+
-                                "<center><a href='#' data-foto="+o.foto+" data-toggle='modal' data-target='#modal-apadrinar' data-childid="+o.id+" data-childname="+o.nombre+" class='btn btn-rounded btn-homesChild'>Apadrinar</a></center>"+
                                 "<center><a href='javascript:void(0)' data-foto="+response.data.folder+"/"+o.foto+" data-childid="+o.id+" data-childname="+o.nombre+" "+o.apellidos+" class='btn btn-rounded btn-homesChild'>Apadrinar</a></center>"+
                             "</div>"+
                         "</div>"+
