@@ -9,50 +9,49 @@ font-family: calibri;">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Padrino Curiosity</title>
 </head>
-<body style="background-color: #e6e6e6;
-box-sizing: border-box;">
+<body style="background: #e6e6e6;
+box-sizing: border-box;
+max-width: 600px;
+margin: auto;">
     <div id="container-dad" style="width: 100%;
     max-width: 1820px;
-    background-color: #fff;
+    background: #fff;
     margin: 0 auto;
     box-sizing: border-box;">
-        <div class="boxportada" style="min-height: 25rem;
-        background-image: url({{asset(/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg)}});
-        background-repeat: no-repeat;
-        background-position: center;
+        <div class="boxportada" style="min-height: 10rem;
+        background: url(https://www.curiosity.com.mx/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg) no-repeat center;
         background-size: cover;
         padding-top: 10rem;
         padding-left: 2rem;
         padding-right: 1rem;
         color: #fff;">
-            <h1 style="padding-bottom: 2rem;">
+            <h1 style="padding-bottom: 2rem; font-size:1.2rem;">
                 ¡Hola {{ $client }}!  <br>
                 Gracias por formar parte del programa <br>
                 Padrino Curiosity. <br><br>
                 Apoyando la Educación del país.
             </h1>
         </div>
-        <div id="infoSponsored" style="background-color: rgb(34, 98, 173);
-        background-color: #;
+        <div id="infoSponsored" style="background: rgb(34, 98, 173);
         color: #fff;
-        padding: 1rem;">
+        padding: 1rem;
+        margin-top: -1rem;">
             <div id="childbox" style="width: 25%;
             float: left;
             padding: 1rem;">
-                <img src="{{asset($child_image)}}" id="imgSponsored" style="width: 100%;
+                <img src="{{asset($child_image)}}" id="imgSponsored" style="width: 85%;
                 border-radius: 50%;
                 border: solid .8rem #fff;
                 background: #fff;">
             </div>
-            <div id="infoChildBox" style="padding-left: 17rem;
+            <div id="infoChildBox" style="padding-left: 11.5rem;
             padding-right: 1rem;
             text-align: justify;
-            padding-top: 3rem;
-            padding-bottom: 4rem;">
-                <h2>{{ $child }}</h2><br>
+            padding-bottom: 2.5rem;
+            margin-top: 3rem;">
+                <h2 style="margin-bottom: -1.5rem;font-size: 1.2rem;">{{ $child }}</h2><br>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perferendis delectus libero magnam excepturi hic ullam, pariatur quas veritatis quasi iure illum, inventore tempora, deserunt ad. Natus voluptatibus labore, fugiat. <br><br>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, impedit.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet, consectetur adipisicing elit.
                 </p>
             </div>
         </div>
@@ -61,12 +60,10 @@ box-sizing: border-box;">
             <img src="{{asset('/packages/assets/media/images/system/logoDef.png')}}" style="width: 15%;
             margin-left: 2rem;
             margin-right: 2rem;
-            margin-bottom: 2rem;
             margin-top: 1rem;">
             <img src="{{asset($home_image)}}" style="width: 15%;
             margin-left: 2rem;
             margin-right: 2rem;
-            margin-bottom: 2rem;
             margin-top: 1rem;">
             <center>
                 <br> <h4 id="relhome" style="font-size: 1.2rem;
@@ -77,11 +74,9 @@ box-sizing: border-box;">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus sit ex odit sint illo minima consequatur id iste, nemo, <br>ipsam porro veritatis eos quos consequuntur, magni totam libero laborum voluptatibus iusto qui quis cum! <br> Nobis eos eius tempore, deleniti quasi ea quod. Voluptas dolorem ab aut doloremque, error nobis a.
             </p>
             <br><br>
-            <img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}" style="width: 5% !important;
-            margin-top: 4rem !important; color: #989898;
-            margin-top: -1.5rem;
-            margin-bottom: 2rem;">
-            <center><h4 id="signTeamText">{{ $name }}</h4></center>
+            <img src="{{asset('/packages/assets/media/images/system/icon-mono.png')}}" style="width: 5% !important;color: #989898;">
+            <center><h4 id="signTeamText" style="margin-top: 1rem;
+            margin-bottom: 2rem;color: #a6a6a6;">{{ $name }}</h4></center>
         </div>
         <div id="separator1" style="height: 2rem;
         background-color: rgb(34, 98, 173);"></div>
@@ -121,55 +116,6 @@ box-sizing: border-box;">
             <br><br>
         </div>
     </div>
-
-    <style media="screen" type="text/css">
-        @media (min-width : 1024px){
-            #container-dad{
-                width: 75%;
-            }
-        }
-        @media (min-width: 768px) and (max-width: 920px){
-            #childbox{
-                width: 35%;
-            }
-        }
-        @media (min-width: 1024px) and (max-width: 1240px){
-            #childbox{
-                width: 30%;
-            }
-        }
-        @media (min-width: 620px) and (max-width: 767px){
-            #childbox{
-                width: 45%;
-            }
-        }
-        @media (max-width : 619px){
-            #infoChildBox{
-                padding-left: 0;
-                padding-top: 2;
-                padding-bottom: 2rem;
-            }
-            #childbox{
-                width: 45%;
-            }
-            #imgSponsored{
-                border: solid .4rem #fff;
-            }
-            #infoHome > img{
-                width: 25%;
-                margin-left: 2rem;
-                margin-right: 2rem;
-                margin-bottom: 1rem;
-                margin-top: 0rem;
-            }
-            #signTeam{
-                width: 8% !important;
-            }
-            #signTeamText{
-                margin-top: -.8rem;
-            }
-        }
-    </style>
 
 </body>
 </html>
