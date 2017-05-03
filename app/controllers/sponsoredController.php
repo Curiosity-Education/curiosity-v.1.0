@@ -112,7 +112,7 @@ class sponsoredController extends BaseController{
             ));
         }
         else{
-            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+            /*\Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
             \Conekta\Conekta::setLocale('es');
             try{
                 $customer = \Conekta\Customer::create(array(
@@ -153,7 +153,7 @@ class sponsoredController extends BaseController{
                             )
                         )
                     )
-                ));
+                ));*/
                 // if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
                     // la suscripción inicializó exitosamente!
                     try {
@@ -183,7 +183,8 @@ class sponsoredController extends BaseController{
                         $toName  = $dataSend["email"];
                         $subject = $dataSend["subject"];
                         Mail::send('emails.padrinoCuriosity', $dataSend, function($message) use($toEmail, $toName, $subject){
-                            $message->to($toEmail, $toName)->subject($subject)->cc('willy.ramirez@curiosity.com.mx');
+                            $message->to($toEmail, $toName)->subject($subject);
+                            // ->cc('willy.ramirez@curiosity.com.mx');
                         });
                         $sentEmail = 1;
                     } catch (Exception $e) {
@@ -192,8 +193,8 @@ class sponsoredController extends BaseController{
                     }
                     return Response::json(array(
                         'status' => 200,
-                        'statusMessage' => 'success',
-                        'data' => $payChargue
+                        'statusMessage' => 'success'
+                        // 'data' => $payChargue
                     ));
                 // }
                 // else{
