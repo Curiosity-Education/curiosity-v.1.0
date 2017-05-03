@@ -286,4 +286,20 @@ class instituteMembershipsController extends BaseController{
         }
 
     }
+    public function deleteUsers($idInstitute){
+        $ids = Input::get("ids");
+        if(count($ids)>0){
+            $sentence = "update users set active = 2 where id in ".$this->generateConditionIds($ids);
+            DB::select($sentence);
+            return Response::json(array("status" => 200, 'statusMessage' => "success", "message" => "Los usuarios se han desactivado exitosamente"));
+        }
+    }
+    private function generateConditionIds($ids){
+        $condition = "(";
+        for($i = 0;$i<count($ids);$i++){
+            $condition .=$ids[$i].",";
+        }
+        $condition .="0);";
+        return $condition;
+    }
 }

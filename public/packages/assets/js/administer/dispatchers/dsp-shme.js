@@ -13,9 +13,12 @@ $(function(){
 	});
 	$("#shme-select-all").click(function(event){
 		if($("#shme-select-all input[type='checkbox']").is(':checked')){
-			$(".shme-img-member").attr("src","/packages/assets/media/images/system/membreship-selected.png")
+			$(".shme-img-member").attr("src","/packages/assets/media/images/system/membreship-selected.png");
+			$(".shme-img-member").addClass("active");
+
 		}else{
-			$(".shme-img-member").attr("src","/packages/assets/media/images/system/membreship-not-selected.png")
+			$(".shme-img-member").attr("src","/packages/assets/media/images/system/membreship-not-selected.png");
+			$(".shme-img-member").removeClass("active");
 		}
 	});
 	$("#shme-add-users").click(function(event){
@@ -35,6 +38,6 @@ $(function(){
 			ids.push($(obj).data("user"));
 		});
 		idInstitute = $(this).data("school");
-		console.log(ids);
+		institutesUsersController.delete(ids,idInstitute);
 	});
 });

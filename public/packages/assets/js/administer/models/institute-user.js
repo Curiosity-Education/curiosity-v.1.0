@@ -14,6 +14,8 @@ class instituteUser extends CORM {
   }
 
   static deleteUsers(ids,success){
-    super.delete({ids:ids},"POST",success,'/institutions');
+    var ruta = "delete-user-for-institute/"+data.idInstitute;
+    console.log(data);
+    super.any({ids:data.idsUser},"POST",success,'/institute-user',ruta);
   }
 }

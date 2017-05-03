@@ -160,6 +160,7 @@ Route::group(array('before' => 'auth'), function(){
 		// mange the masive users
 		Route::group(array('prefix' => '/institute-user'),function(){
 			Route::get('/get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
+			Route::post('/delete-user-for-institute/{idInstitute}','instituteMembershipsController@deleteUsers');
 		});
 		
 		// Manage PDF's Library

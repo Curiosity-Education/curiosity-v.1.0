@@ -34,7 +34,9 @@ var instituteUser = function (_CORM) {
   }, {
     key: "deleteUsers",
     value: function deleteUsers(ids, success) {
-      _get(instituteUser.__proto__ || Object.getPrototypeOf(instituteUser), "delete", this).call(this, { ids: ids }, "POST", success, '/institutions');
+      var ruta = "delete-user-for-institute/" + data.idInstitute;
+      console.log(data);
+      _get(instituteUser.__proto__ || Object.getPrototypeOf(instituteUser), "any", this).call(this, { ids: data.idsUser }, "POST", success, '/institute-user', ruta);
     }
   }]);
 

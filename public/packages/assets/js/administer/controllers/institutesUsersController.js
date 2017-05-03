@@ -18,14 +18,22 @@ var institutesUsersController = {
     });
   },
 
-  delete : function(id){
+  delete : function(ids,idInstitute){
 
-		if (id != null || id != "") {
+		if (ids != null || ids.length>0) {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
 				 if(input == "ELIMINAR" || input == "eliminar"){
 					 	  Curiosity.toastLoading.show();
-						  Institution.delete(id,function(){
-							window.location.reload();
+              data = {
+                idsUser : ids,
+                idInstitute : idInstitute
+              };
+						  instituteUser.deleteUsers(data,function(response){
+              if(response.status == 200){
+                toastr.success("Bien hecho.");
+                window.location.reload();
+              }
+              console.log(response);
 					  });
 				 }else {
 				 	  Curiosity.noty.info("Lo sentimos, La palabra escrita no es correcta")

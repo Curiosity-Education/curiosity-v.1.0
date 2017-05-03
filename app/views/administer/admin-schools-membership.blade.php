@@ -105,7 +105,7 @@ Gestion de cuentas masivas
           </div>
           <div class="col-md-2">
             <a class="btn text-black shme-btn-more z-depth-0" id="shme-add-users" data-school="{{$data->id}}"><i class="fa fa-plus"></i></a>
-            <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-file-excel-o"></i></a>
+            <a class="btn text-black shme-btn-more z-depth-0" hidden="hidden"><i class="fa fa-file-excel-o"></i></a>
           </div>
         </div>
       </div>
