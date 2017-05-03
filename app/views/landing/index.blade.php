@@ -547,14 +547,14 @@
                     @if($contador > 2)
                     <div class="col-md-3 col-sm-6 hidden-xs-down">
                         <div class="view hm-zoom overlay z-depth-1">
-                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                            <img src="/packages/assets/media/images/institutions/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
                         </div>
                         <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre }}</h5></div>
                     </div>
                     @else
                     <div class="col-md-3 col-sm-6">
                         <div class="view hm-zoom overlay z-depth-1">
-                            <img src="/packages/assets/media/images/instituciones/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
+                            <img src="/packages/assets/media/images/institutions/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
                         </div>
                         <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre}}</h5></div>
                     </div>
