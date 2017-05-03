@@ -4,11 +4,11 @@ $(function(){
    ateachController.getTeachers();
 
    ateachController.formularyFile = $("#ateach-formPhoto");
-   ateachController.formulary = $("#ateach-form");
-   ateachController.inputName = $("#ateach_name");
-   ateachController.photoImg  = $("#ateach_ph");
-   ateachController.photoUrl  = "/packages/assets/media/images/teachersAsc/";
-   ateachController.photoDef  = "teacherDefProfileImage.png";
+   ateachController.formulary     = $("#ateach-form");
+   ateachController.inputName     = $("#ateach_name");
+   ateachController.photoImg      = $("#ateach_ph");
+   ateachController.photoUrl      = "/packages/assets/media/images/teachersAsc/";
+   ateachController.photoDef      = "teacherDefProfileImage.png";
 
    $("#ateach_lvlSel").on("change", function(){
       ateachController.getIntelligences($(this).val());
