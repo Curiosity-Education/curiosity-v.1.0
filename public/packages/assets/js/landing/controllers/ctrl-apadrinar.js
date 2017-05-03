@@ -40,7 +40,6 @@ var apadrinarController = {
 
                    var cardOut = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
-                            "<img class='img-fluid gris' src='/packages/assets/media/images/instituciones/children/"+o.foto+"' alt='Card image cap'>"+
                             "<img class='img-fluid gris' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"' alt='Card image cap'>"+
                             "<div class='card-block'>"+
                                 "<h5 class='blue-text-ce'><i class='fa fa-star-o colorStar'></i>&nbsp; Sin apadrinar</h5>"+
