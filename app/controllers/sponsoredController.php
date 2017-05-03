@@ -112,10 +112,10 @@ class sponsoredController extends BaseController{
             ));
         }
         else{
-            /*\Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
+            \Conekta\Conekta::setApiKey(Payment::KEY()->_private()->conekta->production);
             \Conekta\Conekta::setLocale('es');
             try{
-                $customer = \Conekta\Customer::create(array(
+                /*$customer = \Conekta\Customer::create(array(
                     "name" => Input::get('nombre'),
                     "email" => Input::get('email'),
                     'payment_sources' => array(array(
