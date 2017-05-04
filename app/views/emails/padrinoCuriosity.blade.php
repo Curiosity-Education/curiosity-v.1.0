@@ -15,7 +15,7 @@ max-width: 600px;
 margin: auto;">
     <div id="container-dad" style="width: 100%;
     max-width: 1820px;
-    background: #fff;
+    background: #2262ad;
     margin: 0 auto;
     box-sizing: border-box;">
         <div class="boxportada" style="min-height: 10rem;
@@ -56,7 +56,7 @@ margin: auto;">
             </center>
         </div>
         <div id="infoHome" style="padding: 1rem;
-        text-align: center;">
+        text-align: center; background: #fff;">
             <img src="{{asset('/packages/assets/media/images/system/logoDef.png')}}" style="width: 20%;
             margin-left: 2rem;
             margin-right: 2rem;
@@ -81,11 +81,11 @@ margin: auto;">
             margin-bottom: 2rem;color: #a6a6a6;">{{ $name }}</h4></center>
         </div>
         <div id="separator1" style="height: 2rem;
-        background-color: rgb(34, 98, 173);"></div>
+        background: #2162ad;"></div>
         <div id="separator2" style="height: 1rem;
-        background-color: rgba(34, 98, 173, .9);"></div>
+        background: #3c78bd;"></div>
         <div id="footer" style="min-height: 4rem;
-        background-color: rgba(34, 98, 173, .8);
+        background: #4a85ca;
         text-align: center;
         padding: 1.5rem;
         color: rgba(255, 255, 255, 0.8);">
@@ -117,7 +117,7 @@ margin: auto;">
             margin-top: .5rem;">Padrino Curiosity</a> |
             <br><br>
             <span style="font-size: .8rem;">
-                Curiosity Educación S.A.P.I de C.V. <br>&reg; <?php echo Date('Y'); ?>  Todos los derechos reservados: CURIOSITY.COM.MX
+                Curiosity Educación S.A.P.I de C.V. <br>&reg; <?php echo Date('Y'); ?>  Todos los derechos reservados.                
             </span>
             <br><br>
         </div>
