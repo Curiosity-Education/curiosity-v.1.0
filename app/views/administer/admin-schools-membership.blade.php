@@ -51,7 +51,7 @@ Gestion de cuentas masivas
             </div>
             <div>
               <h5>Institucion: {{$data->nombre}}</h5>
-              <p>Direccion: cale {{$data->calle}} numero {{$data->numero}}</p>
+              <p>Direccion: calle {{$data->calle}} numero {{$data->numero}}</p>
               <p>Colonia: {{$data->colonia}}</p>
               <p>Ciudad: {{$data->ciudad}}</p>
             </div>
