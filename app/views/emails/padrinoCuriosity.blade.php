@@ -27,9 +27,11 @@ margin: auto;">
         color: #fff;">
             <h1 style="padding-bottom: 2rem; font-size:1.2rem;color:#fff !important;">
                 ¡Hola {{ $client }}!  <br>
-                Gracias por formar parte del programa <br>
-                Padrino Curiosity. <br><br>
-                Apoyando la Educación del país.
+                <span style="color:#fff !important;">
+                    Gracias por formar parte del programa <br>
+                    Padrino Curiosity. <br><br>
+                    Apoyando la Educación del país.
+                </span>
             </h1>
         </div>
         <div id="infoSponsored" style="background: rgb(34, 98, 173);
@@ -67,7 +69,7 @@ margin: auto;">
             min-width:5rem;">
             <center>
                 <br> <h4 id="relhome" style="font-size: 1.2rem;
-                color: #808080;">Curiosity Educación y {{ $home }} </h4> <br>
+                color: #808080; margin: 3rem 0rem -1rem 0rem;">Curiosity Educación y {{ $home }} </h4> <br>
             </center>
             <p style="color:#4c4c4c;">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque provident non doloribus, <br>totam ratione veniam natus nisi impedit earum, odio perferendis sint ab suscipit vitae animi molestiae nam porro, ad. <br><br>
