@@ -48,8 +48,8 @@ margin: auto;">
                     min-width:5rem;"></center>
                 </div>
                 <div id="infoChildBox" style="">
-                    <h2 style="font-size: 1.2rem;margin: 0rem 0rem -1.5rem 0rem;">{{ $child }}</h2><br>
-                    <p style="">
+                    <p style="margin:0;">
+                        <b><span style="font-size: 20px;">{{ $child }}</span> </b><br>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. amet, consectetur adipisicing elit consectetur.
                     </p>
                 </div>
@@ -117,7 +117,7 @@ margin: auto;">
             margin-top: .5rem;">Padrino Curiosity</a> |
             <br><br>
             <span style="font-size: .8rem;">
-                Curiosity Educación S.A.P.I de C.V. <br>&reg; <?php echo Date('Y'); ?>  Todos los derechos reservados.                
+                Curiosity Educación S.A.P.I de C.V. <br>&reg; <?php echo Date('Y'); ?>  Todos los derechos reservados.
             </span>
             <br><br>
         </div>
