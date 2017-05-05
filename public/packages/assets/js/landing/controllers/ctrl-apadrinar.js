@@ -152,6 +152,13 @@ var apadrinarController = {
                 Curiosity.noty.warning(response.message);
                 console.info(response.data);
             break;
+            case 'CUE-00101':
+                $("#btnConfirm").prop("disabled", false);
+                console.info(response.data);
+                for (var i = 0; i < response.data.length; i++) {
+                    Curiosity.noty.warning(response.data[i]);
+                }
+            break;
             default:
                 $("#btnConfirm").prop("disabled", false);
                 Curiosity.noty.error("Se ha detectado un error desconocido, por favor contáctanos para dar solución de inmediato.", "Ups algo ha salido muy mal.");

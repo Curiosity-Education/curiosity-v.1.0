@@ -212,6 +212,17 @@ class sponsoredController extends BaseController{
               return Response::json(["message"=>$e->message_to_purchaser]);
              //el cliente no pudo ser creado
             }
+            catch(\Conekta\ErrorList $errorList){
+                $error = array();
+                foreach($errorList->details as &$errorDetail) {
+                    array_push($error, $errorDetail->getMessage());
+                }
+                return Response::json(array(
+                    'status' => 'CUE-00101',
+                    'statusMessage' => 'Error en el pago',
+                    'data' => $error
+                ));
+            }
         }
     }
 
