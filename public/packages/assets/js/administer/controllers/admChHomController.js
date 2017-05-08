@@ -189,9 +189,8 @@ var admChHomController = {
     },
 
     successUpdated : function(r){
-        console.log(r);
         if (r.status == 200){
-            $("body").find("#agf"+r.data.child.id+"image").attr('src', "/packages/assets/media/images/padrino_curiosity/"+r.data.folder+"/"+r.data.child.foto+"?"+parseInt(Math.random() * 10000000000000000));
+            $("body").find("#agf"+r.data.child.id+"img").attr('src', "/packages/assets/media/images/padrino_curiosity/"+r.data.folder+"/"+r.data.child.foto+"?"+parseInt(Math.random() * 10000000000000000));
             $("body").find("#agf"+r.data.child.id+"data").data('o', JSON.stringify(r.data.child));
             $("body").find("#agf"+r.data.child.id+"data").data('f', r.data.folder);
             $("body").find("#agf"+r.data.child.id+"position").data('c', r.data.child.id);

@@ -25,14 +25,14 @@ $(function(){
     });
 
     $("body").on("click", ".agf-btnround-confChild", function(){
-        var_id = parseInt($(this).data('o').id);
         let object;
         try {
             object = JSON.parse($(this).data('o'));
         } catch (e) {
             object = $(this).data('o');
         }
-        console.log(object);
+        var_id = parseInt(object.id);
+        console.log(var_id);
         admChHomController.fillData(object, $(this).data('f'));
         typeSave = "update";
         $("#agf-modal").modal("show");
