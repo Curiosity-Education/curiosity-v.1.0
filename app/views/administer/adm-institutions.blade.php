@@ -4,11 +4,11 @@
 @stop
 
 @section('title')
- Gestion avatar
+ Gestión de Instituciones
 @stop
 
 @section('baner-tittle')
-   Gestion Instituciones
+   Gestión Instituciones
 @stop
 
 @section('content-administer')
@@ -17,7 +17,7 @@
   <div class="col-md-12 card" id="adIn-card">
     <div class="col-md-4">
       <select class="mdb-select adIn-adjust" id="type">
-        <option value="" disabled selected>Seleccione un Tipo de Institucion</option>
+        <option value="" disabled selected>Seleccione un Tipo de Institución</option>
         <option value="Escuela Privada" id="ll">Escuela Privada</option>
         <option value="Escuela Publica">Escuela Publica</option>
         <option value="Empresa">Empresa</option>
@@ -58,7 +58,7 @@
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                 </button>
-                <h5 class='modal-title w-100 white-text text-center' id='myModalLabel'>Actializar Institucion</h5>
+                <h5 class='modal-title w-100 white-text text-center' id='myModalLabel'>Actializar Institución</h5>
            </div>
 
             <div class='modal-body l'>
@@ -104,12 +104,12 @@
 
                     <div class='md-form'>
                       <input type'text' id='updAdIn-number' class='form-control' placeholder="">
-                      <label for='form1' class="active">Numero</label>
+                      <label for='form1' class="active">Número</label>
                     </div>
 
                     <div class='md-form'>
                       <input type='text' id='updAdIn-Cp' class='form-control' placeholder="">
-                      <label for='form1' class="">Codigo Postal</label>
+                      <label for='form1' class="">Código Postal</label>
                     </div>
 
                     <select class='updAdInselect' id='updAdIn-state'>

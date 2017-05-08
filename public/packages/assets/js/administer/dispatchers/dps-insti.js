@@ -84,7 +84,7 @@ $(function(){
       }
     }
 
-    var stat = atrib(states,"id",city.estado_id);    
+    var stat = atrib(states,"id",city.estado_id);
     ainstiController.infoInsti($(this).data('id'));
     $("#updAdIn-state").empty();
     addStates(states,"#updAdIn-state");
@@ -110,6 +110,10 @@ $(function(){
     ainstiController.delete($(this).data('id'));
   });
 
+  $("body").on("click", ".btnByGetAccounts", function(){
+      document.location.href = "getInstitution-" + $(this).data('id');
+  });
+
 });
 
 function addInsti(selector,obj){
@@ -123,7 +127,7 @@ function addInsti(selector,obj){
           "<th scope='row'>" + obj[i].nombre + "</th>"  +
           "<td class='col-md-6 offset-md-3'>" +
             "<button type='button' data-id='" + obj[i].id + "' class='adIn-color adIn-upd-btn btn btn btn-primary waves-effect' data-toggle='modal' data-target='#updateModals'><i class='fa fa-refresh' aria-hidden='true'></i></button>" +
-            "<button type='button' data-id='" + obj[i].id + "' class='btn btn-outline-primary waves-effect'><i class='fa fa-balance-scale' aria-hidden='true'></i></button>" +
+            "<button type='button' data-id='" + obj[i].id + "' class='btnByGetAccounts btn btn-outline-primary waves-effect'><i class='fa fa-balance-scale' aria-hidden='true'></i></button>" +
             "<button type='button' data-id='" + obj[i].id + "' class='adIn-delete btn btn-outline-danger waves-effect'><i class='fa fa-trash' aria-hidden='true'></i></button>" +
           "</td>" +
         "</tr>"
