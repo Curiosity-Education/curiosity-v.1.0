@@ -102,6 +102,10 @@ Padrino Curiosity
                        </select>
                      </div>
                      <div class="form-group">
+                       <label for="agf_desc" class="msad-mdl-label" style="margin-bottom: .5rem;">Hobby/Motivación</label>
+                       <textarea name="agf_desc" class="form-control agfInp" id="agf_desc"></textarea>
+                     </div>
+                     <div class="form-group">
                        <label for="agf_sponsored" class="msad-mdl-label">¿Esta Apadrinado?</label>
                        <select class="form-control msad-select" name="agf_sponsored" id="agf_sponsored">
                            <option value="0">No</option>
