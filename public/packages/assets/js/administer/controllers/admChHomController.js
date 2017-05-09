@@ -43,11 +43,12 @@ var admChHomController = {
     },
 
     countChildrenInDOM : function (){
-        var counter = 0;
-        $.each($("#agf-boxChildren > .childCount"), function(index, el) {
-            counter++;
-        });
-        return counter;
+        // var counter = 0;
+        // $.each($("#agf-boxChildren > .childCount"), function(index, el) {
+        //     counter++;
+        // });
+        // return counter;
+        return $("body").find(".childCount").length;
     },
 
     saveChild : function (var_instution, var_id, type){
@@ -56,7 +57,8 @@ var admChHomController = {
               agf_name      : {required:true, maxlength:45},
               agf_lName     : {required:true, maxlength:45},
               agf_genre     : {required:true},
-              agf_sponsored : {required:true}
+              agf_sponsored : {required:true},
+              agf_desc      : {maxlength:200}
             }
         });
         if ($('#agf-form').valid()){
@@ -67,6 +69,7 @@ var admChHomController = {
             formData.append('sexo', $('#agf_genre').val());
             formData.append('institucion_id', var_instution);
             formData.append('apadrinado', $('#agf_sponsored').val());
+            formData.append('description', $('#agf_desc').val());
             let _width = document.getElementById('agf_ph').width;
             let _height = document.getElementById('agf_ph').height;
             let child = new ChildrenHome(formData);
@@ -139,16 +142,17 @@ var admChHomController = {
         if(r.status == 200){
             $("body").find("#agf"+r.data.child.id).hide('slow', function() {
                 $(this).remove();
-            });;
-            Curiosity.noty.success("Eliminado correctamente", "Bien hecho");
-            if (admChHomController.countChildrenInDOM() == 0) {
-                let code = '<div class=\'col-md-12\'>'+
-                    '<div class=\'z-depth-1\' id=\'agf-emptybox\'>'+
-                        '<h5>No existen niños regisrados en esta institución</h5>'+
-                    '</div>'+
-                '</div>';
-                $("#adf-boxChildren").append(code);
-            }
+                Curiosity.noty.success("Eliminado correctamente", "Bien hecho");
+                console.log(admChHomController.countChildrenInDOM());
+                if (admChHomController.countChildrenInDOM() < 1) {
+                    let code = '<div class=\'col-md-12\'>'+
+                        '<div class=\'z-depth-1\' id=\'agf-emptybox\'>'+
+                            '<h5>No existen niños regisrados en esta institución</h5>'+
+                        '</div>'+
+                    '</div>';
+                    $("#adf-boxChildren").append(code);
+                }
+            });
         }
         else {
             Curiosity.noty.error("Error inesperado", "Error");
@@ -211,6 +215,7 @@ var admChHomController = {
         $('#agf_lName').val(obj.apellidos);
         $('#agf_genre').val(obj.sexo);
         $('#agf_sponsored').val(obj.apadrinado);
+        $('#agf_desc').val(obj.description);
     },
 
     updateChild : function(){
@@ -246,12 +251,6 @@ var admChHomController = {
                 Curiosity.noty.info('Selecciona un archivo de imagen valido (\'.png\', \'.PNG\', \'.jpg\', \'.JPG\', \'.JPEG\')', 'Formato invalido');
             }
         }
-    },
-
-    resetImage : function(){
-       $("#agf_ph").attr("src", this.photo);
-       $("#agf_photo").val("");
-       $("#agf-resetPhoto").hide();
     }
 
 }

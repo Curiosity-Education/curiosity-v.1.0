@@ -32,7 +32,6 @@ $(function(){
             object = $(this).data('o');
         }
         var_id = parseInt(object.id);
-        console.log(var_id);
         admChHomController.fillData(object, $(this).data('f'));
         typeSave = "update";
         $("#agf-modal").modal("show");
@@ -43,6 +42,7 @@ $(function(){
         $("#agf_ph").attr('src', admChHomController.photo);
         typeSave = "registry";
         $("#agf-form input").val("");
+        $("textarea").val("");
         $("#agf-modal").modal("show");
     });
 
