@@ -19,7 +19,7 @@ margin: auto;">
     margin: 0 auto;
     box-sizing: border-box;">
         <div class="boxportada" style="min-height: 10rem;
-        background: url(https://www.curiosity.com.mx/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.jpg) no-repeat center;
+        background: url(https://www.curiosity.com.mx/packages/assets/media/images/padrino_curiosity/emailtosend/portadaemailpadrino.png) no-repeat center;
         background-size: cover;
         padding-top: 10rem;
         padding-left: 2rem;
@@ -34,7 +34,7 @@ margin: auto;">
                 </span>
             </h1>
         </div>
-        <div id="infoSponsored" style="background: rgb(34, 98, 173);
+        <div id="infoSponsored" style="background: #ec2726;
         color: #fff;
         padding: 1rem;
         margin: -1rem 0rem 0rem 0rem;">
