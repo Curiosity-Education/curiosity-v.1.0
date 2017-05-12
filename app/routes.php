@@ -26,6 +26,8 @@ Route::get('/padrino-email', function(){
 		"child" => "Maria Guadalupe Becerra",
 		"child_image" => '/packages/assets/media/images/padrino_curiosity/amor/aaaaa-bbbbb.jpg',
 		"home" => "Test Email Home",
+		"hobby" => "jugar futbol",
+		"ser_grande" => "doctora",
 		"home_image" => "/packages/assets/media/images/institutions/deleted.png"
 	];
 	return View::make('emails.padrinoCuriosity', $dataSend);
