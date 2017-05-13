@@ -10,27 +10,27 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
-Route::get('prueba-excel',function(){
 
-    $data = User::all();
-    Excel::create('Filename', function($excel) use($data) {
 
-        $excel->sheet('Sheetname', function($sheet) use($data) {
-
-            $sheet->fromModel($data);
-
-        });
-
-    })->export('xls');
-});
 
 Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");
 
 Route::get('/padrino-email', function(){
-	return View::make('emails.padrinoCuriosity');
+	$dataSend = [
+		"name" => "Equipo Curiosity",
+		"client" => "Wilvardo Ramirez Colunga",
+		"email" => "wilvardo@gmail.com",
+		"subject" => "Padrino Curiosity",
+		"child" => "Maria Guadalupe Becerra",
+		"child_image" => '/packages/assets/media/images/padrino_curiosity/amor/aaaaa-bbbbb.jpg',
+		"home" => "Test Email Home",
+		"hobby" => "jugar futbol",
+		"ser_grande" => "doctora",
+		"home_image" => "/packages/assets/media/images/institutions/deleted.png"
+	];
+	return View::make('emails.padrinoCuriosity', $dataSend);
 });
 
 Route::get('/padrino', function(){
@@ -169,6 +169,12 @@ Route::group(array('before' => 'auth'), function(){
 			Route::post('update', 'topicsController@update');
 			Route::post('delete', 'topicsController@delete');
 		});
+		// mange the masive users
+		Route::group(array('prefix' => '/institute-user'),function(){
+			Route::get('/get-user-for-institute/{range}/{idInstitute}','instituteMembershipsController@generateMemebers');
+			Route::post('/delete-user-for-institute/{idInstitute}','instituteMembershipsController@deleteUsers');
+		});
+
 		// Manage PDF's Library
 		Route::group(array('prefix' =>  'pdfs'),function(){
 			Route::post('save', 'libraryPdfController@save');

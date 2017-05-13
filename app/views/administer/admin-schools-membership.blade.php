@@ -28,7 +28,7 @@ Gestion de cuentas masivas
               <a class="nav-link waves-light" data-toggle="tab" href="#shme-management" role="tab"><i class="fa fa-user fa-2x" aria-hidden="true"></i> <i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i><br> Gestion de cuentas masivas</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link waves-light" data-toggle="tab" href="#panel81" role="tab"><i class="fa fa-ban fa-2x" aria-hidden="true"></i><br> Membresias Eliminadas</a>
+              <a class="nav-link waves-light" hidden="hidden" data-toggle="tab" href="#panel81" role="tab"><i class="fa fa-ban fa-2x" aria-hidden="true"></i><br> Membresias Eliminadas</a>
           </li>
       </ul>
   </div>
@@ -74,7 +74,7 @@ Gestion de cuentas masivas
           <div class="col-md-3">
            <h6 class="text-white" style="margin-top: .8rem;">4 seleccionados</h6>
           </div>
-          <div class="col-md-2"><a class="btn shme-btn-trash"><i class="fa fa-trash"></i></a></div>
+          <div class="col-md-2"><a class="btn shme-btn-trash" id="shme-trash-users" data-school="{{$data->id}}"><i class="fa fa-trash"></i></a></div>
           <div class="col-md-1"></div>
         </div>
       </div>
@@ -82,9 +82,7 @@ Gestion de cuentas masivas
         @if(count($data->usuarios)>0)
         <div class="row">
           @foreach($data->usuarios as $user)
-            <div class="col-md-2"><img src="/packages/assets/media/images/system/membreship-not-selected.png" class="img-fluid shme-img-member"><p class="shme-p-username text-center">{{$user->username}}</p></div>
-            <div class="col-md-2"><img src="/packages/assets/media/images/system/membreship-not-selected.png" class="img-fluid shme-img-member"><p class="shme-p-username text-center">{{$user->username}}</p></div>
-
+            <div class="col-md-2"><img src="/packages/assets/media/images/system/membreship-not-selected.png" data-user="{{$user->id}}" class="img-fluid shme-img-member"><p class="shme-p-username text-center">{{$user->username}}</p></div>
           @endforeach
         </div>
         @else
@@ -103,11 +101,11 @@ Gestion de cuentas masivas
           <div class="col-md-2"><p>Intituto cat</p></div>
           <div class="col-md-3">88 membresias activas</div>
           <div class="col-md-4">
-            <input type="range" min="0" id="range_memberships" max="200" />
+            <input type="range" min="1" id="range_memberships" max="45" value="2" />
           </div>
           <div class="col-md-2">
-            <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-plus"></i></a>
-            <a class="btn text-black shme-btn-more z-depth-0"><i class="fa fa-file-excel-o"></i></a>
+            <a class="btn text-black shme-btn-more z-depth-0" id="shme-add-users" data-school="{{$data->id}}"><i class="fa fa-plus"></i></a>
+            <a class="btn text-black shme-btn-more z-depth-0" hidden="hidden"><i class="fa fa-file-excel-o"></i></a>
           </div>
         </div>
       </div>
@@ -123,7 +121,7 @@ Gestion de cuentas masivas
 @stop
 
 @section('js-plus')
-<script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
-<script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/models/dist/institute-user.js?{{rand();}}" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/Controllers/institutesUsersController.js?{{rand();}}" charset="utf-8"></script>
 <script src="/packages/assets/js/administer/dispatchers/dsp-shme.js?{{rand();}}" charset="utf-8"></script>
 @stop

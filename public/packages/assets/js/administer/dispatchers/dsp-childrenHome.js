@@ -25,14 +25,13 @@ $(function(){
     });
 
     $("body").on("click", ".agf-btnround-confChild", function(){
-        var_id = parseInt($(this).data('o').id);
         let object;
         try {
             object = JSON.parse($(this).data('o'));
         } catch (e) {
             object = $(this).data('o');
         }
-        console.log(object);
+        var_id = parseInt(object.id);
         admChHomController.fillData(object, $(this).data('f'));
         typeSave = "update";
         $("#agf-modal").modal("show");
@@ -43,6 +42,7 @@ $(function(){
         $("#agf_ph").attr('src', admChHomController.photo);
         typeSave = "registry";
         $("#agf-form input").val("");
+        $("textarea").val("");
         $("#agf-modal").modal("show");
     });
 

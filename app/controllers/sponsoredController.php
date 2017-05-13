@@ -81,6 +81,7 @@ class sponsoredController extends BaseController{
             $child->apellidos = $data["apellidos"];
             $child->sexo = $data["sexo"];
             $child->apadrinado = $data["apadrinado"];
+            $child->description = $data["description"];
             $child->save();
             $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
 			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
@@ -123,17 +124,7 @@ class sponsoredController extends BaseController{
                         'type' => "card"
                     ))
                 ));
-                // $plan = Plan::where("reference", "=", "prueba_padrino_cu")->first();
-                // if(!$plan){
-                //     return Response::json(array(
-                //         'status' => 404,
-                //         'statusMessage' => 'El plan no fue encontrado'
-                //     ));
-                // }
-                // $subscription = $customer->createSubscription(array(
-                //   "plan_id" => $plan->reference
-                // ));
-                $amountChargue = 15;
+                $amountChargue = 348;
                 $payChargue = \Conekta\Order::create(array(
                     'currency' => 'MXN',
                     'customer_info' => array(
@@ -154,62 +145,59 @@ class sponsoredController extends BaseController{
                         )
                     )
                 ));
-                // if ($subscription->status == 'active' || $subscription->status == 'in_trial') {
-                    // la suscripción inicializó exitosamente!
-                    try {
-                        // Cambiamos el estatus del niño que fue apadrinado
-                        $childSpon = Children::where('id', '=', Input::get('child'))->first();
-                        $childSpon->apadrinado = 1;
-                        $childSpon->save();
-                    } catch (Exception $e) {
-                        $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
-                        Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
-                    }
-                    try {
-                        // Uncomment for production
-                        $childSpon = Children::where('id', '=', Input::get('child'))->first();
-                        $home = Institute::where('id', '=', $childSpon->institucion_id)->first();
-                        $dataSend = [
-                            "name" => "Equipo Curiosity",
-                            "client" => Input::get('nombre'),
-                            "email" => Input::get('email'),
-                            "subject" => "Padrino Curiosity",
-                            "child" => $childSpon->nombre.' '.$childSpon->apellidos,
-                            "child_image" => '/packages/assets/media/images/padrino_curiosity/'.Curiosity::clean_string($home->nombre).'/'.$childSpon->foto,
-                            "home" => $home->nombre,
-                            "home_image" => "/packages/assets/media/images/institutions/".$home->logo
-                        ];
-                        $toEmail = $dataSend["email"];
-                        $toName  = $dataSend["email"];
-                        $subject = $dataSend["subject"];
-                        Mail::send('emails.padrinoCuriosity', $dataSend, function($message) use($toEmail, $toName, $subject){
-                            $message->to($toEmail, $toName)->subject($subject)->cc('willy.ramirez@curiosity.com.mx');
-                        });
-                        $sentEmail = 1;
-                    } catch (Exception $e) {
-                        $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
-                        Log::info('Falló al enviar el email al padrino, una vez que pago: ' . $executionTime . ' | ' .  $e->getMessage());
-                    }
-                    return Response::json(array(
-                        'status' => 200,
-                        'statusMessage' => 'success',
-                        'data' => $payChargue
-                    ));
-                // }
-                // else{
-                //     if ($subscription->status == 'past_due') {
-                //         // la suscripción falló al inicializarse
-                //         return Response::json(array(
-                //             'status'=>105,
-                //             'statusMessage'=>'PAST_DUE',
-                //             'data' => $subscription,
-                //             'message'=>'A ocurrido un error al momento de hacer el cobro de la suscripción. No se ha podido hacer el pago.'
-                //         ));
-                //     }
-                // }
+                try {
+                    // Cambiamos el estatus del niño que fue apadrinado
+                    $childSpon = Children::where('id', '=', Input::get('child'))->first();
+                    $childSpon->apadrinado = 1;
+                    $childSpon->save();
+                } catch (Exception $e) {
+                    $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+                    Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
+                }
+                try {
+                    // Uncomment for production
+                    $childSpon = Children::where('id', '=', Input::get('child'))->first();
+                    $home = Institute::where('id', '=', $childSpon->institucion_id)->first();
+                    $dataSend = [
+                        "name" => "Equipo Curiosity",
+                        "client" => Input::get('nombre'),
+                        "email" => Input::get('email'),
+                        "subject" => "Padrino Curiosity",
+                        "child" => $childSpon->nombre.' '.$childSpon->apellidos,
+                        "child_image" => '/packages/assets/media/images/padrino_curiosity/'.Curiosity::clean_string($home->nombre).'/'.$childSpon->foto,
+                        "home" => $home->nombre,
+                        "home_image" => "/packages/assets/media/images/institutions/".$home->logo
+                    ];
+                    $toEmail = $dataSend["email"];
+                    $toName  = $dataSend["email"];
+                    $subject = $dataSend["subject"];
+                    Mail::send('emails.padrinoCuriosity', $dataSend, function($message) use($toEmail, $toName, $subject){
+                        $message->to($toEmail, $toName)->subject($subject);
+                        // ->cc('willy.ramirez@curiosity.com.mx');
+                    });
+                    $sentEmail = 1;
+                } catch (Exception $e) {
+                    $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
+                    Log::info('Falló al enviar el email al padrino, una vez que pago: ' . $executionTime . ' | ' .  $e->getMessage());
+                }
+                return Response::json(array(
+                    'status' => 200,
+                    'statusMessage' => 'success'
+                ));
             }catch (\Conekta\Error $e){
               return Response::json(["message"=>$e->message_to_purchaser]);
              //el cliente no pudo ser creado
+            }
+            catch(\Conekta\ErrorList $errorList){
+                $error = array();
+                foreach($errorList->details as &$errorDetail) {
+                    array_push($error, $errorDetail->getMessage());
+                }
+                return Response::json(array(
+                    'status' => 'CUE-00101',
+                    'statusMessage' => 'Error en el pago',
+                    'data' => $error
+                ));
             }
         }
     }

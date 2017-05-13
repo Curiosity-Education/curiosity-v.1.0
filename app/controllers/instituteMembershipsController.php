@@ -40,29 +40,38 @@ class instituteMembershipsController extends BaseController{
         $dst = array('range_memberships' => $range, 'name_institute' => $name , 'institute_id' => $idInstitute);//Input::all();
         $numMembUser = $dst['range_memberships'];
         $this->name = $dst['name_institute'];
-        $data = array(
+        $p_root_user = User::where('username','=','root_'.$this->name)->select(DB::raw('id,count(*) as exist'))->get()[0];
+        if($p_root_user->exist == 0){
+            $data = array(
                 'username' => 'root_'.$this->name,
                 'role'  => 'parent',
                 'folio' => 0,
                 'type' => 'Usuario administrativo',
                 'institute_id' => $dst['institute_id']
             );
-        $userParent = $this->createUser($data);
-        $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
-        $this->matchInstitute($userParent->userID,$dst['institute_id'],$data['folio']);
-        for ($i = 0; $i < $numMembUser; $i++){
+            $userParent = $this->createUser($data);
+            $parent_id = $this->createParent($userParent->personID,$dst['institute_id']);
+            $this->matchInstitute($userParent->userID,$dst['institute_id'],$data['folio']);
+            $countFolio=0;
+        }else{
+            $countFolio = InstituteUser::where('institucion_id','=',$idInstitute)->select('folio')->max('folio');
+            $numMembUser = $countFolio + $numMembUser;
+            $person_id = Person::where('user_id','=',$p_root_user->id)->select('id')->get()[0]->id;
+            $parent_id = Dad::where('persona_id','=',$person_id)->select('id')->get()[0]->id;
+        }
+        for ($i = $countFolio; $i < $numMembUser; $i++){
             $folio = $i + 1;
             $data = array(
                 'username' => $this->createUserName($folio),
                 'role'  => 'child',
                 'type' => 'Usuario niño',
-                'institute_id' => $dst['institute_id']
+                'institute_id' => $dst['institute_id'],
+                'folio' => $folio,
+                'parent_id' => $parent_id
             );
-            $userData = $this->createUser($data);
-            $this->matchInstitute($userData->userID,$dst['institute_id'],$folio);
-            $this->createSon($userData->personID,$parent_id);
+            $this->createUser($data);
         }
-        Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
+        $myFile = Excel::create('lista_usuarios_'.$this->name, function($excel) use($data) {
 
             $excel->sheet('Usuarios Asignados', function($sheet) use($data) {
 
@@ -101,8 +110,12 @@ class instituteMembershipsController extends BaseController{
             // Call them separately
             $excel->setDescription('Archivo excel para informe de datos de usuarios asignados a la institución');
 
-        })->export('xlsx');
-        return Redirect::back();
+        });
+        $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+        return Response::json(array(
+           'name' => "registro", //no extention needed
+           'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+        ));
 
     }
 
@@ -117,13 +130,18 @@ class instituteMembershipsController extends BaseController{
         $user->save();
         $user->attachRole(Role::where('name','=',$dst['role'])->first()->id);
         $person = new Person();
-        $person->nombre = 'No definido';
-        $person->apellidos = 'No definido';
-        $person->sexo = 'o';
+        $person->nombre = $dst['username'];
+        $person->apellidos = '';
+        $person->sexo = 'm';
         $person->user_id = $user->id;
         $person->save();
-
-        return (object)array('userID' => $user->id,'personID' => $person->id);
+        if($dst['type'] !== 'Usuario administrativo'){
+            $this->matchInstitute($user->id,$dst['institute_id'],$dst['folio']);
+            $this->createSon($person->id,$dst['parent_id']);
+        }
+        else{
+            return (object)array('personID'=>$person->id,'userID'=>$user->id);
+        }
     }
     private function matchInstitute($user_id,$institute_id,$folio){
         $instituteUser = new InstituteUser();
@@ -140,6 +158,14 @@ class instituteMembershipsController extends BaseController{
         $parent->persona_id = $person_id;
         $parent->foto_perfil = 'dad-def.png';
         $parent->save();
+        $membresia = new Membership(array(
+                  "token_card" => md5(Person::find($person_id)->nombre),
+                  "fecha_registro" => Carbon::now(),
+                  "payment_option" => 'padrino',
+                  "active"    => 1,
+                  "padre_id"  => $parent->id
+        ));
+        $membresia->save();
         return $parent->id;
     }
     private function createSon($person_id,$parent_id){
@@ -176,7 +202,7 @@ class instituteMembershipsController extends BaseController{
 	         ));
 				$banner = DB::table('hijos_has_accesorios')->insert(array(
 	             'hijo_id'      => $son->id,
-	             'accesorio_id' => 5,
+	             'accesorio_id' => 4,
 					 'is_using' => 1
 	         ));
 				/**************************************************************
@@ -188,6 +214,11 @@ class instituteMembershipsController extends BaseController{
 	             'estilo_avatar_id' => 1,
 					 'is_using' => 1
 	         ));
+        $planRel = new MembershipPlan();
+        $planRel->hijo_id = $son->id;
+        $planRel->membresia_id = Membership::where("padre_id", "=", $parent_id)->pluck("id");
+        $planRel->plan_id = Plan::where("reference", "=", 'padrino')->first()["id"];
+        $planRel->save();
     }
 
     public function getHomes(){
@@ -236,7 +267,7 @@ class instituteMembershipsController extends BaseController{
                         ->join("ciudades","ciudades.id","=","direcciones.ciudad_id")
                         ->where("instituciones.active","=","1")
                         ->where("instituciones.id","=",$id)
-                        ->select("instituciones.nombre","tipo","logo","calle","colonia","numero","codigo_postal","ciudades.nombre as ciudad")
+                        ->select("instituciones.id","instituciones.nombre","tipo","logo","calle","colonia","numero","codigo_postal","ciudades.nombre as ciudad")
                         ->first();
        // $this->institute = $ints;
         if($ints){
@@ -254,5 +285,21 @@ class instituteMembershipsController extends BaseController{
             return View::make("errors.404");
         }
 
+    }
+    public function deleteUsers($idInstitute){
+        $ids = Input::get("ids");
+        if(count($ids)>0){
+            $sentence = "update users set active = 2 where id in ".$this->generateConditionIds($ids);
+            DB::select($sentence);
+            return Response::json(array("status" => 200, 'statusMessage' => "success", "message" => "Los usuarios se han desactivado exitosamente"));
+        }
+    }
+    private function generateConditionIds($ids){
+        $condition = "(";
+        for($i = 0;$i<count($ids);$i++){
+            $condition .=$ids[$i].",";
+        }
+        $condition .="0);";
+        return $condition;
     }
 }
