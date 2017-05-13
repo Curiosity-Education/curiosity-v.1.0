@@ -39,9 +39,9 @@ $(function(){
 
   $("body").on('change','#type',function(){
     instituteType = $("#type").val();
-    var perro  = atrib(institutes,'tipo',instituteType);
+    var type  = atrib(institutes,'tipo',instituteType);
 
-      addInsti("#adIn-table>tbody",perro);
+      addInsti("#adIn-table>tbody",type);
 
   });
 
@@ -84,7 +84,7 @@ $(function(){
       }
     }
 
-    var stat = atrib(states,"id",city.estado_id);    
+    var stat = atrib(states,"id",city.estado_id);
     ainstiController.infoInsti($(this).data('id'));
     $("#updAdIn-state").empty();
     addStates(states,"#updAdIn-state");
