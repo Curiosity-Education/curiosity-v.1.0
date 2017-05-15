@@ -217,6 +217,8 @@ var admChHomController = {
         $('#agf_genre').val(obj.sexo);
         $('#agf_sponsored').val(obj.apadrinado);
         $('#agf_desc').val(obj.description);
+        $("#agf_lHobby").val(obj.hobby);
+        $("#agf_lSer_grande").val(obj.ser_grande);
     },
 
     updateChild : function(){
