@@ -1,7 +1,7 @@
 $(function(){
 
   var tempLevels, tempIntelligences, tempBlocks, tempTopics, tempVideos, tempTeachers, tempSchools;
-  var cc = 0, cc2 = 0, countSlide = 0, nameTopic;
+  var cc = 0, cc2 = 0, countSlide = 0, nameTopic, contadorClick = 0;
   var show_per_page = 8, count_elements = 0, count_sections = 0, num_container = 1;
 
   libraryPdfs.getLevels(function(levels){
@@ -39,13 +39,12 @@ $(function(){
 
   $("body").on('click','.lp-btn-degrees',function(){
 
-    $(".lp-btn-degrees").removeClass(".lp-btn-active");
-    $(this).addClass(".lp-btn-active");
+    $(".lp-btn-degrees").removeClass("lpActive");
     $("#lp-btn-topics").empty();
-    $(this).addClass("lp-btn-active");
-    if ($(this).hasClass("lp-btn-active")) {
+    $(this).addClass("lpActive");
+    if ($(this).hasClass("lpActive")) {
       var level = $(this).data("id-grade");
-      
+
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
@@ -54,7 +53,10 @@ $(function(){
          }
       });
     }
-    $("#lp-btn-topics button").first().trigger('click');
+    if (contadorClick == 0) {
+      contadorClick += 10;
+      $("#lp-btn-topics button").first().trigger('click');
+    }
   });
 
 
@@ -232,7 +234,7 @@ $(function(){
 		$('#lp-container-all').addClass("lp-content-disabled");
 		$('#row-banner').addClass("lp-content-disabled");
     $('.lp-content-pdf').append($(
-      "<embed src='packages/assets/pdf/" + $(this).data('link-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
+      "<embed src='/packages/assets/pdf/" + $(this).data('link-pdf') + "' type='application/pdf' width='100%' height='100%' id='lp-pdf'>"
     ));
     $("#topic-name").text($(this).data('name-pdf'));
 

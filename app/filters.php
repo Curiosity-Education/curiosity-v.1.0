@@ -23,7 +23,7 @@ App::before(function($request)
         return Redirect::secure(Request::path());
     }*/
 });
-
+ 
 
 App::after(function($request, $response)
 {
