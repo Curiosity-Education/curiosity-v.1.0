@@ -45,7 +45,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4 col-md-3 offset-md-1">
+			<div class="col-sm-4 col-md-3">
 				    <!--Card-->
 					<div class="card card-cascade narrower reg-rounded animated fadeInLeft">
 
@@ -77,7 +77,7 @@
 					</div>
 					<!--/.Card-->
 			</div>
-			<div class="col-sm-8 col-md-7" id="reg-registry">
+			<div class="col-sm-8 col-md-9" id="reg-registry">
 
 				<!--Form with header-->
 				<div class="card reg-rounded">
@@ -96,16 +96,16 @@
 									    <input type="hidden" name="_token" id="csrf" value="<?php echo csrf_token(); ?>">
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-envelope prefix reg-icon-bl"></i>
-												<input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control validate">
+												<i class="fa fa-envelope prefix reg-icon-bl reg-icon"></i>
+												<input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control validate reg-fontZise">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix reg-icon-bl"></i>
-												<input type="password" id="password" name="password" class="form-control" length="20" placeholder="Ingresa tu contraseña">
+												<i class="fa fa-unlock-alt prefix reg-icon-bl reg-icon"></i>
+												<input type="password" id="password" name="password" class="form-control reg-fontZise2" length="20" placeholder="Ingresa tu contraseña">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix reg-icon-bl"></i>
-												<input type="text" id="nombre" name="nombre" placeholder="¿Cuál es tu nombre?" class="form-control">
+												<i class="fa fa-user prefix reg-icon-bl reg-icon"></i>
+												<input type="text" id="nombre" name="nombre" placeholder="¿Cuál es tu nombre?" class="form-control ">
 											</div>
 											<div class="form-group" id="reg-gender">
 												<select class="form-control" id="sexo" name="sexo" style="width: 100%;
@@ -125,19 +125,19 @@
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix reg-icon-bl"></i>
+												<i class="fa fa-user prefix reg-icon-bl reg-icon"></i>
 												<input type="text" id="username" name="username" placeholder="Nombre de usuario" class="form-control validate" length="20">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-unlock-alt prefix reg-icon-bl"></i>
-												<input type="password" id="cpassword" name="cpassword" class="form-control" length="20" placeholder="Confirmar contraseña">
+												<i class="fa fa-unlock-alt prefix reg-icon-bl reg-icon"></i>
+												<input type="password" id="cpassword" name="cpassword" class="form-control reg-fontZise2" length="20" placeholder="Confirmar contraseña">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-user prefix reg-icon-bl"></i>
-												<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="¿Cuáles son tus apellidos?">
+												<i class="fa fa-user prefix reg-icon-bl reg-icon"></i>
+												<input type="text" id="apellidos" name="apellidos" class="form-control reg-fontZise" placeholder="¿Cuáles son tus apellidos?">
 											</div>
 											<div class="md-form form-group">
-												<i class="fa fa-phone prefix reg-icon-bl"></i>
+												<i class="fa fa-phone prefix reg-icon-bl reg-icon"></i>
 												<input type="text" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" class="form-control" length="10">
 											</div>
 										</div>
