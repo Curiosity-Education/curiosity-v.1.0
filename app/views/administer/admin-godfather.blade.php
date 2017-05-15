@@ -102,8 +102,12 @@ Padrino Curiosity
                        </select>
                      </div>
                      <div class="form-group">
-                       <label for="agf_desc" class="msad-mdl-label" style="margin-bottom: .5rem;">Hobby/Motivación</label>
-                       <textarea name="agf_desc" class="form-control agfInp" id="agf_desc"></textarea>
+                         <label for="agf_lHobby" class="msad-mdl-label">Pasatiempo</label>
+                         <input type="text" class="form-control agfInp" id="agf_lHobby" name="agf_lHobby">
+                     </div>
+                     <div class="form-group">
+                         <label for="agf_lSer_grande" class="msad-mdl-label">¿Qué quiero ser de grande?</label>
+                         <input type="text" class="form-control agfInp" id="agf_lSer_grande" name="agf_lSer_grande">
                      </div>
                      <div class="form-group">
                        <label for="agf_sponsored" class="msad-mdl-label">¿Esta Apadrinado?</label>
