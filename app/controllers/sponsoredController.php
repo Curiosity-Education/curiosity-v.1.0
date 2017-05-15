@@ -165,6 +165,8 @@ class sponsoredController extends BaseController{
                         "email" => Input::get('email'),
                         "subject" => "Padrino Curiosity",
                         "child" => $childSpon->nombre.' '.$childSpon->apellidos,
+                        "hobby" => ($childSpon->hobby == "" || $childSpon->hobby == null) ? "" : $childSpon->hobby,
+                        "ser_grande" => ($childSpon->ser_grande == "" || $childSpon->ser_grande == null) ? "" : $childSpon->ser_grande,
                         "child_image" => '/packages/assets/media/images/padrino_curiosity/'.Curiosity::clean_string($home->nombre).'/'.$childSpon->foto,
                         "home" => $home->nombre,
                         "home_image" => "/packages/assets/media/images/institutions/".$home->logo
