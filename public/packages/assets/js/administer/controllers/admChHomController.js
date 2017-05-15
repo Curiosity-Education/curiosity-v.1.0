@@ -69,7 +69,8 @@ var admChHomController = {
             formData.append('sexo', $('#agf_genre').val());
             formData.append('institucion_id', var_instution);
             formData.append('apadrinado', $('#agf_sponsored').val());
-            formData.append('description', $('#agf_desc').val());
+            formData.append('hobby', $('#agf_lHobby').val());
+            formData.append('ser_grande', $('#agf_lSer_grande').val());
             let _width = document.getElementById('agf_ph').width;
             let _height = document.getElementById('agf_ph').height;
             let child = new ChildrenHome(formData);
@@ -216,6 +217,8 @@ var admChHomController = {
         $('#agf_genre').val(obj.sexo);
         $('#agf_sponsored').val(obj.apadrinado);
         $('#agf_desc').val(obj.description);
+        $("#agf_lHobby").val(obj.hobby);
+        $("#agf_lSer_grande").val(obj.ser_grande);
     },
 
     updateChild : function(){
