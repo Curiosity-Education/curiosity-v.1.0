@@ -81,7 +81,8 @@ class sponsoredController extends BaseController{
             $child->apellidos = $data["apellidos"];
             $child->sexo = $data["sexo"];
             $child->apadrinado = $data["apadrinado"];
-            $child->description = $data["description"];
+            $child->hobby = $data["hobby"];
+            $child->ser_grande = $data["ser_grande"];
             $child->save();
             $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
 			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
@@ -164,6 +165,8 @@ class sponsoredController extends BaseController{
                         "email" => Input::get('email'),
                         "subject" => "Padrino Curiosity",
                         "child" => $childSpon->nombre.' '.$childSpon->apellidos,
+                        "hobby" => ($childSpon->hobby == "" || $childSpon->hobby == null) ? "" : $childSpon->hobby,
+                        "ser_grande" => ($childSpon->ser_grande == "" || $childSpon->ser_grande == null) ? "" : $childSpon->ser_grande,
                         "child_image" => '/packages/assets/media/images/padrino_curiosity/'.Curiosity::clean_string($home->nombre).'/'.$childSpon->foto,
                         "home" => $home->nombre,
                         "home_image" => "/packages/assets/media/images/institutions/".$home->logo
