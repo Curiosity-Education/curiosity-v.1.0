@@ -28,7 +28,7 @@ margin: auto;">
             <h1 style="padding-bottom: 2rem; font-size:1rem;color:#4c4c4c !important;">
                 ¡Hola {{ $client }}!  <br>
                 <span style="color:#4c4c4c !important;">
-                    Gracias por apoyar a brindar mayor
+                    Gracias por apoyar a <br>brindar mayor <br>
                     Equidad Educativa.
                 </span>
             </h1>
