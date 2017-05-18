@@ -105,7 +105,7 @@ class sponsoredController extends BaseController{
             'status' => 200,
             'statusMessage' => 'success'
         ));
-        /*$rules = array(
+        $rules = array(
 			'nombre' => 'required',
             'email' => 'required|email'
 		);
@@ -206,7 +206,7 @@ class sponsoredController extends BaseController{
                     'data' => $error
                 ));
             }
-        }*/
+        }
     }
 
 }
