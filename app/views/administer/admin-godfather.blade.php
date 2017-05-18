@@ -136,7 +136,7 @@ Padrino Curiosity
 @stop
 
 @section('js-plus')
-<script src="/packages/assets/js/administer/models/dist/ChildrenHome-dist.js" charset="utf-8"></script>
-<script src="/packages/assets/js/administer/controllers/admChHomController.js" charset="utf-8"></script>
-<script src="/packages/assets/js/administer/dispatchers/dsp-childrenHome.js" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/models/dist/ChildrenHome-dist.js?{{rand();}}" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/controllers/admChHomController.js?{{rand();}}" charset="utf-8"></script>
+<script src="/packages/assets/js/administer/dispatchers/dsp-childrenHome.js?{{rand();}}" charset="utf-8"></script>
 @stop

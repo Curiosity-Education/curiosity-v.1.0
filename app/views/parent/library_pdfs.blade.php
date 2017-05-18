@@ -99,8 +99,7 @@
 		</div>
 
 		<div class="col-md-12 col-sm-12 col-xs-12 lp-content-pdf">
-
-			<h1 class="h1-responsive text-xs-center" id="lp-text-info">Por favor gira tu dispositivo para mejor lectura</h1>
+	
 		</div>
 	</div>
 

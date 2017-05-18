@@ -9,7 +9,7 @@
 		body {
 			margin:0;
 			font-family:'Lato', sans-serif;
-			text-align:center;
+			text-align:center; 
 			color: #999;
 		}
 
