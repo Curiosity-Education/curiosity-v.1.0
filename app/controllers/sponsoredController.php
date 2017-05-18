@@ -101,11 +101,7 @@ class sponsoredController extends BaseController{
     }
 
     function paySponsored(){
-        return Response::json(array(
-            'status' => 200,
-            'statusMessage' => 'success'
-        ));
-        /*$rules = array(
+        $rules = array(
 			'nombre' => 'required',
             'email' => 'required|email'
 		);
@@ -206,7 +202,7 @@ class sponsoredController extends BaseController{
                     'data' => $error
                 ));
             }
-        }*/
+        }
     }
 
 }
