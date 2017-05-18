@@ -103,6 +103,7 @@
                                 <hr>
                             </div>
                             <p class="text-xs-center text-sm-left text-md-center">¿Quiéres apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
+                            <h4 style="font-size: 1rem;text-align: center;margin-bottom: 1rem;font-weight: bold;">Costo: $348.00 MXN</h4>
                             <p class="text-xs-center text-sm-left text-md-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
                             <div id="secureIcon">
                                 <img src="/packages/assets/media/images/parents/payment_cards/security.png">
