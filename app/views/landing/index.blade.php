@@ -525,16 +525,16 @@
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<p class="text-xs-center" id="texto-padrino">
-	                    ¿Qué es Padrino Curiosity? <br>
-	                    Consiste en brindar la oportunidad a niños de casas hogares de tener el acceso
-	                    a una cuenta para acceder a la plataforma. <br>
-	                    Solo tienes que dar click al botón IR A PADRINO CURIOSITY, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
+	                    ¿Qué es Padrino Curiosity? <br><br>
+						Brindamos la oportunidad a niños en situación vulnerable de tener el acceso a una computadora y una cuenta para ingresar a la plataforma.
+						Solo tienes que ingresar para conocer las casas hogares integradas al programa y ver a los niños que están participando para poder apadrinar a cualquiera de ellos.
 	                </p><br>
 				</div>
 				<div class="col-md-12">
 				    <center>
 				        <a href="/casas-hogares" class="btn btn-lg btn-danger btn-rounded z-depth-3" id="btn-goHome">IR A PADRINO CURIOSITY</a>
 				    </center>
+					<br>
 				</div>
 			</div>
 		</div>
