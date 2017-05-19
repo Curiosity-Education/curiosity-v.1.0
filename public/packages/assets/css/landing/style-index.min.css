@@ -144,9 +144,15 @@ div.card-block hr{background-color: #2262ae !important;}
 .space{letter-spacing: 1px;}
 .planImportant{background-color: #ed6922;}
 div#separador3{height:200px;background:url("/packages/assets/media/images/landing/separador3-min.jpg") repeat center center fixed;background-attachment:fixed;background-size:cover;background-repeat:no-repeat;margin-bottom:30px;}
-seccion#padrino-curiosity{background-color:#F5F5F5;}
+section#padrino-curiosity{height: auto;; background:url("/packages/assets/media/images/landing/separador3-min.jpg") repeat center center fixed; background-size: cover; padding-right: 0px !important; padding-left: 0px !important;}
+section#padrino-curiosity .container{padding: 3rem 0rem 1rem 0rem;}
+.mascara-padrino{width: auto;background-color: rgba(34,98,174,0.8);height: auto; color: #fff;}
+.hr-padrino{width: 50%;border-color: #fff;}
 div.casahogar-text{word-wrap:break-word;padding-top:15px;text-align:center;}
-a#btn-goHome{margin-top: 2rem;}
+#texto-padrino{margin-top: 4rem;}
+@media (max-width:780px){#texto-padrino{margin-top: 0rem;}}
+}
+/*a#btn-goHome{margin-top: 2rem;}*/
 .img-casaHogar{min-height: 10rem; max-height: 10rem}
 .margin{margin-top: 2rem;}
 .blue-text-ce{color: #2262ae;}
@@ -174,4 +180,3 @@ div#casasHogares{height:300px;background:url("/packages/assets/media/images/land
 .labelDataPay{ font-weight: 600; color: rgba(0, 0, 0, 0.6); } #formToPay .form-control{ margin: 0; } .error{ color: #ff7800; } .labelTypePat{ font-weight: 600; color: rgba(0, 0, 0, 0.4); font-size: .8rem; margin-top: .5rem;} #paybox{ display: none; }
 .typePayImg{ margin-bottom: .5rem; } @media (min-width: 768px) and (max-width:
 992px){ #btnConfirm{ font-size: .6rem; } .labelTypePat{ font-size: .7rem; } }
-
