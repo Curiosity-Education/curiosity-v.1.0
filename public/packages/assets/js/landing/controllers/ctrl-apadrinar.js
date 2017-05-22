@@ -26,7 +26,7 @@ var apadrinarController = {
 
                 var cardWith = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
-                            "<img class='img-fluid' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"' alt='"+o.nombre+"'>"+
+                            "<img class='img-fluid' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"?"+Math.random()+"' alt='"+o.nombre+"'>"+
                             "<div class='card-block'>"+
                                 "<h5 class='blue-text-ce'><i class='fa fa-star colorStar'></i>&nbsp; Apadrinado</h5>"+
                                 "<h4 class='card-title text-xs-center'>"+o.nombre+"</h4>"+
