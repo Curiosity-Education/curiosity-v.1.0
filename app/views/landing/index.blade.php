@@ -5,7 +5,7 @@
 @stop
 
 @section('menu')
-	<li class="nav-item nav-item1 anc">
+	<li class="nav-item nav-item1 anc" hidden="hidden">
 		<a class="nav-link" href="#inicio">{{Lang::get('landingPage.menu.home')}} <span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item nav-item1 anc">
@@ -19,6 +19,9 @@
 	</li>
 	<li class="nav-item nav-item2 anc">
 		<a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
+	</li>
+	<li class="nav-item nav-item1 anc">
+		<a class="nav-link" href="#padrino-curiosity">{{Lang::get('landingPage.menu.Godfather')}}</a>
 	</li>
 	<li class="nav-item nav-item2">
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
