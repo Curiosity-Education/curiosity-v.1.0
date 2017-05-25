@@ -9,6 +9,7 @@
         'howfunction' => '¿Cómo funciona?',
         'video' => 'Video',
         'createAccount' => 'Crear cuenta',
-        'logIn' => 'Inicio de sesión'
+        'logIn' => 'Inicio de sesión',
+        'Godfather' => 'Padrino Curiosity'
     )
  );
