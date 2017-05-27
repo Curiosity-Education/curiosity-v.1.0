@@ -6,6 +6,7 @@ $(function(){
 	var obj = null;
 
 	$("body").on('click', '.ms-btnAccess', function() {
+		$(".ms-conteiners").addClass('ms-hide');
 		obj = $(this).data("obj");
 		type = $(this).data("name");
 		switch (type) {
@@ -27,24 +28,24 @@ $(function(){
 		}
 	});
 
-	$("#ms-conteiner-all > div").on('click', '#ms-back', function() {
-		msConstroller.getLevels();
-		// obj = $(this).data("obj");
-		// type = $(this).data("type");
-		// switch (type) {
-		// 	case "level":
-		// 		msConstroller.getLevels();
-		// 	break;
-		// 	case "intelligence":
-		// 		var levels = StorageDB.table.getByAttr("levels", "id", obj["nivel_id"]);
-		// 		msConstroller.makeCard(levels, "level");
-		// 	break;
-		// 	case "block":
-		// 		var show = StorageDB.table.getByAttr("blocks", "inteligencia_id", obj["inteligencia_id"]);
-		// 		var intels = StorageDB.table.getByAttr("intelligences", "id", obj["inteligencia_id"])
-		// 		msConstroller.makeCard(show, "block", null, "intelligence");
-		// 	break;
-		// }
+	$(".ms-conteiners > div").on('click', '#ms-back', function() {
+		cont = $(this).data('cont');
+		switch (cont) {
+			case "intelligence":
+				$(".ms-conteiners").addClass('ms-hide');
+				$("#ms-conteiner-level").removeClass('ms-hide')
+				break;
+			case "block":
+				$(".ms-conteiners").addClass('ms-hide');
+				$("#ms-conteiner-intelligence").removeClass('ms-hide')
+				break;
+			case "activity":
+				$(".ms-conteiners").addClass('ms-hide');
+				$("#ms-conteiner-block").removeClass('ms-hide')
+				break;
+			default:
+
+		}
 	});
 
 });

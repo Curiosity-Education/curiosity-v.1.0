@@ -13,11 +13,20 @@ var msConstroller = {
    },
 
    makeCard : function($obj, type, _class, objRef, typeRef){
-      $("#ms-conteiner-all > div").html("");
-      if (type != "level"){
-         var code = "<div class='row'><div class='container-fluid'><div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a Grados </div></div></div></div>";
-         $("#ms-conteiner-all > div").append(code);
-      }
+     switch (type) {
+ 			case "intelligence":
+        btnBack(type);
+ 			break;
+ 			case "block":
+        btnBack(type);
+ 			break;
+ 			case "activity":
+        btnBack(type);
+ 			break;
+ 			default:
+ 				console.log("error");
+ 			break;
+ 		}
       $.each($obj, function(index, obj) {
    		var code = "<div class='col-md-4 col-sm-4'>"+
    			"<div class='card card-game hm-black-light ms-card animated zoomIn'"+
@@ -33,18 +42,14 @@ var msConstroller = {
    				"</div>"+
    			"</div>"+
    		"</div>";
-   		$("#ms-conteiner-all > div").append(code);
+   		$("#ms-conteiner-" + type + " > div").append(code);
    	});
       $("#ms-conteiner-all > div").find('#ms-back').data("type", typeRef);
       $("#ms-conteiner-all > div").find('#ms-back').data("obj", objRef);
    },
 
    makeActs : function($obj, type, objRef, typeRef){
-      $("#ms-conteiner-all > div").html("");
-      if (type != "level"){
-         var code = "<div class='col-xs-12'><div class='chip animated bounce' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a Grados </div></div>";
-         $("#ms-conteiner-all > div").append(code);
-      }
+      btnBack(type);
       $.each($obj, function(index, obj) {
    		var code = "<div class='col-md-4 col-sm-4'>"+
    			"<div class='card card-game hm-black-light ms-card animated zoomIn'>"+
@@ -60,23 +65,29 @@ var msConstroller = {
    				"</div>"+
    			"</div>"+
    		"</div>";
-   		$("#ms-conteiner-all > div").append(code);
+   		$("#ms-conteiner-" + type + " > div").append(code);
    	});
       $("#ms-conteiner-all > div").find('#ms-back').data("type", typeRef);
       $("#ms-conteiner-all > div").find('#ms-back').data("obj", objRef);
    },
 
    getIntelligences : function(level){
+     $("#ms-conteiner-intelligence").removeClass('ms-hide');
+     $("#ms-conteiner-intelligence > div").empty();
       this.intelligences = StorageDB.table.getByAttr("intelligences", "nivel_id", level["id"]);
       this.makeCard(this.intelligences, "intelligence", "img2", null, "level");
    },
 
    getBlocks : function(intelligence){
+     $("#ms-conteiner-block").removeClass('ms-hide');
+     $("#ms-conteiner-block > div").empty();
       this.blocks = StorageDB.table.getByAttr("blocks", "inteligencia_id", intelligence["id"]);
       this.makeCard(this.blocks, "block", "img3", intelligence, "intelligence");
    },
 
    getActivities : function(block){
+     $("#ms-conteiner-activity").removeClass('ms-hide');
+     $("#ms-conteiner-activity > div").empty();
       this.topics = StorageDB.table.getByAttr("topics", "bloque_id", block["id"]);
       var acts = new Array();
       $.each(this.topics, function(index, obj) {
@@ -86,9 +97,16 @@ var msConstroller = {
       this.makeActs(acts, "activity", block, "block");
    },
 
-   goToPlay : function(act){
-      console.log(act);
+   goToPlay : function(act){      
       window.location.href = "/childDoActivities/game-"+act["activityId"];
    }
 
+}
+
+function btnBack(type){
+  $("#ms-conteiner-all > div").html("");
+  if (type != "level"){
+     var code = "<div class='row'><div class='container-fluid'><div class='col-xs-12'><div class='chip animated bounce' data-cont='" + type + "' id='ms-back' style='cursor:pointer;'><img src='/packages/assets/media/images/system/iconBack.png'> Regresar a " + type + "</div></div></div></div>";
+     $("#ms-conteiner-" + type + " > div").append(code);
+  }
 }
