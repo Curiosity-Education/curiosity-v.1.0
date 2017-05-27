@@ -52,7 +52,7 @@ class viewsController extends BaseController{
       return View::make('errors.404');
    }
    public function getViewWithOutData($viewName){
-      $permission = $this->getPermissionView($viewName);
+      $permission = $this->getPermissionView($viewName);      
       if ($permission != null){
          if (Entrust::can($permission)){
             return View::make($viewName);

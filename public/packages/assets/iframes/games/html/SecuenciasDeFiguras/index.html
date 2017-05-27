@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SecuenciaDeFiguras</title>
+        <script src="js/jquery-2.2.4.js"></script>
+        <script src="js/jquery-ui-1.12.0/jquery-ui.css"></script>
+        <script src="js/jquery-ui-1.12.0/jquery-ui.js"></script>
+        <script src="js/loader.js?<?php rand(); ?>"></script>
+        <link rel="stylesheet" href="css/main.css?<?php rand(); ?>"></style>
+    </head>
+
+<body>
+
+    <div id="Pagina">
+        <div id="Stage">
+            
+            <div id="Header">
+                <div id="Tiempo">60 segs</div>
+                <div class="RAns AnsTiempo" id="RAnsTiempo">+5segs</div>
+                <div class="WAns AnsTiempo" id="WAnsTiempo">-2segs</div>
+                
+                <!--<div id="Multiplicador">x1.0</div>-->
+                
+                <div id="Score" class="Score">0 pts</div>
+                <div class="RAns AnsScore" id="RAnsScore">+100pts</div>
+                <div class="WAns AnsScore" id="WAnsScore">-50pts</div>
+            </div>
+            
+            <div id="Sombra">
+                <div id="Instrucciones"></div>
+            </div>
+            
+            <div class="Start" id="Principiante">Principiante</div>
+            <div class="Start" id="Medio">Medio</div>
+            <div class="Start" id="Experto">Experto</div>
+            
+            <div id="Ejercicios"></div>
+            
+            <div id="Final"></div>
+            <div id="Restart"></div>
+            
+        </div>
+    </div>
+        
+</body>
+</html>
