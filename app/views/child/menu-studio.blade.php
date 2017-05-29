@@ -15,7 +15,16 @@
          </div>
 
          <div class='row'>
-            <div class='z-depth-1' id='ms-conteiner-all' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
+            <div class='z-depth-1 ms-conteiners' id='ms-conteiner-level' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
+               <div class='row'></div>
+            </div>
+            <div class='z-depth-1 ms-conteiners ms-hide' id='ms-conteiner-intelligence' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
+               <div class='row'></div>
+            </div>
+            <div class='z-depth-1 ms-conteiners ms-hide' id='ms-conteiner-block' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
+               <div class='row'></div>
+            </div>
+            <div class='z-depth-1 ms-conteiners ms-hide' id='ms-conteiner-activity' style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
                <div class='row'></div>
             </div>
          </div>
