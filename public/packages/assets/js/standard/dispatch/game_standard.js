@@ -161,6 +161,7 @@ var $juego = {
             $juego.game.combo++;
             $juego.game.hits++;
             $juego.game.attempts++;
+            console.log($juego.game.scoreCurrent);
             $juego.game.calcCombo();
         },
         setError:function(scoreMenius){

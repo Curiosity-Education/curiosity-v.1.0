@@ -60,20 +60,26 @@ margin: auto;">
         <div id="infoHome" style="padding: 1rem;
         text-align: center; background: #fff;">
             <img src="{{asset('/packages/assets/media/images/padrino_curiosity/emailtosend/partners/logoDef.png')}}" style="width: 10%;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
             margin-top: 1rem;
             min-width:5rem;">
             <img src="{{asset('/packages/assets/media/images/padrino_curiosity/emailtosend/partners/tecMty.jpg')}}" style="width: 10%;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
             margin-top: 1rem;
             min-width:5rem;">
             <img src="{{asset('/packages/assets/media/images/padrino_curiosity/emailtosend/partners/incubadora_laguna.png')}}" style="width: 10%;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
             margin-top: 1rem;
             min-width:5rem;">
+            <img src="{{asset('/packages/assets/media/images/padrino_curiosity/emailtosend/partners/dd-min.png')}}" style="width: 10%;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            margin-top: 1rem;
+            min-width:5rem;
+            transform: scale(1.7);">
             <p style="color:#4c4c4c;">
                 <br>
                 “Educación es esperanza y dignidad. Educación es crecimiento y empoderamiento. La educación es la piedra fundamental de toda sociedad y el pasaje para salir de la
