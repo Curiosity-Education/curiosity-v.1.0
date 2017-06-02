@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'cdbr-85c1502512-3.cloudapp.net',
+			'host'      => 'localhost',
 			'database'  => 'curiosity_db',
 			'username'  => 'root',
 			'password'  => 'admin',
