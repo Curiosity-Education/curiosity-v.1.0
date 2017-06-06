@@ -113,7 +113,7 @@ class instituteMembershipsController extends BaseController{
         });
         $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
         return Response::json(array(
-           'name' => "registro", //no extention needed
+           'name' => "registro.xlsx", //no extention needed
            'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
         ));
 
