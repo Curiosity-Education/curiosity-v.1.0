@@ -4,6 +4,8 @@ $(function(){
     var var_instution = null;
     var object = null;
     var var_id = null;
+    var imgOth;
+    var imgOth_flag = false;
 
     $("#agf-selectPhoto").click(function(event) {
         $("#agf_photo").trigger('click');
@@ -78,6 +80,47 @@ $(function(){
                 admChHomController.hideShowHome(id);
             }
         }, "ACEPTAR", "aceptar");
+    });
+
+    $("#agf-selectPhotoOther").click(function(event) {
+        $("#agf-body-mdl-bdy").empty();
+        let gender = $("#agf_genre").val();
+        for (var i = 0; i < 5; i++) {
+            let code = `<div class="col-md-3">
+                <img src="/packages/assets/media/images/padrino_curiosity/others_to_select/${gender}/${i+1}.png" class="img-fluid agf-imgOth img-thumbnail" style="cursor:pointer;" data-bind="${i+1}">
+                <br>
+            </div>`;
+            $("#agf-body-mdl-bdy").append(code);
+        }
+        $("#agf-mdl-others").modal('show');
+    });
+
+    $("body").on('click', '.agf-imgOth', function(){
+        if ($(this).hasClass('imgoth-active')){
+            $(this).removeClass('imgoth-active');
+            $("#btn-agf-oth").prop('disabled', true);
+            imgOth = undefined;
+            imgOth_flag = false;
+        }
+        else {
+            $('body').find('.agf-imgOth').removeClass('imgoth-active');
+            $(this).addClass('imgoth-active');
+            $("#btn-agf-oth").prop('disabled', false);
+            imgOth = $(this).data('bind');
+            imgOth_flag = true;
+        }
+    });
+
+    $("#btn-agf-oth").click(function(event) {
+        if (imgOth_flag){
+            let gender = $("#agf_genre").val();
+            $("#agf_ph").attr('src', `/packages/assets/media/images/padrino_curiosity/others_to_select/${gender}/${imgOth}.png`);
+            $("#agf-mdl-others").modal('hide');
+            $("#agf-body-mdl-bdy").empty();
+        }
+        else {
+            alert('No has seleccionado ninguna imagen');
+        }
     });
 
 });
