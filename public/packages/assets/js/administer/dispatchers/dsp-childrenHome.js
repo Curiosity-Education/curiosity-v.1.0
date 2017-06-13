@@ -4,8 +4,10 @@ $(function(){
     var var_instution = null;
     var object = null;
     var var_id = null;
-    var imgOth;
-    var imgOth_flag = false;
+
+    // Banderas para imagen animada
+    var imgOth; // nombre de la imagen
+    var imgOth_flag = false; // Es animada?
 
     $("#agf-selectPhoto").click(function(event) {
         $("#agf_photo").trigger('click');
@@ -49,6 +51,8 @@ $(function(){
     });
 
     $("body").on("click", "#agf-save", function(){
+        // falta pasar las banderas de si es imagen animada o seleccionada
+        // desde los archivos
         admChHomController.saveChild(var_instution, var_id, typeSave);
     });
 
@@ -82,10 +86,13 @@ $(function(){
         }, "ACEPTAR", "aceptar");
     });
 
+
+    // Seleccion de imagen animada segun el sexo seleccionado
+    // (mostrar imagenes)
     $("#agf-selectPhotoOther").click(function(event) {
         $("#agf-body-mdl-bdy").empty();
         let gender = $("#agf_genre").val();
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 3; i++) {
             let code = `<div class="col-md-3">
                 <img src="/packages/assets/media/images/padrino_curiosity/others_to_select/${gender}/${i+1}.png" class="img-fluid agf-imgOth img-thumbnail" style="cursor:pointer;" data-bind="${i+1}">
                 <br>
@@ -95,6 +102,9 @@ $(function(){
         $("#agf-mdl-others").modal('show');
     });
 
+
+    // Click en la imagen a seleccionar
+    // -- Se habilita o desahabilita el botón --
     $("body").on('click', '.agf-imgOth', function(){
         if ($(this).hasClass('imgoth-active')){
             $(this).removeClass('imgoth-active');
@@ -111,6 +121,8 @@ $(function(){
         }
     });
 
+    // Se acepta la imagen seleccionada -- se muestra el preview --
+    // se cierra el modal, limpiando todo
     $("#btn-agf-oth").click(function(event) {
         if (imgOth_flag){
             let gender = $("#agf_genre").val();
