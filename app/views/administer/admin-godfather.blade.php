@@ -85,10 +85,10 @@ Padrino Curiosity
                   <button type="button" class="btn btn-outline-default btn-block" id="agf-resetPhoto">
                     Restaurar
                   </button>
-                  <button type="button" class="btn btn-outline-default btn-block" id="agf-selectPhotoOther">
+                  <!-- <button type="button" class="btn btn-outline-default btn-block" id="agf-selectPhotoOther">
                     <span class="fa fa-folder-open"></span>&nbsp;
                     Otras
-                  </button>
+                  </button> -->
                   <form class="form form-horizontal" id="agf-formPhoto">
                      <input type="file" name="agf_photo" id="agf_photo" class="agfInp">
                   </form>
