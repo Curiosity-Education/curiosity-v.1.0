@@ -265,7 +265,7 @@ class avatarController extends BaseController
   		$person = Person::where("user_id", "=", $user["id"])->first();
   		$child 	= Son::where("persona_id", "=", $person["id"])->first();
 
-		$flag = User::find($user);
+		$flag = User::find($user->id);
 		$flag -> flag = 1;
 		$flag -> save();
 

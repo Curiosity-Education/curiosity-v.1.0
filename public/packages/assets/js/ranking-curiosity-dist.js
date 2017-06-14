@@ -11,7 +11,7 @@ var Ranking = function () {
 		_classCallCheck(this, Ranking);
 
 		// in contructor set a values for default in this class
-		ranking.colorActive = "#2262ae"; //colors of active stars
+		ranking.colorActive = "#3cb54a"; //colors of active stars
 		ranking.colorUnActive = "rgba(46,46,46,0.75)"; //colors for unactive stars
 		ranking.stars = 0; //number of stars in ranking
 		ranking.averageStars = 0; //average of ranking

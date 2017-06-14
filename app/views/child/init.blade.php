@@ -20,12 +20,10 @@
                 <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/game_news.png?{{rand();}}')">
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
-                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
-                            <h3>Nuevos</h3>
+                            <h5 class="info-text"><i class="fa fa-gamepad fa-2x"></i> </h5>
+                            <h3>Nuevas aventuras</h3>
                             <p></p>
-
                             <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recents"> Ver juegos</a>
-
                         </div>
                     </div>
                 </div>
@@ -34,7 +32,7 @@
                 <div class="hm-black-strong hoverable card z-depth-1 in-card" style="background-image: url('packages/assets/media/images/child/mejorcalificados.png?{{rand();}}')">
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
-                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
+                            <h5 class="info-text"><i class="fa fa-gamepad fa-2x"></i> </h5>
                             <h3>Mejor calificados</h3>
                             <p></p>
 
@@ -49,8 +47,8 @@
                 <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/game_popular.png?{{rand();}}')">
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
-                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
-                            <h3> Populares</h3>
+                            <h5 class="info-text"><i class="fa fa-gamepad fa-2x"></i> </h5>
+                            <h3> Más jugados por TOT</h3>
                             <p></p>
                            <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="populars"> Ver juegos</a>
                         </div>
@@ -61,8 +59,8 @@
                 <div class="hm-black-strong hoverable card z-depth-2 in-card" style="background-image: url('packages/assets/media/images/child/gamesrecoments.png?{{rand();}}')">
                     <div class="mask white-text text-xs-center">
                         <div class="card-block">
-                            <h5 class="info-text"><i class="fa fa-gamepad"></i> Juegos</h5>
-                            <h3>Recomendados</h3>
+                            <h5 class="info-text"><i class="fa fa-gamepad fa-2x"></i> </h5>
+                            <h3>Recomendados para ti</h3>
                             <p></p>
                              <a class="btn btn-show-game btn-lg btn-outline-info btn-rounded waaves-effect btn-show-information" data-type="recomended"> Ver juegos</a>
                         </div>
@@ -77,9 +75,13 @@
             <div class="col-md-12 col-sm-12">
               <div class="card-game" id="card-game-bigBox" style="background-image:url({{accesoriesController::getChildMenuBg()['ruta']}}{{accesoriesController::getChildMenuBg()['archivo']}}?{{rand();}});">
                 <div class="card-header-game text-center init-titleGame">
+                  <div class="chip animated bounce pull-left dismiss-card" style="color:rgba(0,0,0,.6)" id="gst-back" data-dismiss-target="#card-container-games">
+                    <img src="/packages/assets/media/images/system/iconBack.png">
+                    Regresar
+                  </div>
                   <h4 class="card-title flex-center"> <i class="fa fa-gamepad"></i> Juegos Nuevos</h4>
-                  <a class="dismiss-card btn-floating btn-small float-xs-right init-btnClose hidden-xs-down" data-dismiss-target="#card-container-games"><i class="fa fa-times"></i></a>
-                  <a class="hidden-sm-up dismiss-card pull-right init-btnClose-xs" data-dismiss-target="#card-container-games"><i class="fa fa-times-circle white-text fa-2x"></i> </a>
+                  <!--<a class="dismiss-card btn-floating btn-small float-xs-right init-btnClose hidden-xs-down" data-dismiss-target="#card-container-games"><i class="fa fa-times"></i></a>
+                  <a class="hidden-sm-up dismiss-card pull-right init-btnClose-xs" data-dismiss-target="#card-container-games"><i class="fa fa-times-circle white-text fa-2x"></i> </a>-->
                 </div>
 
                 <div class="card-content-game z-depth-1" id="in-content-activity"></div>

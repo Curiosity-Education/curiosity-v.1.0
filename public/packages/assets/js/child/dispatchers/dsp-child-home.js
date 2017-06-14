@@ -35,6 +35,7 @@ $(function(){
 
 	object  = {//object for set function used in this view
 		fillContetnFromData: function(data){//function for fill activities container, of data
+			console.log(data);
 			$("#in-content-activity").empty();
 			var conetentHTML;
 			conetentHTML = "<div class='row'>";
@@ -53,7 +54,8 @@ $(function(){
                               '</a>'+
                             '</div>'+
                           '<div class="card-footer-game text-center">'+
-                            '<span class="card-title">'+data[i].topicName+'</span>'+
+                            '<span class="card-title">'+data[i].topicName+'</span><br>'+
+                            '<span class="card-title">'+data[i].blockName +' | '+ data[i].levelName+'</span>'+
                           '</div>'+
                         '</div>'+
                       '</div>';

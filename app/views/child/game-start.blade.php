@@ -9,13 +9,13 @@ Juego | {{$game["name"]}}
 @stop
 
 @section('content')
-   <div class="row" id="gst-row-information-game">
+   <div class="row" id="gst-row-information-game" >
       <div class="col-sm-4">
-         <div class="chip animated bounce" id="gst-back">
+         <div class="chip animated bounce" id="gst-back" >
             <img src="/packages/assets/media/images/system/iconBack.png">
             Regresar
          </div>
-         <div class="gst-card z-depth-1 animated bounceInUp" id="gst-info">
+         <div class="gst-card z-depth-1 animated bounceInUp"  id="gst-info">
             <div id="gst-max">
                <h5>Puntuación Máxima</h5>
                <h6 id="gst-score-max" data-score="{{$game['score']}}">{{$game["score"]}} puntos</h6><br>
@@ -37,13 +37,13 @@ Juego | {{$game["name"]}}
          <div class="gst-card z-depth-1 animated bounceInUp" id="gst-material">
             <h6>Material para ti</h6>
             <hr class="gst-hr">
-            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
-                <span class="fa fa-file-pdf-o"></span>&nbsp;
-               Guía de estudio
-            </button>
             <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialVideo" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
                <span class="fa fa-youtube-play"></span>&nbsp;
                Video
+            </button>
+            <button type="button" class="btn btn-rounded btn-outline-default btn-block gst-material z-depth-2" id="gst-materialPdf" disabled data-target="#gst-modal-pdf-video" data-toggle="modal">
+                <span class="fa fa-file-pdf-o"></span>&nbsp;
+               Guía de estudio
             </button>
          </div>
       </div>
@@ -52,7 +52,7 @@ Juego | {{$game["name"]}}
             <h1>{{$game["name"]}}</h1>
 
             <hr class="gst-hr">
-            <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnInstructs').trigger('click')">
+            <img src="/packages/assets/iframes/games/{{$game['folder']}}/instruction.jpg?{{rand();}}" class="img-fluid z-depth-1" id="gst-img-instruction" onclick="$('#gst-btnPlay').trigger('click')">
             <div class="row">
                <div class="col-sm-6">
 

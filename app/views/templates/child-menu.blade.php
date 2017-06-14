@@ -6,7 +6,7 @@
 @stop
 
 @section('menu-title')
-<h1 class="text-center" id="childMenu-name-menu">Hola soy Tot</h1>
+<h1 class="text-center" id="childMenu-name-menu">Hola soy TOT</h1>
 @stop
 
 @section('menu-photo')
@@ -21,7 +21,7 @@
    Inicio
 </div>
 <div data-url="/view-child.menu-studio" class="linkMenu waves-effect">
-   <span class="fa fa-cubes childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
+   <span class="fa fa-gamepad childMenu-icon-menu" id="childMenu-icon-study"></span>&nbsp;
    Rincón de Juegos
 </div>
 <div data-url="/view-child.profile" class="linkMenu waves-effect">
