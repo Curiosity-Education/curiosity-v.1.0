@@ -241,10 +241,12 @@ class instituteMembershipsController extends BaseController{
 
         $idcasaHogar = Input::all();
 
-        $datos = DB::table('children')
-            ->where('institucion_id','=',$idcasaHogar['id'])
-            ->select('children.*')
-            ->get();
+        // $datos = DB::table('children')
+        //     ->where('institucion_id','=',$idcasaHogar['id'])
+        //     ->select('children.*')
+        //     ->get();
+
+        $datos = DB::select("select ch.*, count(ap.id) as cantidad_padrinos from children ch left join apadrinados ap on ch.id = ap.child_id where institucion_id = ".$idcasaHogar['id']." group by (ch.id)");
 
         $folder = DB::table('instituciones')->where('id', '=', $idcasaHogar['id'])->first();
 

@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class sponsoredController extends BaseController{
 
     function getChildren(){
@@ -151,9 +152,18 @@ class sponsoredController extends BaseController{
                     $childSpon = Children::where('id', '=', Input::get('child'))->first();
                     $childSpon->apadrinado = 1;
                     $childSpon->save();
+                    $date = Carbon::now();
+                    $today = $date->toDateString();
+                    DB::table('apadrinados')->insert(array(
+                        'padrino' => Input::get('nombre'),
+                        'email' => Input::get('email'),
+                        'costo' => $amountChargue,
+                        'fecha' => $today,
+                        'child_id' => $childSpon->id
+                    ));
                 } catch (Exception $e) {
                     $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
-                    Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
+                    Log::info('Falló relación de apadrinamiento: ' . $executionTime . ' | ' .  $e->getMessage());
                 }
                 try {
                     // Uncomment for production
