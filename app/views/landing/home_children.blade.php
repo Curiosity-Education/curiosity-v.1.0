@@ -34,6 +34,12 @@
 				</p>
 				<hr class="hr-apartado">
 			</div>
+      <p style="font-size: .8rem !important;
+                background-color: #e8e8e8;
+                padding: 1rem;
+                border-radius: .5rem;" >
+        Por cuestiones de políticas de seguridad, en algunas casas hogares, es posible que fotos de algunos niños no se muestren. En cambio se muestra una imagen alternativa. Para más información comunicate a <b><i>hola@curiosity.com.mx</i></b>
+      </p>
 		</div>
 		<!-- Container of the houses-homes -->
 		<div class="col-md-12 col-sm-12 animated margin " id="content-homes">
