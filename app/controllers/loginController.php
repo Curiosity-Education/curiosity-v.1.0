@@ -52,12 +52,12 @@ class loginController extends BaseController{
                    }
                }
                if($accountActive == 1){
-				   $hasAvatar = DB::table('hijos_has_estilos_avatar')
-					   ->where('hijos_id','=',$idSon)
-					   ->get();
-				   if(!$hasAvatar){
-					    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.selectAvatar"));
-				   }
+        				   $hasAvatar = DB::table('hijos_has_estilos_avatar')
+        					   ->where('hijos_id','=',$idSon)
+        					   ->get();
+        				   if(!$hasAvatar){
+        					    return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => "view-child.selectAvatar"));
+        				   }
                   $date = Carbon::now();
                   $today = $date->toDateString();
                   $advance = DB::table("avances_metas")
