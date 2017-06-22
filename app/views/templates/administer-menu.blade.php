@@ -67,6 +67,10 @@
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
 </div>
+<div data-url="/view-administer.adm-institutions" class="linkMenu waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Instituciones
+</div>
 <div data-url="/padrino" class="linkMenu waves-effect">
    <span class="fa fa-heart"></span>&nbsp;
    Padrino Curiosity
@@ -74,51 +78,51 @@
 @stop
 
 @section('menu-links-aside')
-<div data-url="view-administer.admin-levels" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-levels" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cube"></span></span>&nbsp;
    Niveles (Grados)
 </div>
-<div data-url="view-administer.admin-intelligences" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-intelligences" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cube"></span></span>&nbsp;
    Inteligencias (Materias)
 </div>
-<div data-url="view-administer.admin-blocks" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-blocks" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cube"></span></span>&nbsp;
    Bloques
 </div>
-<div data-url="view-administer.admin-topics" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-topics" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cube"></span></span>&nbsp;
    Temas
 </div>
-<div data-url="view-administer.admin-activities" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-activities" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-cube"></span></span>&nbsp;
    Actividades (Juegos)
 </div>
-<div data-url="view-administer.asociateSchool" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.asociateSchool" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-institution" id="msad-icon-institution"></span>&nbsp;
    Escuelas de apoyo
 </div>
-<div data-url="view-administer.admin-teachers" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-teachers" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-users" id="msad-icon-"></span>&nbsp;
    Profesores de apoyo
 </div>
-<div data-url="view-administer.admin-libraryPdfs" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-libraryPdfs" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-book" id="msad-icon-book"></span>&nbsp;
    Biblioteca de Pdfs
 </div>
-<div data-url="view-administer.admin-libraryVideos" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-libraryVideos" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-youtube-play" id="msad-icon-play"></span>&nbsp;
    Biblioteca de Videos
 </div>
-<div data-url="view-administer.admin-plans" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-plans" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-credit-card-alt" id="msad-icon-credit-card-alt"></span>&nbsp;
    Planes
 </div>
-<div data-url="view-administer.admin-employees" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-employees" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
    Empleados
 </div>
-<div data-url="view-administer.admin-salescode" class="linkMenu linkMenuAside waves-effect">
+<div data-url="/view-administer.admin-salescode" class="linkMenu linkMenuAside waves-effect">
    <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
    Códigos de vendedor
 </div>
@@ -126,9 +130,9 @@
    <span class="fa fa-star"></span>&nbsp;
    Novedades para padres
 </div>
-<div data-url="/view-administer.admin-schools-membership" class="linkMenu waves-effect">
-   <span class="fa fa-graduation-cap"></span>&nbsp;
-   Gestion de cuentas masivas
+<div data-url="/view-administer.adm-institutions" class="linkMenu linkMenuAside waves-effect">
+   <span class="fa fa-address-book" id="msad-icon-fa-address-book"></span>&nbsp;
+   Instituciones
 </div>
 <div data-url="/padrino" class="linkMenu waves-effect">
    <span class="fa fa-heart"></span>&nbsp;
