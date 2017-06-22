@@ -84,6 +84,6 @@ Inteligencias (Materias)
 @section('js-plus')
    <script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Intelligence-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/aintController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/aintController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-aint.js?{{rand();}}" charset="utf-8"></script>
 @stop

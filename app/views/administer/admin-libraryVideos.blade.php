@@ -142,6 +142,6 @@ Biblioteca de Videos
    <script src="/packages/assets/js/administer/models/dist/Schoolasc-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Teacher-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Library_video-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/albvidController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/albvidController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-albvid.js?{{rand();}}" charset="utf-8"></script>
 @stop

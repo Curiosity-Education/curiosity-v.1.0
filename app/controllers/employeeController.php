@@ -7,9 +7,9 @@ class employeeController extends BaseController{
 	}
 
 	function getByPosition(){
-      $data = Input::all();
+    $data = Input::all();
 		$emp = Employee::where("active", "=", 1)
-		->where("puestos_id", "=", $data)
+		->where("puestos_id", "=", $data[0])
 		->get();
 		return $emp;
 	}
