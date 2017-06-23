@@ -122,6 +122,14 @@ class institutionsController extends BaseController
     return $info;
   }
 
+  function updateDescription(){
+    $data = Input::all();
+    $institution = Institute::where('id','=',$data['id'])->first();
+    $institution->descripcion = $data['description'];
+    $institution->save();
+    return Response::json(array("status" => "CU-200", 'statusMessage' => "Correcto", "data" => $institution));
+  }
+
 }
 
 

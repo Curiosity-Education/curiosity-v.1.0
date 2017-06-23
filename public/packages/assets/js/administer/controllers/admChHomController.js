@@ -254,6 +254,22 @@ var admChHomController = {
                 Curiosity.noty.info('Selecciona un archivo de imagen valido (\'.png\', \'.PNG\', \'.jpg\', \'.JPG\', \'.JPEG\')', 'Formato invalido');
             }
         }
+    },
+
+    changePolitcs: function(des, var_instution, callback){
+      $.ajax({
+        url: '/inst-change-politics',
+        type: 'POST',
+        data: {'description': des, 'id': var_instution}
+      })
+      .done(function(r) {
+        Curiosity.noty.success("Actualizado exitosamente", "Bien hecho");
+        callback(r);
+      })
+      .fail(function(e) {
+        Curiosity.noty.error("Error inesperado", "Error");
+        console.log(e);
+      });
     }
 
 }

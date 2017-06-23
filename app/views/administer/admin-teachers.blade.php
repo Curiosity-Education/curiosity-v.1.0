@@ -104,6 +104,6 @@ Profesores de apoyo
    <script src="/packages/libs/bootstrap-table/locale/bootstrap-table-es-MX.min.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Teacher-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Schoolasc-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/ateachController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/ateachController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-ateach.js?{{rand();}}" charset="utf-8"></script>
 @stop
