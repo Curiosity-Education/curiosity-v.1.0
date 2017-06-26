@@ -249,6 +249,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('all', 'institutionsController@all');
     Route::post('info', 'institutionsController@institutionInfo');
     Route::post('update', 'institutionsController@update');
+		Route::post('deleteInsti', 'institutionsController@deleteInsti');
   });
 
   //state
