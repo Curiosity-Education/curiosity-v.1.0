@@ -112,7 +112,7 @@
                       <label for='form1' class="">Código Postal</label>
                     </div>
 
-                    <select class='updAdInselect' id='updAdIn-state'>
+                    <select class='updAdInselect arch' id='updAdIn-state'>
 
                     </select>
 
