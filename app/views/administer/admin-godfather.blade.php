@@ -7,6 +7,17 @@
     .imgoth-active{
         border: solid .3rem #ececec !important;
     }
+    #agf-addPolitics{
+      background: #fff !important;
+      padding: .5rem;
+      border-radius: 5rem;
+      border: solid .1rem #2262ae;
+      float: left;
+      margin-top: -.2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      box-shadow: 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.2);
+    }
 </style>
 @stop
 
@@ -32,7 +43,7 @@ Padrino Curiosity
                 <img src='/packages/assets/media/images/institutions/{{ $home->logo }}' class='img-fluid'>
                 <div class='mask flex-center'>
                     <center>
-                        <a class='btn-floating btn-small waves-effect waves-light agf-btnround-conf' data-h="{{ $home->id }}">
+                        <a class='btn-floating btn-small waves-effect waves-light agf-btnround-conf' data-h="{{ $home->id }}" data-desc="{{$home->descripcion}}" id="conf{{$home->id}}">
                             <i class='fa fa-gears'></i>
                         </a>
                         @if ($home->visible == 1)
@@ -61,6 +72,9 @@ Padrino Curiosity
                    Regresar
                </div>
                <div class='acti-buttons float-xs-right'>
+                   <a class='btn-primary btn-small waves-effect waves-light' id='agf-addPolitics'>
+                       Políticas
+                   </a>
                    <a class='btn-floating btn-small waves-effect waves-light' id='agf-btnReg'>
                        <i class="fa fa-plus"></i>
                    </a>
@@ -162,6 +176,28 @@ Padrino Curiosity
            <button type="button" class="btn btn-primary" style="background: #2262ae;border-radius: 5rem;" id="btn-agf-oth" disabled="true">
                <span class="fa fa-check"></span>&nbsp;
                Aceptar
+           </button>
+         </div>
+       </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+   </div><!-- /.modal -->
+
+   <div class="modal fade" id="agf-modal-politics" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header" style="background: #2262ae;">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             <span class="sr-only">Close</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           <label for="">¿Porqué no se muestran las fotos de los niños?</label>
+           <textarea class="form-control" id="agf-politics-added"></textarea>
+         </div>
+         <div class="modal-footer" style="background: #ececec;">
+           <button type="button" class="btn btn-primary" style="background: #2262ae;border-radius: 5rem;" id="agf-save-politcs">
+             Guardar
            </button>
          </div>
        </div><!-- /.modal-content -->

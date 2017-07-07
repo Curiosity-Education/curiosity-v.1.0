@@ -26,8 +26,16 @@ var ainstiController = {
       formData.append('state', $('#adIn-state').val());
       formData.append('type', type);
       var p = new Institution(formData);
-      p.save(function(){});
+      p.save(function(success){
+        if (success == "El registro de la institucion ha sido exitoso") {
+            Curiosity.noty.info("", "Se ha registrado con exito la institucion");
+            $("#btnClose").trigger('click');
+        }
+      });
     }
+  },
+
+  test : function(success){
   },
 
   delete : function(id){
@@ -36,9 +44,9 @@ var ainstiController = {
 			Curiosity.notyInput("Escribe la palabra ELIMINAR para continuar.","text",function(input){
 				 if(input == "ELIMINAR" || input == "eliminar"){
 					 	  Curiosity.toastLoading.show();
-						  Institution.delete(id,function(){
-							window.location.reload();
-					  });
+						  Institution.deleteInsti(id,function(success){
+                console.log(success);
+              });
 				 }else {
 				 	  Curiosity.noty.info("Lo sentimos, La palabra escrita no es correcta")
 				 }
@@ -94,7 +102,12 @@ var ainstiController = {
     formData.append('city', $('#updAdInselect-city').val());
     formData.append('state', $('#updAdIn-state').val());
     var p = new Institution(formData);
-    p.update(id,function(){});
+    p.update(id,function(success){
+      if (success == "la institucion se ha actualizado con exito") {
+        Curiosity.noty.info("", "Se ha actualizado con exito la institucion");
+        window.location.reload();
+      }
+    });
   }
 
 

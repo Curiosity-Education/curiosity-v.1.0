@@ -16,6 +16,7 @@ class viewsController extends BaseController{
       "administer.admin-salescode"                   => "manage_administrative",
       "administer.admin-news"                        => "manage_news",
       "administer.admin-schools-membership"          => "manage_content",
+      "administer.adm-institutions"                  => "manage_content",
       "child.init"                                   => "child_actions",
       "child.menu-studio"                            => "child_actions",
       "child.profile"                                => "child_actions",
@@ -52,7 +53,7 @@ class viewsController extends BaseController{
       return View::make('errors.404');
    }
    public function getViewWithOutData($viewName){
-      $permission = $this->getPermissionView($viewName);      
+      $permission = $this->getPermissionView($viewName);
       if ($permission != null){
          if (Entrust::can($permission)){
             return View::make($viewName);

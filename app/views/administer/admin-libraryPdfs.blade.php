@@ -107,6 +107,6 @@ Biblioteca de Pdfs
    <script src="/packages/assets/js/administer/models/dist/Block-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Topic-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Library_pdf-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/albpdfController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/albpdfController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-albpdf.js?{{rand();}}" charset="utf-8"></script>
 @stop

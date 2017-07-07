@@ -145,6 +145,8 @@ Route::match(["POST","GET"],'/recoveryPass{token?}','loginController@recoverCont
 */
 Route::group(array('before' => 'auth'), function(){
 	Route::group(array('before' => 'manage_content'),function(){
+		// change institution description
+		Route::post('/inst-change-politics', 'institutionsController@updateDescription');
 		// Manage the levels
 		Route::group(array('prefix' =>  'levels'),function(){
 			Route::post('save', 'levelsController@save');
@@ -247,6 +249,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('all', 'institutionsController@all');
     Route::post('info', 'institutionsController@institutionInfo');
     Route::post('update', 'institutionsController@update');
+		Route::post('deleteInsti', 'institutionsController@deleteInsti');
   });
 
   //state

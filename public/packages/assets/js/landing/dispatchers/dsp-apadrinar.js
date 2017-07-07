@@ -13,6 +13,10 @@ $(function(){
     $('.btn-homes').click(function(){
         apadrinarController.getChildren($(this).data("inst"));
         $('#nameHome').text($(this).data("name"));
+        if ($(this).data('desc') != "") {
+          $("#descPolitics").text($(this).data('desc'));
+          $("#descPolitics").removeClass('displaynone');
+        }
         $('#content-homes').addClass('displaynone');
         $('#text-info').addClass('displaynone');
         $('#content-children').removeClass('displaynone');
@@ -20,13 +24,15 @@ $(function(){
 
     /* cerramos la muestra de los niños y volvemos a mostrar las casas hogares */
     $('#close').click(function(){
+        $("#descPolitics").text('');
+        $("#descPolitics").addClass('displaynone');
         $('#content-homes').addClass('fadeInLeftBig');
         $('#content-homes').removeClass('displaynone');
         $('#text-info').removeClass('displaynone');
         $('#content-children').addClass('displaynone');
     });
 
-    $('body').on('click','.btn-homesChild',function(e){
+    $('body').on('click','.btn-homesChild', function(e){
         e.preventDefault();
         StorageDB.table.create("sponsoredChild", parseInt($(this).data("childid")));
         var src = '/packages/assets/media/images/padrino_curiosity/'+$(this).data('foto');

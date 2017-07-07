@@ -54,7 +54,7 @@ class institutionsController extends BaseController
         $intitution->save();
         $destinationPath = public_path()."/packages/assets/media/images/institutions/";        ;
         $file->move($destinationPath, $randomName);
-
+        return 'El registro de la institucion ha sido exitoso';
       }
     }
   }
@@ -69,11 +69,12 @@ class institutionsController extends BaseController
 	}
 
 
-  function delete(){
+  function deleteInsti(){
     $id = Input::all();
     $Institution = Institute::where('id', '=', $id);
     $Institution->active = 0;
     $Institution->save();
+    return "se ha borrado con exito la institucion";
   }
 
   function update(){
@@ -92,7 +93,7 @@ class institutionsController extends BaseController
     if ($validation->fails()) {
       return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
     }else {
-
+      // return $data;
       $file = $data['adAv-img'];
       $user = Auth::user();
       $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
@@ -110,7 +111,7 @@ class institutionsController extends BaseController
       $address->numero = $data['number'];
       $address->codigo_postal = $data['cp'];
       $address->ciudad_id = $data['city'];
-      return "bien";
+      return 'la institucion se ha actualizado con exito';
     }
 
   }
@@ -121,6 +122,14 @@ class institutionsController extends BaseController
     ->where('instituciones.id', '=', $id)
               ->first();
     return $info;
+  }
+
+  function updateDescription(){
+    $data = Input::all();
+    $institution = Institute::where('id','=',$data['id'])->first();
+    $institution->descripcion = $data['description'];
+    $institution->save();
+    return Response::json(array("status" => "CU-200", 'statusMessage' => "Correcto", "data" => $institution));
   }
 
 }

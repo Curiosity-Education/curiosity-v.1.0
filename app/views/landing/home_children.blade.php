@@ -54,7 +54,8 @@
                             <!--Title-->
                             <h4 class="card-title text-xs-center">{{$casaHogar->nombre}}</h4>
 
-                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}" data-name="{{$casaHogar->nombre}}">ver a sus niños</a></center>
+                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}"
+                              data-desc="{{$casaHogar->descripcion}}" data-name="{{$casaHogar->nombre}}">ver a sus niños</a></center>
                         </div>
                         <!--/.Card content-->
 
@@ -74,6 +75,13 @@
            </div>
             <h3 class="text-xs-center" id="nameHome"></h3>
             <hr class="hr-apartado">
+            <p style="font-size: .8rem !important;
+                      background-color: #e8e8e8;
+                      padding: 1rem;
+                      border-radius: .5rem;"
+                id="descPolitics"
+                class="displaynone">
+            </p>
             <br>
             <div id="displayChildren"></div>
 		</div>
