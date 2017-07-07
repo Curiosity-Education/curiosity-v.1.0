@@ -74,7 +74,7 @@ var admChHomController = {
             let _width = document.getElementById('agf_ph').width;
             let _height = document.getElementById('agf_ph').height;
             let child = new ChildrenHome(formData);
-            if ($('#agf_photo').val() != ''){
+        //    if ($('#agf_photo').val() != ''){
                 // if (_width == _height){
                     if (type == "registry"){
                         child.save(this.successAdded);
@@ -88,14 +88,15 @@ var admChHomController = {
                 //     this.resetImage();
                 //     Curiosity.toastLoading.hide();
                 // }
-            }
-            else if(type == "registry") {
-                Curiosity.toastLoading.hide();
-                Curiosity.noty.info('Por favor selecciona una imagen para el niño/a', 'Seleccionar Imagen');
-            }
-            else if (type == "update"){
-                child.update(var_id, this.successUpdated);
-            }
+        //    }
+            // else if(type == "registry") {
+            //     Curiosity.toastLoading.hide();
+            //     Curiosity.noty.info('File Input Vacio');
+            //     child.save(this.successAdded);
+            // }
+            // else if (type == "update"){
+            //     child.update(var_id, this.successUpdated);
+            // }
         }
     },
 
@@ -166,7 +167,7 @@ var admChHomController = {
             let folder = r.data.folder;
             let code = "<div class='col-md-3 childCount animated zoomIn' id='agf"+r.data.child.id+"'>"+
                         "<div class='view overlay z-depth-1 agf-containerbox'>"+
-                            "<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+r.data.child.foto+"' class='img-fluid' id='agf"+r.data.child.id+"img'>"+
+                             "<img src='/packages/assets/media/images/padrino_curiosity/"+folder+"/"+r.data.child.foto+"' class='img-fluid' id='agf"+r.data.child.id+"img'>"+
                             "<div class='mask flex-center'>"+
                                 "<center>"+
                                     "<a class='btn-floating btn-small waves-effect waves-light agf-btnround-confChild' id='agf"+r.data.child.id+"data' data-o='"+JSON.stringify(r.data.child)+"' data-f='"+folder+"'>"+
@@ -188,6 +189,7 @@ var admChHomController = {
             $("#agf-cancel").trigger('click');
         }
         else{
+            console.log("im Here");
             Curiosity.noty.error("Error inesperado", "Error");
         }
         Curiosity.toastLoading.hide();
@@ -204,6 +206,7 @@ var admChHomController = {
             Curiosity.noty.success("Actualizado exitosamente", "Bien hecho");
         }
         else{
+                        console.log("im Here2");
             Curiosity.noty.error("Error inesperado", "Error");
         }
         Curiosity.toastLoading.hide();
@@ -254,6 +257,23 @@ var admChHomController = {
                 Curiosity.noty.info('Selecciona un archivo de imagen valido (\'.png\', \'.PNG\', \'.jpg\', \'.JPG\', \'.JPEG\')', 'Formato invalido');
             }
         }
+    },
+
+    changePolitcs: function(des, var_instution, callback){
+      $.ajax({
+        url: '/inst-change-politics',
+        type: 'POST',
+        data: {'description': des, 'id': var_instution}
+      })
+      .done(function(r) {
+        Curiosity.noty.success("Actualizado exitosamente", "Bien hecho");
+        callback(r);
+      })
+      .fail(function(e) {
+                      console.log("im Her1e");
+        Curiosity.noty.error("Error inesperado", "Error");
+        console.log(e);
+      });
     }
 
 }

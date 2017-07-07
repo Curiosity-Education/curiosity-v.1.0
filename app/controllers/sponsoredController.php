@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class sponsoredController extends BaseController{
 
     function getChildren(){
@@ -22,34 +23,79 @@ class sponsoredController extends BaseController{
     }
 
     function save(){
+
+        //Default image select
+        /*------------------------------------------------------------------------------------------------*/
+         $boyPath =  public_path()."/packages/assets/media/images/padrino_curiosity/others_to_select/m/1.png";
+         $girlPath = public_path()."/packages/assets/media/images/padrino_curiosity/others_to_select/f/1.png";
+
         $data = Input::all();
-        $file = $data['agf_photo'];
-        $rules = array(
-            'nombre'            => 'required',
-            'apellidos'         => 'required',
-            'sexo'              => 'required',
-            'institucion_id'    => 'required',
-            'apadrinado'        => 'required'
-		);
-        $msjs = Curiosity::getValidationMessages();
-        $validation = Validator::make($data, $rules, $msjs);
-        if( $validation->fails()){
-            return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
-		}
-        else {
-            $inst = DB::table('instituciones')->where('id', '=', $data["institucion_id"])->first();
-            $destinationPath = public_path()."/packages/assets/media/images/padrino_curiosity/".Curiosity::clean_string($inst->nombre)."/";
-            $imgName = Curiosity::clean_string($data["nombre"]." ".$data["apellidos"]).".".$file->getClientOriginalExtension();
-            $file->move($destinationPath, $imgName);
-            $child = new Children($data);
-			$child->foto = $imgName;
-            $child->save();
-            $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
-			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
-                "child"     =>$child,
-                "folder"    =>Curiosity::clean_string($folder->nombre)
-            ]));
+        if ($data['agf_photo'] != NULL) {
+            $file = $data['agf_photo'];
+            $rules = array(
+                'nombre'            => 'required',
+                'apellidos'         => 'required',
+                'sexo'              => 'required',
+                'institucion_id'    => 'required',
+                'apadrinado'        => 'required'
+    		);
+            $msjs = Curiosity::getValidationMessages();
+            $validation = Validator::make($data, $rules, $msjs);
+            if( $validation->fails()){
+                return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+    		}
+            else {
+                $inst = DB::table('instituciones')->where('id', '=', $data["institucion_id"])->first();
+                $destinationPath = public_path()."/packages/assets/media/images/padrino_curiosity/".Curiosity::clean_string($inst->nombre)."/";
+            //    var_dump($destinationPath);
+                $imgName = Curiosity::clean_string($data["nombre"]." ".$data["apellidos"]).".".$file->getClientOriginalExtension();
+            //    var_dump($imgName);
+                $file->move($destinationPath, $imgName);
+                $child = new Children($data);
+    			$child->foto = $imgName;
+                $child->save();
+                $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
+    			return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
+                    "child"     =>$child,
+                    "folder"    =>Curiosity::clean_string($folder->nombre)
+                ]));
+            }
+        }else {
+            if ($data['sexo'] == 'm') {
+                $imgPath = $boyPath;
+            }else {
+                $imgPath = $girlPath;
+            }
+            //$file = $data['agf_photo'];
+            $rules = array(
+                'nombre'            => 'required',
+                'apellidos'         => 'required',
+                'sexo'              => 'required',
+                'institucion_id'    => 'required',
+                'apadrinado'        => 'required'
+            );
+            $msjs = Curiosity::getValidationMessages();
+            $validation = Validator::make($data, $rules, $msjs);
+            if( $validation->fails()){
+                return Response::json(array("status" => "CU-104", 'statusMessage' => "Validation Error", "data" => $validation->messages()));
+            }
+            else {
+                $inst = DB::table('instituciones')->where('id', '=', $data["institucion_id"])->first();
+                $destinationPath = public_path()."/packages/assets/media/images/padrino_curiosity/".Curiosity::clean_string($inst->nombre)."/";
+                $imgName = Curiosity::clean_string($data["nombre"]." ".$data["apellidos"]).".png";
+                $newPath = $destinationPath.$imgName;
+                copy( $imgPath, $newPath );
+                $child = new Children($data);
+                $child->foto = $imgName;
+                $child->save();
+                $folder = DB::table('instituciones')->where('id', '=', $child->institucion_id)->first();
+                return Response::json(array("status" => 200, 'statusMessage' => "success", "data" => [
+                    "child"     =>$child,
+                    "folder"    =>Curiosity::clean_string($folder->nombre)
+                ]));
+            }
         }
+        /*------------------------------------------------------------------------------------------------*/
     }
 
     function update(){
@@ -151,9 +197,18 @@ class sponsoredController extends BaseController{
                     $childSpon = Children::where('id', '=', Input::get('child'))->first();
                     $childSpon->apadrinado = 1;
                     $childSpon->save();
+                    $date = Carbon::now();
+                    $today = $date->toDateString();
+                    DB::table('apadrinados')->insert(array(
+                        'padrino' => Input::get('nombre'),
+                        'email' => Input::get('email'),
+                        'costo' => $amountChargue,
+                        'fecha' => $today,
+                        'child_id' => $childSpon->id
+                    ));
                 } catch (Exception $e) {
                     $executionTime = round(((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000), 3);
-                    Log::info('Falló al cambiar de estado al niño al momento de apadrinar: ' . $executionTime . ' | ' .  $e->getMessage());
+                    Log::info('Falló relación de apadrinamiento: ' . $executionTime . ' | ' .  $e->getMessage());
                 }
                 try {
                     // Uncomment for production

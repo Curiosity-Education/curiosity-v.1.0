@@ -23,7 +23,7 @@ class Institution extends CORM {
   }
 
   static deleteInsti(id,success){
-    super.delete({id:id},"POST",success,'/institutions');
+    super.any(id,"POST",success,'/institutions','deleteInsti');
   }
 
   static infoInsti(id,success){

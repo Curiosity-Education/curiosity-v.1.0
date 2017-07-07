@@ -88,7 +88,10 @@ $(function(){
     ainstiController.infoInsti($(this).data('id'));
     $("#updAdIn-state").empty();
     addStates(states,"#updAdIn-state");
-    $('.updAdInselect').material_select();
+    if ($("#updAdIn-state").hasClass('arch')) {
+        $('.updAdInselect').material_select();
+        $("#updAdIn-state").removeClass('arch');
+    }
   });
 
   $("body").on('change','#updAdIn-state',function(){
@@ -100,6 +103,7 @@ $(function(){
     );
     addCities(cities,id,'#updAdIn-city');
     $('.updAdInselect-city').material_select();
+
   });
 
   $("body").on('click','#updAdInfirst-register',function(){
@@ -242,7 +246,7 @@ function modal(){
               "</div>" +
 
               "<div class='modal-footer'>" +
-                  "<button type='button' class='btn btn-outline-danger waves-effect' data-dismiss='modal'><i class='fa fa-reply' aria-hidden='true'></i>&nbsp;Cancelar</button>" +
+                  "<button type='button' id='btnClose' class='btn btn-outline-danger waves-effect' data-dismiss='modal'><i class='fa fa-reply' aria-hidden='true'></i>&nbsp;Cancelar</button>" +
                   "<button type='button' class='btn btn-primary adIn-color' id='first-register'><i class='fa fa-upload' aria-hidden='true'></i>&nbsp;Guardar</button>" +
               "</div>" +
           "</div>" +

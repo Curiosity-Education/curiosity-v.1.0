@@ -99,6 +99,6 @@ Bloques
    <script src="/packages/assets/js/administer/models/dist/Level-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Intelligence-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Block-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/ablkController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/ablkController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-ablk.js?{{rand();}}" charset="utf-8"></script>
 @stop

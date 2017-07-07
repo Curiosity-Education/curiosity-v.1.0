@@ -7,6 +7,12 @@ class ChildrenHome extends CORM {
     save(success){
       super.save(this.sponsored,Curiosity.methodSend.POST,success);
     }
+    /*Default image for child
+    /*********************************************************************************************/
+    // save_with_default(success){
+    //   super.save_with_default( this.sponsored, Curiosity.methodSend.POST, success );
+    // }
+    /*********************************************************************************************/
     update(id,success){
         this.sponsored.append('id', id);
         super.update(this.sponsored,Curiosity.methodSend.POST,success);

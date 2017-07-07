@@ -54,7 +54,8 @@
                             <!--Title-->
                             <h4 class="card-title text-xs-center">{{$casaHogar->nombre}}</h4>
 
-                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}" data-name="{{$casaHogar->nombre}}">ver a sus niños</a></center>
+                            <center><a href="#" class="btn btn-rounded btn-homes" data-inst="{{$casaHogar->id}}"
+                              data-desc="{{$casaHogar->descripcion}}" data-name="{{$casaHogar->nombre}}">ver a sus niños</a></center>
                         </div>
                         <!--/.Card content-->
 
@@ -74,6 +75,13 @@
            </div>
             <h3 class="text-xs-center" id="nameHome"></h3>
             <hr class="hr-apartado">
+            <p style="font-size: .8rem !important;
+                      background-color: #e8e8e8;
+                      padding: 1rem;
+                      border-radius: .5rem;"
+                id="descPolitics"
+                class="displaynone">
+            </p>
             <br>
             <div id="displayChildren"></div>
 		</div>
@@ -99,11 +107,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="col-xs-12 col-sm-6 col-md-12">
-                                <center><img id="img-modalChild" class="rounded-circle img-fluid z-depth-1"></center>
+                                <center><img id="img-modalChild" class="img-fluid z-depth-1"></center>
                                 <hr>
                             </div>
                             <p class="text-xs-center text-sm-left text-md-center">¿Quiéres apadrinar a <span class="font-weight-bold" id="nameChild"></span>?</p>
-                            <h4 style="font-size: 1rem;text-align: center;margin-bottom: 1rem;font-weight: bold;">Costo: $348.00 MXN</h4>
+                            <h4 style="font-size: 1rem;text-align: center;margin-bottom: 1rem;font-weight: bold; line-height: 1.7rem;">Costo: $348.00 MXN <br> Por un año</h4>
                             <p class="text-xs-center text-sm-left text-md-center"><i class="fa fa-info-circle blue-text-ce"></i>&nbsp; Solo llena los datos y listo.</p>
                             <div id="secureIcon">
                                 <img src="/packages/assets/media/images/parents/payment_cards/security.png">

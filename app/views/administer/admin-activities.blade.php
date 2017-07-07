@@ -150,6 +150,6 @@ Actividades (Juegos)
    <script src="/packages/assets/js/administer/models/dist/Topic-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Activity-dist.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/models/dist/Game-dist.js?{{rand();}}" charset="utf-8"></script>
-   <script src="/packages/assets/js/administer/Controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
+   <script src="/packages/assets/js/administer/controllers/actiController.js?{{rand();}}" charset="utf-8"></script>
    <script src="/packages/assets/js/administer/dispatchers/dsp-acti.js?{{rand();}}" charset="utf-8"></script>
 @stop

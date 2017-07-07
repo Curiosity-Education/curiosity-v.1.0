@@ -22,13 +22,16 @@ var apadrinarController = {
 
         $.each(response.data.child,function(i,o){
 
-            if(o.apadrinado == 1){
+            if(o.apadrinado > 0){
 
                 var cardWith = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
                             "<img class='img-fluid' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"?"+Math.random()+"' alt='"+o.nombre+"'>"+
                             "<div class='card-block'>"+
-                                "<h5 class='blue-text-ce'><i class='fa fa-star colorStar'></i>&nbsp; Apadrinado</h5>"+
+                                `<h5 class='blue-text-ce'>
+                                    <i class='fa fa-star colorStar'></i>
+                                    &nbsp; Apadrinado
+                                </h5>`+
                                 "<h4 class='card-title text-xs-center'>"+o.nombre+"</h4>"+
                                 "<h5 class='card-title text-xs-center'>"+o.apellidos+"</h5>"+
                                 "<center><a href='javascript:void(0)' data-foto="+response.data.folder+"/"+o.foto+" data-childid="+o.id+" data-childname="+o.nombre+" "+o.apellidos+" class='btn btn-rounded btn-homesChild disabled'>Apadrinar</a></center>"+
@@ -42,7 +45,7 @@ var apadrinarController = {
 
                    var cardOut = "<div class='col-md-3 col-sm-6'>"+
                         "<div class='card'>"+
-                            "<img class='img-fluid gris' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"' alt='Card image cap'>"+
+                            "<img class='img-fluid gris' src='/packages/assets/media/images/padrino_curiosity/"+response.data.folder+"/"+o.foto+"?"+Math.random()+"' alt='Card image cap'>"+
                             "<div class='card-block'>"+
                                 "<h5 class='blue-text-ce'><i class='fa fa-star-o colorStar'></i>&nbsp; Sin apadrinar</h5>"+
                                 "<h4 class='card-title text-xs-center'>"+o.nombre+"</h4>"+

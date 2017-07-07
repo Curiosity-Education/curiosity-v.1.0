@@ -4,6 +4,7 @@ $(function(){
     var var_instution = null;
     var object = null;
     var var_id = null;
+    var instDesc = null;
 
     // Banderas para imagen animada
     var imgOth; // nombre de la imagen
@@ -16,6 +17,7 @@ $(function(){
     $("body").on("click", ".agf-btnround-conf", function(){
         var_instution = $(this).data('h');
         admChHomController.getChildren(var_instution);
+        instDesc = ($(this).data('desc') != "") ? $(this).data('desc') : null;
         $("#agf-row-inst").hide();
         $("#agf-row-children").show();
         $("#agf-row-children").addClass('animated zoomIn');
@@ -48,6 +50,12 @@ $(function(){
         $("#agf-form input").val("");
         $("textarea").val("");
         $("#agf-modal").modal("show");
+    });
+
+    $("body").on("click", "#agf-addPolitics", function(){
+        let politics = (instDesc != null) ? instDesc : "";
+        $("#agf-politics-added").val(politics);
+        $("#agf-modal-politics").modal("show");
     });
 
     $("body").on("click", "#agf-save", function(){
@@ -133,6 +141,15 @@ $(function(){
         else {
             alert('No has seleccionado ninguna imagen');
         }
+    });
+
+    $("body").on('click', '#agf-save-politcs', function(event) {
+      admChHomController.changePolitcs($("#agf-politics-added").val(), var_instution, function(r){
+        $("body").find('#conf' + r.data.id).data('desc', r.data.descripcion);
+        $("#agf-modal-politics").modal("hide");
+        $("#agf-politics-added").val("");
+        instDesc = r.data.descripcion;
+      });
     });
 
 });
