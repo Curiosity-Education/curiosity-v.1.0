@@ -6,7 +6,7 @@
 class landingController extends BaseController
 {
 
-  function landingpage(){
+  function landingpage(){    
      if(Auth::check()){
         $routeView = loginController::getAccess();
         return Redirect::to($routeView);
@@ -15,7 +15,7 @@ class landingController extends BaseController
         $escuelas = School::where('active', '=', 1)->get();
         $planes = Plan::where("active", "=", 1)->where("visible", "=", 1)->get();
         $instituciones = Institute::where('tipo', '=', 'Casa Hogar')->where('visible','=',1)->limit(4)->get();
-        return View::make('landing.index',array(
+        return View::make('landing.godfather',array(
             'escuelas'      => $escuelas,
             'casasHogares'  => $instituciones,
             'planes'        => $planes,

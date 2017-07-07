@@ -99,10 +99,10 @@
 		</div>
 
 		<div class="col-md-12 col-sm-12 col-xs-12 lp-content-pdf">
-	
+
 		</div>
 	</div>
-
+	<button type="button" class="btn btn-primary" id="activeBtn" style="display:none;">Primary</button>
 </div> <!-- / container-fluid show PDF -->
 
 @stop

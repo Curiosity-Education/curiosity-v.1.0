@@ -5,7 +5,7 @@
 @stop
 
 @section('menu')
-	<li class="nav-item nav-item1 anc">
+	<li class="nav-item nav-item1 anc" hidden="hidden">
 		<a class="nav-link" href="#inicio">{{Lang::get('landingPage.menu.home')}} <span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item nav-item1 anc">
@@ -19,6 +19,9 @@
 	</li>
 	<li class="nav-item nav-item2 anc">
 		<a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
+	</li>
+	<li class="nav-item nav-item1 anc">
+		<a class="nav-link" href="#padrino-curiosity">{{Lang::get('landingPage.menu.Godfather')}}</a>
 	</li>
 	<li class="nav-item nav-item2">
 		<a href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-outline-success btn-rounded waves-effect pull-right btn-action" style="color:#fff !important;">{{Lang::get('landingPage.menu.logIn')}}</a>
@@ -245,6 +248,7 @@
 			</center>
 		</div>
 	</div>
+    <!-- Separador 2 -->
 
 	<!-- Sección de Video -->
 	<section id="video" class="">
@@ -512,60 +516,29 @@
 	</section>
 	<!-- Fin Sección con el Apoyo -->
 
-	<!-- Separador 3 -->
-	<div class="col-md-12 view hm-black-strong" id="separador3" hidden="hidden">
-		<div class="mask flex-center">
-			<center>
-				<h2 class="white-text h1-responsive">
-				    Educación divertida para todos con...<br>
-				    <b>Padrino Curiosity</b>
-				</h2>
-			</center>
-		</div>
-	</div>
-
 	<!-- Sección con Padrino curiosity -->
-	<section id="padrino-curiosity" class="margen-dispositivo" hidden="hidden">
-		<div class="col-md-6 offset-md-3 divider-new z-depth-1 wow fadeInUpBig">
-			<h2 class="section-header h2-responsive">
-				<!-- <img src="/packages/assets/media/images/landing/compass.png?{{rand();}}" alt="Apoyo_icono" style="width:35px; height:35px;" class=""> -->
-				&nbsp; Padrino Curiosity &nbsp;
-			</h2>
-		</div>
-		<div class="container">
-			<div class="col-md-12" id="content-elemento">
-                <p class="text-xs-center">
-                    ¿Qué es Padrino Curiosity? <br>
-                    Consiste en brindar la oportunidad a niños de casas hogares de tener el acceso
-                    a una cuenta para acceder a la plataforma. <br>
-                    Solo tienes que dar click al botón IR A PADRINO CURIOSITY, el cual te mostrará las casas hogares, posterior a ello podrás elegir alguna y ver a los niños que en ella se encuentran y poder apadrinar a cualquiera de ellos.
-                </p><br>
-
-                <?php $contador = 0 ?>
-                @foreach($casasHogares as $casaHogar)
-                   <?php $contador = $contador + 1 ?>
-                    @if($contador > 2)
-                    <div class="col-md-3 col-sm-6 hidden-xs-down">
-                        <div class="view hm-zoom overlay z-depth-1">
-                            <img src="/packages/assets/media/images/institutions/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
-                        </div>
-                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre }}</h5></div>
-                    </div>
-                    @else
-                    <div class="col-md-3 col-sm-6">
-                        <div class="view hm-zoom overlay z-depth-1">
-                            <img src="/packages/assets/media/images/institutions/{{ $casaHogar -> logo }}" alt="" class="img-casaHogar img-fluid">
-                        </div>
-                        <div class="casahogar-text"><h5 class="font-weight-bold">{{ $casaHogar -> nombre}}</h5></div>
-                    </div>
-				    @endif
-				@endforeach
-
+	<section id="padrino-curiosity"  class="" >
+		<div class="mascara-padrino">
+			<div class="container">
+				<center>
+					<h2 class="h2-responsive font-weight-bold">Padrino Curiosity</h2>
+					<hr class="hr-padrino float-center">
+				</center>
+				<div class="col-md-4 col-sm-6 offset-md-1">
+					<img src="/packages/assets/media/images/landing/logo-padrino.png" alt="Padrino Curiosity" class="img-fluid">
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<p class="text-xs-center" id="texto-padrino">
+	                    ¿Qué es Padrino Curiosity? <br><br>
+						Brindamos la oportunidad a niños en situación vulnerable de tener el acceso a una computadora y una cuenta para ingresar a la plataforma.
+						Solo tienes que ingresar para conocer las casas hogares integradas al programa y ver a los niños que están participando para poder apadrinar a cualquiera de ellos.
+	                </p><br>
+				</div>
 				<div class="col-md-12">
 				    <center>
-
-				        <a href="/casas-hogares" class="btn btn-info btn-rounded" id="btn-goHome">IR A PADRINO CURIOSITY</a>
+				        <a href="/casas-hogares" class="btn btn-lg btn-danger btn-rounded z-depth-3" id="btn-goHome">IR A PADRINO CURIOSITY</a>
 				    </center>
+					<br>
 				</div>
 			</div>
 		</div>

@@ -37,6 +37,9 @@ $(function(){
     ));
   });
 
+$("body").on('click',"nav",function(){
+  console.log('perros');
+});
   $("body").on('click','.lp-btn-degrees',function(){
 
     $(".lp-btn-degrees").removeClass("lpActive");
@@ -44,7 +47,6 @@ $(function(){
     $(this).addClass("lpActive");
     if ($(this).hasClass("lpActive")) {
       var level = $(this).data("id-grade");
-
       $.each(tempIntelligences,function(i){
         if (level == tempIntelligences[i].nivel_id) {
           $("#lp-btn-topics").append($(
@@ -53,10 +55,8 @@ $(function(){
          }
       });
     }
-    if (contadorClick == 0) {
-      contadorClick += 10;
-      $("#lp-btn-topics button").first().trigger('click');
-    }
+    $("#lp-btn-topics button").first().trigger('click');
+    $("#pagination1").trigger('click');
   });
 
 
@@ -218,7 +218,8 @@ $(function(){
         ))
       });
       count_sections = 0, count_elements = 0, finalPdfs = [], cc = 0, cc2 = 0;
-
+      $("#pagination1").trigger('click');
+      // $("body").trigger('click');
     }else {
       $("#lp-row-contPdf").empty();
       $("#pag").empty();
@@ -264,9 +265,10 @@ $(function(){
     $("#lp-section" + section).addClass("fadeInUp");
     $('.page-item').removeClass('active');
     $(this).addClass('active');
+    $("body").trigger('click');
   });
 
   $("#1grado").trigger('click');
-  // $("#1inteligence").trigger('click');
+  $("#1inteligence").trigger('click');
   $("#pagination1").trigger('click');
 });

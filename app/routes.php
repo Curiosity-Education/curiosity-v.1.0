@@ -12,7 +12,9 @@
 */
 
 
-
+Route::get('/padrino-landing',function(){
+	return View::make('landing.godfather');
+});
 Route::get('/', 'landingController@landingpage');
 
 Route::get("/helpme-db", "helperToDbController@addNewAccesorieToChildren");

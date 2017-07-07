@@ -18,12 +18,12 @@ App::before(function($request)
     * Descommeneted on producction
     *
     **************************/
-	/*if( ! Request::secure())
-    {
-        return Redirect::secure(Request::path());
-    }*/
+	// if( ! Request::secure())
+    // {
+    //     return Redirect::secure(Request::path());
+    // }
 });
- 
+
 
 App::after(function($request, $response)
 {

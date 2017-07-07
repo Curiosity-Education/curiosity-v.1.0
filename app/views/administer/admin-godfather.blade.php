@@ -3,6 +3,11 @@
 @extends('templates.administer-menu')
 
 @section('css-plus')
+<style media="screen">
+    .imgoth-active{
+        border: solid .3rem #ececec !important;
+    }
+</style>
 @stop
 
 @section('title')
@@ -80,6 +85,10 @@ Padrino Curiosity
                   <button type="button" class="btn btn-outline-default btn-block" id="agf-resetPhoto">
                     Restaurar
                   </button>
+                  <!-- <button type="button" class="btn btn-outline-default btn-block" id="agf-selectPhotoOther">
+                    <span class="fa fa-folder-open"></span>&nbsp;
+                    Otras
+                  </button> -->
                   <form class="form form-horizontal" id="agf-formPhoto">
                      <input type="file" name="agf_photo" id="agf_photo" class="agfInp">
                   </form>
@@ -133,6 +142,31 @@ Padrino Curiosity
        </div>
      </div>
    </div>
+
+   <div class="modal fade" id="agf-mdl-others" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header" style="background: #2262ae;">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             <span class="sr-only">Close</span>
+           </button>
+           <h4 class="modal-title" style="font-size: 1rem;color: #fff;">Las imagenes se muestran segun el sexo</h4>
+         </div>
+         <div class="modal-body">
+           <div class="row" id="agf-body-mdl-bdy">
+
+           </div>
+         </div>
+         <div class="modal-footer" style="background: #ececec;">
+           <button type="button" class="btn btn-primary" style="background: #2262ae;border-radius: 5rem;" id="btn-agf-oth" disabled="true">
+               <span class="fa fa-check"></span>&nbsp;
+               Aceptar
+           </button>
+         </div>
+       </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+   </div><!-- /.modal -->
 @stop
 
 @section('js-plus')

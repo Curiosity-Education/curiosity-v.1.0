@@ -33,6 +33,7 @@ $(function(){
         $('#img-modalChild').attr('src',src);
         $('#nameChild').text($(this).data('childname'));
         $("#content-children").hide("slow");
+        photoChildSponsored = src;
         $("#paybox").show("slow");
     });
 

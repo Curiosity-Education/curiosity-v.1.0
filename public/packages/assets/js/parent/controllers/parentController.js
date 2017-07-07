@@ -84,7 +84,7 @@ var parentController = {
                               "</div>"+
                               "<div class='card-right'>"+
                                 "<div class='chp-topicDesc'>"+
-                                  "<p>"+name_topic+"</p>"+
+                                  "<p class='weakZise'>"+name_topic+"</p>"+
                                 "</div>"+
                               "</div>"+
                             "</div>"+
@@ -129,7 +129,7 @@ var parentController = {
 									"<center>"+
 										"<p>Click para ver la guía explicativa</p>"+
 										"<a href='#'>"+
-											"<img src='packages/assets/media/images/parents/pdfs.png' alt='' class='chp-pdfImg' data-type='pdf' data-name='"+nombre+"' data-nombre-real="+nombre_real+" data-nombre-tema="+nombre_tema+">"+
+											"<img src='packages/assets/media/images/parents/pdfs.png' alt='' class='chp-pdfImg imgWeak' data-type='pdf' data-name='"+nombre+"' data-nombre-real="+nombre_real+" data-nombre-tema="+nombre_tema+">"+
 										"</a>"+
 									"</center>"+
 						  		"</div><br>"+

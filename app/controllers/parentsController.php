@@ -83,37 +83,37 @@ class parentsController extends BaseController{
                             //}, 5);
                         $sentEmail = 0;
 
-                        /* Uncomment for production */
-                        //  $dataSend = [
-                        //      "name"     =>       "Equipo Curiosity",
-                        //      "client"   =>       $person->nombre." ".$person->apellidos,
-                        //      "email"    =>       $dad->email,
-                        //      "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
-                        //      "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
-                        //      "token"    =>       $user->token
-                        //  ];
-                        //  $toEmail=$dad->email;
-                        //  $toName=$dataSend["email"];
-                        //  $subject =$dataSend["subject"];
-                        //  try {
-                        //      Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
-                        //          $message->to($toEmail,$toName)->subject($subject);
-                        //      });
-                        //      $sentEmail = 1;
-                        //  } catch (Exception $e) {
-                        //      $user->delete();
-                        //      return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
-                        //  }
-                        $dataset = [
-                            'username'  =>  $data['username'],
-                            'password'  =>  $data['password']
+                      /* Uncomment for production */
+                        $dataSend = [
+                            "name"     =>       "Equipo Curiosity",
+                            "client"   =>       $person->nombre." ".$person->apellidos,
+                            "email"    =>       $dad->email,
+                            "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
+                            "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
+                            "token"    =>       $user->token
                         ];
-                        return Response::json(array(
-                            'status'    =>  200,
-                            'statusMessage' =>  'success',
-                            'data'  => $dataset,
-                            'sentEmail' => $sentEmail
-                        ));
+                        $toEmail=$dad->email;
+                        $toName=$dataSend["email"];
+                        $subject =$dataSend["subject"];
+                        try {
+                            Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
+                                $message->to($toEmail,$toName)->subject($subject);
+                            });
+                            $sentEmail = 1;
+                        } catch (Exception $e) {
+                            $user->delete();
+                            return Response::json(array('statusMessage'  =>  "Server Error",'status' => 500,'message' => $e->getMessage()));
+                        }
+                      $dataset = [
+                          'username'  =>  $data['username'],
+                          'password'  =>  $data['password']
+                      ];
+                      return Response::json(array(
+                          'status'    =>  200,
+                          'statusMessage' =>  'success',
+                          'data'  => $dataset,
+                          'sentEmail' => $sentEmail
+                      ));
                     }
                     else {
                        return Response::json(array(
