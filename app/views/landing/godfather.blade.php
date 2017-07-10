@@ -216,9 +216,7 @@
 					<img src="/packages/assets/media/images/landing/logo-padrino.png" alt="Padrino Curiosity" class="img-fluid">
 				</div>
 				<div class="col-md-5">
-                    <video class="video-fluid" controls loop poster="/packages/assets/media/images/landing/poster.png" >
-                        <source src="/packages/assets/media/videos/PadrinoCuriosity.mp4" type="video/mp4" />
-                    </video><br/><br/> 
+    	            <iframe width="100%" height="250px" id="videoCU" src="https://www.youtube.com/embed/8ucaP8RBPFs" frameborder="0" allowfullscreen=""></iframe><br><br>
 					<p class="text-center" id="texto-padrino">Brindamos la oportunidad a niños en situación vulnerable de tener el acceso a una computadora y una cuenta para ingresar a la plataforma. Solo tienes que ingresar para conocer las casas hogares integradas al programa y ver a los niños que están participando para poder apadrinar a cualquiera de ellos.</p>
 				</div>
 				<div class="col-md-1"></div>
@@ -228,19 +226,55 @@
 	<!-- Fin Sección ¿Qué hacemos Padrino curiosity? -->
   
 	<!-- Sección ¿Cómo funciona tu donativo? -->
-	<section id="how-function" class="margen-dispositivo" style="margin-top:1rem;margin-bottom: 2rem">
+	<section id="how-function" class="margen-dispositivo" style="margin-top:1rem;padding-bottom: 2rem">
         <div class="container">
-            <div class="col-md-6 offset-md-3 divider-new z-depth-1 wow zoomInUp">
-                <h2 class="section-header h2-responsive">
-                    <img src="/packages/assets/media/images/landing/donation.png" alt="Curiosity" style="width:35px; height:35px;" class="">
-                    ¿Cómo funciona tu donativo?
-                </h2>
+        	<div class="row">
+	            <div class="col-md-6 offset-md-3 divider-new z-depth-1 wow zoomInUp">
+	                <h2 class="section-header h2-responsive">
+	                    <img src="/packages/assets/media/images/landing/donation.png" alt="Curiosity" style="width:35px; height:35px;" class="">
+	                    ¿Cómo funciona tu donativo?
+	                </h2>
+	            </div>
             </div>
-            <div class="row" style="margin-top:5rem;">
-                    <div class="col-md-2">
-                        <img src="/packages/assets/media/images/landing/care.png" alt="Donativo" class="img-fluid">
-                    </div>
+            <div class="row" style="margin-top:2rem; margin-bottom:3rem">
+                <div class="col-md-3 offset-md-">
+                	<center>
+                		<h3><span class="badge-landing red circle">1</span></h3>
+                		<br>
+                    	<img src="/packages/assets/media/images/landing/laptop2.png" alt="Donativo" class="img-fluid">
+                    	<br>
+                    	<p>Ingresas a la página y selecciones un niño al que desees apoyar.</p>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                    	<h3><span class="badge-landing red circle">2</span></h3>
+                		<br>
+                    	<img src="/packages/assets/media/images/landing/heart.png" alt="Donativo" class="img-fluid">
+                    	<br>
+                    	<p>Realiza tu donativo al niño que hayas seleccionado.</p>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                    	<h3><span class="badge-landing red circle">3</span></h3>
+                    	<br>
+                    	<img src="/packages/assets/media/images/landing/income.png" alt="Donativo" class="img-fluid">
+                    	<br>
+                    	<p>Tu donativo es recaudado por nosotros.</p>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                    	<h3><span class="badge-landing red circle">4</span></h3>
+                    	<br>
+                    	<img src="/packages/assets/media/images/landing/smartphone.png" alt="Donativo" class="img-fluid">
+                    	<br>
+                    	<p>brindamos acceso a tecnologías y educación de alta calidad a nuestros niños.</p>
+                    </center>
+                </div>
             </div>
+
         </div>   
 	</section>
 	<!-- Fin Sección ¿Qwué es curiosity? -->
