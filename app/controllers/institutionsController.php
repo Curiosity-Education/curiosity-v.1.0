@@ -97,7 +97,7 @@ class institutionsController extends BaseController
       $file = $data['adAv-img'];
       $user = Auth::user();
       $admin = DB::table("administrativos")->where("user_id", "=", $user->id)->first();
-      $institution = Institute::where('id','=',$data['id'])->first();
+      $institution = Institute::where('id','=',$data["id"])->first();
       $institution->nombre = $data['name'];
       if ($file != null) {
         unlink(public_path()."/packages/assets/media/images/institutions/" . $institution->logo);
