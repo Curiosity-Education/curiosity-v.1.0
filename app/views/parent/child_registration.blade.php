@@ -114,7 +114,6 @@ Gestión de Mis Hijos
                        <input type="range" id="upch-average" min="5" max="10" step=".1" name="average" class="form-control" value="5">
                       </div>
                     </div>
-                    <hr>
                     <div class="text-xs-center">
                       <button type="reset" data-card="card-1" class="btn btn-outline-warning waves-effect waves-light btn-cancel btn-border-curiosity rotate-btn upch-btnCalcel">Cancelar</button>
                       <button type="button" class="btn btn-to-move btn-return btn-outline btn-warning waves-effect waves-light btn-border-curiosity upch-btnCancel hidden" data-step="1">Regresar</button>
