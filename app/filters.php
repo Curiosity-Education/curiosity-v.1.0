@@ -18,6 +18,7 @@ App::before(function($request)
     * Descommeneted on producction
     *
     **************************/
+
   	// if( ! Request::secure())
    //  {
    //      return Redirect::secure(Request::path());
