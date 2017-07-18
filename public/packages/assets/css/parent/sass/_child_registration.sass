@@ -19,9 +19,8 @@
 .upch-col-children
 	padding-top: 0
 	padding-bottom: 1rem
-	margin-top: -2rem !important
 	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-landscape + 10px)
-	margin-top: -5rem !important
+	margin-top: -7rem !important
 
 .text-center
 	text-align: center
@@ -67,10 +66,19 @@
 	margin-top: -4.5rem
 	transform: rotate(45deg)
 	margin-bottom: .5rem
-	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-portrait + 30px)
-		margin-left: 5rem!important
+	margin-left: -6rem 
 	@media (min-width: $tablet-size-landscape - 10px) and (max-width: $tablet-size-landscape + 30px)
 		margin-left: -4rem !important
+	@media (min-width: $smartphone-size-portrait) and (max-width: $tablet-size-landscape + 90px)
+		margin-left: -.5rem 
+	@media (min-width: $smartphone-size-portrait + 40px) and (max-width: $tablet-size-portrait - 130px)
+		margin-left: -5rem
+	@media (min-width: $smartphone-size-landscape - 65px) and (max-width: $tablet-size-portrait - 35px)
+		margin-left: -5rem !important
+	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-portrait + 30px)
+		margin-left: -3.5rem !important
+
+
 
 .upch-content-card
 	padding-bottom: .5rem
@@ -128,8 +136,10 @@
 	margin-left: 1rem !important
 
 .upch-col-upload-child
+	margin-top: -1.6rem
 	@media (min-width: $tablet-size-portrait - 10px) and (max-width: $tablet-size-portrait + 30px)
-		margin-left: 25% !important
+		margin-left: 0% !important
+
 
 #upch-content-formReg
 	h4
@@ -157,3 +167,4 @@
 	position: inherit !important
 .upch-average>span.thumb~span.thumb
 	display: none !important
+	

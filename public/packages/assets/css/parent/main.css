@@ -95,8 +95,7 @@
 .upch-col-children {
   padding-top: 0;
   padding-bottom: 1rem;
-  margin-top: -2rem !important;
-  margin-top: -5rem !important; }
+  margin-top: -7rem !important; }
 
 .text-center {
   text-align: center; }
@@ -142,13 +141,23 @@
   background-color: #fff;
   margin-top: -4.5rem;
   transform: rotate(45deg);
-  margin-bottom: 0.5rem; }
-  @media (min-width: 758px) and (max-width: 798px) {
-    #upchHome-contentInfo-arrow {
-      margin-left: 5rem !important; } }
+  margin-bottom: 0.5rem;
+  margin-left: -6rem; }
   @media (min-width: 1014px) and (max-width: 1054px) {
     #upchHome-contentInfo-arrow {
       margin-left: -4rem !important; } }
+  @media (min-width: 320px) and (max-width: 1114px) {
+    #upchHome-contentInfo-arrow {
+      margin-left: -0.5rem; } }
+  @media (min-width: 360px) and (max-width: 638px) {
+    #upchHome-contentInfo-arrow {
+      margin-left: -5rem; } }
+  @media (min-width: 415px) and (max-width: 733px) {
+    #upchHome-contentInfo-arrow {
+      margin-left: -5rem !important; } }
+  @media (min-width: 758px) and (max-width: 798px) {
+    #upchHome-contentInfo-arrow {
+      margin-left: -3.5rem !important; } }
 
 .upch-content-card {
   padding-bottom: 0.5rem; }
@@ -201,9 +210,11 @@
   width: 96% !important;
   margin-left: 1rem !important; }
 
-@media (min-width: 758px) and (max-width: 798px) {
-  .upch-col-upload-child {
-    margin-left: 25% !important; } }
+.upch-col-upload-child {
+  margin-top: -1.6rem; }
+  @media (min-width: 758px) and (max-width: 798px) {
+    .upch-col-upload-child {
+      margin-left: 0% !important; } }
 
 #upch-content-formReg h4 {
   background-color: #2262ae;
